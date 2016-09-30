@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- DTO에 대한 축약형 등록 -->
+	<typeAliases>
+	<typeAlias type="com.example.dto.Users" alias ="users"/>
+	</typeAliases>
+	
+	<mappers>
+	<mapper resource="mybatis/mapper/UsersMapper.xml" />
+	</mappers>
+
+</configuration>
