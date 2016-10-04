@@ -23,11 +23,23 @@
 		and user_email = #{userEmail}
 	</select>
 
+	<!-- 비번찾기 기능 id&이름&Email로 비번만찾음 -->
 	<select id="selectPass" resultType="String" parameterType="Map">
 		select user_pass from users where
 		user_id =#{userId} and
-		user_name = #{userName} and user_email = #{userEmail}
+		user_name =
+		#{userName} and
+		user_email = #{userEmail}
 	</select>
+
+	<!-- 정보수정 기능 비번/연락처/이메일/닉네임 변경기능 -->
+	<update id="update" parameterType="Map">
+		update users set
+		user_pass=#{userPass}
+		,user_phone=#{userPhone}
+		,user_email=#{userEmail}
+		,user_nick=#{userNick} where user_id=#{userId}
+	</update>
 
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />

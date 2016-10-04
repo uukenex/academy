@@ -62,4 +62,17 @@ public class RepoTest {
 		List<String> result = urepo.selectPass(userId,userName, userEmail);
 		logger.trace("{}",result);
 	}
+	
+	//정보수정 테스트
+	@Test
+	public void updateTest() {
+		String userId="kk";
+		String userPass="9999";
+		String userPhone="0105465497";
+		String userEmail="ab@c.d";
+		String userNick="닉쿤";
+		int result = urepo.updateUser(userId, userPass, userPhone, userEmail, userNick);
+		assertThat(result, is(1));
+	}
+	
 }
