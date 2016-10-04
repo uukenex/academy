@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="question_view.jsp"></jsp:include>
-	<br>
-	<jsp:include page="review_view.jsp"></jsp:include>
+
 </body>
 </html>
