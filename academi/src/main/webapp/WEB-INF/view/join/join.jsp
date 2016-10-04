@@ -35,6 +35,17 @@
 									class="inputTextStyle">
 						</td>
 					</tr>
+					<tr>
+						<th>
+							<label for="password" class="inputLabel">
+								<img alt="NameIcon" src="<%=request.getContextPath() %>/join_icons/id_size_tag.png">
+							</label>
+						</th>
+						<td>
+							<input type="text" id="id" name="id" placeholder="아이디 입력"
+									class="inputTextStyle">
+						</td>
+					</tr>
 				</table>
 		</fieldset>
 	</sform:form>
