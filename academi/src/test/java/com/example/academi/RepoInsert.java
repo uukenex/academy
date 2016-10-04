@@ -28,7 +28,7 @@ public class RepoInsert {
 	
 	@Test
 	public void test() {
-		Users user= new Users("kk","1234","김","zz@n.n","01012345678","닉네임");
+		Users user= new Users("dd","1234","김","zz@n.n","01012345678","닉네임");
 		int result = urepo.insert(user);
 		assertThat(result, is(1));
 	}
