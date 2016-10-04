@@ -15,10 +15,17 @@ public class BasicController {
 		return "showMessage";
 	}
 	
-	@RequestMapping(value="/join",method=RequestMethod.GET)
+	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String join(Model model){
 		model.addAttribute("message","Good Morning");
 		//사용할 view의 이름 리턴->View Resolver
 		return "join/join";
+	}
+	
+	@RequestMapping(value="/id_check",method=RequestMethod.GET)
+	public String idCheck(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "join/id_check";
 	}
 }
