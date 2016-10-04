@@ -9,6 +9,7 @@
 	<typeAliases>
 	<typeAlias type="com.example.dto.Users" alias ="users"/>
 	<typeAlias type="com.example.dto.Review" alias ="review"/>
+	<typeAlias type="com.example.dto.Route" alias ="route"/>
 	</typeAliases>
 	
 	<mappers>

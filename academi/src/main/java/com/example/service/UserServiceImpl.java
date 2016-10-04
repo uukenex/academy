@@ -7,8 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dto.Review;
-import com.example.dto.Users;
+import com.example.dto.*;
 import com.example.repo.UserRepo;
 
 @Service
@@ -49,6 +48,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Review> myPageReview(String userId) {
 		return urepo.selectReviewById(userId);
+	}
+
+	@Override
+	public List<Route> myPageRoute(String userId) {
+		return urepo.selectRouteById(userId);
 	}
 
 }

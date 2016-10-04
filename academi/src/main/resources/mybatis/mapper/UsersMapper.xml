@@ -43,11 +43,14 @@
 
 	<!-- 마이페이지 내가 작성한 후기보기 기능 -->
 	<!--후기테이블에서 내아이디로 조회 -->
-	<select id="selectReviewById" parameterType="String"
-	resultType="review">
-	select * from review where user_id = #{userId}
+	<select id="selectReviewById" parameterType="String" resultType="review">
+		select * from review where user_id = #{userId}
 	</select>
-
+	<!-- 마이페이지 내가 작성한 경로보기 기능 -->
+	<!--경로테이블에서 내아이디로 조회 -->
+	<select id="selectRouteById" parameterType="String" resultType="route">
+		select * from route where user_id = #{userId}
+	</select>
 
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />

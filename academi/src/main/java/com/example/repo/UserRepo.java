@@ -2,8 +2,7 @@ package com.example.repo;
 
 import java.util.List;
 
-import com.example.dto.Review;
-import com.example.dto.Users;
+import com.example.dto.*;
 
 public interface UserRepo {
 	// insert처리
@@ -23,4 +22,6 @@ public interface UserRepo {
 	
 	//후기 보기 by id
 	public List<Review> selectReviewById(String userId);
+	//계획 보기 by id
+	public List<Route> selectRouteById(String userId);
 }

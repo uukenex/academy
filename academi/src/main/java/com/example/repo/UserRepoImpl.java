@@ -8,8 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.dto.Review;
-import com.example.dto.Users;
+import com.example.dto.*;
 
 @Repository
 public class UserRepoImpl implements UserRepo {
@@ -72,6 +71,12 @@ public class UserRepoImpl implements UserRepo {
 		String statement = NAME_SPACE+"selectReviewById";
 		return template.selectList(statement,userId);
 		
+	}
+
+	@Override
+	public List<Route> selectRouteById(String userId) {
+		String statement = NAME_SPACE+"selectRouteById";
+		return template.selectList(statement,userId);
 	}
 
 }

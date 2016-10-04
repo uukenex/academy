@@ -15,8 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
-import com.example.dto.Review;
-import com.example.dto.Users;
+import com.example.dto.*;
 import com.example.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,7 +50,7 @@ public class UserServiceTest {
 		String userEmail = "zzxx@z.z";
 		List<String> result = uService.SearchId(userName, userEmail);
 		assertThat(result, is(notNullValue()));
-		logger.trace("{}",result);
+		logger.trace("{}", result);
 	}
 
 	// 비번찾기 서비스 테스트
@@ -60,26 +59,36 @@ public class UserServiceTest {
 		String userId = "zzxx";
 		String userName = "전";
 		String userEmail = "zzxx@z.z";
-		String result=uService.SearchPass(userId, userName, userEmail);
+		String result = uService.SearchPass(userId, userName, userEmail);
 		assertThat(result, is(notNullValue()));
-		logger.trace("{}",result);
+		logger.trace("{}", result);
 	}
-	//정보 수정 서비스 테스트
+
+	// 정보 수정 서비스 테스트
 	@Test
 	public void UpdateUserTest() {
-		String userId="kk";
-		String userPass="9876";
-		String userPhone="01085445454";
-		String userEmail="oo@o.o";
-		String userNick="오씨";
-		int result=uService.updateUser(userId, userPass, userPhone, userEmail, userNick);
+		String userId = "kk";
+		String userPass = "9876";
+		String userPhone = "01085445454";
+		String userEmail = "oo@o.o";
+		String userNick = "오씨";
+		int result = uService.updateUser(userId, userPass, userPhone, userEmail, userNick);
 		assertThat(result, is(1));
 	}
-	//마이페이지 내후기보기 서비스 테스트
+
+	// 마이페이지 내후기보기 서비스 테스트
 	@Test
 	public void myPageReviewTest() {
-	String userId="kk";
-	List<Review> result = uService.myPageReview(userId);
-	assertThat(result, is(notNullValue()));
+		String userId = "kk";
+		List<Review> result = uService.myPageReview(userId);
+		assertThat(result, is(notNullValue()));
+	}
+
+	// 마이페이지 내경로보기 서비스 테스트
+	@Test
+	public void myPageRouteTest() {
+		String userId = "kk";
+		List<Route> result = uService.myPageRoute(userId);
+		assertThat(result, is(notNullValue()));
 	}
 }

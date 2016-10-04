@@ -16,8 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
-import com.example.dto.Review;
-import com.example.dto.Users;
+import com.example.dto.*;
 import com.example.repo.UserRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -85,4 +84,12 @@ public class UserRepoTest {
 		List<Review> review= urepo.selectReviewById(userId);
 		assertThat(review, is(notNullValue()));
 	}
+	
+	// 내 경로보기 테스트
+		@Test
+		public void selectRouteTest() {
+			String userId="kk";
+			List<Route> review= urepo.selectRouteById(userId);
+			assertThat(review, is(notNullValue()));
+		}
 }
