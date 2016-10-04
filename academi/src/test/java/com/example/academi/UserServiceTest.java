@@ -22,7 +22,7 @@ public class UserServiceTest {
 	public void JoinTest() {
 		Users user = new Users("zzxx","pass","전","zzxx@z.z","01099999808","나님");
 		int result = uService.joinUser(user);
-		assertThat(result, is(1));
+		assertThat(result, is(1)); 
 	}
 
 }
