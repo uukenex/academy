@@ -9,6 +9,6 @@
 	</head> 
 	<body>
 	
-		<h2>${message}</h2>
+		<h2>Hello Jsp</h2>
 	</body>
 </html>

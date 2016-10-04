@@ -11,7 +11,10 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
+		<c:url value="/hello" var="messageUrl" />
 		<a href="${messageUrl}">Click to enter</a>
+		<br>
+		<c:url value="/join" var="joinUrl" />
+		<a href="${joinUrl}">Enter Join Form</a>
 	</body>
 </html>

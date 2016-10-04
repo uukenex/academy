@@ -13,10 +13,11 @@
 	<sform:form action="#" method="post" modelAttribute="Users">
 		<fieldset>
 			<legend>Join Form</legend>
-			<label>
-				<img alt="ID" src="../join_icons/id_size_tag.png" width="150">
-				<sform:input path="id"/>
-			</label>
+				<label id="id" class="inputLabel">
+					<img alt="ID" src="../../join_icons/id_size_tag.png">
+				</label>
+				<input type="text" id="id" name="id" placeholder="아이디 입력">
+				<br>
 		</fieldset>
 	</sform:form>
 </body>
