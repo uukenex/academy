@@ -4,9 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.UserMapper">
+	<!-- 회원가입을 위한 insert -->
 	<insert id="insert" parameterType="users">
 		insert into users 
 		values(#{userId},#{userPass},#{userName},
 		#{userEmail},#{userPhone},#{userNick})
 	</insert>
+	
+	<!-- 로그인 기능 -->
+	<select id="selectById" resultMap="usersBase" 
+	parameterType="String">
+	select * from users where user_id = #{userId}
+	</select>
+	
+	<resultMap type="users" id="usersBase">
+		<id column="user_id" property="userId" />
+		<result column="user_pass" property="userPass" />
+		<result column="user_name" property="userName" />
+		<result column="user_email" property="userEmail" />
+		<result column="user_phone" property="userPhone" />
+		<result column="user_nick" property="userNick" />
+	</resultMap>
 </mapper>

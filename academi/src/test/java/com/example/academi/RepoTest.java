@@ -1,6 +1,7 @@
 package com.example.academi;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -17,8 +18,8 @@ import com.example.repo.UserRepo;
 import com.example.config.ApplicationConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
-public class RepoInsert {
-	static Logger logger = LoggerFactory.getLogger(RepoInsert.class);
+public class RepoTest {
+	static Logger logger = LoggerFactory.getLogger(RepoTest.class);
 	
 
 	@Autowired
@@ -27,10 +28,17 @@ public class RepoInsert {
 	UserRepo urepo;
 	
 	@Test
-	public void test() {
+	public void InsertTest() {
 		Users user= new Users("dd","1234","김","zz@n.n","01012345678","닉네임");
 		int result = urepo.insert(user);
 		assertThat(result, is(1));
+	}
+	@Test
+	public void SelectByIdTest() {
+		String userId = "dd";
+		Users user = urepo.selectById(userId);
+		assertThat(user, is(notNullValue()));
+		logger.trace("user정보 By Id : {}",user);
 	}
 
 }

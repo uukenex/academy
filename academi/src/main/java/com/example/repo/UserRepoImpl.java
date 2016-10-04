@@ -19,4 +19,10 @@ public class UserRepoImpl implements UserRepo{
 		return template.update(statement,user);
 	}
 
+	@Override
+	public Users selectById(String userId) {
+		String statement = NAME_SPACE+"selectById";
+		return template.selectOne(statement,userId);
+	}
+
 }
