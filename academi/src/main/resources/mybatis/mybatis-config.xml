@@ -8,6 +8,7 @@
 	<!-- DTO에 대한 축약형 등록 -->
 	<typeAliases>
 	<typeAlias type="com.example.dto.Users" alias ="users"/>
+	<typeAlias type="com.example.dto.Review" alias ="review"/>
 	</typeAliases>
 	
 	<mappers>

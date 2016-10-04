@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.dto.Review;
 import com.example.dto.Users;
 
 @Repository
@@ -63,6 +64,14 @@ public class UserRepoImpl implements UserRepo {
 		map.put("userEmail", userEmail);
 		map.put("userNick", userNick);
 		return template.update(statement,map);
+	}
+
+	//마이페이지 Review보기
+	@Override
+	public List<Review> selectReviewById(String userId) {
+		String statement = NAME_SPACE+"selectReviewById";
+		return template.selectList(statement,userId);
+		
 	}
 
 }

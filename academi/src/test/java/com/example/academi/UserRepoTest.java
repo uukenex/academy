@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
+import com.example.dto.Review;
 import com.example.dto.Users;
 import com.example.repo.UserRepo;
 
@@ -77,4 +78,11 @@ public class UserRepoTest {
 		assertThat(result, is(1));
 	}
 
+	// 내 후기보기 테스트
+	@Test
+	public void selectReviewTest() {
+		String userId="kk";
+		List<Review> review= urepo.selectReviewById(userId);
+		assertThat(review, is(notNullValue()));
+	}
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.dto.Review;
 import com.example.dto.Users;
 import com.example.repo.UserRepo;
 
@@ -43,6 +44,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick) {
 		return urepo.updateUser(userId, userPass, userPhone, userEmail, userNick);
+	}
+	// 마이페이지 - 내후기보기 서비스
+	@Override
+	public List<Review> myPageReview(String userId) {
+		return urepo.selectReviewById(userId);
 	}
 
 }

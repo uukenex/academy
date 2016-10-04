@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.dto.Review;
 import com.example.dto.Users;
 
 
@@ -16,4 +17,6 @@ public interface UserService {
 	public String SearchPass(String userId,String userName,String userEmail);
 	// 정보변경 - 정보 변경 서비스 .비밀번호, 연락처, 이메일, 닉네임을 변경
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick);
+	// 마이페이지 - 내후기보기 서비스
+	public List<Review> myPageReview(String userId);
 }

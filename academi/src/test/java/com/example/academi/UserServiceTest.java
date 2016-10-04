@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
+import com.example.dto.Review;
 import com.example.dto.Users;
 import com.example.service.UserService;
 
@@ -73,5 +74,12 @@ public class UserServiceTest {
 		String userNick="오씨";
 		int result=uService.updateUser(userId, userPass, userPhone, userEmail, userNick);
 		assertThat(result, is(1));
+	}
+	//마이페이지 내후기보기 서비스 테스트
+	@Test
+	public void myPageReviewTest() {
+	String userId="kk";
+	List<Review> result = uService.myPageReview(userId);
+	assertThat(result, is(notNullValue()));
 	}
 }

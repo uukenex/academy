@@ -1,8 +1,8 @@
 package com.example.repo;
 
 import java.util.List;
-import java.util.Map;
 
+import com.example.dto.Review;
 import com.example.dto.Users;
 
 public interface UserRepo {
@@ -20,4 +20,7 @@ public interface UserRepo {
 
 	// 정보변경
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick);
+	
+	//후기 보기 by id
+	public List<Review> selectReviewById(String userId);
 }
