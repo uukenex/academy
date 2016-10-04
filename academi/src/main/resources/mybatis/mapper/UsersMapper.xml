@@ -16,11 +16,17 @@
 		select * from users where user_id = #{userId}
 	</select>
 
-	<!-- id찾기 기능 이름&Email로 id만 찾음-->
+	<!-- id찾기 기능 이름&Email로 id만 찾음 -->
 	<select id="selectByNameAndEmail" resultType="String"
 		parameterType="Map">
-		select user_id from users where user_name = #{userName} 
+		select user_id from users where user_name = #{userName}
 		and user_email = #{userEmail}
+	</select>
+
+	<select id="selectPass" resultType="String" parameterType="Map">
+		select user_pass from users where
+		user_id =#{userId} and
+		user_name = #{userName} and user_email = #{userEmail}
 	</select>
 
 	<resultMap type="users" id="usersBase">

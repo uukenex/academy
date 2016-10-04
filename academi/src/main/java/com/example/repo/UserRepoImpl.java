@@ -38,4 +38,14 @@ public class UserRepoImpl implements UserRepo{
 		return template.selectList(statement,map);
 	}
 
+	@Override
+	public List<String> selectPass(String userId, String userName, String userEmail) {
+		String statement =NAME_SPACE+"selectPass";
+		Map<String,String> map = new HashMap<>();
+		map.put("userId", userId);
+		map.put("userName", userName);
+		map.put("userEmail", userEmail);
+		return template.selectList(statement,map);
+	}
+
 }

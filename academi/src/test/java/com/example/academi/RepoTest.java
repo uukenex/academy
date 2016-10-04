@@ -52,4 +52,14 @@ public class RepoTest {
 		List<String> result = urepo.selectByNameAndEmail(userName, userEmail);
 		logger.trace("{}",result);
 	}
+	
+	//비번찾기 테스트
+	@Test
+	public void SelectPassTest() {
+		String userId="kk";
+		String userName="김";
+		String userEmail="zz@n.n";
+		List<String> result = urepo.selectPass(userId,userName, userEmail);
+		logger.trace("{}",result);
+	}
 }
