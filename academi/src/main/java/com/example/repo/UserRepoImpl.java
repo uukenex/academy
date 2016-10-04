@@ -1,5 +1,9 @@
 package com.example.repo;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +27,15 @@ public class UserRepoImpl implements UserRepo{
 	public Users selectById(String userId) {
 		String statement = NAME_SPACE+"selectById";
 		return template.selectOne(statement,userId);
+	}
+
+	@Override
+	public List<String> selectByNameAndEmail(String userName,String userEmail) {
+		String statement =NAME_SPACE+"selectByNameAndEmail";
+		Map<String,String> map = new HashMap<>();
+		map.put("userName", userName);
+		map.put("userEmail", userEmail);
+		return template.selectList(statement,map);
 	}
 
 }

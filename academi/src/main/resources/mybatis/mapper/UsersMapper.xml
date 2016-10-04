@@ -6,17 +6,23 @@
 <mapper namespace="com.example.UserMapper">
 	<!-- 회원가입을 위한 insert -->
 	<insert id="insert" parameterType="users">
-		insert into users 
+		insert into users
 		values(#{userId},#{userPass},#{userName},
 		#{userEmail},#{userPhone},#{userNick})
 	</insert>
-	
+
 	<!-- 로그인 기능 -->
-	<select id="selectById" resultMap="usersBase" 
-	parameterType="String">
-	select * from users where user_id = #{userId}
+	<select id="selectById" resultMap="usersBase" parameterType="String">
+		select * from users where user_id = #{userId}
 	</select>
-	
+
+	<!-- id찾기 기능 이름&Email로 id만 찾음-->
+	<select id="selectByNameAndEmail" resultType="String"
+		parameterType="Map">
+		select user_id from users where user_name = #{userName} 
+		and user_email = #{userEmail}
+	</select>
+
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />
 		<result column="user_pass" property="userPass" />
