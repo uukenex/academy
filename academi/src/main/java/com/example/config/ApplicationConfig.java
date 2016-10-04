@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //Spring core에 대한 설정
 @Configuration
 @PropertySource("classpath:/config/dbconfig.properties")
-@ComponentScan("com.example.repo")
+@ComponentScan({"com.example.repo","com.example.service"})
 @EnableTransactionManagement
 public class ApplicationConfig {
 	static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);

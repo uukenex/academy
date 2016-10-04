@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dto.Users;
 
-@Service
+
 public interface UserService {
 	// insert처리 - 회원가입 서비스
 	public int joinUser(Users user);
