@@ -58,10 +58,10 @@ public class UserRepoTest {
 	// 비번찾기 테스트
 	@Test
 	public void SelectPassTest() {
-		String userId = "kk";
+		String userId = "dd";
 		String userName = "김";
 		String userEmail = "zz@n.n";
-		List<String> result = urepo.selectPass(userId, userName, userEmail);
+		String result = urepo.selectPass(userId, userName, userEmail);
 		logger.trace("{}", result);
 	}
 

@@ -43,13 +43,13 @@ public class UserRepoImpl implements UserRepo {
 
 	// 비번찾기
 	@Override
-	public List<String> selectPass(String userId, String userName, String userEmail) {
+	public String selectPass(String userId, String userName, String userEmail) {
 		String statement = NAME_SPACE + "selectPass";
 		Map<String, String> map = new HashMap<>();
 		map.put("userId", userId);
 		map.put("userName", userName);
 		map.put("userEmail", userEmail);
-		return template.selectList(statement, map);
+		return template.selectOne(statement, map);
 	}
 
 	//정보변경

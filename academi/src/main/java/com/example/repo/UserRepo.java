@@ -16,7 +16,7 @@ public interface UserRepo {
 	public List<String> selectByNameAndEmail(String userName, String userEmail);
 
 	// 비번찾기
-	public List<String> selectPass(String userId, String userName, String userEmail);
+	public String selectPass(String userId, String userName, String userEmail);
 
 	// 정보변경
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick);
