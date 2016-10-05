@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+/* Header */
+
+#header {
+	position: relative;
+	padding: 3em 0em;
+}
+
+/* Logo */
+#logo {
+	position: absolute;
+	top: 3em;
+	left: 0em;
+}
+
+#logo h1 {
+	float: left;
+}
+
+#logo h1 a{
+	padding: 0.5em 0.25em 0em 0em;
+	text-decoration: none;
+	text-transform: none;
+	font-family: 'Oswald', sans-serif;
+	font-size: 2.5em;
+	font-weight: 200;
+	color: #151278;
+}
+
+#logo span {
+	float: left;
+	padding: 1em 0em 0em 0em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1em;
+	font-style: italic;
+	color: #4374D9;
+}
+
+/* Menu Bar */
