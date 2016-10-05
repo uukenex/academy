@@ -38,3 +38,56 @@
 }
 
 /* Menu Bar */
+#nav {
+	position: absolute;
+	top: 3em;
+	right: 0;
+}
+
+#nav ul {
+	float: right;
+	text-align: center;
+}
+
+#nav li {
+	display: inline-block;
+}
+
+#nav a {
+	display: block;
+	float: left;
+	margin-right: 0.12em;
+	padding: 0.75em 1.5em;
+	text-decoration: none;
+	text-transform: none;
+	font-family: 'Abel', sans-serif;
+	font-size: 1.25em;
+	color: #2C2C2C;
+}
+
+#nav .current_page_item {
+	color: #2C2C2C;
+}
+
+#nav .current_page_item a {
+	background: #212121;
+	color: #FFFFFF;
+	box-shadow: inset 0px -15px 10px 0px rgba(0,0,0,0.25);
+	text-shadow: none;
+}
+
+/* Banner */
+#banner {
+	overflow: hidden;
+	margin: 3em 0em;
+}
+
+#banner .container {
+	margin-bottom: 3em;
+	padding: 1.87em;
+}
+
+#banner a img {
+	display: block;
+	width: 100%;
+}

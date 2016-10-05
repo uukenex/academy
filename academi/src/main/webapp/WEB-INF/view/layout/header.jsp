@@ -5,13 +5,13 @@
 	<div class="container">
 		<div id="header">
 		
-			<!-- logo -->
+			<!-- Logo -->
 			<div	id="logo">
 			<span>Make by</span>
 				<h1><a href="index.jsp">TRAVEL</a></h1>
 			</div>
 			
-			<!-- header MenuBar -->
+			<!-- Header MenuBar -->
 			<nav id="nav">
 				<ul>
 					<li class="current_page_item"><a href="index.jsp">Homepage</a></li>
