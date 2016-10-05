@@ -16,10 +16,15 @@
 		,#{commentName},#{commentContent},sysdate,0,#{userId})
 	</insert>
 	<!-- 게시글 수정 -->
-	<update id="update">
+	<update id="update" parameterType="Map">
+		update comments set
+		comment_name=#{commentName},
+		comment_content=#{commentContent}
+		where comment_no=#{commentNo}
 	</update>
 	<!-- 게시글 삭제 -->
-	<delete id="delete">
+	<delete id="delete" parameterType="int">
+		delete from comments where comment_no=#{commentNo} 
 	</delete>
 	<!-- 페이지당 리스트를 보여줌(분류별로 해야할듯) -->
 	<select id="selectList" parameterType="Map" resultMap="commentsBase">
