@@ -36,6 +36,7 @@ public class Review implements Serializable {
 	/** 후기_추천수. */
 	private Integer reviewStar;
 
+	private Integer reviewCount;
 	/** 경로. */
 	private Integer routeNo;
 

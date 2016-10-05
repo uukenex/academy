@@ -32,6 +32,8 @@ public class Qna implements Serializable {
 	/** qna_내용. */
 	private String qnaQuestion;
 
+	private Date qnaDate;
+	private Integer qnaCount;
 	/** 사용자. */
 	private String userId;
 

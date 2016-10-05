@@ -28,6 +28,7 @@ public class Answer implements Serializable {
 	/** qna_답변내용. */
 	private String answerContent;
 
+	private Date answerDate;
 	/** qna게시판. */
 	private Qna qna;
 

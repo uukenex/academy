@@ -67,7 +67,7 @@ public class UserServiceTest {
 	// 정보 수정 서비스 테스트
 	@Test
 	public void UpdateUserTest() {
-		String userId = "kk";
+		String userId = "dd";
 		String userPass = "9876";
 		String userPhone = "01085445454";
 		String userEmail = "oo@o.o";
@@ -79,7 +79,7 @@ public class UserServiceTest {
 	// 마이페이지 내후기보기 서비스 테스트
 	@Test
 	public void myPageReviewTest() {
-		String userId = "kk";
+		String userId = "dd";
 		List<Review> result = uService.myPageReview(userId);
 		assertThat(result, is(notNullValue()));
 	}
@@ -87,7 +87,7 @@ public class UserServiceTest {
 	// 마이페이지 내경로보기 서비스 테스트
 	@Test
 	public void myPageRouteTest() {
-		String userId = "kk";
+		String userId = "dd";
 		List<Route> result = uService.myPageRoute(userId);
 		assertThat(result, is(notNullValue()));
 	}

@@ -44,7 +44,5 @@ public class Route implements Serializable {
 	/** 사용자. */
 	private String userId;
 
-	/** 지역분류. */
-	private String seedo;
 
 }

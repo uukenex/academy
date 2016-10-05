@@ -23,13 +23,9 @@ public class Region implements Serializable {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** 시-도. */
-	private String seedo;
+	private String si;
 
-	/** 군-구. */
-	private String goongu;
+	private String xy;
 
-	/** 동면읍리. */
-	private String dong;
 
 }

@@ -38,6 +38,7 @@ public class Comments implements Serializable {
 	/** 게시글_날짜. */
 	private Date commentDate;
 
+	private Integer commentCount;
 	/** 사용자. */
 	private String userId;
 

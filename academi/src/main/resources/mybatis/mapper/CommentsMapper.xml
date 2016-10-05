@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.CommentMapper">
+	<!-- 단일 게시글 보기 -->
+	<select id="select" parameterType="int" resultMap="commentsBase">
+		select * from
+		comments where comment_no= #{commentNo}
+	</select>
+	<!-- 게시글 쓰기(공지사항:관리자) 분류별 필요 -->
+	<insert id="insert" parameterType="Map">
+		insert into comments values
+		(seq_comment_comment_no.nextval,#{commentCategory}
+		,#{commentName},#{commentContent},sysdate,0,#{userId})
+	</insert>
+	<!-- 게시글 수정 -->
+	<update id="update">
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+	</delete>
+	<!-- 페이지당 리스트를 보여줌(분류별로 해야할듯) -->
+	<select id="selectList" parameterType="Map" resultMap="commentsBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from comments where
+		comment_category=#{commentCategory}order by
+		comment_no desc) sub)
+		where
+		rnum between #{page}*10-9 and #{page}*10
+	</select>
+	<resultMap type="comments" id="commentsBase">
+		<id column="comment_no" property="commentNo" />
+		<result column="comment_category" property="commentCategory" />
+		<result column="comment_name" property="commentName" />
+		<result column="comment_content" property="commentContent" />
+		<result column="comment_date" property="commentDate" />
+		<result column="comment_count" property="commentCount" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+</mapper>

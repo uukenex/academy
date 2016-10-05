@@ -68,7 +68,7 @@ public class UserRepoTest {
 	// 정보수정 테스트
 	@Test
 	public void updateTest() {
-		String userId = "kk";
+		String userId = "dd";
 		String userPass = "9999";
 		String userPhone = "0105465497";
 		String userEmail = "ab@c.d";
@@ -77,19 +77,20 @@ public class UserRepoTest {
 		assertThat(result, is(1));
 	}
 
+	// 내 경로보기 테스트
+	@Test
+	public void selectRouteTest() {
+		String userId = "dd";
+		List<Route> review = urepo.selectRouteById(userId);
+		assertThat(review, is(notNullValue()));
+	}
+
 	// 내 후기보기 테스트
 	@Test
 	public void selectReviewTest() {
-		String userId="kk";
-		List<Review> review= urepo.selectReviewById(userId);
+		String userId = "dd";
+		List<Review> review = urepo.selectReviewById(userId);
 		assertThat(review, is(notNullValue()));
 	}
-	
-	// 내 경로보기 테스트
-		@Test
-		public void selectRouteTest() {
-			String userId="kk";
-			List<Route> review= urepo.selectRouteById(userId);
-			assertThat(review, is(notNullValue()));
-		}
+
 }

@@ -1,0 +1,29 @@
+package com.example.repo;
+
+import java.util.List;
+import java.util.Map;
+
+import com.example.dto.Comments;
+
+public interface CommentRepo {
+	/**
+	 * 한페이지에 출력될 게시글 수
+	 */
+	int COMMENT_PER_PAGE = 10;
+
+	// 단일 게시글 보기
+	public Comments selectComment(int commentNo);
+
+	// 게시글 쓰기(공지사항은 관리자만 작성가능)
+	public int insertComment(String commentCategory,String commentName,String commentContent,String userId);
+
+	// 게시글 수정(작성자만 가능)
+	public void updateComment(Comments comment);
+
+	// 게시글 삭제(작성자만 가능)
+	public void deleteComment(int commentNo);
+
+	// 페이지당 리스트를 보여줌 분류별로 있어야함
+	public List<Comments> getCommentByPage(Map<String,Object> map);
+
+}

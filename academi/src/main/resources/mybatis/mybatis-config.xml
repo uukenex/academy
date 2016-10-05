@@ -8,12 +8,14 @@
 	<!-- DTO에 대한 축약형 등록 -->
 	<typeAliases>
 	<typeAlias type="com.example.dto.Users" alias ="users"/>
+	<typeAlias type="com.example.dto.Comments" alias ="comments"/>
 	<typeAlias type="com.example.dto.Review" alias ="review"/>
 	<typeAlias type="com.example.dto.Route" alias ="route"/>
 	</typeAliases>
 	
 	<mappers>
 	<mapper resource="mybatis/mapper/UsersMapper.xml" />
+	<mapper resource="mybatis/mapper/CommentsMapper.xml" />
 	</mappers>
 
 </configuration>
