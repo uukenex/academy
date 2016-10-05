@@ -39,23 +39,32 @@ public class CommentRepoImpl implements CommentRepo {
 
 	// 게시글 수정(작성자만 가능)
 	@Override
-	public void updateComment(Comments comment) {
-		// TODO Auto-generated method stub
-
+	public int updateComment(int commentNo,String commentName,String commentContent) {
+		String statement = NAME_SPACE + "update";
+		Map<String,Object> map = new HashMap<>();
+		map.put("commentNo", commentNo);
+		map.put("commentName", commentName);
+		map.put("commentContent", commentContent);
+		return template.update(statement,map);
 	}
 
 	// 게시글 삭제(작성자만 가능)
 	@Override
-	public void deleteComment(int commentNo) {
+	public int deleteComment(int commentNo) {
+		String statement = NAME_SPACE + "delete";
+		return template.delete(statement,commentNo);
 		// TODO Auto-generated method stub
 
 	}
 
 	// 페이지당 리스트를 보여줌
 	@Override
-	public List<Comments> getCommentByPage(Map<String,Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Comments> getCommentByPage(String commentCategory,int page) {
+		String statement = NAME_SPACE + "selectList";
+		Map<String,Object> map= new HashMap<>();
+		map.put("commentCategory", commentCategory);
+		map.put("page", page);
+		return template.selectList(statement,map);
 	}
 
 }

@@ -18,12 +18,12 @@ public interface CommentRepo {
 	public int insertComment(String commentCategory,String commentName,String commentContent,String userId);
 
 	// 게시글 수정(작성자만 가능)
-	public void updateComment(Comments comment);
+	public int updateComment(int commentNo,String commentName,String commentContent);
 
 	// 게시글 삭제(작성자만 가능)
-	public void deleteComment(int commentNo);
+	public int deleteComment(int commentNo);
 
 	// 페이지당 리스트를 보여줌 분류별로 있어야함
-	public List<Comments> getCommentByPage(Map<String,Object> map);
+	public List<Comments> getCommentByPage(String commentCategory,int page);
 
 }
