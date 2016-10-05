@@ -25,5 +25,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/join_icons/**").addResourceLocations("/WEB-INF/join_icons/");
+		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
+		registry.addResourceHandler("/css_images/**").addResourceLocations("/WEB-INF/css/css_images/");
 	}
 }
