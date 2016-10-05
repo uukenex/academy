@@ -1,13 +1,13 @@
 package com.example.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dto.*;
+import com.example.dto.Review;
+import com.example.dto.Route;
+import com.example.dto.Users;
 import com.example.repo.UserRepo;
 
 @Service
