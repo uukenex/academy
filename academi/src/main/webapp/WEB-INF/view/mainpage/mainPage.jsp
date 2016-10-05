@@ -20,6 +20,8 @@
 		type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath() %>/css/style.css"
 		type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath() %>/bxslider/jquery.bxslider.css"
+		type="text/css" rel='stylesheet' />
 
 </head>
 <body>
@@ -27,14 +29,38 @@
 	<div class="container">
 		<div class="row">
 			<div id="banner" class="12u">
-				<div class="container">
-					<a href="#">
-						<img alt="MainPhoto" src="<%=request.getContextPath() %>/images/pics01.jpg">
-					</a>
+				<div class="container" align="center">
+					<ul class="bxslider">
+						<li><img src="<%=request.getContextPath() %>/images/pics01.jpg"></li>
+						<li><img src="<%=request.getContextPath() %>/images/pics02.jpg"></li>
+						<li><img src="<%=request.getContextPath() %>/images/pics03.jpg"></li>
+						<li><img src="<%=request.getContextPath() %>/images/pics06.jpg"></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!--  
+	<div align="center">
+		<ul class="bxslider">
+			<li><img src="<%=request.getContextPath() %>/images/pics01.jpg"></li>
+			<li><img src="<%=request.getContextPath() %>/images/pics02.jpg"></li>
+			<li><img src="<%=request.getContextPath() %>/images/pics03.jpg"></li>
+			<li><img src="<%=request.getContextPath() %>/images/pics06.jpg"></li>
+		</ul>
+	</div>
+	-->
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="<%=request.getContextPath() %>/bxslider/jquery.bxslider.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".bxslider").bxSlider({
+			auto: true,
+			autoControls: true
+		});
+	});
+</script>
 </html>
