@@ -28,4 +28,11 @@ public class BasicController {
 		//사용할 view의 이름 리턴->View Resolver
 		return "join/id_check";
 	}
+	
+	@RequestMapping(value="/mainpage",method=RequestMethod.GET)
+	public String mainpage(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "mainpage/mainPage";
+	}
 }

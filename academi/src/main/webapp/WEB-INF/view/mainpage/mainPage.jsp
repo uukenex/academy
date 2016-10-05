@@ -23,18 +23,18 @@
 
 </head>
 <body>
-	<jsp:include page="<%=request.getContextPath() %>/layout/header.jsp"></jsp:include>
+	<jsp:include page="../layout/header.jsp"></jsp:include>
 	<div class="container">
 		<div class="row">
 			<div id="banner" class="12u">
 				<div class="container">
 					<a href="#">
-						<img alt="MainPhoto" src="images/pics01.jpg">
+						<img alt="MainPhoto" src="<%=request.getContextPath() %>/images/pics01.jpg">
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="<%=request.getContextPath() %>/layout/footer.jsp"></jsp:include>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>

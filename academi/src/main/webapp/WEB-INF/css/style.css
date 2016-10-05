@@ -6,10 +6,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10pt;
 	color: #877850;
-}
-
-body, #skel-panels-pageWrapper {
-	backgroud: #229EFF url(images/screen.png) repeat;
+	background: #97C1FF url(css_images/screen_copy.png) repeat-x fixed;
 }
 
 h1, h2, h3 {

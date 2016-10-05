@@ -18,6 +18,9 @@
 		<a href="${joinUrl}">Enter Join Form</a>
 		<br>
 		<c:url value="/id_check" var="idCheck" />
-		<a href="${idCheck }?">Enter Id Check Form</a>
+		<a href="${idCheck }">Enter Id Check Form</a>
+		<br>
+		<c:url value="/mainpage" var="mainpage" />
+		<a href="${mainpage }">Enter Homepage Main</a>
 	</body>
 </html>
