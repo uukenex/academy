@@ -58,10 +58,10 @@ public class CommentServiceTest {
 		String commentContent="태풍이 무사히지나갔스빈다(정말)?";
 		cService.updateComment(commentNo, commentName, commentContent);
 	}
-	// 게시글 삭제 --댓글까지 지워야함
+	// 게시글 삭제 --댓글까지 지워야함 //트랜잭션 테스트완료
 	@Test
 	public void deleteTest() {
-		int commentNo=2;
+		int commentNo=3;
 		cService.deleteComment(commentNo);
 	}
 	// 페이지당 리스트를 보여줌(공지사항)

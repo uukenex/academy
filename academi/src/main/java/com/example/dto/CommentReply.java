@@ -32,7 +32,7 @@ public class CommentReply implements Serializable {
 	private Date replyDate;
 
 	/** 게시글. */
-	private Comments replyComments;
+	private Integer replyCommentNo;
 
 	/** 사용자. */
 	private String userId;

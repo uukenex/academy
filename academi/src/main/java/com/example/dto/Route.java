@@ -26,6 +26,7 @@ public class Route implements Serializable {
 	/** 경로_번호. */
 	private Integer routeNo;
 
+	private String routeName;
 	/** 경로_내용. */
 	private String routeContent;
 

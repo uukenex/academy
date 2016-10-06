@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dto.Comments;
+import com.example.repo.CommentReplyRepo;
 import com.example.repo.CommentRepo;
 
 @Service
 public class CommentServiceImpl implements CommentService {
 	@Autowired
 	CommentRepo crepo;
+	@Autowired
+	CommentReplyRepo crrepo;
 	// 단일 게시글 보기
 	@Override
 	public Comments selectComment(int commentNo) {
@@ -37,9 +41,13 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	// 게시글 삭제 --댓글까지 지워야함
+	
 	@Override
+	@Transactional
 	public int deleteComment(int commentNo) {
-		return crepo.deleteComment(commentNo);
+		int result =crrepo.deleteReplyByCommentNo(commentNo); 
+		result = crepo.deleteComment(commentNo);
+		return result;
 	}
 
 	// 페이지당 리스트를 보여줌(공지사항)
