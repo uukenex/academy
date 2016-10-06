@@ -37,7 +37,7 @@ public class CommentServiceTest {
 	// 게시글 쓰기(공지사항)
 	@Test
 	public void writeNoticeTest() {
-		String commentName="공지사항입니다";
+		String commentName="공지사하입니다";
 		String commentContent="태풍이 무사히지나갔스빈다";
 		String userId="dd";
 		cService.writeNoticeComment(commentName, commentContent,userId);
@@ -76,5 +76,18 @@ public class CommentServiceTest {
 		int page=1;
 	cService.freeListByPage(page);
 	}
-	
+	// 이름검색 리스트를 페이지별로 보여줌(공지사항)
+	@Test
+	public void pagingTest3() {
+		int page=1;
+		String commentName="공";
+		cService.noticeSearchListByPage(commentName, page);
+	}
+	// 이름검색 리스트를 페이지별로 보여줌(자유게시판)
+	@Test
+	public void pagingTest4() {
+		int page=1;
+		String commentName="태";
+		cService.freeSearchListByPage(commentName, page);
+	}
 }

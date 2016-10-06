@@ -15,15 +15,18 @@ public interface CommentRepo {
 	public Comments selectComment(int commentNo);
 
 	// 게시글 쓰기(공지사항은 관리자만 작성가능)
-	public int insertComment(String commentCategory,String commentName,String commentContent,String userId);
+	public int insertComment(String commentCategory, String commentName, String commentContent, String userId);
 
 	// 게시글 수정(작성자만 가능)
-	public int updateComment(int commentNo,String commentName,String commentContent);
+	public int updateComment(int commentNo, String commentName, String commentContent);
 
 	// 게시글 삭제(작성자만 가능)
 	public int deleteComment(int commentNo);
 
 	// 페이지당 리스트를 보여줌 분류별로 있어야함
-	public List<Comments> getCommentByPage(String commentCategory,int page);
+	public List<Comments> getCommentByPage(String commentCategory, int page);
+
+	// 이름검색 페이지당 리스트를 보여줌
+	public List<Comments> searchCommentByNameOfPage(String commentName,String commentCategory, int page);
 
 }

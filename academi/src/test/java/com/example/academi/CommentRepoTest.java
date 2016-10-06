@@ -73,4 +73,13 @@ public class CommentRepoTest {
 		List<Comments> result=crepo.getCommentByPage(commentCategory, page);
 		assertThat(result, is(notNullValue()));
 	}
+	//이름검색 테스트
+	@Test
+	public void searchNameTest(){
+		String commentName="사항";
+		int page=1;
+		String commentCategory="공지사항";
+		List<Comments> result=crepo.searchCommentByNameOfPage(commentName, commentCategory, page);
+		assertThat(result, is(notNullValue()));
+	}
 }

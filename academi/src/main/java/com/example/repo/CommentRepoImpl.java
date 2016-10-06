@@ -67,4 +67,14 @@ public class CommentRepoImpl implements CommentRepo {
 		return template.selectList(statement,map);
 	}
 
+	@Override
+	public List<Comments> searchCommentByNameOfPage(String commentName,String commentCategory, int page) {
+		String statement = NAME_SPACE + "searchList";
+		Map<String,Object> map= new HashMap<>();
+		map.put("commentName", "%"+commentName+"%");
+		map.put("commentCategory", commentCategory);
+		map.put("page", page);
+		return template.selectList(statement,map);
+	}
+
 }
