@@ -76,15 +76,31 @@
 	text-shadow: none;
 }
 
+/* Wrapper */
+#wrapper {
+	overflow: hidden;
+	margin: 5em 0em 3em 0em;
+	position: static;
+}
+
+.homepage #wrapper {
+	margin-top: 0em;
+}
+
 /* Banner */
 #banner {
 	overflow: hidden;
-	margin: 3em 0em;
+	margin-top: 0em;
+	margin-left: 0.5em;
+	background: url(css_images/div_bar_copy.png) repeat-x bottom;
 }
 
 #banner .container {
 	margin-bottom: 3em;
 	padding: 1.87em;
+	/* --> 이 부분은 상의 후 container 설정
+	background: url(css_images/div_bar_copy.png) repeat;
+	*/
 }
 
 #banner a img {
@@ -92,4 +108,33 @@
 	width: 100%;
 	height: 500px;
 	float: center;
+}
+
+/* Marketing */
+#marketing {
+	overflow: hidden;
+}
+
+#marketing .divider {
+	margin-bottom: 3em;
+	padding-bottom: 3em;
+	background: url(css_images/div_bar_copy.jpg) repeat-x left bottom;
+}
+
+#marketing .title {
+	padding-bottom: .75em;
+}
+
+#marketing .subtitle {
+	padding: 0em 0em 2em 0em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#marketing a img {
+	display: block;
+	width: 100%;
+}
+
+#marketing .vertical_bar {
+	margin: 0em;
 }
