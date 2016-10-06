@@ -20,6 +20,8 @@
 		type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath() %>/css/style.css"
 		type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath() %>/css/skel-noscript.css"
+		type="text/css" rel="stylesheet" />
 <link href="<%=request.getContextPath() %>/bxslider/jquery.bxslider.css"
 		type="text/css" rel='stylesheet' />
 
@@ -40,16 +42,49 @@
 			</div>
 		</div>
 	</div>
-	<!--  
-	<div align="center">
-		<ul class="bxslider">
-			<li><img src="<%=request.getContextPath() %>/images/pics01.jpg"></li>
-			<li><img src="<%=request.getContextPath() %>/images/pics02.jpg"></li>
-			<li><img src="<%=request.getContextPath() %>/images/pics03.jpg"></li>
-			<li><img src="<%=request.getContextPath() %>/images/pics06.jpg"></li>
-		</ul>
+	
+	<!-- Slider image 하단의 추천 후기 -->
+	<div id="wrapper">
+		<div class="container" id="marketing">
+			<div	class="row divider">
+				<div class="4u">
+					<section>
+						<h2 class="title">ROUTE01 Day01</h2>
+						<p><a href="#"><img alt="" src="<%=request.getContextPath()%>/images/route01.jpg"></a></p>
+						<p class="subtitle">서울특별시 -> 인천광역시 -> 경기도</p>
+						<p class="button-style2"><a href="#">More than</a></p>
+					</section>
+				</div>
+				<div class="vertical_bar">
+					<section>
+						<p><img alt="" src="<%=request.getContextPath()%>/images/div_bar_vertical.png"></p>
+					</section>
+				</div>
+				<div class="4u">
+					<section>
+						<h2 class="title">ROUTE02 Day02</h2>
+						<p><a href="#"><img alt="" src="<%=request.getContextPath()%>/images/route02.jpg"></a></p>
+						<p class="subtitle">서울특별시 -> 인천광역시 -> 경기도</p>
+						<p class="button-style2"><a href="#">More than</a></p>
+					</section>
+				</div>
+				<div class="vertical_bar">
+					<section>
+						<p><img alt="" src="<%=request.getContextPath()%>/images/div_bar_vertical.png"></p>
+					</section>
+				</div>
+				<div class="4u">
+					<section>
+						<h2 class="title">ROUTE03 Day03</h2>
+						<p><a href="#"><img alt="" src="<%=request.getContextPath()%>/images/pics02.jpg"></a></p>
+						<p class="subtitle">서울특별시 -> 인천광역시 -> 경기도</p>
+						<p class="button-style2"><a href="#">More than</a></p>
+					</section>
+				</div>
+			</div>
+		</div>
 	</div>
-	-->
+	
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 

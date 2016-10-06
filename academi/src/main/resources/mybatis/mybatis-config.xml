@@ -9,9 +9,10 @@
 	<typeAliases>
 	<typeAlias type="com.example.dto.Users" alias ="users"/>
 	<typeAlias type="com.example.dto.Comments" alias ="comments"/>
+	<typeAlias type="com.example.dto.CommentReply" alias ="commentReply"/>
 	<typeAlias type="com.example.dto.Review" alias ="review"/>
 	<typeAlias type="com.example.dto.Route" alias ="route"/>
-	<typeAlias type="com.example.dto.CommentReply" alias ="commentReply"/>
+	
 	</typeAliases>
 	
 	<mappers>
@@ -19,6 +20,7 @@
 	<mapper resource="mybatis/mapper/UsersMapper.xml" />
 	<mapper resource="mybatis/mapper/CommentsMapper.xml" />
 	<mapper resource="mybatis/mapper/CommentReplyMapper.xml" />
+	<mapper resource="mybatis/mapper/ReviewMapper.xml" />
 	</mappers>
 
 </configuration>

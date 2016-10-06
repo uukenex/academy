@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ReviewMapper">
+	<!-- 단일 후기글 보기 -->
+	<select id="select" parameterType="int" resultMap="reviewBase">
+		select * from
+		review where review_no= #{reviewNo}
+	</select>
+	<!-- 후기 쓰기 -->
+	<insert id="insert" parameterType="Map">
+		insert into review values
+		(seq_review_review_no.nextval
+		,#{reviewTitle},#{reviewContent},
+		sysdate,0,0,#{routeNo},#{userId})
+	</insert>
+	<!-- 후기글 수정 -->
+	<update id="update" parameterType="Map">
+		update review set
+		review_title=#{reviewTitle},
+		review_content=#{reviewContent},
+		route_no=#{routeNo}
+		where
+		review_no=#{reviewNo}
+	</update>
+	<!-- 후기글 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from review where
+		review_no=#{reviewNo}
+	</delete>
+
+	<!-- 한페이지에 4x4 인데 4x1은 추천이 높은것을 띄워줌 -->
+	<select id="starReview" resultMap="reviewBase">
+		select *
+		from(select sub.*,rownum
+		rnum from
+		(select * from review
+		order by
+		review_star desc) sub)
+		where rnum
+		between 1 and 4;
+	</select>
+
+
+	<!-- 페이지당 리스트를 보여줌 3x4니까 12개를 보여줘야함 -->
+	<select id="selectList" parameterType="int" resultMap="reviewBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from review
+		order by
+		review_no desc) sub)
+		where rnum between #{page}*12-11 and #{page}*12
+	</select>
+
+
+	<!-- 페이지당 리스트를 보여줌(분류별/이름/검색 ) -->
+	<select id="searchListByName" parameterType="Map" resultMap="reviewBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from review where
+		review_title like #{reviewTitle}
+		order by
+		review_no desc) sub)
+		where rnum
+		between #{page}*12-11 and #{page}*12;
+	</select>
+
+	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
+	<select id="searchListByContent" parameterType="Map" resultMap="reviewBase">
+		  select *
+		from(select sub.*,rownum rnum from
+		(select * from review 
+		where review_content like #{reviewContent}
+		order by review_no desc) sub)
+		where rnum between #{page}*12-11 and #{page}*12;
+		
+	</select>
+
+	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
+	<select id="searchListByNick" parameterType="Map" resultMap="reviewBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from review r
+		join users u on u.user_id = r.user_id
+		where user_nick like #{userNick}
+		order by review_no desc) sub)
+		where rnum between #{page}*12-11 and #{page}*12
+	</select>
+
+
+	<resultMap type="review" id="reviewBase">
+		<id column="review_no" property="reviewNo" />
+		<result column="review_title" property="reviewTitle" />
+		<result column="review_content" property="reviewContent" />
+		<result column="review_date" property="reviewDate" />
+		<result column="review_star" property="reviewStar" />
+		<result column="review_count" property="reviewCount" />
+		<result column="route_no" property="routeNo" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+</mapper>
