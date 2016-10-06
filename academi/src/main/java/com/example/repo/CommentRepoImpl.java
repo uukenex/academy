@@ -69,9 +69,27 @@ public class CommentRepoImpl implements CommentRepo {
 
 	@Override
 	public List<Comments> searchCommentByNameOfPage(String commentName,String commentCategory, int page) {
-		String statement = NAME_SPACE + "searchList";
+		String statement = NAME_SPACE + "searchListByName";
 		Map<String,Object> map= new HashMap<>();
 		map.put("commentName", "%"+commentName+"%");
+		map.put("commentCategory", commentCategory);
+		map.put("page", page);
+		return template.selectList(statement,map);
+	}
+	@Override
+	public List<Comments> searchCommentByContentOfPage(String commentContent, String commentCategory, int page) {
+		String statement = NAME_SPACE + "searchListByContent";
+		Map<String,Object> map= new HashMap<>();
+		map.put("commentContent", "%"+commentContent+"%");
+		map.put("commentCategory", commentCategory);
+		map.put("page", page);
+		return template.selectList(statement,map);
+	}
+	@Override
+	public List<Comments> searchCommentByNickOfPage(String userNick, String commentCategory, int page) {
+		String statement = NAME_SPACE + "searchListByNick";
+		Map<String,Object> map= new HashMap<>();
+		map.put("userNick", "%"+userNick+"%");
 		map.put("commentCategory", commentCategory);
 		map.put("page", page);
 		return template.selectList(statement,map);

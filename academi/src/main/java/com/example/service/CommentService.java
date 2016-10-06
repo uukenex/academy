@@ -27,8 +27,20 @@ public interface CommentService {
 	public List<Comments> freeListByPage(int page);
 
 	// 이름검색 리스트를 페이지별로 보여줌(공지사항)
-	public List<Comments> noticeSearchListByPage(String commentName,int page);
+	public List<Comments> noticeSearchListByPage(String commentName, int page);
 
 	// 이름검색 리스트를 페이지별로 보여줌(자유게시판)
-	public List<Comments> freeSearchListByPage(String commentName,int page);
+	public List<Comments> freeSearchListByPage(String commentName, int page);
+
+	// 내용검색으로 리스트를 페이지별로 보여줌(공지사항)
+	public List<Comments> noticeSearchContentListByPage(String commentContent, int page);
+
+	// 내용검색으로 리스트를 페이지별로 보여줌(자유게시판)
+	public List<Comments> freeSearchContentListByPage(String commentContent, int page);
+
+	// 닉네임검색으로 리스트를 페이지별로 보여줌(공지사항)
+	public List<Comments> noticeSearchNickListByPage(String userNick, int page);
+
+	// 닉네임검색으로 리스트를 페이지별로 보여줌(자유게시판)
+	public List<Comments> freeSearchNickListByPage(String userNick, int page);
 }

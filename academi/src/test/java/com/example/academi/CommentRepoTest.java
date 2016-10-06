@@ -57,29 +57,52 @@ public class CommentRepoTest {
 		int result = crepo.updateComment(commentNo, commentName, commentContent);
 		assertThat(result, is(notNullValue()));
 	}
-	//글 삭제 테스트 -서비스에서는 댓글도 함께지워야함
+
+	// 글 삭제 테스트 -서비스에서는 댓글도 함께지워야함
 	@Test
 	public void deleteTest() {
-	int commentNo = 16;
-	int result= crepo.deleteComment(commentNo);
-	assertThat(result, is(notNullValue()));
+		int commentNo = 16;
+		int result = crepo.deleteComment(commentNo);
+		assertThat(result, is(notNullValue()));
 	}
 
-	//리스트 테스트
+	// 리스트 테스트
 	@Test
-	public void listTest(){
-		int page=1;
-		String commentCategory="공지사항";
-		List<Comments> result=crepo.getCommentByPage(commentCategory, page);
+	public void listTest() {
+		int page = 1;
+		String commentCategory = "공지사항";
+		List<Comments> result = crepo.getCommentByPage(commentCategory, page);
 		assertThat(result, is(notNullValue()));
 	}
-	//이름검색 테스트
+
+	// 이름검색 테스트
 	@Test
-	public void searchNameTest(){
-		String commentName="사항";
-		int page=1;
-		String commentCategory="공지사항";
-		List<Comments> result=crepo.searchCommentByNameOfPage(commentName, commentCategory, page);
+	public void searchNameTest() {
+		String commentName = "사항";
+		int page = 1;
+		String commentCategory = "공지사항";
+		List<Comments> result = crepo.searchCommentByNameOfPage(commentName, commentCategory, page);
 		assertThat(result, is(notNullValue()));
 	}
+
+	// 이름검색 테스트
+	@Test
+	public void searchContentTest() {
+		String commentContent = "태풍";
+		int page = 1;
+		String commentCategory = "공지사항";
+		List<Comments> result = crepo.searchCommentByContentOfPage(commentContent, commentCategory, page);
+		assertThat(result, is(notNullValue()));
+	}
+
+	// 이름검색 테스트
+	@Test
+	public void searchNickTest() {
+		String userNick = "네";
+		int page = 1;
+		String commentCategory = "공지사항";
+		List<Comments> result = crepo.searchCommentByNickOfPage(userNick, commentCategory, page);
+		assertThat(result, is(notNullValue()));
+	}
+
 }

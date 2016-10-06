@@ -37,57 +37,96 @@ public class CommentServiceTest {
 	// 게시글 쓰기(공지사항)
 	@Test
 	public void writeNoticeTest() {
-		String commentName="공지사하입니다";
-		String commentContent="태풍이 무사히지나갔스빈다";
-		String userId="dd";
-		cService.writeNoticeComment(commentName, commentContent,userId);
+		String commentName = "공지사하입니다";
+		String commentContent = "태풍이 무사히지나갔스빈다";
+		String userId = "dd";
+		cService.writeNoticeComment(commentName, commentContent, userId);
 	}
+
 	// 게시글 쓰기(자유게시판)
 	@Test
 	public void writeFreeTest() {
-		String commentName="태풍왓데";
-		String commentContent="태풍이 무사히지나갔스빈다";
-		String userId="dd";
+		String commentName = "태풍왓데";
+		String commentContent = "태풍이 무사히지나갔스빈다";
+		String userId = "dd";
 		cService.writeFreeComment(commentName, commentContent, userId);
 	}
+
 	// 게시글 수정(작성자만 가능)
 	@Test
 	public void updateTest() {
-		int commentNo=2;
-		String commentName="태풍왓데(수정)";
-		String commentContent="태풍이 무사히지나갔스빈다(정말)?";
+		int commentNo = 2;
+		String commentName = "태풍왓데(수정)";
+		String commentContent = "태풍이 무사히지나갔스빈다(정말)?";
 		cService.updateComment(commentNo, commentName, commentContent);
 	}
+
 	// 게시글 삭제 --댓글까지 지워야함 //트랜잭션 테스트완료
 	@Test
 	public void deleteTest() {
-		int commentNo=3;
+		int commentNo = 3;
 		cService.deleteComment(commentNo);
 	}
+
 	// 페이지당 리스트를 보여줌(공지사항)
 	@Test
 	public void pagingTest() {
-		int page=1;
-	cService.noticeListByPage(page);
+		int page = 1;
+		cService.noticeListByPage(page);
 	}
+
 	// 페이지당 리스트를 보여줌(자유게시판)
 	@Test
 	public void pagingTest2() {
-		int page=1;
-	cService.freeListByPage(page);
+		int page = 1;
+		cService.freeListByPage(page);
 	}
+
 	// 이름검색 리스트를 페이지별로 보여줌(공지사항)
 	@Test
 	public void pagingTest3() {
-		int page=1;
-		String commentName="공";
+		int page = 1;
+		String commentName = "공";
 		cService.noticeSearchListByPage(commentName, page);
 	}
+
 	// 이름검색 리스트를 페이지별로 보여줌(자유게시판)
 	@Test
 	public void pagingTest4() {
-		int page=1;
-		String commentName="태";
+		int page = 1;
+		String commentName = "태";
 		cService.freeSearchListByPage(commentName, page);
+	}
+
+	// 내용검색 리스트를 페이지별로 보여줌(공지사항)
+	@Test
+	public void pagingTest5() {
+		int page = 1;
+		String commentContent = "태풍";
+		cService.noticeSearchContentListByPage(commentContent, page);
+	}
+
+	// 내용검색 리스트를 페이지별로 보여줌(자유게시판)
+	@Test
+	public void pagingTest6() {
+		int page = 1;
+		String commentContent = "태풍";
+		cService.freeSearchContentListByPage(commentContent, page);
+	}
+
+	// 닉네임검색 리스트를 페이지별로 보여줌(공지사항)
+	@Test
+	public void pagingTest7() {
+		int page = 1;
+		String userNick = "닉";
+		cService.noticeSearchNickListByPage(userNick, page);
+	}
+
+	// 닉네임검색 리스트를 페이지별로 보여줌(자유게시판)
+	@Test
+	public void pagingTest8() {
+		int page = 1;
+		String userNick = "닉";
+		cService.freeSearchNickListByPage(userNick, page);
 	}
 }

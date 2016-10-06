@@ -26,7 +26,13 @@ public interface CommentRepo {
 	// 페이지당 리스트를 보여줌 분류별로 있어야함
 	public List<Comments> getCommentByPage(String commentCategory, int page);
 
-	// 이름검색 페이지당 리스트를 보여줌
-	public List<Comments> searchCommentByNameOfPage(String commentName,String commentCategory, int page);
+	// 이름으로 검색 페이지당 리스트를 보여줌
+	public List<Comments> searchCommentByNameOfPage(String commentName, String commentCategory, int page);
+
+	// 내용으로 검색 페이지당 리스트를 보여줌
+	public List<Comments> searchCommentByContentOfPage(String commentContent, String commentCategory, int page);
+
+	// 닉네임으로 검색 페이지당 리스트를 보여줌
+	public List<Comments> searchCommentByNickOfPage(String userNick, String commentCategory, int page);
 
 }

@@ -71,5 +71,25 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comments> freeSearchListByPage(String commentName,int page) {
 		return crepo.searchCommentByNameOfPage(commentName,"자유게시판", page);
 	}
+	// 내용검색으로 리스트를 페이지별로 보여줌(공지)
+	@Override
+	public List<Comments> noticeSearchContentListByPage(String commentContent, int page) {
+		return crepo.searchCommentByContentOfPage(commentContent,"공지사항", page);
+	}
+	// 내용검색으로 리스트를 페이지별로 보여줌(자유게시판)
+	@Override
+	public List<Comments> freeSearchContentListByPage(String commentContent, int page) {
+		return crepo.searchCommentByContentOfPage(commentContent,"자유게시판", page);
+	}
+	// 닉네임검색으로 리스트를 페이지별로 보여줌(공지)
+	@Override
+	public List<Comments> noticeSearchNickListByPage(String userNick, int page) {
+		return crepo.searchCommentByNickOfPage(userNick,"공지사항", page);
+	}
+	// 닉네임검색으로 리스트를 페이지별로 보여줌(자유게시판)
+	@Override
+	public List<Comments> freeSearchNickListByPage(String userNick, int page) {
+		return crepo.searchCommentByNickOfPage(userNick,"자유게시판", page);
+	}
 
 }
