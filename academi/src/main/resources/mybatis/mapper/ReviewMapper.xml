@@ -40,7 +40,7 @@
 		order by
 		review_star desc) sub)
 		where rnum
-		between 1 and 4;
+		between 1 and 4
 	</select>
 
 
@@ -59,22 +59,20 @@
 	<select id="searchListByName" parameterType="Map" resultMap="reviewBase">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review where
-		review_title like #{reviewTitle}
-		order by
-		review_no desc) sub)
-		where rnum
-		between #{page}*12-11 and #{page}*12;
+		(select * from review 
+		where review_title like #{reviewTitle}
+		order by review_no desc) sub)
+		where rnum between #{page}*12-11 and #{page}*12
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
 	<select id="searchListByContent" parameterType="Map" resultMap="reviewBase">
-		  select *
+		select *
 		from(select sub.*,rownum rnum from
 		(select * from review 
 		where review_content like #{reviewContent}
 		order by review_no desc) sub)
-		where rnum between #{page}*12-11 and #{page}*12;
+		where rnum between #{page}*12-11 and #{page}*12
 		
 	</select>
 

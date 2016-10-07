@@ -4,8 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
-import com.example.dto.Comments;
 import com.example.dto.Review;
 import com.example.repo.ReviewRepo;
 
@@ -66,7 +63,7 @@ public class ReviewRepoTest {
 		rrepo.deleteReview(14);
 	}
 
-	// 추천 후기 테스트 -에러
+	// 추천 후기 테스트
 	@Test
 	public void starTest() {
 		rrepo.starReview();
@@ -78,17 +75,18 @@ public class ReviewRepoTest {
 		rrepo.reviewListByPage(page);
 	}
 
-	// 이름검색 테스트--에러
+	// 이름검색 테스트
 	@Test
 	public void searchNameTest() {
 		String reviewTitle = "리뷰";
 		rrepo.searchReviewByName(reviewTitle, page);
 	}
 
-	// 이름검색 테스트--에러
+	// 내용검색 테스트
 	@Test
 	public void searchContentTest() {
-		rrepo.searchReviewByContent("리뷰", page);
+		String reviewContent="리";
+		rrepo.searchReviewByContent(reviewContent, page);
 	}
 
 	// 닉네임검색 테스트
