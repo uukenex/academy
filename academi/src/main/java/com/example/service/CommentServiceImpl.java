@@ -16,6 +16,7 @@ public class CommentServiceImpl implements CommentService {
 	CommentRepo crepo;
 	@Autowired
 	CommentReplyRepo crrepo;
+
 	// 단일 게시글 보기
 	@Override
 	public Comments selectComment(int commentNo) {
@@ -24,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
 
 	// 게시글 쓰기(공지사항)
 	@Override
-	public int writeNoticeComment(String commentName, String commentContent,String userId) {
+	public int writeNoticeComment(String commentName, String commentContent, String userId) {
 		return crepo.insertComment("공지사항", commentName, commentContent, userId);
 	}
 
@@ -41,11 +42,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	// 게시글 삭제 --댓글까지 지워야함
-	
+
 	@Override
 	@Transactional
 	public int deleteComment(int commentNo) {
-		int result =crrepo.deleteReplyByCommentNo(commentNo); 
+		int result = crrepo.deleteReplyByCommentNo(commentNo);
 		result = crepo.deleteComment(commentNo);
 		return result;
 	}
@@ -61,35 +62,41 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comments> freeListByPage(int page) {
 		return crepo.getCommentByPage("자유게시판", page);
 	}
+
 	// 이름검색 리스트를 페이지별로 보여줌(공지사항)
 	@Override
-	public List<Comments> noticeSearchListByPage(String commentName,int page) {
-		return crepo.searchCommentByNameOfPage(commentName,"공지사항", page);
+	public List<Comments> noticeSearchListByPage(String commentName, int page) {
+		return crepo.searchCommentByNameOfPage(commentName, "공지사항", page);
 	}
+
 	// 이름검색 리스트를 페이지별로 보여줌(자유게시판)
 	@Override
-	public List<Comments> freeSearchListByPage(String commentName,int page) {
-		return crepo.searchCommentByNameOfPage(commentName,"자유게시판", page);
+	public List<Comments> freeSearchListByPage(String commentName, int page) {
+		return crepo.searchCommentByNameOfPage(commentName, "자유게시판", page);
 	}
+
 	// 내용검색으로 리스트를 페이지별로 보여줌(공지)
 	@Override
 	public List<Comments> noticeSearchContentListByPage(String commentContent, int page) {
-		return crepo.searchCommentByContentOfPage(commentContent,"공지사항", page);
+		return crepo.searchCommentByContentOfPage(commentContent, "공지사항", page);
 	}
+
 	// 내용검색으로 리스트를 페이지별로 보여줌(자유게시판)
 	@Override
 	public List<Comments> freeSearchContentListByPage(String commentContent, int page) {
-		return crepo.searchCommentByContentOfPage(commentContent,"자유게시판", page);
+		return crepo.searchCommentByContentOfPage(commentContent, "자유게시판", page);
 	}
+
 	// 닉네임검색으로 리스트를 페이지별로 보여줌(공지)
 	@Override
 	public List<Comments> noticeSearchNickListByPage(String userNick, int page) {
-		return crepo.searchCommentByNickOfPage(userNick,"공지사항", page);
+		return crepo.searchCommentByNickOfPage(userNick, "공지사항", page);
 	}
+
 	// 닉네임검색으로 리스트를 페이지별로 보여줌(자유게시판)
 	@Override
 	public List<Comments> freeSearchNickListByPage(String userNick, int page) {
-		return crepo.searchCommentByNickOfPage(userNick,"자유게시판", page);
+		return crepo.searchCommentByNickOfPage(userNick, "자유게시판", page);
 	}
 
 }

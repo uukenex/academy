@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ReviewReplyMapper">
+	<!--특정 게시글번호로 되어있는 댓글목록 조회 list -->
+	<select id="select" parameterType="int" resultMap="reviewReplyBase">
+		select * from
+		review_reply where reply_review_no=#{replyReviewNo}
+	</select>
+	<!-- 댓글 달기 기능 -->
+	<insert id="insert" parameterType="Map">
+		insert into review_reply
+		values(seq_review_reply_reply_no.nextval,
+		#{replyContent},sysdate,
+		#{replyReviewNo},#{userId})
+	</insert>
+	<!-- 댓글 삭제 기능 -->
+	<delete id="delete" parameterType="int">
+		delete from review_reply where
+		reply_no=#{replyNo}
+	</delete>
+
+	<!--특정 게시글 번호로 되어있는 댓글삭제 -->
+	<delete id="deleteByReviewNo" parameterType="int">
+		delete from review_reply where 
+		reply_review_no=#{replyReviewNo}
+	</delete>
+
+	<resultMap type="reviewReply" id="reviewReplyBase">
+		<id column="reply_no" property="replyNo" />
+		<result column="reply_content" property="replyContent" />
+		<result column="reply_date" property="replyDate" />
+		<result column="reply_review_no" property="replyReviewNo" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+</mapper>

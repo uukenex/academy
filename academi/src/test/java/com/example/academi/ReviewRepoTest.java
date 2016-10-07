@@ -60,7 +60,7 @@ public class ReviewRepoTest {
 	// 후기글 삭제 테스트 -서비스에서는 댓글도 함께지워야함
 	@Test
 	public void deleteTest() {
-		rrepo.deleteReview(14);
+		rrepo.deleteReview(4);
 	}
 
 	// 추천 후기 테스트

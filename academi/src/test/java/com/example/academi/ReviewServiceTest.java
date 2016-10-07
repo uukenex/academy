@@ -63,7 +63,7 @@ public class ReviewServiceTest {
 	// 삭제 -댓글까지 지워지도록 해야함
 	@Test
 	public void deleteTest() {
-		rs.deleteReview(40);
+		rs.deleteReview(4);
 	}
 
 	// 이름검색
