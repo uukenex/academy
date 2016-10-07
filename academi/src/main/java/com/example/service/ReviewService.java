@@ -18,7 +18,7 @@ public interface ReviewService {
 	public int deleteReview(int reviewNo);
 
 	// 4x4 페이지 로딩 추천먼저 띄우고 나머지12개를띄움
-	public void reviewListByPage(int page);
+	public void reviewListByPage(int page); 
 
 	// 이름검색 추천먼저 띄우고 나머지12개를띄움
 	public void searchReviewByName(String reviewTitle, int page);
