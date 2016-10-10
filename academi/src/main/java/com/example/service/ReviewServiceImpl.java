@@ -1,5 +1,8 @@
 package com.example.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,27 +44,35 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	// 4x4 페이지 로딩 추천먼저 띄우고 나머지12개를띄움
-	public void reviewListByPage(int page) {
-		rrepo.starReview();
-		rrepo.reviewListByPage(page);
+	public List<List<Review>> reviewListByPage(int page) {
+		List<List<Review>> result = new ArrayList<>();
+		result.add(rrepo.starReview());
+		result.add(rrepo.reviewListByPage(page));
+		return result;
 	}
 
 	// 이름검색 추천먼저 띄우고 나머지12개를띄움
-	public void searchReviewByName(String reviewTitle, int page) {
-		rrepo.starReview();
-		rrepo.searchReviewByName(reviewTitle, page);
+	public List<List<Review>> searchReviewByName(String reviewTitle, int page) {
+		List<List<Review>> result = new ArrayList<>();
+		result.add(rrepo.starReview());
+		result.add(rrepo.searchReviewByName(reviewTitle, page));
+		return result;
 	}
 
 	// 내용검색 추천먼저 띄우고 나머지12개를띄움
-	public void searchReviewByContent(String reviewContent, int page) {
-		rrepo.starReview();
-		rrepo.searchReviewByContent(reviewContent, page);
+	public List<List<Review>> searchReviewByContent(String reviewContent, int page) {
+		List<List<Review>> result = new ArrayList<>();
+		result.add(rrepo.starReview());
+		result.add(rrepo.searchReviewByContent(reviewContent, page));
+		return result;
 	}
 
 	// 닉네임검색 추천먼저 띄우고 나머지12개를띄움
-	public void searchReviewByNick(String userNick, int page) {
-		rrepo.starReview();
-		rrepo.searchReviewByNick(userNick, page);
+	public List<List<Review>> searchReviewByNick(String userNick, int page) {
+		List<List<Review>> result = new ArrayList<>();
+		result.add(rrepo.starReview());
+		result.add(rrepo.searchReviewByNick(userNick, page));
+		return result;
 	}
 
 	@Override
