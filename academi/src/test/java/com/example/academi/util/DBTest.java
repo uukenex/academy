@@ -1,4 +1,4 @@
-package com.example.academi;
+package com.example.academi.util;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;

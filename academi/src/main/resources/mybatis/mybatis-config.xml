@@ -13,6 +13,7 @@
 	<typeAlias type="com.example.dto.Review" alias ="review"/>
 	<typeAlias type="com.example.dto.ReviewReply" alias ="reviewReply"/>
 	<typeAlias type="com.example.dto.Route" alias ="route"/>
+	<typeAlias type="com.example.dto.Qna" alias ="qna"/>
 	
 	</typeAliases>
 	
@@ -23,6 +24,7 @@
 	<mapper resource="mybatis/mapper/CommentReplyMapper.xml" />
 	<mapper resource="mybatis/mapper/ReviewMapper.xml" />
 	<mapper resource="mybatis/mapper/ReviewReplyMapper.xml" />
+	<mapper resource="mybatis/mapper/QnaMapper.xml" />
 	</mappers>
 
 </configuration>

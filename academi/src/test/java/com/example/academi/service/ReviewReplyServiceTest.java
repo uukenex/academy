@@ -1,4 +1,4 @@
-package com.example.academi;
+package com.example.academi.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -16,18 +16,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
-import com.example.dto.CommentReply;
-import com.example.service.CommentReplyService;
+import com.example.dto.ReviewReply;
+import com.example.service.ReviewReplyService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
-public class CommentReplyServiceTest {
-	static Logger logger = LoggerFactory.getLogger(CommentReplyServiceTest.class);
+public class ReviewReplyServiceTest {
+	static Logger logger = LoggerFactory.getLogger(ReviewReplyServiceTest.class);
 
 	@Autowired
 	SqlSessionTemplate template;
 	@Autowired
-	CommentReplyService crs;
+	ReviewReplyService rrs;
 
 	
 
@@ -35,21 +35,21 @@ public class CommentReplyServiceTest {
 	@Test
 	public void insertTest() {
 		String replyContent = "고양이";
-		int replyCommentNo=3;
+		int replyReviewNo=4;
 		String userId="dd";
-		int result = crs.insertReply(replyContent, replyCommentNo, userId);
+		int result = rrs.insertReply(replyContent, replyReviewNo, userId);
 		assertThat(result, is(notNullValue()));
 	}
 	
 	//특정 게시글의 전체 댓글 확인 테스트
 	@Test
 	public void selectTest() {
-		List<CommentReply> result=crs.selectReplyList(2);
+		List<ReviewReply> result=rrs.selectReplyList(4);
 	}
 	//댓글번호로 삭제
 	@Test
 	public void deleteTest() {
-		int result = crs.deleteReply(14);
+		int result = rrs.deleteReply(14);
 	}
 	
 }

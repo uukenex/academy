@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.QnaMapper">
+	<!-- 단일qna글 보기 -->
+	<select id="select" parameterType="int" resultMap="qnaBase">
+		select * from
+		qna where qna_no= #{qnaNo}
+	</select>
+	<!-- qna 쓰기 -->
+	<insert id="insert" parameterType="Map">
+		insert into qna values
+		(seq_qna_qna_no.nextval
+		,#{qnaTitle},#{qnaQuestion},
+		sysdate,0,#{userId})
+	</insert>
+	<!-- qna 수정 -->
+	<update id="update" parameterType="Map">
+		update qna set
+		qna_title=#{qnaTitle},
+		qna_question=#{qnaQuestion}
+		where
+		qna_no=#{qnaNo}
+	</update>
+	<!-- qna 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from qna where
+		qna_no=#{qnaNo}
+	</delete>
+
+	<!-- 페이지당 리스트를 보여줌-->
+	<select id="selectList" parameterType="int" resultMap="qnaBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from qna
+		order by
+		qna_no desc) sub)
+		where rnum between #{page}*10-9 and #{page}*10
+	</select>
+
+
+	<!-- 페이지당 리스트를 보여줌(분류별/이름/검색 ) -->
+	<select id="searchListByName" parameterType="Map" resultMap="qnaBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from qna
+		where
+		qna_title like #{qnaTitle}
+		order by qna_no desc) sub)
+		where
+		rnum between #{page}*10-9 and #{page}*10
+	</select>
+
+	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
+	<select id="searchListByContent" parameterType="Map" resultMap="qnaBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from qna
+		where
+		qna_question like #{qnaQuestion}
+		order by qna_no desc) sub)
+		where rnum between #{page}*10-9 and #{page}*10
+
+	</select>
+
+	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
+	<select id="searchListByNick" parameterType="Map" resultMap="qnaBase">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from qna q
+		join
+		users u on u.user_id = q.user_id
+		where user_nick like #{userNick}
+		order
+		by qna_no desc) sub)
+		where rnum between #{page}*10-9 and #{page}*10
+	</select>
+	
+	<!-- 조회수 1을 증가시킴 -->
+	<update id="countUpdate" parameterType="int">
+		update qna set
+		qna_count=
+		(select qna_count from qna where
+		qna_no=#{qnaNo})+1
+		where qna_no = #{qnaNo}
+	</update>
+
+
+	<resultMap type="qna" id="qnaBase">
+		<id column="qna_no" property="qnaNo" />
+		<result column="qna_title" property="qnaTitle" />
+		<result column="qna_question" property="qnaQuestion" />
+		<result column="qna_date" property="qnaDate" />
+		<result column="qna_count" property="qnaCount" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+</mapper>
