@@ -16,7 +16,9 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewReplyRepo rrrepo;
 
 	// 후기글 보기
+	@Transactional
 	public Review selectReview(int reviewNo) {
+		rrepo.updateReviewCount(reviewNo);
 		return rrepo.selectReview(reviewNo);
 	}
 

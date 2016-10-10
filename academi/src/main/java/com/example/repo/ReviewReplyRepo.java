@@ -16,4 +16,6 @@ public interface ReviewReplyRepo {
 
 	// 특정 후기글 번호로 되어있는 댓글삭제-이건 글삭제할때만 들어감
 	public int deleteReplyByReviewNo(int replyReviewNo);
+	
+	
 }

@@ -105,4 +105,9 @@ public class CommentRepoTest {
 		assertThat(result, is(notNullValue()));
 	}
 
+	//조회수 증가 테스트
+	@Test
+	public void updateCountTest(){
+		crepo.updateCommentCount(1);
+	}
 }

@@ -35,4 +35,6 @@ public interface CommentRepo {
 	// 닉네임으로 검색 페이지당 리스트를 보여줌
 	public List<Comments> searchCommentByNickOfPage(String userNick, String commentCategory, int page);
 
+	// 조회수 올리기 기능
+	public int updateCommentCount(int commentNo);
 }

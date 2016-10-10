@@ -95,4 +95,11 @@ public class CommentRepoImpl implements CommentRepo {
 		return template.selectList(statement,map);
 	}
 
+	@Override
+	public int updateCommentCount(int commentNo) {
+			String statement = NAME_SPACE + "countUpdate";
+			return template.update(statement,commentNo);
+			
+	}
+
 }

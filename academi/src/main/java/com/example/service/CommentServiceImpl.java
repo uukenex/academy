@@ -20,6 +20,7 @@ public class CommentServiceImpl implements CommentService {
 	// 단일 게시글 보기
 	@Override
 	public Comments selectComment(int commentNo) {
+		crepo.updateCommentCount(commentNo);
 		return crepo.selectComment(commentNo);
 	}
 

@@ -44,39 +44,56 @@
 	<select id="searchListByName" parameterType="Map" resultMap="commentsBase">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments where
+		(select * from comments
+		where
 		comment_category=#{commentCategory}
-		and comment_name like #{commentName} order by
+		and comment_name like
+		#{commentName} order by
 		comment_no desc) sub)
 		where
-		rnum between #{page}*10-9 and #{page}*10
+		rnum between
+		#{page}*10-9 and #{page}*10
 	</select>
 
-<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
+	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
 	<select id="searchListByContent" parameterType="Map" resultMap="commentsBase">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments where
+		(select * from comments
+		where
 		comment_category=#{commentCategory}
-		and comment_content like #{commentContent} order by
+		and comment_content like
+		#{commentContent} order by
 		comment_no desc) sub)
 		where
-		rnum between #{page}*10-9 and #{page}*10
+		rnum between
+		#{page}*10-9 and #{page}*10
 	</select>
 
-<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
+	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
 	<select id="searchListByNick" parameterType="Map" resultMap="commentsBase">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments c 
-		join users u on u.user_id = c.user_id 
-		where comment_category=#{commentCategory}
-		and user_nick like #{userNick} order by
+		(select * from comments c
+		join users u on u.user_id = c.user_id
+		where
+		comment_category=#{commentCategory}
+		and user_nick like #{userNick}
+		order by
 		comment_no desc) sub)
 		where
-		rnum between #{page}*10-9 and #{page}*10
+		rnum between #{page}*10-9 and
+		#{page}*10
 	</select>
-
+	<!-- 조회수 1을 증가시킴 -->
+	<update id="countUpdate" parameterType="int">
+		update comments set
+		comment_count=
+		(select comment_count from
+		comments where
+		comment_no=#{commentNo})+1
+		where comment_no = #{commentNo}
+	</update>
 
 	<resultMap type="comments" id="commentsBase">
 		<id column="comment_no" property="commentNo" />

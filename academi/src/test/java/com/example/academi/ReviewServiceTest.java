@@ -51,7 +51,7 @@ public class ReviewServiceTest {
 	// 단일후기
 	@Test
 	public void selectTest() {
-		rs.selectReview(40);
+		rs.selectReview(38);
 	}
 
 	// 수정

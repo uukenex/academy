@@ -32,7 +32,7 @@ public class ReviewRepoTest {
 	// 후기글 하나 조회 테스트
 	@Test
 	public void SelectTest() {
-		Review result = rrepo.selectReview(8);
+		Review result = rrepo.selectReview(2);
 		logger.trace("객체:{}", result);
 		assertThat(result, is(notNullValue()));
 	}
@@ -95,4 +95,9 @@ public class ReviewRepoTest {
 		rrepo.searchReviewByNick("네", page);
 	}
 
+	//조회수 늘리기 테스트
+	@Test 
+	public void countTest(){
+		rrepo.updateReviewCount(2);
+	}
 }

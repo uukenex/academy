@@ -88,5 +88,11 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("page", page);
 		return template.selectList(statement,map);
 	}
+	@Override
+	public int updateReviewCount(int reviewNo) {
+		String statement = NAME_SPACE + "countUpdate";
+		return template.update(statement,reviewNo);
+		
+	}
 
 }
