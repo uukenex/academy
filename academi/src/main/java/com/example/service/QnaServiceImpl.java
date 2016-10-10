@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,25 +37,25 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public void qnaListByPage(int page) {
-		qrepo.qnaListByPage(page);
+	public List<Qna> qnaListByPage(int page) {
+		return qrepo.qnaListByPage(page);
 	}
 
 	@Override
-	public void searchQnaByName(String qnaTitle, int page) {
-		qrepo.searchQnaByName(qnaTitle, page);
-
-	}
-
-	@Override
-	public void searchQnaByContent(String qnaQuestion, int page) {
-		qrepo.searchQnaByContent(qnaQuestion, page);
+	public List<Qna> searchQnaByName(String qnaTitle, int page) {
+		return qrepo.searchQnaByName(qnaTitle, page);
 
 	}
 
 	@Override
-	public void searchQnaByNick(String userNick, int page) {
-		qrepo.searchQnaByNick(userNick, page);
+	public List<Qna> searchQnaByContent(String qnaQuestion, int page) {
+		return qrepo.searchQnaByContent(qnaQuestion, page);
+
+	}
+
+	@Override
+	public List<Qna> searchQnaByNick(String userNick, int page) {
+		return qrepo.searchQnaByNick(userNick, page);
 
 	}
 

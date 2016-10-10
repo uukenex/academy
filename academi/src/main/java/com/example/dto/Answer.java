@@ -30,7 +30,7 @@ public class Answer implements Serializable {
 
 	private Date answerDate;
 	/** qna게시판. */
-	private Qna qna;
+	private Integer qnaNo;
 
 	/** 사용자. */
 	private String userId;

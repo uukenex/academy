@@ -14,6 +14,7 @@
 	<typeAlias type="com.example.dto.ReviewReply" alias ="reviewReply"/>
 	<typeAlias type="com.example.dto.Route" alias ="route"/>
 	<typeAlias type="com.example.dto.Qna" alias ="qna"/>
+	<typeAlias type="com.example.dto.Answer" alias ="answer"/>
 	
 	</typeAliases>
 	
@@ -25,6 +26,7 @@
 	<mapper resource="mybatis/mapper/ReviewMapper.xml" />
 	<mapper resource="mybatis/mapper/ReviewReplyMapper.xml" />
 	<mapper resource="mybatis/mapper/QnaMapper.xml" />
+	<mapper resource="mybatis/mapper/AnswerMapper.xml" />
 	</mappers>
 
 </configuration>

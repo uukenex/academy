@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import com.example.dto.Qna;
 
 public interface QnaService {
@@ -16,16 +18,16 @@ public interface QnaService {
 	public int deleteQna(int qnaNo);
 
 	// 리스트 보기
-	void qnaListByPage(int page);
+	public List<Qna> qnaListByPage(int page);
 	
 	// 이름검색
-	public void searchQnaByName(String qnaTitle, int page);
+	public List<Qna> searchQnaByName(String qnaTitle, int page);
 
 	// 내용검색 - 답변글에서도 검색하게해야함
-	public void searchQnaByContent(String qnaQuestion, int page);
+	public List<Qna> searchQnaByContent(String qnaQuestion, int page);
 
 	// 닉네임검
-	public void searchQnaByNick(String userNick, int page);
+	public List<Qna> searchQnaByNick(String userNick, int page);
 
 	
 	
