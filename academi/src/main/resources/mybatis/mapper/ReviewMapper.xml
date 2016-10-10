@@ -62,7 +62,8 @@
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review
-		where review_title like #{reviewTitle}
+		where
+		review_title like #{reviewTitle}
 		order by review_no desc) sub)
 		where
 		rnum between #{page}*12-11 and #{page}*12
@@ -73,7 +74,8 @@
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review
-		where review_content like #{reviewContent}
+		where
+		review_content like #{reviewContent}
 		order by review_no desc) sub)
 		where rnum between #{page}*12-11 and #{page}*12
 
@@ -93,10 +95,20 @@
 	</select>
 	<!-- 조회수 1을 증가시킴 -->
 	<update id="countUpdate" parameterType="int">
-		update review set review_count=
-		(select review_count from review where review_no=#{reviewNo})+1
-		 where review_no = #{reviewNo}
+		update review set
+		review_count=
+		(select review_count from review where
+		review_no=#{reviewNo})+1
+		where review_no = #{reviewNo}
 	</update>
+	<update id="starUpdate" parameterType="int">
+		update review set
+		review_star =
+		(select review_star from review where
+		review_no=#{reviewNo})+1
+		where review_no=#{reviewNo}
+	</update>
+
 
 	<resultMap type="review" id="reviewBase">
 		<id column="review_no" property="reviewNo" />

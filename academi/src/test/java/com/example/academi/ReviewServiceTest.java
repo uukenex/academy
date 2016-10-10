@@ -86,4 +86,9 @@ public class ReviewServiceTest {
 	}
 	// 루트에따른 검색도 추가해야함
 
+	//추천수 업데이트 
+	@Test
+	public void star2Test(){
+		rs.updateStar(2);
+	}
 }

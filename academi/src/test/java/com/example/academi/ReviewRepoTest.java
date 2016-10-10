@@ -100,4 +100,10 @@ public class ReviewRepoTest {
 	public void countTest(){
 		rrepo.updateReviewCount(2);
 	}
+	
+	//추천수 업데이트 테스트
+	@Test
+	public void starTest2(){
+		rrepo.updateStar(2);
+	}
 }

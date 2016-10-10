@@ -29,4 +29,7 @@ public interface ReviewService {
 	// 닉네임검색 추천먼저 띄우고 나머지12개를띄움
 	public void searchReviewByNick(String userNick, int page);
 	// 루트에 따른 검색도 추가해야함
+	
+	// 추천하기 기능
+	public int updateStar(int reviewNo);
 }

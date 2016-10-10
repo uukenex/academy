@@ -94,5 +94,10 @@ public class ReviewRepoImpl implements ReviewRepo{
 		return template.update(statement,reviewNo);
 		
 	}
+	@Override
+	public int updateStar(int reviewNo) {
+		String statement = NAME_SPACE + "starUpdate";
+		return template.update(statement,reviewNo);
+	}
 
 }

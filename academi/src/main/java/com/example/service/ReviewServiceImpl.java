@@ -63,4 +63,9 @@ public class ReviewServiceImpl implements ReviewService {
 		rrepo.starReview();
 		rrepo.searchReviewByNick(userNick, page);
 	}
+
+	@Override
+	public int updateStar(int reviewNo) {
+		return rrepo.updateStar(reviewNo);
+	}
 }
