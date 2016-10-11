@@ -38,22 +38,23 @@
 }
 
 /* Menu Bar */
-#nav {
+/* nav1 */
+#nav1 {
 	position: absolute;
-	top: 3em;
+	top: 6em;
 	right: 0;
 }
 
-#nav ul {
+#nav1 ul {
 	float: right;
 	text-align: center;
 }
 
-#nav li {
+#nav1 li {
 	display: inline-block;
 }
 
-#nav a {
+#nav1 a {
 	display: block;
 	float: left;
 	margin-right: 0.12em;
@@ -62,18 +63,52 @@
 	text-transform: none;
 	font-family: 'Abel', sans-serif;
 	font-size: 1.25em;
-	color: #2C2C2C;
+	color: #17375E;
 }
 
-#nav .current_page_item {
-	color: #2C2C2C;
+#nav1 .current_page_item {
+	color: #17375E;
 }
 
-#nav .current_page_item a {
-	background: #212121;
+#nav1 .current_page_item a {
+	background: #17375E;
 	color: #FFFFFF;
 	box-shadow: inset 0px -15px 10px 0px rgba(0,0,0,0.25);
 	text-shadow: none;
+	border-radius: 7px;
+}
+
+/* nav2 */
+#nav2 {
+	position: absolute;
+	top: 3em;
+	right: 0;
+}
+
+#nav2 ul {
+	float: right;
+	text-align: center;
+}
+
+#nav2 li {
+	display: inline-block;
+}
+
+#nav2 a {
+	display: inline-block;
+	float: left;
+	height: 2.50em;
+	margin-top: 0em;
+	padding: 0em 1.2em 0em 1.2em;
+	background: #F4E0E0;
+	border-radius: 7px;
+	line-height: 2.60em;
+	text-decoration: none;
+	text-transform: none;
+	font-size: 1em;
+	color: #17375E;
+	font-weight: bold;
+	margin-right: 1.4em;
 }
 
 /* Wrapper */
@@ -90,7 +125,7 @@
 /* Banner */
 #banner {
 	overflow: hidden;
-	margin-top: 0em;
+	margin-top: 3em;
 	margin-left: 0.5em;
 	background: url(css_images/div_bar_copy.png) repeat-x bottom;
 }

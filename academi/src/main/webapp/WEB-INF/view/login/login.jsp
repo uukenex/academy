@@ -70,9 +70,11 @@
 				<br/>
 			</div>
 			<div id="findLink">
-				<a href="#">아이디 찾기</a>
+				<c:url value="/findId" var="findId" />
+				<c:url value="/findPassword" var="findpw" />
+				<a href="${findId }">아이디 찾기</a>
 				<img alt="" src="<%=request.getContextPath()%>/images/div_smallbar_vertical.png">
-				<a href="#">비밀번호 찾기</a>
+				<a href="${findpw }">비밀번호 찾기</a>
 			</div>
 		</fieldset>
 	</sform:form>
