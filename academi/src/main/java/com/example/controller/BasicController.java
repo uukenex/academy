@@ -15,7 +15,7 @@ public class BasicController {
 		return "showMessage";
 	}
 	
-	@RequestMapping(value="/join",method=RequestMethod.POST)
+	@RequestMapping(value="/join",method=RequestMethod.GET)
 	public String join(Model model){
 		model.addAttribute("message","Good Morning");
 		//사용할 view의 이름 리턴->View Resolver
@@ -35,4 +35,12 @@ public class BasicController {
 		//사용할 view의 이름 리턴->View Resolver
 		return "mainpage/mainPage";
 	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "login/login";
+	}
+	
 }

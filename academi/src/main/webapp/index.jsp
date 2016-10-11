@@ -22,5 +22,8 @@
 		<br>
 		<c:url value="/mainpage" var="mainpage" />
 		<a href="${mainpage }">Enter Homepage Main</a>
+		<br>
+		<c:url value="/login" var="login" />
+		<a href="${login }">Enter Login Form</a>
 	</body>
 </html>
