@@ -61,5 +61,6 @@
 			</tr>
 		</table>
 	</fieldset>
+	<img alt="" src="<%=request.getContextPath()%>/images/div_bar_pink.png">
 </body>
 </html>

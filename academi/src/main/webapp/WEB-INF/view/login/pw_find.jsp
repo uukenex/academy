@@ -8,6 +8,7 @@
 <style>
 	fieldset {
 		width: 550px;
+		border-color: #D99694;
 	}
 	.inputTextStyle {
 		width: 300px;
@@ -24,7 +25,7 @@
 		font-family: 나눔고딕;
 	}
 	.button2 {
-		background-color: #95B3D7;
+		background-color: #D99694;
 		width: 100px;
 		height: 35px;
 		font-size: 15pt;
@@ -39,9 +40,8 @@
 </style>
 </head>
 <body>
+	<img alt="PassFind" src="<%=request.getContextPath()%>/join_icons/pass_find.png">
 	<fieldset>
-		<legend>비밀번호 찾기</legend>
-		<div class="findPassword">
 			<table cellpadding="7.5">
 				<tr>
 					<th><label for="id">아이디</label>
@@ -67,7 +67,7 @@
 					</td>
 				</tr>
 			</table>
-		</div>
 	</fieldset>
+	<img alt="" src="<%=request.getContextPath()%>/images/div_bar_pink.png">
 </body>
 </html>
