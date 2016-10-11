@@ -55,20 +55,20 @@
 						<p class="button-style2"><a href="#">More than</a></p>
 					</section>
 				</div>
-				<div class="vertical_bar">
+				<div>
 					<section>
 						<p><img alt="" src="<%=request.getContextPath()%>/images/div_bar_vertical.png"></p>
 					</section>
 				</div>
 				<div class="4u">
 					<section>
-						<h2 class="title">ROUTE02 Day02</h2>
+						<h2 class="title">ROUTE02 두 번째 날</h2>
 						<p><a href="#"><img alt="" src="<%=request.getContextPath()%>/images/route02.jpg"></a></p>
 						<p class="subtitle">서울특별시 -> 인천광역시 -> 경기도</p>
 						<p class="button-style2"><a href="#">More than</a></p>
 					</section>
 				</div>
-				<div class="vertical_bar">
+				<div>
 					<section>
 						<p><img alt="" src="<%=request.getContextPath()%>/images/div_bar_vertical.png"></p>
 					</section>

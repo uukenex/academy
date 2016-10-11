@@ -123,18 +123,21 @@
 
 #marketing .title {
 	padding-bottom: .75em;
+	color: #17375E;
+	font-size: 1.3em;
+	font-weight: bold;
 }
 
 #marketing .subtitle {
 	padding: 0em 0em 2em 0em;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-family: 나눔고딕;
+	color: #17375E;
+	font-size: 1.1em;
+	margin-top: 1.5em;
 }
 
 #marketing a img {
 	display: block;
 	width: 100%;
-}
-
-#marketing .vertical_bar {
-	margin: 0em;
+	height: 350px;
 }

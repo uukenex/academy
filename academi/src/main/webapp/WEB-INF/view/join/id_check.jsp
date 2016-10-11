@@ -14,7 +14,8 @@
 </style>
 <body>
 	<img alt="아아디 중복확인 img" 
-			src="<%=request.getContextPath() %>/join_icons/id_validation_check.png">
+			src="<%=request.getContextPath() %>/join_icons/id_validation_check.png"
+			onLoad="javascript: imgResize(this)" />
 	<fieldset>
 		<table class="IdvalidationTable">
 			<tr>
@@ -27,8 +28,38 @@
 			</tr>
 		</table>
 	</fieldset>
-	<img alt="Barimg" src="<%=request.getContextPath() %>/join_icons/bar.png">
+	<img alt="Barimg" src="<%=request.getContextPath() %>/join_icons/bar.png"
+			onLoad="javascript: imgResize(this)" />
 	<br>
-	<a href="#" >close</a>
+	<p align="right"><a href="#">close</a></p>
 </body>
+<script>
+	// 이미지 resize
+	function imgResize(obj) {
+		var imgFile = new Image();
+		 imgFile.src = obj.src;
+		 var x1 = imgFile.width;
+		 var y1 = imgFile.height;
+		 
+		 var x2 = 0;
+		 var y2 = 0;
+		 
+		 if(x1 >600){
+		  x2 = 600;
+		  y2 = 600;
+		  
+		  if (x1 >= y1){
+		   y2 = parseInt((y1 * x2) / x1);
+		  }else{
+		   x2 = parseInt((x1 * y2) / y1);
+		  }
+		 }else{
+		  x2 = x1;
+		  y2 = y1;
+		 }
+		 
+		 obj.width = x2; 
+		 obj.height = y2; 
+	}
+</script>
 </html>
