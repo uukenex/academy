@@ -39,11 +39,8 @@
 </style>
 </head>
 <body>
+	<img alt="IdFind" src="<%=request.getContextPath()%>/join_icons/id_find.png">
 	<fieldset>
-	<legend>
-		<img alt="IdFind" src="<%=request.getContextPath()%>/join_icons/id_find.png">
-	</legend>
-	<div class="findId">
 		<table cellpadding="7.5">
 			<tr>
 				<th><label for="name">이름</label></th>
@@ -62,7 +59,6 @@
 				</td>
 			</tr>
 		</table>
-	</div>
 	</fieldset>
 </body>
 </html>
