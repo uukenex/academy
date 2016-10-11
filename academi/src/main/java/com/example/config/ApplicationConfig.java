@@ -16,6 +16,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 //Spring core에 대한 설정
 @Configuration
@@ -60,5 +61,13 @@ public class ApplicationConfig {
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactoryBean sfb)throws Exception{
 		SqlSessionTemplate template = new SqlSessionTemplate(sfb.getObject());
 		return template;
+	}
+	
+	//파일업로드를 위한 빈
+	@Bean
+	public CommonsMultipartResolver multipartResover(){
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setDefaultEncoding("utf-8");
+		return resolver;
 	}
 }

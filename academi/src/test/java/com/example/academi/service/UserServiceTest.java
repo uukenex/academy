@@ -91,4 +91,20 @@ public class UserServiceTest {
 		List<Route> result = uService.myPageRoute(userId);
 		assertThat(result, is(notNullValue()));
 	}
+
+	// 마이페이지 내경로보기 서비스 테스트
+	@Test
+	public void myPageQnaTest() {
+		String userId = "dd";
+		List<Qna> result = uService.myPageQna(userId);
+		assertThat(result, is(notNullValue()));
+	}
+
+	// 마이페이지 내경로보기 서비스 테스트
+	@Test
+	public void myPageAnswerTest() {
+		String userId = "dd";
+		List<Answer> result = uService.myPageAnswer(userId);
+		assertThat(result, is(notNullValue()));
+	}
 }
