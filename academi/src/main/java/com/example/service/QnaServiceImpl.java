@@ -7,13 +7,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dto.Qna;
+import com.example.repo.AnswerRepo;
 import com.example.repo.QnaRepo;
 
 @Service
 public class QnaServiceImpl implements QnaService {
 	@Autowired
 	QnaRepo qrepo;
-
+@Autowired
+AnswerRepo arepo;
 	// 후기글 보기
 	@Transactional
 	public Qna selectQna(int qnaNo) {
@@ -32,8 +34,11 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteQna(int qnaNo) {
-		return qrepo.deleteQna(qnaNo);
+		int result = arepo.deleteAnswerByQnaNo(qnaNo);
+		result =qrepo.deleteQna(qnaNo); 
+		return result;
 	}
 
 	@Override

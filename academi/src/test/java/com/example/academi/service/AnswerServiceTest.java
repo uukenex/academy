@@ -1,4 +1,4 @@
-package com.example.academi.repo;
+package com.example.academi.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -17,41 +17,40 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.CommentReply;
-import com.example.repo.AnswerRepo;
+import com.example.service.AnswerService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
-public class AnswerRepoTest {
-	static Logger logger = LoggerFactory.getLogger(AnswerRepoTest.class);
+public class AnswerServiceTest {
+	static Logger logger = LoggerFactory.getLogger(AnswerServiceTest.class);
 
 	@Autowired
 	SqlSessionTemplate template;
 	@Autowired
-	AnswerRepo arepo;
+	AnswerService as;
 
 	
 
 	// 답글쓰기 테스트
 	@Test
 	public void insertTest() {
-		arepo.insertAnswer("답변", 2, "dd");
-	}
-	@Test
-	public void selectTest(){
-		arepo.selectListByQnaNo(2);
+		as.insertAnswer("답변내용", 10, "dd");
 	}
 	
+	//특정 게시글의 전체 댓글 확인 테스트
 	@Test
-	public void updateTest(){
-		arepo.updateAnswer("바뀜",4);
+	public void selectTest() {
+		as.selectListByQnaNo(2);
+	}
+	//답글수정
+	@Test
+	public void updateTest() {
+		as.updateAnswer("내요이이렇게", 20);
+	}
+	//답글번호로 삭제
+	@Test
+	public void deleteTest() {
+		as.deleteAnswer(20);
 	}
 	
-	@Test
-	public void Test(){
-		arepo.deleteAnswer(4);
-	}
-	@Test
-	public void Test2(){
-		arepo.deleteAnswerByQnaNo(2);
-	}
 }

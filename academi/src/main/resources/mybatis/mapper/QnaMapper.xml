@@ -57,10 +57,11 @@
 	<select id="searchListByContent" parameterType="Map" resultMap="qnaBase">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from qna
+		(select * from qna q 
+  		join answer a on a.qna_no = q.qna_no
 		where
-		qna_question like #{qnaQuestion}
-		order by qna_no desc) sub)
+		qna_question like #{qnaQuestion} or answer_content like #{qnaQuestion}
+		order by q.qna_no desc) sub)
 		where rnum between #{page}*10-9 and #{page}*10
 
 	</select>
