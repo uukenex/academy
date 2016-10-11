@@ -46,7 +46,7 @@ public class QnaServiceTest {
 	
 	@Test 
 	public void search2Test(){
-		qs.searchQnaByContent("방", page);
+		qs.searchQnaByContent("변", page);
 	}
 	@Test 
 	public void search3Test(){
@@ -55,7 +55,7 @@ public class QnaServiceTest {
 	
 	@Test
 	public void deleteTest(){
-		qs.deleteQna(6);
+		qs.deleteQna(2);
 	}
 	@Test
 	public void selectTest(){
