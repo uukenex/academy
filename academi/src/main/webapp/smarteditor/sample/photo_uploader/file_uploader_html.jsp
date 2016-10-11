@@ -54,7 +54,7 @@ if (ServletFileUpload.isMultipartContent(request)){
 			   		//원래 request.getServletContext->pageContext.getServletContext
 		    		String dftFilePath = pageContext.getServletContext().getRealPath("/");
 		    		//파일 기본경로 _ 상세경로
-		    		String filePath = dftFilePath + "editor" + File.separator +"upload" + File.separator;
+		    		String filePath = dftFilePath + "smarteditor" + File.separator +"upload" + File.separator;
 		    		
 		    		File file = null;
 		    		file = new File(filePath);

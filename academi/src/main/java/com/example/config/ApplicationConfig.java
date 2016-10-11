@@ -21,7 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 //Spring core에 대한 설정
 @Configuration
 @PropertySource("classpath:/config/dbconfig.properties")
-@ComponentScan({"com.example.repo","com.example.service"})
+@ComponentScan({"com.example.repo","com.example.service","com.example.model"})
 @EnableTransactionManagement
 public class ApplicationConfig {
 	static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
@@ -63,11 +63,5 @@ public class ApplicationConfig {
 		return template;
 	}
 	
-	//파일업로드를 위한 빈
-	@Bean
-	public CommonsMultipartResolver multipartResover(){
-		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-		resolver.setDefaultEncoding("utf-8");
-		return resolver;
-	}
+	
 }

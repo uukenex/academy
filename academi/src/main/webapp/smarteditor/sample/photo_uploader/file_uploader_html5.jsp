@@ -39,7 +39,7 @@
 			//파일 기본경로
 			String dftFilePath = pageContext.getServletContext().getRealPath("/");
 			//파일 기본경로 _ 상세경로
-			String filePath = dftFilePath + "smarteditor/sample/photo_uploader" + File.separator + "multiupload" + File.separator;
+			String filePath = dftFilePath + "smarteditor" + File.separator + "multiupload" + File.separator;
 			File file = new File(filePath);
 			if (!file.exists()) {
 				file.mkdirs();
