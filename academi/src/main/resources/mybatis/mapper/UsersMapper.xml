@@ -51,6 +51,16 @@
 	<select id="selectRouteById" parameterType="String" resultType="route">
 		select * from route where user_id = #{userId}
 	</select>
+	<!-- 마이페이지 내가 작성한 질문보기 기능 -->
+	<!--질문테이블에서 내아이디로 조회 -->
+	<select id="selectQnaById" parameterType="String" resultType="Qna">
+		select * from qna where user_id = #{userId}
+	</select>
+	<!-- 마이페이지 내가 작성한 답변보기 기능 -->
+	<!--답변테이블에서 내아이디로 조회 -->
+	<select id="selectAnswerById" parameterType="String" resultType="Answer">
+		select * from answer where user_id = #{userId}
+	</select>
 
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />

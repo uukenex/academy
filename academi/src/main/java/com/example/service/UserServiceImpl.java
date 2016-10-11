@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.dto.Answer;
+import com.example.dto.Qna;
 import com.example.dto.Review;
 import com.example.dto.Route;
 import com.example.dto.Users;
@@ -53,6 +55,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Route> myPageRoute(String userId) {
 		return urepo.selectRouteById(userId);
+	}
+
+	@Override
+	public List<Qna> myPageQna(String userId) {
+		return urepo.selectQnaById(userId);
+	}
+
+	@Override
+	public List<Answer> myPageAnswer(String userId) {
+		return urepo.selectAnswerById(userId);
 	}
 
 }

@@ -24,4 +24,8 @@ public interface UserRepo {
 	public List<Review> selectReviewById(String userId);
 	//계획 보기 by id
 	public List<Route> selectRouteById(String userId);
+	//질문 보기
+	public List<Qna> selectQnaById(String userId);
+	//답변 보기
+	public List<Answer> selectAnswerById(String userId);
 }

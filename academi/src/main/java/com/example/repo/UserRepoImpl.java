@@ -79,4 +79,16 @@ public class UserRepoImpl implements UserRepo {
 		return template.selectList(statement,userId);
 	}
 
+	@Override
+	public List<Qna> selectQnaById(String userId) {
+		String statement = NAME_SPACE+"selectQnaById";
+		return template.selectList(statement,userId);
+	}
+
+	@Override
+	public List<Answer> selectAnswerById(String userId) {
+		String statement = NAME_SPACE+"selectAnswerById";
+		return template.selectList(statement,userId);
+	}
+
 }

@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.dto.Answer;
+import com.example.dto.Qna;
 import com.example.dto.Review;
 import com.example.dto.Route;
 import com.example.dto.Users;
@@ -27,4 +29,10 @@ public interface UserService {
 
 	// 마이페이지 - 내경로보기 서비스
 	public List<Route> myPageRoute(String userId);
+
+	// 마이페이지 - 내질문보기 서비스
+	public List<Qna> myPageQna(String userId);
+
+	// 마이페이지 - 내답변보기 서비스
+	public List<Answer> myPageAnswer(String userId);
 }
