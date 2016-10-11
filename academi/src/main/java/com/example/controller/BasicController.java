@@ -43,4 +43,25 @@ public class BasicController {
 		return "login/login";
 	}
 	
+	@RequestMapping(value="/findId",method=RequestMethod.GET)
+	public String findId(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "login/id_find";
+	}
+	
+	@RequestMapping(value="/findPassword",method=RequestMethod.GET)
+	public String findPassword(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "login/pw_find";
+	}
+	
+	@RequestMapping(value="/findIdSuccess",method=RequestMethod.GET)
+	public String findIdSuccess(Model model){
+		model.addAttribute("message","Good Morning");
+		//사용할 view의 이름 리턴->View Resolver
+		return "login/id_find_success";
+	}
+	
 }

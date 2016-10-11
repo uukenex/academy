@@ -25,5 +25,14 @@
 		<br>
 		<c:url value="/login" var="login" />
 		<a href="${login }">Enter Login Form</a>
+		<br>
+		<c:url value="/findId" var="findId" />
+		<a href="${findId }">Enter FindID Form</a>
+		<br>
+		<c:url value="/findPassword" var="findpw" />
+		<a href="${findpw }">Enter FindPass Form</a>
+		<br>
+		<c:url value="/findIdSuccess" var="findIdsuc" />
+		<a href="${findIdsuc }">Enter FindIDSuc Form</a>
 	</body>
 </html>

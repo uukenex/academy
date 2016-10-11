@@ -4,9 +4,70 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
+<style>
+	fieldset {
+		width: 550px;
+	}
+	.inputTextStyle {
+		width: 300px;
+		height: 35px;
+		font-size: 13pt;
+		font-family: 나눔고딕;
+		margin-left: 1.3em;
+		
+	}
+	label {
+		text-align: center;
+		font-weight: bold;
+		font-size: 15pt;
+		font-family: 나눔고딕;
+	}
+	.button2 {
+		background-color: #95B3D7;
+		width: 100px;
+		height: 35px;
+		font-size: 15pt;
+		font-weight: bold;
+		margin-left: .5em;
+		display: inline-block;
+		border-radius: 5px;
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: none;
+	}
+</style>
 </head>
 <body>
-
+	<fieldset>
+		<legend>비밀번호 찾기</legend>
+		<div class="findPassword">
+			<table cellpadding="7.5">
+				<tr>
+					<th><label for="id">아이디</label>
+					<td>
+						<input type="text" id="id" name="name"
+								placeholder="아이디 입력" class="inputTextStyle">
+					</td>
+				</tr>
+				<tr>
+					<th><label for="name">이름</label></th>
+					<td><input type="text" id="name" name="name"
+									placeholder="이름 입력" class="inputTextStyle">
+					</td>
+				</tr>
+				<tr>
+					<th><label for="email">이메일</label></th>
+					<td>
+						<input type="email" id="email" name="email"
+								placeholder="이메일 입력" class="inputTextStyle">
+					</td>
+					<td>
+						<input type="button" value="다음" class="button2">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</fieldset>
 </body>
 </html>
