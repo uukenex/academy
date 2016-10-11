@@ -40,7 +40,9 @@
 </head>
 <body>
 	<fieldset>
-	<legend>ID 찾기</legend>
+	<legend>
+		<img alt="IdFind" src="<%=request.getContextPath()%>/join_icons/id_find.png">
+	</legend>
 	<div class="findId">
 		<table cellpadding="7.5">
 			<tr>
