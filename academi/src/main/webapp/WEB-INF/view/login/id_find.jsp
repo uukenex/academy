@@ -8,6 +8,7 @@
 <style>
 	fieldset {
 		width: 550px;
+		border-color: #D99694;
 	}
 	.inputTextStyle {
 		width: 300px;
@@ -24,7 +25,7 @@
 		font-family: 나눔고딕;
 	}
 	.button2 {
-		background-color: #95B3D7;
+		background-color: #D99694;
 		width: 100px;
 		height: 35px;
 		font-size: 15pt;
