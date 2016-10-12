@@ -240,6 +240,14 @@ fieldset {
 				$(this).css("background", "rgb(255,150,150)");
 			}
 		})
+		$("#phone").on("keyup", function() {
+			var regPhone = /[^0-9]/gi;
+			if ($(this).val().match(regPhone)) {
+				$(this).css("background", "rgb(120,255,255)");
+			} else {
+				$(this).css("background", "rgb(255,150,150)");
+			}
+		})
 	</script>
 
 </body>

@@ -19,7 +19,6 @@
 			alert("${message }");
 			window.opener.location.reload();
 			self.close();
-
 		})
 		
 	</script>

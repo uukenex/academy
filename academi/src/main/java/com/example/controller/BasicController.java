@@ -39,15 +39,7 @@ public class BasicController {
 		return "nonsession/login/login";
 	}
 
-	@RequestMapping(value = "/findId", method = RequestMethod.GET)
-	public String findId(Model model) {
-		return "nonsession/login/id_find";
-	}
-
-	@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
-	public String findPassword(Model model) {
-		return "nonsession/login/pw_find";
-	}
+	
 
 	@RequestMapping(value = "/findIdSuccess", method = RequestMethod.GET)
 	public String findIdSuccess(Model model) {
