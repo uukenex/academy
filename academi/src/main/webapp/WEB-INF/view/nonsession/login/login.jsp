@@ -65,7 +65,7 @@
 				<br/>
 			</div>
 			<div id="banner">
-				<input type="submit" class="button1" value="LOGIN">
+				<input type="submit" class="button1" id="submit" value="LOGIN">
 				<input type="button" class="button1" value="회원가입">
 				<br/>
 			</div>

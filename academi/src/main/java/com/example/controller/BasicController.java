@@ -53,7 +53,7 @@ public class BasicController {
 	public String findIdSuccess(Model model) {
 		return "nonsession/login/id_find_success";
 	}
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/session/test", method = RequestMethod.GET)
 	public String test(Model model) {
 		return "session/mainnotice/notice_sign";
 	}

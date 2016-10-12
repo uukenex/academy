@@ -50,7 +50,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		@Override
 		public void addInterceptors(InterceptorRegistry registry){
 			registry.addInterceptor(new SessionInterceptor())
-			.addPathPatterns("/session","session/**");
+			.addPathPatterns("/session/**");
 		}
 		
 

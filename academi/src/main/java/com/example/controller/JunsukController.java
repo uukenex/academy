@@ -34,18 +34,37 @@ public class JunsukController {
 		String userPass=request.getParameter("password");
 		Users user = uService.login(userId);
 		
-		if(user.getUserId().equals(userId)&&user.getUserPass().equals(userPass)){
+		
+		if(user!=null&&user.getUserPass().equals(userPass)){
+			if(user.getUserId().equals(userId)){
+				session.setAttribute("Users", user);
+				logger.trace("접속완료 : {}",userId);
+				model.addAttribute("userId", userId);
+				returnURL ="logintest";
+			}
+			}else{
+				logger.trace("아이디 혹은 비밀번호를 확인해주세요.");
+				returnURL ="nonsession/login/login";
+			}
+		return returnURL;
+	}
+}
+		
+		
+		/*if(user.getUserId().equals(userId)&&user.getUserPass().equals(userPass)){
 			logger.trace("접속완료 : {}",userId);
 			session.setAttribute("Users",user);
 			model.addAttribute("userId", userId);
 			returnURL ="logintest";
-		}else {
-			logger.trace("존재하지않습니다");
+		}else if(user.getUserId()==null){
+			logger.trace("아이디가 존재하지 않습니다.");
+			returnURL ="nonsession/login/login";
+		}else{
+			logger.trace("비밀번호를 확인해주세요");
 			returnURL ="nonsession/login/login";
 		}
 		return returnURL;
 		
 		
-	}
+	}*/
 	
-}
