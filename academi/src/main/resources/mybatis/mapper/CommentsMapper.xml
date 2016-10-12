@@ -13,8 +13,9 @@
 	</select>
 	<!-- 게시글 쓰기(공지사항:관리자) 분류별 필요 -->
 	<insert id="insert" parameterType="Map">
-		insert into comments values
-		(seq_comment_comment_no.nextval,#{commentCategory}
+		insert into comments (comment_category,comment_name,
+		comment_content,comment_date,comment_count,user_id) values
+		(#{commentCategory}
 		,#{commentName},#{commentContent},sysdate,0,#{userId})
 	</insert>
 	<!-- 게시글 수정 -->

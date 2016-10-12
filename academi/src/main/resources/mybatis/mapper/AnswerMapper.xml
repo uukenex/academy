@@ -13,8 +13,9 @@
 	
 	<!-- 답변 달기 기능 -->
 	<insert id="insert" parameterType="Map">
-		insert into answer
-		values(seq_answer_answer_no.nextval,
+		insert into answer (answer_content,answer_date
+		,qna_no,user_id)
+		values(
 		#{answerContent},sysdate,
 		#{qnaNo},#{userId})
 	</insert>

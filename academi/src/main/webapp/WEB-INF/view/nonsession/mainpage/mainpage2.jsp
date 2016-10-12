@@ -6,9 +6,15 @@
 		<title>여행을 부탁해~</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+  		<meta name="author" content="Nathan Searles">
+  		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+	
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -55,11 +61,11 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="index.html">Home</a></li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="left-sidebar.html">지도 만들기</a></li>
+								<li><a href="right-sidebar.html">후기 등록</a></li>
+								<li><a href="no-sidebar.html">Photo Book</a></li>
 								<li>
-									<a href="#">Dropdown</a>
+									<a href="#">Board</a>
 									<ul>
 										<li><a href="#">Lorem ipsum dolor</a></li>
 										<li><a href="#">Magna phasellus</a></li>
@@ -84,106 +90,85 @@
 			<!-- Banner -->
 				<section id="banner">
 					<header>
-						<h2>Hi. You're looking at <strong>Helios</strong>.</h2>
+						<h2>여기서부터는 !!!<strong>사진 슬라이드!</strong>.</h2>
 						<p>
-							A (free) responsive site template by <a href="http://html5up.net">HTML5 UP</a>.
-							Built on <strong>skel</strong> and released under the <a href="http://html5up.net/license">CCA</a> license.
+							각 사진마다 자세히 보기 가능!
 						</p>
 					</header>
 				</section>
 
-			<!-- Carousel -->
+			<%-- <!-- Carousel -->
 				<section class="carousel">
 					<div class="reel">
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Pulvinar sagittis congue</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Fermentum sagittis proin</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Varius magnis sollicitudin</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/pics06.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Pulvinar sagittis congue</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/route01.jpg" alt="" />
+							</a>
 						</article>
 
 						<article>
-							<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Fermentum sagittis proin</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+							<a href="#" class="image featured">
+								<img src="<%=request.getContextPath() %>/images/route02.jpg" alt="" />
+							</a>
 						</article>
-
-						<article>
-							<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-						</article>
-
-						<article>
-							<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-						</article>
-
-						<article>
-							<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-							<header>
-								<h3><a href="#">Varius magnis sollicitudin</a></h3>
-							</header>
-							<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-						</article>
-
+						
 					</div>
-				</section>
-
+				</section> --%>
+  				
 			<!-- Main -->
 				<div class="wrapper style2">
+					
+					<!-- Image Slider -->
+			
+					<div class="sliderContainer">
+    					<div id="slides">
+      						<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="">
+     						<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="">
+     						<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="">
+      						<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="">
+      						<a href="#" class="slidesjs-previous slidesjs-navigation">
+      							<i class="icon-chevron-left icon-large"></i>
+      						</a>
+      						<a href="#" class="slidesjs-next slidesjs-navigation">
+      							<i class="icon-chevron-right icon-large"></i>
+      						</a>
+    					</div>
+  					</div>
 
 					<article id="main" class="container special">
-						<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+						<a href="#" class="image featured">
+						</a>
 						<header>
 							<h2><a href="#">Sed massa imperdiet magnis</a></h2>
 							<p>
@@ -404,6 +389,40 @@
 			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
+			
+			<!-- SlidesJS Required: Link to jquery.slides.js -->
+  			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
+  			<!-- End SlidesJS Required -->
+  			
+  			<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+  				<script>
+    				$(function() {
+      					$('#slides').slidesjs({
+        					width: 940,
+       						height: 528,
+        					navigation: false,
+        					
+        					start: 2,
+        					pagination: {
+        						active: true
+        					},
+        					effect: {
+        						slide: {
+        							speed: 100
+        						},
+        						fade: {
+        							speed: 300
+        						}
+        					},
+        					play: {
+        						active: true,
+        						auto: true,
+        						swap: true
+        					}
+     					});
+   					});
+  				</script>
+  			<!-- End SlidesJS Required -->
 
 	</body>
 </html>
