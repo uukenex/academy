@@ -32,6 +32,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
 		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/");
 		registry.addResourceHandler("/smarteditor/**").addResourceLocations("/smarteditor/");
+		registry.addResourceHandler("/validation/**").addResourceLocations("/WEB-INF/validation/");
 	}
 	
 	//파일업로드를 위한 빈
