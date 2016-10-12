@@ -67,4 +67,14 @@ public class UserServiceImpl implements UserService {
 		return urepo.selectAnswerById(userId);
 	}
 
+	@Override
+	public int checkId(String userId) {
+		return urepo.checkId(userId);
+	}
+
+	@Override
+	public int checkNick(String userNick) {
+		return urepo.checkNick(userNick);
+	}
+
 }

@@ -28,4 +28,9 @@ public interface UserRepo {
 	public List<Qna> selectQnaById(String userId);
 	//답변 보기
 	public List<Answer> selectAnswerById(String userId);
+	
+	//id 중복확인
+	public int checkId(String userId);
+	//닉네임 중복확인
+	public int checkNick(String userNick);
 }

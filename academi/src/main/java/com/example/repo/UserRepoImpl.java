@@ -91,4 +91,16 @@ public class UserRepoImpl implements UserRepo {
 		return template.selectList(statement,userId);
 	}
 
+	@Override
+	public int checkId(String userId) {
+		String statement = NAME_SPACE+"checkId";
+		return template.selectOne(statement,userId);
+	}
+
+	@Override
+	public int checkNick(String userNick) {
+		String statement = NAME_SPACE+"checkNick";
+		return template.selectOne(statement,userNick);
+	}
+
 }

@@ -107,4 +107,13 @@ public class UserServiceTest {
 		List<Answer> result = uService.myPageAnswer(userId);
 		assertThat(result, is(notNullValue()));
 	}
+	@Test
+	public void checkIdAndNick() {
+		assertThat(uService.checkId("dd"),is(1));
+		assertThat(uService.checkNick("닉네임"),is(1));
+		assertThat(uService.checkId("ddk"),is(0));
+		assertThat(uService.checkNick("닉네임23"),is(0));
+		
+	}
+	
 }

@@ -35,4 +35,9 @@ public interface UserService {
 
 	// 마이페이지 - 내답변보기 서비스
 	public List<Answer> myPageAnswer(String userId);
+	
+	// id중복검색
+	public int checkId(String userId);
+	//닉네임 중복검색
+	public int checkNick(String userNick);
 }

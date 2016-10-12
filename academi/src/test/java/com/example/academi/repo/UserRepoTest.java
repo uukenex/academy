@@ -109,4 +109,13 @@ public class UserRepoTest {
 		assertThat(review, is(notNullValue()));
 	}
 
+	@Test
+	public void checkIdAndNick(){
+		String userId = "dd";
+		String userNick = "닉네임";
+		assertThat(urepo.checkId(userId),is(1));
+		assertThat(urepo.checkNick(userNick),is(1));
+		assertThat(urepo.checkId("ii"),is(0));
+		assertThat(urepo.checkNick("wer"),is(0));
+	}
 }

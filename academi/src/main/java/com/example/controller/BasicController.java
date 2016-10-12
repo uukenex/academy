@@ -10,58 +10,42 @@ public class BasicController {
 
 	@RequestMapping(value="/hello",method=RequestMethod.GET)
 	public String sayHello(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
 		return "showMessage";
 	}
 	
 	@RequestMapping(value="/join",method=RequestMethod.GET)
 	public String join(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "join/join";
+		return "nonsession/join/join";
 	}
 	
 	@RequestMapping(value="/id_check",method=RequestMethod.GET)
 	public String idCheck(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "join/id_check";
+		return "nonsession/join/id_check";
 	}
 	
 	@RequestMapping(value="/mainpage",method=RequestMethod.GET)
 	public String mainpage(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
 		return "mainpage/mainPage";
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "login/login";
+		return "nonsession/login/login";
 	}
 	
 	@RequestMapping(value="/findId",method=RequestMethod.GET)
 	public String findId(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "login/id_find";
+		return "nonsession/login/id_find";
 	}
 	
 	@RequestMapping(value="/findPassword",method=RequestMethod.GET)
 	public String findPassword(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "login/pw_find";
+		return "nonsession/login/pw_find";
 	}
 	
 	@RequestMapping(value="/findIdSuccess",method=RequestMethod.GET)
 	public String findIdSuccess(Model model){
-		model.addAttribute("message","Good Morning");
-		//사용할 view의 이름 리턴->View Resolver
-		return "login/id_find_success";
+		return "nonsession/login/id_find_success";
 	}
 	
 }
