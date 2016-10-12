@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class THController {
 	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
 	public String noticeView(Model model, @RequestParam int commentNo) {
 		Comments c = cs.selectComment(commentNo);
-		model.addAttribute("comment", cs.selectComment(commentNo));
+		model.addAttribute("comment", c);
 		model.addAttribute("userNick", us.searchNickById(c.getUserId()));
 
 		return "nonsession/mainnotice/notice_view";
@@ -49,10 +50,24 @@ public class THController {
 		for (int i = 0; i < c.size(); i++) {
 			model.addAttribute("userNick", us.searchNickById(c.get(i).getUserId()));
 		}
-		model.addAttribute("comments", cs.noticeListByPage(page));
+		model.addAttribute("comments", c);
 		return "nonsession/mainnotice/notice";
 	}
 
+	// 공지사항 수정창으로 넘어가기
+		@RequestMapping(value = "/noticeUpdate", method = RequestMethod.POST)
+		public String noticeUpdate(Model model,HttpServletRequest request) {
+			String commentNo = request.getParameter("commentNo");
+			Comments c = cs.selectComment(Integer.parseInt(commentNo));
+			model.addAttribute("comments", c);
+			model.addAttribute("userNick", us.searchNickById(c.getUserId()));
+			return "session/mainnotice/notice_change";
+		}
+	
+	
+	
+	
+	
 	@RequestMapping("/checkId")
 	public @ResponseBody int checkId(@RequestParam String userId) {
 		return us.checkId(userId);
