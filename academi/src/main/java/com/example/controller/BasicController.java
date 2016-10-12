@@ -31,7 +31,7 @@ public class BasicController {
 
 	@RequestMapping(value = "/mainpage", method = RequestMethod.GET)
 	public String mainpage(Model model) {
-		return "nonsession/mainpage/mainPage";
+		return "nonsession/mainpage/mainpage2";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
