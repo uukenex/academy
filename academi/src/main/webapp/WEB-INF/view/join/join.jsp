@@ -118,5 +118,8 @@
 				</table>
 		</fieldset>
 	</sform:form>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	
+
 </body>
 </html>
