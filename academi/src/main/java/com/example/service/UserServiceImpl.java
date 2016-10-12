@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
 		return urepo.checkNick(userNick);
 	}
 
+	@Override
+	public String searchNickById(String userId) {
+		return urepo.searchNickById(userId);
+	}
+
 }

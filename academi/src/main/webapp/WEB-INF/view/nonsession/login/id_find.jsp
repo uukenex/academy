@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,8 @@
 </head>
 <body>
 	<img alt="IdFind" src="<%=request.getContextPath()%>/join_icons/id_find.png">
+	<c:url value="/searchId" var="searchId" />
+	<form action="${searchId}">
 	<fieldset>
 		<table cellpadding="7.5">
 			<tr>
@@ -56,11 +59,13 @@
 							placeholder="이메일 입력" class="inputTextStyle">
 				</td>
 				<td>
-					<input type="button" value="다음" class="button2">
+					<input type="submit" value="다음" class="button2"
+				>
 				</td>
 			</tr>
 		</table>
 	</fieldset>
+	</form>
 	<img alt="" src="<%=request.getContextPath()%>/images/div_bar_pink.png">
 </body>
 </html>

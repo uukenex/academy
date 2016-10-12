@@ -31,7 +31,7 @@ public class BasicController {
 
 	@RequestMapping("/mainpage")
 	public String mainpage(Model model) {
-		return "nonsession/mainpage/mainpage2";
+		return "nonsession/mainpage/mainPage";
 	}
 
 	@RequestMapping("/login")
@@ -39,20 +39,17 @@ public class BasicController {
 		return "nonsession/login/login";
 	}
 
-	@RequestMapping(value = "/findId", method = RequestMethod.GET)
-	public String findId(Model model) {
-		return "nonsession/login/id_find";
-	}
-
-	@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
-	public String findPassword(Model model) {
-		return "nonsession/login/pw_find";
-	}
+	
 
 	@RequestMapping(value = "/findIdSuccess", method = RequestMethod.GET)
 	public String findIdSuccess(Model model) {
 		return "nonsession/login/id_find_success";
 	}
+	@RequestMapping(value = "/session/test", method = RequestMethod.GET)
+	public String test(Model model) {
+		return "session/mainnotice/notice_sign";
+	}
+	
 
 	
 
