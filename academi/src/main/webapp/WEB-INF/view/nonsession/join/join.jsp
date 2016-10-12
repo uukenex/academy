@@ -105,6 +105,10 @@ fieldset {
 	</sform:form>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
+	
+	var checkVal1 = false;
+	var checkVal2 = false;
+	
 		<c:url value="/checkId" var="checkId" />
 		$("#checkId").on("click", function() {
 			$.ajax({
@@ -116,16 +120,16 @@ fieldset {
 				success : function(res) {
 					if (res == 0) {
 						alert("사용가능한 아이디입니다.");
+						checkVal1 = true;
 					} else {
 						alert("이미사용중인 아이디입니다.");
+						checkVal1 = false;
 					}
 				},
 				error : function(xhr, status, error) {
 					alert(error);
 				}
-
 			});
-
 		});
 		
 		<c:url value="/checkNick" var="checkNick" />
@@ -139,16 +143,16 @@ fieldset {
 					success : function(res) {
 						if (res == 0) {
 							alert("사용가능한 별명입니다.");
+							checkVal2 = true;
 						} else {
 							alert("이미사용중인 별명입니다.");
+							checkVal2 = false;
 						}
 					},
 					error : function(xhr, status, error) {
 						alert(error);
 					}
-
 				});
-
 			});
 		
 	</script>
