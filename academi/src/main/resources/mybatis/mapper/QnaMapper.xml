@@ -12,9 +12,9 @@
 	</select>
 	<!-- qna 쓰기 -->
 	<insert id="insert" parameterType="Map">
-		insert into qna values
-		(seq_qna_qna_no.nextval
-		,#{qnaTitle},#{qnaQuestion},
+		insert into qna (qna_title,qna_question,
+		qna_date,qna_count,user_id) values
+		(#{qnaTitle},#{qnaQuestion},
 		sysdate,0,#{userId})
 	</insert>
 	<!-- qna 수정 -->

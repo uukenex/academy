@@ -12,8 +12,9 @@
 	</select>
 	<!-- 댓글 달기 기능 -->
 	<insert id="insert" parameterType="Map">
-		insert into review_reply
-		values(seq_review_reply_reply_no.nextval,
+		insert into review_reply (reply_content,reply_date,
+		reply_review_no,user_id)
+		values(
 		#{replyContent},sysdate,
 		#{replyReviewNo},#{userId})
 	</insert>

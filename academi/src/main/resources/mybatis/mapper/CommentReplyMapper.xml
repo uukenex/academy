@@ -11,8 +11,9 @@
 	</select>
 	<!-- 댓글 달기 기능 -->
 	<insert id="insert" parameterType="Map">
-		insert into comment_reply
-		values(seq_comment_reply_reply_no.nextval,
+		insert into comment_reply (reply_content,reply_date
+		,reply_comment_no,user_id)
+		values(
 		#{replyContent},sysdate,
 		#{replyCommentNo},#{userId})
 	</insert>

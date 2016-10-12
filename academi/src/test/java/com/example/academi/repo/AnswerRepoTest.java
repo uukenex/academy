@@ -34,7 +34,7 @@ public class AnswerRepoTest {
 	// 답글쓰기 테스트
 	@Test
 	public void insertTest() {
-		arepo.insertAnswer("답변", 2, "dd");
+		arepo.insertAnswer("답변", 12, "dd");
 	}
 	@Test
 	public void selectTest(){

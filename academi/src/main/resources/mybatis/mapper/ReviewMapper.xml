@@ -12,9 +12,10 @@
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
-		insert into review values
-		(seq_review_review_no.nextval
-		,#{reviewTitle},#{reviewContent},
+		insert into review (review_title,review_content,
+		review_date,review_star,review_count,route_no,
+		user_id) values
+		(#{reviewTitle},#{reviewContent},
 		sysdate,0,0,#{routeNo},#{userId})
 	</insert>
 	<!-- 후기글 수정 -->

@@ -35,7 +35,7 @@ public class CommentReplyRepoTest {
 	@Test
 	public void insertTest() {
 		String replyContent = "고양이";
-		int replyCommentNo=23;
+		int replyCommentNo=45;
 		String userId="dd";
 		int result = crrepo.insertReply(replyContent, replyCommentNo, userId);
 		assertThat(result, is(notNullValue()));
