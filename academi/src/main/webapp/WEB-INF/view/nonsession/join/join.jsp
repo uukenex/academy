@@ -38,7 +38,9 @@ fieldset {
 }
 </style>
 <body>
-	<sform:form action="#" method="post" modelAttribute="Users" id="myform">
+	<c:url value="/joinOk" var="joinOk"></c:url>
+	<sform:form action="${joinOk}" method="post" modelAttribute="Users"
+		id="myform">
 		<fieldset>
 			<legend align="center">
 				<img id="logo" alt="Logo"
@@ -114,37 +116,33 @@ fieldset {
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="validation/dist/jquery.validate.min.js"></script>
 	<script>
-	
-	$("#myform").on({
-		"submit":function(e){
-			e.preventDefault();
-			if(checkVal1==true&&checkVal2==true){
-				this.submit();
+		$("#myform").on({
+			"submit" : function(e) {
+				e.preventDefault();
+				if (checkVal1 == true && checkVal2 == true) {
+					this.submit();
+				} else {
+					alert("중복 확인을 해주세요");
+
+				}
+			},
+			"reset" : function(e) {
+				alert("다시작성버튼");
 			}
-			else{
-				alert("중복 확인을 해주세요");
-					
-			}
-		},
-		"reset":function(e){
-			alert("다시작성버튼");
-		}
-	});
-	
-	
-	var checkVal1 = false;
-	var checkVal2 = false;
-	
+		});
+
+		var checkVal1 = false;
+		var checkVal2 = false;
+
 		<c:url value="/checkId" var="checkId" />
 		$("#checkId").on("click", function() {
-			
+
 			var userId = $("#id").val().trim();
-			if(userId==''){
+			if (userId == '') {
 				alert("공란입니다");
 				return;
 			}
-			
-			
+
 			$.ajax({
 				type : "get",
 				url : "${checkId}",
@@ -165,81 +163,83 @@ fieldset {
 				}
 			});
 		});
-		
+
 		<c:url value="/checkNick" var="checkNick" />
-			$("#checkNick").on("click", function() {
-				
-				var userNick = $("#nickname").val().trim();
-				if(userNick==''){
-					alert("공란입니다");
-					return;
-				}
-				
-				$.ajax({
-					type : "get",
-					url : "${checkNick}",
-					data : {
-						"userNick" : userNick
-					},
-					success : function(res) {
-						if (res == 0) {
-							alert("사용가능한 별명입니다.");
-							checkVal2 = true;
-						} else {
-							alert("이미사용중인 별명입니다.");
-							checkVal2 = false;
-						}
-					},
-					error : function(xhr, status, error) {
-						alert(error);
-					}
-				});
-			});
-			
-			
-			$("#myform").validate({
-				rules : {
-					id : "required",
-					password :  "required",
-					passwordCk : "required",
-					name : "required",
-					phone : "required",
-					email : "required",
-					nickname : "required"
+		$("#checkNick").on("click", function() {
 
+			var userNick = $("#nickname").val().trim();
+			if (userNick == '') {
+				alert("공란입니다");
+				return;
+			}
+
+			$.ajax({
+				type : "get",
+				url : "${checkNick}",
+				data : {
+					"userNick" : userNick
 				},
-				messages : {
-					id : "id는 필수입력",
-					name : "이름은 필수입력",
-					password : "비밀번호는 필수입력",
-					passwordCk : "비밀번호확인은 필수입력",
-					phone : "전화번호는 필수입력",
-					email : "이메일 필수입력",
-					nickname: "별명은 필수입력",
+				success : function(res) {
+					if (res == 0) {
+						alert("사용가능한 별명입니다.");
+						checkVal2 = true;
+					} else {
+						alert("이미사용중인 별명입니다.");
+						checkVal2 = false;
+					}
+				},
+				error : function(xhr, status, error) {
+					alert(error);
 				}
-
 			});
-			
-			$("#password,#passwordCk").on("keyup",function(){
-				if($("#password").val()!=$("#passwordCk").val()){
-					$("#passwordCk").css("background", "rgb(255,150,150)");
-				}
-				else{
-					$("#passwordCk").css("background", "rgb(120,255,255)");
-				}
-			})
-			
-			
-			
-			$("#email").on("keyup",function(){
-				var regEmail =/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/i;
-				if($(this).val().match(regEmail)){
-					$(this).css("background", "rgb(120,255,255)");
-				}
-				else{
-					$(this).css("background", "rgb(255,150,150)");
-				}
-			})
+		});
+
+		$("#myform").validate({
+			rules : {
+				id : "required",
+				password : "required",
+				passwordCk : "required",
+				name : "required",
+				phone : "required",
+				email : {
+					required : true,
+					email : true
+				},
+
+				nickname : "required"
+
+			},
+			messages : {
+				id : "id는 필수입력",
+				name : "이름은 필수입력",
+				password : "비밀번호는 필수입력",
+				passwordCk : "비밀번호확인은 필수입력",
+				phone : "전화번호는 필수입력",
+				email : {
+					required : "이메일 필수입력",
+					email : "이메일 양식 확인 name@domain.com"
+				},
+				nickname : "별명은 필수입력",
+			}
+
+		});
+
+		$("#password,#passwordCk").on("keyup", function() {
+			if ($("#password").val() != $("#passwordCk").val()) {
+				$("#passwordCk").css("background", "rgb(255,150,150)");
+			} else {
+				$("#passwordCk").css("background", "rgb(120,255,255)");
+			}
+		})
+
+		$("#email").on("keyup", function() {
+			var regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/i;
+			if ($(this).val().match(regEmail)) {
+				$(this).css("background", "rgb(120,255,255)");
+			} else {
+				$(this).css("background", "rgb(255,150,150)");
+			}
+		})
 	</script>
 
 </body>
