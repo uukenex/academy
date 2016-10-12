@@ -42,12 +42,12 @@
 					<!-- Inner -->
 						<div class="inner">
 							<header>
-								<h1 id="h1title"><a href="index.html" id="logo">여행을 부탁해~</a></h1>
+								<h1 id="h1title"><a href="index.html" id="logo">여행을 부탁해</a></h1>
 								<hr />
-								<p>Another fine freebie by HTML5 UP</p>
+								<p>국내 여행자들을 위한 Travel Solution</p>
 							</header>
 							<footer>
-								<a href="#banner" class="button circled scrolly">Start</a>
+								<a href="#banner" class="button circled scrolly">시작하기</a>
 							</footer>
 						</div>
 
