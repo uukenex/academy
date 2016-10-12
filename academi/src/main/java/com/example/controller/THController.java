@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.dto.Users;
-import com.example.service.UserService;
+import com.example.dto.*;
+import com.example.service.*;
 
 @Controller
 public class THController {
@@ -23,7 +23,26 @@ public class THController {
 
 	@Autowired
 	UserService us;
+	@Autowired
+	CommentService cs;
 
+	/**
+	 * 닉네임 불러오기::
+	 * user Service 에서 불러
+	 * getUserId()를 해서 사용할 것 
+	 */
+	//단일게시물 보기
+	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
+	public String noticeView(Model model,@RequestParam int commentNo) {
+		Comments c = cs.selectComment(commentNo);
+		model.addAttribute("comment",cs.selectComment(commentNo));
+		model.addAttribute("userNick",us.searchNickById(c.getUserId()));
+		
+		return "nonsession/mainnotice/notice_view";
+	}
+	
+	
+	
 	@RequestMapping("/checkId")
 	public @ResponseBody int checkId(@RequestParam String userId) {
 		return us.checkId(userId);
@@ -95,4 +114,7 @@ public class THController {
 		return "nonsession/join/joinok";
 	}
 
+
+	
+	
 }

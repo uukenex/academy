@@ -19,18 +19,25 @@ public interface UserRepo {
 
 	// 정보변경
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick);
-	
-	//후기 보기 by id
+
+	// 후기 보기 by id
 	public List<Review> selectReviewById(String userId);
-	//계획 보기 by id
+
+	// 계획 보기 by id
 	public List<Route> selectRouteById(String userId);
-	//질문 보기
+
+	// 질문 보기
 	public List<Qna> selectQnaById(String userId);
-	//답변 보기
+
+	// 답변 보기
 	public List<Answer> selectAnswerById(String userId);
-	
-	//id 중복확인
+
+	// id 중복확인
 	public int checkId(String userId);
-	//닉네임 중복확인
+
+	// 닉네임 중복확인
 	public int checkNick(String userNick);
+
+	// id로 닉네임을 찾음
+	public String searchNickById(String userId);
 }
