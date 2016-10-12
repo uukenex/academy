@@ -51,7 +51,7 @@
 	}
 </style>
 <body>
-	<sform:form action="#" method="post" modelAttribute="Users">
+	<sform:form action="./loginUser" method="post" modelAttribute="Users">
 		<fieldset>
 			<legend align="center">
 				<img id="logo" src="<%=request.getContextPath() %>/join_icons/jackpot.jpg">
@@ -65,7 +65,7 @@
 				<br/>
 			</div>
 			<div id="banner">
-				<input type="button" class="button1" value="LOGIN">
+				<input type="submit" class="button1" value="LOGIN">
 				<input type="button" class="button1" value="회원가입">
 				<br/>
 			</div>
