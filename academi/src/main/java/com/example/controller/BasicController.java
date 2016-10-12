@@ -29,12 +29,12 @@ public class BasicController {
 		return "nonsession/join/id_check";
 	}
 
-	@RequestMapping(value = "/mainpage", method = RequestMethod.GET)
+	@RequestMapping("/mainpage")
 	public String mainpage(Model model) {
 		return "nonsession/mainpage/mainpage2";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping("/login")
 	public String login(Model model) {
 		return "nonsession/login/login";
 	}

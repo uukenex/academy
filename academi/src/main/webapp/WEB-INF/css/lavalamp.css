@@ -21,7 +21,7 @@ h1 {
 }
 
 #page-wrap {
-	width: 960px;
+	width: 100%;
 	margin: 30px auto;
 	padding: 3em;
 	background: #fff;
