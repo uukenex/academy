@@ -87,6 +87,14 @@ fieldset {
 						placeholder="전화번호 입력" class="inputTextStyle"></td>
 				</tr>
 				<tr>
+					<th><label for="email" class="inputLabel"> <img
+							alt="emailIcon"
+							src="<%=request.getContextPath()%>/join_icons/email_size_tag.png">
+					</label></th>
+					<td><input type="email" id="email" name="email"
+						placeholder="이메일 입력 " class="inputTextStyle"></td>
+				</tr>
+				<tr>
 					<th><label for="nickname" class="inputLabel"> <img
 							alt="NicknameIcon"
 							src="<%=request.getContextPath()%>/join_icons/nickname_size_tag.png">
