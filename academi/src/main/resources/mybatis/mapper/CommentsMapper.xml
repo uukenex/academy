@@ -5,9 +5,11 @@
 
 <mapper namespace="com.example.CommentMapper">
 	<!-- 단일 게시글 보기 -->
-	<select id="select" parameterType="int" resultMap="commentsBase">
+	<select id="select" parameterType="int" resultMap="commentsUsers">
 		select * from
-		comments where comment_no= #{commentNo}
+		comments c
+		join users u on u.user_id=c.user_id
+		 where comment_no= #{commentNo}
 	</select>
 	<!-- 게시글 쓰기(공지사항:관리자) 분류별 필요 -->
 	<insert id="insert" parameterType="Map">
@@ -29,10 +31,11 @@
 		comment_no=#{commentNo}
 	</delete>
 	<!-- 페이지당 리스트를 보여줌(분류별로 해야할듯) -->
-	<select id="selectList" parameterType="Map" resultMap="commentsBase">
+	<select id="selectList" parameterType="Map" resultMap="commentsUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments where
+		(select * from comments c
+		join users u on u.user_id=c.user_id where
 		comment_category=#{commentCategory} order by
 		comment_no desc) sub)
 		where
@@ -41,10 +44,11 @@
 
 
 	<!-- 페이지당 리스트를 보여줌(분류별/이름/검색 ) -->
-	<select id="searchListByName" parameterType="Map" resultMap="commentsBase">
+	<select id="searchListByName" parameterType="Map" resultMap="commentsUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments
+		(select * from comments c
+		join users u on u.user_id=c.user_id
 		where
 		comment_category=#{commentCategory}
 		and comment_name like
@@ -56,10 +60,11 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
-	<select id="searchListByContent" parameterType="Map" resultMap="commentsBase">
+	<select id="searchListByContent" parameterType="Map" resultMap="commentsUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from comments
+		(select * from comments c
+		join users u on u.user_id=c.user_id
 		where
 		comment_category=#{commentCategory}
 		and comment_content like
@@ -71,7 +76,7 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
-	<select id="searchListByNick" parameterType="Map" resultMap="commentsBase">
+	<select id="searchListByNick" parameterType="Map" resultMap="commentsUsers">
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from comments c
@@ -95,6 +100,9 @@
 		where comment_no = #{commentNo}
 	</update>
 
+<select id="pageCount" resultType="int" parameterType="String">
+select count(*) from comments where comment_category=#{commentCategory}</select>
+
 	<resultMap type="comments" id="commentsBase">
 		<id column="comment_no" property="commentNo" />
 		<result column="comment_category" property="commentCategory" />
@@ -104,4 +112,10 @@
 		<result column="comment_count" property="commentCount" />
 		<result column="user_id" property="userId" />
 	</resultMap>
+	
+	<resultMap type="comments" id="commentsUsers" extends="commentsBase">
+		<association property="users" column="user_id" javaType="users"
+			resultMap="com.example.UserMapper.usersBase"></association>
+	</resultMap>
+	
 </mapper>

@@ -36,4 +36,17 @@ public class ReviewReply implements Serializable {
 	/** 사용자. */
 	private String userId;
 
+	private Users users;
+
+	public ReviewReply(Integer replyNo, String replyContent, Date replyDate, Integer replyReviewNo, String userId) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
+		this.replyReviewNo = replyReviewNo;
+		this.userId = userId;
+	}
+	
+	
+	
 }

@@ -37,4 +37,16 @@ public class CommentReply implements Serializable {
 	/** 사용자. */
 	private String userId;
 
+	private Users users;
+
+	public CommentReply(Integer replyNo, String replyContent, Date replyDate, Integer replyCommentNo, String userId) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
+		this.replyCommentNo = replyCommentNo;
+		this.userId = userId;
+	}
+	
+	
 }

@@ -85,7 +85,7 @@ fieldset {
 							alt="PhoneIcon"
 							src="<%=request.getContextPath()%>/join_icons/phone_size_tag.png">
 					</label></th>
-					<td><input type="tel" id="phone" name="phone"
+					<td><input type="text" id="phone" name="phone"
 						placeholder="전화번호 입력" class="inputTextStyle"></td>
 				</tr>
 				<tr>
@@ -200,7 +200,10 @@ fieldset {
 				password : "required",
 				passwordCk : "required",
 				name : "required",
-				phone : "required",
+				phone : {
+					required : true,
+					number : true
+				},
 				email : {
 					required : true,
 					email : true
@@ -214,7 +217,10 @@ fieldset {
 				name : "이름은 필수입력",
 				password : "비밀번호는 필수입력",
 				passwordCk : "비밀번호확인은 필수입력",
-				phone : "전화번호는 필수입력",
+				phone : {
+					required : "전화번호는 필수입력",
+					number : "전화번호 양식확인 01000000000"
+				},
 				email : {
 					required : "이메일 필수입력",
 					email : "이메일 양식 확인 name@domain.com"
@@ -234,15 +240,15 @@ fieldset {
 
 		$("#email").on("keyup", function() {
 			var regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/i;
-			if ($(this).val().match(regEmail)) {
+			if ($(this).val().trim().match(regEmail)) {
 				$(this).css("background", "rgb(120,255,255)");
 			} else {
 				$(this).css("background", "rgb(255,150,150)");
 			}
 		})
 		$("#phone").on("keyup", function() {
-			var regPhone = /[^0-9]/gi;
-			if ($(this).val().match(regPhone)) {
+			var regPhone = /^((010))[0-9]{8}$/;
+			if ($(this).val().trim().match(regPhone)) {
 				$(this).css("background", "rgb(120,255,255)");
 			} else {
 				$(this).css("background", "rgb(255,150,150)");

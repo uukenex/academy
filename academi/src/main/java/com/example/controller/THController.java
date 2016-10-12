@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.dto.*;
-import com.example.service.*;
+import com.example.dto.Comments;
+import com.example.dto.Users;
+import com.example.model.UserNick;
+import com.example.service.CommentService;
+import com.example.service.UserService;
 
 @Controller
 public class THController {
@@ -41,28 +46,91 @@ public class THController {
 	}
 
 	/**
-	 * 리스트에서의 닉네임불러오기::for문으로 돌려서 searchNickById 하면됩니다.
+	 * 리스트에서의 닉네임불러오기::
+	 * for문으로 돌려서 searchNickById 하면됩니다.
 	 */
-	// 공지사항 보기
+	// 공지사항 리스트 보기
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String notice(Model model, @RequestParam int page) {
+	public String notice(Model model, @RequestParam int page, HttpSession session) {
 		List<Comments> c = cs.noticeListByPage(page);
-		for (int i = 0; i < c.size(); i++) {
-			model.addAttribute("userNick", us.searchNickById(c.get(i).getUserId()));
-		}
+		//객체와 닉네임 리스트를 넣을 맵
+		Map<String,Object> map = new HashMap<>();
+		
 		model.addAttribute("comments", c);
+		
+		
+		
+		int totalPage = cs.noticePageCount() / 10 + 1;
+		if (cs.noticePageCount() % 10 == 0) {
+			totalPage -= 1;
+		}
+		if (cs.noticePageCount() == 0) {
+			totalPage = 0;
+		}
+		logger.trace("{}", totalPage);
+		model.addAttribute("totalPage", totalPage);
 		return "nonsession/mainnotice/notice";
 	}
 
+	
+	
+	
+	
 	// 공지사항 수정창으로 넘어가기
-		@RequestMapping(value = "/noticeUpdate", method = RequestMethod.POST)
-		public String noticeUpdate(Model model,HttpServletRequest request) {
-			String commentNo = request.getParameter("commentNo");
-			Comments c = cs.selectComment(Integer.parseInt(commentNo));
-			model.addAttribute("comments", c);
-			model.addAttribute("userNick", us.searchNickById(c.getUserId()));
-			return "session/mainnotice/notice_change";
+	@RequestMapping(value = "/session/noticeUpdate", method = RequestMethod.POST)
+	public String noticeUpdate(Model model, HttpServletRequest request) {
+		String commentNo = request.getParameter("commentNo");
+		Comments c = cs.selectComment(Integer.parseInt(commentNo));
+
+		model.addAttribute("comment", c);
+		model.addAttribute("userNick", us.searchNickById(c.getUserId()));
+		return "session/mainnotice/notice_change";
+	}
+
+	// 공지 삭제
+	@RequestMapping(value = "/commentDelete", method = RequestMethod.POST)
+	public String commentDelete(Model model, HttpServletRequest request, HttpSession session) {
+		String commentNo = request.getParameter("commentNo");
+		int result = cs.deleteComment(Integer.parseInt(commentNo));
+		if (result == 1) {
+			session.setAttribute("message", "정상 삭제 완료");
 		}
+		return "redirect:/notice?page=1";
+	}
+
+	// 공지 수정하기
+	@RequestMapping(value = "/commentUpdate", method = RequestMethod.POST)
+	public String commentUpdate(Model model, HttpServletRequest request) {
+		String commentNo = request.getParameter("commentNo");
+		String commentName = request.getParameter("TITLE");
+		String commentContent = request.getParameter("CONTENTS");
+		cs.updateComment(Integer.parseInt(commentNo), commentName, commentContent);
+		return "redirect:/noticeView?commentNo=" + commentNo;
+	}
+
+	// 공지 쓰기 페이지로 넘어감
+	@RequestMapping(value = "/session/noticeWrite", method = RequestMethod.GET)
+	public String noticeWrtie(Model model) {
+		return "session/mainnotice/notice_sign";
+	}
+
+	// 공지 쓰기
+	@RequestMapping(value = "/commentWrite", method = RequestMethod.POST)
+	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
+		String commentName = request.getParameter("title");
+		String commentContent = request.getParameter("content");
+		String userId = session.getAttribute("userId").toString();
+		cs.writeNoticeComment(commentName, commentContent, userId);
+		return "redirect:/notice?page=1";
+	}
+
+	// 쓰던 메인
+	@RequestMapping("/mainpage2")
+	public String mainpage(Model model) {
+		return "nonsession/mainpage/mainPage";
+	}
+
+	
 	
 	
 	
@@ -84,7 +152,7 @@ public class THController {
 			HttpSession session) {
 		logger.trace("joinOk controller ");
 		String msg = null;
-		Users user = new Users(id, password, name, email, phone, nickname);
+		Users user = new Users(id.trim(), password, name, email.trim(), phone.trim(), nickname);
 		int result = us.joinUser(user);
 		if (result == 1) {
 			msg = "회원가입을 축하드립니다. " + name + "님";
@@ -92,7 +160,7 @@ public class THController {
 			msg = "모종의 사유로 실패하였습니다." + "<br> 관리자에게 문의해주세요";
 		}
 		session.setAttribute("message", msg);
-
+		session.setAttribute("Users", user);
 		return "redirect:/autoLogin";
 	}
 

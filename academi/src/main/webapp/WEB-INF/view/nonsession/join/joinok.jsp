@@ -17,6 +17,7 @@
 	<script>
 		$(document).on("ready", function() {
 			alert("${message }");
+			<% session.removeAttribute("message");%>
 			window.opener.location.reload();
 			self.close();
 		})

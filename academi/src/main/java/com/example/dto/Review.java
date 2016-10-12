@@ -43,4 +43,20 @@ public class Review implements Serializable {
 	/** 사용자. */
 	private String userId;
 
+	private Users users;
+
+	public Review(Integer reviewNo, String reviewTitle, String reviewContent, Date reviewDate, Integer reviewStar,
+			Integer reviewCount, Integer routeNo, String userId) {
+		super();
+		this.reviewNo = reviewNo;
+		this.reviewTitle = reviewTitle;
+		this.reviewContent = reviewContent;
+		this.reviewDate = reviewDate;
+		this.reviewStar = reviewStar;
+		this.reviewCount = reviewCount;
+		this.routeNo = routeNo;
+		this.userId = userId;
+	}
+	
+	
 }

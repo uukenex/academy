@@ -11,7 +11,9 @@
 <title>게시글 상세보기</title>
 </head>
 <body>
+
 <form action="/noticeUpdate" method="post">
+>>>>>>> branch 'master' of https://github.com/uukenex/academy.git
 	<table class="board_view" border="1">
 		<colgroup>
 			<col width="15%" />
@@ -29,6 +31,22 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
+<<<<<<< HEAD
+				<input type="hidden" name="userId" value="${comment.userId }" />
+				
+				<td>${userNick}(${comment.userId })</td>
+				<th scope="row">작성일</th>
+				<td><fmt:formatDate value="${comment.commentDate}"
+						pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}</td>
+			</tr>
+			<tr>
+				<th scope="row">Content</th>
+				<td colspan="3">${comment.commentContent}</td>
+			</tr>
+			<tr align="right">
+				<td colspan="4"><input type="button" value="목록으로" id="listview">
+					<input type="submit" value="수정하기"></td>
+=======
 				<td>${userNick}</td>
 				<th scope="row">작성일</th>
 				<td><fmt:formatDate value="${comment.commentDate}"
@@ -41,6 +59,7 @@
 			<tr align="right">
 				<td colspan="4"><input type="button" value="목록으로" id="listview">
 					<input type="submit" value="수정하기" id="update"></td>
+>>>>>>> branch 'master' of https://github.com/uukenex/academy.git
 					
 			</tr>
 		</tbody>

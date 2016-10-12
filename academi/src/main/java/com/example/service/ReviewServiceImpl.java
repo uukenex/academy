@@ -19,9 +19,8 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewReplyRepo rrrepo;
 
 	// 후기글 보기
-	@Transactional
+	
 	public Review selectReview(int reviewNo) {
-		rrepo.updateReviewCount(reviewNo);
 		return rrepo.selectReview(reviewNo);
 	}
 
@@ -78,5 +77,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int updateStar(int reviewNo) {
 		return rrepo.updateStar(reviewNo);
+	}
+
+	@Override
+	public int count(int reviewNo) {
+		return rrepo.updateReviewCount(reviewNo);
+		
 	}
 }

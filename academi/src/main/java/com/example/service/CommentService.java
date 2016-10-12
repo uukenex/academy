@@ -5,6 +5,15 @@ import java.util.List;
 import com.example.dto.Comments;
 
 public interface CommentService {
+	// 분류별 총 게시물 수(공지사항)
+	public int noticePageCount();
+
+	// 분류별 총 게시물 수(자유게시판)
+	public int freePageCount();
+
+	// 카운트 올리기
+	public int count(int commentNo);
+
 	// 단일 게시글 보기
 	public Comments selectComment(int commentNo);
 

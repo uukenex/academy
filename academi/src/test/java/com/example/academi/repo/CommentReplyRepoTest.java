@@ -35,7 +35,7 @@ public class CommentReplyRepoTest {
 	@Test
 	public void insertTest() {
 		String replyContent = "고양이";
-		int replyCommentNo=2;
+		int replyCommentNo=23;
 		String userId="dd";
 		int result = crrepo.insertReply(replyContent, replyCommentNo, userId);
 		assertThat(result, is(notNullValue()));
@@ -44,7 +44,7 @@ public class CommentReplyRepoTest {
 	//특정 게시글의 전체 댓글 확인 테스트
 	@Test
 	public void selectTest() {
-		List<CommentReply> result=crrepo.selectReplyList(2);
+		List<CommentReply> result=crrepo.selectReplyList(23);
 	}
 	//댓글번호로 삭제
 	@Test

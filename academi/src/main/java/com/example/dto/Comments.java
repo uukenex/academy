@@ -41,5 +41,21 @@ public class Comments implements Serializable {
 	private Integer commentCount;
 	/** 사용자. */
 	private String userId;
+	
+	private Users users;
+	
+	public Comments(Integer commentNo, String commentCategory, String commentName, String commentContent,
+			Date commentDate, Integer commentCount, String userId) {
+		super();
+		this.commentNo = commentNo;
+		this.commentCategory = commentCategory;
+		this.commentName = commentName;
+		this.commentContent = commentContent;
+		this.commentDate = commentDate;
+		this.commentCount = commentCount;
+		this.userId = userId;
+	}
 
+	
+	
 }

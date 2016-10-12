@@ -5,9 +5,10 @@
 
 <mapper namespace="com.example.ReviewMapper">
 	<!-- 단일 후기글 보기 -->
-	<select id="select" parameterType="int" resultMap="reviewBase">
+	<select id="select" parameterType="int" resultMap="reviewUsers">
 		select * from
-		review where review_no= #{reviewNo}
+		review r 
+		join users u on u.user_id=r.user_id where review_no= #{reviewNo}
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
@@ -32,12 +33,13 @@
 	</delete>
 
 	<!-- 한페이지에 4x4 인데 4x1은 추천이 높은것을 띄워줌 -->
-	<select id="starReview" resultMap="reviewBase">
+	<select id="starReview" resultMap="reviewUsers">
 		select *
 		from(select
 		sub.*,rownum
 		rnum from
-		(select * from review
+		(select * from review r 
+		join users u on u.user_id=r.user_id
 		order by
 		review_star desc)
 		sub)
@@ -47,10 +49,11 @@
 
 
 	<!-- 페이지당 리스트를 보여줌 3x4니까 12개를 보여줘야함 -->
-	<select id="selectList" parameterType="int" resultMap="reviewBase">
+	<select id="selectList" parameterType="int" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review
+		(select * from review r 
+		join users u on u.user_id=r.user_id
 		order by
 		review_no desc) sub)
 		where rnum between #{page}*12-11 and #{page}*12
@@ -58,10 +61,11 @@
 
 
 	<!-- 페이지당 리스트를 보여줌(분류별/이름/검색 ) -->
-	<select id="searchListByName" parameterType="Map" resultMap="reviewBase">
+	<select id="searchListByName" parameterType="Map" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review
+		(select * from review r 
+		join users u on u.user_id=r.user_id
 		where
 		review_title like #{reviewTitle}
 		order by review_no desc) sub)
@@ -70,10 +74,11 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
-	<select id="searchListByContent" parameterType="Map" resultMap="reviewBase">
+	<select id="searchListByContent" parameterType="Map" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review
+		(select * from review r 
+		join users u on u.user_id=r.user_id
 		where
 		review_content like #{reviewContent}
 		order by review_no desc) sub)
@@ -82,7 +87,7 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
-	<select id="searchListByNick" parameterType="Map" resultMap="reviewBase">
+	<select id="searchListByNick" parameterType="Map" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review r
@@ -93,6 +98,8 @@
 		by review_no desc) sub)
 		where rnum between #{page}*12-11 and #{page}*12
 	</select>
+	
+	
 	<!-- 조회수 1을 증가시킴 -->
 	<update id="countUpdate" parameterType="int">
 		update review set
@@ -120,4 +127,10 @@
 		<result column="route_no" property="routeNo" />
 		<result column="user_id" property="userId" />
 	</resultMap>
+	
+	<resultMap type="review" id="reviewUsers" extends="reviewBase">
+		<association property="users" column="user_id" javaType="users"
+			resultMap="com.example.UserMapper.usersBase"></association>
+	</resultMap>
+	
 </mapper>

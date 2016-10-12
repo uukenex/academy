@@ -91,9 +91,10 @@ public class UserRepoTest {
 		String userId = "dd";
 		List<Review> review = urepo.selectReviewById(userId);
 		assertThat(review, is(notNullValue()));
+		
 	}
 
-	// 내 후기보기 테스트
+	// 내 질문보기 테스트
 	@Test
 	public void selectQnaTest() {
 		String userId = "dd";
@@ -101,7 +102,7 @@ public class UserRepoTest {
 		assertThat(review, is(notNullValue()));
 	}
 
-	// 내 후기보기 테스트
+	// 내 답변보기 테스트
 	@Test
 	public void selectAnswerTest() {
 		String userId = "dd";

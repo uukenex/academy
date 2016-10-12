@@ -129,4 +129,9 @@ public class CommentServiceTest {
 		String userNick = "닉";
 		cService.freeSearchNickListByPage(userNick, page);
 	}
+	
+	@Test
+	public void paging() {
+		cService.noticePageCount();
+	}
 }

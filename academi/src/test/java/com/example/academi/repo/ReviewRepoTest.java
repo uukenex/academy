@@ -35,6 +35,7 @@ public class ReviewRepoTest {
 		Review result = rrepo.selectReview(2);
 		logger.trace("객체:{}", result);
 		assertThat(result, is(notNullValue()));
+		logger.trace("원하는 정보 : {}",rrepo.selectReview(2).getUsers().getUserNick());
 	}
 
 	// 후기글 쓰기 테스트

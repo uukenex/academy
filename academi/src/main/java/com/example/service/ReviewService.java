@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.dto.Review;
 
 public interface ReviewService {
+	public int count(int reviewNo);
 	// 후기글 보기
 	public Review selectReview(int reviewNo);
 

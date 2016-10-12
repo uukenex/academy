@@ -35,4 +35,16 @@ public class Answer implements Serializable {
 	/** 사용자. */
 	private String userId;
 
+	private Users users;
+
+	public Answer(Integer answerNo, String answerContent, Date answerDate, Integer qnaNo, String userId) {
+		super();
+		this.answerNo = answerNo;
+		this.answerContent = answerContent;
+		this.answerDate = answerDate;
+		this.qnaNo = qnaNo;
+		this.userId = userId;
+	}
+	
+	
 }

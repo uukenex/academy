@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,8 +10,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 </head>
 <body>
+
 	<h2>자유 게시판</h2>
-	<form action="./boardsign">
+	<form action="/session/noticeWrite">
 		<table style="border: 1px solid #ccc">
 			<colgroup>
 				<col width="*" />
@@ -25,20 +27,50 @@
 				<th scope="col">작성일</th>
 				<th scope="col">조회수</th>
 			</tr>
-			<c:forEach var="comment" items="${comments }">
+			<c:forEach var="comment" items="${comments }" >
+			
 				<tr>
-					<td>
-					<a href="noticeView?commentNo=${comment.commentNo} ">${comment.commentName }</a></td>
-					<td>${userNick}</td>
+					<td><a href="noticeView?commentNo=${comment.commentNo} ">${comment.commentName }</a></td>
+					
+					
+					<td> ${comment.userNick}</td>
 					<td><fmt:formatDate value="${comment.commentDate }"
 							pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate }</td>
 					<td>${comment.commentCount }</td>
-					<!--  <td colspan="4">조회된 결과가 없습니다.</td>-->
 				</tr>
 			</c:forEach>
+			<c:if test="${totalPage ==0}">
+				<td colspan="4">조회된 결과가 없습니다.</td>
+			</c:if>
 		</table>
-		<input type="submit" value="글쓰기">
+		<input type="submit" value="글쓰기" >
+
+<input type="button" id="logout" value="logout"/>
+		<%!int i;%>
+		<%
+			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+		%>
+		<a href="/notice?page=<%=i%>"><%=i%> </a>
+		<%
+			}
+		%>
 	</form>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script>
+		$(document).on("ready", function() {
+			if ("${message}" != null && "${message}" != ("")) {
+				alert("${message}");
+	<%session.removeAttribute("message");%>
+		}
+		})
+		
+		$("#logout").on("click",function(){
+			alert("${Users} 로그아웃 시도");
+			<%session.removeAttribute("Users");%>
+			alert("로그아웃성공");
+		})
+	</script>
+
 </body>
 </html>
 

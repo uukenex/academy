@@ -11,7 +11,7 @@
 <div style="width:600px;">
 <div style="float:right;">
 
-
+<form method="post" action="/commentWrite">
 <table border="1">
  <tr>
   <td>제목</td>
@@ -29,11 +29,12 @@
  </tr>
  <tr align="right">
   <td colspan="2" >
-   <input type="button" name="Submit" value="쓰기" onclick="form_check();">
+   <input type="submit" name="Submit" value="쓰기" >
    <input type="button" name="Submit2" value="취소" onclick="history.back();">
   </td>
  </tr>
 </table>
+</form>
 </div>
 </div>
 

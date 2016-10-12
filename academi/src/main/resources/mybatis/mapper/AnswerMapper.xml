@@ -5,9 +5,10 @@
 
 <mapper namespace="com.example.AnswerMapper">
 	<!--특정 질문글번호로 되어있는 답변목록 조회 list -->
-	<select id="select" parameterType="int" resultMap="answerBase">
-		select * from
-		answer where qna_no=#{qnaNo}
+	<select id="select" parameterType="int" resultMap="answerUsers">
+		select * from answer a
+		join users u on u.user_id = a.user_id 
+		 where qna_no=#{qnaNo}
 	</select>
 	
 	<!-- 답변 달기 기능 -->
@@ -44,5 +45,9 @@
 		<result column="answer_date" property="answerDate" />
 		<result column="qna_no" property="qnaNo" />
 		<result column="user_id" property="userId" />
+	</resultMap>
+	<resultMap type="answer" id="answerUsers" extends="answerBase">
+		<association property="users" column="user_id" javaType="users"
+			resultMap="com.example.UserMapper.usersBase"></association>
 	</resultMap>
 </mapper>

@@ -5,9 +5,10 @@
 
 <mapper namespace="com.example.QnaMapper">
 	<!-- 단일qna글 보기 -->
-	<select id="select" parameterType="int" resultMap="qnaBase">
-		select * from
-		qna where qna_no= #{qnaNo}
+	<select id="select" parameterType="int" resultMap="qnaUsers">
+		select * from qna q
+		join users u on u.user_id = q.user_id
+		where qna_no= #{qnaNo}
 	</select>
 	<!-- qna 쓰기 -->
 	<insert id="insert" parameterType="Map">
@@ -31,10 +32,11 @@
 	</delete>
 
 	<!-- 페이지당 리스트를 보여줌-->
-	<select id="selectList" parameterType="int" resultMap="qnaBase">
+	<select id="selectList" parameterType="int" resultMap="qnaUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from qna
+		(select * from qna q
+		join users u on u.user_id = q.user_id
 		order by
 		qna_no desc) sub)
 		where rnum between #{page}*10-9 and #{page}*10
@@ -42,10 +44,12 @@
 
 
 	<!-- 페이지당 리스트를 보여줌(분류별/이름/검색 ) -->
-	<select id="searchListByName" parameterType="Map" resultMap="qnaBase">
+	<select id="searchListByName" parameterType="Map" resultMap="qnaUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from qna
+		(select * from qna q
+		join
+		users u on u.user_id = q.user_id
 		where
 		qna_title like #{qnaTitle}
 		order by qna_no desc) sub)
@@ -54,7 +58,7 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
-	<select id="searchListByContent" parameterType="Map" resultMap="qnaBase">
+	<select id="searchListByContent" parameterType="Map" resultMap="qnaUsers">
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from qna q 
@@ -67,7 +71,7 @@
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/닉네임/검색 ) -->
-	<select id="searchListByNick" parameterType="Map" resultMap="qnaBase">
+	<select id="searchListByNick" parameterType="Map" resultMap="qnaUsers">
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from qna q
@@ -97,4 +101,10 @@
 		<result column="qna_count" property="qnaCount" />
 		<result column="user_id" property="userId" />
 	</resultMap>
+	
+	<resultMap type="qna" id="qnaUsers" extends="qnaBase">
+		<association property="users" column="user_id" javaType="users"
+			resultMap="com.example.UserMapper.usersBase"></association>
+	</resultMap>
+	
 </mapper>
