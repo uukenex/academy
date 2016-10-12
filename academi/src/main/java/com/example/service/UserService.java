@@ -9,7 +9,7 @@ import com.example.dto.Route;
 import com.example.dto.Users;
 
 public interface UserService {
-	// insert처리 - 회원가입 서비스
+	// insert처리 - 회원가입 서비스 . 결과가 몇개인지 리턴
 	public int joinUser(Users user);
 
 	// 로그인처리 - 로그인 서비스,사용자 모든정보 받아옴
