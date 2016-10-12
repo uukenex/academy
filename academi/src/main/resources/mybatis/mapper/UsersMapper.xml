@@ -68,7 +68,9 @@ select count(user_id) from users where user_id=#{userId}
 <select id="checkNick" parameterType="String" resultType="int">
 select count(user_nick) from users where user_nick=#{userNick}
 </select>
-
+<select id="searchNickById" parameterType="String" resultType="String">
+select user_nick from users where user_id=#{userId}
+</select>
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />
 		<result column="user_pass" property="userPass" />

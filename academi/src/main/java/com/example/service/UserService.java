@@ -40,4 +40,6 @@ public interface UserService {
 	public int checkId(String userId);
 	//닉네임 중복검색
 	public int checkNick(String userNick);
+	//id로 닉네임을 찾음
+	public String searchNickById(String userId);
 }

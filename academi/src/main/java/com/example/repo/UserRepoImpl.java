@@ -103,4 +103,10 @@ public class UserRepoImpl implements UserRepo {
 		return template.selectOne(statement,userNick);
 	}
 
+	@Override
+	public String searchNickById(String userId) {
+		String statement = NAME_SPACE+"searchNickById";
+		return template.selectOne(statement,userId);
+	}
+
 }

@@ -118,4 +118,13 @@ public class UserRepoTest {
 		assertThat(urepo.checkId("ii"),is(0));
 		assertThat(urepo.checkNick("wer"),is(0));
 	}
+	
+
+	@Test
+	public void searchNickById(){
+		String userId = "dd";
+		String userNick = "닉네임";
+		assertThat(urepo.searchNickById(userId),is(userNick));
+		assertThat(urepo.searchNickById(userId),is(userNick));
+	}
 }
