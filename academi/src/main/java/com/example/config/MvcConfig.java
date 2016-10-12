@@ -13,6 +13,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.example.interceptor.SessionInterceptor;
+
 @Configuration
 @ComponentScan("com.example.controller")
 @EnableWebMvc
@@ -44,6 +46,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 			CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 			resolver.setDefaultEncoding("utf-8");
 			return resolver;
+		}
+		@Override
+		public void addInterceptors(InterceptorRegistry registry){
+			registry.addInterceptor(new SessionInterceptor())
+			.addPathPatterns("/session","session/**");
 		}
 		
 

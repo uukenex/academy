@@ -33,8 +33,6 @@ public class JunsukController {
 		String userId=request.getParameter("id");
 		String userPass=request.getParameter("password");
 		Users user = uService.login(userId);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:login");
 		
 		if(user.getUserId().equals(userId)&&user.getUserPass().equals(userPass)){
 			logger.trace("접속완료 : {}",userId);
