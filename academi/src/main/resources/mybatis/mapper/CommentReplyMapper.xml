@@ -7,7 +7,9 @@
 	<!--특정 게시글번호로 되어있는 댓글목록 조회 list -->
 	<select id="select" parameterType="int" resultMap="commentReplyUsers">
 		select * from
-		comment_reply where reply_comment_no=#{replyCommentNo}
+		comment_reply c
+		join users u on u.user_id=c.user_id 
+		where reply_comment_no=#{replyCommentNo}
 	</select>
 	<!-- 댓글 달기 기능 -->
 	<insert id="insert" parameterType="Map">

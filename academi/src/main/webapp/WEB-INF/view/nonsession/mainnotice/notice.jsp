@@ -10,9 +10,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 </head>
 <body>
-
+<a href="index.jsp">임시홈으로</a>
 	<h2>공지 사항</h2>
-	<h3>현재 접속 id : "${Users }"</h3>
+	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 	<form action="/session/noticeWrite">
 		<table style="border: 1px solid #ccc">
 			<colgroup>

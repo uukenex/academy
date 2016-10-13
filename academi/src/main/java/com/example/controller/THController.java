@@ -22,7 +22,10 @@ import com.example.dto.Users;
 import com.example.model.UserNick;
 import com.example.service.CommentService;
 import com.example.service.UserService;
-
+/**
+ * 공지사항 ID찾기 비번찾기 회원가입
+ *
+ */
 @Controller
 public class THController {
 	static Logger logger = LoggerFactory.getLogger(THController.class);
@@ -42,8 +45,7 @@ public class THController {
 		Comments c = cs.selectComment(commentNo);
 		
 		model.addAttribute("comment", c);
-		model.addAttribute("userNick", us.searchNickById(c.getUserId()));
-
+		
 		return "nonsession/mainnotice/notice_view";
 	}
 
@@ -117,10 +119,6 @@ public class THController {
 		String commentName = request.getParameter("title");
 		String commentContent = request.getParameter("content");
 		Users u = (Users)session.getAttribute("Users");
-		logger.trace("{}",session.getAttribute("Users"));
-		logger.trace("{}",u);
-		logger.trace("{}",commentName);
-		logger.trace("{}",commentContent);
 		String userId = u.getUserId();
 		cs.writeNoticeComment(commentName, commentContent, userId);
 		return "redirect:/notice?page=1";

@@ -33,7 +33,7 @@
 
 					<input type="hidden" name="userId" value="${comment.userId }" />
 
-					<td>${userNick}(${comment.userId })</td>
+					<td>${comment.users.userNick}</td>
 					<th scope="row">작성일</th>
 					<td><fmt:formatDate value="${comment.commentDate}"
 							pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}</td>
@@ -44,7 +44,10 @@
 				</tr>
 				<tr align="right">
 					<td colspan="4"><input type="button" value="목록으로"
-						id="listview"> <input type="submit" value="수정하기"></td>
+						id="listview"> <c:if
+							test="${comment.userId==Users.userId }">
+							<input type="submit" value="수정하기">
+						</c:if></td>
 				</tr>
 			</tbody>
 		</table>
