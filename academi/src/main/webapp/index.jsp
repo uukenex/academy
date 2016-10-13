@@ -34,5 +34,7 @@
 		<br>
 		<c:url value="/findIdSuccess" var="findIdsuc" />
 		<a href="${findIdsuc }">Enter FindIDSuc Form</a>
+		<c:url value="/notice?page=1" var="notice" />
+		<a href="${notice }">공지사항 1페이지</a>
 	</body>
 </html>

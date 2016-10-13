@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,19 +28,43 @@ public class THController {
 	CommentService cs;
 
 	/**
-	 * 닉네임 불러오기::
-	 * user Service 에서 불러
-	 * getUserId()를 해서 사용할 것 
+	 * 닉네임 불러오기:: user Service 에서 불러 getUserId()를 해서 사용할 것
 	 */
-	//단일게시물 보기
+	// 단일게시물 보기
 	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
-	public String noticeView(Model model,@RequestParam int commentNo) {
+	public String noticeView(Model model, @RequestParam int commentNo) {
 		Comments c = cs.selectComment(commentNo);
-		model.addAttribute("comment",cs.selectComment(commentNo));
-		model.addAttribute("userNick",us.searchNickById(c.getUserId()));
-		
+		model.addAttribute("comment", c);
+		model.addAttribute("userNick", us.searchNickById(c.getUserId()));
+
 		return "nonsession/mainnotice/notice_view";
 	}
+
+	/**
+	 * 리스트에서의 닉네임불러오기::for문으로 돌려서 searchNickById 하면됩니다.
+	 */
+	// 공지사항 보기
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public String notice(Model model, @RequestParam int page) {
+		List<Comments> c = cs.noticeListByPage(page);
+		for (int i = 0; i < c.size(); i++) {
+			model.addAttribute("userNick", us.searchNickById(c.get(i).getUserId()));
+		}
+		model.addAttribute("comments", c);
+		return "nonsession/mainnotice/notice";
+	}
+
+	// 공지사항 수정창으로 넘어가기
+		@RequestMapping(value = "/noticeUpdate", method = RequestMethod.POST)
+		public String noticeUpdate(Model model,HttpServletRequest request) {
+			String commentNo = request.getParameter("commentNo");
+			Comments c = cs.selectComment(Integer.parseInt(commentNo));
+			model.addAttribute("comments", c);
+			model.addAttribute("userNick", us.searchNickById(c.getUserId()));
+			return "session/mainnotice/notice_change";
+		}
+	
+	
 	
 	
 	
@@ -83,38 +108,36 @@ public class THController {
 	}
 
 	@RequestMapping("/searchId")
-	public String searchId(Model model,@RequestParam String name, @RequestParam String email){
+	public String searchId(Model model, @RequestParam String name, @RequestParam String email) {
 		String msg = null;
 		List<String> result = us.SearchId(name, email);
 		if (result.isEmpty()) {
 			msg = "검색 결과가 없습니다.";
 		} else {
-			msg = "검색결과는 다음과 같습니다."+result+"";
+			msg = "검색결과는 다음과 같습니다." + result + "";
 		}
-		model.addAttribute("message",msg);
+		model.addAttribute("message", msg);
 		return "nonsession/join/joinok";
 	}
-	
+
 	// 비번찾기
 	@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
 	public String findPassword(Model model) {
 		return "nonsession/login/pw_find";
 	}
-	
+
 	@RequestMapping("/searchPass")
-	public String searchPass(Model model,@RequestParam String id,@RequestParam String name, @RequestParam String email){
+	public String searchPass(Model model, @RequestParam String id, @RequestParam String name,
+			@RequestParam String email) {
 		String msg = null;
 		String result = us.SearchPass(id, name, email);
-		if (result==null) {
+		if (result == null) {
 			msg = "검색 결과가 없습니다.";
 		} else {
-			msg = "검색결과는 다음과 같습니다."+result+"";
+			msg = "검색결과는 다음과 같습니다." + result + "";
 		}
-		model.addAttribute("message",msg);
+		model.addAttribute("message", msg);
 		return "nonsession/join/joinok";
 	}
 
-
-	
-	
 }
