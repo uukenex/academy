@@ -44,7 +44,10 @@
 				</tr>
 				<tr align="right">
 					<td colspan="4"><input type="button" value="목록으로"
-						id="listview"> <input type="submit" value="수정하기"></td>
+						id="listview"> <c:if
+							test="${comment.userId==Users.userId }">
+							<input type="submit" value="수정하기">
+						</c:if></td>
 				</tr>
 			</tbody>
 		</table>

@@ -12,7 +12,7 @@
 <body>
 
 	<h2>공지 사항</h2>
-	<h3>현재 접속 id : "${Users }"</h3>
+	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 	<form action="/session/noticeWrite">
 		<table style="border: 1px solid #ccc">
 			<colgroup>
