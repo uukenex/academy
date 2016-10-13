@@ -25,7 +25,7 @@
                     <th scope="row">작성자</th>
                     <td>
                         <input type="hidden" id="IDX" name="IDX" value="">
-                        ${userNick}
+                        ${comment.users.userNick}
                     </td>
                     <th scope="row">작성일</th>
                     
