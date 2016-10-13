@@ -2286,8 +2286,9 @@
 					}
 
 					#fancyHeader nav a[href="#fancyMenu"]:before {
-						content: '\f0c9';
-					}
+						 content: '\f0c9'; 
+						
+					} 
 
 					#fancyHeader nav a[href="#fancyMenu"]:hover {
 						background-color: rgba(255, 255, 255, 0.45);
