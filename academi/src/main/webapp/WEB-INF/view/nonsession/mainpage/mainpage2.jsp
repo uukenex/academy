@@ -86,111 +86,36 @@
 						</nav>
 
 				</div>
-
+ 
 			<!-- Banner -->
 				<section id="banner">
 					<header>
-						<h2>여기서부터는 !!!<strong>사진 슬라이드!</strong>.</h2>
+						<!-- <h2>여기서부터는 !!!<strong>사진 슬라이드!</strong>.</h2>
 						<p>
 							각 사진마다 자세히 보기 가능!
-						</p>
+						</p> -->
+						
+						<!-- Image Slider -->
+					
+						<div class="sliderContainer">
+    						<div id="slides">
+      							<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="">
+     							<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="">
+     							<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="">
+      							<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="">
+      							<a href="#" class="slidesjs-previous slidesjs-navigation">
+      								<i class="icon-chevron-left icon-large"></i>
+      							</a>
+      							<a href="#" class="slidesjs-next slidesjs-navigation">
+      								<i class="icon-chevron-right icon-large"></i>
+      							</a>
+    						</div>
+  						</div>
 					</header>
 				</section>
-
-			<%-- <!-- Carousel -->
-				<section class="carousel">
-					<div class="reel">
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/pics06.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/route01.jpg" alt="" />
-							</a>
-						</article>
-
-						<article>
-							<a href="#" class="image featured">
-								<img src="<%=request.getContextPath() %>/images/route02.jpg" alt="" />
-							</a>
-						</article>
-						
-					</div>
-				</section> --%>
   				
 			<!-- Main -->
 				<div class="wrapper style2">
-					
-					<!-- Image Slider -->
-			
-					<div class="sliderContainer">
-    					<div id="slides">
-      						<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="">
-     						<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="">
-     						<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="">
-      						<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="">
-      						<a href="#" class="slidesjs-previous slidesjs-navigation">
-      							<i class="icon-chevron-left icon-large"></i>
-      						</a>
-      						<a href="#" class="slidesjs-next slidesjs-navigation">
-      							<i class="icon-chevron-right icon-large"></i>
-      						</a>
-    					</div>
-  					</div>
-
-					<article id="main" class="container special">
-						<a href="#" class="image featured">
-						</a>
-						<header>
-							<h2><a href="#">Sed massa imperdiet magnis</a></h2>
-							<p>
-								Sociis aenean eu aenean mollis mollis facilisis primis ornare penatibus aenean. Cursus ac enim
-								pulvinar curabitur morbi convallis. Lectus malesuada sed fermentum dolore amet.
-							</p>
-						</header>
-						<p>
-							Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa
-							posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus
-							sit arcu sociis. Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam
-							mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan
-							lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum
-							consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue
-							interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia
-							natoque aenean scelerisque.
-						</p>
-						<footer>
-							<a href="#" class="button">Continue Reading</a>
-						</footer>
-					</article>
-
 				</div>
 
 			<!-- Features -->
@@ -198,41 +123,12 @@
 
 					<section id="features" class="container special">
 						<header>
-							<h2>Morbi ullamcorper et varius leo lacus</h2>
-							<p>Ipsum volutpat consectetur orci metus consequat imperdiet duis integer semper magna.</p>
+							<h2>여기서 부터는 추천 후기 순으로 띄워주는 Part</h2>
+							<p>우아아아앙 이거 구현하고 나면 header, footer 나누면 된다아아</p>
 						</header>
-						<div class="row">
-							<article class="4u 12u(mobile) special">
-								<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Gravida aliquam penatibus</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-							<article class="4u 12u(mobile) special">
-								<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-							<article class="4u 12u(mobile) special">
-								<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Magna laoreet et aliquam</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-						</div>
+						
+						<!-- 추천 후기 4개 띄워주는 Code -->
+						
 					</section>
 
 				</div>
@@ -241,107 +137,6 @@
 				<div id="footer">
 					<div class="container">
 						<div class="row">
-
-							<!-- Tweets -->
-								<section class="4u 12u(mobile)">
-									<header>
-										<h2 class="icon fa-twitter circled"><span class="label">Tweets</span></h2>
-									</header>
-									<ul class="divided">
-										<li>
-											<article class="tweet">
-												Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
-												<span class="timestamp">5 minutes ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Hendrerit rutrum quisque.
-												<span class="timestamp">30 minutes ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
-												<span class="timestamp">3 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
-												<span class="timestamp">5 hours ago</span>
-											</article>
-										</li>
-									</ul>
-								</section>
-
-							<!-- Posts -->
-								<section class="4u 12u(mobile)">
-									<header>
-										<h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
-									</header>
-									<ul class="divided">
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Nisl fermentum integer</a></h3>
-												</header>
-												<span class="timestamp">3 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Phasellus portitor lorem</a></h3>
-												</header>
-												<span class="timestamp">6 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Magna tempus consequat</a></h3>
-												</header>
-												<span class="timestamp">Yesterday</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Feugiat lorem ipsum</a></h3>
-												</header>
-												<span class="timestamp">2 days ago</span>
-											</article>
-										</li>
-									</ul>
-								</section>
-
-							<!-- Photos -->
-								<section class="4u 12u(mobile)">
-									<header>
-										<h2 class="icon fa-camera circled"><span class="label">Photos</span></h2>
-									</header>
-									<div class="row 25%">
-										<div class="6u">
-											<a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
-										</div>
-										<div class="6u$">
-											<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
-										</div>
-										<div class="6u">
-											<a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
-										</div>
-										<div class="6u$">
-											<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
-										</div>
-										<div class="6u">
-											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
-										</div>
-										<div class="6u$">
-											<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
-										</div>
-									</div>
-								</section>
 
 						</div>
 						<hr />
@@ -400,23 +195,15 @@
       					$('#slides').slidesjs({
         					width: 940,
        						height: 528,
-        					navigation: false,
-        					
-        					start: 2,
+       						navigation: false,
+        					start: 1,
         					pagination: {
         						active: true
-        					},
-        					effect: {
-        						slide: {
-        							speed: 100
-        						},
-        						fade: {
-        							speed: 300
-        						}
         					},
         					play: {
         						active: true,
         						auto: true,
+        						interval: 4000,
         						swap: true
         					}
      					});
