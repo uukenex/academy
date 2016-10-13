@@ -38,7 +38,9 @@ public class THController {
 	// 단일게시물 보기
 	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
 	public String noticeView(Model model, @RequestParam int commentNo) {
+		cs.count(commentNo);
 		Comments c = cs.selectComment(commentNo);
+		
 		model.addAttribute("comment", c);
 		model.addAttribute("userNick", us.searchNickById(c.getUserId()));
 
@@ -47,27 +49,22 @@ public class THController {
 
 	/**
 	 * 리스트에서의 닉네임불러오기::
-	 * for문으로 돌려서 searchNickById 하면됩니다.
+	 * for each에서  comments.users.userNick 하면됩니다.
 	 */
 	// 공지사항 리스트 보기
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
 	public String notice(Model model, @RequestParam int page, HttpSession session) {
 		List<Comments> c = cs.noticeListByPage(page);
-		//객체와 닉네임 리스트를 넣을 맵
-		Map<String,Object> map = new HashMap<>();
-		
 		model.addAttribute("comments", c);
 		
-		
-		
-		int totalPage = cs.noticePageCount() / 10 + 1;
-		if (cs.noticePageCount() % 10 == 0) {
+		int noticePageCount = cs.noticePageCount();
+		int totalPage = noticePageCount / 10 + 1;
+		if (noticePageCount % 10 == 0) {
 			totalPage -= 1;
 		}
-		if (cs.noticePageCount() == 0) {
+		if (noticePageCount == 0) {
 			totalPage = 0;
 		}
-		logger.trace("{}", totalPage);
 		model.addAttribute("totalPage", totalPage);
 		return "nonsession/mainnotice/notice";
 	}
@@ -119,7 +116,12 @@ public class THController {
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
 		String commentName = request.getParameter("title");
 		String commentContent = request.getParameter("content");
-		String userId = session.getAttribute("userId").toString();
+		Users u = (Users)session.getAttribute("Users");
+		logger.trace("{}",session.getAttribute("Users"));
+		logger.trace("{}",u);
+		logger.trace("{}",commentName);
+		logger.trace("{}",commentContent);
+		String userId = u.getUserId();
 		cs.writeNoticeComment(commentName, commentContent, userId);
 		return "redirect:/notice?page=1";
 	}

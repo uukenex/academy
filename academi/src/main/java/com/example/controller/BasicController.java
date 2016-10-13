@@ -19,7 +19,7 @@ public class BasicController {
 		return "showMessage";
 	}
 
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	@RequestMapping("/join")
 	public String join(Model model) {
 		return "nonsession/join/join";
 	}

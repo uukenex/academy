@@ -10,7 +10,7 @@
 <body>
 <div style="width:600px;">
 <div style="float:right;">
-
+<h3>현재 접속 id : "${Users }"</h3>
 <form method="post" action="/commentWrite">
 <table border="1">
  <tr>
