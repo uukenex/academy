@@ -1,7 +1,8 @@
 package com.example.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -116,18 +116,15 @@ public class TH2Controller {
 	}
 
 	@RequestMapping(value = "/session/replyRegist", method = RequestMethod.POST)
-	public @ResponseBody String ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
+	public @ResponseBody Map<String,String> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
 			@RequestParam int commentNo, HttpSession session) {
-		
-		String data = "로그인 필요";
-		logger.trace("{}{}{}",userId,replyContent,commentNo);
+		Map<String, String> resultMap = null;
 		int result = crs.insertReply(replyContent, commentNo, userId);
 		if (result == 1) {
-			session.setAttribute("message", "정상 등록 완료");
-			data="<td>"+userId+"</td>"+"<td>"+replyContent+"</td>";
+			resultMap = new HashMap<>();
+			resultMap.put("id", userId);
+			resultMap.put("content", replyContent);
 		}
-		
-		logger.trace("{}",data);
-		return data;
+		return resultMap;
 	}
 }
