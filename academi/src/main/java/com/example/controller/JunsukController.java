@@ -49,6 +49,46 @@ public class JunsukController {
 			}
 		return returnURL;
 	}
+	@RequestMapping(value = "/domap", method = RequestMethod.GET)
+	public String domap(Model model) {
+		return "session/guide/do_map";
+	}
+	@RequestMapping(value = "/Jeollanamdo", method = RequestMethod.GET)
+	public String Jeollanamdo(Model model) {
+		return "session/guide/citymap/Jeollanam_do";
+	}
+	@RequestMapping(value = "/Jeollabukdo", method = RequestMethod.GET)
+	public String Jeollabukdo(Model model) {
+		return "session/guide/citymap/Jeollabuk_do";
+	}
+	@RequestMapping(value = "/jejudo", method = RequestMethod.GET)
+	public String jejudo(Model model) {
+		return "session/guide/citymap/jeju_do";
+	}
+	@RequestMapping(value = "/Gyeongsangnamdo", method = RequestMethod.GET)
+	public String Gyeongsangnam_do(Model model) {
+		return "session/guide/citymap/Gyeongsangnam_do";
+	}
+	@RequestMapping(value = "/Gyeongsangbukdo", method = RequestMethod.GET)
+	public String Gyeongsangbukdo(Model model) {
+		return "session/guide/citymap/Gyeongsangbuk_do";
+	}
+	@RequestMapping(value = "/gyeonggido", method = RequestMethod.GET)
+	public String gyeonggido(Model model) {
+		return "session/guide/citymap/gyeonggi_do";
+	}
+	@RequestMapping(value = "/Gangwondo", method = RequestMethod.GET)
+	public String Gangwondo(Model model) {
+		return "session/guide/citymap/Gangwon_do";
+	}
+	@RequestMapping(value = "/chungcheongnamdo", method = RequestMethod.GET)
+	public String chungcheongnamdo(Model model) {
+		return "session/guide/citymap/chungcheongnam_do";
+	}
+	@RequestMapping(value = "/chungcheongbukdo", method = RequestMethod.GET)
+	public String chungcheongbukdo(Model model) {
+		return "session/guide/citymap/chungcheongbuk_do";
+	}
 }
 		
 		

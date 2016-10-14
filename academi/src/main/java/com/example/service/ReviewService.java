@@ -19,18 +19,21 @@ public interface ReviewService {
 	public int deleteReview(int reviewNo);
 
 	// 4x4 페이지 로딩 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> reviewListByPage(int page); 
+	public List<Review> reviewListByPage(int page); 
 
 	// 이름검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByName(String reviewTitle, int page);
+	public List<Review> searchReviewByName(String reviewTitle, int page);
 
 	// 내용검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByContent(String reviewContent, int page);
+	public List<Review> searchReviewByContent(String reviewContent, int page);
 
 	// 닉네임검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByNick(String userNick, int page);
+	public List<Review> searchReviewByNick(String userNick, int page);
 	// 루트에 따른 검색도 추가해야함
 	
 	// 추천하기 기능
 	public int updateStar(int reviewNo);
+	
+	//페이지 카운트 총 게시물이 몇개인지?
+	public int pageCount();
 }

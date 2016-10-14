@@ -18,7 +18,7 @@
 			<col width="20%" />
 		</colgroup>
 		<caption>게시글 상세</caption>
-		<tbody>
+		<tbody id="tbody">
 			<input type="hidden" name="commentNo" value="${comment.commentNo }" />
 			<tr>
 				<th scope="row">제목</th>
@@ -60,9 +60,7 @@
 					<td colspan="3">${reply.replyContent }</td>
 			</tr>
 			</c:forEach>
-			<tr>
-					<input type="hidden" id="result" />
-			</tr>
+			
 		</tbody>
 	</table>
 </form>
@@ -80,17 +78,16 @@
 			data:{
 				userId:"${Users.userId}",
 				replyContent:$("#replyContent").val(),
-				commentNo:${comment.commentNo}
+				commentNo:"${comment.commentNo}"
 			},
 			success:function(res){
-				var html="";
-				$(res).each(function(idx,data){
-					html+=data;
-				})
-				$("#result").html(html);
+				alert("등록완료");
+				$("#tbody").append(	$("<tr><td>"+res.id+
+				"</td><td colspan='3'>"+res.content+
+				"</td></tr>"));
 			},
 			error:function(xhr,status,error){
-				alert(error);
+				alert("로그인이 필요합니다");
 			}
 			});
 		});

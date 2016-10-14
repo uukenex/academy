@@ -104,6 +104,14 @@ a:link, a:visited {
 		</table>
 
 	</form>
+	<%!int i;%>
+		<%
+			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+		%>
+		<a href="/free?page=<%=i%>"><%=i%> </a>
+		<%
+			}
+		%>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$(document).on("ready", function() {
