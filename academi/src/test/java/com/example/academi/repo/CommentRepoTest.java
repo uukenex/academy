@@ -29,12 +29,18 @@ public class CommentRepoTest {
 	@Autowired
 	CommentRepo crepo;
 
+	@Test
+	public void pageCountTest() {
+		int result = crepo.pageCount("공지사항");
+		logger.trace("{}",result);
+		assertThat(result, is(18));
+		
+	}
+
 	// 글 하나 조회 테스트
 	@Test
 	public void SelectTest() {
-		Comments result = crepo.selectComment(8);
-		logger.trace("객체:{}", result);
-		assertThat(result, is(notNullValue()));
+		Comments result = crepo.selectComment(23);
 	}
 
 	// 글 쓰기 테스트
@@ -78,7 +84,7 @@ public class CommentRepoTest {
 	// 이름검색 테스트
 	@Test
 	public void searchNameTest() {
-		String commentName = "사항";
+		String commentName = "ㅋㅋ";
 		int page = 1;
 		String commentCategory = "공지사항";
 		List<Comments> result = crepo.searchCommentByNameOfPage(commentName, commentCategory, page);
@@ -88,7 +94,7 @@ public class CommentRepoTest {
 	// 이름검색 테스트
 	@Test
 	public void searchContentTest() {
-		String commentContent = "태풍";
+		String commentContent = "ㅋㅋ";
 		int page = 1;
 		String commentCategory = "공지사항";
 		List<Comments> result = crepo.searchCommentByContentOfPage(commentContent, commentCategory, page);

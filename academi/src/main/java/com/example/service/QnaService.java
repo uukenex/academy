@@ -5,7 +5,9 @@ import java.util.List;
 import com.example.dto.Qna;
 
 public interface QnaService {
-	// 후기글 보기 -카운트먼저 올리고
+	//카운트 올리기
+	public int count(int qnaNo);
+	// 후기글 보기 
 	public Qna selectQna(int qnaNo);
 
 	// 후기글 쓰기

@@ -37,4 +37,17 @@ public class Qna implements Serializable {
 	/** 사용자. */
 	private String userId;
 
+	private Users users;
+
+	public Qna(Integer qnaNo, String qnaTitle, String qnaQuestion, Date qnaDate, Integer qnaCount, String userId) {
+		super();
+		this.qnaNo = qnaNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaQuestion = qnaQuestion;
+		this.qnaDate = qnaDate;
+		this.qnaCount = qnaCount;
+		this.userId = userId;
+	}
+	
+	
 }

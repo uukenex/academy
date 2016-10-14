@@ -43,8 +43,11 @@
 
 	<!-- 마이페이지 내가 작성한 후기보기 기능 -->
 	<!--후기테이블에서 내아이디로 조회 -->
-	<select id="selectReviewById" parameterType="String" resultType="review">
-		select * from review where user_id = #{userId}
+	<select id="selectReviewById" parameterType="String" resultMap="usersReview">
+		select * from review r
+		join users u on r.user_id=u.user_id
+		where
+		r.user_id = #{userId}
 	</select>
 	<!-- 마이페이지 내가 작성한 경로보기 기능 -->
 	<!--경로테이블에서 내아이디로 조회 -->
@@ -53,24 +56,26 @@
 	</select>
 	<!-- 마이페이지 내가 작성한 질문보기 기능 -->
 	<!--질문테이블에서 내아이디로 조회 -->
-	<select id="selectQnaById" parameterType="String" resultType="Qna">
+	<select id="selectQnaById" parameterType="String" resultMap="usersQna">
 		select * from qna where user_id = #{userId}
 	</select>
 	<!-- 마이페이지 내가 작성한 답변보기 기능 -->
 	<!--답변테이블에서 내아이디로 조회 -->
-	<select id="selectAnswerById" parameterType="String" resultType="Answer">
+	<select id="selectAnswerById" parameterType="String" resultMap="usersAnswer">
 		select * from answer where user_id = #{userId}
 	</select>
 
-<select id="checkId" parameterType="String" resultType="int">
-select count(user_id) from users where user_id=#{userId}
-</select>
-<select id="checkNick" parameterType="String" resultType="int">
-select count(user_nick) from users where user_nick=#{userNick}
-</select>
-<select id="searchNickById" parameterType="String" resultType="String">
-select user_nick from users where user_id=#{userId}
-</select>
+	<select id="checkId" parameterType="String" resultType="int">
+		select
+		count(user_id) from users where user_id=#{userId}
+	</select>
+	<select id="checkNick" parameterType="String" resultType="int">
+		select
+		count(user_nick) from users where user_nick=#{userNick}
+	</select>
+	<select id="searchNickById" parameterType="String" resultType="String">
+		select user_nick from users where user_id=#{userId}
+	</select>
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />
 		<result column="user_pass" property="userPass" />
@@ -78,5 +83,23 @@ select user_nick from users where user_id=#{userId}
 		<result column="user_email" property="userEmail" />
 		<result column="user_phone" property="userPhone" />
 		<result column="user_nick" property="userNick" />
+	</resultMap>
+
+	<resultMap type="users" id="usersReview" extends="usersBase">
+		<association property="review" column="user_id" javaType="review"
+			resultMap="com.example.ReviewMapper.reviewBase"></association>
+	</resultMap>
+
+	<!-- //루트는 나중에 할것 -->
+
+
+	<resultMap type="users" id="usersQna" extends="usersBase">
+		<association property="qna" column="user_id" javaType="qna"
+			resultMap="com.example.QnaMapper.qnaBase"></association>
+	</resultMap>
+
+	<resultMap type="users" id="usersAnswer" extends="usersBase">
+		<association property="answer" column="user_id" javaType="answer"
+			resultMap="com.example.AnswerMapper.answerBase"></association>
 	</resultMap>
 </mapper>

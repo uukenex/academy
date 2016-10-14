@@ -37,4 +37,7 @@ public interface CommentRepo {
 
 	// 조회수 올리기 기능
 	public int updateCommentCount(int commentNo);
+	
+	// 총 게시글이 몇개인지 카운트
+	public int pageCount(String commentCategory);
 }

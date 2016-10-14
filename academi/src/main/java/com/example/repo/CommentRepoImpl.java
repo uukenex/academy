@@ -102,4 +102,10 @@ public class CommentRepoImpl implements CommentRepo {
 			
 	}
 
+	@Override
+	public int pageCount(String commentCategory) {
+		String statement = NAME_SPACE + "pageCount";
+		return template.selectOne(statement,commentCategory);
+	}
+
 }

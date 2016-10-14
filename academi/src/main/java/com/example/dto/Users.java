@@ -7,6 +7,7 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 /**
  * 사용자 모델 클래스.
@@ -40,5 +41,21 @@ public class Users implements Serializable {
 	/** 사용자_별명. */
 	private String userNick;
 
+	private Review review;
 
+	private Qna qna;
+	
+	private Answer answer;
+	
+	public Users(String userId, String userPass, String userName, String userEmail, String userPhone, String userNick) {
+		super();
+		this.userId = userId;
+		this.userPass = userPass;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userPhone = userPhone;
+		this.userNick = userNick;
+	}
+
+	
 }

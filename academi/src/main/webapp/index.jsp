@@ -34,7 +34,15 @@
 		<br>
 		<c:url value="/findIdSuccess" var="findIdsuc" />
 		<a href="${findIdsuc }">Enter FindIDSuc Form</a>
+		<br>
 		<c:url value="/notice?page=1" var="notice" />
 		<a href="${notice }">공지사항 1페이지</a>
+		<br>
+		<c:url value="/free?page=1" var="free" />
+		<a href="${free }">자유게시판 1페이지</a>
+		<br>
+		<c:url value="/mainpage2" var="m2" />
+		<a href="${m2 }">쓰던메인</a>
+		<br>
 	</body>
 </html>

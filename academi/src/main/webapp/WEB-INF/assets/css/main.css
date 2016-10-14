@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
 @import url("http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css");
+@import url("http://fonts.googleapis.com/earlyaccess/nanumpenscript.css");
 @import url("http://fonts.googleapis.com/earlyaccess/jejugothic.css");
 @import url("http://fonts.googleapis.com/earlyaccess/hanna.css");
 @import url("http://fonts.googleapis.com/earlyaccess/jejuhallasan.css");
@@ -1630,7 +1631,7 @@
 	}
 
 		a:hover {
-			color: #ef8376;
+			color: #17375E;
 			border-bottom-color: transparent;
 		}
 
@@ -1994,7 +1995,7 @@
 	.button {
 		position: relative;
 		display: inline-block;
-		background: #df7366;
+		background: #17375E;
 		color: #fff;
 		text-align: center;
 		border-radius: 0.5em;
@@ -2016,7 +2017,7 @@
 		button:hover,
 		.button:hover {
 			color: #fff;
-			background: #ef8376;
+			background: #2C69B2;
 		}
 
 		input[type="button"].alt,
@@ -2130,8 +2131,9 @@
 		}
 
 			#header header > p {
-				font-size: 1.25em;
+				font-size: 1.5em;
 				margin: 0;
+				font-family: 'Hanna';
 			}
 
 		#header h1 {
@@ -2151,8 +2153,9 @@
 			height: 4.5em;
 			line-height: 4.5em;
 			text-align: center;
-			font-size: 1.25em;
+			font-size: 1.3em;
 			padding: 0;
+			font-family: 'Jeju Hallasan';
 		}
 
 		#header hr {
@@ -2239,8 +2242,9 @@
 			}
 
 		#fancyHeader nav {
-			font-family: Raleway, Helvetica, sans-serif;
-			font-size: 0.8em;
+			/* font-family: Raleway, Helvetica, sans-serif; */
+			font-family: 'Jeju Hallasan';
+			font-size: 1em;
 			font-weight: 700;
 			height: 3em;
 			letter-spacing: 0.1em;
@@ -2249,6 +2253,7 @@
 			right: 0.7em;
 			text-transform: uppercase;
 			top: 0.7em;
+			color: #FFFFDC;
 		}
 
 			#fancyHeader nav a {
@@ -2269,7 +2274,7 @@
 					-ms-transition: background-color 0.2s ease-in-out;
 					transition: background-color 0.2s ease-in-out;
 					border-radius: 5px;
-					box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.125);
+					box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
 					padding: 0 1.35em;
 				}
 
@@ -2283,11 +2288,12 @@
 					}
 
 					#fancyHeader nav a[href="#fancyMenu"]:before {
-						content: '\f0c9';
-					}
+						 content: '\f0c9'; 
+						
+					} 
 
 					#fancyHeader nav a[href="#fancyMenu"]:hover {
-						background-color: rgba(255, 255, 255, 0.025);
+						background-color: rgba(255, 255, 255, 0.45);
 					}
 
 					#fancyHeader nav a[href="#fancyMenu"]:active {
@@ -2406,7 +2412,7 @@
 			-ms-transition: opacity 0.35s ease, -ms-transform 0.35s ease;
 			transition: opacity 0.35s ease, transform 0.35s ease;
 			-webkit-overflow-scrolling: touch;
-			background: #4c5c96;
+			background: #4287C2;
 			border-radius: 5px;
 			display: block;
 			max-width: 100%;
@@ -2418,6 +2424,7 @@
 		#fancyMenu h2 {
 			border-bottom: solid 2px rgba(255, 255, 255, 0.125);
 			padding-bottom: 1em;
+			color: #FFFFDC;
 		}
 
 		#fancyMenu .close {
@@ -2459,10 +2466,12 @@
 					line-height: 1.85em;
 					padding: 0.75em 0;
 					text-transform: uppercase;
+					color: #FFFFDC;
 				}
 
 					#fancyMenu .links li a:hover {
-						background: #45558d;
+						background: #9ABFDE;
+						color: #17375E;
 					}
 
 		@media screen and (max-width: 736px) {
@@ -2514,7 +2523,7 @@
 		padding: 0.5em 0 1.5em 0;
 		z-index: 1;
 		overflow: hidden;
-		margin-top: 2.5em;
+		margin-top: 3em;
 	}
 
 		#nav > ul {
@@ -2571,6 +2580,8 @@
 					text-decoration: none;
 					border: 0;
 					outline: 0;
+					font-size: 15pt;
+					font-family: 'Jeju Hallasan';
 				}
 
 				#nav > ul > li > ul {
@@ -2813,9 +2824,8 @@
 		.carousel article {
 			display: inline-block;
 			width: 18em;
-			background: #fff;
 			text-align: center;
-			padding: 0 1em 3em 1em;
+			padding: 0 1em 0em 1em;
 			margin: 0 2em 0 0;
 			white-space: normal;
 			opacity: 1.0;
@@ -2835,7 +2845,12 @@
 				top: 0;
 				width: auto;
 				margin-right: -2em;
-				margin-bottom: 3em;
+				margin-bottom: 0em;
+			}
+			
+			.carousel article .image img{
+				height: 300px;
+				width: 400px;
 			}
 
 			.carousel article p {
@@ -2955,7 +2970,8 @@
 				}
 
 	}
-
+	
+/* ------------------------------------------------------------------------------- */
 /* Mobile */
 
 	#navPanel, #titleBar {
@@ -3345,3 +3361,167 @@
 					}
 
 	}
+	
+	/* ---------------------------------------------------------------------------- */
+	
+	/* Image Slider CSS */
+	
+		/* #slides */
+		
+		#slides {
+      		display: none;
+    	}
+
+    	#slides .slidesjs-navigation {
+      		margin-top:5px;
+    	}
+
+    	#slides .slidesjs-previous {
+      		margin-right: 5px;
+     		float: left;
+    	}
+
+    	#slides .slidesjs-next {
+     		margin-right: 5px;
+      		float: left;
+    	}
+    	
+    	a.slidesjs-next,
+    	a.slidesjs-previous,
+    	a.slidesjs-play,
+    	a.slidesjs-stop {
+      		background-image: url("/images/btns-next-prev.png");
+      		background-repeat: no-repeat;
+      		display:block;
+      		width:12px;
+      		height:18px;
+      		overflow: hidden;
+      		text-indent: -9999px;
+      		float: left;
+      		margin-right:5px;
+    	}
+
+    	a.slidesjs-next {
+      		margin-right:10px;
+      		background-position: -12px 0;
+    	}
+
+    	a:hover.slidesjs-next {
+      		background-position: -12px -18px;
+    	}
+
+    	a.slidesjs-previous {
+      		background-position: 0 0;
+    	}
+
+    	a:hover.slidesjs-previous {
+      		background-position: 0 -18px;
+    	}
+
+    	a.slidesjs-play {
+      		width:15px;
+      		background-position: -25px 0;
+    	}
+
+    	a:hover.slidesjs-play {
+      		background-position: -25px -18px;
+    	}
+
+    	a.slidesjs-stop {
+      		width:18px;
+      		background-position: -41px 0;
+    	}
+
+    	a:hover.slidesjs-stop {
+      		background-position: -41px -18px;
+    	}
+
+    	.slidesjs-pagination {
+     		margin: 7px 0 0;
+      		float: right;
+      		list-style: none;
+    	}
+
+    	.slidesjs-pagination li {
+      		float: left;
+      		margin: 0 1px;
+    	}
+
+    	.slidesjs-pagination li a {
+      		display: block;
+      		width: 13px;
+      		height: 0;
+      		padding-top: 13px;
+      		background-image: url("/images/pagination.png");
+      		background-position: 0 0;
+      		float: left;
+      		overflow: hidden;
+    	}
+
+    	.slidesjs-pagination li a.active,
+    	.slidesjs-pagination li a:hover.active {
+      		background-position: 0 -13px
+    	}
+
+    	.slidesjs-pagination li a:hover {
+      		background-position: 0 -26px
+    	}
+
+    	#slides a:link,
+    	#slides a:visited {
+      		color: #333
+    	}
+
+    	#slides a:hover,
+    	#slides a:active {
+      		color: #9e2020
+    	}
+
+    	.navbar {
+      		overflow: hidden
+    	}
+    	
+    	#slides {
+      		display: none
+    	}
+
+    	.sliderContainer {
+      		margin: 0 auto
+    	}
+    	
+    	#slides img {
+    		height: 100%;
+    		width: 100%;
+    	}
+
+    	/* For tablets & smart phones */
+    		@media (max-width: 767px) {
+      			body {
+        			padding-left: 20px;
+        			padding-right: 20px;
+      			}
+      			.sliderContainer {
+        			width: auto
+      			}
+    		}
+
+    	/* For smartphones */
+    		@media (max-width: 480px) {
+      			.sliderContainer {
+        			width: auto
+      			}
+    		}
+
+    	/* For smaller displays like laptops */
+    		@media (min-width: 768px) and (max-width: 979px) {
+      			.sliderContainer {
+        			width: 724px
+      			}
+    		}
+
+    	/* For larger displays */
+    		@media (min-width: 1200px) {
+      			.sliderContainer {
+        			width: 1170px
+      			}
+   			 }

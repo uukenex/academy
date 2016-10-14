@@ -14,12 +14,16 @@ import com.example.repo.QnaRepo;
 public class QnaServiceImpl implements QnaService {
 	@Autowired
 	QnaRepo qrepo;
-@Autowired
-AnswerRepo arepo;
-	// 후기글 보기
-	@Transactional
+	@Autowired
+	AnswerRepo arepo;
+
+	@Override
+	public int count(int qnaNo) {
+		return qrepo.updateQnaCount(qnaNo);
+	}
+
 	public Qna selectQna(int qnaNo) {
-		qrepo.updateQnaCount(qnaNo);
+
 		return qrepo.selectQna(qnaNo);
 	}
 
@@ -37,7 +41,7 @@ AnswerRepo arepo;
 	@Transactional
 	public int deleteQna(int qnaNo) {
 		int result = arepo.deleteAnswerByQnaNo(qnaNo);
-		result =qrepo.deleteQna(qnaNo); 
+		result = qrepo.deleteQna(qnaNo);
 		return result;
 	}
 

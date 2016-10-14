@@ -17,10 +17,13 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	CommentReplyRepo crrepo;
 
+	public int count(int commentNo){
+	return crepo.updateCommentCount(commentNo);
+	}
 	// 단일 게시글 보기
 	@Override
 	public Comments selectComment(int commentNo) {
-		crepo.updateCommentCount(commentNo);
+		
 		return crepo.selectComment(commentNo);
 	}
 
@@ -98,6 +101,16 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comments> freeSearchNickListByPage(String userNick, int page) {
 		return crepo.searchCommentByNickOfPage(userNick, "자유게시판", page);
+	}
+	@Override
+	public int noticePageCount() {
+		// TODO Auto-generated method stub
+		return crepo.pageCount("공지사항");
+	}
+	@Override
+	public int freePageCount() {
+		// TODO Auto-generated method stub
+		return crepo.pageCount("자유게시판");
 	}
 
 }
