@@ -43,34 +43,59 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	// 4x4 페이지 로딩 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> reviewListByPage(int page) {
-		List<List<Review>> result = new ArrayList<>();
-		result.add(rrepo.starReview());
-		result.add(rrepo.reviewListByPage(page));
+	public List<Review> reviewListByPage(int page) {
+		List<Review> result = new ArrayList<>();
+		List<Review> r1 = rrepo.starReview();
+		List<Review> r2 = rrepo.reviewListByPage(page);
+		for(int i=0;i<r1.size();i++){
+			result.add(r1.get(i));
+		}
+		for(int i=0;i<r2.size();i++){
+			result.add(r2.get(i));
+		}
 		return result;
 	}
 
 	// 이름검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByName(String reviewTitle, int page) {
-		List<List<Review>> result = new ArrayList<>();
-		result.add(rrepo.starReview());
-		result.add(rrepo.searchReviewByName(reviewTitle, page));
+	public List<Review> searchReviewByName(String reviewTitle, int page) {
+		List<Review> result = new ArrayList<>();
+		List<Review> r1 = rrepo.starReview();
+		List<Review> r2 = rrepo.searchReviewByName(reviewTitle, page);
+		for(int i=0;i<r1.size();i++){
+			result.add(r1.get(i));
+		}
+		for(int i=0;i<r2.size();i++){
+			result.add(r2.get(i));
+		}
 		return result;
 	}
 
 	// 내용검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByContent(String reviewContent, int page) {
-		List<List<Review>> result = new ArrayList<>();
-		result.add(rrepo.starReview());
-		result.add(rrepo.searchReviewByContent(reviewContent, page));
+	public List<Review> searchReviewByContent(String reviewContent, int page) {
+		List<Review> result = new ArrayList<>();
+		List<Review> r1 = rrepo.starReview();
+		List<Review> r2 = rrepo.searchReviewByContent(reviewContent, page);
+		for(int i=0;i<r1.size();i++){
+			result.add(r1.get(i));
+		}
+		for(int i=0;i<r2.size();i++){
+			result.add(r2.get(i));
+		}
 		return result;
 	}
 
 	// 닉네임검색 추천먼저 띄우고 나머지12개를띄움
-	public List<List<Review>> searchReviewByNick(String userNick, int page) {
-		List<List<Review>> result = new ArrayList<>();
-		result.add(rrepo.starReview());
-		result.add(rrepo.searchReviewByNick(userNick, page));
+	public List<Review> searchReviewByNick(String userNick, int page) {
+		List<Review> result = new ArrayList<>();
+		List<Review> r1 = rrepo.starReview();
+		List<Review> r2 = rrepo.searchReviewByNick(userNick, page);
+		for(int i=0;i<r1.size();i++){
+			result.add(r1.get(i));
+		}
+		for(int i=0;i<r2.size();i++){
+			result.add(r2.get(i));
+		}
+		
 		return result;
 	}
 
@@ -83,5 +108,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public int count(int reviewNo) {
 		return rrepo.updateReviewCount(reviewNo);
 		
+	}
+
+	@Override
+	public int pageCount() {
+		return rrepo.pageCount();
 	}
 }

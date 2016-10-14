@@ -36,4 +36,5 @@ public interface ReviewRepo {
 	public int updateReviewCount(int reviewNo);
 	// 추천하기 기능
 	public int updateStar(int reviewNo);
+	public int pageCount();
 }

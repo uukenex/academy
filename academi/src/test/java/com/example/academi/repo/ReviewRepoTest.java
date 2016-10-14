@@ -107,4 +107,8 @@ public class ReviewRepoTest {
 	public void starTest2(){
 		rrepo.updateStar(2);
 	}
+	@Test
+	public void countingTest(){
+		rrepo.pageCount();
+	}
 }

@@ -25,7 +25,7 @@ import com.example.service.CommentService;
 import com.example.service.UserService;
 
 /**
- * 자유게시판
+ * 자유게시판 ,댓글 ajax
  *
  */
 @Controller

@@ -82,7 +82,9 @@
 			},
 			success:function(res){
 				alert("등록완료");
-				$("#tbody").append($("<tr><td>"+res.id+"</td><td colspan='3'>"+res.content+"</td></tr>"));
+				$("#tbody").append(	$("<tr><td>"+res.id+
+				"</td><td colspan='3'>"+res.content+
+				"</td></tr>"));
 			},
 			error:function(xhr,status,error){
 				alert("로그인이 필요합니다");

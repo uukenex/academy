@@ -99,5 +99,10 @@ public class ReviewRepoImpl implements ReviewRepo{
 		String statement = NAME_SPACE + "starUpdate";
 		return template.update(statement,reviewNo);
 	}
+	@Override
+	public int pageCount() {
+		String statement = NAME_SPACE + "pageCount";
+		return template.selectOne(statement);
+	}
 
 }

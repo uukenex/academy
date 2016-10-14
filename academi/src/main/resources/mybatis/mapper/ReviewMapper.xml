@@ -116,6 +116,10 @@
 		review_no=#{reviewNo})+1
 		where review_no=#{reviewNo}
 	</update>
+<!-- 페이지 카운팅 -->
+<select id="pageCount" resultType="int" >
+select count(*) from review</select>
+
 
 
 	<resultMap type="review" id="reviewBase">
