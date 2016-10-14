@@ -11,6 +11,7 @@
   		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
@@ -126,14 +127,50 @@
 							<h2>여기서 부터는 추천 후기 순으로 띄워주는 Part</h2>
 							<p>우아아아앙 이거 구현하고 나면 header, footer 나누면 된다아아</p>
 						</header>
-						
-						<!-- 추천 후기 4개 띄워주는 Code -->
-						
+
+				<!-- 추천 후기 4개 띄워주는 Code -->
+					<section id="four" class="fancyWrapper alt fancyStyle1">
+						<div class="fancyInner">
+							<section class="fancyFeatures">
+								<article>
+									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics06.jpg" alt="" /></a>
+									<h3 class="major">여행을 부탁해 경로 예시 1</h3>
+									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
+										vehicula id nulla dignissim dapibus ultrices.</p>
+									<a href="#" class="fancySpecial">Learn more</a>
+								</article>
+								<article>
+									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="" /></a>
+									<h3 class="major">여행을 부탁해 경로 예시 2</h3>
+									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
+										vehicula id nulla dignissim dapibus ultrices.</p>
+									<a href="#" class="fancySpecial">Learn more</a>
+								</article>
+								<article>
+									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="" /></a>
+									<h3 class="major">여행을 부탁해 경로 예시 3</h3>
+									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
+										vehicula id nulla dignissim dapibus ultrices.</p>
+									<a href="#" class="fancySpecial">Learn more</a>
+								</article>
+								<article>
+									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="" /></a>
+									<h3 class="major">여행을 부탁해 경로 예시 4</h3>
+									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
+										vehicula id nulla dignissim dapibus ultrices.</p>
+									<a href="#" class="fancySpecial">Learn more</a>
+								</article>
+							</section>
+							<ul class="fancyActions">
+								<li><a href="#" class="fancyButton">Browse All</a></li>
+							</ul>
+						</div>
 					</section>
+				</section>
 
-				</div>
+			</div>
 
-			<!-- Footer -->
+		<!-- Footer -->
 				<div id="footer">
 					<div class="container">
 						<div class="row">

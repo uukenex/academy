@@ -49,6 +49,11 @@ public class JunsukController {
 			}
 		return returnURL;
 	}
+	@RequestMapping(value = "/domap", method = RequestMethod.GET)
+	public String domap(Model model) {
+		return "session/guide/do_map";
+	}
+	
 }
 		
 		
