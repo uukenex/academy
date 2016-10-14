@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.dto.Comments;
 import com.example.dto.Review;
+import com.example.dto.ReviewReply;
 import com.example.service.ReviewReplyService;
 import com.example.service.ReviewService;
 import com.example.service.UserService;
@@ -51,5 +53,14 @@ public class TH3Controller {
 			return "nonsession/postscript/post_main";
 		}
 
-	
+		// 후기 -단일게시물 보기
+		@RequestMapping(value = "/postView", method = RequestMethod.GET)
+		public String noticeView(Model model, @RequestParam int reviewNo) {
+			rs.count(reviewNo);
+			Review r = rs.selectReview(reviewNo);
+			List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
+			model.addAttribute("post", r);
+			model.addAttribute("replys", rr);
+			return "nonsession/postscript/post_view";
+		}
 }

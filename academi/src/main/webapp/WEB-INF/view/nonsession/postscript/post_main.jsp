@@ -74,7 +74,7 @@
 		<div class="mainDiv">
 			<c:forEach var="post" items="${posts }" begin="0" end="3">
 				<div class="main">
-					<div>${post.reviewNo }사진</div>
+					<div><a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a></div>
 					제목 ${post.reviewTitle } 추천수 ${post.reviewStar }
 				</div>
 			</c:forEach>
@@ -82,7 +82,7 @@
 		<div class="normalDiv">
 			<c:forEach var="post" items="${posts }" begin="4">
 				<div class="normal">
-					<div>${post.reviewNo }사진</div>
+					<div><a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a></div>
 					제목 ${post.reviewTitle } 추천수 ${post.reviewStar }
 				</div>
 			</c:forEach>
