@@ -50,7 +50,10 @@ public class BasicController {
 		return "session/mainnotice/notice_sign";
 	}
 	
-
+	@RequestMapping("/mypageMain")
+	public String mypageMain(Model model) {
+		return "session/information/mypage_main";
+	}
 	
 
 }

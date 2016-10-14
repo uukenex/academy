@@ -34,10 +34,10 @@
 						<h2>Menu</h2>
 						<ul class="links">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Generic</a></li>
-							<li><a href="#">Elements</a></li>
 							<li><a href="#">Log In</a></li>
-							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">My Page</a></li>
+							<li><a href="#">Photo Book</a></li>
+							<li><a href="#">회원 가입</a></li>
 						</ul>
 						<a href="#" class="close">Close</a>
 					</div>
