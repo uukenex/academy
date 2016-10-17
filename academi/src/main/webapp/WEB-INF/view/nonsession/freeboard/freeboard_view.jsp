@@ -85,6 +85,7 @@
 				$("#tbody").append(	$("<tr><td>"+res.id+
 				"</td><td colspan='3'>"+res.content+
 				"</td></tr>"));
+				$("#replyContent").val("");
 			},
 			error:function(xhr,status,error){
 				alert("로그인이 필요합니다");

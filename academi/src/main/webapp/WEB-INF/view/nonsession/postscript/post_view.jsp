@@ -21,10 +21,12 @@
 			</colgroup>
 			<caption>게시글 상세</caption>
 			<tbody id="tbody">
-				<input type="hidden" name="commentNo" value="${post.reviewNo }" />
+				<input type="hidden" name="reviewNo" value="${post.reviewNo }" />
 				<tr>
 					<th scope="row">제목</th>
-					<td colspan="3">${post.reviewTitle}</td>
+					<td colspan="1">${post.reviewTitle} </td> <td>추천수 : 
+					<output id="result" > ${post.reviewStar}</output></td>
+					<td> <input type="button" id="star" value="추천하기"></td>
 
 
 				</tr>
@@ -42,8 +44,7 @@
 				</tr>
 				<tr align="right">
 					<td colspan="4"><input type="button" value="목록으로"
-						id="listview"> <c:if
-							test="${post.userId==Users.userId }">
+						id="listview"> <c:if test="${post.userId==Users.userId }">
 							<input type="submit" value="수정하기"
 								formaction="/session/postUpdate" formmethod="post">
 						</c:if></td>
@@ -70,6 +71,65 @@
 		$("#listview").on("click", function() {
 			location.href = "post?page=1";
 		});
+
+		<c:url value="/session/replyRegist2" var="replyRegist" />
+		$("#replyRegist").on(
+				"click",
+				function() {
+					$.ajax({
+						type : "post",
+						url : "${replyRegist}",
+						data : {
+							userId : "${Users.userId}",
+							replyContent : $("#replyContent").val(),
+							reviewNo : "${post.reviewNo}"
+						},
+						success : function(res) {
+							alert("등록완료");
+							$("#tbody").append(
+									$("<tr><td>" + res.id
+											+ "</td><td colspan='3'>"
+											+ res.content + "</td></tr>"));
+							$("#replyContent").val("");
+						},
+						error : function(xhr, status, error) {
+							alert("로그인이 필요합니다");
+						}
+					});
+				});
+
+		$(document).on("ready", function() {
+			if ("${message}" != null && "${message}" != ("")) {
+				alert("${message}");
+	<%session.removeAttribute("message");%>
+		}
+		});
+		
+		
+		<c:url value="/session/star" var="star" />
+			$("#star").on(
+					"click",
+					function() {
+						$.ajax({
+							type : "get",
+							url : "${star}",
+							data : {
+								userId : "${Users.userId}",
+								reviewNo : "${post.reviewNo}"
+							},
+							success : function(res) {
+								var html="";
+								
+								$("#result").val(Number.parseInt($("#result").val())+1);
+								alert("추천완료");
+							},
+							error : function(xhr, status, error) {
+								alert("로그인이 필요합니다");
+							}
+						});
+					});
+		
+		
 	</script>
 
 </body>

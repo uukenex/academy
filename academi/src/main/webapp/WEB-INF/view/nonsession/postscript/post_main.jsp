@@ -74,7 +74,9 @@
 		<div class="mainDiv">
 			<c:forEach var="post" items="${posts }" begin="0" end="3">
 				<div class="main">
-					<div><a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a></div>
+					<div>
+						<a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a>
+					</div>
 					제목 ${post.reviewTitle } 추천수 ${post.reviewStar }
 				</div>
 			</c:forEach>
@@ -82,19 +84,36 @@
 		<div class="normalDiv">
 			<c:forEach var="post" items="${posts }" begin="4">
 				<div class="normal">
-					<div><a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a></div>
+					<div>
+						<a href="postView?reviewNo=${post.reviewNo} ">${post.reviewNo }사진</a>
+					</div>
 					제목 ${post.reviewTitle } 추천수 ${post.reviewStar }
 				</div>
 			</c:forEach>
 		</div>
 	</div>
 	<%!int i;%>
-		<%
-			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
-		%>
-		<a href="/post?page=<%=i%>"><%=i%> </a>
-		<%
-			}
-		%>
+	<%
+		for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+	%>
+	<a href="/post?page=<%=i%>"><%=i%> </a>
+	<%
+		}
+	%>
+	<div>
+		<form action="/session/postsign">
+			<input type="submit" value="글쓰기" class="btn">
+		</form>
+	</div>
+	
+	
+	<script>
+		$(document).on("ready", function() {
+			if ("${message}" != null && "${message}" != ("")) {
+				alert("${message}");
+	<%session.removeAttribute("message");%>
+		}
+		});
+	</script>
 </body>
 </html>
