@@ -26,6 +26,9 @@
 		<c:url value="/mypageMain" var="mypageMain" />
 		<a href="${mypageMain }">Enter My Page Main</a>
 		<br>
+		<c:url value="/informChange" var="informChange" />
+		<a href="${informChange }">Enter inform_change Main</a>
+		<br>
 		<c:url value="/login" var="login" />
 		<a href="${login }">Enter Login Form</a>
 		<br>

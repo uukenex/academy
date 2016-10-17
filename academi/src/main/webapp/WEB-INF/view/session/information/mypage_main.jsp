@@ -38,7 +38,7 @@
 							</div>
 						</a>
 					</article>
-					
+
 					<article class="phanStyle2">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic02.jpg" alt="" />
 						</span> <a href="generic.html">

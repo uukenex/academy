@@ -55,5 +55,10 @@ public class BasicController {
 		return "session/information/mypage_main";
 	}
 	
+	@RequestMapping("/informChange")
+	public String inform_change(Model model) {
+		return "session/information/inform_change";
+	}
+	
 
 }
