@@ -133,6 +133,7 @@
 			position: relative;
 			width: calc(33.33333% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
+			margin-left: 9em;
 		}
 
 			.tiles article > .phanImage {
@@ -230,6 +231,8 @@
 				text-align: center;
 				text-decoration: none;
 				z-index: 3;
+				font-family: 'Jeju Gothic';
+				text-align: center;
 			}
 
 				.tiles article > a > :last-child {
@@ -242,6 +245,10 @@
 
 				.tiles article > a h2 {
 					margin: 0;
+					font-size: 3em;
+					font-family: 'Nanum Pen Script';
+					font-weight: bold;
+					color: #17375E;
 				}
 
 				.tiles article > a .phanContent {
@@ -274,7 +281,7 @@
 			}
 
 			.tiles article.phanStyle4 > .phanImage:before {
-				background-color: #c75b9b;
+				background-color: #F98377;
 			}
 
 			.tiles article.phanStyle5 > .phanImage:before {
@@ -282,7 +289,7 @@
 			}
 
 			.tiles article.phanStyle6 > .phanImage:before {
-				background-color: #8499e7;
+				background-color: #AFBDEF;
 			}
 
 			body:not(.is-touch) .tiles article:hover > .phanImage {
@@ -381,3 +388,30 @@
 				}
 
 		}
+		
+	/* Header */
+	
+		header .mypageHeader {
+			font-size: 6em;
+			font-family: 'Nanum Pen Script';
+			font-weight: bold;
+			text-align: center;
+			color: #95B3D7;
+		}
+		
+		.phanInner header hr {
+			border: none;
+			border-top: dashed #95B3D7;
+			height: 1px;
+			width: 100%;
+		}
+		
+		hr:before, hr:after {
+    		content: '';
+    		position: absolute;
+    		top: -8px;
+    		display: block;
+    		width: 3px;
+    		height: 21px;
+    		background: #95B3D7;
+}

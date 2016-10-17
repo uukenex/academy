@@ -24,7 +24,7 @@
 		<div id="phanMain">
 			<div class="phanInner">
 				<header>
-					<h1>My Page</h1>
+					<h1 class="mypageHeader">My Page</h1>
 					<hr>
 				</header>
 
@@ -32,42 +32,38 @@
 					<article class="phanStyle1">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic01.jpg" alt="" />
 						</span> <a href="generic.html">
-							<h2>Magna</h2>
+							<h2>회원 정보 수정</h2>
 							<div class="phanContent">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
+								<p>회원의 정보를 수정 할 수 있습니다.</p>
 							</div>
 						</a>
 					</article>
-					<div class="2u"></div>
+					
 					<article class="phanStyle2">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic02.jpg" alt="" />
 						</span> <a href="generic.html">
-							<h2>Lorem</h2>
+							<h2>공유 폴더 설정</h2>
 							<div class="phanContent">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
+								<p>계획과 사진을 공유할 수 있는 회원을 설정할 수 있습니다.</p>
 							</div>
 						</a>
 					</article>
 					<article class="phanStyle6">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic06.jpg" alt="" />
 						</span> <a href="generic.html">
-							<h2>Veroeros</h2>
+							<h2>여행 계획 보기</h2>
 							<div class="phanContent">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
+								<p>회원이 설정한 여행 계획들을 볼 수 있습니다.</p>
 							</div>
 						</a>
 					</article>
-					<div class="2u"></div>
+					
 					<article class="phanStyle4">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic04.jpg" alt="" />
 						</span> <a href="generic.html">
-							<h2>Tempus</h2>
+							<h2>여행 후기 보기</h2>
 							<div class="phanContent">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
+								<p>회원이 작성한 여행 후기들을 볼 수 있습니다.</p>
 							</div>
 						</a>
 					</article>
