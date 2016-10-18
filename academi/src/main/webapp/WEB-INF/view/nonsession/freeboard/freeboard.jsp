@@ -6,128 +6,122 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<style>
-a:link, a:visited {
-	text-decoration: none;
-	color: #656565;
-}
 
-.board_list {
-	width: 100%;
-	border-top: 2px solid #252525;
-	border-bottom: 1px solid #ccc
-}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-.board_list thead th:first-child {
-	background-image: none
-}
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+ 	<meta name="author" content="Nathan Searles">
+  		
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
 
-.board_list thead th {
-	border-bottom: 1px solid #ccc;
-	padding: 12px 0 13px 0;
-	color: #3b3a3a;
-	vertical-align: middle
-}
-
-.board_list tbody td {
-	border-top: 1px solid #ccc;
-	padding: 10px 0;
-	text-align: center;
-	vertical-align: middle
-}
-
-.board_list tbody tr:first-child td {
-	border: none
-}
-
-.board_list tbody td.title {
-	text-align: left;
-	padding-left: 20px
-}
-
-.board_list tbody td a {
-	display: inline-block
-}
-
-.btn {
-	border-radius: 3px;
-	padding: 5px 11px;
-	color: #fff !important;
-	display: inline-block;
-	background-color: #6b9ab8;
-	border: 1px solid #56819d;
-	vertical-align: middle
-}
-</style>
-<title>first</title>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<title>자유 게시판</title>
 </head>
 <body>
-	<a href="index.jsp">임시홈으로</a>
-	<h2 align="center">자유 게시판</h2>
-	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
-	<form action="/session/boardsign">
-		<table style="border: 1px solid #ccc" class="board_list">
-			<colgroup>
-				<col width="15%" />
-				<col width="*" />
-				<col width="20%" />
-				<col width="10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">작성일</th>
-					<th scope="col">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../layout/menubar_header.jsp" />
 		
-				<c:forEach var="comment" items="${comments }">
-					<tr>
-						<td><a href="freeView?commentNo=${comment.commentNo} ">${comment.commentName }</a></td>
-						<td>${comment.users.userNick}</td>
-						<td><fmt:formatDate value="${comment.commentDate }"
-								pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate }</td>
-						<td>${comment.commentCount }</td>
-					</tr>
-				</c:forEach>
-				<c:if test="${totalPage ==0}">
-					<td colspan="4">조회된 결과가 없습니다.</td>
-				</c:if>
+	<div id="page-wrapper" class="boardPage-Wrapper">
+		<div id="main">
+			<div class="container">
+				<div class="row main-row">
 				
-				
-			</tbody >
-			
-				<tfoot align="center">
-
-				<tr>
-				
-					<td colspan="4"><input type="submit" value="글쓰기" class="btn"></td>
-				</tr>
-				</tfoot>
-		</table>
-
-	</form>
-	<%!int i;%>
-	<%
-		for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
-	%>
-	<a href="/free?page=<%=i%>"><%=i%> </a>
-	<%
-		}
-	%>
-	<div></div>
-	<select id="searchCategory">
-		<option value="제목">제목</option>
-		<option value="내용">내용</option>
-		<option value="닉네임">닉네임</option>
-	</select>
-	<input type="search" id="search" />
-	<input type="button" id="searchBtn" value="검색" />
-
+					<!-- d -->
+					<div class="3u 12u(mobile)">
+					
+						<!-- Left Board Menu -->
+						<section class="boardSection">
+							<h2>게 시 판</h2>
+							<ul class="link-list">
+								<li><a href="#">공지사항</a></li>
+								<li><a href="#">Q & A</a></li>
+								<li><a href="#">자유 게시판</a></li>
+								<li><a href="#">사이트 이용방법</a></li>
+							</ul>
+						</section>
+					</div>
+					
+					<!-- Board Body part -->
+					<div class="8u 12u(mobile) important(mobile)">
+						<section class="middle-content">
+							<h2 align="center">자유 게시판</h2>
+							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
+							
+							<form action="/session/boardsign">
+								<input type="submit" value="글쓰기" class="writeBoard">
+								
+								<table>
+									<colgroup>
+										<col width="10%" />
+										<col width="*" />
+										<col width="15%" />
+										<col width="20%" />
+										<col width="10%" />
+									</colgroup>
+									<thead>
+									<tr>
+										<th scope="col">글번호</th>
+										<th scope="col">제목</th>
+										<th scope="col">작성자</th>
+										<th scope="col">작성일</th>
+										<th scope="col">조회수</th>
+									</tr>
+									</thead>
+									<tbody>
+									<c:forEach var="comment" items="${comments }">
+										<tr>
+											<td>${comment.commentNo }</td>
+											<td id="boardTitle"><a href="noticeView?commentNo=${comment.commentNo} ">${comment.commentName }</a></td>
+											<td>${comment.users.userNick}</td>
+											<td><fmt:formatDate value="${comment.commentDate }"
+													pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate }</td>
+											<td>${comment.commentCount }</td>
+										</tr>
+									</c:forEach>
+									
+									<c:if test="${totalPage ==0}">
+										<td colspan="4">조회된 결과가 없습니다.</td>
+									</c:if>
+									</tbody>
+								</table>
+								
+								<p id="pageNumber">
+									<%!int i;%>
+									<%
+										for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+									%>
+									<a href="/free?page=<%=i%>"><%=i%> </a>
+									<%}%>
+								</p>
+							</form>
+							
+							<div class="boardSearchBar">
+								<select id="searchCategory">
+									<option value="제목">제목</option>
+									<option value="내용">내용</option>
+									<option value="닉네임">닉네임</option>
+								</select>
+								<input type="search" id="search" />
+								<input type="button" id="searchBtn" value="검색" />
+							</div>
+							
+						</section>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$(document).on("ready", function() {

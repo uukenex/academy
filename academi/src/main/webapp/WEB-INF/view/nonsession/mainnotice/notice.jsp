@@ -18,7 +18,7 @@
 		
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
 
-<title>first</title>
+<title>공 지 사 항</title>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
