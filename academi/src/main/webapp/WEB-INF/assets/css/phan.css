@@ -17,6 +17,8 @@
 			-ms-transition: opacity 0.45s ease;
 			transition: opacity 0.45s ease;
 			opacity: 1;
+			position: relative;
+			top: 8em;
 		}
 		
 		#phanWrapper > * > .phanInner {

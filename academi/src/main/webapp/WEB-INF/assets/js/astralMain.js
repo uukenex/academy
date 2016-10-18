@@ -45,12 +45,12 @@
 			.on('+desktop', function() {
 
 				var	$body = $('body'),
-					$main = $('#main'),
-					$panels = $main.find('.panel'),
+					$main = $('#astralMain'),
+					$panels = $main.find('.astralPanel'),
 					$hbw = $('html,body,window'),
 					$footer = $('#footer'),
-					$wrapper = $('#wrapper'),
-					$nav = $('#nav'), $nav_links = $nav.find('a'),
+					$wrapper = $('#astralWrapper'),
+					$nav = $('#astralNav'), $nav_links = $nav.find('a'),
 					$jumplinks = $('.jumplink'),
 					$form = $('form'),
 					panels = [],
