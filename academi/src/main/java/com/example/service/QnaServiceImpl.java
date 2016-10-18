@@ -68,4 +68,10 @@ public class QnaServiceImpl implements QnaService {
 
 	}
 
+	@Override
+	public int pageCount() {
+		
+		return qrepo.pageCount();
+	}
+
 }

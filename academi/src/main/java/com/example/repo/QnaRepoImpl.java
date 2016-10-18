@@ -77,6 +77,11 @@ public class QnaRepoImpl implements QnaRepo{
 		String statement = NAME_SPACE + "countUpdate";
 		return template.update(statement,qnaNo);
 	}
+	@Override
+	public int pageCount() {
+		String statement = NAME_SPACE + "pageCount";
+		return template.update(statement);
+	}
 
 	
 

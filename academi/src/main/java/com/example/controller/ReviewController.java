@@ -30,8 +30,8 @@ import com.example.service.UserService;
  *
  */
 @Controller
-public class TH3Controller {
-	static Logger logger = LoggerFactory.getLogger(TH3Controller.class);
+public class ReviewController {
+	static Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
 	@Autowired
 	UserService us;

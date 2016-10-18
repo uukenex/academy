@@ -31,6 +31,6 @@ public interface QnaService {
 	// 닉네임검
 	public List<Qna> searchQnaByNick(String userNick, int page);
 
-	
+	public int pageCount();
 	
 }
