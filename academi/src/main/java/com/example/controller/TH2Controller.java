@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -115,6 +116,7 @@ public class TH2Controller {
 		return "redirect:/free?page=1";
 	}
 
+	//댓글달기 ajax
 	@RequestMapping(value = "/session/replyRegist", method = RequestMethod.POST)
 	public @ResponseBody Map<String,String> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
 			@RequestParam int commentNo, HttpSession session) {
@@ -127,4 +129,26 @@ public class TH2Controller {
 		}
 		return resultMap;
 	}
+	
+	
+	//검색기능 ajax 카테고리와 검색키워드를 받아옴
+		@RequestMapping(value="/search",method=RequestMethod.POST)
+		public @ResponseBody List<Comments> ajaxsearch(
+				@RequestParam String category,
+				@RequestParam String keyword,Model model){
+			List<Comments> result = new ArrayList<>();
+			logger.trace("여기오다");
+			if(category.equals("제목")){
+				result = cs.freeSearchListByPage(keyword, 1);
+				model.addAttribute("comments",result);
+			}
+			else if(category.equals("내용")){
+				result = cs.freeSearchContentListByPage(keyword, 1);
+			}
+			else if(category.equals("닉네임")){
+				result = cs.freeSearchNickListByPage(keyword, 1);
+			}
+			return result;
+		}
+	
 }

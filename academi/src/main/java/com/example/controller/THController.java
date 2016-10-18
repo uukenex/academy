@@ -110,6 +110,7 @@ public class THController {
 	// 공지 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/noticeWrite", method = RequestMethod.GET)
 	public String noticeWrtie(Model model) {
+		logger.trace("notice write");
 		return "session/mainnotice/notice_sign";
 	}
 
