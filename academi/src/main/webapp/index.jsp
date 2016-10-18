@@ -50,7 +50,7 @@
 		<c:url value="/post?page=1" var="post" />
 		<a href="${post }">후기게시판 1페이지</a>
 		<br>
-		<c:url value="/qna" var="qna" />
+		<c:url value="/qna?page=1" var="qna" />
 		<a href="${qna }">QNA 게시판 1페이지</a>
 		<br>
 		<c:url value="/mainpage2" var="m2" />
