@@ -91,7 +91,9 @@
 		qna_no=#{qnaNo})+1
 		where qna_no = #{qnaNo}
 	</update>
-
+<!-- 페이지 카운팅 -->
+<select id="pageCount" resultType="int" >
+select count(*) from qna</select>
 
 	<resultMap type="qna" id="qnaBase">
 		<id column="qna_no" property="qnaNo" />

@@ -31,4 +31,5 @@ public interface QnaRepo {
 
 	// 조회수 늘리기
 	public int updateQnaCount(int qnaNo);
+	public int pageCount();
 }
