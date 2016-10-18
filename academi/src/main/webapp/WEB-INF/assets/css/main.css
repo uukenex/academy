@@ -1841,7 +1841,7 @@
 
 	ul.icons {
 		position: relative;
-		background: rgba(128, 128, 128, 0.05);
+		background: rgba(128, 128, 128, 0.3);
 		border-radius: 4em;
 		display: inline-block;
 		padding: 0.35em 0.75em 0.35em 0.75em;
@@ -2219,7 +2219,7 @@
 		-ms-transition: background-color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out;
 		background-color: rgba(53, 56, 73, 0.95);
-		height: 3.5em;
+		height: 3.7em;
 		left: 0;
 		line-height: 3.5em;
 		padding: 0 1.25em;
@@ -2698,7 +2698,7 @@
 		position: relative;
 		overflow: hidden;
 		padding: 6em 0 6em 0;
-		background: #2b252c;
+		background: #17375E;
 		color: #fff;
 	}
 
@@ -3532,9 +3532,9 @@
    			 
    			 
    			 
-/* Board를 위한 CSS code ---------------------------> */
+/* Board瑜� �쐞�븳 CSS code ---------------------------> */
 
-	/* 각 영역당 font-family, font-size 설정 */
+	/* 媛� �쁺�뿭�떦 font-family, font-size �꽕�젙 */
 		
 		.boardSection h2 {
 			font-size: 4.5em;
@@ -3584,7 +3584,7 @@
 			text-align: center;
 		}
 		
-	/* 글 쓰기 Button Style */
+	/* 湲� �벐湲� Button Style */
 		
 		.writeBoard {
 			font-size: 0.75em;

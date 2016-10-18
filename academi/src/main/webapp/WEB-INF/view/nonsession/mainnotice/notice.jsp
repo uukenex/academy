@@ -120,6 +120,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- footer -->
+	
+		<jsp:include page="../layout/footer.jsp"></jsp:include>
 
 
 	<script src="http://code.jquery.com/jquery.js"></script>

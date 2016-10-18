@@ -83,6 +83,9 @@
 				</section>
 			</div>
 		</div>
+		
+		<!-- footer -->
+			<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
 	</div>
 	
 	<!-- Scripts -->
