@@ -3573,23 +3573,41 @@
 			border-top: 0;
 		}
 		
+		.boardSearchBar {
+			position: absolute;
+			top: 50em;
+			left: 35em;
+			margin-bottom: 5em;
+		}
+		
+		#pageNumber {
+			text-align: center;
+		}
+		
 	/* 글 쓰기 Button Style */
 		
 		.writeBoard {
 			font-size: 0.75em;
 			float: right;
 			margin-right: 2em;
+			margin-bottom: 3em;
 		}
 		
 	/* Board Table Style */
 		
+		table th {
+			padding-bottom: 1em;
+		}
+		
 		table td {
 			text-align: center;
+			padding: 1em 0 0 0;
 		}
 		
 		#boardTitle {
 			text-align: left;
 		}
+		
 		
 	/* Desktop + Tablet */
 		
