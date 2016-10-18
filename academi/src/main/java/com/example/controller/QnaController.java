@@ -1,8 +1,6 @@
 package com.example.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,11 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dto.Answer;
 import com.example.dto.Qna;
-import com.example.dto.Review;
-import com.example.dto.ReviewReply;
 import com.example.dto.Users;
 import com.example.service.AnswerService;
 import com.example.service.QnaService;
@@ -50,52 +46,37 @@ public class QnaController {
 			totalPage = 0;
 		}
 		model.addAttribute("totalPage", totalPage);
-		return "nonsession/q&a/qna";
+		return "nonsession/qna/qna";
 	}
-/*
+
 	// qna -단일게시물 보기
-	@RequestMapping(value = "/postView", method = RequestMethod.GET)
-	public String noticeView(Model model, @RequestParam int reviewNo) {
-		rs.count(reviewNo);
-		Review r = rs.selectReview(reviewNo);
-		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
-		model.addAttribute("post", r);
-		model.addAttribute("replys", rr);
-		return "nonsession/postscript/post_view";
+	@RequestMapping(value = "/qnaView", method = RequestMethod.GET)
+	public String noticeView(Model model, @RequestParam int qnaNo) {
+		qs.count(qnaNo);
+		Qna q = qs.selectQna(qnaNo);
+		List<Answer> a = as.selectListByQnaNo(qnaNo);
+		model.addAttribute("qna", q);
+		model.addAttribute("answers", a);
+		return "nonsession/qna/qnaview";
 	}
-
-	// 리뷰 댓글 ajax
-	@RequestMapping(value = "/session/replyRegist2", method = RequestMethod.POST)
-	public @ResponseBody Map<String, String> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
-			@RequestParam int reviewNo, HttpSession session) {
-		Map<String, String> resultMap = null;
-		int result = rrs.insertReply(replyContent, reviewNo, userId);
-		if (result == 1) {
-			resultMap = new HashMap<>();
-			resultMap.put("id", userId);
-			resultMap.put("content", replyContent);
-		}
-		return resultMap;
-	}
-
-	// 리뷰 쓰기 페이지로 넘어감
-	@RequestMapping(value = "/session/postsign", method = RequestMethod.GET)
+	// 질문 쓰기 페이지로 넘어감
+	@RequestMapping(value = "/session/qnaQuestion", method = RequestMethod.GET)
 	public String noticeWrtie(Model model) {
-		return "session/postscript/post_sign";
+		return "session/qna/question";
 	}
 
 	// 리뷰 글 쓰기
-	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
-		String reviewTitle = request.getParameter("title");
-		String reviewContent = request.getParameter("content");
+		String qnaTitle = request.getParameter("title");
+		String qnaQuestion = request.getParameter("content");
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
-		rs.insertReview(reviewTitle, reviewContent, routeNo, userId);
-		return "redirect:/post?page=1";
+		qs.insertQna(qnaTitle, qnaQuestion, userId);
+		return "redirect:/qna?page=1";
 	}
-
+/*
 	// 리뷰 수정창으로 넘어가기
 	@RequestMapping(value = "/session/postUpdate", method = RequestMethod.POST)
 	public String noticeUpdate(Model model, HttpServletRequest request) {
