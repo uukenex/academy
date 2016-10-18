@@ -44,6 +44,8 @@ public class Comments implements Serializable {
 	
 	private Users users;
 	
+	private Integer RNUM;
+	
 	public Comments(Integer commentNo, String commentCategory, String commentName, String commentContent,
 			Date commentDate, Integer commentCount, String userId) {
 		super();

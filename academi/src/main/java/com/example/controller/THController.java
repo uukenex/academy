@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import com.example.model.UserNick;
 import com.example.service.CommentService;
 import com.example.service.UserService;
 /**
- * 공지사항 ID찾기 비번찾기 회원가입
+ * 공지사항 ID찾기 비번찾기 회원가입 
  *
  */
 @Controller
@@ -207,6 +208,27 @@ public class THController {
 		}
 		model.addAttribute("message", msg);
 		return "nonsession/join/joinok";
+	}
+
+	
+	//검색기능(자유게시판) ajax 카테고리와 검색키워드를 받아옴
+	@RequestMapping(value="/search2",method=RequestMethod.POST)
+	public @ResponseBody List<Comments> ajaxsearch(
+			@RequestParam String category,
+			@RequestParam String keyword,Model model){
+		List<Comments> result = new ArrayList<>();
+		logger.trace("여기오다");
+		if(category.equals("제목")){
+			result = cs.noticeSearchListByPage(keyword, 1);
+			model.addAttribute("comments",result);
+		}
+		else if(category.equals("내용")){
+			result = cs.noticeSearchContentListByPage(keyword, 1);
+		}
+		else if(category.equals("닉네임")){
+			result = cs.noticeSearchNickListByPage(keyword, 1);
+		}
+		return result;
 	}
 
 }

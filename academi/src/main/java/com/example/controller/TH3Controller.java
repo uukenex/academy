@@ -26,7 +26,7 @@ import com.example.service.ReviewService;
 import com.example.service.UserService;
 
 /**
- * 
+ * 후기게시판
  *
  */
 @Controller

@@ -131,7 +131,7 @@ public class TH2Controller {
 	}
 	
 	
-	//검색기능 ajax 카테고리와 검색키워드를 받아옴
+	//검색기능(자유게시판) ajax 카테고리와 검색키워드를 받아옴
 		@RequestMapping(value="/search",method=RequestMethod.POST)
 		public @ResponseBody List<Comments> ajaxsearch(
 				@RequestParam String category,
