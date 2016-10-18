@@ -1555,6 +1555,10 @@
 
 /* Basic */
 
+	@-ms-viewport {
+		width: device-width;
+	}
+
 	body {
 		background: #f0f4f4;
 		color: #5b5b5b;
@@ -3525,3 +3529,87 @@
         			width: 1170px
       			}
    			 }
+   			 
+   			 
+   			 
+/* Board를 위한 CSS code ---------------------------> */
+
+	/* 각 영역당 font-family, font-size 설정 */
+		
+		.boardSection h2 {
+			font-size: 4.5em;
+			font-weight: bold;
+			font-family: 'Nanum Pen Script';
+			color: #17375E;
+			margin-bottom: 0.5em;
+			text-align: center;
+		}
+	
+	/* .boardPage-Wrapper */
+		
+		.boardPage-Wrapper {
+			position: relative;
+			top: 8em;
+		}
+
+	/* Reusable */
+	
+		ul.link-list li {
+			border-top: solid 1px #ced0b7;
+			padding: 0.75em 0 0 0;
+			margin: 0.75em 0 0 0em;
+			text-align: center;
+		}
+		
+		ul.link-list li a {
+			font-family: 'Nanum Pen Script';
+			font-size: 2em;
+			color: #17375E;
+		}
+		
+		ul.link-list li:first-child {
+			padding-top: 0;
+			margin-top: 0;
+			border-top: 0;
+		}
+		
+	/* 글 쓰기 Button Style */
+		
+		.writeBoard {
+			font-size: 0.75em;
+			float: right;
+			margin-right: 2em;
+		}
+		
+	/* Board Table Style */
+		
+		table td {
+			text-align: center;
+		}
+		
+		#boardTitle {
+			text-align: left;
+		}
+		
+	/* Desktop + Tablet */
+		
+		@media screen and (min-width: 737px) {
+			
+			/* Basic */
+			
+				.boardSection {
+					margin: 0 0 60px 0;
+				}
+				
+				.boardSection.left-content {
+					padding-right: 30px;
+				}
+				
+				.boardSection.right-content {
+					padding-left: 30px;
+				}
+				
+				.boardSection.middle-content {
+					padding: 0 30px 0 30px;
+				}
+		}
