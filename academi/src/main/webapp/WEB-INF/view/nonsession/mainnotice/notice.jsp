@@ -56,17 +56,12 @@
 						<section class="middle-content">
 							<h2>공 지 사 항</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
-							<select id="searchCategory">
-								<option value="제목">제목</option>
-								<option value="내용">내용</option>
-								<option value="닉네임">닉네임</option>
-							</select>
-							<input type="search" id="search" />
-							<input type="button" id="searchBtn" value="검색" />
-							<input type="submit" value="글쓰기" class="writeBoard">
+							
 							<form action="/session/noticeWrite">
+							
+							<input type="submit" value="글쓰기" class="writeBoard">
+							
 								<table>
-									
 									<colgroup>
 										<col width="10%" />
 										<col width="*" />
@@ -100,15 +95,25 @@
 									</c:if>
 									</tbody>
 								</table>
-								<%!int i;%>
-								<%
-									for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
-								%>
-								<a href="/notice?page=<%=i%>"><%=i%> </a>
-								<%
-			}
-		%>
+								<p id="pageNumber">
+									<%!int i;%>
+									<%
+										for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+									%>
+									<a href="/notice?page=<%=i%>"><%=i%> </a>
+									<%}%>
+								</p>
 							</form>
+							
+							<div class="boardSearchBar">
+								<select id="searchCategory">
+									<option value="제목">제목</option>
+									<option value="내용">내용</option>
+									<option value="닉네임">닉네임</option>
+								</select>
+								<input type="search" id="search" />
+								<input type="button" id="searchBtn" value="검색" />
+							</div>
 						</section>
 					</div>
 				</div>
