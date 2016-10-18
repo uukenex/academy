@@ -4,7 +4,6 @@
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ page import="com.example.dto.*"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,12 +42,13 @@
 					<td colspan="3">${comment.commentContent}</td>
 				</tr>
 				<tr align="right">
-					<td colspan="4"><input type="button" value="목록으로"
-						id="listview"> <c:if
-							test="${comment.userId==Users.userId }">
-							<input type="submit" value="수정하기">
-						</c:if></td>
-				</tr>
+				<td colspan="4">
+				<input type="button" value="목록으로" id="listview"> 
+				<c:if test="${comment.userId==Users.userId }">
+				<input type="submit" value="수정하기"	>
+				</c:if>
+				</td>
+			</tr>
 			</tbody>
 		</table>
 	</form>
