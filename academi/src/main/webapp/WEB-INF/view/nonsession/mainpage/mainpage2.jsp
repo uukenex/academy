@@ -21,27 +21,7 @@
 		<div id="page-wrapper">
 		
 			<!-- Fancy Header -->
-			<header id="fancyHeader" class="alt">
-				<h1><a href="#">여행을 부탁해!</a></h1>
-					<nav>
-						<a href="#fancyMenu">Menu</a>
-					</nav>
-			</header>
-			
-			<!-- Fancy Menu Box -->
-				<nav id="fancyMenu">
-					<div class="fancyInner">
-						<h2>Menu</h2>
-						<ul class="links">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Log In</a></li>
-							<li><a href="#">My Page</a></li>
-							<li><a href="#">Photo Book</a></li>
-							<li><a href="#">회원 가입</a></li>
-						</ul>
-						<a href="#" class="close">Close</a>
-					</div>
-				</nav>
+			<jsp:include page="../layout/dropMenu_header.jsp"></jsp:include>
 
 			<!-- Header -->
 				<div id="header">
@@ -59,32 +39,7 @@
 						</div>
 
 					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="left-sidebar.html">지도 만들기</a></li>
-								<li><a href="right-sidebar.html">후기 등록</a></li>
-								<li><a href="no-sidebar.html">Photo Book</a></li>
-								<li>
-									<a href="#">Board</a>
-									<ul>
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li>
-											<a href="#">And a submenu &hellip;</a>
-											<ul>
-												<li><a href="#">Lorem ipsum dolor</a></li>
-												<li><a href="#">Phasellus consequat</a></li>
-												<li><a href="#">Magna phasellus</a></li>
-												<li><a href="#">Etiam dolore nisl</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
-									</ul>
-								</li>
-							</ul>
-						</nav>
+						<jsp:include page="../layout/menubar_header.jsp"></jsp:include>
 
 				</div>
  

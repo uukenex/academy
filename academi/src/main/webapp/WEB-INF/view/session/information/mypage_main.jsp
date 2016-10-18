@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +23,13 @@
 <title>My Page</title>
 </head>
 <body>
+
+	<!-- Fancy Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp"></jsp:include>
+	
+	<!-- Header Nav-->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>
+		
 	<!-- Main -->
 	<div id="phanWrapper">
 		<div id="phanMain">
@@ -31,7 +42,9 @@
 				<section class="tiles">
 					<article class="phanStyle1">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic01.jpg" alt="" />
-						</span> <a href="generic.html">
+						</span>
+						<c:url value="/informChange" var="informChange"/>
+						<a href="${informChange }">
 							<h2>회원 정보 수정</h2>
 							<div class="phanContent">
 								<p>회원의 정보를 수정 할 수 있습니다.</p>
