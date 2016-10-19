@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dto.Answer;
+import com.example.dto.Comments;
 import com.example.dto.Qna;
 import com.example.dto.Users;
 import com.example.service.AnswerService;
@@ -108,7 +111,25 @@ public class QnaController {
 		return "redirect:/post?page=1";
 	}*/
 
-
+	//검색기능(qna게시판) ajax 카테고리와 검색키워드를 받아옴
+		@RequestMapping(value="/search3",method=RequestMethod.POST)
+		public @ResponseBody List<Qna> ajaxsearch(
+				@RequestParam String category,
+				@RequestParam String keyword,Model model){
+			List<Qna> result = new ArrayList<>();
+			logger.trace("여기오다");
+			if(category.equals("제목")){
+				result = qs.searchQnaByName(keyword, 1);
+			}
+			else if(category.equals("내용")){
+				result = qs.searchQnaByContent(keyword, 1);
+			}
+			else if(category.equals("닉네임")){
+				result = qs.searchQnaByNick(keyword, 1);
+			}
+			logger.trace("{}",result);
+			return result;
+		}
 
 	
 }
