@@ -1,8 +1,8 @@
-package com.example.dto;
+/*package com.example.dto;
 
-/*
+
  * 장바구니에 담길 상품
- */
+ 
 public class Goods {
 	private String address_name;  //상품명
 	private double x_coordinate;    //개수
@@ -36,3 +36,4 @@ public class Goods {
 	
 
 }
+*/
