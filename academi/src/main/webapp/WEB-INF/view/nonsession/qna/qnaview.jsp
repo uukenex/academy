@@ -69,16 +69,19 @@
 	<h1>답변등록하기</h1>
 	<table>
 	<tr>
-	<td><textarea rows="4" cols="100"></textarea></td>
-	<td><input type="button" value="답변 등록하기"></td>
+	<td><textarea rows="4" cols="100" id="answerContent"></textarea></td>
+	<td><input type="button" value="답변 등록하기" id="answerRegist"></td>
 	<tr>
 	</table>
 	</c:if>
 	<hr>
 	<h1>답변</h1>
 	<hr>
-	<c:forEach var="answer" items="${answers }">
+
+
 	<table class="board_view" border="1">
+		<tbody id="tbody">
+		<c:forEach var="answer" items="${answers }">
 		<colgroup>
 			<col width="15%" />
 			<col width="*%" />
@@ -103,9 +106,11 @@
 			<input type="button" value="수정하기"></td>
 			</c:if>
 		</tr>
+		</c:forEach>
+		</tbody>
 		
 	</table>
-	</c:forEach>
+	
 	
 	
 	<script src="http://code.jquery.com/jquery.js"></script>
@@ -114,7 +119,29 @@
 			location.href = "qna?page=1";
 		});
 		
-		
+		<c:url value="/session/replyRegist3" var="replyRegist" />
+			$("#answerRegist").on("click",function() {
+						$.ajax({
+							type : "post",
+							url : "${replyRegist}",
+							data : {
+								userId : "${Users.userId}",
+								answerContent : $("#answerContent").val(),
+								qnaNo : "${qna.qnaNo}"
+							},
+							success : function(res) {
+								alert("등록완료");
+								$("#tbody").append(
+										$("<tr><td>" + res.id
+									+ "</td><td colspan='3'>"
+									+ res.content + "</td></tr>"));
+								$("#answerContent").val("");
+							},
+							error : function(xhr, status, error) {
+								alert(error);
+							}
+						});
+					});
 	</script>
 	
 	<!-- Scripts -->
