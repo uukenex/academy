@@ -188,25 +188,25 @@
 							+ '            </div>' + '        </div>'
 							+ '    </div>' + '</div>',
 					latlng : new daum.maps.LatLng(33.450705, 126.570677),
-					zindex : 0
+					zIndex : 0
 				},
 				{
 					title : '생태연못',
 					content : '<div>생태연못 입니다. <input type="button" onclick=buttonclick(this) id="1" value="선택하기"></div>',
 					latlng : new daum.maps.LatLng(33.450936, 126.569477),
-					zindex : 1
+					zIndex : 1
 				},
 				{
 					title : '텃밭',
 					content : '<div>텃밭 입니다. <input type="button" onclick=buttonclick(this) id="2" value="선택하기"></div>',
 					latlng : new daum.maps.LatLng(33.450879, 126.569940),
-					zindex : 2
+					zIndex : 2
 				},
 				{
 					title : '근린공원',
 					content : '<div>근린공원 입니다. <input type="button" onclick=buttonclick(this) id="3" value="선택하기"></div>',
 					latlng : new daum.maps.LatLng(33.451393, 126.570738),
-					zindex : 3
+					zIndex : 3
 				} ];
 
 		// 마커 이미지의 이미지 주소입니다
@@ -226,7 +226,6 @@
 				clickable : true,
 				position : positions[i].latlng, // 마커를 표시할 위치
 				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				zIndex : i
 			// 마커 이미지 
 			});
 
@@ -240,6 +239,20 @@
 
 			daum.maps.event.addListener(marker, 'click', makeOverListener(map,
 					marker, infowindow));
+			
+			
+			
+			
+			
+			
+			daum.maps.event.addListener(marker, 'click', function() {
+				console.log(positions[i].zIndex);
+			});
+
+			
+			
+			
+			
 
 		}
 
