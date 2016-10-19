@@ -38,11 +38,25 @@
 			<td colspan="3">${qna.qnaQuestion }</td>
 		</tr>
 		<tr align="right">
-			<td colspan="4"><input type="button" value="목록으로" id="listview"> 
-			<input type="submit" value="수정하기" formaction="/session/qnaUpdate" formmethod="post"></td>
+			<td colspan="4">
+			<input type="button" value="목록으로" id="listview">
+			<c:if test="${qna.userId==Users.userId }"> 
+			<input type="submit" value="수정하기" formaction="/session/qnaUpdate" formmethod="post">
+			</c:if>
+			</td>
 		</tr>
 	</table>
 </form>
+	<hr>
+	<c:if test="${ Users.userId!=null}" >
+	<h1>답변등록하기</h1>
+	<table>
+	<tr>
+	<td><textarea rows="4" cols="100"></textarea></td>
+	<td><input type="button" value="답변 등록하기"></td>
+	<tr>
+	</table>
+	</c:if>
 	<hr>
 	<h1>답변</h1>
 	<hr>
@@ -67,8 +81,10 @@
 			<td colspan="3">${answer.answerContent }</td>
 		</tr>
 		<tr align="right">
+		<c:if test="${qna.userId==Users.userId }"> 
 			<td colspan="4">
 			<input type="button" value="수정하기"></td>
+			</c:if>
 		</tr>
 		
 	</table>
