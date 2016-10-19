@@ -15,7 +15,8 @@
 		
 		<li><a href="right-sidebar.html">후기 등록</a></li>
 		
-		<li><a href="no-sidebar.html">Photo Book</a></li>
+		<li><a href="no-sidebar.html">Photo Book</a>
+		</li>
 		<c:url value="/notice?page=1" var="notice" />
 		<li><a href="${notice }">Board</a>
 			<ul>

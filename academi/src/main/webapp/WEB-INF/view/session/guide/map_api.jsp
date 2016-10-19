@@ -171,11 +171,10 @@
 		var positions = [
 				{
 					title : '카카오',
-					content : '<div class="wrap">'
+					content : '<div class>'
 							+ '    <div class="info">'
 							+ '        <div class="title" name="카카오 스페이스닷원">'
 							+ '            카카오 스페이스닷원'
-							+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
 							+ '        </div>'
 							+ '        <div class="body">'
 							+ '            <div class="img">'
@@ -207,6 +206,12 @@
 					content : '<div>근린공원 입니다. <input type="button" onclick=buttonclick(this) id="3" value="선택하기"></div>',
 					latlng : new daum.maps.LatLng(33.451393, 126.570738),
 					zIndex : 3
+				},
+				{
+					title : '공원2',
+					content : '<div>공원 입니다. <input type="button" onclick=buttonclick(this) id="3" value="선택하기"></div>',
+					latlng : new daum.maps.LatLng(34.451393, 126.570738),
+					zIndex : 4
 				} ];
 
 		// 마커 이미지의 이미지 주소입니다
@@ -246,7 +251,7 @@
 			
 			
 			daum.maps.event.addListener(marker, 'click', function() {
-				console.log(positions[i].zIndex);
+				console.log(this.cg.id);
 			});
 
 			
@@ -302,18 +307,19 @@
 		var zoomControl = new daum.maps.ZoomControl();
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 	</script>
+	
 	<c:forEach items="${cart}" var="address">
 	Name : ${address.address_name}, 
 	x좌표 : ${address.x_coordinate}, 
 	y좌표 : ${address.y_coordinate } , 
 	주소 : ${address.address }  
-	<br />
+	<br>
 	</c:forEach>
 	<br>
 	<br>
 	
 	<h1>Add address.</h1>
-	<form method="post" action="add">
+	<form method="post" action="/add">
 		Name : <input type="text" id="address_name" name="address_name"><br>
 		x좌표 : <input type="text" id="x_coordinate" name="x_coordinate"><br>
 		y좌표 : <input type="text" id="y_coordinate" name="y_coordinate"><br>
