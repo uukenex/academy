@@ -40,15 +40,10 @@
 						<section class="middle-content">
 							<h2>Q & A</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
-							<select id="searchCategory">
-								<option value="제목">제목</option>
-								<option value="내용">내용</option>
-								<option value="닉네임">닉네임</option>
-							</select>
-							<input type="search" id="search" />
-							<input type="button" id="searchBtn" value="검색" />
-							<input type="submit" value="글쓰기" class="writeBoard">
+							
 							<form action="/session/noticeWrite">
+							
+							<input type="submit" value="글쓰기" class="writeBoard">
 								<table>
 									
 									<colgroup>
@@ -84,21 +79,95 @@
 									</c:if>
 									</tbody>
 								</table>
+								<p id="pageNumber">
 								<%!int i;%>
 								<%
 									for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
 								%>
 								<a href="/notice?page=<%=i%>"><%=i%> </a>
-								<%
-			}
-		%>
+								<%}%>
+								</p>
 							</form>
+							
+							<div class="boardSearchBar">
+							<select id="searchCategory">
+								<option value="제목">제목</option>
+								<option value="내용">내용</option>
+								<option value="닉네임">닉네임</option>
+							</select>
+							<input type="search" id="search" />
+							<input type="button" id="searchBtn" value="검색" />
+							</div>
+							
 						</section>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	<!-- footer -->
+	
+	<%--	<jsp:include page="../layout/footer.jsp"></jsp:include>--%>
+
+
+	<script src="http://code.jquery.com/jquery.js"></script> 
+	<script>
+		$(document).on("ready", function() {
+			if ("${message}" != null && "${message}" != ("")) {
+				alert("${message}");
+	<%session.removeAttribute("message");%>
+		}
+		})
+		
+		
+		
+		
+		<c:url value="/search3" var="search" />
+		$("#searchBtn").on("click",function(){
+			$.ajax({
+			type:"post",
+			url:"${search}",
+			data:{
+				category:$("#searchCategory").val(),
+				keyword:$("#search").val()
+			},
+			success:function(res){
+				$("tbody")[0].innerHTML="";
+				$(res).each(function(idx,item){
+				//item이 comment객체(user정보도 포함)
+				console.log(item);
+				console.log(item.qnaDate);
+				var date=new Date(item.qnaDate);
+				var year = date.getFullYear().toString();
+				var month = (date.getMonth()+1).toString();
+				var date = date.getDate().toString();
+				if(date<10){
+					date="0"+date;
+				}
+				year=year.substr(2,2);
+				var newDate = year+"-"+month+"-"+date;
+				
+				$("tbody")[0].innerHTML+=
+		"<tr>"
+		+"<td>"+item.qnaNo+"</td>"
+		+"<td><a href='qnaView?qnaNo="+item.qnaNo+"' >"+item.qnaTitle +" </a></td>"
+		+"<td>"+item.users.userNick+"</td>"
+		+"<td>"+newDate+"</td>"
+		+"<td>"+item.qnaCount +"</td>"
+		+"</tr>"
+				});
+			},
+			error:function(xhr,status,error){
+				alert(error);
+			}
+			}); 
+		});
+	</script>
+	
+	
 	
 </body>
 </html>

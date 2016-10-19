@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dto.Answer;
+import com.example.dto.Comments;
 import com.example.dto.Qna;
 import com.example.dto.Users;
 import com.example.service.AnswerService;
@@ -76,39 +79,56 @@ public class QnaController {
 		qs.insertQna(qnaTitle, qnaQuestion, userId);
 		return "redirect:/qna?page=1";
 	}
-/*
-	// 리뷰 수정창으로 넘어가기
-	@RequestMapping(value = "/session/postUpdate", method = RequestMethod.POST)
+
+	// qna 수정창으로 넘어가기
+	@RequestMapping(value = "/session/qnaUpdate", method = RequestMethod.POST)
 	public String noticeUpdate(Model model, HttpServletRequest request) {
-		String reviewNo = request.getParameter("reviewNo");
-		Review r = rs.selectReview(Integer.parseInt(reviewNo));
-		model.addAttribute("review", r);
-		return "session/postscript/change_post";
+		String qnaNo = request.getParameter("qnaNo");
+		Qna q = qs.selectQna(Integer.parseInt(qnaNo));
+		model.addAttribute("qna", q);
+		return "session/qna/question_change";
 	}
 
-	// 리뷰 수정하기
-	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
-	public String commentUpdate(Model model, HttpServletRequest request) {
-		String reviewNo = request.getParameter("reviewNo");
-		String reviewTitle = request.getParameter("TITLE");
-		String reviewContent = request.getParameter("CONTENTS");
-		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
-		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, reviewContent, routeNo);
-		return "redirect:/postView?reviewNo=" + reviewNo;
+	// qna 수정하기
+	@RequestMapping(value = "/qnaUpdate", method = RequestMethod.POST)
+	public String qnaUpdate(Model model, HttpServletRequest request) {
+		String qnaNo = request.getParameter("qnaNo");
+		String qnaTitle = request.getParameter("TITLE");
+		String qnaContent = request.getParameter("CONTENTS");
+		qs.updateQna(Integer.parseInt(qnaNo), qnaTitle, qnaContent);
+		return "redirect:/qnaView?qnaNo=" + qnaNo;
 	}
 
 	// qna 삭제
-	@RequestMapping(value = "/reviewDelete", method = RequestMethod.POST)
-	public String commentDelete(Model model, HttpServletRequest request, HttpSession session) {
-		String reviewNo = request.getParameter("reviewNo");
-		int result = qs.deleteReview(Integer.parseInt(reviewNo));
+	@RequestMapping(value = "/qnaDelete", method = RequestMethod.POST)
+	public String qnaDelete(Model model, HttpServletRequest request, HttpSession session) {
+		String qnaNo = request.getParameter("qnaNo");
+		int result = qs.deleteQna(Integer.parseInt(qnaNo));
 		if (result == 1) {
 			session.setAttribute("message", "정상 삭제 완료");
 		}
-		return "redirect:/post?page=1";
-	}*/
+		return "redirect:/qna?page=1";
+	}
 
-
+	//검색기능(qna게시판) ajax 카테고리와 검색키워드를 받아옴
+		@RequestMapping(value="/search3",method=RequestMethod.POST)
+		public @ResponseBody List<Qna> ajaxsearch(
+				@RequestParam String category,
+				@RequestParam String keyword,Model model){
+			List<Qna> result = new ArrayList<>();
+			logger.trace("여기오다");
+			if(category.equals("제목")){
+				result = qs.searchQnaByName(keyword, 1);
+			}
+			else if(category.equals("내용")){
+				result = qs.searchQnaByContent(keyword, 1);
+			}
+			else if(category.equals("닉네임")){
+				result = qs.searchQnaByNick(keyword, 1);
+			}
+			logger.trace("{}",result);
+			return result;
+		}
 
 	
 }

@@ -6,13 +6,15 @@
 <mapper namespace="com.example.QnaMapper">
 	<!-- 단일qna글 보기 -->
 	<select id="select" parameterType="int" resultMap="qnaUsers">
-		select * from qna q
+		select * from
+		qna q
 		join users u on u.user_id = q.user_id
 		where qna_no= #{qnaNo}
 	</select>
 	<!-- qna 쓰기 -->
 	<insert id="insert" parameterType="Map">
-		insert into qna (qna_title,qna_question,
+		insert into qna
+		(qna_title,qna_question,
 		qna_date,qna_count,user_id) values
 		(#{qnaTitle},#{qnaQuestion},
 		sysdate,0,#{userId})
@@ -31,15 +33,17 @@
 		qna_no=#{qnaNo}
 	</delete>
 
-	<!-- 페이지당 리스트를 보여줌-->
+	<!-- 페이지당 리스트를 보여줌 -->
 	<select id="selectList" parameterType="int" resultMap="qnaUsers">
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from qna q
-		join users u on u.user_id = q.user_id
+		join users u on
+		u.user_id = q.user_id
 		order by
 		qna_no desc) sub)
-		where rnum between #{page}*10-9 and #{page}*10
+		where rnum between
+		#{page}*10-9 and #{page}*10
 	</select>
 
 
@@ -52,21 +56,25 @@
 		users u on u.user_id = q.user_id
 		where
 		qna_title like #{qnaTitle}
-		order by qna_no desc) sub)
+		order
+		by qna_no desc) sub)
 		where
 		rnum between #{page}*10-9 and #{page}*10
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
 	<select id="searchListByContent" parameterType="Map" resultMap="qnaUsers">
-		select *
-		from(select sub.*,rownum rnum from
-		(select * from qna q 
-  		join answer a on a.qna_no = q.qna_no
-		where
-		qna_question like #{qnaQuestion} or answer_content like #{qnaQuestion}
-		order by q.qna_no desc) sub)
-		where rnum between #{page}*10-9 and #{page}*10
+		select * from(select sub.*,rownum rnum from
+		(select * from qna q join
+		users u on q.user_id=u.user_id
+		where q.qna_no in (select distinct
+		q.qna_no from answer where
+		answer_content like #{qnaQuestion} union
+		select q.qna_no from qna where qna_question like #{qnaQuestion} )
+		order by q.qna_no
+		desc) sub)
+		where rnum between #{page}*10-9 and
+		#{page}*10
 
 	</select>
 
@@ -82,18 +90,20 @@
 		by qna_no desc) sub)
 		where rnum between #{page}*10-9 and #{page}*10
 	</select>
-	
+
 	<!-- 조회수 1을 증가시킴 -->
 	<update id="countUpdate" parameterType="int">
 		update qna set
 		qna_count=
 		(select qna_count from qna where
 		qna_no=#{qnaNo})+1
-		where qna_no = #{qnaNo}
+		where qna_no =
+		#{qnaNo}
 	</update>
-<!-- 페이지 카운팅 -->
-<select id="pageCount" resultType="int" >
-select count(*) from qna</select>
+	<!-- 페이지 카운팅 -->
+	<select id="pageCount" resultType="int">
+		select count(*) from qna
+	</select>
 
 	<resultMap type="qna" id="qnaBase">
 		<id column="qna_no" property="qnaNo" />
@@ -103,10 +113,10 @@ select count(*) from qna</select>
 		<result column="qna_count" property="qnaCount" />
 		<result column="user_id" property="userId" />
 	</resultMap>
-	
+
 	<resultMap type="qna" id="qnaUsers" extends="qnaBase">
 		<association property="users" column="user_id" javaType="users"
 			resultMap="com.example.UserMapper.usersBase"></association>
 	</resultMap>
-	
+
 </mapper>
