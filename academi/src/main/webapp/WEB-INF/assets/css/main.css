@@ -3565,9 +3565,9 @@
 	
 		ul.link-list li {
 			border-top: solid 1px #ced0b7;
-			padding: 0.75em 0 0 0;
-			margin: 0.75em 0 0 0em;
-			text-align: center;
+			padding: 0.75em 0 0 2em;
+			margin: 1.5em 0 1.5em 0;
+			
 		}
 		
 		ul.link-list li a {
@@ -3594,10 +3594,10 @@
 		#writeNsearchBar {
 			margin-top: 3em;
 		}
-		
-	/* Button Style */
-		
-		#searchBtn {
+
+
+/* Button Style */
+#searchBtn {
 			font-size: 0.75em;
 			float: right;
 			margin-right: 2em;
@@ -3626,7 +3626,9 @@
 			text-align: left;
 		}
 		
-		
+		.link-list i {
+			margin-right: 0.5em;
+		}
 		
 	/* Desktop + Tablet */
 		

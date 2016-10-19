@@ -16,20 +16,15 @@
 		<li><a href="right-sidebar.html">후기 등록</a></li>
 		
 		<li><a href="no-sidebar.html">Photo Book</a></li>
-		
-		<li><a href="#">Board</a>
+		<c:url value="/notice?page=1" var="notice" />
+		<li><a href="${notice }">Board</a>
 			<ul>
-				<li><a href="#">Lorem ipsum dolor</a></li>
-				<li><a href="#">Magna phasellus</a></li>
-				<li><a href="#">Etiam dolore nisl</a></li>
-				<li><a href="#">And a submenu &hellip;</a>
-					<ul>
-						<li><a href="#">Lorem ipsum dolor</a></li>
-						<li><a href="#">Phasellus consequat</a></li>
-						<li><a href="#">Magna phasellus</a></li>
-						<li><a href="#">Etiam dolore nisl</a></li>
-					</ul></li>
-				<li><a href="#">Veroeros feugiat</a></li>
+				<li><a href="${notice }">공지사항</a></li>
+				<c:url value="/qna?page=1" var="qna" />
+				<li><a href="${qna }">Q & A</a></li>
+				<c:url value="/free?page=1" var="free" />
+				<li><a href="${free }">자유 게시판</a></li>
+				<li><a href="#">사이트 이용방법</a></li>
 			</ul></li>
 	</ul>
 </nav>

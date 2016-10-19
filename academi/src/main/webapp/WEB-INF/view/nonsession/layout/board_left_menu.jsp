@@ -13,12 +13,32 @@
 			<h2>게 시 판</h2>
 			<ul class="link-list">
 				<c:url value="/notice?page=1" var="notice"></c:url>
-				<li><a href="${notice }">공지사항</a></li>
+				<li>
+					<a href="${notice }">
+						<i class="fa fa-bullhorn"></i>
+						공 지 사 항
+					</a>
+				</li>
 				<c:url value="/qna?page=1" var="qna" />
-				<li><a href="${qna }">Q & A</a></li>
+				<li>
+					<a href="${qna }">
+						<i class="fa fa-hand-paper-o"></i>
+						Q & A
+					</a>
+				</li>
 				<c:url value="free?page=1" var="free"/>
-				<li><a href="${free }">자유 게시판</a></li>
-				<li><a href="#">사이트 이용방법</a></li>
+				<li>
+					<a href="${free }">
+						<i class="fa fa-comments-o"></i>
+						자 유 게 시 판
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-child"></i>
+						사이트 이용방법
+					</a>
+				</li>
 			</ul>
 		</section>
 	</div>

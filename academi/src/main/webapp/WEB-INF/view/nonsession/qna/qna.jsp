@@ -15,7 +15,7 @@
 		
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
 
-<title>Insert title here</title>
+<title>Q & A</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -41,11 +41,23 @@
 							<h2>Q & A</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 							
-							<form action="/session/noticeWrite">
+							<ul id="writeNsearchBar">
+								<li><input type="submit" value="글쓰기" class="writeBoard"></li>
+								<li>
+									<div class="boardSearchBar">
+										<select id="searchCategory">
+											<option value="제목">제목</option>
+											<option value="내용">내용</option>
+											<option value="닉네임">닉네임</option>
+										</select>
+										<input type="search" id="search" />
+										<input type="button" id="searchBtn" value="검색" />
+									</div>
+								</li>
+							</ul>
 							
-							<input type="submit" value="글쓰기" class="writeBoard">
+							<form action="/session/noticeWrite">
 								<table>
-									
 									<colgroup>
 										<col width="10%" />
 										<col width="*" />
@@ -88,20 +100,12 @@
 								<%}%>
 								</p>
 							</form>
-							
-							<div class="boardSearchBar">
-							<select id="searchCategory">
-								<option value="제목">제목</option>
-								<option value="내용">내용</option>
-								<option value="닉네임">닉네임</option>
-							</select>
-							<input type="search" id="search" />
-							<input type="button" id="searchBtn" value="검색" />
-							</div>
-							
 						</section>
 					</div>
 				</div>
+				
+				<!-- footer -->
+					<jsp:include page="../layout/footer.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>
@@ -167,7 +171,16 @@
 		});
 	</script>
 	
-	
-	
+	<!-- Scripts -->
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
 </body>
 </html>

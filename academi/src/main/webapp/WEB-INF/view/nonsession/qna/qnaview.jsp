@@ -8,9 +8,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+ 	<meta name="author" content="Nathan Searles">
+  		
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+		
+<title>Q & A</title>
 </head>
 <body>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../layout/menubar_header.jsp" />
 <form>
 	<table class="board_view" border="1">
 		<colgroup>
@@ -84,8 +101,16 @@
 		
 	</script>
 	
-	
-	
-	
+	<!-- Scripts -->
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
 </body>
 </html>
