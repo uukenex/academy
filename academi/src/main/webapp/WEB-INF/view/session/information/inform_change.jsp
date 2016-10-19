@@ -28,7 +28,7 @@
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp"></jsp:include>
 	
 	<!-- Wrapper -->
-		<div id="astralWrapper">
+		<div id="astralWrapper" style="padding-top: 5em">
 
 			<!-- Nav -->
 				<nav	id="astralNav">
@@ -95,11 +95,10 @@
 							</a>
 						</article>
 				</div>
-				
-				<!-- footer -->
-		
-					<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
 		</div>
+		
+		<!-- footer -->
+			<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
 		
 		<!-- Scripts -->
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
