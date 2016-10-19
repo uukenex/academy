@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -131,4 +133,23 @@ public class QnaController {
 		}
 
 	
+		
+		// 리뷰 댓글 ajax
+		@RequestMapping(value = "/session/replyRegist3", method = RequestMethod.POST)
+		public @ResponseBody Map<String, String> ajaxanswer(
+				@RequestParam String userId, 
+				@RequestParam String answerContent,
+				@RequestParam int qnaNo, HttpSession session) {
+			logger.trace("{}{}{}",qnaNo,userId,answerContent);
+			Map<String, String> resultMap = null;
+			int result = as.insertAnswer(answerContent, qnaNo, userId);
+			if (result == 1) {
+				resultMap = new HashMap<>();
+				resultMap.put("id", userId);
+				resultMap.put("content", answerContent);
+			}
+			return resultMap;
+		}
+		
+		
 }
