@@ -2218,8 +2218,8 @@
 		-webkit-transition: background-color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out;
-		background-color: rgba(53, 56, 73, 0.95);
-		height: 3.7em;
+		background-color: rgba(255, 255, 235, 0.85);
+		height: 3.8em;
 		left: 0;
 		line-height: 3.5em;
 		padding: 0 1.25em;
@@ -2243,6 +2243,10 @@
 
 			#fancyHeader h1 a {
 				border: 0;
+				font-family: 'Jeju Gothic';
+				font-size: 2em;
+				font-weight: bold;
+				vertical-align: bottom;
 			}
 
 		#fancyHeader nav {
@@ -2257,7 +2261,7 @@
 			right: 0.7em;
 			text-transform: uppercase;
 			top: 0.7em;
-			color: #FFFFDC;
+			color: #17375E;
 		}
 
 			#fancyHeader nav a {
@@ -2278,7 +2282,7 @@
 					-ms-transition: background-color 0.2s ease-in-out;
 					transition: background-color 0.2s ease-in-out;
 					border-radius: 5px;
-					box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+					box-shadow: inset 0 0 0 2px rgba(23, 55, 94, 0.5);
 					padding: 0 1.35em;
 				}
 
@@ -2297,11 +2301,11 @@
 					} 
 
 					#fancyHeader nav a[href="#fancyMenu"]:hover {
-						background-color: rgba(255, 255, 255, 0.45);
+						background-color: rgba(23, 55, 94, 0.45);
 					}
 
 					#fancyHeader nav a[href="#fancyMenu"]:active {
-						background-color: rgba(255, 255, 255, 0.075);
+						background-color: rgba(23, 55, 94, 0.075);
 					}
 
 		#fancyHeader.alt {
@@ -2584,8 +2588,9 @@
 					text-decoration: none;
 					border: 0;
 					outline: 0;
-					font-size: 15pt;
-					font-family: 'Jeju Hallasan';
+					font-size: 17pt;
+					font-family: 'Jeju Gothic';
+					font-weight: bold;
 				}
 
 				#nav > ul > li > ul {

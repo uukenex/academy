@@ -8,9 +8,6 @@
 <!-- Fancy Header -->
 
 	<header id="fancyHeader" class="alt">
-		<h1>
-			<a href="#">여행을 부탁해!</a>
-		</h1>
 		<nav>
 			<a href="#fancyMenu">Menu</a>
 		</nav>
