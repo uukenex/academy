@@ -31,25 +31,14 @@
 		<div id="main">
 			<div class="container">
 				<div class="row main-row">
-					<!-- d -->
-					<div class="3u 12u(mobile)">
 
-						<!-- Left Board Menu -->
-						<section class="boardSection">
-							<h2>게 시 판</h2>
-							<ul class="link-list">
-								<li><a href="#">공지사항</a></li>
-								<li><a href="#">Q & A</a></li>
-								<li><a href="#">자유 게시판</a></li>
-								<li><a href="#">사이트 이용방법</a></li>
-							</ul>
-						</section>
-					</div>
-
+						<!-- Board Left Menu -->
+							<jsp:include page="../layout/board_left_menu.jsp"></jsp:include>
+							
 					<!-- Board Body part -->
 					<div class="8u 12u(mobile) important(mobile)">
 						<section class="middle-content">
-							<h2>공 지 사 항</h2>
+							<h2>Q & A</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 							<select id="searchCategory">
 								<option value="제목">제목</option>

@@ -36,31 +36,32 @@
 		<div id="main">
 			<div class="container">
 				<div class="row main-row">
-					<!-- d -->
-					<div class="3u 12u(mobile)">
 
-						<!-- Left Board Menu -->
-						<section class="boardSection">
-							<h2>게 시 판</h2>
-							<ul class="link-list">
-								<li><a href="#">공지사항</a></li>
-								<li><a href="#">Q & A</a></li>
-								<li><a href="#">자유 게시판</a></li>
-								<li><a href="#">사이트 이용방법</a></li>
-							</ul>
-						</section>
-					</div>
-
+						<!-- Board Left Menu -->
+							<jsp:include page="../layout/board_left_menu.jsp"></jsp:include>
+							
 					<!-- Board Body part -->
 					<div class="8u 12u(mobile) important(mobile)">
 						<section class="middle-content">
 							<h2>공 지 사 항</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 							
+							<ul id="writeNsearchBar">
+								<li><input type="submit" value="글쓰기" class="writeBoard"></li>
+								<li>
+									<div class="boardSearchBar">
+										<select id="searchCategory">
+											<option value="제목">제목</option>
+											<option value="내용">내용</option>
+											<option value="닉네임">닉네임</option>
+										</select>
+										<input type="search" id="search" />
+										<input type="button" id="searchBtn" value="검색" />
+									</div>
+								</li>
+							</ul>
+							
 							<form action="/session/noticeWrite">
-							
-							<input type="submit" value="글쓰기" class="writeBoard">
-							
 								<table>
 									<colgroup>
 										<col width="10%" />
@@ -104,27 +105,17 @@
 									<%}%>
 								</p>
 							</form>
-							
-							<div class="boardSearchBar">
-								<select id="searchCategory">
-									<option value="제목">제목</option>
-									<option value="내용">내용</option>
-									<option value="닉네임">닉네임</option>
-								</select>
-								<input type="search" id="search" />
-								<input type="button" id="searchBtn" value="검색" />
-							</div>
 						</section>
 					</div>
 				</div>
+				
+				<!-- footer -->
+	
+					<jsp:include page="../layout/footer.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>
 	
-	<!-- footer -->
-	
-		<jsp:include page="../layout/footer.jsp"></jsp:include>
-
 
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
@@ -179,6 +170,18 @@
 			}); 
 		});
 	</script>
+	
+	<!-- Scripts -->
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
 
 </body>
 </html>

@@ -2697,9 +2697,10 @@
 	#footer {
 		position: relative;
 		overflow: hidden;
-		padding: 6em 0 6em 0;
+		padding: 2em 0 2em 0;
 		background: #17375E;
 		color: #fff;
+		margin-top: 15em;
 	}
 
 		#footer .icon.circled {
@@ -3534,14 +3535,22 @@
    			 
 /* Board瑜� �쐞�븳 CSS code ---------------------------> */
 
-	/* 媛� �쁺�뿭�떦 font-family, font-size �꽕�젙 */
+	/* font-family, font-size */
+	
+		.middle-content h2{
+			font-family: 'Jeju Gothic';
+			font-weight: bold;
+			color: #17375E;
+			margin-top: 1em;
+		}
 		
 		.boardSection h2 {
-			font-size: 4.5em;
+			font-size: 3em;
 			font-weight: bold;
-			font-family: 'Nanum Pen Script';
+			font-family: 'Jeju Hallasan';
 			color: #17375E;
-			margin-bottom: 0.5em;
+			margin-top: 0.5em;
+			margin-bottom: 1em;
 			text-align: center;
 		}
 	
@@ -3562,8 +3571,8 @@
 		}
 		
 		ul.link-list li a {
-			font-family: 'Nanum Pen Script';
-			font-size: 2em;
+			font-family: 'Jeju Gothic';
+			font-size: 1em;
 			color: #17375E;
 		}
 		
@@ -3574,21 +3583,30 @@
 		}
 		
 		.boardSearchBar {
-			position: absolute;
-			top: 55em;
-			left: 35em;
-			margin-bottom: 5em;
+			text-align: right;
 		}
 		
 		#pageNumber {
 			text-align: center;
+			margin-top: 4em;
 		}
 		
-	/* 湲� �벐湲� Button Style */
+		#writeNsearchBar {
+			margin-top: 3em;
+		}
+		
+	/* Button Style */
+		
+		#searchBtn {
+			font-size: 0.75em;
+			float: right;
+			margin-right: 2em;
+			margin-bottom: 3em;
+		}
 		
 		.writeBoard {
 			font-size: 0.75em;
-			float: right;
+			float: left;
 			margin-right: 2em;
 			margin-bottom: 3em;
 		}
@@ -3607,6 +3625,7 @@
 		#boardTitle {
 			text-align: left;
 		}
+		
 		
 		
 	/* Desktop + Tablet */

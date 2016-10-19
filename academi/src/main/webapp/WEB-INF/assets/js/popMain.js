@@ -21,7 +21,7 @@
 		var	$window = $(window),
 			$body = $('body'),
 			$fancyHeader = $('#fancyHeader'),
-			$banner = $('#banner');
+			$banner = $('.drop_menu_visiable');
 
 		// fancyHeader.
 			if (skel.vars.IEVersion < 9)

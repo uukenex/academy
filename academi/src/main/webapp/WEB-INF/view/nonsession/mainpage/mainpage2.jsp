@@ -24,7 +24,7 @@
 			<jsp:include page="../layout/dropMenu_header.jsp"></jsp:include>
 
 			<!-- Header -->
-				<div id="header">
+				<div id="header" class="drop_menu_visiable">
 					
 					<!-- Inner -->
 						<div class="inner">
