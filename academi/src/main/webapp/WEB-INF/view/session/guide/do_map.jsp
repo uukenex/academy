@@ -270,7 +270,7 @@ window.onload = function(){
 		<img src='./map/domap/m064.gif' alt='' border='0' name='mus9' class='list9'></a>
 		<a href='./bbs/board.php?bo_table=m101&sca=서울' onfocus='this.blur()' onmouseover=mus_on('mus10') onmouseout=mus_off('mus10') onclick=smenu_click('mus10')>
 		<img src='./map/domap/m02.gif' alt='' border='0' name='mus10' class='list10'></a>
-		<a href='./bbs/board.php?bo_table=m101&sca=인천' onfocus='this.blur()' onmouseover=mus_on('mus11') onmouseout=mus_off('mus11') onclick=smenu_click('mus11')>
+		<a href='./mapapi?local=인천광역시' onfocus='this.blur()' onmouseover=mus_on('mus11') onmouseout=mus_off('mus11') onclick=smenu_click('mus11')>
 		<img src='./map/domap/m032.gif' alt='' border='0' name='mus11' class='list11'></a>
 		<a href='./bbs/board.php?bo_table=m101&sca=대전' onfocus='this.blur()' onmouseover=mus_on('mus12') onmouseout=mus_off('mus12') onclick=smenu_click('mus12')>
 		<img src='./map/domap/m042.gif' alt='' border='0' name='mus12' class='list12'></a>
