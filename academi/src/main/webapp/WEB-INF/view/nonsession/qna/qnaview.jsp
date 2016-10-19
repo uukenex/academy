@@ -65,7 +65,6 @@
 	</table>
 </form>
 	<hr>
-	<c:if test="${ Users.userId!=null}" >
 	<h1>답변등록하기</h1>
 	<table>
 	<tr>
@@ -73,7 +72,7 @@
 	<td><input type="button" value="답변 등록하기" id="answerRegist"></td>
 	<tr>
 	</table>
-	</c:if>
+	
 	<hr>
 	<h1>답변</h1>
 	<hr>
@@ -131,10 +130,18 @@
 							},
 							success : function(res) {
 								alert("등록완료");
-								$("#tbody").append(
-										$("<tr><td>" + res.id
+								$("#tbody").append(	$(
+									"<tr><td>" + res.id
 									+ "</td><td colspan='3'>"
-									+ res.content + "</td></tr>"));
+									+ res.content + "</td></tr>"
+									
+								
+								));
+								
+								
+								
+								
+								
 								$("#answerContent").val("");
 							},
 							error : function(xhr, status, error) {
