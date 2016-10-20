@@ -44,7 +44,7 @@
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 							
 							<ul id="writeNsearchBar">
-								<li><input type="submit" value="글쓰기" class="writeBoard"></li>
+								<li><a href="/session/boardsign" ><input type="submit" value="글쓰기" class="writeBoard"></a></li>
 								<li>
 									<div class="boardSearchBar">
 										<select id="searchCategory">
@@ -58,7 +58,7 @@
 								</li>
 							</ul>
 							
-							<form action="/session/boardsign">
+							<form>
 								<table>
 									<colgroup>
 										<col width="10%" />
