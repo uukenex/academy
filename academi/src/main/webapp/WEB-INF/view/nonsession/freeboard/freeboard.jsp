@@ -152,7 +152,8 @@
 				
 				$("tbody")[0].innerHTML+=
 		"<tr>"
-		+"<td><a href='freeView?commentNo="+item.commentNo+"' >"+item.commentName +" </a></td>"
+		+"<td>"+item.commentNo+"</td>"
+		+"<td id='boardTitle'><a href='freeView?commentNo="+item.commentNo+"' >"+item.commentName +" </a></td>"
 		+"<td>"+item.users.userNick+"</td>"
 		+"<td>"+newDate+"</td>"
 		+"<td>"+item.commentCount +"</td>"

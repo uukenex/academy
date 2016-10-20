@@ -82,7 +82,7 @@
 									<tbody>
 									<c:forEach var="comment" items="${comments }">
 										<tr>
-											<td>${comment.commentNo }</td>
+											<td>공지</td>
 											<td id="boardTitle"><a href="noticeView?commentNo=${comment.commentNo} ">${comment.commentName }</a></td>
 											<td>${comment.users.userNick}</td>
 											<td><fmt:formatDate value="${comment.commentDate }"
@@ -155,8 +155,8 @@
 				
 				$("tbody")[0].innerHTML+=
 		"<tr>"
-		+"<td>"+item.commentNo+"</td>"
-		+"<td><a href='freeView?commentNo="+item.commentNo+"' >"+item.commentName +" </a></td>"
+		+"<td>"+"공지"+"</td>"
+		+"<td id='boardTitle'><a href='freeView?commentNo="+item.commentNo+"' >"+item.commentName +" </a></td>"
 		+"<td>"+item.users.userNick+"</td>"
 		+"<td>"+newDate+"</td>"
 		+"<td>"+item.commentCount +"</td>"

@@ -157,7 +157,7 @@
 				$("tbody")[0].innerHTML+=
 		"<tr>"
 		+"<td>"+item.qnaNo+"</td>"
-		+"<td><a href='qnaView?qnaNo="+item.qnaNo+"' >"+item.qnaTitle +" </a></td>"
+		+"<td id='boardTitle'><a href='qnaView?qnaNo="+item.qnaNo+"' >"+item.qnaTitle +" </a></td>"
 		+"<td>"+item.users.userNick+"</td>"
 		+"<td>"+newDate+"</td>"
 		+"<td>"+item.qnaCount +"</td>"
