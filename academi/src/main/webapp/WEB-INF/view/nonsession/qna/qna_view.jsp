@@ -43,49 +43,134 @@
 								<form>
 								
 									<!-- 질문 내용 자세히 보기 부분 -->
-									<div>
-										<a href="#">목록보기</a>
-										<hr id="boardTitleHr">
-										<h3>${qna.qnaTitle }</h3>
+									<div class="qnaContentView">
+									<%-- 
+										<c:if test="${qna.userId==Users.userId }"> 
+											<input type="submit" value="수정하기" formaction="/session/qnaUpdate" formmethod="post">
+										</c:if>
+										 --%>
+										 <ul class="boardButtonList">
+										 	<li>
+										 		<a href="#" class="boardButtonStyle1">수정</a>
+										 	</li>
+										 	<li>
+										 		<a href="#" class="boardButtonStyle1">삭제</a>
+										 	</li>
+										 </ul>
+										<hr id="boardTitleHrStyle1">
+										<h3 id="boardTitleSytle1">${qna.qnaTitle }</h3>
 										<input type="hidden" name="qnaNo" value="${qna.qnaNo }" />
-										<hr id="boardTitleHr">
+										<hr id="boardTitleHrStyle1">
 										<table>
 											<colgroup>
 												<col width="10%" />
-												<col width="60%" />
+												<col width="*%" />
 												<col width="10%" />
-												<col width="200%" />
+												<col width="20%" />
 											</colgroup>
 											<tr>
 												<th>작성자</th>
-												<td>닉네임</td>
+												<input type="hidden" name="userId" value="${qna.userId }" />
+												<td class="boardTitleSort boardBold">${qna.users.userNick }</td>
 												<th>작성일</th>
-												<td>날짜 입력구간</td>
+												<td class="boardTitleSort boardBold"><fmt:formatDate value="${qna.qnaDate }"
+														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</td>
 											</tr>
 											<tr>
-												<td colspan="4"> 여기는 내용이 들어갑니다.</td>
+												<td> </td>
+												<td colspan="3" class="boardTitleSort">${qna.qnaQuestion }</td>
 											</tr>
 											<tr>
 												<td colspan="4">
-													<input type="button" value="답변 작성하러 가기">
+													<input type="button" value="목록" id="listview" class="boardButtonStyle2">
+												</td>
+											</tr>
+											<tr>
+												<td colspan="4">
+													<input type="button" value="답변 작성" class="boardButtonStyle2">
 												</td>
 											</tr>
 										</table>
 									</div>
 									
+									<hr id="boardTitleHrStyle2">
+									
 									<!-- 답변 자세히 보기 부분 -->
-									<div>
+									<div class="qnaAnswerView">
+										<c:forEach var="answer" items="${answers }">
+										<table class="board_view" border="1">
+											<tbody id="tbody">
+												
+												<colgroup>
+													<col width="10%">
+													<col width="2%">
+													<col width="*%">
+													<col width="8%">
+													<col width="8%">
+												</colgroup>
+								            	<tr>
+								            		<th class="boardBold">${answer.users.userNick }</th>
+								            		<td>
+								            			<i class="fa fa-ellipsis-v"></i>
+								            		</td>
+								            		<td class="boardTitleSort">
+								            			<fmt:formatDate value="${answer.answerDate }"
+														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+													</td>
+													<td>
+														<a href="#" class="boardButtonStyle1">수정</a>
+													</td>
+													<td>
+														<a href="#" class="boardButtonStyle1">삭제</a>
+													</td>
+								            	</tr>
+										<tr>
+											<th scope="row"> </th>
+											<td colspan="4" class="boardTitleSort">${answer.answerContent }</td>
+										</tr>
+										<%-- 
+										<tr align="right">
+											<c:if test="${qna.userId==Users.userId }"> 
+												<td colspan="4">
+													<input type="button" value="수정하기">
+												</td>
+											</c:if>
+										</tr>
+										 --%>
 										
+										</tbody>
+									</table>
+									<hr id="boardTitleHrStyle2">
+									</c:forEach>
 									</div>
 									
 									<!-- 답변 작성하는 부분 -->
-									<div>
-										
+									<div id="qnaReplyWritter">
+										<table>
+											<colgroup>
+												<col width="10%" />
+												<col width="*%" />
+												<col width="10%" />
+											</colgroup>
+											<tr>
+												<td><i class="fa fa-key fa-2x"></i></td>
+												<td>
+													<textarea cols="75" rows="2" id="answerContent" placeholder="댓글을 입력하세요."></textarea>
+												</td>
+												<td>
+													<input type="button" value="등록" id="answerRegist" class="boardButtonStyle3">
+												</td>
+											</tr>
+										</table>
 									</div>
 								</form>
 							</section>
 						</div>
 				</div>
+				
+				<!-- footer -->
+					<jsp:include page="../layout/footer.jsp"></jsp:include>
+					
 			</div>
 		</div>
 	</div>
