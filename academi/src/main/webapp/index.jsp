@@ -56,7 +56,7 @@
 		<c:url value="/qna?page=1" var="qna" />
 		<a href="${qna }">QNA 게시판 1페이지</a>
 		<br>
-		<c:url value="/mapapi" var="api" />
+		<c:url value="/session/mapapi" var="api" />
 		<a href="${api }">map api</a>
 		<br>
 		<c:url value="/mainpage2" var="m2" />

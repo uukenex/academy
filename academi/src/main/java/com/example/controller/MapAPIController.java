@@ -23,35 +23,10 @@ import com.example.service.UserService;
 
 @Controller
 @SessionAttributes({"cart"})
-public class JunsukController {
-	static Logger logger = LoggerFactory.getLogger(JunsukController.class);
+public class MapAPIController {
+	static Logger logger = LoggerFactory.getLogger(MapAPIController.class);
 
-	@Autowired
-	UserService uService;
 	
-	
-	@RequestMapping(value="/loginUser", method=RequestMethod.POST)
-	public String loginUser(Model model, HttpServletRequest request, HttpSession session){
-		String returnURL="nonsession/login/login";
-		String userId=request.getParameter("id");
-		String userPass=request.getParameter("password");
-		Users user = uService.login(userId);
-		
-		
-		if(user!=null&&user.getUserPass().equals(userPass)){
-			if(user.getUserId().equals(userId)){
-				session.setAttribute("Users", user);
-				model.addAttribute("message","어서오세요 동물의숲 ");
-				model.addAttribute("userId", userId);
-				returnURL ="logintest";
-				
-			}
-			}else{
-				model.addAttribute("message","아이디 혹은 비밀번호를 확인해주세요.");
-				returnURL ="nonsession/login/login";
-			}
-		return returnURL;
-	}
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String domap(Model model) {
 		return "session/guide/do_map";
@@ -92,7 +67,7 @@ public class JunsukController {
 	public String chungcheongbukdo(Model model) {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
-	@RequestMapping(value = "/mapapi", method = RequestMethod.GET)
+	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
 	public String mapapi(Model model, HttpServletRequest request) {
 		String local = request.getParameter("incheon");
 		model.addAttribute("local",local);
@@ -124,7 +99,7 @@ public class JunsukController {
 	public String add(@ModelAttribute Goods goods,
 			@ModelAttribute("cart") List<Goods> cart) {
 		cart.add(goods);
-		return "redirect:/mapapi";
+		return "redirect:/session/mapapi";
 	}
 	
 	

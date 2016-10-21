@@ -146,20 +146,83 @@
 .info .link {
 	color: #5085BB;
 }
+
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 350px;
+}
+
+.title {
+	font-weight: bold;
+	display: block;
+}
+
+.hAddr {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-radius: 2px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	padding: 5px;
+}
+
+#centerAddr {
+	display: block;
+	margin-top: 2px;
+	font-weight: normal;
+}
+
+.bAddr {
+	padding: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 </style>
 </head>
 <body>
 
 	<!-- 지도를 표시할 div 입니다 -->
-	<div id="map" style="width: 600px; height: 500px;"></div>
+	<div class="map_wrap">
+		<div id="map"
+			style="width: 600px; height: 600px; position: relative; overflow: hidden;"></div>
+		<div class="hAddr">
+			<span class="title">여행을 부탁해</span> <span id="centerAddr"></span>
+		</div>
+	</div>
+	<div style="height: 300px"></div>
+	<div>
 
+		<h1>Add address.</h1>
+		<form method="post" action="/add">
+			Name : <input type="text" id="address_name" name="address_name"><br>
+			x좌표 : <input type="text" id="x_coordinate" name="x_coordinate"><br>
+			y좌표 : <input type="text" id="y_coordinate" name="y_coordinate"><br>
+			주소 : <input type="text" id="address" name="address" size=30><br>
+			<br>
+			<button>추가하기</button>
+		</form>
+		<c:forEach items="${cart}" var="address">
+	Name : ${address.address_name}, 
+	x좌표 : ${address.x_coordinate}, 
+	y좌표 : ${address.y_coordinate } , 
+	주소 : ${address.address }  
+	<br>
+		</c:forEach>
+	</div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
+		/* var center = new daum.maps.LatLng(33.450701, 126.570667); */
+		var center = new daum.maps.LatLng(36.85079990267022, 127.1514823351422);
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
+			center : center, // 지도의 중심좌표
+			level : 4
 		// 지도의 확대 레벨
 		};
 
@@ -168,190 +231,148 @@
 
 		var geocoder = new daum.maps.services.Geocoder();
 
-		var positions = [
-				{
-					title : '카카오',
-					content : '<div class>'
-							+ '    <div class="info">'
-							+ '        <div class="title" name="카카오 스페이스닷원">'
-							+ '            카카오 스페이스닷원'
-							+ '        </div>'
-							+ '        <div class="body">'
-							+ '            <div class="img">'
-							+ '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">'
-							+ '           </div>'
-							+ '            <div class="desc">'
-							+ '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>'
-							+ '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>'
-							+ '                <div><input type="button" id="0" value="선택하기"  onclick=buttonclick(this)></div>'
-							+ '            </div>' + '        </div>'
-							+ '    </div>' + '</div>',
-					latlng : new daum.maps.LatLng(33.450705, 126.570677),
-					zIndex : 0
-				},
-				{
-					title : '생태연못',
-					content : '<div>생태연못 입니다. <input type="button" onclick=buttonclick(this) id="1" value="선택하기"></div>',
-					latlng : new daum.maps.LatLng(33.450936, 126.569477),
-					zIndex : 1
-				},
-				{
-					title : '텃밭',
-					content : '<div>텃밭 입니다. <input type="button" onclick=buttonclick(this) id="2" value="선택하기"></div>',
-					latlng : new daum.maps.LatLng(33.450879, 126.569940),
-					zIndex : 2
-				},
-				{
-					title : '근린공원',
-					content : '<div>근린공원 입니다. <input type="button" onclick=buttonclick(this) id="3" value="선택하기"></div>',
-					latlng : new daum.maps.LatLng(33.451393, 126.570738),
-					zIndex : 3
-				},
-				{
-					title : '공원2',
-					content : '<div>공원 입니다. <input type="button" onclick=buttonclick(this) id="3" value="선택하기"></div>',
-					latlng : new daum.maps.LatLng(34.451393, 126.570738),
-					zIndex : 4
-				} ];
+		var positions = [];
+		//주변 정보 중심좌표는 location에 따름
+		var places = new daum.maps.services.Places();
+		var callback = function(status, result, pagination) {
+			if (status === daum.maps.services.Status.OK) {
+				positions = result.places;
+				callMarker();
+			}
+		};
+
+		/*
+		MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
+		BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국	 */
+
+		//location에 중심좌표로 15개의 AT4정보를 불러옴 -각지역별 중심좌표로 변환해야함
+		places.categorySearch('AT4', callback, {
+			location : center
+		});
+
 
 		// 마커 이미지의 이미지 주소입니다
 		var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+		var callMarker = function() {
+			console.log(positions);
+			for (var i = 0; i < positions.length; i++) {
+				// 마커 이미지의 이미지 크기 입니다
+				var imageSize = new daum.maps.Size(24, 35);
 
-		for (var i = 0; i < positions.length; i++) {
+				// 마커 이미지를 생성합니다    
+				var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
-			// 마커 이미지의 이미지 크기 입니다
-			var imageSize = new daum.maps.Size(24, 35);
+				// 마커를 생성합니다
+				var posx = positions[i].latitude;
+				var posy = positions[i].longitude;
 
-			// 마커 이미지를 생성합니다    
-			var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+				var marker = new daum.maps.Marker({
+					map : map, // 마커를 표시할 지도
+					clickable : true,
+					position : new daum.maps.LatLng(posx, posy), // 마커를 표시할 위치
+					title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				// 마커 이미지 
+				});
 
-			// 마커를 생성합니다
-			var marker = new daum.maps.Marker({
-				map : map, // 마커를 표시할 지도
-				clickable : true,
-				position : positions[i].latlng, // 마커를 표시할 위치
-				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-			// 마커 이미지 
-			});
+				var iwContent = iwRemoveable = true;
+				// 마커에 표시할 인포윈도우를 생성합니다 
+				if(positions[i].imageUrl==""){
+					positions[i].imageUrl='http://www.moaksanjujo.kr/planweb/images/mall/defaultGoods.jpg';
+				}
+				var infowindow = new daum.maps.InfoWindow(
+						{
+							removable : iwRemoveable,
+							content : '<div id='+i+' class>'
+									+ '    <div class="info">'
+									+ '        <div class="title" name='+positions[i].title+'>'
+									+ positions[i].title
+									+ '        </div>'
+									+ '        <div class="body">'
+									+ '            <div class="img">'
+									+ '                <img src="'+positions[i].imageUrl+'" width="73" height="70">'
+									+ '           </div>'
+									+ '            <div class="desc">'
+									+ '                <div class="jibun ellipsis">'
+									+ positions[i].address
+									+ '</div>'
+									+ '                <div><input type="button" id="'
+									+ i
+									+ '" value="선택하기"  onclick=buttonclick(this)></div>'
+									+ '            </div>' + '        </div>'
+									+ '    </div>' + '</div>'
+						// 인포윈도우에 표시할 내용
+						});
 
-			var iwContent = iwRemoveable = true;
-			// 마커에 표시할 인포윈도우를 생성합니다 
-			var infowindow = new daum.maps.InfoWindow({
-				removable : iwRemoveable,
-				content : positions[i].content
-			// 인포윈도우에 표시할 내용
-			});
+				daum.maps.event.addListener(marker, 'click', makeOverListener(
+						map, marker, infowindow));
 
-			daum.maps.event.addListener(marker, 'click', makeOverListener(map,
-					marker, infowindow));
-			
-			
-			
-			
-			
-			
-			daum.maps.event.addListener(marker, 'click', function() {
-				console.log(this.cg.id);
-			});
-
-			
-			
-			
-			
-
+				
+			}
 		}
 
 		function makeOverListener(map, marker, infowindow) {
 			return function() {
+
+				console.log(marker);
+				console.log(infowindow);
 				infowindow.open(map, marker);
+
 			}
 		}
 
-		// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-		daum.maps.event.addListener(marker, 'idle', function() {
-			searchAddrFromCoords(marker.getPosition(), displayCenterInfo);
+		//클릭한 지역의 좌표와 주소(법정 동)으로 콘솔로그에 출력 
+		var realX;
+		var realY;
+		var readAddr;
+		daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+			searchDetailAddrFromCoords(mouseEvent.latLng, function(status,
+					result) {
+				if (status === daum.maps.services.Status.OK) {
+					realX = result[0].x;
+					realY = result[0].y;
+					readAddr = result[0].region;
+
+					console.log(realX);
+					console.log(realY);
+					console.log(readAddr);
+				}
+			});
 		});
 
-		function searchAddrFromCoords(coords, callback) {
-			// 좌표로 행정동 주소 정보를 요청합니다
-			geocoder.coord2addr(coords, callback);
-		}
+		
 
 		function searchDetailAddrFromCoords(coords, callback) {
 			// 좌표로 법정동 상세 주소 정보를 요청합니다
 			geocoder.coord2detailaddr(coords, callback);
 		}
 
-		// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-		function displayCenterInfo(status, result) {
-			if (status === daum.maps.services.Status.OK) {
-				$('#address').val(result[0].jibunAddress.name);
-			}
-		}
-
-		/* 		daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-
-		 // 클릭한 위도, 경도 정보를 가져옵니다 
-		 var latlng = mouseEvent.latLng;
-
-		 var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-		 message += '경도는 ' + latlng.getLng() + ' 입니다';
-
-		 var resultDiv = document.getElementById('result');
-		 resultDiv.innerHTML = message;
-
-		 });
-		 */
+		
 
 		// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 		var zoomControl = new daum.maps.ZoomControl();
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+		//마커안의 선택하기 버튼 클릭시 아래창으로 넣어주는 역할
+		function buttonclick(e) {
+
+			console.log(e.id);
+			var i = Number.parseInt(e.id);
+			switch (i) {
+			case i:
+				console.log(positions[i].title);
+				$('#address_name').val(positions[i].title);
+				$('#x_coordinate').val(positions[i].latitude);
+				$('#y_coordinate').val(positions[i].longitude);
+				$('#address').val(positions[i].address);
+				console.log($("#" + i));
+				break;
+			}
+
+		}
 	</script>
-	
-	<c:forEach items="${cart}" var="address">
-	Name : ${address.address_name}, 
-	x좌표 : ${address.x_coordinate}, 
-	y좌표 : ${address.y_coordinate } , 
-	주소 : ${address.address }  
-	<br>
-	</c:forEach>
-	<br>
-	<br>
-	
-	<h1>Add address.</h1>
-	<form method="post" action="/add">
-		Name : <input type="text" id="address_name" name="address_name"><br>
-		x좌표 : <input type="text" id="x_coordinate" name="x_coordinate"><br>
-		y좌표 : <input type="text" id="y_coordinate" name="y_coordinate"><br>
-		주소 : <input type="text" id="address" name="address" size=30><br>
-		<br>
-		<button>추가하기</button>
-	</form>
+
+
 
 </body>
-<script src="http://code.jquery.com/jquery.js"></script>
-<script>
-	function buttonclick(e) {
 
-		/* 		var message = '클릭한 위치의 위도는 ' + gps.getLat() + ' 이고, ';
-		 message += '경도는 ' + gps.getLng() + ' 입니다';
-
-		 var resultDiv = document.getElementById('result');
-		 resultDiv.innerHTML = message; */
-		console.log(e.id);
-		var i = Number.parseInt(e.id);
-		switch (i) {
-		case i:
-			//marker.getPosition();
-			console.log(positions[i].title);
-			$('#x_coordinate').val(positions[i].latlng.getLat());
-			$('#y_coordinate').val(positions[i].latlng.getLng());
-			$('#address_name').val(positions[i].title);
-
-			 searchDetailAddrFromCoords(positions[i].latlng, displayCenterInfo);
-			break;
-		}
-
-	}
-</script>
 </html>
