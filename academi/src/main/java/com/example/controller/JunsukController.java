@@ -92,7 +92,7 @@ public class JunsukController {
 	public String chungcheongbukdo(Model model) {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
-	@RequestMapping(value = "/mapapi", method = RequestMethod.GET)
+	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
 	public String mapapi(Model model, HttpServletRequest request) {
 		String local = request.getParameter("incheon");
 		model.addAttribute("local",local);
@@ -124,7 +124,7 @@ public class JunsukController {
 	public String add(@ModelAttribute Goods goods,
 			@ModelAttribute("cart") List<Goods> cart) {
 		cart.add(goods);
-		return "redirect:/mapapi";
+		return "redirect:/session/mapapi";
 	}
 	
 	
