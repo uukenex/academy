@@ -29,6 +29,9 @@
 		<c:url value="/informChange" var="informChange" />
 		<a href="${informChange }">Enter inform_change Main</a>
 		<br>
+		<c:url value="/qnaView" var="qnaView" />
+		<a href="${qnaView }">Enter Q&A Writter Main</a>
+		<br>
 		<c:url value="/login" var="login" />
 		<a href="${login }">Enter Login Form</a>
 		<br>

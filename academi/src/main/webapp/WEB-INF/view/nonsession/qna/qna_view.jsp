@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
@@ -41,86 +41,48 @@
 						<div class="8u 12u(mobile) important(mobile)">
 							<section class="middle-content">
 								<form>
-									<table class="board_view" border="1">
-										<colgroup>
-											<col width="15%" />
-											<col width="*%" />
-											<col width="15%" />
-											<col width="20%" />
-										</colgroup>
-										<h1>질문</h1>
-								            <tr>
-								                <th scope="row">제목</th>
-								                <td colspan="3">${qna.qnaTitle }</td>
-								                <input type="hidden" name="qnaNo" value="${qna.qnaNo }" />
+								
+									<!-- 질문 내용 자세히 보기 부분 -->
+									<div>
+										<a href="#">목록보기</a>
+										<hr id="boardTitleHr">
+										<h3>${qna.qnaTitle }</h3>
+										<input type="hidden" name="qnaNo" value="${qna.qnaNo }" />
+										<hr id="boardTitleHr">
+										<table>
+											<colgroup>
+												<col width="10%" />
+												<col width="60%" />
+												<col width="10%" />
+												<col width="200%" />
+											</colgroup>
+											<tr>
+												<th>작성자</th>
+												<td>닉네임</td>
+												<th>작성일</th>
+												<td>날짜 입력구간</td>
 											</tr>
-								            <tr>
-								                <th scope="row">작성자</th>
-								                <input type="hidden" name="userId" value="${qna.userId }" />
-								                <td>${qna.users.userNick }</td>
-								                <th scope="row">작성일</th>
-								                <td><fmt:formatDate value="${qna.qnaDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</td>
-								            </tr>
-										<tr>
-											<th scope="row">Content</th>
-											<td colspan="3">${qna.qnaQuestion }</td>
-										</tr>
-										<tr align="right">
-											<td colspan="4">
-											<input type="button" value="목록으로" id="listview">
-											<c:if test="${qna.userId==Users.userId }"> 
-											<input type="submit" value="수정하기" formaction="/session/qnaUpdate" formmethod="post">
-											</c:if>
-											</td>
-										</tr>
-									</table>
-								</form>
-									<hr>
-									<h1>답변등록하기</h1>
-									<table>
-									<tr>
-									<td><textarea rows="4" cols="100" id="answerContent"></textarea></td>
-									<td><input type="button" value="답변 등록하기" id="answerRegist"></td>
-									<tr>
-									</table>
+											<tr>
+												<td colspan="4"> 여기는 내용이 들어갑니다.</td>
+											</tr>
+											<tr>
+												<td colspan="4">
+													<input type="button" value="답변 작성하러 가기">
+												</td>
+											</tr>
+										</table>
+									</div>
 									
-									<hr>
-									<h1>답변</h1>
-									<hr>
-								
-								
-									<table class="board_view" border="1">
-										<tbody id="tbody">
-										<c:forEach var="answer" items="${answers }">
-										<colgroup>
-											<col width="15%" />
-											<col width="*%" />
-											<col width="15%" />
-											<col width="20%" />
-										</colgroup>
+									<!-- 답변 자세히 보기 부분 -->
+									<div>
 										
-								            <tr>
-								                <th scope="row">작성자</th>
-								                <td>${answer.users.userNick }</td>
-								                <th scope="row">작성일</th>
-								                <td><fmt:formatDate value="${answer.answerDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</td>
-								            </tr>
-										<tr>
-											<th scope="row">Content</th>
-											<td colspan="3">${answer.answerContent }</td>
-										</tr>
-										<tr align="right">
-										<c:if test="${qna.userId==Users.userId }"> 
-											<td colspan="4">
-											<input type="button" value="수정하기"></td>
-											</c:if>
-										</tr>
-										</c:forEach>
-										</tbody>
+									</div>
+									
+									<!-- 답변 작성하는 부분 -->
+									<div>
 										
-									</table>
+									</div>
+								</form>
 							</section>
 						</div>
 				</div>
@@ -154,9 +116,6 @@
 									
 								
 								));
-								
-								
-								
 								
 								
 								$("#answerContent").val("");

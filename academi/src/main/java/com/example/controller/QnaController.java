@@ -62,7 +62,7 @@ public class QnaController {
 		List<Answer> a = as.selectListByQnaNo(qnaNo);
 		model.addAttribute("qna", q);
 		model.addAttribute("answers", a);
-		return "nonsession/qna/qnaview";
+		return "nonsession/qna/qna_view";
 	}
 	// 질문 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/qnaQuestion", method = RequestMethod.GET)
@@ -98,7 +98,7 @@ public class QnaController {
 		String qnaTitle = request.getParameter("TITLE");
 		String qnaContent = request.getParameter("CONTENTS");
 		qs.updateQna(Integer.parseInt(qnaNo), qnaTitle, qnaContent);
-		return "redirect:/qnaView?qnaNo=" + qnaNo;
+		return "redirect:/qna_view?qnaNo=" + qnaNo;
 	}
 
 	// qna 삭제
