@@ -27,6 +27,7 @@
 	<mapper resource="mybatis/mapper/ReviewReplyMapper.xml" />
 	<mapper resource="mybatis/mapper/QnaMapper.xml" />
 	<mapper resource="mybatis/mapper/AnswerMapper.xml" />
+	<mapper resource="mybatis/mapper/RouteMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -195,7 +195,7 @@
 	</div>
 	<div style="height: 300px"></div>
 	<div>
-
+		<h6 id="result"></h6>
 		<h1>Add address.</h1>
 		<form method="post" action="/add">
 			Name : <input type="text" id="address_name" name="address_name"><br>
@@ -205,6 +205,19 @@
 			<br>
 			<button>추가하기</button>
 		</form>
+		<div>
+			<select id="select">
+				<option value="AT4">관광지</option>
+				<option value="CT1">문화시설</option>
+				<option value="AD5">숙박업소</option>
+				<option value="FD6">음식점</option>
+				<option value="CE7">카페</option>
+				<option value="HP8">병원</option>
+				<option value="PM9">약국</option>
+				<option value="OL7">주유소</option>
+			</select> <input type="text" id="keyword"> <input type="button"
+				id="search" value="찾기">
+		</div>
 		<c:forEach items="${cart}" var="address">
 	Name : ${address.address_name}, 
 	x좌표 : ${address.x_coordinate}, 
@@ -213,7 +226,7 @@
 	<br>
 		</c:forEach>
 	</div>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="/js/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
@@ -228,96 +241,133 @@
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new daum.maps.Map(mapContainer, mapOption);
+		var places = new daum.maps.services.Places();
 
+		// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+		daum.maps.event.addListener(map, 'center_changed', function() {
+
+			// 지도의  레벨을 얻어옵니다
+			var level = map.getLevel();
+
+			// 지도의 중심좌표를 얻어옵니다 
+			var latlng = map.getCenter();
+
+			var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
+			message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 '
+					+ latlng.getLng() + '입니다</p>';
+
+			var resultDiv = document.getElementById('result');
+			resultDiv.innerHTML = message;
+
+			center = new daum.maps.LatLng(latlng.getLat(), latlng.getLng());
+
+			/*
+			MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
+			BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국	 */
+
+			//location에 중심좌표로 15개의 AT4정보를 불러옴 -각지역별 중심좌표로 변환해야함
+			places.categorySearch($("#select").val(), callback, {
+				location : center
+			});
+		});
 		var geocoder = new daum.maps.services.Geocoder();
 
 		var positions = [];
 		//주변 정보 중심좌표는 location에 따름
-		var places = new daum.maps.services.Places();
 		var callback = function(status, result, pagination) {
 			if (status === daum.maps.services.Status.OK) {
 				positions = result.places;
-				callMarker();
+
+				callMarker(positions);
 			}
 		};
 
-		/*
-		MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
-		BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국	 */
-
-		//location에 중심좌표로 15개의 AT4정보를 불러옴 -각지역별 중심좌표로 변환해야함
-		places.categorySearch('AT4', callback, {
-			location : center
-		});
-
-
+		//마커를 담을 배열
+		var markers = [];
 		// 마커 이미지의 이미지 주소입니다
 		var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-		var callMarker = function() {
-			console.log(positions);
+		var callMarker = function(positions) {
+			removeMarker();
+			// 마커 이미지의 이미지 크기 입니다
+			var imageSize = new daum.maps.Size(24, 35);
+			var markerImage;
+			var posx;
+			var posy;
+			var marker;
+			var iwContent;
+
 			for (var i = 0; i < positions.length; i++) {
-				// 마커 이미지의 이미지 크기 입니다
-				var imageSize = new daum.maps.Size(24, 35);
 
-				// 마커 이미지를 생성합니다    
-				var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+				if ((positions[i].category.indexOf('계곡') != -1 && positions[i].title
+						.indexOf('골') != -1)
+						|| positions[i].category.indexOf('저수지') != -1) {
+					//계곡이면서 골 이라는 글자가 포함되있다면 , 다음걸로 넘어감 , 저수지여도 넘어감
+					
+				} else {
+					// 마커 이미지를 생성합니다    
+					markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
-				// 마커를 생성합니다
-				var posx = positions[i].latitude;
-				var posy = positions[i].longitude;
+					// 마커를 생성합니다
+					posx = positions[i].latitude;
+					posy = positions[i].longitude;
 
-				var marker = new daum.maps.Marker({
-					map : map, // 마커를 표시할 지도
-					clickable : true,
-					position : new daum.maps.LatLng(posx, posy), // 마커를 표시할 위치
-					title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				// 마커 이미지 
-				});
+					marker = new daum.maps.Marker({
+						map : map, // 마커를 표시할 지도
+						clickable : true,
+						position : new daum.maps.LatLng(posx, posy), // 마커를 표시할 위치
+						title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+					// 마커 이미지 
+					});
 
-				var iwContent = iwRemoveable = true;
-				// 마커에 표시할 인포윈도우를 생성합니다 
-				if(positions[i].imageUrl==""){
-					positions[i].imageUrl='http://www.moaksanjujo.kr/planweb/images/mall/defaultGoods.jpg';
+					iwContent = iwRemoveable = true;
+					// 마커에 표시할 인포윈도우를 생성합니다 
+					if (positions[i].imageUrl == "") {
+						positions[i].imageUrl = 'http://www.moaksanjujo.kr/planweb/images/mall/defaultGoods.jpg';
+					}
+					var infowindow = new daum.maps.InfoWindow(
+							{
+								removable : iwRemoveable,
+								content : '<div id='+i+' class>'
+										+ '    <div class="info">'
+										+ '        <div class="title" name='+positions[i].title+'>'
+										+ positions[i].title
+										+ '        </div>'
+										+ '        <div class="body">'
+										+ '            <div class="img">'
+										+ '                <img src="'+positions[i].imageUrl+'" width="73" height="70">'
+										+ '           </div>'
+										+ '            <div class="desc">'
+										+ '                <div class="jibun ellipsis">'
+										+ positions[i].address
+										+ '</div>'
+										+ '                <div><input type="button" id="'
+										+ i
+										+ '" value="선택하기"  onclick=buttonclick(this)></div>'
+										+ '            </div>'
+										+ '        </div>' + '    </div>'
+										+ '</div>'
+							// 인포윈도우에 표시할 내용
+							});
+
+					daum.maps.event.addListener(marker, 'click',
+							makeOverListener(map, marker, infowindow));
+					markers.push(marker);
 				}
-				var infowindow = new daum.maps.InfoWindow(
-						{
-							removable : iwRemoveable,
-							content : '<div id='+i+' class>'
-									+ '    <div class="info">'
-									+ '        <div class="title" name='+positions[i].title+'>'
-									+ positions[i].title
-									+ '        </div>'
-									+ '        <div class="body">'
-									+ '            <div class="img">'
-									+ '                <img src="'+positions[i].imageUrl+'" width="73" height="70">'
-									+ '           </div>'
-									+ '            <div class="desc">'
-									+ '                <div class="jibun ellipsis">'
-									+ positions[i].address
-									+ '</div>'
-									+ '                <div><input type="button" id="'
-									+ i
-									+ '" value="선택하기"  onclick=buttonclick(this)></div>'
-									+ '            </div>' + '        </div>'
-									+ '    </div>' + '</div>'
-						// 인포윈도우에 표시할 내용
-						});
-
-				daum.maps.event.addListener(marker, 'click', makeOverListener(
-						map, marker, infowindow));
-
-				
 			}
 		}
 
 		function makeOverListener(map, marker, infowindow) {
 			return function() {
-
-				console.log(marker);
-				console.log(infowindow);
 				infowindow.open(map, marker);
-
 			}
+		}
+
+		//마커지우기
+		function removeMarker() {
+			for (var i = 0; i < markers.length; i++) {
+				markers[i].setMap(null);
+			}
+			markers = [];
 		}
 
 		//클릭한 지역의 좌표와 주소(법정 동)으로 콘솔로그에 출력 
@@ -339,14 +389,34 @@
 			});
 		});
 
-		
-
 		function searchDetailAddrFromCoords(coords, callback) {
 			// 좌표로 법정동 상세 주소 정보를 요청합니다
 			geocoder.coord2detailaddr(coords, callback);
 		}
 
-		
+		$("#search").on("click", function() {
+			if ($("#keyword").val().trim() == "") {
+				alert('검색 결과가 존재하지 않습니다.');
+				return;
+			}
+			places.keywordSearch($("#keyword").val(), placesSearchCB);
+		});
+
+		function placesSearchCB(status, data, pagination) {
+			if (status === daum.maps.services.Status.OK) {
+				positions = data.places;
+
+				var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
+						positions[0].longitude);
+				map.panTo(moveLatLon);
+			} else if (status === daum.maps.services.Status.ZERO_RESULT) {
+				alert('검색 결과가 존재하지 않습니다.');
+				return;
+			} else if (status === daum.maps.services.Status.ERROR) {
+				alert('검색 결과 중 오류가 발생했습니다.');
+				return;
+			}
+		}
 
 		// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 		var zoomControl = new daum.maps.ZoomControl();
