@@ -2004,7 +2004,7 @@
 		text-align: center;
 		border-radius: 0.5em;
 		text-decoration: none;
-		padding: 0.65em 3em 0.65em 3em;
+		/* padding: 0.65em 3em 0.65em 3em */;
 		border: 0;
 		cursor: pointer;
 		outline: 0;
@@ -3661,7 +3661,7 @@
 		
 	/* Q & A board Style */
 		
-		#boardTitleHr {
+		#boardTitleHrStyle1 {
 			position: relative;
     		display: block;
     		border: 0;
@@ -3669,11 +3669,81 @@
     		margin-bottom: 0.7em;
     		margin-top: 0.7em;
     		height: 1px;
-    		border-top: solid 1px rgba(128, 128, 128, 1);
-    		border-bottom: solid 1px rgba(128, 128, 128, 1);
+    		border-top: solid 0.7px #474747;
 		}
 		
-		#boardTitleHr:before, #boardTitleHr:after {
+		#boardTitleHrStyle2 {
+			position: relative;
+    		display: block;
+    		border: 0;
+    		top: 0em;
+    		margin-bottom: 0.2em;
+    		margin-top: 0.2em;
+    		height: 1px;
+    		border-top: dotted 0.7px #A5A5A5;
+		}
+		
+		#boardTitleHrStyle1:before, #boardTitleHrStyle1:after,
+		#boardTitleHrStyle2:before, #boardTitleHrStyle2:after {
 			width: 0;
 			height: 0;
+		}
+		
+		#answerContent {
+			min-height: 0.5em;
+			padding: 0.5em 0.5em 0.5em 0.5em;
+			resize: none;
+			overflow: overlow-x:scroll;
+		}
+		
+		.boardButtonStyle2 {
+			margin: 0 0 0 0;
+			padding: 0.3em 0.5em 0.3em 0.5em;
+			font-family: 'Nanum Gothic';
+			font-size: 0.7em;
+			float: right;
+		}
+		
+		.boardButtonStyle3 {
+			margin: 0 0 0 0;
+			padding: 0.3em 0.5em 0.3em 0.5em;
+			font-family: 'Nanum Gothic';
+			font-size: 1em;
+		}
+		
+		.boardButtonList li {
+			display: inline;
+		}
+		
+		.boardButtonStyle1 {
+			border-radius: 20%;
+			padding: 0.5em 0.7em 0.5em 0.7em;
+			font-size: 0.75em;
+			color: #6F6F6F;
+		}
+		
+		.boardButtonStyle1:hover {
+			background-color: #FFA7A7;
+			color: #474747;
+			border-bottom-color: transparent;
+		}
+		
+		.boardTitleSort {
+			text-align: left;
+		}
+		
+		.boardBold {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+		
+		#boardTitleSytle1 {
+			font-size: 1.5em;
+			font-weight: bold;
+			font-family: 'Jeju Gothic';
+			margin-left: 1em;
+		}
+		
+		#qnaReplyWritter {
+			margin-top: 3em;
 		}

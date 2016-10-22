@@ -151,12 +151,7 @@
 									"<tr><td>" + res.id
 									+ "</td><td colspan='3'>"
 									+ res.content + "</td></tr>"
-									
-								
 								));
-								
-								
-								
 								
 								
 								$("#answerContent").val("");
