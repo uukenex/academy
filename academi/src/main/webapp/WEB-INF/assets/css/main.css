@@ -3602,7 +3602,7 @@
 
 
 /* Button Style */
-#searchBtn {
+		#searchBtn {
 			font-size: 0.75em;
 			float: right;
 			margin-right: 2em;
@@ -3659,7 +3659,7 @@
 		}
 		
 		
-	/* Q & A board Style */
+	/* Free board Style */
 		
 		#boardTitleHrStyle1 {
 			position: relative;
@@ -3689,50 +3689,79 @@
 			height: 0;
 		}
 		
-		#answerContent {
+		#replyContent {
 			min-height: 0.5em;
 			padding: 0.5em 0.5em 0.5em 0.5em;
 			resize: none;
 			overflow: overlow-x:scroll;
 		}
 		
-		.boardButtonStyle2 {
-			margin: 0 0 0 0;
-			padding: 0.3em 0.5em 0.3em 0.5em;
-			font-family: 'Nanum Gothic';
-			font-size: 0.7em;
-			float: right;
-		}
-		
-		.boardButtonStyle3 {
+		input.boardButtonStyle2 {
 			margin: 0 0 0 0;
 			padding: 0.3em 0.5em 0.3em 0.5em;
 			font-family: 'Nanum Gothic';
 			font-size: 1em;
+			background: #f0f4f4;
+			color: #6F6F6F;
+			float: right;
+		}
+		
+		input.boardButtonStyle2:hover {
+			margin: 0 0 0 0;
+			padding: 0.3em 0.5em 0.3em 0.5em;
+			font-family: 'Nanum Gothic';
+			font-size: 1em;
+			background: #ECCBCA;
+			color: #686868;
+			float: right;
+		}
+		
+		input.boardButtonStyle3 {
+			margin: 0 0 0 0;
+			padding: 0.3em 0.5em 0.3em 0.5em;
+			font-family: 'Nanum Gothic';
+			font-size: 1.2em;
+			background: #353849;
+			color: #FFFFFF;
+		}
+		
+		input.boardButtonStyle3:hover {
+			margin: 0 0 0 0;
+			padding: 0.3em 0.5em 0.3em 0.5em;
+			font-family: 'Nanum Gothic';
+			font-size: 1.2em;
+			font-weight: bold;
+			background: #265A9A;
+			color: #FFFFFF;
 		}
 		
 		.boardButtonList li {
 			display: inline;
+			float: right;
+			margin-left: 1em;
 		}
 		
-		.boardButtonStyle1 {
+		input[class='boardButtonStyle1'] {
+			position: relative;
+			display: inline-block;
 			border-radius: 20%;
-			padding: 0.5em 0.7em 0.5em 0.7em;
+			padding: 0.5em 0.5em 0.5em 0.5em;
 			font-size: 0.75em;
 			color: #6F6F6F;
+			background-color: #f0f4f4;
+			cursor: pointer;
 		}
 		
-		.boardButtonStyle1:hover {
+		input[class='boardButtonStyle1']:hover {
 			background-color: #FFA7A7;
 			color: #474747;
-			border-bottom-color: transparent;
 		}
 		
 		.boardTitleSort {
 			text-align: left;
 		}
 		
-		.boardBold {
+		.boardFontBold {
 			font-size: 1.1em;
 			font-weight: bold;
 		}
@@ -3744,6 +3773,6 @@
 			margin-left: 1em;
 		}
 		
-		#qnaReplyWritter {
+		#boardReplyWritter {
 			margin-top: 3em;
 		}
