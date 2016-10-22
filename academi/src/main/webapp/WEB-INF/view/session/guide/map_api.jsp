@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="com.example.dto.Goods" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -195,15 +196,18 @@
 	</div>
 	<div style="height: 300px"></div>
 	<div>
-		<h6 id="result"></h6>
-		<h1>Add address.</h1>
-		<form method="post" action="/add">
-			Name : <input type="text" id="address_name" name="address_name"><br>
-			x좌표 : <input type="text" id="x_coordinate" name="x_coordinate"><br>
-			y좌표 : <input type="text" id="y_coordinate" name="y_coordinate"><br>
-			주소 : <input type="text" id="address" name="address" size=30><br>
+		<form>
+			Name : <input type="text" id="title" name="title" ><br>
+			x좌표 : <input type="text" id="latitude" name="latitude"><br>
+			y좌표 : <input type="text" id="longitude" name="longitude"><br>
+			주소 : <input type="text" id="address" name="address" size=40><br>
+			
+			<input type="hidden" id="category" name="category">
+			<input type="hidden" id="imageUrl" name="imageUrl">
 			<br>
-			<button>추가하기</button>
+			<input type="button" id="addBtn" value='추가하기'>
+			<input type="checkbox" id="stored" >
+			<label for="stored">저장된것만 표시</label>
 		</form>
 		<div>
 			<select id="select">
@@ -215,73 +219,83 @@
 				<option value="HP8">병원</option>
 				<option value="PM9">약국</option>
 				<option value="OL7">주유소</option>
-			</select> <input type="text" id="keyword"> <input type="button"
-				id="search" value="찾기">
+			</select> <input type="text" id="keyword"> 
+			<input type="button" id="search" value="찾기">
 		</div>
-		<c:forEach items="${cart}" var="address">
-	Name : ${address.address_name}, 
-	x좌표 : ${address.x_coordinate}, 
-	y좌표 : ${address.y_coordinate } , 
-	주소 : ${address.address }  
-	<br>
-		</c:forEach>
+		<output id="result">
+		</output>
+		<form action="/session/DBCall" method="post">
+	<input type="submit" id="" value="DB로!!" >
+	</form>
 	</div>
 	<script src="/js/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
-		/* var center = new daum.maps.LatLng(33.450701, 126.570667); */
-		var center = new daum.maps.LatLng(36.85079990267022, 127.1514823351422);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		var center = new daum.maps.LatLng(36.8324709, 127.137007);
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : center, // 지도의 중심좌표
-			level : 4
+			level : 6
 		// 지도의 확대 레벨
 		};
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new daum.maps.Map(mapContainer, mapOption);
 		var places = new daum.maps.services.Places();
-
+		var callback;
+		var positions;
+		//처음 지도 로드시 한번만 실행됨
+		daum.maps.load(function(){
+			console.log("로드됨");
+			callback = function(status, result, pagination) {
+				if (status === daum.maps.services.Status.OK) {
+					positions = result.places;
+					callMarker(positions);
+				}
+			};
+			places.categorySearch($("#select").val(), callback, {
+				location : center
+			});
+		});
 		// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-		daum.maps.event.addListener(map, 'center_changed', function() {
-
-			// 지도의  레벨을 얻어옵니다
-			var level = map.getLevel();
-
-			// 지도의 중심좌표를 얻어옵니다 
-			var latlng = map.getCenter();
-
-			var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
-			message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 '
-					+ latlng.getLng() + '입니다</p>';
-
-			var resultDiv = document.getElementById('result');
-			resultDiv.innerHTML = message;
-
-			center = new daum.maps.LatLng(latlng.getLat(), latlng.getLng());
-
+		daum.maps.event.addListener(map, 'idle', function() {
+			center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
 			/*
 			MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
-			BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국	 */
-
+			BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국*/
 			//location에 중심좌표로 15개의 AT4정보를 불러옴 -각지역별 중심좌표로 변환해야함
 			places.categorySearch($("#select").val(), callback, {
 				location : center
 			});
 		});
-		var geocoder = new daum.maps.services.Geocoder();
-
-		var positions = [];
+		
+		
 		//주변 정보 중심좌표는 location에 따름
 		var callback = function(status, result, pagination) {
 			if (status === daum.maps.services.Status.OK) {
 				positions = result.places;
-
 				callMarker(positions);
 			}
 		};
 
+		
+		
+		
 		//마커를 담을 배열
 		var markers = [];
 		// 마커 이미지의 이미지 주소입니다
@@ -297,7 +311,6 @@
 			var iwContent;
 
 			for (var i = 0; i < positions.length; i++) {
-
 				if ((positions[i].category.indexOf('계곡') != -1 && positions[i].title
 						.indexOf('골') != -1)
 						|| positions[i].category.indexOf('저수지') != -1) {
@@ -311,6 +324,7 @@
 					posx = positions[i].latitude;
 					posy = positions[i].longitude;
 
+					
 					marker = new daum.maps.Marker({
 						map : map, // 마커를 표시할 지도
 						clickable : true,
@@ -318,7 +332,7 @@
 						title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					// 마커 이미지 
 					});
-
+					
 					iwContent = iwRemoveable = true;
 					// 마커에 표시할 인포윈도우를 생성합니다 
 					if (positions[i].imageUrl == "") {
@@ -348,10 +362,10 @@
 										+ '</div>'
 							// 인포윈도우에 표시할 내용
 							});
-
 					daum.maps.event.addListener(marker, 'click',
 							makeOverListener(map, marker, infowindow));
 					markers.push(marker);
+					
 				}
 			}
 		}
@@ -368,30 +382,6 @@
 				markers[i].setMap(null);
 			}
 			markers = [];
-		}
-
-		//클릭한 지역의 좌표와 주소(법정 동)으로 콘솔로그에 출력 
-		var realX;
-		var realY;
-		var readAddr;
-		daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-			searchDetailAddrFromCoords(mouseEvent.latLng, function(status,
-					result) {
-				if (status === daum.maps.services.Status.OK) {
-					realX = result[0].x;
-					realY = result[0].y;
-					readAddr = result[0].region;
-
-					console.log(realX);
-					console.log(realY);
-					console.log(readAddr);
-				}
-			});
-		});
-
-		function searchDetailAddrFromCoords(coords, callback) {
-			// 좌표로 법정동 상세 주소 정보를 요청합니다
-			geocoder.coord2detailaddr(coords, callback);
 		}
 
 		$("#search").on("click", function() {
@@ -422,6 +412,88 @@
 		var zoomControl = new daum.maps.ZoomControl();
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
+		
+		$(document).on("ready",function(){
+			$.ajax({
+				type:"post",
+				url:"/getSession",
+				success:function(res){
+					console.log(res);
+					var html="";
+					for(var i=0;i<res.length;i++){
+					
+					html+=res[i].title+"@";
+					html+=res[i].latitude+"@";
+					html+=res[i].longitude+"@";
+					html+=res[i].address+"@";
+					html+=res[i].imageUrl+"@";
+					html+=res[i].category+"<br>";
+					}
+					$("#result").html(html);
+					
+				}
+			});
+		});
+		
+		$("#addBtn").on("click",function(){
+			$.ajax({
+				type:"post",
+				url:"/add",
+				data:{
+					title:$('#title').val(),
+					latitude:$('#latitude').val(),
+					longitude:$('#longitude').val(),
+					address:$('#address').val(),
+					imageUrl:$('#imageUrl').val(),
+					category:$('#category').val()
+				},
+				success:function(res){
+					console.log(res);
+					var html="";
+					for(var i=0;i<res.length;i++){
+					
+					html+=res[i].title+"@";
+					html+=res[i].latitude+"@";
+					html+=res[i].longitude+"@";
+					html+=res[i].address+"@";
+					html+=res[i].imageUrl+"@";
+					html+=res[i].category+"<br>";
+					}
+					$("#result").html(html);
+					
+				}
+			});
+		});
+		
+		
+		
+		$("#stored").on("change",function(){
+			if($("#stored").prop("checked")==true){
+				//체크되었을때 저장한 지역의 마커만 보이게 해야함
+				//세션 저장시에 몇개인지 알수있나??
+				console.log("ajax처리 하는중");
+				$.ajax({
+					type:"post",
+					url:"/getSession",
+					
+					success:function(res){
+						console.log(res);
+						positions=res;
+						callMarker(positions);
+					},
+					error:function(xhr,status,error){
+						console.log(error);
+					}
+				});
+				
+			}
+			else{
+				
+			}
+		});
+		
+		
+		
 		//마커안의 선택하기 버튼 클릭시 아래창으로 넣어주는 역할
 		function buttonclick(e) {
 
@@ -429,16 +501,20 @@
 			var i = Number.parseInt(e.id);
 			switch (i) {
 			case i:
-				console.log(positions[i].title);
-				$('#address_name').val(positions[i].title);
-				$('#x_coordinate').val(positions[i].latitude);
-				$('#y_coordinate').val(positions[i].longitude);
+				$('#title').val(positions[i].title);
+				$('#latitude').val(positions[i].latitude);
+				$('#longitude').val(positions[i].longitude);
 				$('#address').val(positions[i].address);
-				console.log($("#" + i));
+				$('#imageUrl').val(positions[i].imageUrl);
+				$('#category').val(positions[i].category);
 				break;
 			}
 
 		}
+		
+		
+		
+		
 	</script>
 
 

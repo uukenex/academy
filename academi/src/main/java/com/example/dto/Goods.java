@@ -6,9 +6,11 @@ import lombok.Data;
  
 @Data
 public class Goods {
-	private String address_name;  //상품명
-	private double x_coordinate;    //개수
-	private double y_coordinate;  //가격
+	private String title;  //상품명
+	private double latitude;    //개수
+	private double longitude;  //가격
 	private String address; //주소
+	private String imageUrl;
+	private String category;
 
 }

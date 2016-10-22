@@ -8,17 +8,17 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
-import com.example.dto.Users;
-import com.example.service.UserService;
 
 
 @Controller
@@ -67,6 +67,11 @@ public class MapAPIController {
 	public String chungcheongbukdo(Model model) {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
 	public String mapapi(Model model, HttpServletRequest request) {
 		String local = request.getParameter("incheon");
@@ -78,17 +83,7 @@ public class MapAPIController {
 	}
 	
 	
-	/**
-	 * 세션에 cart가 없을 경우 생성한다.
-	 * @param model
-	 * @return
-	 */
-/*	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String getCart(Model model) {
-		
-		return "redirect:/add2";
-	}*/
-	
+
 	/**
 	 * 세션에 저장되 있는 cart에 상품을 추가
 	 * @param goods
@@ -96,13 +91,32 @@ public class MapAPIController {
 	 * @return
 	 */
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute Goods goods,
-			@ModelAttribute("cart") List<Goods> cart) {
+	public @ResponseBody Object add(@ModelAttribute Goods goods,
+			@ModelAttribute("cart") List<Goods> cart,
+			@RequestParam String title,
+			@RequestParam double latitude,
+			@RequestParam double longitude,
+			@RequestParam String address,
+			@RequestParam String imageUrl,
+			@RequestParam String category,HttpSession session) {
+		
 		cart.add(goods);
-		return "redirect:/session/mapapi";
+		Object obj = session.getAttribute("cart");
+		return obj;
+	}
+	
+	@RequestMapping(value="/getSession", method = RequestMethod.POST)
+	public @ResponseBody Object getSession(HttpSession session) {
+		Object cart = session.getAttribute("cart");
+		return cart;
 	}
 	
 	
+	@RequestMapping(value="/session/DBCall", method = RequestMethod.POST)
+	public String DBCall(SessionStatus status) {
+		status.setComplete();
+		return "redirect:/session/mapapi";
+	}
 }
 		
 	
