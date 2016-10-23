@@ -20,103 +20,115 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
 
-
 @Controller
-@SessionAttributes({"cart"})
+@SessionAttributes({ "cart" })
 public class MapAPIController {
 	static Logger logger = LoggerFactory.getLogger(MapAPIController.class);
 
-	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String domap(Model model) {
 		return "session/guide/do_map";
 	}
+
 	@RequestMapping(value = "/Jeollanamdo", method = RequestMethod.GET)
 	public String Jeollanamdo(Model model) {
 		return "session/guide/citymap/Jeollanam_do";
 	}
+
 	@RequestMapping(value = "/Jeollabukdo", method = RequestMethod.GET)
 	public String Jeollabukdo(Model model) {
 		return "session/guide/citymap/Jeollabuk_do";
 	}
+
 	@RequestMapping(value = "/jejudo", method = RequestMethod.GET)
 	public String jejudo(Model model) {
 		return "session/guide/citymap/jeju_do";
 	}
+
 	@RequestMapping(value = "/Gyeongsangnamdo", method = RequestMethod.GET)
 	public String Gyeongsangnam_do(Model model) {
 		return "session/guide/citymap/Gyeongsangnam_do";
 	}
+
 	@RequestMapping(value = "/Gyeongsangbukdo", method = RequestMethod.GET)
 	public String Gyeongsangbukdo(Model model) {
 		return "session/guide/citymap/Gyeongsangbuk_do";
 	}
+
 	@RequestMapping(value = "/gyeonggido", method = RequestMethod.GET)
 	public String gyeonggido(Model model) {
 		return "session/guide/citymap/gyeonggi_do";
 	}
+
 	@RequestMapping(value = "/Gangwondo", method = RequestMethod.GET)
 	public String Gangwondo(Model model) {
 		return "session/guide/citymap/Gangwon_do";
 	}
+
 	@RequestMapping(value = "/chungcheongnamdo", method = RequestMethod.GET)
 	public String chungcheongnamdo(Model model) {
 		return "session/guide/citymap/chungcheongnam_do";
 	}
+
 	@RequestMapping(value = "/chungcheongbukdo", method = RequestMethod.GET)
 	public String chungcheongbukdo(Model model) {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
 	public String mapapi(Model model, HttpServletRequest request) {
 		String local = request.getParameter("incheon");
-		model.addAttribute("local",local);
+		model.addAttribute("local", local);
 		if (!model.containsAttribute("cart")) {
 			model.addAttribute("cart", new ArrayList<Goods>());
 		}
 		return "session/guide/map_api";
 	}
-	
-	
 
 	/**
 	 * 세션에 저장되 있는 cart에 상품을 추가
+	 * 
 	 * @param goods
 	 * @param cart
 	 * @return
 	 */
-	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public @ResponseBody Object add(@ModelAttribute Goods goods,
-			@ModelAttribute("cart") List<Goods> cart,
-			@RequestParam String title,
-			@RequestParam double latitude,
-			@RequestParam double longitude,
-			@RequestParam String address,
-			@RequestParam String imageUrl,
-			@RequestParam String category,HttpSession session) {
-		
-		cart.add(goods);
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody Object add(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
+			@RequestParam String title, @RequestParam double latitude, @RequestParam double longitude,
+			@RequestParam String address, @RequestParam String imageUrl, @RequestParam String category,
+			HttpSession session) {
+		// 이미 같은정보가 저장되있다면 팅겨내야함
+		boolean ok = true;
+		// 카트에들어있는것을 비교해서 없으면 true를 반환함
+		if (cart.size() == 0) {
+			cart.add(goods);
+		} else {
+			for (int i = 0; i <= cart.size()-1; i++) {
+				if (cart.get(i).equals(goods)) {
+					ok = false;
+					break;
+				}
+			}
+			if (ok) {
+				cart.add(goods);
+			}
+		}
+
+		logger.trace("카트사이즈 {}", cart.size());
+
 		Object obj = session.getAttribute("cart");
 		return obj;
 	}
-	
-	@RequestMapping(value="/getSession", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/getSession", method = RequestMethod.POST)
 	public @ResponseBody Object getSession(HttpSession session) {
 		Object cart = session.getAttribute("cart");
 		return cart;
 	}
-	
-	
-	@RequestMapping(value="/session/DBCall", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/session/DBCall", method = RequestMethod.POST)
 	public String DBCall(SessionStatus status) {
 		status.setComplete();
 		return "redirect:/session/mapapi";
 	}
 }
-		
-	
