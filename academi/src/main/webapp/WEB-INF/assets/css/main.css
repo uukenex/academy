@@ -1685,7 +1685,7 @@
 			position: absolute;
 			top: -8px;
 			display: block;
-			width: 1px;
+			width: 2px;
 			height: 21px;
 			background: rgba(128, 128, 128, 0.2);
 		}
@@ -2702,10 +2702,9 @@
 	#footer {
 		position: relative;
 		overflow: hidden;
-		padding: 2em 0 2em 0;
-		background: #17375E;
-		color: #fff;
-		margin-top: 3em;
+		padding: 0.5em 0 2em 0;
+		color: black;
+		margin-top: 1em;
 	}
 
 		#footer .icon.circled {
@@ -2719,7 +2718,7 @@
 		}
 
 		#footer h2, #footer h3, #footer h4, #footer h5, #footer h6 {
-			color: #fff;
+			color: black;
 		}
 
 		#footer .contact {
@@ -2733,7 +2732,7 @@
 
 		#footer .copyright {
 			text-align: center;
-			color: rgba(128, 128, 128, 0.75);
+			color: black;
 			font-size: 0.8em;
 			cursor: default;
 		}
@@ -2745,6 +2744,22 @@
 				#footer .copyright a:hover {
 					color: rgba(212, 212, 212, 0.85);
 				}
+				
+			#footer #footerHr {
+				border-color: black;
+				margin-bottom: 6em;
+				border-bottom: 0;
+				border-top: solid 2px;
+			}	
+				
+			#footer #footerHr:before, #footer #footerHr:after {
+				width: 0;
+				height: 0;
+			}
+			
+			#footerBodyPart {
+				text-align: center;
+			}
 
 /* Carousel */
 
@@ -3581,6 +3596,12 @@
 			color: #17375E;
 		}
 		
+		ul.link-list li a:hover {
+			font-family: 'Jeju Gothic';
+			font-size: 1em;
+			color: red;
+		}
+		
 		ul.link-list li:first-child {
 			padding-top: 0;
 			margin-top: 0;
@@ -3717,7 +3738,7 @@
 		}
 		
 		input.boardButtonStyle3 {
-			margin: 0 0 0 0;
+			margin: 0 0.5em 0 0;
 			padding: 0.3em 0.5em 0.3em 0.5em;
 			font-family: 'Nanum Gothic';
 			font-size: 1.2em;
@@ -3726,7 +3747,7 @@
 		}
 		
 		input.boardButtonStyle3:hover {
-			margin: 0 0 0 0;
+			margin: 0 0.5em 0 0;
 			padding: 0.3em 0.5em 0.3em 0.5em;
 			font-family: 'Nanum Gothic';
 			font-size: 1.2em;
@@ -3775,4 +3796,100 @@
 		
 		#boardReplyWritter {
 			margin-top: 3em;
+		}
+		
+		
+/* Q & A Board Style */
+
+	/* questionView */
+	
+		.questionView #listview {
+			margin-bottom: 0.5em;
+			text-align: right;
+		}
+		
+		.questionViewTable .boardButtonList {
+			margin-right: 2em;
+			margin-top: 0.7em;
+		}
+
+	/* Table */
+
+		table.questionViewTable {
+			background-color: #FFFFFF;
+			border-radius: 3%;
+			font-family: 'Nanum Gothic';
+		}
+		
+		table.answerViewTable {
+			background-color: #FFFFFF;
+			border-radius: 3%;
+			font-family: 'Nanum Gothic';
+			height: auto;
+			margin-bottom: 1em;
+		}
+	
+		table.questionViewTable th {
+			vertical-align: middle;
+			margin: 0.2em 0 0.2em 0;
+			padding: 0.5em 0 0.5em 0;
+		}
+		
+		table.questionViewTable td {
+			vertical-align: middle;
+			margin: 0.2em 0 0.2em 0;
+			padding: 0.5em 0 0.5em 0;
+			float: left;
+		}
+		
+		table.answerViewTable th {
+			padding-left: 2em;
+			padding-top: 1em;
+			text-align: left;
+		}
+		
+		table.answerViewTable td {
+			padding-left: 2em;
+			text-align: left;
+			padding-bottom: 2em;
+		}
+		
+		ul.questionViewUl li{
+			display: inline;
+			float: left;
+			border-right: 1px dotted #A0A0A0;
+			padding: 0 0.7em 0 0.7em;
+			font-size: 0.75em;
+		}
+		
+		tr.questionContentStyle td{
+			font-size: 2em;
+			padding-top: 1em;
+		}
+		
+		#questionViewTitle {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin: 0 0 -0.5em 0;
+			padding: 0 0 0 0;
+		}
+		
+		
+	/* Q & A button Sytle */
+		
+		input.qnaAnswerButton {
+			background-color: #353849;
+			padding: 0.5em 1em;
+			float: right;
+			margin: 1em 2em;
+		}
+		
+		td.qnaSubmitButtonStyle input[type="submit"]{
+			float: right;
+			margin-right: 1em;
+		}
+		
+		.answerViewTable td#qnaWritterButton {
+			vertical-align: bottom;
+		
 		}

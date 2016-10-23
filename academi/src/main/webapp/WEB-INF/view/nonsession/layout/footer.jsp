@@ -4,43 +4,44 @@
 <!-- footer -->
 
 	<div id="footer">
+		<hr id="footerHr"/>
 		<div class="container">
 			<div class="row">
-				<div class="12u">
 	
 					<!-- Contact -->
-					<section class="contact">
-						<header>
-							<h3>우리의 여행을 부탁해~</h3>
-						</header>
-						<p>애들아 우리 꼬리말을 무엇으로 할까?<br>
-							아님 이 꼬리말 없애버릴까?? 낼 이 footer 먼저 찾아내는 사람 마실거 사줌!</p>
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span
-									class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span
-									class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span
-									class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-pinterest"><span
-									class="label">Pinterest</span></a></li>
-							<li><a href="#" class="icon fa-dribbble"><span
-									class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span
-									class="label">Linkedin</span></a></li>
-						</ul>
-					</section>
+					<div class="4u">
+						<section class="contact">
+							<header>
+								<h3>우리의 여행을 부탁해~</h3>
+							</header>
+						</section>
+					</div>
+					
+					<!-- Body -->
+						<div class="4u" id="footerBodyPart">
+							<ul>
+								<li>(주)공주대학교</li>
+								<li>충청남도 천안시 서북구</li>
+								<li>부대동 공주대학교 천안공과대학</li>
+								<li>청년 취업 아카데미</li>
+							</ul>
+						</div>
 	
 					<!-- Copyright -->
-					<div class="copyright">
+					<div class="copyright 4u">
+						<ul>
+							<li>문의 사항 : </li>
+							<li>010-1234-0000</li>
+						</ul>
 						<ul class="menu">
+							<li>제작 : Team of Jackpot</li>
 							<li>&copy; Untitled. All rights reserved.</li>
-							<li>Design: <a href="http://html5up.net">HTML5 UP & MJ</a></li>
+							<li>Design: <a href="http://html5up.net">HTML5 UP & 7조</a></li>
+						</ul>
+						<ul class="menu">
+							<li>사업자 등록 번호 : 123-00-000000</li>
 						</ul>
 					</div>
-	
-				</div>
-	
 			</div>
 		</div>
 	</div>
