@@ -43,6 +43,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/photo_upload/**").addResourceLocations("/photo_upload/");
 		registry.addResourceHandler("/validation/**").addResourceLocations("/WEB-INF/validation/");
 		registry.addResourceHandler("/map/**").addResourceLocations("/WEB-INF/images/map/");
+		registry.addResourceHandler("/temp/**").addResourceLocations("c:/Temp");
 		
 	}
 	

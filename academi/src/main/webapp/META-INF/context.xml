@@ -16,7 +16,7 @@
     <Resources>
     	<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
     				base="c:/Temp/" 
- 				   	webAppMount="/multiplePhotoUpload"></PreResources>
+ 				   	webAppMount="/smarteditor/Temp"></PreResources>
     </Resources>
     
 </Context>
