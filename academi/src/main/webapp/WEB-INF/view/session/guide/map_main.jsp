@@ -51,26 +51,32 @@
 	<!-- Menu Bar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
 		
-	<div id="page-wrapper">
+	<div id="page-wrapper" class="boardPage-Wrapper">
 		<div id="main">
-			<div class="2u" style="margin-top: 10em;">
-				<p>이 부분은 선택한 지역을 볼 수 있는 탭 메뉴가 들어갈 자리로 자리를 그대로 차지 할 것인지 아님 정말 탭 메뉴로 구조화하여 작성할 것인지 의논이 필요함.</p>
-			</div>
-			<div class="8u" style="margin-top: 10em;">
-			<section class="middle-content">
-				<ul>
-					<li>
-						<a id ='/doMap' class="fancybox">도, 시 지도 선택</a>
-					</li>
-					<li>
-						<a id ='/doMap' class="fancybox">도, 시 지도 선택</a>
-					</li>
-				</ul>
-				</section>
+			<div class="container">
+				<div class="row main-row">
+					<div class="2u" style="margin-top: 10em;">
+						<p>이 부분은 선택한 지역을 볼 수 있는 탭 메뉴가 들어갈 자리로 자리를 그대로 차지 할 것인지 아님 정말 탭 메뉴로 구조화하여 작성할 것인지 의논이 필요함.</p>
+					</div>
+					
+					<div class="8u 12u(moblie) important(moblie)">
+						<section class="middle-content">
+							<ul class="mapMainButtonStyle1">
+								<li>
+									<a id ='/doMap' class="fancybox">도, 시 지도 선택</a>
+								</li>
+								<c:url value="/session/mapapi" var="api" />
+								<li>
+									<a href="${api }">지도 API로 이동</a>
+								</li>
+							</ul>
+						</section>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
+		
 	<script>
 		$(".fancybox").fancybox({
 		    autoScale: false,
