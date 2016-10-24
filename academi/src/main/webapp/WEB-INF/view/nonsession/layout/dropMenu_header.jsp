@@ -31,7 +31,13 @@
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
 				<c:url value="/join" var="join" />
-				<li><a href="${join }">회원 가입</a></li>
+				<li>
+					<a href="#" onclick="window.open('/join', 'win1',
+							'width=550, height=700');"
+							onkeypress="this.onclick()">
+						회원 가입
+					</a>
+				</li>
 			</ul>
 			<a href="#" class="close">Close</a>
 		</div>

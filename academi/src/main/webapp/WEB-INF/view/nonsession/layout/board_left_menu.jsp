@@ -26,7 +26,7 @@
 						Q & A
 					</a>
 				</li>
-				<c:url value="free?page=1" var="free"/>
+				<c:url value="/free?page=1" var="free"/>
 				<li>
 					<a href="${free }">
 						<i class="fa fa-comments-o"></i>

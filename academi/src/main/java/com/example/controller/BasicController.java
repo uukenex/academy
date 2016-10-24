@@ -60,5 +60,10 @@ public class BasicController {
 		return "session/information/inform_change";
 	}
 	
+	@RequestMapping("/doMap")
+	public String doMap(Model model) {
+		return "session/guide/do_map";
+	}
+	
 
 }

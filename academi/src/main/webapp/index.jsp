@@ -11,8 +11,13 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
+	<jsp:include page="WEB-INF/view/nonsession/layout/menubar_header.jsp"></jsp:include>
+	
 		<c:url value="/hello" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<a  class="fancybox"  href="${messageUrl}">Click to enter</a>
+		<br>
+		<c:url value="/hello" var="messageUrl" />
+		<a  id="fancybox"  href="${messageUrl}">Click to enter</a>
 		<br>
 		<c:url value="/join" var="joinUrl" />
 		<a href="${joinUrl}">Enter Join Form</a>
@@ -65,5 +70,11 @@
 		<c:url value="/mainpage2" var="m2" />
 		<a href="${m2 }">쓰던메인</a>
 		<br>
+		
+		<script>
+		$(document).ready(function() {
+			$("#fancybox").fancybox();
+		});
+		</script>
 	</body>
 </html>

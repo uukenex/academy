@@ -47,7 +47,11 @@
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 							
 							<ul id="writeNsearchBar">
-								<li><a href="/session/noticeWrite"><input type="button" value="글쓰기" class="writeBoard" ></a> </li>
+								<li>
+									<a href="/session/noticeWrite">
+										<input type="button" value="글쓰기" class="writeBoard" >
+									</a>
+								</li>
 								<li>
 									<div class="boardSearchBar">
 										<select id="searchCategory">
@@ -114,9 +118,7 @@
 			</div>
 		</div>
 	</div>
-	
 
-	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$(document).on("ready", function() {
 			if ("${message}" != null && "${message}" != ("")) {
@@ -170,17 +172,6 @@
 		});
 	</script>
 	
-	<!-- Scripts -->
-			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
 
 </body>
 </html>

@@ -4,17 +4,78 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>네이버 스마트 에디터</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+ 	<meta name="author" content="Nathan Searles">
+  		
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+		
+<title>공지사항 글쓰기</title>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
+
 <body>
-	<form action="/commentWrite" method="post" id="frm">
-	제목 : <input type="text"  name="title" placeholder="제목을 입력해주세요" size="108px"><br>
-    <textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
-    <input type="button" id="savebutton" value="완료" />
-     <input type="button" name="Submit2" value="취소" onclick="history.back();">
-</form>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+	<div id="page-wrapper" class="boardPage-Wrapper">
+		<div id="main">
+			<div class="container">
+				<div class="row main-row">
+					
+					<!-- Board Left Menu -->
+						<jsp:include page="../../nonsession/layout/board_left_menu.jsp" />
+						
+					<!-- Board body part -->
+						<div class="8u 12u(moblie) important(moblie)">
+							<section class="middle-content">
+								<h3>공 지 사 항 작성</h3>
+								<form action="/commentWrite" method="post" id="frm">
+									
+									<table class="boardEditorTable">
+										<colgroup>
+											<col width="10%">
+											<col width="*%">
+										</colgroup>
+										<tr>
+											<th>제목</th>
+											<td><input type="text"  name="title" id="editorTitleWritter" 
+															placeholder="제목을 입력해주세요"></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<textarea name="content" id="content" class="editorContentWritter"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="editorButtonTd">
+												<input type="button" id="savebutton" class="editorButtonStyle1" value="완료" />
+     											<input type="button" name="Submit2" class="editorButtonStyle1" value="취소" onclick="history.back();">
+											</td>
+										</tr>
+									</table>
+								</form>
+							</section>
+						</div>
+				</div>
+				
+				<!-- footer -->
+					<jsp:include page="../../nonsession/layout/footer.jsp" />
+			</div>
+		</div>
+	</div>
+
 <script>
 $(function(){
     //전역변수선언
