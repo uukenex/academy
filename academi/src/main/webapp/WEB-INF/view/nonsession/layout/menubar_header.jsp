@@ -224,7 +224,7 @@
 		<c:url value="/mainpage" var="mainpage"/>
 		<li><a href="${mainpage }">Home</a></li>
 		<c:url value="/doMap" var="doMap" />
-		<li><a class="fancybox" href="index.jsp">지도 만들기</a></li>
+		<li><a class="fancybox" href="${doMap }">지도 만들기</a></li>
 		
 		<li><a href="right-sidebar.html">후기 등록</a></li>
 		
