@@ -36,7 +36,6 @@
 				
 				<!-- Add Media helper (this is optional) -->
 					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-media.js"></script>
-					<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 					
 					
 			<!-- jQuery Fancy Box Source -->
