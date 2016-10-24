@@ -23,7 +23,10 @@
 				<c:url value="/mainpage" var="mainpage" />
 				<li><a href="${mainpage }">Home</a></li>
 				<c:url value="/login" var="login" />
-				<li><a href="${login }">Log In</a></li>
+				<li><a href="#"
+							onclick="window.open('/login', 'win1',
+									'width=550, height=480');"
+									onkeypress="this.onclick()">Log In</a></li>
 				<c:url value="/mypageMain" var="mypageMain" />
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
