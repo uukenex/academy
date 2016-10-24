@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.service.UserService;
 
@@ -27,16 +29,10 @@ import com.example.service.UserService;
 public class EditorController {
 	static Logger logger = LoggerFactory.getLogger(EditorController.class);
 	
-
-	@RequestMapping(value = "/sign", method = RequestMethod.GET)
-	public String navertest(Model model) {
-		return "session/mainnotice/notice_sign";
-	}
-	
-	
 	
 	@RequestMapping("/multiplePhotoUpload")
 	public void multiplePhotoUpload(HttpServletRequest request, HttpServletResponse response){
+		
 	    try {
 	         //파일정보
 	         String sFileInfo = "";
@@ -49,12 +45,15 @@ public class EditorController {
 	         //파일 기본경로
 	         String dftFilePath = request.getSession().getServletContext().getRealPath("/");
 	         //파일 기본경로 _ 상세경로
-	         String filePath = dftFilePath  + "smarteditor" + File.separator;
-	         logger.trace("이것이 실경로 ? {}",filePath);
+	        // String filePath = dftFilePath  + "smarteditor" + File.separator+"Temp" + File.separator;
+	       String filePath= "c:" + File.separator + "Temp"+File.separator;
+	       logger.trace("상세 파일경로 : {}",filePath);
+	       /*  filePath= "c:"+File.separator+"Users"+File.separator+"1-718-8"+File.separator+"git"+File.separator+"academi"+File.separator+"academi"+File.separator+"src"+File.separator+"main"+File.separator+"webapp"+File.separator+"photo_upload";*/
+	      //   logger.trace("상세 파일경로 : {}",filePath);
 	         File file = new File(filePath);
 	         if(!file.exists()) {
 	            file.mkdirs();
-	         }
+	         } 
 	         String realFileNm = "";
 	         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 	         String today= formatter.format(new java.util.Date());
@@ -77,8 +76,10 @@ public class EditorController {
 	         // 정보 출력
 	         sFileInfo += "&bNewLine=true";
 	         // img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함
-	         sFileInfo += "&sFileName="+ filename;;
-	         sFileInfo += "&sFileURL="+"/smarteditor/"+realFileNm;
+	         sFileInfo += "&sFileName="+ filename;
+	         sFileInfo += "&sFileURL="+"/smarteditor/Temp/"+realFileNm;
+	         //가상경로는 스프링 폴더 내에 만듬
+	         logger.trace("가상경로 : {}  : 에 파일쓰기","/smarteditor/Temp/"+realFileNm);
 	         PrintWriter print = response.getWriter();
 	         print.print(sFileInfo);
 	         print.flush();

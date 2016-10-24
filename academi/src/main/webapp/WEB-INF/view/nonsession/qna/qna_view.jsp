@@ -41,136 +41,121 @@
 						<div class="8u 12u(mobile) important(mobile)">
 							<section class="middle-content">
 								<form>
-								
-									<!-- 질문 내용 자세히 보기 부분 -->
-									<div class="qnaContentView">
-									<%-- 
-										<c:if test="${qna.userId==Users.userId }"> 
-											<input type="submit" value="수정하기" formaction="/session/qnaUpdate" formmethod="post">
-										</c:if>
-										 --%>
-										 <ul class="boardButtonList">
-										 	<li>
-										 		<a href="#" class="boardButtonStyle1">수정</a>
-										 	</li>
-										 	<li>
-										 		<a href="#" class="boardButtonStyle1">삭제</a>
-										 	</li>
-										 </ul>
-										<hr id="boardTitleHrStyle1">
-										<h3 id="boardTitleSytle1">${qna.qnaTitle }</h3>
-										<input type="hidden" name="qnaNo" value="${qna.qnaNo }" />
-										<hr id="boardTitleHrStyle1">
-										<table>
-											<colgroup>
-												<col width="10%" />
-												<col width="*%" />
-												<col width="10%" />
-												<col width="20%" />
-											</colgroup>
+									<section class="questionView">
+										<input type="button" value="목록" id="listview" class="boardButtonStyle2">
+										<table class="questionViewTable" align="center">
 											<tr>
-												<th>작성자</th>
-												<input type="hidden" name="userId" value="${qna.userId }" />
-												<td class="boardTitleSort boardBold">${qna.users.userNick }</td>
-												<th>작성일</th>
-												<td class="boardTitleSort boardBold"><fmt:formatDate value="${qna.qnaDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</td>
+												<th colspan="2">
+													<ul class="boardButtonList">
+														<li>
+													 		<c:if test="${qna.userId==Users.userId }">
+																<input type="submit" value="삭제" formaction="/session/qnaDelete"
+																			formmethod="post" class="boardButtonStyle1">
+															</c:if>
+													 	</li>
+													 	<li>
+													 		<c:if test="${qna.userId==Users.userId }">
+																<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																			formmethod="post" class="boardButtonStyle1">
+															</c:if>
+													 	</li>
+													 </ul>
+												</th>
 											</tr>
 											<tr>
-												<td> </td>
-												<td colspan="3" class="boardTitleSort">${qna.qnaQuestion }</td>
+												<th rowspan="2" align="center">
+													<i class="fa fa-question-circle-o fa-4x"></i>
+												</th>
+												<td>
+													<p id="questionViewTitle">${qna.qnaTitle }<p>
+													<ul class="questionViewUl">
+														<input type="hidden" name="userId" value="${qna.userId }" />
+														<li>${qna.users.userNick }</li>
+														<li><fmt:formatDate value="${qna.qnaDate }"
+														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</li>
+														<li>${qna.qnaCount }</li>
+													</ul>
+												</td>
 											</tr>
-											<tr>
-												<td colspan="4">
-													<input type="button" value="목록" id="listview" class="boardButtonStyle2">
+											<tr class="questionContentStyle">
+												<td>
+													${qna.qnaQuestion }
 												</td>
 											</tr>
 											<tr>
-												<td colspan="4">
-													<input type="button" value="답변 작성" class="boardButtonStyle2">
-												</td>
+												<th colspan="2">
+													<input type="button" value="답변하기" class="qnaAnswerButton">
+												</th>
 											</tr>
 										</table>
-									</div>
+									</section>
 									
-									<hr id="boardTitleHrStyle2">
-									
-									<!-- 답변 자세히 보기 부분 -->
-									<div class="qnaAnswerView">
+									<section class="answerView">
 										<c:forEach var="answer" items="${answers }">
-										<table class="board_view" border="1">
-											<tbody id="tbody">
-												
+											<table class="answerViewTable" align="center">
 												<colgroup>
 													<col width="10%">
-													<col width="2%">
 													<col width="*%">
-													<col width="8%">
-													<col width="8%">
 												</colgroup>
-								            	<tr>
-								            		<th class="boardBold">${answer.users.userNick }</th>
-								            		<td>
-								            			<i class="fa fa-ellipsis-v"></i>
-								            		</td>
-								            		<td class="boardTitleSort">
-								            			<fmt:formatDate value="${answer.answerDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+												<tr>
+													<td rowspan="2" style="padding-left: 1.5em">
+														<i class="fa fa-font fa-2x"></i>
 													</td>
+													<th colspan="2" class="questionContentStyle">
+														${answer.answerContent }
+													</th>
+												</tr>
+												<tr>
 													<td>
-														<a href="#" class="boardButtonStyle1">수정</a>
+														<ul class="questionViewUl">
+															<li>${answer.users.userNick }</li>
+															<li><fmt:formatDate value="${answer.answerDate }"
+														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</li>
+														</ul>
 													</td>
-													<td>
-														<a href="#" class="boardButtonStyle1">삭제</a>
+													<td class="qnaSubmitButtonStyle">
+														<c:if test="${answer.userId==Users.userId }">
+															<input type="submit" value="삭제" formaction="/session/qnaDelete"
+																		formmethod="post" class="boardButtonStyle1">
+														</c:if>
+														<c:if test="${answer.userId==Users.userId }">
+															<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																		formmethod="post" class="boardButtonStyle1">
+														</c:if>
 													</td>
-								            	</tr>
-										<tr>
-											<th scope="row"> </th>
-											<td colspan="4" class="boardTitleSort">${answer.answerContent }</td>
-										</tr>
-										<%-- 
-										<tr align="right">
-											<c:if test="${qna.userId==Users.userId }"> 
-												<td colspan="4">
-													<input type="button" value="수정하기">
-												</td>
-											</c:if>
-										</tr>
-										 --%>
-										
-										</tbody>
-									</table>
-									<hr id="boardTitleHrStyle2">
-									</c:forEach>
-									</div>
+												</tr>
+												<tr>
+												</tr>
+											</table>
+										</c:forEach>
+									</section>
 									
-									<!-- 답변 작성하는 부분 -->
-									<div id="qnaReplyWritter">
-										<table>
+									<hr id="boardTitleHrStyle2">
+									
+									<div id="boardReplyWritter">
+										<table class="answerViewTable">
 											<colgroup>
 												<col width="10%" />
 												<col width="*%" />
 												<col width="10%" />
 											</colgroup>
 											<tr>
-												<td><i class="fa fa-key fa-2x"></i></td>
+												<td><label for="replyContent"><i class="fa fa-key fa-2x"></i></label></td>
 												<td>
-													<textarea cols="75" rows="2" id="answerContent" placeholder="댓글을 입력하세요."></textarea>
+													<textarea cols="75" rows="4" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
 												</td>
-												<td>
-													<input type="button" value="등록" id="answerRegist" class="boardButtonStyle3">
+												<td id="qnaWritterButton">
+													<input type="button" value="등록" id="replyRegist" class="boardButtonStyle3">
 												</td>
 											</tr>
 										</table>
 									</div>
 								</form>
 							</section>
-						</div>
+					</div>
 				</div>
-				
 				<!-- footer -->
 					<jsp:include page="../layout/footer.jsp"></jsp:include>
-					
 			</div>
 		</div>
 	</div>
