@@ -35,17 +35,24 @@ public class Route implements Serializable {
 	/** 경로_세부지도. */
 	private String routeFull;
 
-	/** 경로_시지도. */
-	private String routeCity;
-
-	/** 경로_도지도. */
-	private String routeDo;
-
 	/** 경로_날짜. */
 	private Date routeDate;
 
 	/** 사용자. */
 	private String userId;
+
+	private Users users;
+	
+	public Route(Integer routeNo, String routeName, String routeContent, String routeFull, Date routeDate,
+			String userId) {
+		super();
+		this.routeNo = routeNo;
+		this.routeName = routeName;
+		this.routeContent = routeContent;
+		this.routeFull = routeFull;
+		this.routeDate = routeDate;
+		this.userId = userId;
+	}
 
 
 }

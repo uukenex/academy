@@ -2,15 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 경로는 게시판이 따로없고 자신이 쓴건 자신만볼 수 있고, 
-만들기,수정,삭제 가능 후기게시판에 연동시킨건 다른사람도 볼 수 있다. -->
+<!-- 경로는 게시판이 따로없고 자신이 쓴건 자신만볼 수 있고, 만들기,수정,삭제 가능 후기게시판에 연동시킨건 다른사람도 볼 수 
+	있다. -->
 <mapper namespace="com.example.RouteMapper">
-	
-	<select id="select" parameterType="String" resultMap="routeUsers">
-	select * from route where user_id = #{userId};
+
+	<select id="select" parameterType="int" resultMap="routeUsers">
+		select * from route where route_no = #{routeNo}
 	</select>
 
-	<insert id=""></insert>
+	<insert id="insert" parameterType="Map">
+		insert into route(route_name,route_content
+		,route_full,route_date,user_id)
+		values (#{routeName},#{routeContent},#{routeFull},sysdate,#{userId})
+	</insert>
 
 
 	<resultMap type="route" id="routeBase">
