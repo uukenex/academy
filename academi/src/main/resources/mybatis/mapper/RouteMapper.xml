@@ -6,18 +6,19 @@
 만들기,수정,삭제 가능 후기게시판에 연동시킨건 다른사람도 볼 수 있다. -->
 <mapper namespace="com.example.RouteMapper">
 	
-	
+	<select id="select" parameterType="String" resultMap="routeUsers">
+	select * from route where user_id = #{userId};
+	</select>
+
+	<insert id=""></insert>
 
 
-<!-- 
 	<resultMap type="route" id="routeBase">
 		<id column="route_no" property="routeNo" />
 		<result column="route_name" property="routeName" />
 		<result column="route_content" property="routeContent" />
+		<result column="route_full" property="routeFull" />
 		<result column="route_date" property="reviewDate" />
-		<result column="review_star" property="reviewStar" />
-		<result column="review_count" property="reviewCount" />
-		<result column="route_no" property="routeNo" />
 		<result column="user_id" property="userId" />
 	</resultMap>
 
@@ -25,5 +26,4 @@
 		<association property="users" column="user_id" javaType="users"
 			resultMap="com.example.UserMapper.usersBase"></association>
 	</resultMap>
- -->
 </mapper>

@@ -182,6 +182,11 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+.ui-sortable-handle{
+margin-top: 10px;
+background : black;
+color: white;
+}
 </style>
 </head>
 
@@ -223,14 +228,13 @@
 	<div>
 		<form>
 			Name : <input type="text" id="title" name="title" ><br>
-			x좌표 : <input type="text" id="latitude" name="latitude"><br>
-			y좌표 : <input type="text" id="longitude" name="longitude"><br>
 			주소 : <input type="text" id="address" name="address" size=40><br>
 			
+			<input type="hidden" id="latitude" name="latitude">
+			<input type="hidden" id="longitude" name="longitude">
 			<input type="hidden" id="category" name="category">
 			<input type="hidden" id="imageUrl" name="imageUrl">
 			<br>
-			<input type="button" id="addBtn" value='추가하기'>
 			<input type="checkbox" id="stored" >
 			<label for="stored">저장된것만 표시</label>
 		</form>
@@ -333,12 +337,47 @@
 			//$("#stored").attr("checked",true);
 			
 			
+			
+			$("#select").on("change",function(){
+				map.setLevel(map.getLevel()+1);
+				map.setLevel(map.getLevel()-1);
+			})
+			
+			
+			
 			if($("#stored").prop("checked")!=true){
 			places.categorySearch($("#select").val(), callback, {
 				location : center
 			});
 			
+			
+			
+			
+			$("#search").on("click", function() {
+				if ($("#keyword").val().trim() == "") {
+					alert('검색 결과가 존재하지 않습니다.');
+					return;
+				}
+				places.keywordSearch($("#keyword").val(), placesSearchCB);
+			});
 			// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+			
+			function placesSearchCB(status, data, pagination) {
+						if (status === daum.maps.services.Status.OK) {
+							positions = data.places;
+
+							var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
+									positions[0].longitude);
+							map.panTo(moveLatLon);
+						} else if (status === daum.maps.services.Status.ZERO_RESULT) {
+							alert('검색 결과가 존재하지 않습니다.');
+							return;
+						} else if (status === daum.maps.services.Status.ERROR) {
+							alert('검색 결과 중 오류가 발생했습니다.');
+							return;
+						}
+					};
+			
 			
 			daum.maps.event.addListener(map, 'idle', function() {
 				center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
@@ -358,9 +397,29 @@
 		callback = function(status, result, pagination) {
 			if (status === daum.maps.services.Status.OK) {
 				if($("#stored").prop("checked")!=true){
+					/* if($("#keyword").val()!="")
+						//검색어가 있을경우 플레이스 초기화를 막음
+						{
+						places.keywordSearch($("#keyword").val(), placesSearchCB);
+						}
+					function placesSearchCB(status, data, pagination) {
+						if (status === daum.maps.services.Status.OK) {
+							positions = data.places;
+
+							var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
+									positions[0].longitude);
+							map.panTo(moveLatLon);
+						} else if (status === daum.maps.services.Status.ZERO_RESULT) {
+							alert('검색 결과가 존재하지 않습니다.');
+							return;
+						} else if (status === daum.maps.services.Status.ERROR) {
+							alert('검색 결과 중 오류가 발생했습니다.');
+							return;
+						}
+					}; */
 				positions = result.places;
-				console.log(positions);
 				callMarker(positions);
+					
 				}
 			}
 		};
@@ -377,9 +436,15 @@
 			var posx;
 			var posy;
 			var marker;
+			var infowindow;
 			var iwContent;
 
 			for (var i = 0; i < positions.length; i++) {
+				
+				
+					
+					
+				
 				if ((positions[i].category.indexOf('계곡') != -1 
 					&& positions[i].title.indexOf('골') != -1)
 					|| positions[i].category.indexOf('저수지') != -1) {
@@ -387,7 +452,7 @@
 				} else {
 					// 마커 이미지를 생성합니다    
 					markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-
+					
 					// 마커를 생성합니다
 					posx = positions[i].latitude;
 					posy = positions[i].longitude;
@@ -405,9 +470,9 @@
 					// 마커에 표시할 인포윈도우를 생성합니다 
 					
 					if (positions[i].imageUrl == "") {
-						positions[i].imageUrl = 'http://www.moaksanjujo.kr/planweb/images/mall/defaultGoods.jpg';
+						positions[i].imageUrl = '/images/noimg.jpg';
 					}
-					var infowindow = new daum.maps.InfoWindow(
+					infowindow = new daum.maps.InfoWindow(
 							{
 								removable : iwRemoveable,
 								content : '<div id='+i+' class>'
@@ -437,7 +502,8 @@
 							makeOverListener(map, marker, infowindow));
 					markers.push(marker);
 					infowindows.push(infowindow);
-				}
+					
+				}//계곡 찍는 종점
 			}
 		}
 
@@ -473,11 +539,7 @@
 					for(var i=0;i<res.length;i++){
 					html+="<div data-order="+i+">♬";
 					html+=res[i].title+"♬";
-					html+=res[i].latitude+"♬";
-					html+=res[i].longitude+"♬";
-					html+=res[i].address+"♬";
-					html+=res[i].imageUrl+"♬";
-					html+=res[i].category+"</div>";
+					html+=res[i].address+"</div>";
 					}
 					html+="</div>";
 					$("#result").html(html);
@@ -503,48 +565,7 @@
 	
 		});
 		
-		$("#addBtn").on("click",function(){
-			$.ajax({
-				type:"post",
-				url:"/add",
-				data:{
-					title:$('#title').val(),
-					latitude:$('#latitude').val(),
-					longitude:$('#longitude').val(),
-					address:$('#address').val(),
-					imageUrl:$('#imageUrl').val(),
-					category:$('#category').val()
-				},
-				success:function(res){
-					var html="<div id='sortWrap'>" ;
-					for(var i=0;i<res.length;i++){
-					html+="<div data-order="+i+">♬";
-					html+=res[i].title+"♬";
-					html+=res[i].latitude+"♬";
-					html+=res[i].longitude+"♬";
-					html+=res[i].address+"♬";
-					html+=res[i].imageUrl+"♬";
-					html+=res[i].category+"</div>";
-					}
-					html+="</div>";
-					$("#result").html(html);
-					
-					$("#sortWrap").sortable({
-						axis: "y",
-						containment: "parent",
-						update: function (event, ui) {
-							var order = $(this).sortable('toArray', {
-								attribute: 'data-order'
-							});
-							console.log(order);
-						}
-					});
-					
-					
-				}
-			});
-		});
-
+		
 		
 		
 		
@@ -593,9 +614,12 @@
 					
 				else{	
 					
+					
+					
 					//저장된거 표시 풀때 나오게하는
 					map.setLevel(map.getLevel()+1);
 					// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+					
 					daum.maps.event.addListener(map, 'idle', function() {
 						center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
 						/*
@@ -605,7 +629,10 @@
 						places.categorySearch($("#select").val(), callback, {
 							location : center
 						});
+						
+						
 					});
+					
 					map.setLevel(map.getLevel()-1);
 					
 					
@@ -616,9 +643,11 @@
 							return;
 						}
 						places.keywordSearch($("#keyword").val(), placesSearchCB);
+						//검색이 완료됬을경우 다른정보들을 넣으면 안됨
+						//1. 검색어가 있을경우 callback에서 마커찍는것을 막는다
+						//2. 
 					});
 
-					
 					function placesSearchCB(status, data, pagination) {
 						if (status === daum.maps.services.Status.OK) {
 							positions = data.places;
@@ -634,6 +663,7 @@
 							return;
 						}
 					};
+					
 				
 					
 					
@@ -667,7 +697,49 @@
 				$('#address').val(positions[i].address);
 				$('#imageUrl').val(positions[i].imageUrl);
 				$('#category').val(positions[i].category);
-				removeInfoWindow();
+				
+				for (var i = 0; i < infowindows.length; i++) {
+					infowindows[i].close();
+				}
+				$.ajax({
+						type:"post",
+						url:"/add",
+						data:{
+							title:$('#title').val(),
+							latitude:$('#latitude').val(),
+							longitude:$('#longitude').val(),
+							address:$('#address').val(),
+							imageUrl:$('#imageUrl').val(),
+							category:$('#category').val()
+						},
+						success:function(res){
+							
+							var html="<div id='sortWrap'>" ;
+							for(var i=0;i<res.length;i++){
+							html+="<div data-order="+i+">♬";
+							html+=res[i].title+"♬";
+							html+=res[i].address+"</div>";
+							}
+							html+="</div>";
+							$("#result").html(html);
+							
+							$("#sortWrap").sortable({
+								axis: "y",
+								containment: "parent",
+								update: function (event, ui) {
+									var order = $(this).sortable('toArray', {
+										attribute: 'data-order'
+									});
+									console.log(order);
+								}
+							});
+							
+						}
+					});
+			
+
+				
+				
 				break;
 			}
 

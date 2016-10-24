@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -96,7 +97,7 @@ public class MapAPIController {
 	public @ResponseBody Object add(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
 			@RequestParam String title, @RequestParam double latitude, @RequestParam double longitude,
 			@RequestParam String address, @RequestParam String imageUrl, @RequestParam String category,
-			HttpSession session) {
+			HttpSession session,Model model) {
 		// 이미 같은정보가 저장되있다면 팅겨내야함
 		boolean ok = true;
 		// 카트에들어있는것을 비교해서 없으면 true를 반환함
@@ -127,7 +128,22 @@ public class MapAPIController {
 	}
 
 	@RequestMapping(value = "/session/DBCall", method = RequestMethod.POST)
-	public String DBCall(SessionStatus status) {
+	public String DBCall(@ModelAttribute("cart") List<Goods> cart,SessionStatus status,HttpSession session) {
+
+		
+		for(int i=0;i<cart.size();i++){
+			String content="♬";
+			content+=cart.get(i).getTitle();
+			content+="♬";
+			content+=cart.get(i).getLatitude();
+			content+="♬";
+			content+=cart.get(i).getLongitude();
+			content+="♬";
+			content+=cart.get(i).getAddress();
+			content+="♬";
+			content+=cart.get(i).getImageUrl();
+			logger.trace("{}",content);
+		}
 		status.setComplete();
 		return "redirect:/session/mapapi";
 	}
