@@ -9,15 +9,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Welcome</title>
+
 	</head> 
 	<body>
-	<jsp:include page="WEB-INF/view/nonsession/layout/menubar_header.jsp"></jsp:include>
 	
 		<c:url value="/hello" var="messageUrl" />
-		<a  class="fancybox"  href="${messageUrl}">Click to enter</a>
+		<a class="fbx" href="/images/pics02.jpg">Click to enter</a>
 		<br>
 		<c:url value="/hello" var="messageUrl" />
-		<a  id="fancybox"  href="${messageUrl}">Click to enter</a>
+		<a  class="fancybox"  href="${messageUrl}">Click to enter</a>
 		<br>
 		<c:url value="/join" var="joinUrl" />
 		<a href="${joinUrl}">Enter Join Form</a>
@@ -71,10 +71,6 @@
 		<a href="${m2 }">쓰던메인</a>
 		<br>
 		
-		<script>
-		$(document).ready(function() {
-			$("#fancybox").fancybox();
-		});
-		</script>
+		
 	</body>
 </html>
