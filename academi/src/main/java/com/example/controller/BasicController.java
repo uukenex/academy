@@ -65,5 +65,10 @@ public class BasicController {
 		return "session/guide/do_map";
 	}
 	
+	@RequestMapping("/mapMain")
+	public String mapMain(Model model) {
+		return "session/guide/map_main";
+	}
+	
 
 }
