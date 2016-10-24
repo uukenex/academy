@@ -334,8 +334,11 @@ color: white;
 			////여기서 저장된것만 표시 를 해주어야함////
 			////////////////////////////////
 			
-			//$("#stored").attr("checked",true);
+			if('${empty savedList}'!=true){
+				$("#stored").attr("checked",true);
+				console.log('${empty savedList}');
 			
+			}
 			
 			
 			$("#select").on("change",function(){
@@ -531,6 +534,9 @@ color: white;
 
 	
 		$(document).on("ready",function(){
+		
+			
+			
 		$.ajax({
 				type:"post",
 				url:"/getSession",

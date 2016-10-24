@@ -116,20 +116,53 @@ fieldset {
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="validation/dist/jquery.validate.min.js"></script>
 	<script>
-		$("#myform").on({
+	
+	//중복체크가 되었는지 확인 
+	$("#myform").on({
 			"submit" : function(e) {
 				e.preventDefault();
 				if (checkVal1 == true && checkVal2 == true) {
-					this.submit();
+					//비밀번호 체크(값이 같은지, 값이 들어가있는지 확인)
+					if ($("#password").val() == $("#passwordCk").val()) {
+						//이름,전화번호,이메일 값이 들어가 있는지 확인)
+						if($("#name").val().trim() != ''&& $("#phone").val().trim() != '' && $("#email").val().trim() != ''   ){
+							this.submit();
+						}
+						else{
+							alert("비어있는 칸이 있는지 확인해주세요.");
+						}
+					}else{
+						alert("비밀번호를 확인해주세요");
+					}
 				} else {
 					alert("중복 확인을 해주세요");
-
+					console.log("비밀번호 :"+ $("#password").val());
+					console.log("비밀번호 확인 :" +$("#passwordCk").val());
 				}
 			},
 			"reset" : function(e) {
 				alert("다시작성버튼");
+				
 			}
 		});
+		
+/* 	//비밀번호가 잘입력되었고, 비밀번호와 비밀번호 확인의 값이 같은지 확인
+	$("#myform").on({
+		"submit" : function(e) {
+			e.preventDefault();
+			if ($("#password").val() == $("#passwordCk").val()) {
+				this.submit();
+			} else {
+				alert("비밀번호를 확인해주세요.");
+				console.log("비밀번호 :"+ $("#password").val());
+				console.log("비밀번호 확인 :" +$("#passwordCk").val());
+			}
+		},
+		"reset" : function(e) {
+			alert("다시작성버튼");
+			
+		}
+	}); */
 
 		var checkVal1 = false;
 		var checkVal2 = false;
@@ -150,6 +183,9 @@ fieldset {
 					"userId" : userId
 				},
 				success : function(res) {
+				var regid = /^[A-Za-z0-9]{4,12}$/;
+				if($("#id").val().trim().match(regid)){
+				/* if($("#id").val().length>3 && $("#id").val().length<12){ */
 					if (res == 0) {
 						alert("사용가능한 아이디입니다");
 						checkVal1 = true;
@@ -157,6 +193,10 @@ fieldset {
 						alert("이미사용중인 아이디입니다");
 						checkVal1 = false;
 					}
+				}else{
+					console.log($("#id").val().length);
+					alert("아이디를 확인해주세요.");
+				}
 				},
 				error : function(xhr, status, error) {
 					alert(error);
@@ -230,6 +270,16 @@ fieldset {
 
 		});
 
+		$("#id").on("keyup",function(){
+			var regid = /^[A-Za-z0-9]{4,12}$/;
+			if($(this).val().trim().match(regid)){
+				$(this).css("background", "rgb(120,255,255)");
+			}else {
+				$(this).css("background", "rgb(255,150,150)");
+
+			}
+		})
+		
 		$("#password,#passwordCk").on("keyup", function() {
 			if ($("#password").val() != $("#passwordCk").val()) {
 				$("#passwordCk").css("background", "rgb(255,150,150)");
