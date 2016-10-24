@@ -40,18 +40,24 @@
 		<br>
 		<br>
 		<h2>Hello Jsp</h2>
-		<a class="links" href='#12'>Click to enter</a>
-		<br>
-		<a id ='12' class="links" 
-		href='/images/pics01.jpg' >ccc</a>
+		
+		<a id ='/domap' class="fancybox">ccc</a>
 		<br>
 		<br>
 		<br>
 		<script>
-		$(document).ready(function() {
-		        $(".links").fancybox();
-		      
-		});
+		$(".fancybox").fancybox({
+		    autoScale: false,
+		    // href : $('.fancybox').attr('id'), // don't need this
+		    type: 'iframe',
+		    padding: 0,
+		    closeClick: false,
+		    // other options
+		    beforeLoad: function () {
+		        var url = $(this.element).attr("id");
+		        this.href = url
+		    }
+		}); // fancybox
 		</script>
 	</body>
 </html>
