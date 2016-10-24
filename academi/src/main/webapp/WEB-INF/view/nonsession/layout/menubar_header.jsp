@@ -4,6 +4,22 @@
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+	<!-- Scripts -->
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
+			
+			<!-- SlidesJS Required: Link to jquery.slides.js -->
+  			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
+  			<!-- End SlidesJS Required -->
+
 <!-- Nav -->
 
 <nav id="nav">
