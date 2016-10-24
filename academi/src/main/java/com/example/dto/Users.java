@@ -26,11 +26,11 @@ public class Users implements Serializable {
 	/** 사용자_id. */
 	private String userId;
 
-	/** 사용자_비밀번호. */
-	private String userPass;
-
 	/** 사용자_이름. */
 	private String userName;
+	
+	/** 사용자_비밀번호. */
+	private String userPass;
 
 	/** 사용자_이메일. */
 	private String userEmail;
