@@ -38,13 +38,8 @@ public class RouteController {
 	//루트 불러오기(번호로)
 	@RequestMapping(value = "/session/route", method = RequestMethod.GET)
 	public String free(Model model, @RequestParam int routeNo
-			,HttpSession session,
-			
-			@ModelAttribute Goods goods) 
-	
-	{
+			,HttpSession session,@ModelAttribute Goods goods) {
 		List<Goods> cart = new ArrayList<>();
-		logger.trace("에ㅓㄹ?");
 		Route result = rs.selectRouteByNo(routeNo);
 		String str = result.getRouteFull();
 		int count = 0;
@@ -54,7 +49,10 @@ public class RouteController {
 			}
 		}
 		int i = count/5;
-		
+		Goods goodss[] = new Goods[i];
+		for(int cnt=0;cnt<i;cnt++){
+			goodss[cnt]=new Goods();
+		}
 		
 		String routeName[] = new String[i];
 		String routeX[] = new String[i];
@@ -65,27 +63,28 @@ public class RouteController {
 		i = 0;
 		StringTokenizer tokens = new StringTokenizer(str, "♬");
 		while (tokens.hasMoreTokens()) {
-
 			routeName[i] = tokens.nextToken();
-			goods.setTitle(routeName[i]);
+			goodss[i].setTitle(routeName[i]);
 			routeX[i] = tokens.nextToken();
-			goods.setLatitude(Double.parseDouble(routeX[i]));
+			goodss[i].setLatitude(Double.parseDouble(routeX[i]));
 			routeY[i] = tokens.nextToken();
-			goods.setLongitude(Double.parseDouble(routeY[i]));
+			goodss[i].setLongitude(Double.parseDouble(routeY[i]));
 			routeAddr[i] = tokens.nextToken();
-			goods.setAddress(routeAddr[i]);
+			goodss[i].setAddress(routeAddr[i]);
 			routeImg[i] = tokens.nextToken();
-			goods.setCategory(routeImg[i]);
-			goods.setCategory("");
-			cart.add(goods);
+			goodss[i].setImageUrl(routeImg[i]);
+			goodss[i].setCategory("여행");
 			i++;
 			
 		}
 		
+		for(int cnt=0;cnt<i;cnt++){
+			cart.add(goodss[cnt]);
+		}
 		
 		logger.trace("list : {}",cart);
-		session.setAttribute("savedList",cart);
-		return "redirect:/session/mapapi";
+		session.setAttribute("cart",cart);
+		return "session/guide/map_api";
 	}
 
 	

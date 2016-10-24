@@ -334,9 +334,10 @@ color: white;
 			////여기서 저장된것만 표시 를 해주어야함////
 			////////////////////////////////
 			
-			if('${empty savedList}'!=true){
+			if('${empty cart}'!=true){
 				$("#stored").attr("checked",true);
-				console.log('${empty savedList}');
+				console.log('데이터가있음');
+				console.log('${cart}');
 			
 			}
 			

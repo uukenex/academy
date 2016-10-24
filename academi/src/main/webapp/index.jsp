@@ -59,6 +59,9 @@
 		<c:url value="/session/mapapi" var="api" />
 		<a href="${api }">map api</a>
 		<br>
+		<c:url value="/session/route?routeNo=63" var="api63" />
+		<a href="${api63 }">63번 루트보기</a>
+		<br>
 		<c:url value="/mainpage2" var="m2" />
 		<a href="${m2 }">쓰던메인</a>
 		<br>
