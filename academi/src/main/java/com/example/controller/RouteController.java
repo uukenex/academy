@@ -83,7 +83,7 @@ public class RouteController {
 		}
 		
 		logger.trace("list : {}",cart);
-		session.setAttribute("cart",cart);
+		session.setAttribute("dbcart",cart);
 		return "session/guide/map_api";
 	}
 

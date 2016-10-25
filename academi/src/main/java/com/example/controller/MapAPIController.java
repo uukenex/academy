@@ -20,9 +20,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
-
+@SessionAttributes({"cart","dbcart"})
 @Controller
-@SessionAttributes({ "cart" })
 public class MapAPIController {
 	static Logger logger = LoggerFactory.getLogger(MapAPIController.class);
 
@@ -77,15 +76,39 @@ public class MapAPIController {
 	}
 
 	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
-	public String mapapi(Model model, HttpServletRequest request) {
+	public String mapapi(SessionStatus status,Model model, HttpServletRequest request,HttpSession session) {
+		/*status.setComplete();*/
+		session.removeAttribute("dbcart");
+		
 		String local = request.getParameter("incheon");
 		model.addAttribute("local", local);
+		
+		
+		return "session/guide/map_api";
+	}
+
+	@ModelAttribute("cart")
+	List<Goods> cart() {
+	  return new ArrayList<Goods>(); //or however you create a default
+	}
+	@ModelAttribute("dbcart")
+	List<Goods> dbcart() {
+	  return new ArrayList<Goods>(); //or however you create a default
+	}
+	
+	@RequestMapping(value = "/session/apiview", method = RequestMethod.GET)
+	public String apiview(SessionStatus status,Model model, HttpServletRequest request,HttpSession session) {
+		status.setComplete();
+		model.addAttribute("cart", new ArrayList<Goods>());
 		if (!model.containsAttribute("cart")) {
 			model.addAttribute("cart", new ArrayList<Goods>());
 		}
 		return "session/guide/map_api";
 	}
-
+	
+	
+	
+	
 	/**
 	 * 세션에 저장되 있는 cart에 상품을 추가
 	 * 
@@ -93,18 +116,48 @@ public class MapAPIController {
 	 * @param cart
 	 * @return
 	 */
+	
+	@RequestMapping(value = "/addDB", method = RequestMethod.POST)
+	public @ResponseBody Object addDB(@ModelAttribute Goods goods, 
+			@ModelAttribute("dbcart") List<Goods> dbcart,
+			HttpSession session, Model model) {
+		// 이미 같은정보가 저장되있다면 팅겨내야함
+		logger.trace("addDB");
+		boolean ok = true;
+		// 카트에들어있는것을 비교해서 없으면 true를 반환함
+		if (dbcart.size() == 0) {
+			dbcart.add(goods);
+		} else {
+			for (int i = 0; i <= dbcart.size() - 1; i++) {
+				if (dbcart.get(i).equals(goods)) {
+					ok = false;
+					break;
+				}
+			}
+			if (ok) {
+				dbcart.add(goods);
+			}
+		}
+
+		logger.trace("카트사이즈 {}", dbcart.size());
+
+		Object obj = session.getAttribute("dbcart");
+		return obj;
+	}
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public @ResponseBody Object add(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
-			@RequestParam String title, @RequestParam double latitude, @RequestParam double longitude,
-			@RequestParam String address, @RequestParam String imageUrl, @RequestParam String category,
-			HttpSession session,Model model) {
+	public @ResponseBody Object add(@ModelAttribute Goods goods, 
+			@ModelAttribute("cart") List<Goods> cart,
+			HttpSession session, Model model) {
+		 
+		logger.trace("add");
 		// 이미 같은정보가 저장되있다면 팅겨내야함
 		boolean ok = true;
 		// 카트에들어있는것을 비교해서 없으면 true를 반환함
 		if (cart.size() == 0) {
 			cart.add(goods);
 		} else {
-			for (int i = 0; i <= cart.size()-1; i++) {
+			for (int i = 0; i <= cart.size() - 1; i++) {
 				if (cart.get(i).equals(goods)) {
 					ok = false;
 					break;
@@ -118,33 +171,45 @@ public class MapAPIController {
 		logger.trace("카트사이즈 {}", cart.size());
 
 		Object obj = session.getAttribute("cart");
+		logger.trace("세션 cart:{}",obj);
 		return obj;
 	}
-
+	
+	
 	@RequestMapping(value = "/getSession", method = RequestMethod.POST)
-	public @ResponseBody Object getSession(HttpSession session) {
-		Object cart = session.getAttribute("cart");
-		return cart;
+	public @ResponseBody Object getSession(HttpSession session,
+			@ModelAttribute("cart") List<Goods> cart,
+			@ModelAttribute("dbcart") List<Goods> dbcart) {
+		Object cartObj=null;
+		if (dbcart.isEmpty()) {
+			cartObj = cart;
+		} else {
+			cartObj = dbcart;
+		}
+		logger.trace("dbcart: {}",session.getAttribute("dbcart"));
+		logger.trace("cart : {}",session.getAttribute("cart"));
+		logger.trace("Object cart : {}",cartObj);
+		return cartObj;
 	}
 
 	@RequestMapping(value = "/session/DBCall", method = RequestMethod.POST)
-	public String DBCall(@ModelAttribute("cart") List<Goods> cart,SessionStatus status,HttpSession session) {
+	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session) {
 
-		
-		for(int i=0;i<cart.size();i++){
-			String content="♬";
-			content+=cart.get(i).getTitle();
-			content+="♬";
-			content+=cart.get(i).getLatitude();
-			content+="♬";
-			content+=cart.get(i).getLongitude();
-			content+="♬";
-			content+=cart.get(i).getAddress();
-			content+="♬";
-			content+=cart.get(i).getImageUrl();
-			logger.trace("{}",content);
+		for (int i = 0; i < cart.size(); i++) {
+			String content = "♬";
+			content += cart.get(i).getTitle();
+			content += "♬";
+			content += cart.get(i).getLatitude();
+			content += "♬";
+			content += cart.get(i).getLongitude();
+			content += "♬";
+			content += cart.get(i).getAddress();
+			content += "♬";
+			content += cart.get(i).getImageUrl();
+			logger.trace("{}", content);
 		}
 		status.setComplete();
+		session.removeAttribute("dbcart");
 		return "redirect:/session/mapapi";
 	}
 }

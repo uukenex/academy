@@ -334,11 +334,12 @@ color: white;
 			////여기서 저장된것만 표시 를 해주어야함////
 			////////////////////////////////
 			
-			if('${empty cart}'!=true){
+			if('${!empty dbcart}' =='true'){
 				$("#stored").attr("checked",true);
 				console.log('데이터가있음');
 				console.log('${cart}');
-			
+				console.log('${dbcart}');
+
 			}
 			
 			
@@ -401,26 +402,6 @@ color: white;
 		callback = function(status, result, pagination) {
 			if (status === daum.maps.services.Status.OK) {
 				if($("#stored").prop("checked")!=true){
-					/* if($("#keyword").val()!="")
-						//검색어가 있을경우 플레이스 초기화를 막음
-						{
-						places.keywordSearch($("#keyword").val(), placesSearchCB);
-						}
-					function placesSearchCB(status, data, pagination) {
-						if (status === daum.maps.services.Status.OK) {
-							positions = data.places;
-
-							var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
-									positions[0].longitude);
-							map.panTo(moveLatLon);
-						} else if (status === daum.maps.services.Status.ZERO_RESULT) {
-							alert('검색 결과가 존재하지 않습니다.');
-							return;
-						} else if (status === daum.maps.services.Status.ERROR) {
-							alert('검색 결과 중 오류가 발생했습니다.');
-							return;
-						}
-					}; */
 				positions = result.places;
 				callMarker(positions);
 					
@@ -708,9 +689,22 @@ color: white;
 				for (var i = 0; i < infowindows.length; i++) {
 					infowindows[i].close();
 				}
+				/////////
+				//DB처리//
+				/////////
+				if('${!empty dbcart}' =='true')
+				{
+					<c:url value='/addDB' var='add'></c:url>
+					console.log("/addDB  접속");
+				}
+				else{
+					<c:url value='/add' var='add'></c:url>
+					console.log("/add  접속");
+				}
+					
 				$.ajax({
 						type:"post",
-						url:"/add",
+						url:"${add}",
 						data:{
 							title:$('#title').val(),
 							latitude:$('#latitude').val(),
@@ -741,11 +735,13 @@ color: white;
 								}
 							});
 							
+						},
+						error:function(request,status,error){
+							alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 						}
 					});
-			
-
 				
+			
 				
 				break;
 			}
