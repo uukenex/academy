@@ -102,8 +102,8 @@ public class NoticeController {
 	@RequestMapping(value = "/commentUpdate", method = RequestMethod.POST)
 	public String commentUpdate(Model model, HttpServletRequest request) {
 		String commentNo = request.getParameter("commentNo");
-		String commentName = request.getParameter("TITLE");
-		String commentContent = request.getParameter("CONTENTS");
+		String commentName = request.getParameter("title");
+		String commentContent = request.getParameter("content");
 		cs.updateComment(Integer.parseInt(commentNo), commentName, commentContent);
 		return "redirect:/noticeView?commentNo=" + commentNo;
 	}

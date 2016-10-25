@@ -64,7 +64,7 @@
 												<th>작성일</th>
 												<td class="boardTitleSort boardFontBold">
 													<fmt:formatDate value="${comment.commentDate}"
-																			pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}
+																			pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 											</tr>
 											<tr>
@@ -76,13 +76,13 @@
 													<ul class="boardButtonList">
 														<li>
 													 		<c:if test="${comment.userId==Users.userId }">
-																<input type="submit" value="삭제" formaction="/session/noticeDelete"
+																<input type="submit" value="삭제" formaction="/commentDelete"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
 													 	<li>
 													 		<c:if test="${comment.userId==Users.userId }">
-																<input type="submit" value="수정" formaction="/session/noticeUpdate"
+																<input type="submit" value="수정" formaction="/session/commentUpdate"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
@@ -124,7 +124,7 @@
 													</td>
 													<td>
 														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="삭제" formaction="/session/noticeDelete"
+															<input type="submit" value="삭제" formaction="/noticeDelete"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
 													</td>

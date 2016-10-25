@@ -66,7 +66,7 @@
 												<th>작성일</th>
 												<td class="boardTitleSort boardFontBold">
 													<fmt:formatDate value="${comment.commentDate}"
-																			pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}
+																			pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 											</tr>
 											<tr>
@@ -78,7 +78,7 @@
 													<ul class="boardButtonList">
 														<li>
 													 		<c:if test="${comment.userId==Users.userId }">
-																<input type="submit" value="삭제" formaction="/session/freeDelete"
+																<input type="submit" value="삭제" formaction="/freeDelete"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
@@ -115,18 +115,19 @@
 								            			<i class="fa fa-ellipsis-v"></i>
 								            		</td>
 								            		<td class="boardTitleSort">
-								            			<fmt:formatDate value="${answer.answerDate }"
+								            			<fmt:formatDate value="${reply.replyDate }"
 														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 													</td>
 													<td>
 														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="수정" formaction="/session/freeUpdate"
+															<input type="submit" value="수정" formaction="/session/replyUpdate"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
 													</td>
 													<td>
 														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="삭제" formaction="/session/freeDelete"
+														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+															<input type="submit" value="삭제" formaction="/replyDelete"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
 													</td>
@@ -186,14 +187,46 @@
 				commentNo:"${comment.commentNo}"
 			},
 			success:function(res){
-				alert("등록완료");
-				$("#tbody").append(	$("<tr><td>"+res.id+
-				"</td><td colspan='3'>"+res.content+
-				"</td></tr>"));
+				console.log(res);
+			
+				$("tbody")[0].innerHTML="";
 				$("#replyContent").val("");
+				$(res).each(function(idx,item){
+					alert("등록완료");
+					
+					console.log(item);
+				
+					console.log(item.replyCommentNo);
+					
+					var date=new Date(item.commentDate);
+					var year = date.getFullYear().toString();
+					var month = (date.getMonth()+1).toString();
+					var date = date.getDate().toString();
+					if(date<10){
+						date="0"+date;
+					}
+					year=year.substr(2,2);
+					var newDate = year+"-"+month+"-"+date;
+					
+					$("tbody")[0].innerHTML+=
+							"<tr> <th class='boardFontBold'>" + item.users.userNick +
+							"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>" +
+							"<td class='boardTitleSort'>" +
+							newDate + "</td>" +
+							"<td> <c:if test='${reply.userId==Users.userId }'>" + 
+							"<input type='submit' value='수정' formaction='/session/replyUpdate'" +
+										"formmethod='post' class='boardButtonStyle1'> </c:if> </td>" +
+							"<td> <c:if test='${reply.userId==Users.userId }'>" +
+							"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>" +
+							"<input type='submit' value='삭제' formaction='/replyDelete'" +
+											"formmethod='post' class='boardButtonStyle1'>" +
+							"</c:if> </td> </tr>" +
+							"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" + 
+							item.content + "</td> </tr>";
+				});
 			},
-			error:function(xhr,status,error){
-				alert("로그인이 필요합니다");
+			error:function(request,status,error){
+				alert(request.responseText);
 			}
 			});
 		});
