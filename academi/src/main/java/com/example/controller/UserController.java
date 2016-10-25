@@ -53,6 +53,16 @@ public class UserController {
 		return returnURL;
 	}
 	
+	@RequestMapping(value="/logout")
+	public String logoutUser(HttpServletRequest request,HttpSession session){
+
+		if(session !=null){
+			session.invalidate();
+		      
+		}
+		return "redirect:/";
+	}
+	
 	
 }
 		
