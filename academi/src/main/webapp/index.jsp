@@ -70,6 +70,9 @@
 		<c:url value="/mainpage2" var="m2" />
 		<a href="${m2 }">쓰던메인</a>
 		<br>
+		<c:url value="/mainpage123213212" var="m2" />
+		<a href="${m2 }">쓰던메인</a>
+		<br>
 		
 		
 	</body>
