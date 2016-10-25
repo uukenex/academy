@@ -22,14 +22,29 @@ public class RouteRepoImpl implements RouteRepo {
 	}
 
 	@Override
-	public int insertRoute(String routeName, String routeContent, String routeFull, String userId) {
+	public int insertRoute(String routeFull, String userId) {
 		String statement = NAME_SPACE + "insert";
 		Map<String,String> map = new HashMap<>();
-		map.put("routeName", routeName);
-		map.put("routeContent", routeContent);
 		map.put("routeFull", routeFull);
 		map.put("userId", userId);
 		return template.insert(statement, map);
+	}
+
+	@Override
+	public int updateRoute(int routeNo, String routeName, String routeContent, String routeFull) {
+		String statement = NAME_SPACE + "update";
+		Map<String,Object> map = new HashMap<>();
+		map.put("routeNo", routeNo);
+		map.put("routeName", routeName);
+		map.put("routeContent", routeContent);
+		map.put("routeFull", routeFull);
+		return template.insert(statement, map);
+	}
+
+	@Override
+	public int deleteRoute(int routeNo) {
+		String statement = NAME_SPACE + "delete";
+		return template.delete(statement,routeNo);
 	}
 
 }

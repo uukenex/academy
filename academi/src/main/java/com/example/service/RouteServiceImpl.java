@@ -18,9 +18,19 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public int insertRoute(String routeName, String routeContent, String routeFull, String userId) {
+	public int insertRoute(String routeFull, String userId) {
 		// TODO Auto-generated method stub
-		return rrepo.insertRoute(routeName, routeContent, routeFull, userId);
+		return rrepo.insertRoute(routeFull, userId);
+	}
+
+	@Override
+	public int updateRoute(String routeName, String routeContent, String routeFull, int routeNo) {
+		return rrepo.updateRoute(routeNo, routeName, routeContent, routeFull);
+	}
+
+	@Override
+	public int deleteRoute(int routeNo) {
+		return rrepo.deleteRoute(routeNo);
 	}
 	
 	

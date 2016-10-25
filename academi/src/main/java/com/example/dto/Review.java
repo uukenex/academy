@@ -45,6 +45,8 @@ public class Review implements Serializable {
 
 	private Users users;
 
+	private Route route;
+	
 	public Review(Integer reviewNo, String reviewTitle, String reviewContent, Date reviewDate, Integer reviewStar,
 			Integer reviewCount, Integer routeNo, String userId) {
 		super();

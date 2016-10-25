@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.Answer;
@@ -35,13 +36,12 @@ public class RouteRepoTest {
 	RouteRepo rrepo;
 
 	// 회원가입 테스트
+	@Transactional
 	@Test
 	public void InsertTest() {
-		String routeName = "나만의여행";
-		String routeContent = "여행1일차 ";
 		String routeFull = "♬도자기만들기♬36.81343591863648♬127.14314229009916♬충남 천안시 서북구 성정동 159-21♬http://cfile8.uf.daum.net/original/2464C44F54B610ED1A35E3♬노태산♬36.83690507685371♬127.12664368780422♬충남 천안시 서북구 성성동♬/images/noimg.jpg♬도자기만들기♬36.81343591863648♬127.14314229009916♬충남 천안시 서북구 성정동 159-21♬http://cfile8.uf.daum.net/original/2464C44F54B610ED1A35E3♬노태산♬36.83690507685371♬127.12664368780422♬충남 천안시 서북구 성성동♬/images/noimg.jpg";
 		String userId = "dd";
-		int result = rrepo.insertRoute(routeName, routeContent, routeFull, userId);
+		int result = rrepo.insertRoute(routeFull, userId);
 		assertThat(result, is(1));
 	}
 
@@ -102,4 +102,18 @@ public class RouteRepoTest {
 		}
 		assertThat(result, is(notNullValue()));
 	}
+	
+	@Transactional
+	@Test
+	public void updateTest() {
+		rrepo.updateRoute(22, "수정이름경로", "수정내용이다", "퓰경로인데??");
+	}
+	
+	@Transactional
+	@Test
+	public void deleteTest() {
+		rrepo.deleteRoute(22);
+	}
+	
+	
 }

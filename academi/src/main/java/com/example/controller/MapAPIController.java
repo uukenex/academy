@@ -2,12 +2,14 @@ package com.example.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,11 +22,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
+import com.example.dto.Route;
+import com.example.service.RouteService;
+import com.example.service.UserService;
 @SessionAttributes({"cart","dbcart"})
 @Controller
 public class MapAPIController {
 	static Logger logger = LoggerFactory.getLogger(MapAPIController.class);
-
+	
+	@Autowired
+	UserService us;
+	@Autowired
+	RouteService rs;
+	
+	
+	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String domap(Model model) {
 		return "session/guide/do_map";
@@ -191,11 +203,69 @@ public class MapAPIController {
 		return cartObj;
 	}
 
+	//루트 불러오기(번호로)
+	@RequestMapping(value = "/session/route", method = RequestMethod.GET)
+	public String free(Model model, @RequestParam int routeNo
+			,HttpSession session,@ModelAttribute Goods goods) {
+		List<Goods> cart = new ArrayList<>();
+		Route result = rs.selectRouteByNo(routeNo);
+		String str = result.getRouteFull();
+		int count = 0;
+		for (int c = 0; c<str.length(); c++) {
+			if (str.charAt(c) == '♬') {
+				count++;
+			}
+		}
+		int i = count/5;
+		Goods goodss[] = new Goods[i];
+		for(int cnt=0;cnt<i;cnt++){
+			goodss[cnt]=new Goods();
+		}
+		
+		String routeName[] = new String[i];
+		String routeX[] = new String[i];
+		String routeY[] = new String[i];
+		String routeAddr[] = new String[i];
+		String routeImg[] = new String[i];
+		
+		i = 0;
+		StringTokenizer tokens = new StringTokenizer(str, "♬");
+		while (tokens.hasMoreTokens()) {
+			routeName[i] = tokens.nextToken();
+			goodss[i].setTitle(routeName[i]);
+			routeX[i] = tokens.nextToken();
+			goodss[i].setLatitude(Double.parseDouble(routeX[i]));
+			routeY[i] = tokens.nextToken();
+			goodss[i].setLongitude(Double.parseDouble(routeY[i]));
+			routeAddr[i] = tokens.nextToken();
+			goodss[i].setAddress(routeAddr[i]);
+			routeImg[i] = tokens.nextToken();
+			goodss[i].setImageUrl(routeImg[i]);
+			goodss[i].setCategory("여행");
+			i++;
+			
+		}
+		
+		for(int cnt=0;cnt<i;cnt++){
+			cart.add(goodss[cnt]);
+		}
+		
+		logger.trace("list : {}",cart);
+		session.setAttribute("dbcart",cart);
+		return "session/guide/map_api";
+	}
+
+	
+	
+	
+	
+
 	@RequestMapping(value = "/session/DBCall", method = RequestMethod.POST)
 	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session) {
-
+		logger.trace("cart가 풀경로: db로 insert쿼리문장 작성해야함 {}",cart);
+		String content="";
 		for (int i = 0; i < cart.size(); i++) {
-			String content = "♬";
+			content = "♬";
 			content += cart.get(i).getTitle();
 			content += "♬";
 			content += cart.get(i).getLatitude();
@@ -207,8 +277,10 @@ public class MapAPIController {
 			content += cart.get(i).getImageUrl();
 			logger.trace("{}", content);
 		}
+		String userId=(String)session.getAttribute("Users.userId");
+		rs.insertRoute(content, userId);
 		status.setComplete();
-		session.removeAttribute("dbcart");
-		return "redirect:/session/mapapi";
+		return "redirect:/mapMain";
 	}
+	
 }

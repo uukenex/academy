@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.service.RouteService;
@@ -27,11 +28,22 @@ public class RouteServiceTest {
 	// 추가
 	@Test
 	public void insertTest() {
-		rs.insertRoute("이것이루트",
-				"이것이 제목", "풀경로", "dd");
+		rs.insertRoute( "풀경로", "dd");
 	}
 	@Test
 	public void selectTest() {
 		rs.selectRouteByNo(63);
+	}
+	
+	@Transactional
+	@Test
+	public void updateTest() {
+		rs.updateRoute("경로이름","경로내용","풒ㄹ루트",22);
+	}
+	
+	@Transactional
+	@Test
+	public void deleteTest() {
+		rs.deleteRoute(22);
 	}
 }
