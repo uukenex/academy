@@ -1,10 +1,15 @@
 package com.example.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 //* 장바구니에 담길 상품
  
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Goods {
 	private String title;  //상품명
 	private double latitude;    //개수

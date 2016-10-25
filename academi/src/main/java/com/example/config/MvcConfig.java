@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
@@ -29,6 +30,12 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Override
+	public void addViewControllers(ViewControllerRegistry registry){
+		registry.addViewController("/500").setViewName("500");
+		registry.addViewController("/404").setViewName("404");
+		registry.addViewController("/400").setViewName("400");
+	}
+	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/join_icons/**").addResourceLocations("/WEB-INF/join_icons/");
 		registry.addResourceHandler("/assets/**").addResourceLocations("/WEB-INF/assets/");
@@ -44,8 +51,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/validation/**").addResourceLocations("/WEB-INF/validation/");
 		registry.addResourceHandler("/map/**").addResourceLocations("/WEB-INF/images/map/");
 		registry.addResourceHandler("/temp/**").addResourceLocations("c:/Temp");
-		
-	}
+		}
 	
 	//파일업로드를 위한 빈
 		@Bean
