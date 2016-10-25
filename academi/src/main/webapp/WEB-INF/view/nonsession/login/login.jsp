@@ -82,6 +82,10 @@ fieldset {
 					src="<%=request.getContextPath()%>/images/div_smallbar_vertical.png">
 				<a href="${findpw }">비밀번호 찾기</a>
 			</div>
+			<a href="#">
+				<img alt="facebookLogin" src="/images/facebookLogin.png"
+						style="width: 20em; height: 5em;">
+			</a>
 		</fieldset>
 	</sform:form>
 	<script src="http://code.jquery.com/jquery.js"></script>
