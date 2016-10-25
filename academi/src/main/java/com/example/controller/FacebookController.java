@@ -71,4 +71,5 @@ public class FacebookController {
 		return "redirect:/autoLogin";
 	}
 
+	
 }
