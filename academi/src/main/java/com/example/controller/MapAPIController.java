@@ -76,15 +76,17 @@ public class MapAPIController {
 	}
 
 	@RequestMapping(value = "/session/mapapi", method = RequestMethod.GET)
-	public String mapapi(SessionStatus status,Model model, HttpServletRequest request,HttpSession session) {
-		/*status.setComplete();*/
-		session.removeAttribute("dbcart");
+	public String mapapi(SessionStatus status,Model model, HttpServletRequest request,HttpSession session
+			) {
+		//dbcart정보만 초기화 되도록 하자
+		status.setComplete();
+		//session.removeAttribute("dbcart");
 		
 		String local = request.getParameter("incheon");
 		model.addAttribute("local", local);
 		
 		
-		return "session/guide/map_api";
+		return "redirect:/session/apiview";
 	}
 
 	@ModelAttribute("cart")
@@ -97,12 +99,9 @@ public class MapAPIController {
 	}
 	
 	@RequestMapping(value = "/session/apiview", method = RequestMethod.GET)
-	public String apiview(SessionStatus status,Model model, HttpServletRequest request,HttpSession session) {
-		status.setComplete();
-		model.addAttribute("cart", new ArrayList<Goods>());
-		if (!model.containsAttribute("cart")) {
-			model.addAttribute("cart", new ArrayList<Goods>());
-		}
+	public String apiview(SessionStatus status,Model model, HttpServletRequest request,HttpSession session
+			,@ModelAttribute("cart") List<Goods> cart) {
+
 		return "session/guide/map_api";
 	}
 	
