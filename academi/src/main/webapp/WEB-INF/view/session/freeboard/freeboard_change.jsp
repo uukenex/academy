@@ -9,29 +9,92 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>자유게시판 글쓰기</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+ 	<meta name="author" content="Nathan Searles">
+  		
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+		
+<title>${comment.commentName} 수정</title>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
+
 <body>
-	<input type="hidden" name="commentNo" value="${comment.commentNo }" />
-                   <tr>
-                 <input type="hidden" name="commentNo" value="${comment.commentNo }" />
-                    <th scope="row">작성자</th>
-                    <td>
-                        <input type="hidden" id="IDX" name="IDX" value="">
-                        ${comment.users.userNick}
-                    </td>
-                    <th scope="row">작성일</th>
-                    <td><fmt:formatDate value="${comment.commentDate}"
-						pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}</td>
-                </tr>
-	<form action="/commentWrite" method="post" id="frm">
-	제목 : <input type="text"  name="title" size="108px" value="${comment.commentName}"><br>
-    <textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px;">${comment.commentContent }</textarea>
-    <input type="button" id="savebutton" value="완료" />
-     <input type="button" name="Submit2" value="취소" onclick="history.back();">
-</form>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+	<div id="page-wrapper" class="boardPage-Wrapper">
+		<div id="main">
+			<div class="container">
+				<div class="row main-row">
+					
+					<!-- Board Left Menu -->
+						<jsp:include page="../../nonsession/layout/board_left_menu.jsp" />
+						
+					<!-- Board body part -->
+						<div class="8u 12u(moblie) important(moblie)">
+							<section class="middle-content">
+								<h3>${comment.commentName} 수정</h3>
+								<input type="hidden" name="commentNo" value="${comment.commentNo }" />
+								<form action="/commentWrite" method="post" id="frm">
+									<table class="boardUpdateTable">
+										<colgroup>
+											<col width="15%">
+											<col width="15%">
+											<col width="15%">
+											<col width="*%">
+										</colgroup>
+										<tr id="boardUpdateCheck">
+											<input type="hidden" name="commentNo" value="${comment.commentNo }" />
+											<th scope="row">작성자</th>
+						                    <td>
+						                        <input type="hidden" id="IDX" name="IDX" value="">
+						                        ${comment.users.userNick}
+						                    </td>
+						                    <th scope="row">작성일</th>
+						                    <td><fmt:formatDate value="${comment.commentDate}"
+												pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</td>
+										</tr>
+										<tr>
+											<th>제목</th>
+											<td colspan="3">
+												<input type="text" name="title" id="editorTitleWritter"
+														value="${comment.commentName}">
+											</td>
+										</tr>
+										<tr>
+											<td colspan="4">
+												<textarea name="content" id="content" class="editorContentWritter">
+													${comment.commentContent }
+												</textarea>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="4">
+												<input type="button" name="Submit2" class="editorButtonStyle1" value="취소" onclick="history.back();">
+												<input type="button" id="savebutton" class="editorButtonStyle1" value="완료" />
+											</td>
+										</tr>
+									</table>
+								</form>
+							</section>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 <script>
 $(function(){
     //전역변수선언

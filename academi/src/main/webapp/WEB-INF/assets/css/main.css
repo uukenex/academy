@@ -3917,6 +3917,7 @@
 			border: dotted 2px #A0A0A0;
 		}
 		
+		
 		.boardEditorTable th {
 			margin: 0 0 0 0;
 			padding: 0 0 2.5em 1em;
@@ -3929,6 +3930,28 @@
 		.boardEditorTable td {
 			margin: 0 0 0 0;
 			padding: 1.5em 0 1em 1em;
+		}
+		
+		.boardUpdateTable {
+			margin: 1em 1em;
+			margin-top: 3em;
+			background-color: #FFFFFF;
+			border: dotted 2px #A0A0A0;
+		}
+		
+		.boardUpdateTable th {
+			font-family: 'Nanum Gothic';
+			font-size: 1.3em;
+			font-weight: bold;
+		}
+		
+		.boardUpdateTable td {
+			padding-bottom: 1em;
+			padding-left: 1em;
+		}
+		
+		#boardUpdateCheck td{
+			text-align: left;
 		}
 		
 		
@@ -3955,6 +3978,9 @@
 			margin-top: 1.5em;
 		}
 		
+		.boardUpdateTable input[type='button'] {
+			float: right;
+		}
 		
 /* Make Route Map Style */
 
