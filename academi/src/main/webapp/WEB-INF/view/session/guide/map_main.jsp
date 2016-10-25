@@ -63,7 +63,7 @@
 						<section class="middle-content">
 							<ul class="mapMainButtonStyle1">
 								<li>
-									<a id ='/doMap' class="fancybox">도, 시 지도 선택</a>
+									<a id ='doMap' class="fancybox" rel="/doMap">도, 시 지도 선택</a>
 								</li>
 								<c:url value="/session/mapapi" var="api" />
 								<li>
@@ -78,18 +78,25 @@
 	</div>
 		
 	<script>
-		$(".fancybox").fancybox({
-		    autoScale: false,
-		    // href : $('.fancybox').attr('id'), // don't need this
-		    type: 'iframe',
-		    padding: 0,
-		    closeClick: false,
-		    // other options
-		    beforeLoad: function () {
-		        var url = $(this.element).attr("id");
-		        this.href = url
-		    }
-		}); // fancybox
+		$(document).on("ready",function(){
+			$(".fancybox").fancybox({
+			    autoScale: false,
+			    // href : $('.fancybox').attr('id'), // don't need this
+			    'width': '40%',
+            	'height': '20%',
+			    type: 'iframe',
+			    padding: 0,
+			    closeClick: false,
+			    // other options
+			    beforeLoad: function () {
+			        var url = $(this.element).attr("rel");
+			        this.href = url
+			    }
+			}).trigger('click'); // fancybox
+			
+			
+		});
+		
 		</script>
 </body>
 </html>
