@@ -255,6 +255,7 @@ color: white;
 		</output>
 		<form action="/session/DBCall" method="post">
 	<input type="submit" id="" value="DB로!!" >
+	<label>저장하지않으면 데이터가 소실됩니다.</label>
 	</form>
 	</div>
 
