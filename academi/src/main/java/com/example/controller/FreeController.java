@@ -120,14 +120,9 @@ public class FreeController {
 	@RequestMapping(value = "/session/replyRegist", method = RequestMethod.POST)
 	public @ResponseBody List<CommentReply> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
 			@RequestParam int commentNo, HttpSession session) {
-		Map<String, String> resultMap = null;
 		int result = crs.insertReply(replyContent, commentNo, userId);
 		List<CommentReply> list= crs.selectReplyList(commentNo);
-		if (result == 1) {
-			resultMap = new HashMap<>();
-			resultMap.put("id", userId);
-			resultMap.put("content", replyContent);
-		}
+		
 		return list;
 	}
 	

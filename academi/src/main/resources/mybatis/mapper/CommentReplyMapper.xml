@@ -9,7 +9,7 @@
 		select * from
 		comment_reply c
 		join users u on u.user_id=c.user_id 
-		where reply_comment_no=#{replyCommentNo}
+		where reply_comment_no=#{replyCommentNo} order by reply_no 
 	</select>
 	<!-- 댓글 달기 기능 -->
 	<insert id="insert" parameterType="Map">

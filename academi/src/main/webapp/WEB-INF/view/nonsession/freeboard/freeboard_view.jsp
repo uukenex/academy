@@ -69,10 +69,10 @@
 																			pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 											</tr>
-											<tr>
-												<td> </td>
-												<td colspan="3" class="boardTitleSort">${comment.commentContent}</td>
-											</tr>
+												<tr>
+													<td> </td>
+													<td colspan="3" class="boardTitleSort">${comment.commentContent}</td>
+												</tr>
 											<tr>
 												<td colspan="4">
 													<ul class="boardButtonList">
@@ -98,9 +98,9 @@
 									
 									<!-- 답변 자세히 보기 부분 -->
 									<div>
-										<c:forEach var="reply" items="${replys }">
+										
 										<table class="board_view" border="1">
-											<tbody id="tbody">
+											
 												
 												<colgroup>
 													<col width="10%">
@@ -109,6 +109,8 @@
 													<col width="8%">
 													<col width="8%">
 												</colgroup>
+												<tbody id="replyContentViewTableBody">
+												<c:forEach var="reply" items="${replys }">
 								            	<tr>
 								            		<th class=boardFontBold>${reply.users.userNick}</th>
 								            		<td>
@@ -132,14 +134,15 @@
 														</c:if>
 													</td>
 								            	</tr>
-										<tr>
-											<th scope="row"> </th>
-											<td colspan="4" class="boardTitleSort">${reply.replyContent }</td>
-										</tr>
+												<tr>
+													<th scope="row"> </th>
+													<td colspan="4" class="boardTitleSort">${reply.replyContent }</td>
+												</tr>
+										</c:forEach>
 										</tbody>
 									</table>
 									<hr id="boardTitleHrStyle2">
-									</c:forEach>
+									
 									</div>
 									
 									<!-- 답변 작성하는 부분 -->
@@ -177,6 +180,7 @@
 		});
 		
 		<c:url value="/session/replyRegist" var="replyRegist" />
+		
 		$("#replyRegist").on("click",function(){
 			$.ajax({
 			type:"post",
@@ -189,16 +193,18 @@
 			success:function(res){
 				console.log(res);
 			
-				$("tbody")[0].innerHTML="";
+				$("#replyContentViewTableBody").empty();
+				console.log($("#replyContentViewTableBody")[0]);
 				$("#replyContent").val("");
+				alert("등록완료");
 				$(res).each(function(idx,item){
-					alert("등록완료");
-					
 					console.log(item);
 				
 					console.log(item.replyCommentNo);
 					
-					var date=new Date(item.commentDate);
+					var replyId = item.userId;
+					var aaaa;
+					var date=new Date(item.replyDate);
 					var year = date.getFullYear().toString();
 					var month = (date.getMonth()+1).toString();
 					var date = date.getDate().toString();
@@ -207,22 +213,36 @@
 					}
 					year=year.substr(2,2);
 					var newDate = year+"-"+month+"-"+date;
+					if(replyId=='${Users.userId }'){
+						$("#replyContentViewTableBody")[0].innerHTML+=
+							"<tr> <th class='boardFontBold'>" + item.users.userNick 
+							+"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
+							+"<td class='boardTitleSort'>"
+							+newDate + "</td> <td>" 
+							
+							+"<input type='submit' value='수정' formaction='/session/replyUpdate'"
+							+"formmethod='post' class='boardButtonStyle1'>" 
+							+"</td> <td>" 
 					
-					$("tbody")[0].innerHTML+=
-							"<tr> <th class='boardFontBold'>" + item.users.userNick +
-							"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>" +
-							"<td class='boardTitleSort'>" +
-							newDate + "</td>" +
-							"<td> <c:if test='${reply.userId==Users.userId }'>" + 
-							"<input type='submit' value='수정' formaction='/session/replyUpdate'" +
-										"formmethod='post' class='boardButtonStyle1'> </c:if> </td>" +
-							"<td> <c:if test='${reply.userId==Users.userId }'>" +
-							"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>" +
-							"<input type='submit' value='삭제' formaction='/replyDelete'" +
-											"formmethod='post' class='boardButtonStyle1'>" +
-							"</c:if> </td> </tr>" +
-							"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" + 
-							item.content + "</td> </tr>";
+							+"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>"
+							+"<input type='submit' value='삭제' formaction='/replyDelete'"
+							+"formmethod='post' class='boardButtonStyle1'>" 
+					
+							+"</td> </tr>" 
+							+"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" 
+							+item.replyContent + "</td> </tr>";
+					}
+					else{
+						$("#replyContentViewTableBody")[0].innerHTML+=
+							"<tr> <th class='boardFontBold'>" + item.users.userNick 
+							+"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
+							+"<td class='boardTitleSort'>"
+							+newDate + "</td> <td>" 
+							+"</td> </tr>" 
+							+"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" 
+							+item.replyContent + "</td> </tr>";
+					}
+					
 				});
 			},
 			error:function(request,status,error){
