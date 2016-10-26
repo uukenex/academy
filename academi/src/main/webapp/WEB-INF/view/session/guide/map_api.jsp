@@ -253,8 +253,21 @@ color: white;
 		</div>
 		<output id="result">
 		</output>
-		<form action="/session/DBCall" method="post">
-	<input type="submit" id="" value="DB로!!" >
+	<form method="post">
+	<input type="hidden" value="${routeNo }" name="routeNo">
+	
+	<!--일반 지도api로 들어갔을경우 : -->
+	<c:if test="${empty routeNo }">
+	<input type="submit" id="" value="DB로!!" formaction="/mapSave" >
+	</c:if> 
+	
+	<!--번호검색으로 api로 들어갔을경우 : -->
+	<c:if test="${!empty routeNo }">
+	<input type="text" name ="routeName" value="${routeName }">
+	<textarea name="routeContent" rows="30" cols="30" >${routeContent }</textarea>
+	<input type="submit" id="" value="수정" formaction="/mapUpdate">
+	<input type="submit" id="" value="삭제" formaction="/mapDelete">
+	</c:if>
 	<label>저장하지않으면 데이터가 소실됩니다.</label>
 	</form>
 	</div>
@@ -295,7 +308,6 @@ color: white;
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
-	
 		var center = new daum.maps.LatLng(36.8324709, 127.137007);
 		var mapLevel = 8;
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -695,17 +707,17 @@ color: white;
 				/////////
 				if('${!empty dbcart}' =='true')
 				{
-					<c:url value='/addDB' var='add'></c:url>
 					console.log("/addDB  접속");
+					var addurl='/addDB';
 				}
 				else{
-					<c:url value='/add' var='add'></c:url>
 					console.log("/add  접속");
+					var addurl='/add';
 				}
 					
 				$.ajax({
 						type:"post",
-						url:"${add}",
+						url:addurl,
 						data:{
 							title:$('#title').val(),
 							latitude:$('#latitude').val(),
