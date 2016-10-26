@@ -3954,10 +3954,21 @@
 			text-align: left;
 		}
 		
+	/* Notice View */
+		
+		.noticeContentView {
+			font-size: 2em;
+			font-weight: bold;
+		}
+		
+		td.noticeContentView {
+			margin-bottom: 10em;
+		}
+		
 		
 	/* text & textarea */
 	
-		#editorTitleWritter {
+		.editorTitleWritter {
 			width: 95%;
 		}
 		

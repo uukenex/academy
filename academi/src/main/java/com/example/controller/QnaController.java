@@ -75,7 +75,6 @@ public class QnaController {
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
 		String qnaTitle = request.getParameter("title");
 		String qnaQuestion = request.getParameter("content");
-		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
 		qs.insertQna(qnaTitle, qnaQuestion, userId);
@@ -95,10 +94,10 @@ public class QnaController {
 	@RequestMapping(value = "/qnaUpdate", method = RequestMethod.POST)
 	public String qnaUpdate(Model model, HttpServletRequest request) {
 		String qnaNo = request.getParameter("qnaNo");
-		String qnaTitle = request.getParameter("TITLE");
-		String qnaContent = request.getParameter("CONTENTS");
+		String qnaTitle = request.getParameter("title");
+		String qnaContent = request.getParameter("content");
 		qs.updateQna(Integer.parseInt(qnaNo), qnaTitle, qnaContent);
-		return "redirect:/qna_view?qnaNo=" + qnaNo;
+		return "redirect:/qnaView?qnaNo=" + qnaNo;
 	}
 
 	// qna 삭제
@@ -136,19 +135,14 @@ public class QnaController {
 		
 		// 리뷰 댓글 ajax
 		@RequestMapping(value = "/session/replyRegist3", method = RequestMethod.POST)
-		public @ResponseBody Map<String, String> ajaxanswer(
+		public @ResponseBody List<Answer> ajaxanswer(
 				@RequestParam String userId, 
 				@RequestParam String answerContent,
 				@RequestParam int qnaNo, HttpSession session) {
 			logger.trace("{}{}{}",qnaNo,userId,answerContent);
-			Map<String, String> resultMap = null;
 			int result = as.insertAnswer(answerContent, qnaNo, userId);
-			if (result == 1) {
-				resultMap = new HashMap<>();
-				resultMap.put("id", userId);
-				resultMap.put("content", answerContent);
-			}
-			return resultMap;
+			List<Answer> list=as.selectListByQnaNo(qnaNo);
+			return list;
 		}
 		
 		

@@ -40,16 +40,17 @@
 					<!-- Board Body part -->
 						<div class="8u 12u(mobile) important(mobile)">
 							<section class="middle-content">
-								<form>
+								<form id="frm">
 									<section class="questionView">
 										<input type="button" value="목록" id="listview" class="boardButtonStyle2">
 										<table class="questionViewTable" align="center">
+											<input type="hidden" name="qnaNo" value="${qna.qnaNo }" />
 											<tr>
 												<th colspan="2">
 													<ul class="boardButtonList">
 														<li>
 													 		<c:if test="${qna.userId==Users.userId }">
-																<input type="submit" value="삭제" formaction="/session/qnaDelete"
+																<input type="submit" value="삭제" formaction="/qnaDelete"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
@@ -91,12 +92,14 @@
 									</section>
 									
 									<section class="answerView">
-										<c:forEach var="answer" items="${answers }">
+										
 											<table class="answerViewTable" align="center">
 												<colgroup>
 													<col width="10%">
 													<col width="*%">
 												</colgroup>
+												<tbody id="replyContentViewTableBody">
+												<c:forEach var="answer" items="${answers }">
 												<tr>
 													<td rowspan="2" style="padding-left: 1.5em">
 														<i class="fa fa-font fa-2x"></i>
@@ -115,7 +118,7 @@
 													</td>
 													<td class="qnaSubmitButtonStyle">
 														<c:if test="${answer.userId==Users.userId }">
-															<input type="submit" value="삭제" formaction="/session/qnaDelete"
+															<input type="submit" value="삭제" formaction="/qnaDelete"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
 														<c:if test="${answer.userId==Users.userId }">
@@ -126,8 +129,10 @@
 												</tr>
 												<tr>
 												</tr>
+												</c:forEach>
+												</tbody>
 											</table>
-										</c:forEach>
+										
 									</section>
 									
 									<hr id="boardTitleHrStyle2">
@@ -168,6 +173,7 @@
 		});
 		
 		<c:url value="/session/replyRegist3" var="replyRegist" />
+		
 			$("#answerRegist").on("click",function() {
 						$.ajax({
 							type : "post",
@@ -178,17 +184,58 @@
 								qnaNo : "${qna.qnaNo}"
 							},
 							success : function(res) {
-								alert("등록완료");
-								$("#tbody").append(	$(
-									"<tr><td>" + res.id
-									+ "</td><td colspan='3'>"
-									+ res.content + "</td></tr>"
-									
-								
-								));
-								
-								
+								$("#replyContentViewTableBody").empty();
 								$("#answerContent").val("");
+								alert("등록완료");
+								$(res).each(function(idx,item){
+									var answerId = item.userId;
+									var date=new Date(item.answerDate);
+									var year = date.getFullYear().toString();
+									var month = (date.getMonth()+1).toString();
+									var date = date.getDate().toString();
+									if(date<10){
+										date="0"+date;
+									}
+									year=year.substr(2,2);
+									var newDate = year+"-"+month+"-"+date;
+									
+									if(answerId=='${Users.userId}'){
+										$("#replyContentViewTableBody")[0].innerHTML +=
+											"<tr> <td rowspan='2' style='padding-left: 1.5em'>"
+											+ "<i class='fa fa-font fa-2x'></i> </td>"
+											+ "<th colspan='2' class='questionContentStyle'>"
+											+ item.answerContent
+											+ "</th> </tr> <tr> <td>"
+											+ "<ul class='questionViewUl'> <li>"
+											+ item.users.userNick
+											+ "</li> <li>"
+											+ newDate + "</li> </ul> </td>"
+											+ "<td class='qnaSubmitButtonStyle'>"
+											+ "<input type='submit' value='삭제' formaction='/qnaDelete'
+											+ "formmethod='post' class='boardButtonStyle1'>"
+											+ "<input type='submit' value='수정' formaction='/session/qnaUpdate'
+											+ "formmethod='post' class='boardButtonStyle1">"
+											+ "</td> </tr> <tr> </tr>"
+									}
+									else {
+										$("#replyContentViewTableBody")[0].innerHTML +=
+											"<tr> <td rowspan='2' style='padding-left: 1.5em'>"
+											+ "<i class='fa fa-font fa-2x'></i> </td>"
+											+ "<th colspan='2' class='questionContentStyle'>"
+											+ item.answerContent
+											+ "</th> </tr> <tr> <td>"
+											+ "<ul class='questionViewUl'> <li>"
+											+ item.users.userNick
+											+ "</li> <li>"
+											+ newDate + "</li> </ul> </td>"
+											+ "<td class='qnaSubmitButtonStyle'>"
+											
+											+ "</td> </tr> <tr> </tr>"
+									}
+								});
+								
+								
+								
 							},
 							error : function(xhr, status, error) {
 								alert(error);

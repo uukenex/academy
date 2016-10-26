@@ -98,10 +98,7 @@
 									
 									<!-- 답변 자세히 보기 부분 -->
 									<div>
-										
 										<table class="board_view" border="1">
-											
-												
 												<colgroup>
 													<col width="10%">
 													<col width="2%">
@@ -192,7 +189,6 @@
 			},
 			success:function(res){
 				console.log(res);
-			
 				$("#replyContentViewTableBody").empty();
 				console.log($("#replyContentViewTableBody")[0]);
 				$("#replyContent").val("");
@@ -203,7 +199,6 @@
 					console.log(item.replyCommentNo);
 					
 					var replyId = item.userId;
-					var aaaa;
 					var date=new Date(item.replyDate);
 					var year = date.getFullYear().toString();
 					var month = (date.getMonth()+1).toString();

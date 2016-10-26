@@ -69,7 +69,7 @@
 											</tr>
 											<tr>
 												<td> </td>
-												<td colspan="3" class="boardTitleSort">${comment.commentContent}</td>
+												<td colspan="3" class="boardTitleSort noticeContentView">${comment.commentContent}</td>
 											</tr>
 											<tr>
 												<td colspan="4">
@@ -82,7 +82,7 @@
 													 	</li>
 													 	<li>
 													 		<c:if test="${comment.userId==Users.userId }">
-																<input type="submit" value="수정" formaction="/session/commentUpdate"
+																<input type="submit" value="수정" formaction="/session/noticeUpdate"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
@@ -93,75 +93,13 @@
 									</div>
 									
 									<hr id="boardTitleHrStyle2">
-									
-									<!-- 답변 자세히 보기 부분 -->
-									<div>
-										<c:forEach var="reply" items="${replys }">
-										<table class="board_view" border="1">
-											<tbody id="tbody">
-												
-												<colgroup>
-													<col width="10%">
-													<col width="2%">
-													<col width="*%">
-													<col width="8%">
-													<col width="8%">
-												</colgroup>
-								            	<tr>
-								            		<th class=boardFontBold>${reply.users.userNick}</th>
-								            		<td>
-								            			<i class="fa fa-ellipsis-v"></i>
-								            		</td>
-								            		<td class="boardTitleSort">
-								            			<fmt:formatDate value="${answer.answerDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
-													</td>
-													<td>
-														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="수정" formaction="/session/noticeUpdate"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
-													</td>
-													<td>
-														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="삭제" formaction="/noticeDelete"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
-													</td>
-								            	</tr>
-										<tr>
-											<th scope="row"> </th>
-											<td colspan="4" class="boardTitleSort">${reply.replyContent }</td>
-										</tr>
-										</tbody>
-									</table>
-									<hr id="boardTitleHrStyle2">
-									</c:forEach>
-									</div>
-									
-									<!-- 답변 작성하는 부분 -->
-									<div id="boardReplyWritter">
-										<table>
-											<colgroup>
-												<col width="10%" />
-												<col width="*%" />
-												<col width="10%" />
-											</colgroup>
-											<tr>
-												<td><label for="replyContent"><i class="fa fa-key fa-2x"></i></label></td>
-												<td>
-													<textarea cols="75" rows="2" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
-												</td>
-												<td>
-													<input type="button" value="등록" id="replyRegist" class="boardButtonStyle3">
-												</td>
-											</tr>
-										</table>
-									</div>
 								</form>
 							</section>
 						</div>
 				</div>
+				
+				<!-- footer -->
+					<jsp:include page="../layout/footer.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>

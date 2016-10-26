@@ -41,7 +41,7 @@
 						<div class="8u 12u(moblie) important(moblie)">
 							<section class="middle-content">
 								<h3>Q & A 작성</h3>
-								<form action="/commentWrite" method="post" id="frm">
+								<form action="/qnaWrite" method="post" id="frm">
 								
 									<table class="boardEditorTable">
 										<colgroup>
@@ -50,7 +50,7 @@
 										</colgroup>
 										<tr>
 											<th>제목</th>
-											<td><input type="text"  name="title" id="editorTitleWritter" 
+											<td><input type="text"  name="title" id="title" class="editorTitleWritter" 
 															placeholder="제목을 입력해주세요"></td>
 										</tr>
 										<tr>

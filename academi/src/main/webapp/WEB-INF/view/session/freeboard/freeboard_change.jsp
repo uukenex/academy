@@ -47,7 +47,7 @@
 							<section class="middle-content">
 								<h3>${comment.commentName} 수정</h3>
 								<input type="hidden" name="commentNo" value="${comment.commentNo }" />
-								<form action="/commentWrite" method="post" id="frm">
+								<form action="/freeUpdate" method="post" id="frm">
 									<table class="boardUpdateTable">
 										<colgroup>
 											<col width="15%">
