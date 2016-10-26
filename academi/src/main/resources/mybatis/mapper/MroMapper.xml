@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.MroMapper">
+	<update id="regionCntDong" parameterType="Map">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu=#{siGu} and dong=#{dong})+1
+		where city=#{city} and si_gu=#{siGu} and dong=#{dong}
+	</update>
+	
+	<update id="regionCntSiGu" parameterType="Map">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu=#{siGu} and dong is null)+1
+		where city=#{city} and si_gu=#{siGu} and dong is null
+	</update>
+	
+	<update id="regionCntCity" parameterType="String">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu is null and dong is null)+1
+		where city=#{city} and si_gu is null and dong is null
+	</update>
+	
+	
+
+	<resultMap type="mro" id="mroBase">
+		<id column="region_id" property="regionId" />
+		<result column="city" property="city" />
+		<result column="si_gu" property="siGu" />
+		<result column="dong" property="dong" />
+		<result column="rage_x" property="rageX" />
+		<result column="rage_y" property="rageY" />
+		<result column="reg_tm" property="regTm" />
+		<result column="cnt" property="cnt" />
+	</resultMap>
+
+</mapper>

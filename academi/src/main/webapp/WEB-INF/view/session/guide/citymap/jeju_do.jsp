@@ -70,9 +70,9 @@
 <body>
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
-	<a href='./map/bbs/board.php?bo_table=m101&sca=제주' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
+	<a href='/latlng?lat=33.4996213&lng=126.5311884' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
 	<img src='./map/제주도/제주도-제주.png' alt='' border='0' name='mus1' class='list1' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=서귀포' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
+	<a href='/latlng?lat=33.2541205&lng=126.5600760' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
 	<img src='./map/제주도/제주도-서귀포.png' alt='' border='0' name='mus2' class='list2' ></a>
 
 </div>
