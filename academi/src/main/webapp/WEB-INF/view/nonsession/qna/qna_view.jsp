@@ -147,10 +147,10 @@
 											<tr>
 												<td><label for="replyContent"><i class="fa fa-key fa-2x"></i></label></td>
 												<td>
-													<textarea cols="75" rows="4" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
+													<textarea cols="75" rows="4" id="answerContent" placeholder="댓글을 입력하세요."></textarea>
 												</td>
 												<td id="qnaWritterButton">
-													<input type="button" value="등록" id="replyRegist" class="boardButtonStyle3">
+													<input type="button" value="등록" id="answerRegist" class="boardButtonStyle3">
 												</td>
 											</tr>
 										</table>
@@ -211,11 +211,11 @@
 											+ "</li> <li>"
 											+ newDate + "</li> </ul> </td>"
 											+ "<td class='qnaSubmitButtonStyle'>"
-											+ "<input type='submit' value='삭제' formaction='/qnaDelete'
+											+ "<input type='submit' value='삭제' formaction='/qnaDelete'"
 											+ "formmethod='post' class='boardButtonStyle1'>"
-											+ "<input type='submit' value='수정' formaction='/session/qnaUpdate'
-											+ "formmethod='post' class='boardButtonStyle1">"
-											+ "</td> </tr> <tr> </tr>"
+											+ "<input type='submit' value='수정' formaction='/session/qnaUpdate'"
+											+ "formmethod='post' class='boardButtonStyle1'>"
+											+ "</td> </tr> <tr> </tr>";
 									}
 									else {
 										$("#replyContentViewTableBody")[0].innerHTML +=
@@ -229,8 +229,7 @@
 											+ "</li> <li>"
 											+ newDate + "</li> </ul> </td>"
 											+ "<td class='qnaSubmitButtonStyle'>"
-											
-											+ "</td> </tr> <tr> </tr>"
+											+ "</td> </tr> <tr> </tr>";
 									}
 								});
 								

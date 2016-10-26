@@ -88,13 +88,17 @@
 			<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
 	</div>
 	
-	<!-- Scripts -->
+</body>
+
+<!-- Scripts -->
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.onvisible.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/skel.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
+			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/phanMain.js"></script>
-</body>
 </html>
