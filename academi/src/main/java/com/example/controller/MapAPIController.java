@@ -36,6 +36,19 @@ public class MapAPIController {
 	@Autowired
 	RouteService rs;
 
+	
+	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
+	public String latlng(Model model, HttpServletRequest request) {
+		String lat = request.getParameter("lat");
+		String lng = request.getParameter("lng");
+		logger.trace("lat : {}",lat);
+		logger.trace("lng : {}", lng);
+		request.setAttribute("lat",lat);
+		request.setAttribute("lng",lng);
+		return "session/guide/map_api";
+	}
+
+	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String domap(Model model) {
 		return "session/guide/do_map";

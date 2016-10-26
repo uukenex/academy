@@ -227,36 +227,39 @@
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
-	<a href='./map/bbs/board.php?bo_table=m101&sca=태안' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
+
+
+	<a href='/latlng?lat=36.7456421&lng=126.2980528' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
 	<img src='./map/충남/충남-태안.png' alt='' border='0' name='mus1' class='list1' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=서산' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
+	<a href='/latlng?lat=36.7844993&lng=126.4503169' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
 	<img src='./map/충남/충남-서산.png' alt='' border='0' name='mus2' class='list2' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=당진' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>
+	<a href='/latlng?lat=36.8936109&lng=126.6283278' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>
 	<img src='./map/충남/충남-당진.png' alt='' border='0' name='mus3' class='list3' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=예산' onfocus='this.blur()' onmouseover=mus_on('mus4') onmouseout=mus_off('mus4') onclick=smenu_click('mus4')>
+	<a href='/latlng?lat=36.6826123&lng=126.6283278' onfocus='this.blur()' onmouseover=mus_on('mus4') onmouseout=mus_off('mus4') onclick=smenu_click('mus4')>
 	<img src='./map/충남/충남-예산.png' alt='' border='0' name='mus4' class='list4' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=아산' onfocus='this.blur()' onmouseover=mus_on('mus5') onmouseout=mus_off('mus5') onclick=smenu_click('mus5')>
+	<a href='/latlng?lat=36.7897960&lng=127.0018494' onfocus='this.blur()' onmouseover=mus_on('mus5') onmouseout=mus_off('mus5') onclick=smenu_click('mus5')>
 	<img src='./map/충남/충남-아산.png' alt='' border='0' name='mus5' class='list5' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=천안' onfocus='this.blur()' onmouseover=mus_on('mus6') onmouseout=mus_off('mus6') onclick=smenu_click('mus6')>
+	<a href='/latlng?lat=36.7968771&lng=127.075037' onfocus='this.blur()' onmouseover=mus_on('mus6') onmouseout=mus_off('mus6') onclick=smenu_click('mus6')>
 	<img src='./map/충남/충남-천안.png' alt='' border='0' name='mus6' class='list6' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=공주' onfocus='this.blur()' onmouseover=mus_on('mus7') onmouseout=mus_off('mus7') onclick=smenu_click('mus7')>
+	<a href='/latlng?lat=36.4465346&lng=127.1191534' onfocus='this.blur()' onmouseover=mus_on('mus7') onmouseout=mus_off('mus7') onclick=smenu_click('mus7')>
 	<img src='./map/충남/충남-공주.png' alt='' border='0' name='mus7' class='list7' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=홍성' onfocus='this.blur()' onmouseover=mus_on('mus8') onmouseout=mus_off('mus8') onclick=smenu_click('mus8')>
+	<a href='/latlng?lat=36.6012300&lng=126.6607764' onfocus='this.blur()' onmouseover=mus_on('mus8') onmouseout=mus_off('mus8') onclick=smenu_click('mus8')>
 	<img src='./map/충남/충남-홍성.png' alt='' border='0' name='mus8' class='list8' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=보령' onfocus='this.blur()' onmouseover=mus_on('mus9') onmouseout=mus_off('mus9') onclick=smenu_click('mus9')>
+	<a href='/latlng?lat=36.3331629&lng=126.6129441' onfocus='this.blur()' onmouseover=mus_on('mus9') onmouseout=mus_off('mus9') onclick=smenu_click('mus9')>
 	<img src='./map/충남/충남-보령.png' alt='' border='0' name='mus9' class='list9' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=청양' onfocus='this.blur()' onmouseover=mus_on('mus10') onmouseout=mus_off('mus10') onclick=smenu_click('mus10')>
+	<a href='/latlng?lat=36.4588326&lng=126.8022116' onfocus='this.blur()' onmouseover=mus_on('mus10') onmouseout=mus_off('mus10') onclick=smenu_click('mus10')>
 	<img src='./map/충남/충남-청양.png' alt='' border='0' name='mus10' class='list10' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=부여' onfocus='this.blur()' onmouseover=mus_on('mus11') onmouseout=mus_off('mus11') onclick=smenu_click('mus11')>
+	<a href='/latlng?lat=36.2754406&lng=126.9101780' onfocus='this.blur()' onmouseover=mus_on('mus11') onmouseout=mus_off('mus11') onclick=smenu_click('mus11')>
 	<img src='./map/충남/충남-부여.png' alt='' border='0' name='mus11' class='list11' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=서천' onfocus='this.blur()' onmouseover=mus_on('mus12') onmouseout=mus_off('mus12') onclick=smenu_click('mus12')>
+	<a href='/latlng?lat=36.0803312&lng=126.6913277' onfocus='this.blur()' onmouseover=mus_on('mus12') onmouseout=mus_off('mus12') onclick=smenu_click('mus12')>
 	<img src='./map/충남/충남-서천.png' alt='' border='0' name='mus12' class='list12' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=논산' onfocus='this.blur()' onmouseover=mus_on('mus13') onmouseout=mus_off('mus13') onclick=smenu_click('mus13')>
+	<a href='/latlng?lat=36.1870656&lng=127.0987453' onfocus='this.blur()' onmouseover=mus_on('mus13') onmouseout=mus_off('mus13') onclick=smenu_click('mus13')>
 	<img src='./map/충남/충남-논산.png' alt='' border='0' name='mus13' class='list13' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=계룡' onfocus='this.blur()' onmouseover=mus_on('mus14') onmouseout=mus_off('mus14') onclick=smenu_click('mus14')>
+	<a href='/latlng?lat=36.2745577&lng=127.2485896' onfocus='this.blur()' onmouseover=mus_on('mus14') onmouseout=mus_off('mus14') onclick=smenu_click('mus14')>
 	<img src='./map/충남/충남-계룡.png' alt='' border='0' name='mus14' class='list14' ></a>
-	<a href='./map/bbs/board.php?bo_table=m101&sca=금산' onfocus='this.blur()' onmouseover=mus_on('mus15') onmouseout=mus_off('mus15') onclick=smenu_click('mus15')>
+	<a href='/latlng?lat=36.1086928&lng=127.4880712' onfocus='this.blur()' onmouseover=mus_on('mus15') onmouseout=mus_off('mus15') onclick=smenu_click('mus15')>
 	<img src='./map/충남/충남-금산.png' alt='' border='0' name='mus15' class='list15' ></a>
+	
 </div>
 </body>
 </html>

@@ -308,7 +308,7 @@ color: white;
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
-		var center = new daum.maps.LatLng(36.8324709, 127.137007);
+	var center = new daum.maps.LatLng(<%=request.getAttribute("lat")%>, <%=request.getAttribute("lng")%>);
 		var mapLevel = 8;
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
