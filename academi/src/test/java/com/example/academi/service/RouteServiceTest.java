@@ -26,6 +26,7 @@ public class RouteServiceTest {
 	int page = 1;
 
 	// 추가
+	@Transactional
 	@Test
 	public void insertTest() {
 		rs.insertRoute( "풀경로", "dd");

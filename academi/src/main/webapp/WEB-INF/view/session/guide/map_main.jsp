@@ -65,7 +65,7 @@
 								<li>
 									<a id ='doMap' class="fancybox" rel="/doMap">도, 시 지도 선택</a>
 								</li>
-								<c:url value="/session/mapapi" var="api" />
+								<c:url value="/mapapi" var="api" />
 								<li>
 									<a href="${api }">지도 API로 이동</a>
 								</li>
