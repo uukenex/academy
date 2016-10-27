@@ -4,7 +4,7 @@
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%-- 	<!-- Scripts -->
+ 	<!-- Scripts -->
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
@@ -19,7 +19,51 @@
 			<!-- SlidesJS Required: Link to jquery.slides.js -->
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->
- --%>  			
+  			
+=======
+  			
+  			<!-- jQuery Fancy Box Option js -->
+  			
+  				<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> -->
+  				
+  				<!-- Add mousewheel plugin (this is optional) -->
+					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+			
+				<!-- Add fancyBox main JS and CSS files -->
+					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox.js"></script>
+					<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox.css" media="screen" />
+			
+				<!-- Add Button helper (this is optional) -->
+					<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
+					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-buttons.js"></script>
+			
+				<!-- Add Thumbnail helper (this is optional) -->
+					<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
+					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-thumbs.js"></script>
+			
+				<!-- Add Media helper (this is optional) -->
+					<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-media.js"></script>
+					
+					
+			<!-- jQuery Fancy Box Source -->
+			
+				<script>
+					$(".fancybox").fancybox({
+					    autoScale: false,
+					    // href : $('.fancybox').attr('id'), // don't need this
+					    type: 'iframe',
+					    padding: 0,
+					    closeClick: false,
+					    // other options
+					    beforeLoad: function () {
+					        var url = $(this.element).attr("id");
+					        this.href = url
+					    }
+					}); // fancybox
+					
+				</script>
+
+>>>>>>> branch 'master' of https://github.com/uukenex/academy.git
 <!-- Nav -->
 
 <nav id="nav">
