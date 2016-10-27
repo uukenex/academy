@@ -38,10 +38,82 @@
 					<td><fmt:formatDate value="${post.reviewDate}"
 							pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}</td>
 				</tr>
-				<tr>
-					<th scope="row">Content</th>
-					<td colspan="3">${post.reviewContent}</td>
+				
+				<tr style="height: 8em;">
+				<td colspan='4'>
+				<iframe src="/session/route?routeNo=${post.routeNo }"
+				height="600px" width="600px"  scrolling="no" frameborder="0">
+				</iframe></td>
 				</tr>
+				
+				<tr>
+					<th scope="row">Content0</th>
+					<td colspan="3">${post.reviewContent0}</td>
+				</tr>
+				
+				<c:if test="${!empty post.reviewContent1 }">
+				<tr>
+					<th scope="row">Content1</th>
+					<td colspan="3">${post.reviewContent1}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent2 }">
+				<tr>
+					<th scope="row">Content2</th>
+					<td colspan="3">${post.reviewContent2}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent3 }">
+				<tr>
+					<th scope="row">Content3</th>
+					<td colspan="3">${post.reviewContent3}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent4}">
+				<tr>
+					<th scope="row">Content4</th>
+					<td colspan="3">${post.reviewContent4}</td>
+				</tr>
+				</c:if>
+				<c:if test="${!empty post.reviewContent5 }">
+				<tr>
+					<th scope="row">Content5</th>
+					<td colspan="3">${post.reviewContent5}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent6}">
+				<tr>
+					<th scope="row">Content6</th>
+					<td colspan="3">${post.reviewContent6}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent7 }">
+				<tr>
+					<th scope="row">Content7</th>
+					<td colspan="3">${post.reviewContent7}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent8}">
+				<tr>
+					<th scope="row">Content8</th>
+					<td colspan="3">${post.reviewContent8}</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${!empty post.reviewContent9}">
+				<tr>
+					<th scope="row">Content9</th>
+					<td colspan="3">${post.reviewContent9}</td>
+				</tr>
+				</c:if>
+				
+				
 				<tr align="right">
 					<td colspan="4"><input type="button" value="목록으로"
 						id="listview"> <c:if test="${post.userId==Users.userId }">

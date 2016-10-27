@@ -309,6 +309,13 @@ color: white;
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>
 	var center = new daum.maps.LatLng(<%=request.getAttribute("lat")%>, <%=request.getAttribute("lng")%>);
+	if(<%=request.getAttribute("lat")%>==null)
+		{
+		/////////////////////
+		//임시 방편입니다///////
+		///////////////////
+		center = new daum.maps.LatLng(35.5299667020832,129.27704558939251);
+		}
 		var mapLevel = 8;
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
@@ -563,7 +570,8 @@ color: white;
 					
 				}
 			});
-	
+		
+		
 		});
 		
 		
@@ -580,7 +588,9 @@ color: white;
 						url:"/getSession",
 						success:function(res){
 							positions=res;
+							
 							callMarker(positions);
+							
 						},
 						error:function(xhr,status,error){
 							console.log(error);

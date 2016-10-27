@@ -25,13 +25,37 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	// 후기글 쓰기
-	public int insertReview(String reviewTitle, String reviewContent, int routeNo, String userId) {
-		return rrepo.insertReview(reviewTitle, reviewContent, routeNo, userId);
+	public int insertReview(String reviewTitle,
+			String reviewContent0,String reviewContent1,
+			String reviewContent2,String reviewContent3,
+			String reviewContent4,String reviewContent5,
+			String reviewContent6,String reviewContent7,
+			String reviewContent8,String reviewContent9,
+			int routeNo, String userId) {
+		return rrepo.insertReview(reviewTitle, 
+				reviewContent0,reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9, routeNo, userId);
 	}
 
 	// 후기글 수정
-	public int updateReview(int reviewNo, String reviewTitle, String reviewContent, int routeNo) {
-		return rrepo.updateReview(reviewNo, reviewTitle, reviewContent, routeNo);
+	public int updateReview(int reviewNo,
+			String reviewTitle, 
+			String reviewContent0,String reviewContent1,
+			String reviewContent2,String reviewContent3,
+			String reviewContent4,String reviewContent5,
+			String reviewContent6,String reviewContent7,
+			String reviewContent8,String reviewContent9,
+			int routeNo) {
+		return rrepo.updateReview(reviewNo, reviewTitle,
+				reviewContent0,reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9, 
+				routeNo);
 	}
 
 	// 후기글 삭제 - 댓글을 먼저 삭제해야함

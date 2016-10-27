@@ -12,11 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.Review;
 import com.example.repo.ReviewRepo;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class ReviewRepoTest {
@@ -43,9 +45,24 @@ public class ReviewRepoTest {
 	public void InsertTest() {
 		String reviewTitle = "리뷰제목";
 		String reviewContent = "리뷰내용";
+		String reviewContent1=null;
+		String reviewContent2=null;
+		String reviewContent3=null;
+		String reviewContent4=null;
+		String reviewContent5=null;
+		String reviewContent6=null;
+		String reviewContent7=null;
+		String reviewContent8=null;
+		String reviewContent9=null;
 		int routeNo = 2;
 		String userId = "dd";
-		rrepo.insertReview(reviewTitle, reviewContent, routeNo, userId);
+		rrepo.insertReview(reviewTitle, reviewContent,
+				 reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9,
+				routeNo, userId);
 	}
 
 	// 후기글 수정 테스트
@@ -53,9 +70,25 @@ public class ReviewRepoTest {
 	public void UpdateTest() {
 		String reviewTitle = "리뷰제목";
 		String reviewContent = "리뷰내용";
+		String reviewContent1=null;
+		String reviewContent2=null;
+		String reviewContent3=null;
+		String reviewContent4=null;
+		String reviewContent5=null;
+		String reviewContent6=null;
+		String reviewContent7=null;
+		String reviewContent8=null;
+		String reviewContent9=null;
 		int routeNo = 2;
 		int reviewNo = 10;
-		rrepo.updateReview(reviewNo, reviewTitle, reviewContent, routeNo);
+		rrepo.updateReview(reviewNo, reviewTitle,
+				reviewContent,
+				 reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9,
+				routeNo);
 	}
 
 	// 후기글 삭제 테스트 -서비스에서는 댓글도 함께지워야함

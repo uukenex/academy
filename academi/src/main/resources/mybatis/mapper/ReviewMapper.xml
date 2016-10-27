@@ -12,17 +12,32 @@
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
-		insert into review (review_title,review_content,
+		insert into review (review_title,review_content0,
+		review_content1,review_content2,review_content3,
+		review_content4,review_content5,review_content6,
+		review_content7,review_content8,review_content9,
 		review_date,review_star,review_count,route_no,
 		user_id) values
-		(#{reviewTitle},#{reviewContent},
+		(#{reviewTitle},#{reviewContent0},#{reviewContent1},
+		#{reviewContent2},#{reviewContent3},#{reviewContent4},
+		#{reviewContent5},#{reviewContent6},#{reviewContent7},
+		#{reviewContent8},#{reviewContent9},
 		sysdate,0,0,#{routeNo},#{userId})
 	</insert>
 	<!-- 후기글 수정 -->
 	<update id="update" parameterType="Map">
 		update review set
 		review_title=#{reviewTitle},
-		review_content=#{reviewContent},
+		review_content0=#{reviewContent0},
+		review_content1=#{reviewContent1},
+		review_content2=#{reviewContent2},
+		review_content3=#{reviewContent3},
+		review_content4=#{reviewContent4},
+		review_content5=#{reviewContent5},
+		review_content6=#{reviewContent6},
+		review_content7=#{reviewContent7},
+		review_content8=#{reviewContent8},
+		review_content9=#{reviewContent9},
 		route_no=#{routeNo}
 		where
 		review_no=#{reviewNo}
@@ -81,7 +96,16 @@
 		(select * from review r 
 		join users u on u.user_id=r.user_id
 		where
-		review_content like #{reviewContent}
+		review_content0 like #{reviewContent} or
+		review_content1 like #{reviewContent} or
+		review_content2 like #{reviewContent} or
+		review_content3 like #{reviewContent} or
+		review_content4 like #{reviewContent} or
+		review_content5 like #{reviewContent} or
+		review_content6 like #{reviewContent} or
+		review_content7 like #{reviewContent} or
+		review_content8 like #{reviewContent} or
+		review_content9 like #{reviewContent}
 		order by review_no desc) sub)
 		where rnum between #{page}*12-11 and #{page}*12
 
@@ -125,7 +149,16 @@ select count(*) from review</select>
 	<resultMap type="review" id="reviewBase">
 		<id column="review_no" property="reviewNo" />
 		<result column="review_title" property="reviewTitle" />
-		<result column="review_content" property="reviewContent" />
+		<result column="review_content0" property="reviewContent0" />
+		<result column="review_content1" property="reviewContent1" />
+		<result column="review_content2" property="reviewContent2" />
+		<result column="review_content3" property="reviewContent3" />
+		<result column="review_content4" property="reviewContent4" />
+		<result column="review_content5" property="reviewContent5" />
+		<result column="review_content6" property="reviewContent6" />
+		<result column="review_content7" property="reviewContent7" />
+		<result column="review_content8" property="reviewContent8" />
+		<result column="review_content9" property="reviewContent9" />
 		<result column="review_date" property="reviewDate" />
 		<result column="review_star" property="reviewStar" />
 		<result column="review_count" property="reviewCount" />
