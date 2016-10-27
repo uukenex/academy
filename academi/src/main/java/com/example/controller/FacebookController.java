@@ -46,11 +46,11 @@ public class FacebookController {
 
 		if (user.getUserId().equals(userId)) {
 			session.setAttribute("Users", user);
-			model.addAttribute("message", "어서오세요 동물의숲 ");
+			model.addAttribute("message", "어서오세요");
 			model.addAttribute("userId", userId);
-
+			
 		}
-		return "redirect:/autoLogin";
+		return "logintest";
 	}
 
 	@RequestMapping(value = "/fjoinOk", method = RequestMethod.POST)

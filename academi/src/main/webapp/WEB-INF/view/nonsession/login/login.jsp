@@ -105,7 +105,7 @@ fieldset {
 	<script language=javascript>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '1785463865045966',
+				appId : '142101846257535',
 				status : true,
 				cookie : true,
 				xfbml : true,
