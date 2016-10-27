@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.Review;
 import com.example.dto.ReviewReply;
@@ -90,8 +93,11 @@ public class ReviewController {
 	}
 
 	// 리뷰 글 쓰기
+	private final String UPLOAD_DIR="c:/Temp/";
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
-	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
+	public String commentWrite(@RequestParam List<MultipartFile> uploadFile,
+	Model model, HttpServletRequest request, HttpSession session) 
+	throws IllegalStateException, IOException {
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
 		String reviewContent1 = request.getParameter("content1");
@@ -103,6 +109,7 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
+		
 		List<String> strContent = new ArrayList<>();
 		if(reviewContent0!=null&&!reviewContent0.equals("")){
 		strContent.add(reviewContent0);
@@ -147,6 +154,15 @@ public class ReviewController {
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
+		
+		List<String> picArr = new ArrayList<>();
+		 
+		for(int i=0;i<uploadFile.size();i++){
+		picArr.add(System.currentTimeMillis()+uploadFile.get(i).getOriginalFilename());
+		File file = new File(UPLOAD_DIR+picArr.get(i));
+		uploadFile.get(i).transferTo(file);
+		}
+		
 		rs.insertReview(reviewTitle,
 				contentArr[0],contentArr[1],
 				contentArr[2],contentArr[3],
@@ -254,4 +270,21 @@ public class ReviewController {
 		return result;
 	}
 
+	
+	
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public @ResponseBody List<String> upload(@RequestParam List<MultipartFile> uploadFile,
+								@RequestParam String comment,Model model) 
+								throws IllegalStateException, IOException {
+				List<String> picArr = new ArrayList<>();
+				 
+				for(int i=0;i<uploadFile.size();i++){
+				picArr.add(System.currentTimeMillis()+uploadFile.get(i).getOriginalFilename());
+				File file = new File(UPLOAD_DIR+picArr.get(i));
+				uploadFile.get(i).transferTo(file);
+				}
+				return picArr;
+	}
+	
 }

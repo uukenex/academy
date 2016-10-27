@@ -55,7 +55,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	
 	//파일업로드를 위한 빈
 		@Bean
-		public CommonsMultipartResolver multipartResover(){
+		public CommonsMultipartResolver multipartResolver(){
 			CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 			resolver.setDefaultEncoding("utf-8");
 			return resolver;

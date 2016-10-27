@@ -265,7 +265,7 @@ public class MapAPIController {
 		logger.trace("cart가 풀경로: db로 insert쿼리문장 작성해야함 {}", cart);
 		String content = "";
 		for (int i = 0; i < cart.size(); i++) {
-			content = "♬";
+			content += "♬";
 			content += cart.get(i).getTitle();
 			content += "♬";
 			content += cart.get(i).getLatitude();

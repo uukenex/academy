@@ -186,6 +186,9 @@
 		$("#subBtn").on("click",function(){
 			$('#mytable > tbody:last > tr:last').remove();
 			i--;
+				if(i<0){
+				i=0;
+				}
 			$("#addBtn").attr("onclick","").unbind("click");
 			$("#addBtn").on("click",function(){
 				
