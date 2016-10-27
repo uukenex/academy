@@ -23,11 +23,22 @@
 				<c:url value="/mainpage" var="mainpage" />
 				<li><a href="${mainpage }">Home</a></li>
 				<c:url value="/login" var="login" />
+				<%if(session.getAttribute("Users") != null){ %>
+				<li><a href="#"
+							onclick="window.open('/logout', 'win1',
+									'width=0, height=0');"
+									onkeypress="this.onclick()">Log OUT</a></li>
+				<c:url value="/mypageMain" var="mypageMain" />
+				<li><a href="${mypageMain }">My Page</a></li>
+				<li><a href="#">Photo Book</a></li>
+				
+				<%}else{%>
 				<li><a href="#"
 							onclick="window.open('/login', 'win1',
 									'width=550, height=480');"
 									onkeypress="this.onclick()">Log In</a></li>
-				<c:url value="/mypageMain" var="mypageMain" />
+								<c:url value="/mypageMain" var="mypageMain" />
+				
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
 				<c:url value="/join" var="join" />
@@ -38,6 +49,8 @@
 						회원 가입
 					</a>
 				</li>
+				<%} %>			
+
 			</ul>
 			<a href="#" class="close">Close</a>
 		</div>
