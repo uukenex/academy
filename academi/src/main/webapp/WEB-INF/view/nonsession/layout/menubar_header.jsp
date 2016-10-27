@@ -20,7 +20,6 @@
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->
   			
-=======
   			
   			<!-- jQuery Fancy Box Option js -->
   			
@@ -63,7 +62,6 @@
 					
 				</script>
 
->>>>>>> branch 'master' of https://github.com/uukenex/academy.git
 <!-- Nav -->
 
 <nav id="nav">
