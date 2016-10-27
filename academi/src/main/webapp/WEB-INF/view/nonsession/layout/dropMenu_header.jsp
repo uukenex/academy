@@ -7,7 +7,7 @@
 
 <!-- Fancy Header -->
 
-	<header id="fancyHeader" class="alt">
+	<header id="fancyHeader" class="fancyAlt">
 		<nav>
 			<a href="#fancyMenu">Menu</a>
 		</nav>
