@@ -53,14 +53,15 @@ public class UserController {
 		return returnURL;
 	}
 	
-	@RequestMapping(value="/logout")
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpServletRequest request,HttpSession session){
-
-		if(session !=null){
-			session.invalidate();
-		      
-		}
-		return "redirect:/";
+		session.invalidate();
+		return "redirect:/autoLogout";
+	}
+	
+	@RequestMapping(value = "/autoLogout", method = RequestMethod.GET)
+	public String autoLogin(Model model) {
+		return "nonsession/login/logout";
 	}
 	
 	

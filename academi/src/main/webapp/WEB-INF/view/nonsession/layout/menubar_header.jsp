@@ -4,7 +4,7 @@
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-	<!-- Scripts -->
+ 	<!-- Scripts -->
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.dropotron.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrolly.min.js"></script>
@@ -19,6 +19,8 @@
 			<!-- SlidesJS Required: Link to jquery.slides.js -->
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->
+  			
+=======
   			
   			<!-- jQuery Fancy Box Option js -->
   			
@@ -61,6 +63,7 @@
 					
 				</script>
 
+>>>>>>> branch 'master' of https://github.com/uukenex/academy.git
 <!-- Nav -->
 
 <nav id="nav">
