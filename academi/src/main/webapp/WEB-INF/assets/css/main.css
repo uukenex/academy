@@ -2309,11 +2309,11 @@
 						background-color: rgba(23, 55, 94, 0.075);
 					}
 
-		#fancyHeader.alt {
+		#fancyHeader.fancyAlt {
 			background-color: transparent;
 		}
 
-			#fancyHeader.alt h1 {
+			#fancyHeader.fancyAlt h1 {
 				opacity: 0;
 				visibility: hidden;
 			}
@@ -2408,6 +2408,7 @@
 		top: 0;
 		visibility: hidden;
 		width: 100%;
+		z-index: 10000;
 	}
 
 		#fancyMenu .fancyInner {

@@ -25,18 +25,18 @@
 
 		// fancyHeader.
 			if (skel.vars.IEVersion < 9)
-				$fancyHeader.removeClass('alt');
+				$fancyHeader.removeClass('fancyAlt');
 
 			if ($banner.length > 0
-			&&	$fancyHeader.hasClass('alt')) {
+			&&	$fancyHeader.hasClass('fancyAlt')) {
 
 				$window.on('resize', function() { $window.trigger('scroll'); });
 
 				$banner.scrollex({
 					bottom:		$fancyHeader.outerHeight(),
-					terminate:	function() { $fancyHeader.removeClass('alt'); },
-					enter:		function() { $fancyHeader.addClass('alt'); },
-					leave:		function() { $fancyHeader.removeClass('alt'); }
+					terminate:	function() { $fancyHeader.removeClass('fancyAlt'); },
+					enter:		function() { $fancyHeader.addClass('fancyAlt'); },
+					leave:		function() { $fancyHeader.removeClass('fancyAlt'); }
 				});
 
 			}
