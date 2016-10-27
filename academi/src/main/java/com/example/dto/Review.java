@@ -28,8 +28,16 @@ public class Review implements Serializable {
 	private String reviewTitle;
 
 	/** 후기_내용. */
-	private String reviewContent;
-
+	private String reviewContent0;
+	private String reviewContent1;
+	private String reviewContent2;
+	private String reviewContent3;
+	private String reviewContent4;
+	private String reviewContent5;
+	private String reviewContent6;
+	private String reviewContent7;
+	private String reviewContent8;
+	private String reviewContent9;
 	/** 후기_날짜. */
 	private Date reviewDate;
 
@@ -46,19 +54,31 @@ public class Review implements Serializable {
 	private Users users;
 
 	private Route route;
-	
-	public Review(Integer reviewNo, String reviewTitle, String reviewContent, Date reviewDate, Integer reviewStar,
-			Integer reviewCount, Integer routeNo, String userId) {
+
+	public Review(Integer reviewNo, String reviewTitle, String reviewContent0, String reviewContent1,
+			String reviewContent2, String reviewContent3, String reviewContent4, String reviewContent5,
+			String reviewContent6, String reviewContent7, String reviewContent8, String reviewContent9, Date reviewDate,
+			Integer reviewStar, Integer reviewCount, Integer routeNo, String userId) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
-		this.reviewContent = reviewContent;
+		this.reviewContent0 = reviewContent0;
+		this.reviewContent1 = reviewContent1;
+		this.reviewContent2 = reviewContent2;
+		this.reviewContent3 = reviewContent3;
+		this.reviewContent4 = reviewContent4;
+		this.reviewContent5 = reviewContent5;
+		this.reviewContent6 = reviewContent6;
+		this.reviewContent7 = reviewContent7;
+		this.reviewContent8 = reviewContent8;
+		this.reviewContent9 = reviewContent9;
 		this.reviewDate = reviewDate;
 		this.reviewStar = reviewStar;
 		this.reviewCount = reviewCount;
 		this.routeNo = routeNo;
 		this.userId = userId;
 	}
+	
 	
 	
 }

@@ -71,7 +71,7 @@
 		
 		<li><a href='/mapapi'>지도 만들기</a></li>
 		
-		<li><a href="right-sidebar.html">후기 등록</a></li>
+		<li><a href="/post?page=1">후기 등록</a></li>
 		
 		<li><a href="no-sidebar.html">Photo Book</a>
 		</li>

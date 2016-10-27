@@ -10,10 +10,23 @@ public interface ReviewService {
 	public Review selectReview(int reviewNo);
 
 	// 후기글 쓰기
-	public int insertReview(String reviewTitle, String reviewContent, int routeNo, String userId);
+	public int insertReview(String reviewTitle,
+			String reviewContent0,String reviewContent1,
+			String reviewContent2,String reviewContent3,
+			String reviewContent4,String reviewContent5,
+			String reviewContent6,String reviewContent7,
+			String reviewContent8,String reviewContent9,
+			int routeNo, String userId);
 
 	// 후기글 수정
-	public int updateReview(int reviewNo, String reviewTitle, String reviewContent, int routeNo);
+	public int updateReview(int reviewNo,
+			String reviewTitle, 
+			String reviewContent0,String reviewContent1,
+			String reviewContent2,String reviewContent3,
+			String reviewContent4,String reviewContent5,
+			String reviewContent6,String reviewContent7,
+			String reviewContent8,String reviewContent9,
+			int routeNo);
 
 	// 후기글 삭제 - 댓글을 먼저 삭제해야함
 	public int deleteReview(int reviewNo);

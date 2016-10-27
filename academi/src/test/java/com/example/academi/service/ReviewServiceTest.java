@@ -14,11 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.CommentReply;
 import com.example.service.ReviewService;
-
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class ReviewServiceTest {
@@ -35,10 +36,23 @@ public class ReviewServiceTest {
 	@Test
 	public void insertTest() {
 		String reviewTitle = "이게리뷰?";
-		String reviewContent = "이게내용?";
+		String reviewContent0 = "리뷰내용";
+		String reviewContent1=null;
+		String reviewContent2=null;
+		String reviewContent3=null;
+		String reviewContent4=null;
+		String reviewContent5=null;
+		String reviewContent6=null;
+		String reviewContent7=null;
+		String reviewContent8=null;
+		String reviewContent9=null;
 		int routeNo = 2;
 		String userId = "dd";
-		rs.insertReview(reviewTitle, reviewContent, routeNo, userId);
+		rs.insertReview(reviewTitle, reviewContent0,reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9, routeNo, userId);
 	}
 
 	// 리스트
@@ -57,7 +71,21 @@ public class ReviewServiceTest {
 	// 수정
 	@Test
 	public void updateTest() {
-		rs.updateReview(40, "바뀜?", "내용도?", 2);
+		String reviewContent0 = "리뷰내용";
+		String reviewContent1=null;
+		String reviewContent2=null;
+		String reviewContent3=null;
+		String reviewContent4=null;
+		String reviewContent5=null;
+		String reviewContent6=null;
+		String reviewContent7=null;
+		String reviewContent8=null;
+		String reviewContent9=null;
+		rs.updateReview(41, "바뀜?",reviewContent0,reviewContent1,
+				 reviewContent2,reviewContent3,
+				 reviewContent4, reviewContent5,
+				 reviewContent6, reviewContent7,
+				reviewContent8, reviewContent9,  2);
 	}
 
 	// 삭제 -댓글까지 지워지도록 해야함

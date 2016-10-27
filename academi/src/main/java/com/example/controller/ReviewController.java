@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.dto.Comments;
 import com.example.dto.Review;
 import com.example.dto.ReviewReply;
 import com.example.dto.Users;
@@ -93,11 +93,67 @@ public class ReviewController {
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
 		String reviewTitle = request.getParameter("title");
-		String reviewContent = request.getParameter("content");
+		String reviewContent0 = request.getParameter("content0");
+		String reviewContent1 = request.getParameter("content1");
+		String reviewContent2 = request.getParameter("content2");
+		String reviewContent3 = request.getParameter("content3");
+		String reviewContent4 = request.getParameter("content4");
+		String reviewContent5 = request.getParameter("content5");
+		String reviewContent6 = request.getParameter("content6");
+		String reviewContent7 = request.getParameter("content7");
+		String reviewContent8 = request.getParameter("content8");
+		String reviewContent9 = request.getParameter("content9");
+		List<String> strContent = new ArrayList<>();
+		if(reviewContent0!=null&&!reviewContent0.equals("")){
+		strContent.add(reviewContent0);
+		}
+		if(reviewContent1!=null&&!reviewContent1.equals("")){
+		strContent.add(reviewContent1);
+		}
+		if(reviewContent2!=null&&!reviewContent2.equals("")){
+		strContent.add(reviewContent2);
+		}
+		if(reviewContent3!=null&&!reviewContent3.equals("")){
+		strContent.add(reviewContent3);
+		}
+		if(reviewContent4!=null&&!reviewContent4.equals("")){
+		strContent.add(reviewContent4);
+		}
+		if(reviewContent5!=null&&!reviewContent5.equals("")){
+		strContent.add(reviewContent5);
+		}
+		if(reviewContent6!=null&&!reviewContent6.equals("")){
+		strContent.add(reviewContent6);
+		}
+		if(reviewContent7!=null&&!reviewContent7.equals("")){
+		strContent.add(reviewContent7);
+		}
+		if(reviewContent8!=null&&!reviewContent8.equals("")){
+		strContent.add(reviewContent8);
+		}
+		if(reviewContent9!=null&&!reviewContent9.equals("")){
+		strContent.add(reviewContent9);
+		}
+		
+		String[] contentArr = new String[10];
+		logger.trace("strContent : {}",strContent);
+		logger.trace("length : {}",strContent.size());
+		for (int i=0;i<strContent.size();i++){
+			contentArr[i] = strContent.get(i);
+		}
+		for (int i=strContent.size();i<9;i++){
+			contentArr[i] = null;
+		}
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
-		rs.insertReview(reviewTitle, reviewContent, routeNo, userId);
+		rs.insertReview(reviewTitle,
+				contentArr[0],contentArr[1],
+				contentArr[2],contentArr[3],
+				contentArr[4],contentArr[5],
+				contentArr[6],contentArr[7],
+				contentArr[8],contentArr[9],
+				routeNo, userId);
 		return "redirect:/post?page=1";
 	}
 
@@ -114,10 +170,68 @@ public class ReviewController {
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
 	public String commentUpdate(Model model, HttpServletRequest request) {
 		String reviewNo = request.getParameter("reviewNo");
-		String reviewTitle = request.getParameter("TITLE");
-		String reviewContent = request.getParameter("CONTENTS");
+		String reviewTitle = request.getParameter("title");
+		String reviewContent0 = request.getParameter("content0");
+		String reviewContent1 = request.getParameter("content1");
+		String reviewContent2 = request.getParameter("content2");
+		String reviewContent3 = request.getParameter("content3");
+		String reviewContent4 = request.getParameter("content4");
+		String reviewContent5 = request.getParameter("content5");
+		String reviewContent6 = request.getParameter("content6");
+		String reviewContent7 = request.getParameter("content7");
+		String reviewContent8 = request.getParameter("content8");
+		String reviewContent9 = request.getParameter("content9");
+		
+		List<String> strContent = new ArrayList<>();
+		if(reviewContent0!=null&&!reviewContent0.equals("")){
+		strContent.add(reviewContent0);
+		}
+		if(reviewContent1!=null&&!reviewContent1.equals("")){
+		strContent.add(reviewContent1);
+		}
+		if(reviewContent2!=null&&!reviewContent2.equals("")){
+		strContent.add(reviewContent2);
+		}
+		if(reviewContent3!=null&&!reviewContent3.equals("")){
+		strContent.add(reviewContent3);
+		}
+		if(reviewContent4!=null&&!reviewContent4.equals("")){
+		strContent.add(reviewContent4);
+		}
+		if(reviewContent5!=null&&!reviewContent5.equals("")){
+		strContent.add(reviewContent5);
+		}
+		if(reviewContent6!=null&&!reviewContent6.equals("")){
+		strContent.add(reviewContent6);
+		}
+		if(reviewContent7!=null&&!reviewContent7.equals("")){
+		strContent.add(reviewContent7);
+		}
+		if(reviewContent8!=null&&!reviewContent8.equals("")){
+		strContent.add(reviewContent8);
+		}
+		if(reviewContent9!=null&&!reviewContent9.equals("")){
+		strContent.add(reviewContent9);
+		}
+		
+		String[] contentArr = new String[10];
+		logger.trace("strContent : {}",strContent);
+		logger.trace("length : {}",strContent.size());
+		for (int i=0;i<strContent.size();i++){
+			contentArr[i] = strContent.get(i);
+		}
+		for (int i=strContent.size();i<9;i++){
+			contentArr[i] = null;
+		}
+		
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
-		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, reviewContent, routeNo);
+		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, 
+				contentArr[0],contentArr[1],
+				contentArr[2],contentArr[3],
+				contentArr[4],contentArr[5],
+				contentArr[6],contentArr[7],
+				contentArr[8],contentArr[9],
+				routeNo);
 		return "redirect:/postView?reviewNo=" + reviewNo;
 	}
 
@@ -140,5 +254,4 @@ public class ReviewController {
 		return result;
 	}
 
-	
 }
