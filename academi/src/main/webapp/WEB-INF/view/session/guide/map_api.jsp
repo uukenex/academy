@@ -8,6 +8,21 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
+ 	<meta name="author" content="Nathan Searles">
+  		
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+
+
 <title>지도 생성하기</title>
 <style>
 .custom_zoomcontrol {
@@ -190,33 +205,48 @@ color: white;
 </style>
 </head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <body>
+	
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Make a Route body part -->
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row">
+					
+						<!-- Map Left Tab Menu -->
+							<jsp:include page="map_leftTab_menu.jsp" />
+							
+							
+						<!-- Map API body part -->
+							<div class="8u 12u(moblie) important(moblie)">
+								<section class="middle-content">
+									<!-- 지도를 표시할 div 입니다 -->
+										<div class="map_wrap">
+											<div id="map"
+												style="width: 900px; height: 900px; position: relative; overflow: hidden;"></div>
+											<div class="hAddr">
+												<span class="title">여행을 부탁해</span> <span id="centerAddr"></span>
+											</div>
+										</div>
+								</section>
+							</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- footer -->
+				<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
 
-	<!-- 지도를 표시할 div 입니다 -->
+<!-- 
+
+	지도를 표시할 div 입니다
 	<div class="map_wrap">
 		<div id="map"
 			style="width: 600px; height: 600px; position: relative; overflow: hidden;"></div>
@@ -224,8 +254,15 @@ color: white;
 			<span class="title">여행을 부탁해</span> <span id="centerAddr"></span>
 		</div>
 	</div>
+	
 	<div style="height: 300px"></div>
+	
+	
+ -->	
+<%--	
 	<div>
+	
+ 	
 		<form>
 			Name : <input type="text" id="title" name="title" ><br>
 			주소 : <input type="text" id="address" name="address" size=40><br>
@@ -251,6 +288,9 @@ color: white;
 			</select> <input type="text" id="keyword"> 
 			<input type="button" id="search" value="찾기">
 		</div>
+ --%>		
+		
+<%-- 		
 		<output id="result">
 		</output>
 	<form method="post">
@@ -271,36 +311,7 @@ color: white;
 	<label>저장하지않으면 데이터가 소실됩니다.</label>
 	</form>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ --%>
 
 
 	<script src="/js/jquery.min.js"></script>
