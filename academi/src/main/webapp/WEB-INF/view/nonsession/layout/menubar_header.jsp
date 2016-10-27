@@ -69,7 +69,7 @@
 		<c:url value="/mainpage" var="mainpage"/>
 		<li><a href="${mainpage }">Home</a></li>
 		
-		<li><a href='/mapMain'>지도 만들기</a></li>
+		<li><a href='/mapapi'>지도 만들기</a></li>
 		
 		<li><a href="right-sidebar.html">후기 등록</a></li>
 		
