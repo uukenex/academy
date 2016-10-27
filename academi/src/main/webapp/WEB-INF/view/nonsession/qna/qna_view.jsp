@@ -198,7 +198,7 @@
 									}
 									year=year.substr(2,2);
 									var newDate = year+"-"+month+"-"+date;
-									
+									/* 여기는 수정부분 */
 									if(answerId=='${Users.userId}'){
 										$("#replyContentViewTableBody")[0].innerHTML +=
 											"<tr> <td rowspan='2' style='padding-left: 1.5em'>"
