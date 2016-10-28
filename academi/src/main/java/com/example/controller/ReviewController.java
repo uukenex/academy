@@ -287,4 +287,18 @@ public class ReviewController {
 				return picArr;
 	}
 	
+	//경로 새로만들기로 연결
+	
+	@RequestMapping(value = "/session/newMap", method = RequestMethod.GET)
+	public String NewMap(Model model) {
+		return "session/postscript/new_map";
+	}
+	
+	@RequestMapping(value = "/session/existMap", method = RequestMethod.GET)
+	public String ExistMap(Model model) {
+		return "session/postscript/exist_map";
+	}
+	
+	
+	
 }

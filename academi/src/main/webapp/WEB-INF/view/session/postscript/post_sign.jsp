@@ -56,8 +56,10 @@ display: inline-block;
 						</td>
 					</tr>
 					<tr>
-						<td><input type="button" value="경로 새로만들기"></td>
-						<td><input type="button" value="등록한 경로 가져오기"></td>
+						<td><input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
+							'width=550, height=700');" onkeypress="this.onclick()" ></td>
+						<td><input type="button" value="등록한 경로 가져오기" onclick="window.open('/session/existMap', 'win1',
+							'width=550, height=700');" onkeypress="this.onclick()"></td>
 						<td><input type="button" id="addBtn" value="+">
 						<input type="button" id="subBtn" value="-">
 						<input type="submit" name="Submit" formaction="/postWrite"
@@ -179,6 +181,9 @@ display: inline-block;
 	
 	//------------------------사진 폼 끝------------//
 	
+	
+	//버튼 클릭시 페이지 열기 함수
+
 	</script>
 </body>
 </html>
