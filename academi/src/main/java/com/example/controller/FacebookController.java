@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dto.Users;
 import com.example.service.UserService;
+/**
+ * 페이스북 로그인
+ *
+ */
 
 @Controller
 public class FacebookController {

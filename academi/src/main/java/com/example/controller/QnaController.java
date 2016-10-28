@@ -26,7 +26,7 @@ import com.example.service.AnswerService;
 import com.example.service.QnaService;
 
 /**
- * 후기게시판
+ * Q&A게시판
  *
  */
 @Controller
