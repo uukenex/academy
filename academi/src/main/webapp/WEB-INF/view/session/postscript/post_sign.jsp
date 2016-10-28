@@ -14,47 +14,15 @@
 <meta name="author" content="Nathan Searles">
   		
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
-<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" /> --%>
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" /> --%>
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	
-<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css"> --%>
 	
 <title>Insert title here</title>
 <style>
-body{
-background: gray;
-}
-.boardEditorTable{
-background: yellow;
-}
-/* td{
-display: inline-block;
-}
- .filebox label,#remove {
-  display: inline-block;
-  padding: .5em .75em;
-  color: #fff;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #337ab7;
-  cursor: pointer;
-  border: 1px solid #2e6da4;
-  border-bottom-color: #e2e2e2;
-  border-radius: .25em;
-}
 
-.filebox input[type="file"] {   파일 필드 숨기기 
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0; 
-}  */
 </style>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -67,84 +35,52 @@ display: inline-block;
 
 		<form id="frm" action="${postWrite }" method="post">
 			<input type="hidden" id="routeNo" name="routeNo" value="92" />
-				<table border="1" id="mytable" class="boardEditorTable">
-					<tr>
-						<td>제목</td>
-						<td>
-						<input name="title" type="text" size="50">
-						</td>
-						</tr>
-					<tr>
-						<td><input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
-							'width=550, height=700');" onkeypress="this.onclick()" ></td>
-						<td><input type="button" value="등록한 경로 가져오기" onclick="window.open('/session/existMap', 'win1',
-							'width=550, height=700');" onkeypress="this.onclick()"></td>
-						<td>
-						<input type="button" id="addBtn" value="+">
+				
+					<div><label for="title" >제목</label></div>
+					<div><input name="title" type="text" size="50"></div>
+					<div>
+					<input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
+							'width=550, height=700');" onkeypress="this.onclick()" >
+					<input type="button" value="등록한 경로 가져오기" onclick="window.open('/session/existMap', 'win1',
+							'width=550, height=700');" onkeypress="this.onclick()">
+					<input type="button" id="addBtn" value="+">
 						<input type="button" id="subBtn" value="-">
 						<input type="button" name="Submit" value="쓰기" id="savebutton"> 
 						<input type="button" name="Submit2" value="취소" 
-						onclick="history.back();"></td>
-					</tr>
-					<tr style="height: 8em;">
-					<td  style="height: 8em;">경로 api가 들어갈부분</td>
-					</tr>
+						onclick="history.back();"></div>
+					<div> 경로 api가 들어갈부분</div>
 					
-					<tr>
-						<td>
+						<div id="none0">
 						<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
-						</td>
-					</tr>
-			
+						</div>
 					
-				</table>
-				
-	
+						<div id="none1">
+						<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
+						</div>
+						<div id="none2">
+						<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
+						</div>
+						<div id="none3">
+						<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
+						</div>
+						<div id="none4"> 
+						<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
+						</div>
+						<div id="none5">					
+						<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
+						</div>
+						<div id="none6">
+						<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
+						</div>
+						<div id="none7">
+						<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
+						</div>
+						<div id="none8">
+						<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
+						</div>
+						<div id="none9">
+						<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
+						</div>
 	</form>
 	
 	
@@ -172,36 +108,35 @@ display: inline-block;
 	<script>
 	var i=1;
 	$("#addBtn").on("click",function(){
-		 $('#mytable > tbody:last').append(
-					 "<tr><td>"
-					+"<textarea id='txtcontent"+i+"' name='content"+i+"' cols='80' rows='10'></textarea>"
-					+"</td></tr>");
-		 i++;
-		 console.log('증가된 값 :'+i);
-		 if(i==10){
+		
+		$("#none"+i).css("display","block");
+		console.log(i+"번째 행 추가");
+		i++;
+		if(i==9){
 				alert('최대 10개까지 칸 확장이 가능합니다');
 				$("#addBtn").attr("onclick","").unbind("click");
-			}
+				}
 	});
 	$("#subBtn").on("click",function(){
-		$('#mytable > tbody:last > tr:last').remove();
 		i--;
+		$("#none"+i).css("display","none");
+		console.log(i+"번째 행 삭제");
+		
+		
 			if(i<0){
 			i=0;
 			}
 		$("#addBtn").attr("onclick","").unbind("click");
 		$("#addBtn").on("click",function(){
 			
-			 $('#mytable > tbody:last').append(
-						 "<tr><td>"
-						+"<textarea id='txtcontent"+i+"' name='content"+i+"' cols='80' rows='10'></textarea>"
-						+"</td></tr>");
-			 i++;
-			 console.log('증가된 값 :'+i);
+			$("#none"+i).css("display","block");
+			console.log(i+"번째 행 추가");
+			i++;
+			
 			 if(i==10){
 					alert('최대 10개까지 칸 확장이 가능합니다');
 					$("#addBtn").attr("onclick","").unbind("click");
-				}
+					}
 		});
 	});
 	
@@ -399,7 +334,17 @@ display: inline-block;
 		
 	
 		
-	
+	$(document).on("ready",function(){
+		$("#none1").css("display","none");
+		$("#none2").css("display","none");
+		$("#none3").css("display","none");
+		$("#none4").css("display","none");
+		$("#none5").css("display","none");
+		$("#none6").css("display","none");
+		$("#none7").css("display","none");
+		$("#none8").css("display","none");
+		$("#none9").css("display","none");
+	});
 	
 	
 	//버튼 클릭시 페이지 열기 함수
