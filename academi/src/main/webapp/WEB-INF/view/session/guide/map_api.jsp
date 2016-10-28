@@ -206,26 +206,7 @@ color: white;
 </head>
 
 <body>
-	
-	<!-- Drop Menu Header -->
-		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
-	<!-- Menu Bar Header -->
-		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
-		
-		
-	<!-- Make a Route body part -->
-		<div id="page-wrapper" class="boardPage-Wrapper">
-			<div id="main">
-				<div class="container">
-					<div class="row main-row">
-					
-						<!-- Map Left Tab Menu -->
-							<jsp:include page="map_leftTab_menu.jsp" />
-							
-							
-						<!-- Map API body part -->
-							<div class="8u 12u(moblie) important(moblie)">
-								<section class="middle-content">
+		 
 									<!-- 지도를 표시할 div 입니다 -->
 										<div class="map_wrap">
 											<div id="map"
@@ -234,17 +215,8 @@ color: white;
 												<span class="title">여행을 부탁해</span> <span id="centerAddr"></span>
 											</div>
 										</div>
-								</section>
-							</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-		<!-- footer -->
-				<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
-
-<!-- 
+								
+<%--
 
 	지도를 표시할 div 입니다
 	<div class="map_wrap">
@@ -258,14 +230,14 @@ color: white;
 	<div style="height: 300px"></div>
 	
 	
- -->	
-<%--	
+	
+
 	<div>
 	
  	
 		<form>
-			Name : <input type="text" id="title" name="title" ><br>
-			주소 : <input type="text" id="address" name="address" size=40><br>
+			<input type="hidden" id="title" name="title" ><br>
+			<input type="hidden" id="address" name="address" size=40><br>
 			
 			<input type="hidden" id="latitude" name="latitude">
 			<input type="hidden" id="longitude" name="longitude">
@@ -288,9 +260,9 @@ color: white;
 			</select> <input type="text" id="keyword"> 
 			<input type="button" id="search" value="찾기">
 		</div>
- --%>		
 		
-<%-- 		
+		
+	
 		<output id="result">
 		</output>
 	<form method="post">
@@ -311,10 +283,9 @@ color: white;
 	<label>저장하지않으면 데이터가 소실됩니다.</label>
 	</form>
 	</div>
+
  --%>
-
-
-	<script src="/js/jquery.min.js"></script>
+	
 	<script src="/js/jquery-ui.min.js"></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
