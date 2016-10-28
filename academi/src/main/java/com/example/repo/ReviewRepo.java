@@ -15,6 +15,7 @@ public interface ReviewRepo {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo, String userId);
 
 	// 후기글 수정
@@ -25,6 +26,7 @@ public interface ReviewRepo {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo);
 
 	// 후기글 삭제

@@ -51,6 +51,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/validation/**").addResourceLocations("/WEB-INF/validation/");
 		registry.addResourceHandler("/map/**").addResourceLocations("/WEB-INF/images/map/");
 		registry.addResourceHandler("/temp/**").addResourceLocations("c:/Temp");
+		//사진저장실험
+		registry.addResourceHandler("/review/**").addResourceLocations("/review/");
 		}
 	
 	//파일업로드를 위한 빈

@@ -16,6 +16,7 @@ public interface ReviewService {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo, String userId);
 
 	// 후기글 수정
@@ -26,6 +27,7 @@ public interface ReviewService {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo);
 
 	// 후기글 삭제 - 댓글을 먼저 삭제해야함

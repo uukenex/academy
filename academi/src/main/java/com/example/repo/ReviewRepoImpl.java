@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,8 @@ import com.example.dto.Review;
 @Repository
 public class ReviewRepoImpl implements ReviewRepo{
 	private final String NAME_SPACE = "com.example.ReviewMapper.";
+	static Logger logger = LoggerFactory.getLogger(ReviewRepoImpl.class);
+	
 	@Autowired
 	SqlSessionTemplate template;
 	//후기글 보기
@@ -29,6 +33,7 @@ public class ReviewRepoImpl implements ReviewRepo{
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo, String userId) {
 		String statement = NAME_SPACE + "insert";
 		Map<String,Object> map = new HashMap<>();
@@ -62,6 +67,9 @@ public class ReviewRepoImpl implements ReviewRepo{
 		if(reviewContent9==null){
 			reviewContent9="";
 		}
+		if(reviewImage==null){
+			reviewImage="";
+		}
 		map.put("reviewContent1", reviewContent1);
 		map.put("reviewContent2", reviewContent2);	
 		map.put("reviewContent3", reviewContent3);	
@@ -71,6 +79,7 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("reviewContent7", reviewContent7);	
 		map.put("reviewContent8", reviewContent8);
 		map.put("reviewContent9", reviewContent9);	
+		map.put("reviewImage", reviewImage);
 		map.put("userId", userId);
 		map.put("routeNo", routeNo);
 		return template.insert(statement,map);
@@ -84,6 +93,7 @@ public class ReviewRepoImpl implements ReviewRepo{
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
+			String reviewImage,
 			int routeNo) {
 		String statement = NAME_SPACE + "update";
 		Map<String,Object> map = new HashMap<>();
@@ -117,6 +127,9 @@ public class ReviewRepoImpl implements ReviewRepo{
 		if(reviewContent9==null){
 			reviewContent9="";
 		}
+		if(reviewImage==null){
+			reviewImage="";
+		}
 		map.put("reviewContent1", reviewContent1);
 		map.put("reviewContent2", reviewContent2);	
 		map.put("reviewContent3", reviewContent3);	
@@ -125,7 +138,8 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("reviewContent6", reviewContent6);	
 		map.put("reviewContent7", reviewContent7);	
 		map.put("reviewContent8", reviewContent8);
-		map.put("reviewContent9", reviewContent9);	
+		map.put("reviewContent9", reviewContent9);
+		map.put("reviewImage", reviewImage);
 		map.put("routeNo", routeNo);
 		return template.insert(statement,map);
 	}

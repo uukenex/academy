@@ -98,12 +98,14 @@ $(function(){
     //전송버튼 클릭이벤트
     $("#savebutton").click(function(){
         //id가 content인 textarea에 에디터에서 대입
+        console.log(editor_object);
+       console.log(editor_object.getById["content"]);
         editor_object.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
          
         //폼 submit
-        $("#frm").submit();
+        //$("#frm").submit();
     })
 })
 </script>

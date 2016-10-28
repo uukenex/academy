@@ -17,6 +17,10 @@
     	<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
     				base="c:/Temp/" 
  				   	webAppMount="/smarteditor/Temp"></PreResources>
+
+		<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
+    				base="c:/Temp/" 
+ 				   	webAppMount="/review/Temp"></PreResources> 				   	
     </Resources>
     
 </Context>
