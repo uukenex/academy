@@ -54,7 +54,6 @@ public class ReviewRepoTest {
 		String reviewContent7=null;
 		String reviewContent8=null;
 		String reviewContent9=null;
-		String reviewImage=null;
 		int routeNo = 2;
 		String userId = "ㅋㅌㅊ";
 		rrepo.insertReview(reviewTitle, reviewContent,
@@ -63,7 +62,6 @@ public class ReviewRepoTest {
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9,
-				reviewImage,
 				routeNo, userId);
 	}
 
@@ -81,7 +79,6 @@ public class ReviewRepoTest {
 		String reviewContent7=null;
 		String reviewContent8=null;
 		String reviewContent9=null;
-		String reviewImage=null;
 		int routeNo = 2;
 		int reviewNo = 10;
 		rrepo.updateReview(reviewNo, reviewTitle,
@@ -91,7 +88,6 @@ public class ReviewRepoTest {
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9,
-				reviewImage,
 				routeNo);
 	}
 

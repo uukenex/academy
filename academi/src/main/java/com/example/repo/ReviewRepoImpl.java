@@ -33,7 +33,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
-			String reviewImage,
 			int routeNo, String userId) {
 		String statement = NAME_SPACE + "insert";
 		Map<String,Object> map = new HashMap<>();
@@ -67,9 +66,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 		if(reviewContent9==null){
 			reviewContent9="";
 		}
-		if(reviewImage==null){
-			reviewImage="";
-		}
 		map.put("reviewContent1", reviewContent1);
 		map.put("reviewContent2", reviewContent2);	
 		map.put("reviewContent3", reviewContent3);	
@@ -79,7 +75,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("reviewContent7", reviewContent7);	
 		map.put("reviewContent8", reviewContent8);
 		map.put("reviewContent9", reviewContent9);	
-		map.put("reviewImage", reviewImage);
 		map.put("userId", userId);
 		map.put("routeNo", routeNo);
 		return template.insert(statement,map);
@@ -93,7 +88,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
-			String reviewImage,
 			int routeNo) {
 		String statement = NAME_SPACE + "update";
 		Map<String,Object> map = new HashMap<>();
@@ -127,9 +121,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 		if(reviewContent9==null){
 			reviewContent9="";
 		}
-		if(reviewImage==null){
-			reviewImage="";
-		}
 		map.put("reviewContent1", reviewContent1);
 		map.put("reviewContent2", reviewContent2);	
 		map.put("reviewContent3", reviewContent3);	
@@ -139,7 +130,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("reviewContent7", reviewContent7);	
 		map.put("reviewContent8", reviewContent8);
 		map.put("reviewContent9", reviewContent9);
-		map.put("reviewImage", reviewImage);
 		map.put("routeNo", routeNo);
 		return template.insert(statement,map);
 	}

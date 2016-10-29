@@ -31,7 +31,6 @@ public class ReviewServiceImpl implements ReviewService {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
-			String reviewImage,
 			int routeNo, String userId) {
 		return rrepo.insertReview(reviewTitle, 
 				reviewContent0,reviewContent1,
@@ -39,7 +38,6 @@ public class ReviewServiceImpl implements ReviewService {
 				reviewContent4, reviewContent5,
 				reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9, 
-				reviewImage,
 				routeNo, userId);
 	}
 
@@ -51,7 +49,6 @@ public class ReviewServiceImpl implements ReviewService {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
-			String reviewImage,
 			int routeNo) {
 		return rrepo.updateReview(reviewNo, reviewTitle,
 				reviewContent0,reviewContent1,
@@ -59,7 +56,6 @@ public class ReviewServiceImpl implements ReviewService {
 				reviewContent4, reviewContent5,
 				reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9, 
-				reviewImage,
 				routeNo);
 	}
 

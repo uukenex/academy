@@ -53,7 +53,7 @@ public class ReviewServiceTest {
 				 reviewContent2,reviewContent3,
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,reviewImage, routeNo, userId);
+				reviewContent8, reviewContent9,routeNo, userId);
 	}
 
 	// 리스트
@@ -87,7 +87,7 @@ public class ReviewServiceTest {
 				 reviewContent2,reviewContent3,
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,reviewImage,  2);
+				reviewContent8, reviewContent9,  2);
 	}
 
 	// 삭제 -댓글까지 지워지도록 해야함

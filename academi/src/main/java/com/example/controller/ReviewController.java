@@ -165,7 +165,7 @@ public class ReviewController {
 
 		// 이미지의 경로가 저장되도록
 		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
-				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], "", routeNo, userId);
+				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], routeNo, userId);
 
 		return "redirect:/post?page=1";
 	}
@@ -250,7 +250,7 @@ public class ReviewController {
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, contentArr[0], contentArr[1], contentArr[2],
 				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],
-				"", routeNo);
+				routeNo);
 		return "redirect:/postView?reviewNo=" + reviewNo;
 	}
 
