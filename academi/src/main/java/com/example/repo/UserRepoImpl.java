@@ -65,13 +65,6 @@ public class UserRepoImpl implements UserRepo {
 		return template.update(statement,map);
 	}
 
-	//마이페이지 Review보기
-	@Override
-	public List<Review> selectReviewById(String userId) {
-		String statement = NAME_SPACE+"selectReviewById";
-		return template.selectList(statement,userId);
-		
-	}
 
 
 	@Override

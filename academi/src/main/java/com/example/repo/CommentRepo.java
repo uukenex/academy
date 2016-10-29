@@ -40,4 +40,7 @@ public interface CommentRepo {
 	
 	// 총 게시글이 몇개인지 카운트
 	public int pageCount(String commentCategory);
+	
+	public int selectNo();
+
 }

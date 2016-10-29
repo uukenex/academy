@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.CommentMapper">
+	
+	<select id="selectNo" resultType="int">
+		select max(comment_no) from comments
+	</select>
+	
 	<!-- 단일 게시글 보기 -->
 	<select id="select" parameterType="int" resultMap="commentsUsers">
 		select * from
@@ -11,13 +16,18 @@
 		join users u on u.user_id=c.user_id
 		 where comment_no= #{commentNo}
 	</select>
+	
 	<!-- 게시글 쓰기(공지사항:관리자) 분류별 필요 -->
-	<insert id="insert" parameterType="Map">
+	<insert id="insert" parameterType="Map" useGeneratedKeys="true" keyProperty="commentNo" keyColumn="commentNo">
+		<selectKey resultType="integer" keyProperty="commentNo" order="BEFORE">
+			select max(comment_No)+1 from comments
+		</selectKey>
 		insert into comments (comment_category,comment_name,
 		comment_content,comment_date,comment_count,user_id) values
 		(#{commentCategory}
 		,#{commentName},#{commentContent},sysdate,0,#{userId})
 	</insert>
+	
 	<!-- 게시글 수정 -->
 	<update id="update" parameterType="Map">
 		update comments set

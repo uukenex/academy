@@ -105,7 +105,7 @@ $(function(){
         // 이부분에 에디터 validation 검증
          
         //폼 submit
-        //$("#frm").submit();
+        $("#frm").submit();
     })
 })
 </script>

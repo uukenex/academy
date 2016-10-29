@@ -4021,31 +4021,31 @@
 /* Map Page CSS Style */
 
 	/* Map Left Tab Menu */
-		
-		.map_left_tab ul, .map_left_tab li {
-			list-style: none;
-		}
-		
-		.map_left_tab a {
-			text-decoration: none;
-			color: #000000;
+	
+		.map_left_tab {
+			margin-left: 0.5em;
 		}
 		
 		.mapLeftTab {
-			border: solid 1px #ddd;
 			border-left: none;
 			background-color: #fff;
 			overflow: hidden;
+			border-radius: 3%;
 		}
-		
+ 		
 		.mapLeftTab li {
 			float: left;
-			width: 50%;
-			border-left: solid 1px #ddd;
+			width: 47%;
+			border: solid 1px #ddd;
 			text-align: center;
 			display: inline-block;
-			padding: 20px;
+			padding: 1em;
 			cursor: pointer;
+			font-family: 'Nanum Gothic';
+			font-weight: bold;
+			color: #17375E;
+			border-radius: 3%;
+			margin-left: 0.5em;
 		}
 		
 		.mapLeftTab li.on {
@@ -4056,13 +4056,47 @@
 		.mapLeftTab_con {
 			clear: both;
 			border: solid 1px #ddd;
+			margin-top: 1.3em;
+			border-radius: 3%;
 		}
 		
 		.mapLeftTab_con section {
 			display: none;
 			height: auto;
 			background-color: #fff;
-			line-height: 50px;
 			text-align: center;
-			margin-top: 0em;
+			line-height: 50px;
+		}
+		
+		#select {
+			width: 80%;
+			font-size: 2em;
+			text-align: center;
+			background: url("/images/cloud.jpg");
+		}
+		
+		option#AT4 {
+			background-color: #eee;
+			text-align: center;
+		}
+		
+		
+	/* Map Left Menu Button Style */
+	
+		#searchRegionButton {
+			background: #eee;
+			border: solid 1px #ddd;
+			font-family: 'Nanum Gothic';
+			font-size: 1em;
+			color: #f00;
+			padding: 0.3em;
+			text-align: center;
+			vertical-align: middle;
+			border-radius: 10%;
+		}
+		
+		#searchRegionButton:hover {
+			background: #17375E;
+			color: #FFFFFF;
+			cursor: pointer;
 		}

@@ -78,7 +78,7 @@ public class UserRepoTest {
 	}
 
 
-	// 내 후기보기 테스트
+/*	// 내 후기보기 테스트
 	@Test
 	public void selectReviewTest() {
 		String userId = "dd";
@@ -87,7 +87,7 @@ public class UserRepoTest {
 		logger.trace("review : {}",review);
 		
 	}
-
+*/
 	// 내 질문보기 테스트
 	@Test
 	public void selectQnaTest() {

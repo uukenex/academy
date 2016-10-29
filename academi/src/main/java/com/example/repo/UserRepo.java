@@ -20,8 +20,7 @@ public interface UserRepo {
 	// 정보변경
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick);
 
-	// 후기 보기 by id
-	public List<Review> selectReviewById(String userId);
+
 
 	
 	// 질문 보기

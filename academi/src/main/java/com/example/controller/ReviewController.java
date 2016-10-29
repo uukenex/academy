@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,17 +16,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.dto.Goods;
 import com.example.dto.Review;
 import com.example.dto.ReviewReply;
+import com.example.dto.Route;
 import com.example.dto.Users;
 import com.example.service.ReviewReplyService;
 import com.example.service.ReviewService;
+import com.example.service.RouteService;
 import com.example.service.UserService;
 
 /**
@@ -42,6 +48,8 @@ public class ReviewController {
 	ReviewService rs;
 	@Autowired
 	ReviewReplyService rrs;
+	@Autowired
+	RouteService routeService;
 
 	// 후기게시판 리스트 보기
 	@RequestMapping(value = "/post", method = RequestMethod.GET)
@@ -167,7 +175,7 @@ public class ReviewController {
 		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
 				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], routeNo, userId);
 
-		return "redirect:/post?page=1";
+		return "redirect:/postView?reviewNo="+rs.currentNo();
 	}
 
 	// 리뷰 수정창으로 넘어가기
@@ -284,6 +292,41 @@ public class ReviewController {
 	@RequestMapping(value = "/session/existMap", method = RequestMethod.GET)
 	public String ExistMap(Model model) {
 		return "session/postscript/exist_map";
+	}
+	
+	@RequestMapping(value = "/countRoute", method = RequestMethod.GET)
+	public String countRoute(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status) {
+
+		Route result = routeService.selectRouteByNo(routeNo);
+		String str = result.getRouteFull();
+		int count = 0;
+		for (int c = 0; c < str.length(); c++) {
+			if (str.charAt(c) == '♬') {
+				count++;
+			}
+		}
+		int i = count / 5;
+
+		String Addr[] = new String[i];
+
+		
+		i=0;
+		
+		StringTokenizer tokens = new StringTokenizer(str, "♬");
+		while (tokens.hasMoreTokens()) {
+			tokens.nextToken();
+			tokens.nextToken();
+			tokens.nextToken();
+			Addr[i] = tokens.nextToken();
+			tokens.nextToken();
+			i++;
+
+		}
+		for (int cnt = 0; cnt < i; cnt++) {
+		logger.trace("주소 : {}" , Addr[cnt]);
+		}
+	
+	return "";
 	}
 
 }

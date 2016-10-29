@@ -139,4 +139,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public int pageCount() {
 		return rrepo.pageCount();
 	}
+	
+	//내 후기보기 서비스
+	@Override
+	public List<Review> myPageReview(String userId) {
+		return rrepo.selectReviewById(userId);
+	}
+
+	@Override
+	public int currentNo() {
+		// TODO Auto-generated method stub
+		return rrepo.selectNo();
+	}
 }

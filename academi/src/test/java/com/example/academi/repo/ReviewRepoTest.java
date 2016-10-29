@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -63,6 +65,8 @@ public class ReviewRepoTest {
 				 reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9,
 				routeNo, userId);
+		int dirty = rrepo.selectNo();
+		logger.trace("더러웡~:{}",dirty);
 	}
 
 	// 후기글 수정 테스트
@@ -143,5 +147,15 @@ public class ReviewRepoTest {
 	@Test
 	public void countingTest(){
 		rrepo.pageCount();
+	}
+	
+	// 내 후기보기 테스트
+	@Test
+	public void selectReviewTest() {
+		String userId = "dd";
+		List<Review> review = rrepo.selectReviewById(userId);
+		assertThat(review, is(notNullValue()));
+		logger.trace("review : {}",review);
+		
 	}
 }

@@ -82,6 +82,12 @@ public class QnaRepoImpl implements QnaRepo{
 		String statement = NAME_SPACE + "pageCount";
 		return template.update(statement);
 	}
+	@Override
+	public int selectNo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "selectNo";
+		return template.selectOne(statement);
+	}
 
 	
 

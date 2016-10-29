@@ -79,12 +79,15 @@ public class FreeController {
 	// 자유게시판 글 쓰기
 	@RequestMapping(value = "/boardWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session) {
+		
 		String commentName = request.getParameter("title");
 		String commentContent = request.getParameter("content");
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
 		cs.writeFreeComment(commentName, commentContent, userId);
-		return "redirect:/free?page=1";
+		
+		
+		return "redirect:/freeView?commentNo="+cs.currentNo();
 	}
 
 	// 공지사항 수정창으로 넘어가기

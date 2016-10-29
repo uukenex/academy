@@ -23,6 +23,7 @@ import com.example.dto.Comments;
 import com.example.dto.Qna;
 import com.example.dto.Users;
 import com.example.service.AnswerService;
+import com.example.service.CommentService;
 import com.example.service.QnaService;
 
 /**
@@ -78,7 +79,7 @@ public class QnaController {
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
 		qs.insertQna(qnaTitle, qnaQuestion, userId);
-		return "redirect:/qna?page=1";
+		return "redirect:/qnaView?qnaNo="+qs.currentNo();
 	}
 
 	// qna 수정창으로 넘어가기

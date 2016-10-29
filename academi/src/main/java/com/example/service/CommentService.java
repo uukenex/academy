@@ -52,4 +52,7 @@ public interface CommentService {
 
 	// 닉네임검색으로 리스트를 페이지별로 보여줌(자유게시판)
 	public List<Comments> freeSearchNickListByPage(String userNick, int page);
+	
+	//가장 최신의 글번호를 가져옴
+	public int currentNo();
 }

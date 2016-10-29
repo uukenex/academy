@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.Comments;
@@ -43,15 +45,18 @@ public class CommentRepoTest {
 		Comments result = crepo.selectComment(23);
 	}
 
-	// 글 쓰기 테스트
+
 	@Test
 	public void InsertTest() {
 		String commentCategory = "공지사항";
 		String commentName = "이름";
 		String commentContent = "실험용쥐";
 		String userId = "dd";
+		
 		int result = crepo.insertComment(commentCategory, commentName, commentContent, userId);
+		int No = crepo.selectNo();
 		assertThat(result, is(notNullValue()));
+		logger.trace("숫자값이 들어오나요 !!? : {}",No);
 	}
 
 	// 글 수정 테스트
@@ -116,4 +121,5 @@ public class CommentRepoTest {
 	public void updateCountTest(){
 		crepo.updateCommentCount(1);
 	}
+	
 }

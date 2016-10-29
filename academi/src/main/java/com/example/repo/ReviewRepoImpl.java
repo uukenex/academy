@@ -194,5 +194,18 @@ public class ReviewRepoImpl implements ReviewRepo{
 		String statement = NAME_SPACE + "pageCount";
 		return template.selectOne(statement);
 	}
+	
+	@Override
+	public List<Review> selectReviewById(String userId) {
+		String statement = NAME_SPACE+"selectReviewById";
+		return template.selectList(statement,userId);
+		
+	}
+	@Override
+	public int selectNo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE+"selectNo";
+		return template.selectOne(statement);
+	}
 
 }

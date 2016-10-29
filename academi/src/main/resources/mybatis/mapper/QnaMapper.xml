@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.QnaMapper">
+
+	<!-- 가장 최신의 글 번호 선택 -->
+	<select id="selectNo" resultType="int">
+	select max(qna_no) from qna
+	</select>
 	<!-- 단일qna글 보기 -->
 	<select id="select" parameterType="int" resultMap="qnaUsers">
 		select * from

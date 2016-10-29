@@ -18,9 +18,9 @@
 <body>
 	
 	<form>
-	
 	<c:forEach var="Review" items="${Review }">
 	<table>
+		
 		<tr align="center">
 			<td width="300px">${Users.userNick}님의 ${Review.reviewTitle }
 			</td>
