@@ -108,4 +108,12 @@ public class CommentRepoImpl implements CommentRepo {
 		return template.selectOne(statement,commentCategory);
 	}
 
+	@Override
+	public int selectNo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "selectNo";
+		return template.selectOne(statement);
+	}
+
+
 }

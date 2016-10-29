@@ -33,4 +33,7 @@ public interface QnaService {
 
 	public int pageCount();
 	
+	//가장 최신의 글 번호를 받아옴
+	public int currentNo();
+	
 }

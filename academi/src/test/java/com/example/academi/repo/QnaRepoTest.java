@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.Comments;
@@ -39,6 +40,7 @@ public class QnaRepoTest {
 	}
 
 	// 글 쓰기 테스트
+	@Transactional
 	@Test
 	public void InsertTest() {
 		String qnaTitle = "이름";
@@ -46,7 +48,10 @@ public class QnaRepoTest {
 		
 		String userId = "dd";
 		int result = qrepo.insertQna(qnaTitle,qnaQuestion,userId);
+		
+		int selectNo = qrepo.selectNo();
 		assertThat(result, is(notNullValue()));
+		logger.trace("그 결과는!!! : {}",selectNo);
 	}
 
 	// 글 수정 테스트

@@ -74,4 +74,10 @@ public class QnaServiceImpl implements QnaService {
 		return qrepo.pageCount();
 	}
 
+	@Override
+	public int currentNo() {
+		// TODO Auto-generated method stub
+		return qrepo.selectNo();
+	}
+
 }

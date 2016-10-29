@@ -112,5 +112,10 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		return crepo.pageCount("자유게시판");
 	}
+	@Override
+	public int currentNo() {
+		// TODO Auto-generated method stub
+		return crepo.selectNo();
+	}
 
 }

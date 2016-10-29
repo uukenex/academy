@@ -123,7 +123,7 @@ public class NoticeController {
 		Users u = (Users)session.getAttribute("Users");
 		String userId = u.getUserId();
 		cs.writeNoticeComment(commentName, commentContent, userId);
-		return "redirect:/notice?page=1";
+		return "redirect:/noticeView?commentNo="+cs.currentNo();
 	}
 
 	// 쓰던 메인

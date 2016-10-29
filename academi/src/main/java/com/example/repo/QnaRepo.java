@@ -32,4 +32,7 @@ public interface QnaRepo {
 	// 조회수 늘리기
 	public int updateQnaCount(int qnaNo);
 	public int pageCount();
+	
+	//가장 최신의 글의 번호를 받아옴
+	public int selectNo();
 }

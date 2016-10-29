@@ -65,6 +65,8 @@ public class ReviewRepoTest {
 				 reviewContent6, reviewContent7,
 				reviewContent8, reviewContent9,
 				routeNo, userId);
+		int dirty = rrepo.selectNo();
+		logger.trace("더러웡~:{}",dirty);
 	}
 
 	// 후기글 수정 테스트

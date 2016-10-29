@@ -145,4 +145,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Review> myPageReview(String userId) {
 		return rrepo.selectReviewById(userId);
 	}
+
+	@Override
+	public int currentNo() {
+		// TODO Auto-generated method stub
+		return rrepo.selectNo();
+	}
 }

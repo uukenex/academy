@@ -52,4 +52,7 @@ public interface ReviewRepo {
 	// 추천하기 기능
 	public int updateStar(int reviewNo);
 	public int pageCount();
+	
+	//가장 최근에 쓴 글의 페이지 번호를 가져온다.
+	public int selectNo();
 }

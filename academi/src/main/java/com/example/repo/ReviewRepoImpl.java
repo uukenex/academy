@@ -201,5 +201,11 @@ public class ReviewRepoImpl implements ReviewRepo{
 		return template.selectList(statement,userId);
 		
 	}
+	@Override
+	public int selectNo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE+"selectNo";
+		return template.selectOne(statement);
+	}
 
 }
