@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.dto.Review;
+import com.example.dto.ReviewReply;
 import com.example.dto.Route;
 import com.example.dto.Users;
+import com.example.service.ReviewReplyService;
+import com.example.service.ReviewService;
 import com.example.service.RouteService;
 import com.example.service.UserService;
 
@@ -26,6 +30,10 @@ static Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	UserService us;
 	@Autowired
 	RouteService rs;
+	@Autowired
+	ReviewService reviewService;
+	@Autowired
+	ReviewReplyService ReviewReplyService;
 	
 	@RequestMapping(value="/updateUser", method=RequestMethod.POST)	
 	public String updateUser(Model model, HttpServletRequest request, HttpSession session){
@@ -54,7 +62,7 @@ static Logger logger = LoggerFactory.getLogger(MyPageController.class);
 		return "/session/information/inform_change";
 	}
 	
-	@RequestMapping(value="/mypageRoute",method=RequestMethod.GET)
+	@RequestMapping(value="/session/mypageRoute",method=RequestMethod.GET)
 	public String mypageRoute(Model model,  HttpSession session, HttpServletRequest request){
 		
 		Users user = (Users) session.getAttribute("Users");
@@ -64,13 +72,23 @@ static Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
 		model.addAttribute("Route", result);
 		logger.trace("결과 값  {} :", result);
-		return "testpage";
+		return "/session/information/myplan";
 	}
 	
-	@RequestMapping(value="/testpage",method=RequestMethod.GET)
-	public String testpage2(Model model,  HttpSession session, HttpServletRequest request){
-		String No = request.getParameter("routeNo");
-		return "testpage?routeNo="+No;
+	
+	@RequestMapping(value="/session/mypageReview",method=RequestMethod.GET)
+	public String mypageReview(Model model,  HttpSession session, HttpServletRequest request){
+		
+		Users user = (Users) session.getAttribute("Users");
+		String userId = user.getUserId();
+		
+		List<Review> result = reviewService.myPageReview(userId);
+		
+		
+		model.addAttribute("Review", result);
+		logger.trace("결과 값  {} :", result);
+		return "/session/information/mypost";
 	}
+	
 	
 }

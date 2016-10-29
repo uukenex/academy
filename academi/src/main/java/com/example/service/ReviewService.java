@@ -49,4 +49,8 @@ public interface ReviewService {
 	
 	//페이지 카운트 총 게시물이 몇개인지?
 	public int pageCount();
+	
+	// 마이페이지 - 내후기보기 서비스
+	 public List<Review> myPageReview(String userId);
+		
 }

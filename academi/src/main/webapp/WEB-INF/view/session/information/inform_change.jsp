@@ -14,8 +14,6 @@
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/astral.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/astralNoscript.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
@@ -30,43 +28,26 @@
 	<!-- dropMenu Header -->
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp"></jsp:include>
 	
-	<!-- Wrapper -->
-		<div id="astralWrapper" style="padding-top: 5em">
 
-			<!-- Nav -->
-				<nav	id="astralNav">
-					<a href="#informChange" class="astralIcon fa-edit active"><span>회원 정보 수정</span></a>
-					<a href="#work" class="astralIcon fa-folder-open"><span>공유 폴더 설정</span></a>
-					<a href="#contact" class="astralIcon fa-plane"><span>여행 계획 보기</span></a>
-					<a href="#" class="astralIcon fa-list"><span>여행 후기 보기</span></a>
-				</nav>
-			
-			
-			<!-- Main -->
-				<div id="astralMain">
 					
-					<!-- inform_change -->
-						<article id="informChange" class="astralPanel">
-							<header class="astralHeader">
-			
+								<br><br><br><br><br><br>
 								<h1>My Page - 회원 정보 수정</h1>
 								<form method="post" id="myform" action="/updateUser">
-								<table class="astralTable">
+								<table>
 								
 									<tr>
-										<td><input type="submit" value="변경하기">
 										<th>아이디</th>
 										<td><input type="text"  value="${Users.userId }" name="changeId" readonly></td>
 									</tr>
 									<tr>
 										<th rowspan="3">비밀번호 변경</th>
-										<td>현재 비밀번호 <input type="password" placeholder="현재 비밀번호 입력" id="currentPass" name="currentPass"><b> ※변경시 필수 입력사항</b></td>
+										<td>현재 비밀번호 : <input type="password" placeholder="현재 비밀번호 입력" id="currentPass" name="currentPass"><b> ※변경시 필수 입력사항</b></td>
 									</tr>
 									<tr>
-										<td>신규 비밀번호 <input type="password" placeholder="변경 할 비밀번호 입력" name=changePass id=changePass></td>
+										<td>신규 비밀번호 : <input type="password" placeholder="변경 할 비밀번호 입력" name=changePass id=changePass></td>
 									</tr>
 									<tr>
-										<td>비밀번호 확인 <input type="password" placeholder="비밀번호 확인" id=changePassCk></td>
+										<td>비밀번호 확인 : <input type="password" placeholder="비밀번호 확인" id=changePassCk></td>
 									</tr>
 									<tr>
 										<th>이  름</th>
@@ -94,17 +75,12 @@
 										<td><input type="text" placeholder="별명 입력" name="changeNick" id="changeNick"></td>
 										<td><input type="button" value="중복확인" id="checkNick"></td>
 									</tr>
+									<tr >
+										<td><input type="submit" value="변경하기"></td>
+									</tr>
 								</table>
 								</form>
-							</header>
-							<a href="#work" class="jumplink astralPic">
-								<span class="astralArrow astralIcon fa-chevron-right">
-									<span>See my work</span>
-								</span>
-							</a>
-						</article>
-				</div>
-		</div>
+
 		
 		<!-- footer -->
 			<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>

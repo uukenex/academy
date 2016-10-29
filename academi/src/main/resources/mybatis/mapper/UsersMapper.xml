@@ -43,12 +43,12 @@
 
 	<!-- 마이페이지 내가 작성한 후기보기 기능 -->
 	<!--후기테이블에서 내아이디로 조회 -->
-	<select id="selectReviewById" parameterType="String" resultMap="usersReview">
+<!-- 	<select id="selectReviewById" parameterType="String" resultMap="usersReview">
 		select * from review r
 		join users u on r.user_id=u.user_id
 		where
 		r.user_id = #{userId}
-	</select> 
+	</select>  -->
 	
 	<!-- 마이페이지 내가 작성한 질문보기 기능 -->
 	<!--질문테이블에서 내아이디로 조회 -->

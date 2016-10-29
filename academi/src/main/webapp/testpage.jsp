@@ -8,8 +8,9 @@
 </head>
 <body>
 
-	<form method="get" action="/mypageRoute">
-		<input type="submit">
+	<form method="get">
+		<input type="submit" formaction="/session/mypageRoute" value="내가 쓴 루트글 확인">
+		<input type="submit" formaction="/session/mypageReview" value="내가 쓴 후기글 확인">
 	</form>
 	
 </body>

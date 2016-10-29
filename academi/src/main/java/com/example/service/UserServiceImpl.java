@@ -46,11 +46,13 @@ public class UserServiceImpl implements UserService {
 	public int updateUser(String userId, String userPass, String userPhone, String userEmail, String userNick) {
 		return urepo.updateUser(userId, userPass, userPhone, userEmail, userNick);
 	}
-	// 마이페이지 - 내후기보기 서비스
+
+	
+	/*	// 마이페이지 - 내후기보기 서비스
 	@Override
 	public List<Review> myPageReview(String userId) {
 		return urepo.selectReviewById(userId);
-	}
+	}*/
 
 
 

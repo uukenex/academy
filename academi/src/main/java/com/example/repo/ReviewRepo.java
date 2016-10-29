@@ -27,6 +27,8 @@ public interface ReviewRepo {
 			String reviewContent8,String reviewContent9,
 			int routeNo);
 
+	public List<Review> selectReviewById(String userId);
+	
 	// 후기글 삭제
 	public int deleteReview(int reviewNo);
 

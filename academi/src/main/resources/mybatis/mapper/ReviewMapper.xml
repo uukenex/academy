@@ -144,6 +144,15 @@
 <select id="pageCount" resultType="int" >
 select count(*) from review</select>
 
+	<!--후기테이블에서 내아이디로 조회 -->
+	<select id="selectReviewById" parameterType="String" resultMap="reviewUsers">
+		select * from review r
+		join users u on r.user_id=u.user_id
+		where
+		r.user_id = #{userId}
+		order by review_no desc
+	</select> 
+
 
 
 	<resultMap type="review" id="reviewBase">
