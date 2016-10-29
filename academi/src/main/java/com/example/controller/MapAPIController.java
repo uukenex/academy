@@ -207,7 +207,7 @@ public class MapAPIController {
 	}
 
 	// 루트 불러오기(번호로)
-	@RequestMapping(value = "/session/route", method = RequestMethod.GET)
+	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public String free(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
 			@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
 

@@ -94,9 +94,8 @@ public class ReviewController {
 
 	// 리뷰 글 쓰기
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
-	public String commentWrite(
-	Model model, HttpServletRequest request, HttpSession session) 
-	throws IllegalStateException, IOException {
+	public String commentWrite(Model model, HttpServletRequest request, HttpSession session)
+			throws IllegalStateException, IOException {
 
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
@@ -109,67 +108,65 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
+
 		
 		List<String> strContent = new ArrayList<>();
-		if(reviewContent0!=null&&!reviewContent0.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent0);
+		if (reviewContent0 != null
+				&& !reviewContent0.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent0);
 		}
-		if(reviewContent1!=null&&!reviewContent1.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent1);
+		if (reviewContent1 != null
+				&& !reviewContent1.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent1);
 		}
-		if(reviewContent2!=null&&!reviewContent2.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent2);
+		if (reviewContent2 != null
+				&& !reviewContent2.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent2);
 		}
-		if(reviewContent3!=null&&!reviewContent3.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent3);
+		if (reviewContent3 != null
+				&& !reviewContent3.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent3);
 		}
-		if(reviewContent4!=null&&!reviewContent4.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent4);
+		if (reviewContent4 != null
+				&& !reviewContent4.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent4);
 		}
-		if(reviewContent5!=null&&!reviewContent5.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent5);
+		if (reviewContent5 != null
+				&& !reviewContent5.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent5);
 		}
-		if(reviewContent6!=null&&!reviewContent6.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent6);
+		if (reviewContent6 != null
+				&& !reviewContent6.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent6);
 		}
-		if(reviewContent7!=null&&!reviewContent7.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent7);
+		if (reviewContent7 != null
+				&& !reviewContent7.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent7);
 		}
-		if(reviewContent8!=null&&!reviewContent8.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent8);
+		if (reviewContent8 != null
+				&& !reviewContent8.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent8);
 		}
-		if(reviewContent9!=null&&!reviewContent9.trim().equals("<p>&nbsp;</p>")){
-		strContent.add(reviewContent9);
+		if (reviewContent9 != null
+				&& !reviewContent9.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent9);
 		}
-		
+
 		String[] contentArr = new String[10];
-		for (int i=0;i<strContent.size();i++){
+		for (int i = 0; i < strContent.size(); i++) {
 			contentArr[i] = strContent.get(i);
 		}
-		for (int i=strContent.size();i<9;i++){
+		for (int i = strContent.size(); i < 9; i++) {
 			contentArr[i] = null;
 		}
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
-		
-		logger.trace("과연 ??{}{}{}{}{}{}{}{}{}{}",contentArr[0],contentArr[1],
-				contentArr[2],contentArr[3],
-				contentArr[4],contentArr[5],
-				contentArr[6],contentArr[7],
-				contentArr[8],contentArr[9]);
-		
-		
-		//이미지의 경로가 저장되도록
-		rs.insertReview(reviewTitle,
-				contentArr[0],contentArr[1],
-				contentArr[2],contentArr[3],
-				contentArr[4],contentArr[5],
-				contentArr[6],contentArr[7],
-				contentArr[8],contentArr[9],
-				"",
-				routeNo, userId);
-		
+
+		// 이미지의 경로가 저장되도록
+		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
+				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], routeNo, userId);
+
 		return "redirect:/post?page=1";
 	}
 
@@ -197,58 +194,63 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
-		
+
 		List<String> strContent = new ArrayList<>();
-		if(reviewContent0!=null&&!reviewContent0.equals("")){
-		strContent.add(reviewContent0);
+		if (reviewContent0 != null
+				&& !reviewContent0.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent0);
 		}
-		if(reviewContent1!=null&&!reviewContent1.equals("")){
-		strContent.add(reviewContent1);
+		if (reviewContent1 != null
+				&& !reviewContent1.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent1);
 		}
-		if(reviewContent2!=null&&!reviewContent2.equals("")){
-		strContent.add(reviewContent2);
+		if (reviewContent2 != null
+				&& !reviewContent2.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent2);
 		}
-		if(reviewContent3!=null&&!reviewContent3.equals("")){
-		strContent.add(reviewContent3);
+		if (reviewContent3 != null
+				&& !reviewContent3.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent3);
 		}
-		if(reviewContent4!=null&&!reviewContent4.equals("")){
-		strContent.add(reviewContent4);
+		if (reviewContent4 != null
+				&& !reviewContent4.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent4);
 		}
-		if(reviewContent5!=null&&!reviewContent5.equals("")){
-		strContent.add(reviewContent5);
+		if (reviewContent5 != null
+				&& !reviewContent5.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent5);
 		}
-		if(reviewContent6!=null&&!reviewContent6.equals("")){
-		strContent.add(reviewContent6);
+		if (reviewContent6 != null
+				&& !reviewContent6.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent6);
 		}
-		if(reviewContent7!=null&&!reviewContent7.equals("")){
-		strContent.add(reviewContent7);
+		if (reviewContent7 != null
+				&& !reviewContent7.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent7);
 		}
-		if(reviewContent8!=null&&!reviewContent8.equals("")){
-		strContent.add(reviewContent8);
+		if (reviewContent8 != null
+				&& !reviewContent8.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent8);
 		}
-		if(reviewContent9!=null&&!reviewContent9.equals("")){
-		strContent.add(reviewContent9);
+		if (reviewContent9 != null
+				&& !reviewContent9.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
+			strContent.add(reviewContent9);
 		}
-		
+
 		String[] contentArr = new String[10];
-		logger.trace("strContent : {}",strContent);
-		logger.trace("length : {}",strContent.size());
-		for (int i=0;i<strContent.size();i++){
+		logger.trace("strContent : {}", strContent);
+		logger.trace("length : {}", strContent.size());
+		for (int i = 0; i < strContent.size(); i++) {
 			contentArr[i] = strContent.get(i);
 		}
-		for (int i=strContent.size();i<9;i++){
+		for (int i = strContent.size(); i < 9; i++) {
 			contentArr[i] = null;
 		}
-		
+
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
-		/*rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, 
-				contentArr[0],contentArr[1],
-				contentArr[2],contentArr[3],
-				contentArr[4],contentArr[5],
-				contentArr[6],contentArr[7],
-				contentArr[8],contentArr[9],
-				image,
-				routeNo);*/
+		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, contentArr[0], contentArr[1], contentArr[2],
+				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],
+				routeNo);
 		return "redirect:/postView?reviewNo=" + reviewNo;
 	}
 
@@ -271,23 +273,17 @@ public class ReviewController {
 		return result;
 	}
 
-	
-	
-	
-	
-	//경로 새로만들기로 연결
-	
+	// 경로 새로만들기로 연결
+
 	@RequestMapping(value = "/session/newMap", method = RequestMethod.GET)
 	public String NewMap(Model model) {
 		return "session/postscript/new_map";
 	}
-	
-	//경로 있는것중에 선택하기 
+
+	// 경로 있는것중에 선택하기
 	@RequestMapping(value = "/session/existMap", method = RequestMethod.GET)
 	public String ExistMap(Model model) {
 		return "session/postscript/exist_map";
 	}
-	
-	
-	
+
 }

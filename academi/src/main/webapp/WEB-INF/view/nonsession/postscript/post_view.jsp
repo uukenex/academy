@@ -41,7 +41,7 @@
 				
 				<tr style="height: 8em;">
 				<td colspan='4'>
-				<iframe src="/session/route?routeNo=${post.routeNo }"
+				<iframe src="/route?routeNo=${post.routeNo }"
 				height="600px" width="600px"  scrolling="no" frameborder="0">
 				</iframe></td>
 				</tr>

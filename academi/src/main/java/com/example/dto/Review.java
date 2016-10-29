@@ -38,7 +38,6 @@ public class Review implements Serializable {
 	private String reviewContent7;
 	private String reviewContent8;
 	private String reviewContent9;
-	private String reviewImage;
 	/** 후기_날짜. */
 	private Date reviewDate;
 
@@ -59,7 +58,7 @@ public class Review implements Serializable {
 	public Review(Integer reviewNo, String reviewTitle, String reviewContent0, String reviewContent1,
 			String reviewContent2, String reviewContent3, String reviewContent4, String reviewContent5,
 			String reviewContent6, String reviewContent7, String reviewContent8, String reviewContent9,
-			String reviewImage, Date reviewDate,Integer reviewStar, Integer reviewCount, Integer routeNo, String userId) {
+			Date reviewDate,Integer reviewStar, Integer reviewCount, Integer routeNo, String userId) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
@@ -73,7 +72,6 @@ public class Review implements Serializable {
 		this.reviewContent7 = reviewContent7;
 		this.reviewContent8 = reviewContent8;
 		this.reviewContent9 = reviewContent9;
-		this.reviewImage = reviewImage;
 		this.reviewDate = reviewDate;
 		this.reviewStar = reviewStar;
 		this.reviewCount = reviewCount;
