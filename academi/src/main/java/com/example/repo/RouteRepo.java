@@ -1,5 +1,7 @@
 package com.example.repo;
 
+import java.util.List;
+
 import com.example.dto.Route;
 
 public interface RouteRepo {
@@ -14,6 +16,8 @@ public interface RouteRepo {
 	// 루트 삭제하기
 	public int deleteRoute(int routeNo);
 	
-	
+	// 계획 보기 by id
+		public List<Route> selectRouteById(String userId);
+
 	
 }

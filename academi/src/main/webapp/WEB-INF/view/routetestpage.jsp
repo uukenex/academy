@@ -18,22 +18,17 @@
 <body>
 	
 	<form>
-	
-	<c:forEach var="Review" items="${Review }">
+	<c:forEach var="Route" items="${Route }">
+	<input type="hidden" value="${Route.routeNo }" name="routeNo">
 	<table>
-		<tr align="center">
-			<td width="300px">${Users.userNick}님의 ${Review.reviewTitle }
-			</td>
-			<td width="100px"><fmt:formatDate value="${Review.reviewDate}"
-							pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}</td>
-			
+		
+		<tr>
+			<td>${Users.userNick}님의 ${Route.routeName }</a></td>
 		</tr>
-		<tr align="center">
-			<td colspan="2" >
-			<input type="hidden" value="${Review.reviewNo }">
-			<a href="/postView?reviewNo=${Review.reviewNo }">여행 후기 보기</a>
-			<input type="button" value="여행 후기 삭제"></td>
-			
+		<tr>
+			<td><input type="submit" formaction=/testpage value="여행 계획 보기">
+			<input type="button" value="여행 계획 수정">
+			<input type="button" value="여행 계획 삭제"></td>
 		</tr>
 	</table>
 	</c:forEach>

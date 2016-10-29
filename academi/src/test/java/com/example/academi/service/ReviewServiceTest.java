@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.dto.CommentReply;
+import com.example.dto.Review;
 import com.example.service.ReviewService;
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -121,4 +122,14 @@ public class ReviewServiceTest {
 	public void star2Test(){
 		rs.updateStar(2);
 	}
+	
+	// 마이페이지 내후기보기 서비스 테스트
+	@Test
+	public void myPageReviewTest() {
+		String userId = "ㅋㅌㅊ";
+		List<Review> result = rs.myPageReview(userId);
+		assertThat(result, is(notNullValue()));
+		logger.trace("그 결과는 ~?? : {}",result);
+	}
+	
 }

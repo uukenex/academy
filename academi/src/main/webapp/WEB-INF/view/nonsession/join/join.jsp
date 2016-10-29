@@ -206,8 +206,7 @@ fieldset {
 
 		<c:url value="/checkNick" var="checkNick" />
 		$("#checkNick").on("click", function() {
-
-			var userNick = $("#nickname").val().trim();
+ 		var userNick = $("#nickname").val().trim();
 			if (userNick == '') {
 				alert("공란입니다");
 				return;

@@ -76,21 +76,10 @@ public class UserServiceTest {
 		assertThat(result, is(1));
 	}
 
-	// 마이페이지 내후기보기 서비스 테스트
-	@Test
-	public void myPageReviewTest() {
-		String userId = "dd";
-		List<Review> result = uService.myPageReview(userId);
-		assertThat(result, is(notNullValue()));
-	}
+
 
 	// 마이페이지 내경로보기 서비스 테스트
-	@Test
-	public void myPageRouteTest() {
-		String userId = "dd";
-		List<Route> result = uService.myPageRoute(userId);
-		assertThat(result, is(notNullValue()));
-	}
+
 
 	// 마이페이지 내경로보기 서비스 테스트
 	@Test

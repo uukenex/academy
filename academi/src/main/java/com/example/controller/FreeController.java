@@ -45,7 +45,7 @@ public class FreeController {
 	public String free(Model model, @RequestParam int page, HttpSession session) {
 		List<Comments> c = cs.freeListByPage(page);
 		model.addAttribute("comments", c);
-
+		
 		int freePageCount = cs.freePageCount();
 		int totalPage = freePageCount / 10 + 1;
 		if (freePageCount % 10 == 0) {
@@ -54,6 +54,7 @@ public class FreeController {
 		if (freePageCount == 0) {
 			totalPage = 0;
 		}
+		logger.trace("결과값 : {}",c);
 		model.addAttribute("totalPage", totalPage);
 		return "nonsession/freeboard/freeboard";
 	}
