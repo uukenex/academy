@@ -20,7 +20,7 @@
 
 		<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
     				base="c:/Temp/" 
- 				   	webAppMount="/review/Temp"></PreResources> 				   	
+ 				   	webAppMount="/photo_upload"></PreResources> 				   	
     </Resources>
     
 </Context>

@@ -1,10 +1,14 @@
 package com.example.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,23 +17,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.service.UserService;
-
 @Controller
 public class PhotoBookController {
+	static Logger logger = LoggerFactory.getLogger(PhotoBookController.class);
 	
-	private final String UPLOAD_DIR="c:/Temp/";
-	//@RequestParam List<MultipartFile> uploadFile,
-	/*List<String> picArr = new ArrayList<>();
-	for(int i=0;i<uploadFile.size();i++){
-	picArr.add(System.currentTimeMillis()+uploadFile.get(i).getOriginalFilename());
-	File file = new File(UPLOAD_DIR+picArr.get(i));
-	
-	uploadFile.get(i).transferTo(file);
-	model.addAttribute("fileName"+i,picArr.get(i));
+	//포토북 페이지로 들어감
+	@RequestMapping(value = "/photoWrite")
+	public String free(Model model, HttpSession session) {
+		
+		return "session/photobook/photo_sign";
 	}
-	for(int i=0;i<uploadFile.size();i++){
-	logger.trace("경로 및 파일 : {}",UPLOAD_DIR+picArr.get(i));
-	}*/
+	
+	//포토북 ajax
+	private final String UPLOAD_DIR = "c:/Temp/";
 
+	@RequestMapping(value = "/photo", method = RequestMethod.POST)
+	public @ResponseBody List<List<String>> upload(@RequestParam List<MultipartFile> file)
+			throws IllegalStateException, IOException {
+
+		List<String> fileName = new ArrayList<>();
+		List<String> fileNum = new ArrayList<>();
+		List<List<String>> fileNumAndName = new ArrayList<>();
+		for (int i = 0; i < file.size(); i++) {
+			fileName.add(System.currentTimeMillis() + file.get(i).getOriginalFilename());
+			fileNum.add(file.get(i).getOriginalFilename());
+			File f = new File(UPLOAD_DIR + fileName.get(i));
+			file.get(i).transferTo(f);
+
+		}
+		for (int i = 0; i < file.size(); i++) {
+			logger.trace("경로 및 파일 : {}", UPLOAD_DIR + fileName.get(i));
+		}
+
+		fileNumAndName.add(fileName);
+		fileNumAndName.add(fileNum);
+		return fileNumAndName;
+	}
 }
