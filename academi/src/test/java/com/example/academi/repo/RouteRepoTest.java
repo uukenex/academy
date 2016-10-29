@@ -35,6 +35,17 @@ public class RouteRepoTest {
 	@Autowired
 	RouteRepo rrepo;
 
+	
+	// 내 경로보기 테스트
+		@Test
+		public void selectRouteTest() {
+			String userId = "dd";
+			List<Route> review = rrepo.selectRouteById(userId);
+			assertThat(review, is(notNullValue()));
+			logger.trace("review size: {}",review.size());
+		}
+	
+	
 	// 회원가입 테스트
 	@Transactional
 	@Test

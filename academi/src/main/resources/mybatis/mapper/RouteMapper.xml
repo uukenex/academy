@@ -12,7 +12,7 @@
 		join users u on u.user_id=r.user_id
 		where route_no = #{routeNo}
 	</select>
-
+	
 	<insert id="insert" parameterType="Map">
 		insert into
 		route(route_name,route_content
@@ -33,6 +33,13 @@
 	delete from route where
 	route_no=#{routeNo}
 	</delete>
+
+<!-- 마이페이지 내가 작성한 경로보기 기능 -->
+	<!--경로테이블에서 내아이디로 조회 -->
+	<select id="selectRouteById" parameterType="String" resultMap="routeUsers">
+		select * from route r join users u on u.user_id=r.user_id where r.user_id = #{userId}
+	</select>
+
 
 	<resultMap type="route" id="routeBase">
 		<id column="route_no" property="routeNo" />

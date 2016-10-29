@@ -73,11 +73,6 @@ public class UserRepoImpl implements UserRepo {
 		
 	}
 
-	@Override
-	public List<Route> selectRouteById(String userId) {
-		String statement = NAME_SPACE+"selectRouteById";
-		return template.selectList(statement,userId);
-	}
 
 	@Override
 	public List<Qna> selectQnaById(String userId) {

@@ -52,10 +52,7 @@ public class UserServiceImpl implements UserService {
 		return urepo.selectReviewById(userId);
 	}
 
-	@Override
-	public List<Route> myPageRoute(String userId) {
-		return urepo.selectRouteById(userId);
-	}
+
 
 	@Override
 	public List<Qna> myPageQna(String userId) {

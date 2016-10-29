@@ -77,13 +77,6 @@ public class UserRepoTest {
 		assertThat(result, is(1));
 	}
 
-	// 내 경로보기 테스트
-	@Test
-	public void selectRouteTest() {
-		String userId = "dd";
-		List<Route> review = urepo.selectRouteById(userId);
-		assertThat(review, is(notNullValue()));
-	}
 
 	// 내 후기보기 테스트
 	@Test
@@ -91,6 +84,7 @@ public class UserRepoTest {
 		String userId = "dd";
 		List<Review> review = urepo.selectReviewById(userId);
 		assertThat(review, is(notNullValue()));
+		logger.trace("review : {}",review);
 		
 	}
 
@@ -100,6 +94,7 @@ public class UserRepoTest {
 		String userId = "dd";
 		List<Qna> review = urepo.selectQnaById(userId);
 		assertThat(review, is(notNullValue()));
+		logger.trace("review : {}",review);
 	}
 
 	// 내 답변보기 테스트
@@ -108,6 +103,7 @@ public class UserRepoTest {
 		String userId = "dd";
 		List<Answer> review = urepo.selectAnswerById(userId);
 		assertThat(review, is(notNullValue()));
+		
 	}
 
 	@Test

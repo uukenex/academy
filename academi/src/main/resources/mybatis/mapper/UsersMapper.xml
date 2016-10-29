@@ -48,12 +48,8 @@
 		join users u on r.user_id=u.user_id
 		where
 		r.user_id = #{userId}
-	</select>
-	<!-- 마이페이지 내가 작성한 경로보기 기능 -->
-	<!--경로테이블에서 내아이디로 조회 -->
-	<select id="selectRouteById" parameterType="String" resultType="route">
-		select * from route where user_id = #{userId}
-	</select>
+	</select> 
+	
 	<!-- 마이페이지 내가 작성한 질문보기 기능 -->
 	<!--질문테이블에서 내아이디로 조회 -->
 	<select id="selectQnaById" parameterType="String" resultMap="usersQna">
@@ -76,6 +72,8 @@
 	<select id="searchNickById" parameterType="String" resultType="String">
 		select user_nick from users where user_id=#{userId}
 	</select>
+	
+
 	<resultMap type="users" id="usersBase">
 		<id column="user_id" property="userId" />
 		<result column="user_pass" property="userPass" />
@@ -101,5 +99,10 @@
 	<resultMap type="users" id="usersAnswer" extends="usersBase">
 		<association property="answer" column="user_id" javaType="answer"
 			resultMap="com.example.AnswerMapper.answerBase"></association>
+	</resultMap>
+	
+	<resultMap type="users" id="usersRoute" extends="usersBase">
+	<association property="route" column="user_id" javaType="route"
+			resultMap="com.example.RouteMapper.routeBase"></association>
 	</resultMap>
 </mapper>

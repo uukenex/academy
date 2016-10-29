@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<form method="get" action="/mypageRoute">
+		<input type="submit">
+	</form>
 	
 </body>
 </html>

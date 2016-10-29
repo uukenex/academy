@@ -47,6 +47,8 @@ public class Users implements Serializable {
 	
 	private Answer answer;
 	
+	private Route route;
+	
 	public Users(String userId, String userPass, String userName, String userEmail, String userPhone, String userNick) {
 		super();
 		this.userId = userId;

@@ -27,8 +27,7 @@ public interface UserService {
 	// 마이페이지 - 내후기보기 서비스
 	public List<Review> myPageReview(String userId);
 
-	// 마이페이지 - 내경로보기 서비스
-	public List<Route> myPageRoute(String userId);
+
 
 	// 마이페이지 - 내질문보기 서비스
 	public List<Qna> myPageQna(String userId);

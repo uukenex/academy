@@ -1,6 +1,7 @@
 package com.example.repo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -46,5 +47,13 @@ public class RouteRepoImpl implements RouteRepo {
 		String statement = NAME_SPACE + "delete";
 		return template.delete(statement,routeNo);
 	}
+
+	@Override
+	public List<Route> selectRouteById(String userId) {
+		String statement = NAME_SPACE+"selectRouteById";
+		return template.selectList(statement,userId);
+	}
+
+	
 
 }
