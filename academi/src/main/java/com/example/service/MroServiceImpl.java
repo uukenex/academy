@@ -13,10 +13,9 @@ public class MroServiceImpl implements MroService {
 	
 	@Transactional
 	@Override
-	public int updateCnt(String city, String siGu, String dong) {
+	public int updateCnt(String city, String siGu) {
 		// TODO Auto-generated method stub
-		int result = mrepo.countUpdateDong(city, siGu, dong);
-		result = mrepo.countUpdateSiGu(city, siGu);
+		int result = mrepo.countUpdateSiGu(city, siGu);
 		result = mrepo.countUpdateCity(city);
 		return result;
 	}

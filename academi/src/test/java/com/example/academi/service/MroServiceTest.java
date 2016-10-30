@@ -36,7 +36,7 @@ public class MroServiceTest {
 	// 답글쓰기 테스트
 	@Test
 	public void insertTest() {
-		ms.updateCnt("인천광역시", "부평구", "삼산동");
+		ms.updateCnt("인천광역시", "부평구");
 	}
 
 	

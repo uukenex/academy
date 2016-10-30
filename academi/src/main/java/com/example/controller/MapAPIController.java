@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -206,6 +207,11 @@ public class MapAPIController {
 		return cartObj;
 	}
 
+	
+	
+	
+	
+	
 	// 루트 불러오기(번호로)
 	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public String free(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
@@ -249,16 +255,70 @@ public class MapAPIController {
 			i++;
 
 		}
+		List<String> latLng = new ArrayList<>();
+		List<String> center = new ArrayList<>();
+		String xyroute;
+		for (int y=0; y<i; y++){
+			String lat = routeX[y];
+			String lng = routeY[y];
+			xyroute = lat+","+lng;
+			latLng.add(y, xyroute);
+			center.add(y,xyroute);
 
+		}
+		
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city="";
+		Integer mapSize=null;
+		for (int z=0; z<i; z++){
+			String route = routeAddr[z];
+			logger.trace("경로 불러오기!:{}", route);
+			
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}				
+				cnt++;
+			}
+			city = route.substring(0,pos.get(0)).trim();
+			cityList.add(city);
+		}
+		
+		//중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}",uniqueItems.size());
+
+		if(uniqueItems.size()!=1){
+			xyroute="35.865415, 128.085319";
+			center.add(0,xyroute);
+			mapSize = 13;
+		}else{
+			mapSize = 10;
+		}
+		
+		
 		for (int cnt = 0; cnt < i; cnt++) {
 			dbcart.add(goodss[cnt]);
 		}
+		
 		model.addAttribute("routeNo", routeNo);
 		model.addAttribute("routeName", result.getRouteName());
 		model.addAttribute("routeContent", result.getRouteContent());
-		return "session/guide/map_api";
+		model.addAttribute("latLng",latLng);
+		model.addAttribute("center",center);
+		model.addAttribute("mapSize",mapSize);
+		return "session/guide/map_api_image";
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/mapSave", method = RequestMethod.POST)
 	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session,
 			Model model) {
