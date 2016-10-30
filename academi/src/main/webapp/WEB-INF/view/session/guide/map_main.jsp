@@ -43,7 +43,7 @@
 					
 					<!-- Map API body part -->
 						<div class="8u 12u(moblie) important(moblie)">
-							<a id="doMap" class="fancybox" rel="/doMap"></a>
+							<a href="/doMap" class="fancybox" ></a>
 							<section class="middle-content">
 								<jsp:include page="map_api.jsp" />
 							</section>
@@ -68,7 +68,7 @@
 			    closeClick: false,
 			    // other options
 			    beforeLoad: function () {
-			        var url = $(this.element).attr("rel");
+			        var url = $(this.element).attr("href");
 			        this.href = url
 			    }
 			}).trigger('click'); // fancybox
