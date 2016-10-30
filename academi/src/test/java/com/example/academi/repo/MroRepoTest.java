@@ -45,27 +45,38 @@ RouteService rs;
 	@Transactional
 	@Test
 	public void asdasdest() {
+		//루트를 받아와서
 		int routeNo=102;
+		//루트 no를 통해 루트의 정보를 가져온다
 		Route result = rs.selectRouteByNo(routeNo);
+		//루트 전체를  str3에 담아주고 
 		String str3 = result.getRouteFull();
 		int count4 = 0;
+		//str3의 길이만큼 반복되는데
+		System.out.println("str3 : " + str3);
 		for (int c = 0; c < str3.length(); c++) {
+			//♬가 나올때마다 카운트를 해준다
 			if (str3.charAt(c) == '♬') {
 				count4++;
 			}
 		}
+		
+		//♬가 5개가 경로 1개이므로 5로 나누어준다.
 		int i = count4 / 5;
 
+		//addr에 경로 갯수만큼 배열의 크기를 넣어주고
 		String Addr[] = new String[i];
 
 		
 		i=0;
 		
+		//토큰을 생성해서 넘겨준다
 		StringTokenizer tokens = new StringTokenizer(str3, "♬");
 		while (tokens.hasMoreTokens()) {
 			tokens.nextToken();
 			tokens.nextToken();
 			tokens.nextToken();
+			//주소 값이 들어가있는 곳에서 주소배열에 값을 넣어준다
 			Addr[i] = tokens.nextToken();
 			tokens.nextToken();
 			i++;
@@ -78,11 +89,14 @@ RouteService rs;
 		for(int y=0;y<i;y++){
 			String str = Addr[y];
 		
+		//도 or 광역시 변수
 		String city;
+		//도의 시 혹은 광역시의 구
 		String siGu;
+		//도의 구
 		String siGu2;
 		
-		
+		//리스트를 만들어준다 -> 띄어쓰기를 할때마다 그 숫자를 리스트에 넣어줌
 		List<Integer> pos = new ArrayList<>();
 		int count = 0;
 		for (int c = 0; c < str.length(); c++) {
@@ -93,10 +107,10 @@ RouteService rs;
 		}
 
 		
+		//공백 제거
 		city=str.substring(0, pos.get(0)).trim();
 		siGu=str.substring(pos.get(0),pos.get(1)).trim();
 		siGu2=str.substring(pos.get(1),str.length()).trim();
-		
 		
 		if(siGu.equals("수영구")||siGu.equals("영도구")||siGu.equals("도봉구")||siGu.equals("동대문구")
 			||siGu.equals("성북구")||siGu.equals("동구")||siGu.equals("남구")||siGu.equals("달서구")
@@ -112,6 +126,7 @@ RouteService rs;
 			||siGu.equals("금천구")||siGu.equals("서초구")||siGu.equals("용산구")||siGu.equals("종로구")
 			||siGu.equals("계양구")||siGu.equals("연수구")||siGu.equals("구리시"))
 		siGu2="";
+		//
 		else if(siGu.equals("전주시")||siGu.equals("고양시")||siGu.equals("부천시")||siGu.equals("용인시")
 				||siGu.equals("청주시")||siGu.equals("수원시")||siGu.equals("창원시")||siGu.equals("안양시")
 				||siGu.equals("성남시")||siGu.equals("천안시")||siGu.equals("포항시")||siGu.equals("수원시")
@@ -128,11 +143,17 @@ RouteService rs;
 				
 			}
 			
+			//구의 앞 글자
 			String frontGu=siGu2.substring(0, guPoint);
+			//구의 뒷 글자 -> 제거해주기 위햐여
 			String afterGu=siGu2.substring(guPoint);
+			
+			//구의 뒤글자들을 모두 제거해줌
 			afterGu = afterGu.replaceAll(" ", "");
 			afterGu = afterGu.replaceAll("-", "");
 			afterGu = afterGu.replaceAll("^구[가-힣0-9]{0,20}", "구");
+			
+			//구의 앞글자와 구를 합쳐 정상적인 구로 만들어줌
 			siGu2=frontGu+afterGu;
 			
 			
@@ -151,15 +172,18 @@ RouteService rs;
 				siGu2="";
 			}
 		}
+		String fullSiGu = siGu+" "+siGu2;
+		fullSiGu = fullSiGu.trim();
 		
+		logger.trace("시/도 :{}", city);
+		logger.trace("구 :{}", fullSiGu);
+/*		System.out.println(city+"\t"+siGu+"\t"+siGu2);*/
 		
-		System.out.println(city+"\t"+siGu+"\t"+siGu2);
-		
+		mrepo.countUpdateSiGu(city, fullSiGu);
+		mrepo.countUpdateCity(city);
 		}
 		
-		
-		//mrepo.countUpdateSiGu(city, siGu);
-		//mrepo.countUpdateCity(city);
+
 	}
 
 }
