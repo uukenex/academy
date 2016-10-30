@@ -4068,19 +4068,98 @@
 			line-height: 50px;
 		}
 		
-		#select {
-			width: 80%;
-			font-size: 2em;
-			text-align: center;
-			background: url("/images/cloud.jpg");
+		.mapMenuDropdown{
+			width:100%; 
+			text-align:center;
+			margin-left: 1.6em;
+			margin-top: 2em;
+		}
+		.thumb img{width:30px; height:30px; float:left;}
+		.mapMenuList{float:left}
+		.mapDropdownName{
+			margin:0;
+			padding:0;
+			border:1px solid #dedede;
+		}
+		.mapDropdownName li{
+		    margin:0;
+		    padding:0; 
+		    list-style:none; 
+		    float:left; 
+		    height:28px; 
+		    line-height:28px; 
+		    cursor:pointer;
+		    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+		    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+		    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+		    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+		}
+		.mapDropdownName_txt{
+		    width:10em;  
+		    font-size:1.2em; 
+		    font-weight:bold; 
+		    text-indent:10px;
+		}
+		.mapDropdownName_txt.active{
+		    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d5202a), to(#ad181f));
+		    background-image: -webkit-linear-gradient(top, #d5202a, #ad181f);
+		    background-image: -o-linear-gradient(top, #d5202a, #ad181f);
+		    background-image: linear-gradient(to bottom, #d5202a, #ad181f);
+		    color:#fff;
+		}
+		.mapDropdownName_icon{
+		    width:2.7em; 
+		    color:#0088cc; 
+		    border-left:1px solid #dedede; 
+		    text-align:center;
+		}
+		.mapMenuListContent{
+		    display:none; 
+		    margin:0; 
+		    padding:0; 
+		    position:absolute; 
+		    z-index:9999;
+		    width:159px; 
+		    border:1px solid #dedede; 
+		    border-top:none; 
+		    background-color:#fff;
+		}
+		.mapMenuListContent li{
+		    list-style:none; 
+		    margin:0; 
+		    padding:0.3em; 
+		    line-height:34px; 
+		    font-size:1em; 
+		    text-indent:5px;
+		}
+		.mapMenuListContent li {border-bottom:1px solid #dedede}
+		.mapMenuListContent li.active{font-weight:bold; background-color:#f8f8f8}
+		.mapMenuListContent li:hover{background-color:#f8f8f8}
+		.mapMenuListContent li i{margin-right:5px;}
+		.mapMenuListContent a {
+			text-decoration: none;
+			cursor: pointer;
 		}
 		
-		option#AT4 {
-			background-color: #eee;
-			text-align: center;
+		#keyword {
+			width: 130px;
+			border-radius: 5%;
+			margin-top: 2em;
+			padding: 0.5em 1em;
+			font-family: 'Nunum Gothic';
+			font-size: 1.3em;
+			-webkit-transition: width 0.4s ease-in-out;
+    		transition: width 0.4s ease-in-out;
+			
+		}
+		
+		#keyword:FOCUS {
+			width: 95%;
+			border: 2px solid orange;
 		}
 		
 		
+				
 	/* Map Left Menu Button Style */
 	
 		#searchRegionButton {
@@ -4100,3 +4179,86 @@
 			color: #FFFFFF;
 			cursor: pointer;
 		}
+		
+		input[type="button"].mapRegionSearchButton {
+			width: 100%;
+			font-family: "Nanum Gothic";
+			font-size: 1.2em;
+			padding: 0.5em 1em;
+			margin-top: 0.5em;
+			background-color: #eee;
+			color: #000000;
+		}
+		
+		input[type="button"].mapRegionSearchButton:HOVER {
+			background-color: #AAAAAA;
+			color: red;
+			font-weight: bold;
+		}
+		
+		
+		
+	/* Select Region Section Style */
+	
+		/* Section -> div */
+		
+			#storedCheckDiv {
+				border: 1px solid #AAAAAA;
+				width: 100%;
+				border-radius: 5%;
+				margin-top: 1em;
+				text-align: center;
+				padding: 0.5em 1em;
+			}
+			
+			
+		/* check box style */
+			
+			input[type=checkbox].css-checkbox {
+				position: absolute; 
+			    overflow: hidden; 
+			    clip: rect(0 0 0 0); 
+			    height:1px; 
+			    width:1px; 
+			    margin:-1px; 
+			    padding:0;
+			    border:0;
+			}
+/* 			
+			input[type=checkbox].css-checkbox + label.css-label {
+				padding-left:20px;
+				height:15px; 
+				display:inline-block;
+				line-height:15px;
+				background-repeat:no-repeat;
+				background-position: 0 0;
+				font-size:15px;
+				vertical-align:middle;
+				cursor:pointer;
+			}
+			
+			input[type=checkbox].css-checkbox:checked + label.css-label {
+				background-position: 0 -15px;
+			}
+ */
+			.vlad{background-image:url(http://csscheckbox.com/checkboxes/vlad.png);}
+			
+			input[type=checkbox].css-checkbox.lrg + label.css-label.lrg {
+				padding-left:22px;
+			    height:20px; 
+				display:inline-block;
+				line-height:20px;
+				background-repeat:no-repeat;
+				background-position: 0 0;
+				vertical-align:middle;
+			    cursor:pointer;
+			}
+			
+			input[type=checkbox].css-checkbox.lrg:checked + label.css-label.lrg{
+			
+			    background-position: 0 -20px;
+			}
+			
+			label.vlad {
+				font-size: 1.3em;
+			}

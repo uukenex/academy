@@ -42,12 +42,15 @@
 						<jsp:include page="map_leftTab_menu.jsp" />
 					
 					<!-- Map API body part -->
-						<div class="8u 12u(moblie) important(moblie)">
+						<div class="6u 12u(moblie) important(moblie)">
 							<a href="/doMap" class="fancybox" ></a>
 							<section class="middle-content">
 								<jsp:include page="map_api.jsp" />
 							</section>
 						</div>
+						
+					<!-- Map Right Tab Menu -->
+						<jsp:include page="map_rightTab_menu.jsp" />
 				</div>
 				
 				<!-- footer -->
