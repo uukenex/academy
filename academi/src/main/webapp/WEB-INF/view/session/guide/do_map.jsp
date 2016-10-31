@@ -303,7 +303,5 @@ window.onload = function(){
 	</div>
 </body>
 
-<script src="http://code.jquery.com/jquery.js"></script>
-<script>
-</script>
+
 </html>

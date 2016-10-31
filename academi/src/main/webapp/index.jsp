@@ -77,5 +77,9 @@
 		<c:url value="/photoWrite" var="m2" />
 		<a href="${m2 }">photoWrite</a>
 		<br>
+		<c:url value="/myPhoto" var="m2" />
+		<a href="${m2 }">myPhoto</a>
+		<br>
+		
 	</body>
 </html>
