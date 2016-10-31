@@ -38,7 +38,7 @@
 							
 							<!--일반 지도api로 들어갔을경우 : -->
 							<c:if test="${empty routeNo }">
-								<input type="submit" id="" value="DB로!!" formaction="/mapSave" >
+								<input type="submit" id="" value="MyPage에 저장" formaction="/mapSave" class="routeForDB">
 							</c:if> 
 							
 							<!--번호검색으로 api로 들어갔을경우 : -->
@@ -48,7 +48,7 @@
 								<input type="submit" id="" value="수정" formaction="/mapUpdate">
 								<input type="submit" id="" value="삭제" formaction="/mapDelete">
 							</c:if>
-							<label>저장하지않으면 데이터가 소실됩니다.</label>
+							<label id="informMapForDB">저장하지않으면 데이터가 소실됩니다.</label>
 							</form>
 							
 				</section>

@@ -4143,6 +4143,14 @@
 			font-size: 0.7em;
 		}
 		
+		label#informMapForDB {
+			font-size: 0.7em;
+			font-family: "Nanum Gothic";
+			text-decoration: underline;
+			line-height: 18px;
+			margin-top: 0.5em;
+		}
+		
 				
 	/* Map Left Menu Button Style */
 		
@@ -4163,6 +4171,24 @@
 		input[type="button"].mapRegionSearchButton:HOVER {
 			background-color: #eee;
 			color: #FF8383;
+		}
+		
+		input[type="submit"].routeForDB {
+			background: #eee;
+			border: 1px solid #646464;
+			font-family: "Nanum Gothic";
+			font-size: 0.7em;
+			font-weight: bold;
+			color: #000000;
+		}
+		
+		input[type="submit"].routeForDB:HOVER {
+			background: #eee;
+			border: 1px solid #FF0000;
+			font-family: "Nanum Gothic";
+			font-size: 0.7em;
+			font-weight: bold;
+			color: #FF0000;
 		}
 		
 		
