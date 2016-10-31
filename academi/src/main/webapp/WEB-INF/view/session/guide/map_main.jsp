@@ -43,7 +43,7 @@
 						
 					<!-- Map API body part -->
 						<div class="8u 12u(moblie) important(moblie)">
-							<a href="/doMap" class="fancybox" ></a>
+							<a href="/domap" class="fancybox" ></a>
 							<section class="middle-content">
 							<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 					<!-- Map Right Tab Menu -->

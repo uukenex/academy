@@ -38,6 +38,8 @@ public class MroServiceTest {
 	public void insertTest() {
 		ms.updateCnt("인천광역시", "부평구");
 	}
-
-	
+	@Test
+	public void doHotplace() {
+		ms.doHotplace();
+	}
 }

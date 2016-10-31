@@ -32,15 +32,25 @@
   border: 0;
 } 
 
+img[id^=chk]{
+position: relative;
+	left: -50px; /* -이미지의 크기 x 갯수 */
+	top:-175px; /* -(버튼의크기-이미지의크기) */
+}
+a[id^=down]{
+position: relative;
+	left: -50px; /* -이미지의 크기 x 갯수  */
+	top:-175px; /* -(버튼의크기-이미지의크기) */
+}
 </style>
 </head>
 <body>
-
+${users.userNick }의 포토북
 	<c:url value="/photo" var="photo" />
 	<form id="frm">
     <p>
         <br />
-        <input type="file" accept="image" id="fileLoader" multiple="multiple" />
+        <input type="file" accept="image/*" id="fileLoader" multiple="multiple" />
         <label for="fileLoader" >사진 올리기</label>
         
         <input type="text" id="cntFiles" />
@@ -51,43 +61,69 @@
     </p>
     </form>
     <output id="result"></output>
-   
-	
+
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-			<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
-			<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox.js"></script>
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox.css" media="screen" />
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
-			<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-buttons.js"></script>
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
-			<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-thumbs.js"></script>
-			<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-media.js"></script>
-  			
+<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-media.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
 <script>
+
+
+
+
+//팬시박스
 $(document).ready(function() {
 	$(".fancybox").fancybox({
 		closeEffect	: 'elastic',
-
     	helpers : {
     		title : {
     			type : 'inside'
     		}
     	}
 	});
+	
 });
 
 var files = [];
+//interval은 디비에서 마지막숫자를 가져와서 바꿔줘야함
 var interval=0;
+
+//등록중 처리
 $(document).on("change","#fileLoader",function(event) {
                  files=event.target.files;
                 $("#cntFiles").val(files.length+"개 등록중");
                 });
 
+//사진등록 ajax
 $(document).on("click","#fileSubmit",function() {
                 processUpload();
+                $("#cntFiles").val("등록완료");
                 });
+                
+//삭제처리
+$(document).on("click",".close",function() {
+	if(confirm('정말 삭제하시겠습니까?')==true)
+		{
+		//글씨나 div를 넣어주는경우 한번씩 더실행할것
+		this.previousSibling.remove();
+		this.previousSibling.remove();
+		this.remove();
+		}
+	else{
+		return;
+		}
+    });
+
+
+
+
 
 function processUpload()
 {
@@ -107,19 +143,29 @@ function processUpload()
         	  console.log(result);
         	  var html="";
         	  $(result[0]).each(function(idx,item){
-        		  console.log(item);
-        		  
         		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/";
         		  html+=item;
         		  html+=" id='img"+interval+"' ";
         		  html+=">";
         		  html+="<img src=/photo_upload/";
         		  html+=item;
-        		  html+=" width='200px' height='200px'></a>";
+        		  html+=" width='200px' height='200px' >";
+        		  html+="</a>";
+        		  //다운로드 이미지버튼
+        		  html+="<a href=/photo_upload/"+item;
+        		  html+=" download id='down"+interval+"' ><img id='down"+interval;
+        		  html+="' src='/images/down.png'";
+        		  html+="height='25px' width='25px' class='down ' >";
+        		  html+="</a>";
+        		  //삭제 이미지버튼
+        		  html+="<img id='chk"+interval;
+        		  html+="' src='/images/delete.png'";
+        		  html+="height='25px' width='25px' class='close '>";
+        		  
         		  interval++;
         	  });
-        	  $("#result")[0].innerHTML+=html;
-        	 
+        	  	$("#result")[0].innerHTML+=html;
+        	  
           },
           error : function(result){
         	  console.log('실패');
@@ -128,7 +174,6 @@ function processUpload()
       });
 }
 $("#newFolder").on("click",function(){
-	
 	var html="";
 		  /* html+="<a href=/mvc_day4_ajax/upload/";
 		  html+=$("#newFolder").val();
@@ -136,8 +181,11 @@ $("#newFolder").on("click",function(){
 		  html+=">"; */
 		  html+="<img src=/images/";
 		  html+="newFolder2.png";
-		  html+=" width='200px' height='200px'></a>";
-	$("#result")[0].innerHTML+=html;
+		  html+=" width='200px' height='200px' >";
+		 
+		  
+		$("#result")[0].innerHTML+=html;
+		
 });
 
 </script>
