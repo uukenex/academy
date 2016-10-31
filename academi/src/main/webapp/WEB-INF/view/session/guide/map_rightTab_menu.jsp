@@ -19,7 +19,7 @@
 				</a>
 				
 				<div id="mapSearchSection">
-					<a class="fancybox" id="searchRegionButton" href="/doMap">도*시 지도 보기</a>
+					<a class="fancybox" id="searchRegionButton" href="/domap">도*시 지도 보기</a>
 					<br>
 					<select id="select" style="display: none;">
 						<option value="AT4" >관광지</option>
