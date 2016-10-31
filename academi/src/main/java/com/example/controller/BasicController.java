@@ -70,5 +70,10 @@ public class BasicController {
 		return "session/guide/map_main";
 	}
 	
+	@RequestMapping("/mapRightMenu")
+	public String mapRightMenu(Model model) {
+		return "session/guide/map_rightTab_menu";
+	}
+	
 
 }

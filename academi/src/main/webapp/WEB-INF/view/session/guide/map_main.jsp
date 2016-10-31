@@ -40,14 +40,20 @@
 				
 					<!-- Map Left Tab Menu -->
 						<jsp:include page="map_leftTab_menu.jsp" />
-					
+						
 					<!-- Map API body part -->
 						<div class="8u 12u(moblie) important(moblie)">
-							<a id="doMap" class="fancybox" rel="/doMap"></a>
+							<a href="/doMap" class="fancybox" ></a>
 							<section class="middle-content">
+							<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+					<!-- Map Right Tab Menu -->
+						<jsp:include page="map_rightTab_menu.jsp" />
+					<br>
 								<jsp:include page="map_api.jsp" />
 							</section>
 						</div>
+						
+  					
 				</div>
 				
 				<!-- footer -->
@@ -61,14 +67,14 @@
 			$(".fancybox").fancybox({
 			    autoScale: false,
 			    // href : $('.fancybox').attr('id'), // don't need this
-			    'width': '40%',
-            	'height': '40%',
+			    'width': '55%',
+            	'height': "50%",
 			    type: 'iframe',
 			    padding: 0,
 			    closeClick: false,
 			    // other options
 			    beforeLoad: function () {
-			        var url = $(this.element).attr("rel");
+			        var url = $(this.element).attr("href");
 			        this.href = url
 			    }
 			}).trigger('click'); // fancybox

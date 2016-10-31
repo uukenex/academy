@@ -15,7 +15,7 @@
 			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
-			
+			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
 			<!-- SlidesJS Required: Link to jquery.slides.js -->
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->

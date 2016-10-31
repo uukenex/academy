@@ -103,9 +103,9 @@
 			});
 
 		// Menu.
-			var $menu = $('#menu');
+			var $menu = $('#mapRightMenu');
 
-			$menu.wrapInner('<div class="inner"></div>');
+			$menu.wrapInner('<div class="mapRightInner"></div>');
 
 			$menu._locked = false;
 
@@ -153,7 +153,7 @@
 				.on('click', 'a', function(event) {
 
 					var href = $(this).attr('href');
-
+					console.log(href);
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -161,7 +161,7 @@
 						$menu._hide();
 
 					// Redirect.
-						if (href == '#menu')
+						if (href == '#mapRightMenu')
 							return;
 
 						window.setTimeout(function() {
@@ -169,14 +169,13 @@
 						}, 350);
 
 				})
-				.append('<a class="close" href="#menu">Close</a>');
+				.append('<a class="close" href="#mapRightMenu">Close</a>');
 
 			$body
-				.on('click', 'a[href="#menu"]', function(event) {
-
+				.on('click', 'a[href="#mapRightMenu"]', function(event) {
+					console.log($menu);
 					event.stopPropagation();
 					event.preventDefault();
-
 					// Toggle.
 						$menu._toggle();
 
@@ -194,6 +193,7 @@
 							$menu._hide();
 
 				});
+			
 
 	});
 

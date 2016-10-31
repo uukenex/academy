@@ -42,8 +42,8 @@
 			}
 
 		// fancyMenu.
+		
 			var $fancyMenu = $('#fancyMenu');
-
 			$fancyMenu._locked = false;
 
 			$fancyMenu._lock = function() {
@@ -62,7 +62,6 @@
 			};
 
 			$fancyMenu._show = function() {
-
 				if ($fancyMenu._lock())
 					$body.addClass('is-menu-visible');
 
@@ -107,9 +106,9 @@
 						event.stopPropagation();
 					})
 					.on('click', 'a', function(event) {
-
+						
 						var href = $(this).attr('href');
-
+						console.log(href);
 						event.preventDefault();
 						event.stopPropagation();
 
@@ -128,7 +127,7 @@
 
 					event.stopPropagation();
 					event.preventDefault();
-
+console.log($fancyMenu);
 					// Toggle.
 						$fancyMenu._toggle();
 
