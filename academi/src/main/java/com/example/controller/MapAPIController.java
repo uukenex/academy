@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
+import com.example.dto.Mro;
 import com.example.dto.Route;
 import com.example.dto.Users;
+import com.example.service.MroService;
 import com.example.service.RouteService;
 import com.example.service.UserService;
 
@@ -36,7 +38,8 @@ public class MapAPIController {
 	UserService us;
 	@Autowired
 	RouteService rs;
-
+	@Autowired
+	MroService ms;
 	
 	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
 	public String latlng(Model model, HttpServletRequest request) {
@@ -52,6 +55,33 @@ public class MapAPIController {
 	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String domap(Model model) {
+		List<Mro> hotplace = ms.doHotplace();
+		List<Mro> listDo = ms.selectDo();
+		String firstDo = "";
+		String secondDo = "";
+		String thirdDo ="";
+		String str = "";
+		
+		
+		for(int i=0; i<hotplace.size(); i++){
+			firstDo = hotplace.get(0).getCity();
+			secondDo = hotplace.get(1).getCity();
+			thirdDo = hotplace.get(2).getCity();
+		}
+		for(int j=0; j<listDo.size(); j++){
+			if(firstDo.equals(listDo.get(j).getCity())){
+				str="(hot)";
+			}
+			else{
+				str="";
+			}
+		}
+		
+		model.addAttribute("firstDo",firstDo);
+		model.addAttribute("secondDo",secondDo);
+		model.addAttribute("thirdDo",thirdDo);
+		
+		model.addAttribute("str",str);
 		return "session/guide/do_map";
 	}
 
@@ -378,4 +408,6 @@ public class MapAPIController {
 		
 			return "redirect:/mypageMain";
 	}
+	
+	
 }

@@ -1,11 +1,14 @@
 package com.example.repo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.example.dto.Mro;
 
 @Repository
 public class MroRepoImpl implements MroRepo {
@@ -39,6 +42,20 @@ public class MroRepoImpl implements MroRepo {
 		// TODO Auto-generated method stub
 		String statement = NAME_SPACE +"regionCntCity";
 		return template.update(statement,city);
+	}
+
+	@Override
+	public List<Mro> hotplaceDo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "hotplaceDo";
+		return template.selectList(statement);
+	}
+
+	@Override
+	public List<Mro> selectDo() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "do";
+		return template.selectList(statement);
 	}
 
 }

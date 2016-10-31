@@ -65,39 +65,9 @@ mus16off = new Image( );
 
 
 /* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-mus1off.src = './map/domap/인천.png';
-mus2off.src = './map/domap/경기도.png';
-mus3off.src = './map/domap/서울.png';
-mus4off.src = './map/domap/강원도.png';
-mus5off.src = './map/domap/충청남도.png';
-mus6off.src = './map/domap/충청북도.png';
-mus7off.src = './map/domap/대전.png';
-mus8off.src = './map/domap/경상북도.png';
-mus9off.src = './map/domap/대구.png';
-mus10off.src = './map/domap/전라북도.png';
-mus11off.src = './map/domap/전라남도.png';
-mus12off.src = './map/domap/광주.png';
-mus13off.src = './map/domap/경상남도.png';
-mus14off.src = './map/domap/울산.png';
-mus15off.src = './map/domap/부산.png';
-mus16off.src = './map/domap/제주도.png';
+ 
 
-mus1on.src  = './map/domap/인천(변환).png';
-mus2on.src  = './map/domap/경기도(변환).png';
-mus3on.src  = './map/domap/서울(변환).png';
-mus4on.src  = './map/domap/강원도(변환).png';
-mus5on.src  = './map/domap/충청남도(변환).png';
-mus6on.src  = './map/domap/충청북도(변환).png';
-mus7on.src  = './map/domap/대전(변환).png';
-mus8on.src  = './map/domap/경상북도(변환).png';
-mus9on.src  = './map/domap/대구(변환).png';
-mus10on.src  = './map/domap/전라북도(변환).png';
-mus11on.src  = './map/domap/전라남도(변환).png';
-mus12on.src  = './map/domap/광주(변환).png';
-mus13on.src  = './map/domap/경상남도(변환).png';
-mus14on.src  = './map/domap/울산(변환).png';
-mus15on.src  = './map/domap/부산(변환).png';
-mus16on.src  = './map/domap/제주도(변환).png';
+
 
 
 /* ----------------------------------------------------------------- */
@@ -121,7 +91,8 @@ function smenu_click(musName){
 
 
 </script>
-<script language="javascript">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
 <%-- 
 window.onload = function(){
 	for (i=1; i<2; i++) {
@@ -133,6 +104,153 @@ window.onload = function(){
 	}
 }
  --%>
+ 
+ $(document).on("ready",function(){
+	 mus1off.src = './map/domap/인천.png';	
+	 mus2off.src = './map/domap/경기도.png';
+	 mus3off.src = './map/domap/서울.png';
+	 mus4off.src = './map/domap/강원도.png';
+	 mus5off.src = './map/domap/충청남도.png';
+	 mus6off.src = './map/domap/충청북도.png';
+	 mus7off.src = './map/domap/대전.png';
+	 mus8off.src = './map/domap/경상북도.png';
+	 mus9off.src = './map/domap/대구.png';
+	 mus10off.src = './map/domap/전라북도.png';
+	 mus11off.src = './map/domap/전라남도.png';
+	 mus12off.src = './map/domap/광주.png';
+	 mus13off.src = './map/domap/경상남도.png';
+	 mus14off.src = './map/domap/울산.png';
+	 mus15off.src = './map/domap/부산.png';
+	 mus16off.src = './map/domap/제주도.png';
+
+	 mus1on.src  = './map/domap/인천(변환).png';
+	 mus2on.src  = './map/domap/경기도(변환).png';
+	 mus3on.src  = './map/domap/서울(변환).png';
+	 mus4on.src  = './map/domap/강원도(변환).png';
+	 mus5on.src  = './map/domap/충청남도(변환).png';
+	 mus6on.src  = './map/domap/충청북도(변환).png';
+	 mus7on.src  = './map/domap/대전(변환).png';
+	 mus8on.src  = './map/domap/경상북도(변환).png';
+	 mus9on.src  = './map/domap/대구(변환).png';
+	 mus10on.src  = './map/domap/전라북도(변환).png';
+	 mus11on.src  = './map/domap/전라남도(변환).png';
+	 mus12on.src  = './map/domap/광주(변환).png';
+	 mus13on.src  = './map/domap/경상남도(변환).png';
+	 mus14on.src  = './map/domap/울산(변환).png';
+	 mus15on.src  = './map/domap/부산(변환).png';
+	 mus16on.src  = './map/domap/제주도(변환).png';
+	 
+	 if("${firstDo}"=="인천" ||"${secondDo}"=="인천"||"${thirdDo}"=="인천"){ 
+		 	mus1off.src='/map/domap/인천(hot).png';
+		 	$('.list1')[0].src='/map/domap/인천(hot).png';
+		}else{
+			$('.list1')[0].src='/map/domap/인천.png';
+		}
+	 if("${firstDo}"=="경기도" ||"${secondDo}"=="경기도"||"${thirdDo}"=="경기도"){ 
+		 	mus2off.src='/map/domap/경기도(hot).png';
+		 	$('.list2')[0].src='/map/domap/경기도(hot).png';
+		}else{
+			$('.list2')[0].src='/map/domap/경기도.png';
+		}
+	 if("${firstDo}"=="서울" ||"${secondDo}"=="서울"||"${thirdDo}"=="서울"){ 
+		 	mus3off.src='/map/domap/서울(hot).png';
+		 	$('.list3')[0].src='/map/domap/서울(hot).png';
+		}else{
+			$('.list3')[0].src='/map/domap/서울.png';
+		}
+	 if("${firstDo}"=="강원도" ||"${secondDo}"=="강원도"||"${thirdDo}"=="강원도"){ 
+		 	mus4off.src='/map/domap/강원도(hot).png';
+		 	$('.list4')[0].src='/map/domap/강원도(hot).png';
+		}else{
+			$('.list4')[0].src='/map/domap/강원도.png';
+		}
+	 if("${firstDo}"=="충청남도" ||"${secondDo}"=="충청남도"||"${thirdDo}"=="충청남도"){ 
+		 	mus5off.src='/map/domap/충청남도(hot).png';
+		 	$('.lis5')[0].src='/map/domap/충청남도(hot).png';
+		}else{
+			$('.list5')[0].src='/map/domap/충청남도.png';
+		}
+	 if("${firstDo}"=="충청북도" ||"${secondDo}"=="충청북도"||"${thirdDo}"=="충청북도"){ 
+		 	mus6off.src='/map/domap/충청북도(hot).png';
+		 	$('.list6')[0].src='/map/domap/충청북도(hot).png';
+		}else{
+			$('.list6')[0].src='/map/domap/충청북도.png';
+		}
+	 if("${firstDo}"=="대전" ||"${secondDo}"=="대전"||"${thirdDo}"=="대전"){ 
+		 	mus7off.src='/map/domap/대전(hot).png';
+		 	$('.list7')[0].src='/map/domap/대전(hot).png';
+		}else{
+			$('.list7')[0].src='/map/domap/대전.png';
+		}
+	 if("${firstDo}"=="경상북도" ||"${secondDo}"=="경상북도"||"${thirdDo}"=="경상북도"){ 
+		 	mus8off.src='/map/domap/경상북도(hot).png';
+		 	$('.list8')[0].src='/map/domap/경상북도(hot).png';
+		}else{
+			$('.list8')[0].src='/map/domap/경상북도.png';
+		}
+	 if("${firstDo}"=="대구" ||"${secondDo}"=="대구"||"${thirdDo}"=="대구"){ 
+		 	mus9off.src='/map/domap/대구(hot).png';
+		 	$('.list9')[0].src='/map/domap/대구(hot).png';
+		}else{
+			$('.list9')[0].src='/map/domap/대구.png';
+		}
+	 if("${firstDo}"=="전라북도" ||"${secondDo}"=="전라북도"||"${thirdDo}"=="전라북도"){ 
+		 	mus10off.src='/map/domap/전라북도(hot).png';
+		 	$('.list10')[0].src='/map/domap/전라북도(hot).png';
+		}else{
+			$('.list10')[0].src='/map/domap/전라북도.png';
+		}
+	 if("${firstDo}"=="전라남도" ||"${secondDo}"=="전라남도"||"${thirdDo}"=="전라남도"){ 
+		 	mus11off.src='/map/domap/전라남도(hot).png';
+		 	$('.list11')[0].src='/map/domap/전라남도(hot).png';
+		}else{
+			$('.list11')[0].src='/map/domap/전라남도.png';
+		}
+	 if("${firstDo}"=="광주" ||"${secondDo}"=="광주"||"${thirdDo}"=="광주"){ 
+		 	mus12off.src='/map/domap/광주(hot).png';
+		 	$('.list12')[0].src='/map/domap/광주(hot).png';
+		}else{
+			$('.list12')[0].src='/map/domap/광주.png';
+		}
+	 if("${firstDo}"=="경상남도" ||"${secondDo}"=="경상남도"||"${thirdDo}"=="경상남도"){ 
+		 	mus13off.src='/map/domap/경상남도(hot).png';
+		 	$('.list13')[0].src='/map/domap/경상남도(hot).png';
+		}else{
+			$('.list13')[0].src='/map/domap/경상남도.png';
+		}
+	 if("${firstDo}"=="울산" ||"${secondDo}"=="울산"||"${thirdDo}"=="울산"){ 
+		 	mus14off.src='/map/domap/울산(hot).png';
+		 	$('.list14')[0].src='/map/domap/울산(hot).png';
+		}else{
+			$('.list14')[0].src='/map/domap/울산.png';
+		}
+	 if("${firstDo}"=="부산" ||"${secondDo}"=="부산"||"${thirdDo}"=="부산"){ 
+		 	mus15off.src='/map/domap/부산(hot).png';
+		 	$('.list15')[0].src='/map/domap/부산(hot).png';
+		}else{
+			$('.list15')[0].src='/map/domap/부산.png';
+		}
+	 if("${firstDo}"=="제주도" ||"${secondDo}"=="제주도"||"${thirdDo}"=="제주도"){ 
+		 	mus16off.src='/map/domap/제주도(hot).png';
+		 	$('.list16')[0].src='/map/domap/제주도(hot).png';
+		}else{
+			$('.list16')[0].src='/map/domap/제주도.png';
+		}
+	 if("${firstDo}"=="인천" ||"${secondDo}"=="인천"||"${thirdDo}"=="인천"){ 
+		 	mus1off.src='/map/domap/인천(hot).png';
+		 	$('.list1')[0].src='/map/domap/인천(hot).png';
+		}else{
+			$('.list1')[0].src='/map/domap/인천.png';
+		}
+	 if("${firstDo}"=="인천" ||"${secondDo}"=="인천"||"${thirdDo}"=="인천"){ 
+		 	mus1off.src='/map/domap/인천(hot).png';
+		 	$('.list1')[0].src='/map/domap/인천(hot).png';
+		}else{
+			$('.list1')[0].src='/map/domap/인천.png';
+		}
+	 
+ });
+ 
 </script>
 
 </head>
@@ -173,6 +291,7 @@ window.onload = function(){
 <img src='./map/domap/제주도.png' alt='' border='0' name='mus16' class='list16' ></a>
 
 </div>
+
 </body>
 
 <script src="http://code.jquery.com/jquery.js"></script>
