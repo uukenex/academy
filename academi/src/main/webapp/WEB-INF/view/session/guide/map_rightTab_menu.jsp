@@ -76,6 +76,8 @@
 							</ul>
 						</div>
 						<input type="text" id="keyword" placeholder="Search..">
+						<br/>
+						<input type="button" id="search" class="mapRegionSearchButton" value="찾기">
 					</div>
 										
 					<script type="text/javascript">
@@ -145,17 +147,15 @@
 					    });
 
 					</script>
-					
-					<br/>
-					<input type="button" id="search" class="mapRegionSearchButton" value="찾기">
 				</div>
 				
-				<br/>
 				<a id="bestRouteButton" class="mapRightList">
 					----- 추천 경로 <i class="fa fa-angle-double-down"></i> -----
 				</a>
 				<div id="bestRouteSection">
-					<p>1. Best Route 1</p>
+					<p>1. Best Route 1<br/>
+						<img alt="BestRoute1" src="/images/cloud.jpg">
+					</p>
 					<p>2. Best Route 2</p>
 					<p>3. Best Route 3</p>
 				</div>

@@ -4147,19 +4147,22 @@
 	/* Map Left Menu Button Style */
 		
 		input[type="button"].mapRegionSearchButton {
-			width: 100%;
+			width: auto;
 			font-family: "Nanum Gothic";
-			font-size: 1.2em;
-			padding: 0.5em 1em;
-			margin-top: 0.5em;
-			background-color: #eee;
+			font-size: 0.9em;
+			font-weight: bold;
+			padding: 0.3em 0.5em;
+			margin-top: 0.2em;
+			margin-right: 1em;
+			background: none;
+			border: 1px solid #646464;
 			color: #000000;
+			float: right;
 		}
 		
 		input[type="button"].mapRegionSearchButton:HOVER {
-			background-color: #AAAAAA;
-			color: red;
-			font-weight: bold;
+			background-color: #eee;
+			color: #FF8383;
 		}
 		
 		
@@ -4253,6 +4256,7 @@
 	}
 	
 	a.mapRightList {
+		display: inline-block;
 		width: 100%;
 		text-align: center;
 		font-family: 'Nanum Gothic';
@@ -4260,7 +4264,6 @@
 		font-weight: bold;
 		background-color: none;
 		color: #000000;
-		margin: 0.5em 1em;
 		vertical-align: middle;
 	}
 	
@@ -4273,6 +4276,16 @@
 	
 	#mapSearchSection {
 		margin-top: 1.3em;
+	}
+	
+	#bestRouteSection img {
+		margin-left: 1em;
+		width: 200px;
+		height: 200px;
+	}
+	
+	#mapRightToggleButton {
+		color: red;
 	}
 	
 	/* Toggle Box Button style */
