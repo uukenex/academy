@@ -4142,7 +4142,7 @@
 		}
 		
 		#keyword {
-			width: 130px;
+			width: 95%;
 			border-radius: 5%;
 			margin-top: 2em;
 			padding: 0.5em 1em;
@@ -4152,12 +4152,6 @@
     		transition: width 0.4s ease-in-out;
 			
 		}
-		
-		#keyword:FOCUS {
-			width: 95%;
-			border: 2px solid orange;
-		}
-		
 		
 				
 	/* Map Left Menu Button Style */
@@ -4265,8 +4259,22 @@
 			
 			
 /* test toggle box */
+
+	#mapRightTab {
+		text-align: right;
+		float: right;
+	}
+	
 	#mapRightToggleMenu {
 		width: 100%;
 		height: auto;
-		background-color: red;
+		background-color: #AAAAAA;
+	}
+	
+	#mapRightTab {
+		position: relative;
+		z-index: 901;
+	}
+	#map_wrap {
+		z-index: 900;
 	}

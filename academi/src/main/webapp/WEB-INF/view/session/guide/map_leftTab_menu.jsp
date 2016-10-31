@@ -55,7 +55,7 @@
 				</section>
 				
 				<!-- ----------------- 도, 시 찾기 window.open 띄우기 -------------------------- -->
-			
+<!-- 			
 				<section>
 					<a class="fancybox" id="searchRegionButton" href="/doMap">도 지도 보기</a>
 					<br>
@@ -189,7 +189,7 @@
 					<br/>
 					<input type="button" id="search" class="mapRegionSearchButton" value="찾기">
 				</section>
-				
+ -->				
 		
 			</div>
 <%-- 	
