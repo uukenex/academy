@@ -4262,3 +4262,11 @@
 			label.vlad {
 				font-size: 1.3em;
 			}
+			
+			
+/* test toggle box */
+	#mapRightToggleMenu {
+		width: 100%;
+		height: auto;
+		background-color: red;
+	}

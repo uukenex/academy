@@ -3,28 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	<!-- Map Right Tab Menu -->
-	
-		<!-- Wrapper -->
-			<div id="mapRightWrapper">
-	
-			<!-- Header -->
-				<header id="mapRightHeader">
-					<div class="mapRightInner">
-						<!-- Nav -->
-							<nav>
-								<ul>
-									<li><a href="#mapRightMenu">MapRightMenu</a></li>
-								</ul>
-							</nav>
-					</div>
-				</header>
+
+<!-- Map Right Tab Menu -->
+
+	<!-- page div -->
+		
+		<div>
+			<a id="mapRightToggleButton">
+				<i class="fa fa-align-justify fa-4x"></i>
+			</a>
 			
-			<!-- Right Menu -->
-				<nav id="mapRightMenu">
-					<ul>
-						<li>1. Search</li>
-						<li>2. 추천 경로</li>
-					</ul>
-				</nav>
+			<div id="mapRightToggleMenu">
+				<input type="button" id="searchRegionButton" value="도, 시 찾기">
+				<br/>
+				<input type="button" id="bestRouteButton" value="추천 경로">
+				<p>ddddd</p>
+				<p>ddddd</p>
+				<p>ddddd</p>
+				<p>ddddd</p>
+				<p>ddddd</p>
 			</div>
+		</div>
+		
+		<script>
+			$("#mapRightToggleButton").click(function(){
+				$("#mapRightToggleMenu").toggle("slide", {direction: 'up'}, 500);
+			});
+		</script>

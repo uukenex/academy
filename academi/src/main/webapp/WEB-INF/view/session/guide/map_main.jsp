@@ -40,6 +40,10 @@
 				
 					<!-- Map Left Tab Menu -->
 						<jsp:include page="map_leftTab_menu.jsp" />
+						
+						<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+					<!-- Map Right Tab Menu -->
+						<jsp:include page="map_rightTab_menu.jsp" />
 					
 					<!-- Map API body part -->
 						<div class="6u 12u(moblie) important(moblie)">
@@ -49,8 +53,7 @@
 							</section>
 						</div>
 						
-					<!-- Map Right Tab Menu -->
-						<jsp:include page="map_rightTab_menu.jsp" />
+  					
 				</div>
 				
 				<!-- footer -->

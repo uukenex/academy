@@ -210,7 +210,7 @@ color: white;
 									<!-- 지도를 표시할 div 입니다 -->
 										<div class="map_wrap">
 											<div id="map"
-												style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
+												style="width: 900x; height: 900px; position: relative; overflow: hidden;"></div>
 											<div class="hAddr">
 												<span class="title">여행을 부탁해</span> <span id="centerAddr"></span>
 											</div>
