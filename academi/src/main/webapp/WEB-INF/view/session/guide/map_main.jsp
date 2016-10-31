@@ -67,8 +67,8 @@
 			$(".fancybox").fancybox({
 			    autoScale: false,
 			    // href : $('.fancybox').attr('id'), // don't need this
-			    'width': '40%',
-            	'height': '40%',
+			    'width': '55%',
+            	'height': "50%",
 			    type: 'iframe',
 			    padding: 0,
 			    closeClick: false,
