@@ -1,5 +1,8 @@
 package com.example.dto;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Mro {
+	
 	/**지역 아이디**/
 	private String regionId;
 	
@@ -35,4 +39,6 @@ public class Mro {
 	
 	/**후기에 올라온 지역 카운트**/
 	private Integer cnt;
+	
+
 }

@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
+import com.example.dto.Mro;
 import com.example.dto.Route;
 import com.example.dto.Users;
+import com.example.service.MroService;
 import com.example.service.RouteService;
 import com.example.service.UserService;
 
@@ -36,7 +38,8 @@ public class MapAPIController {
 	UserService us;
 	@Autowired
 	RouteService rs;
-
+	@Autowired
+	MroService ms;
 	
 	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
 	public String latlng(Model model, HttpServletRequest request) {
@@ -51,52 +54,193 @@ public class MapAPIController {
 
 	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
-	public String domap(Model model) {
+	public String what(Model model) {
+		List<Mro> hotplace = ms.doHotplace();
+		String firstDo = "";
+		String secondDo = "";
+		String thirdDo ="";
+		
+		for(int i=0; i<hotplace.size(); i++){
+			firstDo = hotplace.get(0).getCity();
+			secondDo = hotplace.get(1).getCity();
+			thirdDo = hotplace.get(2).getCity();
+		}
+		
+		model.addAttribute("firstDo",firstDo);
+		model.addAttribute("secondDo",secondDo);
+		model.addAttribute("thirdDo",thirdDo);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/do_map";
 	}
 
 	@RequestMapping(value = "/Jeollanamdo", method = RequestMethod.GET)
 	public String Jeollanamdo(Model model) {
+		List<Mro> hotplace =ms.selectJunnam();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Jeollanam_do";
 	}
 
 	@RequestMapping(value = "/Jeollabukdo", method = RequestMethod.GET)
 	public String Jeollabukdo(Model model) {
+		List<Mro> hotplace =ms.selectJunbuk();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Jeollabuk_do";
 	}
 
 	@RequestMapping(value = "/jejudo", method = RequestMethod.GET)
 	public String jejudo(Model model) {
+		List<Mro> hotplace =ms.selectJeju();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/jeju_do";
 	}
 
 	@RequestMapping(value = "/Gyeongsangnamdo", method = RequestMethod.GET)
 	public String Gyeongsangnam_do(Model model) {
+		List<Mro> hotplace =ms.selectKungnam();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gyeongsangnam_do";
 	}
 
 	@RequestMapping(value = "/Gyeongsangbukdo", method = RequestMethod.GET)
 	public String Gyeongsangbukdo(Model model) {
+		List<Mro> hotplace =ms.selectKungbuk();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gyeongsangbuk_do";
 	}
 
 	@RequestMapping(value = "/gyeonggido", method = RequestMethod.GET)
 	public String gyeonggido(Model model) {
+		List<Mro> hotplace =ms.selectGunggi();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/gyeonggi_do";
 	}
 
 	@RequestMapping(value = "/Gangwondo", method = RequestMethod.GET)
 	public String Gangwondo(Model model) {
+		List<Mro> hotplace =ms.selectGangwon();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gangwon_do";
 	}
 
 	@RequestMapping(value = "/chungcheongnamdo", method = RequestMethod.GET)
 	public String chungcheongnamdo(Model model) {
+		List<Mro> hotplace =ms.selectChungnam();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongnam_do";
 	}
 
 	@RequestMapping(value = "/chungcheongbukdo", method = RequestMethod.GET)
 	public String chungcheongbukdo(Model model) {
+		List<Mro> hotplace =ms.selectChungbuk();
+		String first = "";
+		String second = "";
+		String third ="";
+		for(int i=0; i<hotplace.size(); i++){
+			first = hotplace.get(0).getSiGu();
+			second = hotplace.get(1).getSiGu();
+			third = hotplace.get(2).getSiGu();
+		}
+		
+		model.addAttribute("first",first);
+		model.addAttribute("second",second);
+		model.addAttribute("third",third);
+		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
 
@@ -378,4 +522,6 @@ public class MapAPIController {
 		
 			return "redirect:/mypageMain";
 	}
+	
+	
 }

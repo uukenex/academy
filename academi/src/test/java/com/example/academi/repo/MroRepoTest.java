@@ -1,5 +1,9 @@
 package com.example.academi.repo;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -185,5 +189,30 @@ RouteService rs;
 		
 
 	}
-
+	
+	@Test
+	public void hotplaceDo1(){
+		mrepo.hotplaceDo();
+	}
+	
+	@Test
+	public void doSelect(){
+		mrepo.selectDo();
+	}
+	
+	@Test
+	public void dotest(){
+		mrepo.selectGangwon();
+		mrepo.selectChungbuk();
+		mrepo.selectChungnam();
+		mrepo.selectGunggi();
+		mrepo.selectJeju();
+		mrepo.selectJunbuk();
+		mrepo.selectJunnam();
+		mrepo.selectKungbuk();
+		mrepo.selectKungnam();
+		
+		
+	}
+	
 }
