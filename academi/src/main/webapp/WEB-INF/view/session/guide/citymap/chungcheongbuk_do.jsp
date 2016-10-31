@@ -128,30 +128,6 @@
 	mus11on = new Image();
 	mus11off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/충북/1충북-진천.png';
-	mus2off.src = './map/충북/1충북-음성.png';
-	mus3off.src = './map/충북/1충북-충주.png';
-	mus4off.src = './map/충북/1충북-제천.png';
-	mus5off.src = './map/충북/1충북-단양.png';
-	mus6off.src = './map/충북/1충북-괴산.png';
-	mus7off.src = './map/충북/1충북-증평.png';
-	mus8off.src = './map/충북/1충북-청주.png';
-	mus9off.src = './map/충북/1충북-보은.png';
-	mus10off.src = './map/충북/1충북-옥천.png';
-	mus11off.src = './map/충북/1충북-영동.png';
-
-	mus1on.src = './map/충북/1충북-진천(변환).png';
-	mus2on.src = './map/충북/1충북-음성(변환).png';
-	mus3on.src = './map/충북/1충북-충주(변환).png';
-	mus4on.src = './map/충북/1충북-제천(변환).png';
-	mus5on.src = './map/충북/1충북-단양(변환).png';
-	mus6on.src = './map/충북/1충북-괴산(변환).png';
-	mus7on.src = './map/충북/1충북-증평(변환).png';
-	mus8on.src = './map/충북/1충북-청주(변환).png';
-	mus9on.src = './map/충북/1충북-보은(변환).png';
-	mus10on.src = './map/충북/1충북-옥천(변환).png';
-	mus11on.src = './map/충북/1충북-영동(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
@@ -174,6 +150,105 @@
 	}
 
 	//-----------------------------------------------------------------------------------------
+</script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/충북/1충북-진천.png';
+		mus2off.src = './map/충북/1충북-음성.png';
+		mus3off.src = './map/충북/1충북-충주.png';
+		mus4off.src = './map/충북/1충북-제천.png';
+		mus5off.src = './map/충북/1충북-단양.png';
+		mus6off.src = './map/충북/1충북-괴산.png';
+		mus7off.src = './map/충북/1충북-증평.png';
+		mus8off.src = './map/충북/1충북-청주.png';
+		mus9off.src = './map/충북/1충북-보은.png';
+		mus10off.src = './map/충북/1충북-옥천.png';
+		mus11off.src = './map/충북/1충북-영동.png';
+
+		mus1on.src = './map/충북/1충북-진천(변환).png';
+		mus2on.src = './map/충북/1충북-음성(변환).png';
+		mus3on.src = './map/충북/1충북-충주(변환).png';
+		mus4on.src = './map/충북/1충북-제천(변환).png';
+		mus5on.src = './map/충북/1충북-단양(변환).png';
+		mus6on.src = './map/충북/1충북-괴산(변환).png';
+		mus7on.src = './map/충북/1충북-증평(변환).png';
+		mus8on.src = './map/충북/1충북-청주(변환).png';
+		mus9on.src = './map/충북/1충북-보은(변환).png';
+		mus10on.src = './map/충북/1충북-옥천(변환).png';
+		mus11on.src = './map/충북/1충북-영동(변환).png';
+	 
+	 if("${first}"=="진천군"||"${second}"=="진천군"||"${third}"=="진천군"){ 
+		 	mus1off.src='/map/충북/1충북-진천(hot).png';
+		 	$('.list1')[0].src='/map/충북/1충북-진천(hot).png';
+		}else{
+			$('.list1')[0].src='/map/충북/1충북-진천.png';
+		}
+	 if("${first}"=="음성군"||"${second}"=="음성군"||"${third}"=="음성군"){ 
+		 	mus2off.src='/map/충북/1충북-음성(hot).png';
+		 	$('.list2')[0].src='/map/충북/1충북-음성(hot).png';
+		}else{
+			$('.list2')[0].src='/map/충북/1충북-음성.png';
+		}
+	 if("${first}"=="충주군"||"${second}"=="충주군"||"${third}"=="충주군"){ 
+		 	mus3off.src='/map/충북/1충북-충주(hot).png';
+		 	$('.list3')[0].src='/map/충북/1충북-충주(hot).png';
+		}else{
+			$('.list3')[0].src='/map/충북/1충북-충주.png';
+		}
+	 if("${first}"=="제천시"||"${second}"=="제천시"||"${third}"=="제천시"){ 
+		 	mus4off.src='/map/충북/1충북-제천(hot).png';
+		 	$('.list4')[0].src='/map/충북/1충북-제천(hot).png';
+		}else{
+			$('.list4')[0].src='/map/충북/1충북-제천.png';
+		}
+	 if("${first}"=="단양군"||"${second}"=="단양군"||"${third}"=="단양군"){ 
+		 	mus5off.src='/map/충북/1충북-단양(hot).png';
+		 	$('.list5')[0].src='/map/충북/1충북-단양(hot).png';
+		}else{
+			$('.list5')[0].src='/map/충북/1충북-단양.png';
+		}
+	 if("${first}"=="괴산군"||"${second}"=="괴산군"||"${third}"=="괴산군"){ 
+		 	mus6off.src='/map/충북/1충북-괴산(hot).png';
+		 	$('.list6')[0].src='/map/충북/1충북-괴산(hot).png';
+		}else{
+			$('.list6')[0].src='/map/충북/1충북-괴산.png';
+		}
+	 if("${first}"=="증평군"||"${second}"=="증평군"||"${third}"=="증평군"){ 
+		 	mus7off.src='/map/충북/1충북-증평(hot).png';
+		 	$('.list7')[0].src='/map/충북/1충북-증평(hot).png';
+		}else{
+			$('.list7')[0].src='/map/충북/1충북-증평.png';
+		}
+	 if("${first}"=="청주군"||"${second}"=="청주군"||"${third}"=="청주군"){ 
+		 	mus8off.src='/map/충북/1충북-청주(hot).png';
+		 	$('.list8')[0].src='/map/충북/1충북-청주(hot).png';
+		}else{
+			$('.list8')[0].src='/map/충북/1충북-청주.png';
+		}
+	 if("${first}"=="보은군"||"${second}"=="보은군"||"${third}"=="보은군"){ 
+		 	mus9off.src='/map/충북/1충북-보은(hot).png';
+		 	$('.list9')[0].src='/map/충북/1충북-보은(hot).png';
+		}else{
+			$('.list9')[0].src='/map/충북/1충북-보은.png';
+		}
+	 if("${first}"=="옥천군"||"${second}"=="옥천군"||"${third}"=="옥천군"){ 
+		 	mus10off.src='/map/충북/1충북-옥천(hot).png';
+		 	$('.list10')[0].src='/map/충북/1충북-옥천(hot).png';
+		}else{
+			$('.list10')[0].src='/map/충북/1충북-옥천.png';
+		}
+	 if("${first}"=="영동군"||"${second}"=="영동군"||"${third}"=="영동군"){ 
+		 	mus11off.src='/map/충북/1충북-영동(hot).png';
+		 	$('.list11')[0].src='/map/충북/1충북-영동(hot).png';
+		}else{
+			$('.list11')[0].src='/map/충북/1충북-영동.png';
+		}
+	 
+ });
+ 
 </script>
 </head>
 <body>

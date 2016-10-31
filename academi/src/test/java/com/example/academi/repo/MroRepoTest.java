@@ -200,4 +200,19 @@ RouteService rs;
 		mrepo.selectDo();
 	}
 	
+	@Test
+	public void dotest(){
+		mrepo.selectGangwon();
+		mrepo.selectChungbuk();
+		mrepo.selectChungnam();
+		mrepo.selectGunggi();
+		mrepo.selectJeju();
+		mrepo.selectJunbuk();
+		mrepo.selectJunnam();
+		mrepo.selectKungbuk();
+		mrepo.selectKungnam();
+		
+		
+	}
+	
 }
