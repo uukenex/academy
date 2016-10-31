@@ -93,17 +93,6 @@ function smenu_click(musName){
 </script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-<%-- 
-window.onload = function(){
-	for (i=1; i<2; i++) {
-		if ('<%=request.getParameter("req")%>'==exx[i]) {
-			cMuName = 'mus'+i;
-			document [cMuName].src = eval(cMuName + 'on.src');
-			onclick=smenu_click(cMuName);
-		}
-	}
-}
- --%>
  
  $(document).on("ready",function(){
 	 mus1off.src = './map/domap/인천.png';	
@@ -166,7 +155,7 @@ window.onload = function(){
 		}
 	 if("${firstDo}"=="충청남도" ||"${secondDo}"=="충청남도"||"${thirdDo}"=="충청남도"){ 
 		 	mus5off.src='/map/domap/충청남도(hot).png';
-		 	$('.lis5')[0].src='/map/domap/충청남도(hot).png';
+		 	$('.list5')[0].src='/map/domap/충청남도(hot).png';
 		}else{
 			$('.list5')[0].src='/map/domap/충청남도.png';
 		}

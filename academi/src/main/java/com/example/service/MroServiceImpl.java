@@ -36,5 +36,69 @@ public class MroServiceImpl implements MroService {
 		List<Mro> doList = mrepo.selectDo();
 		return doList;
 	}
+	/** 핫플레이스 강원 **/
+	@Override
+	public List<Mro> selectGangwon() {
+		// TODO Auto-generated method stub
+		List<Mro> selectGangwon = mrepo.selectGangwon();
+		return selectGangwon;
+	}
+	/** 핫플레이스 충북 **/
+	@Override
+	public List<Mro> selectChungbuk() {
+		// TODO Auto-generated method stub
+		List<Mro> selectChungbuk = mrepo.selectChungbuk();
+		return selectChungbuk;
+	}
+	/** 핫플레이스 충남 **/
+	@Override
+	public List<Mro> selectChungnam() {
+		// TODO Auto-generated method stub
+		List<Mro> selectChungnam = mrepo.selectChungnam();
+		return selectChungnam;
+	}
+	
+	/** 핫플레이스 경기 **/
+	@Override
+	public List<Mro> selectGunggi() {
+		// TODO Auto-generated method stub
+		List<Mro> selectGunggi = mrepo.selectGunggi();
+		return selectGunggi;
+	}
+	/** 핫플레이스 제주 **/
+	@Override
+	public List<Mro> selectJeju() {
+		// TODO Auto-generated method stub
+		List<Mro> selectJeju = mrepo.selectJeju();
+		return selectJeju;
+	}
+	/** 핫플레이스 전북 **/
+	@Override
+	public List<Mro> selectJunbuk() {
+		// TODO Auto-generated method stub
+		List<Mro> selectJunbuk = mrepo.selectJunbuk();
+		return selectJunbuk;
+	}
+	/** 핫플레이스 전남 **/
+	@Override
+	public List<Mro> selectJunnam() {
+		// TODO Auto-generated method stub
+		List<Mro> selectJunnam = mrepo.selectJunnam();
+		return selectJunnam;
+	}
+	/** 핫플레이스 경북 **/
+	@Override
+	public List<Mro> selectKungbuk() {
+		// TODO Auto-generated method stub
+		List<Mro> selectKungbuk = mrepo.selectKungbuk();
+		return selectKungbuk;
+	}
+	/** 핫플레이스 경남 **/
+	@Override
+	public List<Mro> selectKungnam() {
+		// TODO Auto-generated method stub
+		List<Mro> selectKungnam = mrepo.selectKungnam();
+		return selectKungnam;
+	}
 
 }
