@@ -42,9 +42,37 @@ position: relative;
 	left: -50px; /* -이미지의 크기 x 갯수  */
 	top:-175px; /* -(버튼의크기-이미지의크기) */
 }
+.outer {
+position: relative;
+width: 250px; /* 너비 설정*/
+height: 200px; /* 높이 설정*/
+display: inline-block;
+}
+.bottomleft {
+position: absolute;
+bottom: 0;
+left: 0.5em;
+width: 200px;
+text-align : center;
+font-weight: bold;
+color: #000;
+display: inline;
+}
+.folderInline{
+display: inline-block;
+z-index: 1;
+}
 </style>
 </head>
 <body>
+
+<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+				
+				
+<div style="height: 5em;"></div>
 ${users.userNick }의 포토북
 	<c:url value="/photo" var="photo" />
 	<form id="frm">
@@ -95,6 +123,9 @@ var files = [];
 //interval은 디비에서 마지막숫자를 가져와서 바꿔줘야함
 var interval=0;
 
+
+
+
 //등록중 처리
 $(document).on("change","#fileLoader",function(event) {
                  files=event.target.files;
@@ -129,42 +160,45 @@ function processUpload()
 {
     var oMyForm = new FormData();
     for(var i=0;i<files.length;i++){
-    	oMyForm.append("file", files[i]);	
+    	oMyForm.append("file", files[i]);
    		}
+    oMyForm.append("userId",'<%=request.getParameter("userId")%>');
+    oMyForm.append("folderName",'<%=request.getParameter("folderName")%>');
     	
-   $.ajax({dataType : 'json',
-          url : "${photo}",
-          data : oMyForm,
-          type : "POST",
-          enctype: 'multipart/form-data',
-          processData: false, 
-          contentType:false,
-          success : function(result) {
-        	  console.log(result);
-        	  var html="";
-        	  $(result[0]).each(function(idx,item){
-        		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/";
-        		  html+=item;
-        		  html+=" id='img"+interval+"' ";
-        		  html+=">";
-        		  html+="<img src=/photo_upload/";
-        		  html+=item;
-        		  html+=" width='200px' height='200px' >";
-        		  html+="</a>";
-        		  //다운로드 이미지버튼
-        		  html+="<a href=/photo_upload/"+item;
-        		  html+=" download id='down"+interval+"' ><img id='down"+interval;
-        		  html+="' src='/images/down.png'";
-        		  html+="height='25px' width='25px' class='down ' >";
-        		  html+="</a>";
-        		  //삭제 이미지버튼
-        		  html+="<img id='chk"+interval;
-        		  html+="' src='/images/delete.png'";
-        		  html+="height='25px' width='25px' class='close '>";
+   $.ajax({
+	   dataType : 'json',
+       url : "${photo}",
+       data :oMyForm,
+       type : "POST",
+       enctype: 'multipart/form-data',
+       processData: false, 
+       contentType:false,
+       success : function(result) {
+       	  console.log(result);
+       	  var html="";
+       	  $(result[0]).each(function(idx,item){
+       		  html+='<a class="fancybox" rel="gallery1" href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/';
+       		  html+=item;
+       		  html+=" id='img"+interval+"' ";
+       		  html+=">";
+       		  html+='<img src=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/';
+       		  html+=item;
+       		  html+=" width='200px' height='200px' >";
+       		  html+="</a>";
+       		  //다운로드 이미지버튼
+       		  html+='<a href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/'+item;
+       		  html+=" download id='down"+interval+"' ><img id='down"+interval;
+       		  html+="' src='/images/down.png'";
+       		  html+="height='25px' width='25px' class='down ' >";
+       		  html+="</a>";
+       		  //삭제 이미지버튼
+       		  html+="<img id='chk"+interval;
+       		  html+="' src='/images/delete.png'";
+       		  html+="height='25px' width='25px' class='close '>";
         		  
-        		  interval++;
+       		  interval++;
         	  });
-        	  	$("#result")[0].innerHTML+=html;
+       	  	$("#result")[0].innerHTML+=html;
         	  
           },
           error : function(result){
@@ -173,20 +207,117 @@ function processUpload()
           }
       });
 }
+
+
+
+<c:url value="/newfolder" var="newfolder" />
 $("#newFolder").on("click",function(){
-	var html="";
-		  /* html+="<a href=/mvc_day4_ajax/upload/";
-		  html+=$("#newFolder").val();
-		  html+=" id=img" ";
-		  html+=">"; */
-		  html+="<img src=/images/";
-		  html+="newFolder2.png";
-		  html+=" width='200px' height='200px' >";
-		 
-		  
-		$("#result")[0].innerHTML+=html;
+	
+	var conf = prompt("새폴더 이름을 만들어주세요");
+	
+	$.ajax({
+		type:"post",
+		url:"${newfolder}",
+		data:{
+			userId:'${users.userId }',
+			name:conf
+		},
+		success:function(res){
+			if(res==true){
+				var html="";
+				html+="<div class='outer'>";
+				html+="<img src=/images/newFolder2.png class='folderInline'";
+				html+=" width='200px' height='200px' >";
+				html+="<div class='bottomleft'><p style='text-align: center'>";
+				html+=conf;
+				html+="  </p></div><div>";
+				$("#result")[0].innerHTML+=html;
+			}
+			else{
+				console.log('실패');
+			}
+		}
+		,
+		error:function(xhr,status,error){
+			alert(error);
+		}
+	});
 		
 });
+
+<c:url value="/loadfolder" var="loadfolder" />
+
+
+	
+$(document).on("ready",function(){
+	var folderName="";
+	$(document).on("dblclick",".folderInline",function(event) {
+		
+		folderName = event.currentTarget.nextSibling.innerText;
+			location.href="/session/myPhoto?userId=${users.userId }&folderName="+folderName;
+		   });
+	
+	$.ajax({
+		type:"post",
+		url:"${loadfolder}",
+		data:{
+			userId:'<%=request.getParameter("userId")%>',
+			folderName:'<%=request.getParameter("folderName")%>'
+		},
+		success:function(res){
+			console.log(res);
+			//폴더목록가져옴
+			
+			$(res[1]).each(function(idx,item){
+				var html="";
+				html+="<div class='outer'>";
+				html+="<img src=/images/newFolder2.png class='folderInline'";
+				html+=" width='200px' height='200px' >";
+				html+="<div class='bottomleft'><p style='text-align: center'>";
+				html+=item;
+				html+="  </p></div><div>";
+				$("#result")[0].innerHTML+=html;
+				
+				
+				
+				
+				});
+			
+				var html="";
+			//파일목록 받아옴
+	       	  $(res[0]).each(function(idx,item){
+	       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/";
+	       		  html+=item;
+	       		  html+=" id='img"+interval+"' ";
+	       		  html+=">";
+	       		  html+="<img src=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/";
+	       		  html+=item;
+	       		  html+=" width='200px' height='200px' >";
+	       		  html+="</a>";
+	       		  //다운로드 이미지버튼
+	       		  html+="<a href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/"+item;
+	       		  html+=" download id='down"+interval+"' ><img id='down"+interval;
+	       		  html+="' src='/images/down.png'";
+	       		  html+="height='25px' width='25px' class='down ' >";
+	       		  html+="</a>";
+	       		  //삭제 이미지버튼
+	       		  html+="<img id='chk"+interval;
+	       		  html+="' src='/images/delete.png'";
+	       		  html+="height='25px' width='25px' class='close '>";
+	        		  
+	       		  interval++;
+	        	  });
+	       	  	$("#result")[0].innerHTML+=html;
+			
+		},
+		error:function(xhr,status,error){
+			alert(error);
+		}
+	});
+	
+
+});
+
 
 </script>
 
