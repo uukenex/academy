@@ -14,10 +14,12 @@
 			</a>
 			
 			<div id="mapRightToggleMenu">
-				<input type="button" id="searchRegionButton" value="도, 시 찾기">
+				<a id="searchRegionList1" class="mapRightList">
+					----- 도, 시 찾기 <i class="fa fa-angle-double-down"></i> -----
+				</a>
 				
 				<div id="mapSearchSection">
-					<a class="fancybox" id="searchRegionButton" href="/doMap">도 지도 보기</a>
+					<a class="fancybox" id="searchRegionButton" href="/doMap">도*시 지도 보기</a>
 					<br>
 					<select id="select" style="display: none;">
 						<option value="AT4" >관광지</option>
@@ -33,10 +35,7 @@
 					<div class="mapMenuDropdown">
 						<div class="mapMenuList">
 							<ul class="mapDropdownName">
-								<li class="mapDropdownName_txt" >
-									선택해주세요
-									<i class="fa fa-hand-o-up"></i>
-								</li>
+								<li class="mapDropdownName_txt" >선택</li>
 								<li class="mapDropdownName_icon">
 									<i class="fa fa-chevron-down"></i>
 								</li>
@@ -76,6 +75,7 @@
 										주유소</a></li>
 							</ul>
 						</div>
+						<input type="text" id="keyword" placeholder="Search..">
 					</div>
 										
 					<script type="text/javascript">
@@ -145,13 +145,15 @@
 					    });
 
 					</script>
-					<input type="text" id="keyword" placeholder="Search..">
+					
 					<br/>
 					<input type="button" id="search" class="mapRegionSearchButton" value="찾기">
 				</div>
 				
 				<br/>
-				<input type="button" id="bestRouteButton" value="추천 경로">
+				<a id="bestRouteButton" class="mapRightList">
+					----- 추천 경로 <i class="fa fa-angle-double-down"></i> -----
+				</a>
 				<div id="bestRouteSection">
 					<p>1. Best Route 1</p>
 					<p>2. Best Route 2</p>
@@ -169,7 +171,7 @@
 		
 		<script>
 			$(document).ready(function(){
-				$("#searchRegionButton").click(function(){
+				$("#searchRegionList1").click(function(){
 					$("#mapSearchSection").toggle("slide", {direction: 'up'}, 1000);
 				});
 			});

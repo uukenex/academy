@@ -4035,7 +4035,7 @@
  		
 		.mapLeftTab li {
 			float: left;
-			width: 47%;
+			width: 100%;
 			border: solid 1px #ddd;
 			text-align: center;
 			display: inline-block;
@@ -4045,7 +4045,6 @@
 			font-weight: bold;
 			color: #17375E;
 			border-radius: 3%;
-			margin-left: 0.5em;
 		}
 		
 		.mapLeftTab li.on {
@@ -4069,12 +4068,10 @@
 		}
 		
 		.mapMenuDropdown{
-			width:100%; 
+			width:auto; 
 			text-align:center;
-			margin-left: 1.6em;
-			margin-top: 2em;
+			margin-top: 1em;
 		}
-		.thumb img{width:30px; height:30px; float:left;}
 		.mapMenuList{float:left}
 		.mapDropdownName{
 			margin:0;
@@ -4095,10 +4092,9 @@
 		    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
 		}
 		.mapDropdownName_txt{
-		    width:10em;  
-		    font-size:1.2em; 
+		    width:7em;  
+		    font-size:0.7em; 
 		    font-weight:bold; 
-		    text-indent:10px;
 		}
 		.mapDropdownName_txt.active{
 		    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d5202a), to(#ad181f));
@@ -4108,7 +4104,7 @@
 		    color:#fff;
 		}
 		.mapDropdownName_icon{
-		    width:2.7em; 
+		    width:1.5em; 
 		    color:#0088cc; 
 		    border-left:1px solid #dedede; 
 		    text-align:center;
@@ -4119,7 +4115,7 @@
 		    padding:0; 
 		    position:absolute; 
 		    z-index:9999;
-		    width:159px; 
+		    width:120px; 
 		    border:1px solid #dedede; 
 		    border-top:none; 
 		    background-color:#fff;
@@ -4127,52 +4123,28 @@
 		.mapMenuListContent li{
 		    list-style:none; 
 		    margin:0; 
-		    padding:0.3em; 
 		    line-height:34px; 
-		    font-size:1em; 
-		    text-indent:5px;
+		    font-size:0.7em; 
 		}
 		.mapMenuListContent li {border-bottom:1px solid #dedede}
 		.mapMenuListContent li.active{font-weight:bold; background-color:#f8f8f8}
 		.mapMenuListContent li:hover{background-color:#f8f8f8}
-		.mapMenuListContent li i{margin-right:5px;}
+		/* .mapMenuListContent li i{margin-right:5px;} */
 		.mapMenuListContent a {
 			text-decoration: none;
 			cursor: pointer;
 		}
 		
 		#keyword {
-			width: 95%;
+			width: 60%;
 			border-radius: 5%;
-			margin-top: 2em;
-			padding: 0.5em 1em;
+			padding: 0.3em;
 			font-family: 'Nunum Gothic';
-			font-size: 1.3em;
-			-webkit-transition: width 0.4s ease-in-out;
-    		transition: width 0.4s ease-in-out;
-			
+			font-size: 0.7em;
 		}
 		
 				
 	/* Map Left Menu Button Style */
-	
-		#searchRegionButton {
-			background: #eee;
-			border: solid 1px #ddd;
-			font-family: 'Nanum Gothic';
-			font-size: 1em;
-			color: #f00;
-			padding: 0.3em;
-			text-align: center;
-			vertical-align: middle;
-			border-radius: 10%;
-		}
-		
-		#searchRegionButton:hover {
-			background: #17375E;
-			color: #FFFFFF;
-			cursor: pointer;
-		}
 		
 		input[type="button"].mapRegionSearchButton {
 			width: 100%;
@@ -4258,7 +4230,7 @@
 			}
 			
 			
-/* test toggle box */
+/* toggle box */
 
 	#mapRightTab {
 		text-align: right;
@@ -4266,9 +4238,10 @@
 	}
 	
 	#mapRightToggleMenu {
-		width: 100%;
+		width: 20em;
 		height: auto;
-		background-color: #AAAAAA;
+		text-align: center;
+		background-color: rgba(200, 200, 200, 0.7);
 	}
 	
 	#mapRightTab {
@@ -4278,3 +4251,36 @@
 	#map_wrap {
 		z-index: 900;
 	}
+	
+	a.mapRightList {
+		width: 100%;
+		text-align: center;
+		font-family: 'Nanum Gothic';
+		font-size: 1em;
+		font-weight: bold;
+		background-color: none;
+		color: #000000;
+		margin: 0.5em 1em;
+		vertical-align: middle;
+	}
+	
+	a.mapRightList:HOVER {
+		background-color: #eee;
+		color: #FF8383;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	
+	#mapSearchSection {
+		margin-top: 1.3em;
+	}
+	
+	/* Toggle Box Button style */
+	
+		#searchRegionButton {
+			border: 1px solid #646464;
+			border-radius: 5%;
+			padding: 0.3em 0.5em;
+			font-family: "Nanum Gothic";
+			font-weight: bold;
+		}

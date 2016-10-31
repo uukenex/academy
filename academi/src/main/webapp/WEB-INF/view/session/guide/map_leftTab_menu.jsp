@@ -11,7 +11,6 @@
 		<!-- Tab 설정 -->
 			<ul class="mapLeftTab" id="mapLeftTab">
 				<li>선택한 지역</li>
-				<li>도_시찾기</li>
 			</ul>
 			
 			<div class="mapLeftTab_con" id="mapLeftTab_con">
