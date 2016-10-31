@@ -17,16 +17,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.dto.Users;
+
 @Controller
 public class PhotoBookController {
 	static Logger logger = LoggerFactory.getLogger(PhotoBookController.class);
 	
 	//포토북 페이지로 들어감
 	@RequestMapping(value = "/photoWrite")
-	public String free(Model model, HttpSession session) {
+	public String write(Model model, HttpSession session) {
 		
 		return "session/photobook/photo_sign";
 	}
+	
+	
+	@RequestMapping(value = "/myPhoto")
+	public String myPhoto(Model model, HttpSession session) {
+		Users users = (Users)session.getAttribute("Users");
+		model.addAttribute("users",users);
+		return "session/photobook/photo_sign";
+	}
+	
+	
+	
 	
 	//포토북 ajax
 	private final String UPLOAD_DIR = "c:/Temp/";

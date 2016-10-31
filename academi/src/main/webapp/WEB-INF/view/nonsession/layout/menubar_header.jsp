@@ -15,15 +15,13 @@
 			<script src="<%=request.getContextPath() %>/assets/js/main.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/jquery.scrollex.min.js"></script>
 			<script src="<%=request.getContextPath() %>/assets/js/popMain.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/phanMain.js"></script>
-			
+			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
 			<!-- SlidesJS Required: Link to jquery.slides.js -->
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->
   					<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/map_right_menu.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
