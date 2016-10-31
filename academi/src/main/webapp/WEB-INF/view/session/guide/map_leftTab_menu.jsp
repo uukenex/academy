@@ -7,7 +7,7 @@
 
 
 <!-- Make a map Left Tap Menu -->
-	<div class="3u 12u(moblie) map_left_tab" style="margin-bottom: 40em;">
+	<div class="2u 12u(moblie) map_left_tab" style="margin-bottom: 40em;">
 		<!-- Tab 설정 -->
 			<ul class="mapLeftTab" id="mapLeftTab">
 				<li>선택한 지역</li>

@@ -10,7 +10,7 @@
 		
 		<div id="mapRightTab">
 			<a id="mapRightToggleButton">
-				<i class="fa fa-align-justify fa-2x"></i>
+				<i class="fa fa-search-plus fa-2x"></i>
 			</a>
 			
 			<div id="mapRightToggleMenu">
@@ -150,7 +150,7 @@
 				</div>
 				
 				<a id="bestRouteButton" class="mapRightList">
-					----- 추천 경로 <i class="fa fa-angle-double-down"></i> -----
+					----- 추천  경로 <i class="fa fa-angle-double-down"></i> -----
 				</a>
 				<div id="bestRouteSection">
 					<p>1. Best Route 1<br/>
