@@ -82,6 +82,7 @@
 										
 					<script type="text/javascript">
 					$(document).on("ready",function(){
+						
 						$("#관광지").on("click",function(){
 							$("#select").val("AT4");
 							

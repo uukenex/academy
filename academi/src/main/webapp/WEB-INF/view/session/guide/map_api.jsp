@@ -350,7 +350,7 @@ color: white;
 				map.setLevel(map.getLevel()-1);
 			})
 			
-			
+			$("#select").val("AT4");
 			if($("#stored").prop("checked")!=true){
 			places.categorySearch($("#select").val(), callback, {
 				location : center
