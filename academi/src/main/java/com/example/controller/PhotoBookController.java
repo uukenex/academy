@@ -105,11 +105,11 @@ public class PhotoBookController {
 		{
 			int pos = fileList[i].getName().lastIndexOf( "." );
 			String ext = fileList[i].getName().substring( pos + 1 );
-			if(ext.equals("jpg")||ext.equals("png"))
+			if(ext.equals("jpg")||ext.equals("png")||ext.equals("gif")||ext.equals("bmp"))
 			{		
 				files.add(fileList[i].getName());
 			}
-			else{
+			else {
 				folders.add(fileList[i].getName());
 			}
 		}
@@ -124,20 +124,50 @@ public class PhotoBookController {
 	
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public @ResponseBody String delete(@RequestParam String pathname,HttpServletRequest request) throws IllegalStateException, IOException {
+	public @ResponseBody boolean delete(@RequestParam String pathname,HttpServletRequest request) throws IllegalStateException, IOException {
 		//넘어올때 인코딩 형식을 다르게 받아줘야함..
 		pathname = URLDecoder.decode(pathname,"UTF-8");
 		pathname = pathname.replace("/photo_upload/",UPLOAD_DIR );
 		pathname = pathname.replace("/","\\" );
-		String resultMessage="";
+		logger.trace("{}",pathname);
+		boolean resultMessage=false;
 		
 		File f = new File(pathname);
 		if(f.delete()){
-			resultMessage="삭제성공";
-		}
-		else{
-			resultMessage="삭제실패";
+			resultMessage=true;
 		}
 		return resultMessage;
 	}
+	
+	
+	
+	@RequestMapping(value = "/deleteFolder", method = RequestMethod.POST)
+	public @ResponseBody boolean deleteFolder(
+			@RequestParam String pathname
+			,@RequestParam String curUserId
+			,HttpServletRequest request) throws IllegalStateException, IOException {
+		//접속중인 폴더주인이름
+		curUserId = URLDecoder.decode(curUserId,"UTF-8");
+		//폴더이름
+		pathname = URLDecoder.decode(pathname,"UTF-8");
+		String realPath=UPLOAD_DIR+curUserId+"/"+pathname; 
+		logger.trace("{}",realPath);
+		
+		boolean resultMessage=false;
+		
+		File f = new File(realPath);
+		if(f.delete()){
+			resultMessage=true;
+		}
+		return resultMessage;
+	}
+	
+	
+	// 포토북 새폴더 만들기ajax
+		@RequestMapping(value = "/zipdown", method = RequestMethod.POST)
+		public @ResponseBody boolean zipDown(@RequestParam String pathname,
+				HttpServletRequest request) throws IllegalStateException, IOException {
+			logger.trace("{}",pathname);
+			return true;
+		}
 }

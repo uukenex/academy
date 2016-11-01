@@ -73,8 +73,20 @@ z-index: 1;
 				
 				
 <div style="height: 5em;"></div>
+
+
+
+
+
 <c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
-<%-- 현재아이디와 들어가려는 아이디가 같은경우에만 수정이가능함 --%>
+<c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
+
+<%-- 루트폴더 처리 --%>
+<c:if test="${folderName=='..' }" >
+ 	<c:set var="folderName" value='.'></c:set>
+</c:if>
+
+<%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
 <c:if test="${Users.userId==curUserId }"> 
 <h3>${Users.userNick }의 포토북</h3>
 	<c:url value="/photo" var="photo" />
@@ -87,8 +99,7 @@ z-index: 1;
         <input type="text" id="cntFiles" style="display: inline; width: 200px;" readonly="readonly"/>
 		<input type="button" id="fileSubmit" value="Upload"/>
 		<label for="fileSubmit">저장</label>
-		<c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
-		<c:if test="${empty folderName }">
+		<c:if test="${empty folderName || folderName=='.' }">
 		<input type="button" id="newFolder" value="새폴더"/>
 		<label for="newFolder">새폴더</label>
 		</c:if>
@@ -133,7 +144,6 @@ $(document).ready(function() {
 });
 
 var files = [];
-//interval은 디비에서 마지막숫자를 가져와서 바꿔줘야함
 var interval=0;
 
 
@@ -154,8 +164,13 @@ $(document).on("click","#fileSubmit",function() {
 //삭제처리
 <c:url value="/delete" var="delete" />
 $(document).on("click",".close",function() {
+	//글씨나 div를 넣어주는경우 한번씩 더실행할것
+	var delImg0 = this.previousSibling.previousSibling;
+	var delImg1 = this.previousSibling;
+	var delImg2 = this;
 	if(confirm('정말 삭제하시겠습니까?')==true)
 		{
+		
 		//여기서 ajax 삭제처리 해주어야함
 		console.log(this.previousSibling.previousSibling);
 		var pathname=this.previousSibling.previousSibling.pathname;
@@ -166,21 +181,62 @@ $(document).on("click",".close",function() {
 				pathname:pathname
 			},
 			success:function(res){
-			
-					console.log(res);
-				
+				if(res==1){
+					console.log('삭제성공');
+					delImg0.remove();
+					delImg1.remove();
+					delImg2.remove();
+				}
+				else{
+					console.log('삭제실패');
+				}
 			}
 			,
 			error:function(xhr,status,error){
-				alert(error);
+				console.log('ajax연결실패')
 			}
 		});
 		
 		
-		//글씨나 div를 넣어주는경우 한번씩 더실행할것
-		this.previousSibling.remove();
-		this.previousSibling.remove();
-		this.remove();
+			
+		}
+	else{
+		return;
+		}
+    });
+
+//폴더 삭제처리
+<c:url value="/deleteFolder" var="deleteFolder" />
+$(document).on("click",".fclose",function() {
+	
+var delParent=this.parentNode;
+	if(confirm('폴더안의 내용이 모두삭제됩니다.\n'
+			 +'삭제하시겠습니까?')==true)
+		{
+		//여기서 ajax 삭제처리 해주어야함
+		var pathname=this.previousSibling.previousSibling.innerText.trim();
+		$.ajax({
+			type:"post",
+			url:"${deleteFolder}",
+			data:{
+				curUserId:'${curUserId}',
+				pathname:pathname
+			},
+			success:function(res){
+				if(res==1){
+					console.log('삭제성공');
+					delParent.remove();
+				}
+				else{
+					console.log('삭제실패');
+				}
+			}
+			,
+			error:function(xhr,status,error){
+				console.log('ajax연결실패')
+			}
+		});
+	
 		}
 	else{
 		return;
@@ -188,17 +244,47 @@ $(document).on("click",".close",function() {
     });
 
 
+//알집으로 압축해서 다운로드처리
+<c:url value="/zipdown" var="zipdown" />
+	$(document).on("click",".fdown",function() {
+		alert('알집으로 다운로드합니다');
+			//여기서 ajax 삭제처리 해주어야함
+		var pathname=this.previousSibling.pathname;
+		$.ajax({
+			type:"post",
+			url:"${zipdown}",
+			data:{
+				pathname:pathname
+			},
+			success:function(res){
+				if(res==1){
+					console.log('다운성공');
+				}
+				else{
+					console.log('다운실패');
+				}
+			}
+			,
+			error:function(xhr,status,error){
+				console.log('ajax연결실패')
+			}
+		});
+			
+	  });
 
 
 
+
+
+//파일업로드
 function processUpload()
 {
     var oMyForm = new FormData();
     for(var i=0;i<files.length;i++){
     	oMyForm.append("file", files[i]);
    		}
-    oMyForm.append("userId",'<%=request.getParameter("userId")%>');
-    oMyForm.append("folderName",'<%=request.getParameter("folderName")%>');
+    oMyForm.append("userId",'${curUserId}');
+    oMyForm.append("folderName",'${folderName}');
     	
    $.ajax({
 	   dataType : 'json',
@@ -209,19 +295,18 @@ function processUpload()
        processData: false, 
        contentType:false,
        success : function(result) {
-       	  console.log(result);
        	  var html="";
        	  $(result[0]).each(function(idx,item){
-       		  html+='<a class="fancybox" rel="gallery1" href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/';
+       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/${curUserId}/${folderName}/";
        		  html+=item;
        		  html+=" id='img"+interval+"' ";
        		  html+=">";
-       		  html+='<img src=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/';
+       		  html+="<img src=/photo_upload/${curUserId}/${folderName}/";
        		  html+=item;
        		  html+=" width='200px' height='200px' >";
        		  html+="</a>";
        		  //다운로드 이미지버튼
-       		  html+='<a href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/'+item;
+       		  html+='<a href=/photo_upload/${curUserId}/${folderName}/'+item;
        		  html+=" download id='down"+interval+"' ><img id='down"+interval;
        		  html+="' src='/images/down.png'";
        		  html+="height='25px' width='25px' class='down ' >";
@@ -254,7 +339,7 @@ $("#newFolder").on("click",function(){
 		type:"post",
 		url:"${newfolder}",
 		data:{
-			userId:'<%=request.getParameter("userId") %>',
+			userId:'${curUserId}',
 			name:conf
 		},
 		success:function(res){
@@ -265,7 +350,22 @@ $("#newFolder").on("click",function(){
 				html+=" width='200px' height='200px' >";
 				html+="<div class='bottomleft'><p style='text-align: center'>";
 				html+=conf;
-				html+="  </p></div><div>";
+				html+="  </p></div>"
+				//다운로드 이미지버튼
+				var fullName="";
+				for(var op=0;op<this.length;op++){
+				fullName +=this[op];
+				}
+		     	html+="<a href=/photo_upload/${curUserId}/"+fullName;
+		     	html+=" download id='down"+interval+"' ><img id='down"+interval;
+		     	html+="' src='/images/down.png'";
+		     	html+="height='25px' width='25px' class='fdown ' >";
+		      	html+="</a>";
+		      	//삭제 이미지버튼
+		      	html+="<img id='chk"+interval;
+		      	html+="' src='/images/delete.png'";
+		      	html+="height='25px' width='25px' class='fclose '>";
+				html+="<div>";
 				$("#result")[0].innerHTML+=html;
 			}
 			else{
@@ -294,7 +394,7 @@ $(document).on("ready",function(){
 			folderName='.'
 		}
 			
-	 	location.href='/session/myPhoto?userId=<%=request.getParameter("userId") %>&folderName='+folderName;
+	 	location.href='/session/myPhoto?userId=${curUserId}&folderName='+folderName;
 		
 		
 	});
@@ -303,8 +403,8 @@ $(document).on("ready",function(){
 		type:"post",
 		url:"${loadfolder}",
 		data:{
-			userId:'<%=request.getParameter("userId")%>',
-			folderName:'<%=request.getParameter("folderName")%>'
+			userId:'${curUserId}',
+			folderName:'${folderName}'
 		},
 		success:function(res){
 			console.log(res);
@@ -317,13 +417,31 @@ $(document).on("ready",function(){
 				html+=" width='200px' height='200px' >";
 				html+="<div class='bottomleft'><p style='text-align: center'>";
 				html+=item;
-				html+="  </p></div><div>";
+				html+="  </p></div>";
+				//다운로드 이미지버튼
+				var fullName="";
+				for(var op=0;op<this.length;op++){
+				fullName +=this[op];
+				}
+	       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
+	       		html+=" download id='down"+interval+"' ><img id='down"+interval;
+	       		html+="' src='/images/down.png'";
+	       		html+="height='25px' width='25px' class='fdown ' >";
+	       		html+="</a>";
+	       		//삭제 이미지버튼
+	       		html+="<img id='chk"+interval;
+	       		html+="' src='/images/delete.png'";
+	       		html+="height='25px' width='25px' class='fclose '>";
+	       		
+				html+="<div>";
 				$("#result")[0].innerHTML+=html;
 				
 				
 				
 				
 				});
+			
+			//폴더가 없을경우 이전폴더로 가는 폴더이미지띄우기
 			if(res[1].length==0){
 				
 				var html="";
@@ -340,16 +458,16 @@ $(document).on("ready",function(){
 				var html="";
 			//파일목록 받아옴
 	       	  $(res[0]).each(function(idx,item){
-	       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/";
+	       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/${curUserId}/${folderName}/";
 	       		  html+=item;
 	       		  html+=" id='img"+interval+"' ";
 	       		  html+=">";
-	       		  html+="<img src=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/";
+	       		  html+="<img src=/photo_upload/${curUserId}/${folderName}/";
 	       		  html+=item;
 	       		  html+=" width='200px' height='200px' >";
 	       		  html+="</a>";
 	       		  //다운로드 이미지버튼
-	       		  html+="<a href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/"+item;
+	       		  html+="<a href=/photo_upload/${curUserId}/${folderName}/"+item;
 	       		  html+=" download id='down"+interval+"' ><img id='down"+interval;
 	       		  html+="' src='/images/down.png'";
 	       		  html+="height='25px' width='25px' class='down ' >";
