@@ -58,7 +58,7 @@
 		
 		<li><a href="/post?page=1">후기 등록</a></li>
 		
-		<li><a href="no-sidebar.html">Photo Book</a>
+		<li><a href="/session/myPhoto?userId=${Users.userId }&folderName">Photo Book</a>
 		</li>
 		<c:url value="/notice?page=1" var="notice" />
 		<li class="dropMenuLi"><a href="${notice }">Board</a>

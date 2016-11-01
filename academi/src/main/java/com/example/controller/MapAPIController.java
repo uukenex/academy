@@ -244,6 +244,13 @@ public class MapAPIController {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
 
+	//지도만들기 - 맵 메인으로 이동하는 페이지
+	@RequestMapping("/mapMain")
+	public String mapMain(Model model,SessionStatus status) {
+		status.setComplete();
+		return "session/guide/map_main";
+	}
+	
 	@RequestMapping(value = "/mapapi", method = RequestMethod.GET)
 	public String mapapi(SessionStatus status, Model model, HttpServletRequest request, HttpSession session) {
 		status.setComplete();
