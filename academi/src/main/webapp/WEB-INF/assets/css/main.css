@@ -4022,6 +4022,8 @@
 
 	/* Map Left Tab Menu */
 	
+		/* Map Left Tab Menu list */
+	
 		.map_left_tab {
 			margin-left: 0.5em;
 		}
@@ -4151,6 +4153,20 @@
 			margin-top: 0.5em;
 		}
 		
+		/* Map Left Menu Route List */
+		
+			.ui-sortable-handle{
+				margin-top: 1em;
+				background : none;
+				border: 1.5px solid #AAAAAA;
+				border-radius: 5%;
+				color: #000000;
+				font-size: 0.9em;
+				font-family: "Nanum Gothic";
+				line-height: 2em;
+				cursor: pointer;
+			}
+			
 				
 	/* Map Left Menu Button Style */
 		
@@ -4180,6 +4196,7 @@
 			font-size: 0.7em;
 			font-weight: bold;
 			color: #000000;
+			margin-top: 1.5em;
 		}
 		
 		input[type="submit"].routeForDB:HOVER {
@@ -4201,6 +4218,8 @@
 				width: 100%;
 				border-radius: 5%;
 				text-align: center;
+				margin-top: -1em;
+				margin-bottom: 2em;
 			}
 			
 			
@@ -4259,7 +4278,7 @@
 /* toggle box */
 
 	.mapMainRightTab{
-		margin: 1em 0 0 0;
+		margin: -1em 5em 1.5em 0;
 		padding: 0 0 0 0;
 	}
 
