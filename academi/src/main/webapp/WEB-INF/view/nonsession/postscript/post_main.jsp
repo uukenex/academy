@@ -66,9 +66,79 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
+
 <title>여행 후기 게시판</title>
 <body>
 	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
+	
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Main body part -->
+	
+		<!-- Wrapper -->
+		<div id="post_wrapper">
+			
+			<!-- Main -->
+				<div id="post_main">
+					<div class="post_inner">
+					
+						<!-- post Section -->
+							<section>
+								<header class="post_major">
+									<h2>다녀온 여행 후기!</h2>
+								</header>
+								<div class="edi_posts">
+									<article>
+										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+										<h3>여행 추천 후기 1</h3>
+										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
+										<ul>
+											<li><a href="#" class="post_button">More</a></li>
+										</ul>
+									</article>
+									<article>
+										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+										<h3>여행 추천 후기 1</h3>
+										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
+										<ul>
+											<li><a href="#" class="post_button">More</a></li>
+										</ul>
+									</article>
+									<article>
+										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+										<h3>여행 추천 후기 1</h3>
+										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
+										<ul>
+											<li><a href="#" class="post_button">More</a></li>
+										</ul>
+									</article>
+									<article>
+										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+										<h3>여행 추천 후기 1</h3>
+										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
+										<ul>
+											<li><a href="#" class="post_button">More</a></li>
+										</ul>
+									</article>
+									<article>
+										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+										<h3>여행 추천 후기 1</h3>
+										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
+										<ul>
+											<li><a href="#" class="post_button">More</a></li>
+										</ul>
+									</article>
+								</div>
+							</section>
+					</div>
+				</div>
+		</div>
 
 	<div class="allDiv">
 		<div class="mainDiv">
