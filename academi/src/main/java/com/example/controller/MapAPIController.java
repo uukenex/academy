@@ -40,206 +40,579 @@ public class MapAPIController {
 	RouteService rs;
 	@Autowired
 	MroService ms;
-	
+
 	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
 	public String latlng(Model model, HttpServletRequest request) {
 		String lat = request.getParameter("lat");
 		String lng = request.getParameter("lng");
-		logger.trace("lat : {}",lat);
+		logger.trace("lat : {}", lat);
 		logger.trace("lng : {}", lng);
-		request.setAttribute("lat",lat);
-		request.setAttribute("lng",lng);
+		request.setAttribute("lat", lat);
+		request.setAttribute("lng", lng);
 		return "session/guide/map_api";
 	}
 
-	
 	@RequestMapping(value = "/domap", method = RequestMethod.GET)
 	public String what(Model model) {
 		List<Mro> hotplace = ms.doHotplace();
 		String firstDo = "";
 		String secondDo = "";
-		String thirdDo ="";
-		
-		for(int i=0; i<hotplace.size(); i++){
+		String thirdDo = "";
+
+		for (int i = 0; i < hotplace.size(); i++) {
 			firstDo = hotplace.get(0).getCity();
 			secondDo = hotplace.get(1).getCity();
 			thirdDo = hotplace.get(2).getCity();
 		}
-		
-		model.addAttribute("firstDo",firstDo);
-		model.addAttribute("secondDo",secondDo);
-		model.addAttribute("thirdDo",thirdDo);
+
+		model.addAttribute("firstDo", firstDo);
+		model.addAttribute("secondDo", secondDo);
+		model.addAttribute("thirdDo", thirdDo);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/do_map";
 	}
 
 	@RequestMapping(value = "/Jeollanamdo", method = RequestMethod.GET)
 	public String Jeollanamdo(Model model) {
-		List<Mro> hotplace =ms.selectJunnam();
+		List<Mro> hotplace = ms.selectJunnam();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Jeollanam_do";
 	}
 
 	@RequestMapping(value = "/Jeollabukdo", method = RequestMethod.GET)
 	public String Jeollabukdo(Model model) {
-		List<Mro> hotplace =ms.selectJunbuk();
+		List<Mro> hotplace = ms.selectJunbuk();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Jeollabuk_do";
 	}
 
 	@RequestMapping(value = "/jejudo", method = RequestMethod.GET)
 	public String jejudo(Model model) {
-		List<Mro> hotplace =ms.selectJeju();
+		List<Mro> hotplace = ms.selectJeju();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/jeju_do";
 	}
 
 	@RequestMapping(value = "/Gyeongsangnamdo", method = RequestMethod.GET)
 	public String Gyeongsangnam_do(Model model) {
-		List<Mro> hotplace =ms.selectKungnam();
+		List<Mro> hotplace = ms.selectKungnam();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gyeongsangnam_do";
 	}
 
 	@RequestMapping(value = "/Gyeongsangbukdo", method = RequestMethod.GET)
 	public String Gyeongsangbukdo(Model model) {
-		List<Mro> hotplace =ms.selectKungbuk();
+		List<Mro> hotplace = ms.selectKungbuk();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
 			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
 			third = hotplace.get(2).getSiGu();
 		}
+	
 		
 		model.addAttribute("first",first);
 		model.addAttribute("second",second);
 		model.addAttribute("third",third);
-		System.out.println("여기 들어왔어요!!");
+		logger.trace("first:{}, second:{}, third:{}",first,second,third);
 		return "session/guide/citymap/Gyeongsangbuk_do";
+		
 	}
+
 
 	@RequestMapping(value = "/gyeonggido", method = RequestMethod.GET)
 	public String gyeonggido(Model model) {
-		List<Mro> hotplace =ms.selectGunggi();
+		List<Mro> hotplace = ms.selectGunggi();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/gyeonggi_do";
 	}
 
 	@RequestMapping(value = "/Gangwondo", method = RequestMethod.GET)
 	public String Gangwondo(Model model) {
-		List<Mro> hotplace =ms.selectGangwon();
+		List<Mro> hotplace = ms.selectGangwon();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		for (int i = 0; i < hotplace.size(); i++) {
 			first = hotplace.get(0).getSiGu();
 			second = hotplace.get(1).getSiGu();
 			third = hotplace.get(2).getSiGu();
 		}
-		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gangwon_do";
 	}
 
 	@RequestMapping(value = "/chungcheongnamdo", method = RequestMethod.GET)
 	public String chungcheongnamdo(Model model) {
-		List<Mro> hotplace =ms.selectChungnam();
+		List<Mro> hotplace = ms.selectChungnam();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongnam_do";
 	}
 
 	@RequestMapping(value = "/chungcheongbukdo", method = RequestMethod.GET)
 	public String chungcheongbukdo(Model model) {
-		List<Mro> hotplace =ms.selectChungbuk();
+		List<Mro> hotplace = ms.selectChungbuk();
 		String first = "";
 		String second = "";
-		String third ="";
-		for(int i=0; i<hotplace.size(); i++){
+		String third = "";
+		//point 변수 : 공백 지점을 담아줄 변수
+		int point = 0;
+		//공백 지점을 찾아주는 변수
+		int cnt = 0;
+		//sigu의 길이만큼 증가
+		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
+			//만약 공백이있으면
+			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
+				//포인트에 담아준다.
+				point = cnt;
+			}
+			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			cnt++;
+		}
+		//만약 point에 값이 0이 아니면(공백이 존재)
+		if(point!=0){
+			//변수에 0번째부터 point번째까지 글자를 넣어줌
+			first = hotplace.get(0).getSiGu().substring(0, point);
+			//그게아니면
+		}else{
+			//sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
-			second = hotplace.get(1).getSiGu();
-			third = hotplace.get(2).getSiGu();
 		}
 		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
+			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+				logger.trace("Point??:{}",point);
+			}	
+			cnt++;
+			
+		}
+		if(point!=0){
+			second = hotplace.get(1).getSiGu().substring(0, point);
+		}else{
+			second = hotplace.get(1).getSiGu();
+		}
+		
+		cnt=0;
+		point=0;
+		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
+			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
+				point = cnt;
+			}
+			cnt++;
+		}
+		if(point!=0){
+			third = hotplace.get(2).getSiGu().substring(0, point);
+		}else{
+			third = hotplace.get(2).getSiGu();
+		}
+
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
 		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
@@ -351,11 +724,6 @@ public class MapAPIController {
 		return cartObj;
 	}
 
-	
-	
-	
-	
-	
 	// 루트 불러오기(번호로)
 	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public String free(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
@@ -370,6 +738,7 @@ public class MapAPIController {
 				count++;
 			}
 		}
+		logger.trace("카운트 : {}", count);
 		int i = count / 5;
 		Goods goodss[] = new Goods[i];
 		for (int cnt = 0; cnt < i; cnt++) {
@@ -402,67 +771,59 @@ public class MapAPIController {
 		List<String> latLng = new ArrayList<>();
 		List<String> center = new ArrayList<>();
 		String xyroute;
-		for (int y=0; y<i; y++){
+		for (int y = 0; y < i; y++) {
 			String lat = routeX[y];
 			String lng = routeY[y];
-			xyroute = lat+","+lng;
+			xyroute = lat + "," + lng;
 			latLng.add(y, xyroute);
-			center.add(y,xyroute);
+			center.add(y, xyroute);
 
 		}
-		
+
 		List<Integer> pos = new ArrayList<>();
 		List<String> cityList = new ArrayList<>();
-		String city="";
-		Integer mapSize=null;
-		for (int z=0; z<i; z++){
+		String city = "";
+		Integer mapSize = null;
+		for (int z = 0; z < i; z++) {
 			String route = routeAddr[z];
 			logger.trace("경로 불러오기!:{}", route);
-			
+
 			int cnt = 0;
 			for (int c = 0; c < route.length(); c++) {
 				if (route.charAt(c) == ' ') {
 					pos.add(cnt);
-				}				
+				}
 				cnt++;
 			}
-			city = route.substring(0,pos.get(0)).trim();
+			city = route.substring(0, pos.get(0)).trim();
 			cityList.add(city);
 		}
-		
-		//중복값 제거
-		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
-		logger.trace("중복값 제거 후 크기 : {}",uniqueItems.size());
 
-		if(uniqueItems.size()!=1){
-			xyroute="35.865415, 128.085319";
-			center.add(0,xyroute);
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+
+		if (uniqueItems.size() != 1) {
+			xyroute = "35.865415, 128.085319";
+			center.add(0, xyroute);
 			mapSize = 13;
-		}else{
+		} else {
 			mapSize = 10;
 		}
-		
-		
+
 		for (int cnt = 0; cnt < i; cnt++) {
 			dbcart.add(goodss[cnt]);
 		}
-		
+
 		model.addAttribute("routeNo", routeNo);
 		model.addAttribute("routeName", result.getRouteName());
 		model.addAttribute("routeContent", result.getRouteContent());
-		model.addAttribute("latLng",latLng);
-		model.addAttribute("center",center);
-		model.addAttribute("mapSize",mapSize);
+		model.addAttribute("latLng", latLng);
+		model.addAttribute("center", center);
+		model.addAttribute("mapSize", mapSize);
 		return "session/guide/map_api_image";
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "/mapSave", method = RequestMethod.POST)
 	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session,
 			Model model) {
@@ -515,13 +876,12 @@ public class MapAPIController {
 	}
 
 	@RequestMapping(value = "/mapDelete", method = RequestMethod.POST)
-	public String mapUpdate(SessionStatus status,Model model,@RequestParam int routeNo){
+	public String mapUpdate(SessionStatus status, Model model, @RequestParam int routeNo) {
 		rs.deleteRoute(routeNo);
 		status.setComplete();
 		model.addAttribute("message", "경로 삭제완료");
-		
-			return "redirect:/mypageMain";
+
+		return "redirect:/mypageMain";
 	}
-	
-	
+
 }

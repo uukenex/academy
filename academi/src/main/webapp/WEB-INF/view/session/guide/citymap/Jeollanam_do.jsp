@@ -238,6 +238,33 @@
 	mus22on = new Image();
 	mus22off = new Image();
 
+	/* ----------------------------------------------------------------- */
+	var cMuName = "";
+	/* ----------------아래내용 순서 변경 불가-------------------------------- */
+	var exx = new Array("", "영광", "장성", "함평", "담양", "나주", "화순", "곡성", "구례",
+			"순천", "광양", "여수", "보성", "고흥", "장흥", "영암", "무안", "강진", "해남", "완도",
+			"진도", "신안", "목포");
+	function mus_on(musName) {
+		if (cMuName != musName) {
+			document[musName].src = eval(musName + 'on.src');
+		}
+	}
+	function mus_off(musName) {
+		if (cMuName != musName)
+			document[musName].src = eval(musName + 'off.src');
+	}
+
+	function smenu_click(musName) {
+		cMuName = musName;
+		document[musName].src = eval(musName + 'on.src');
+	}
+
+	//-----------------------------------------------------------------------------------------
+</script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
 	mus1off.src = './map/전남/1전남-영광.png';
 	mus2off.src = './map/전남/1전남-장성.png';
@@ -285,29 +312,143 @@
 	mus21on.src = './map/전남/1전남-신안(변환).png';
 	mus22on.src = './map/전남/1전남-목포(변환).png';
 
-	/* ----------------------------------------------------------------- */
-	var cMuName = "";
-	/* ----------------아래내용 순서 변경 불가-------------------------------- */
-	var exx = new Array("", "영광", "장성", "함평", "담양", "나주", "화순", "곡성", "구례",
-			"순천", "광양", "여수", "보성", "고흥", "장흥", "영암", "무안", "강진", "해남", "완도",
-			"진도", "신안", "목포");
-	function mus_on(musName) {
-		if (cMuName != musName) {
-			document[musName].src = eval(musName + 'on.src');
+
+	 if("${first}"=="영광군"||"${second}"=="영광군"||"${third}"=="영광군"){ 
+		 	mus1off.src='/map/전남/1전남-영광(hot).png';
+		 	$('.list1')[0].src='/map/전남/1전남-영광(hot).png';
+		}else{
+			$('.list1')[0].src='/map/전남/1전남-영광.png';
 		}
-	}
-	function mus_off(musName) {
-		if (cMuName != musName)
-			document[musName].src = eval(musName + 'off.src');
-	}
+	 if("${first}"=="장성군"||"${second}"=="장성군"||"${third}"=="장성군"){ 
+		 	mus2off.src='/map/전남/1전남-장성(변환)(hot).png';
+		 	$('.list2')[0].src='/map/전남/1전남-장성(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/전남/1전남-장성.png';
+		}
+	 if("${first}"=="함평군"||"${second}"=="함평군"||"${third}"=="함평군"){ 
+		 	mus3off.src='/map/전남/1전남-함평(hot).png';
+		 	$('.list3')[0].src='/map/전남/1전남-함평(hot).png';
+		}else{
+			$('.list3')[0].src='/map/전남/1전남-함평.png';
+		}
+	 if("${first}"=="담양군"||"${second}"=="담양군"||"${third}"=="담양군"){ 
+		 	mus4off.src='/map/전남/1전남-담양(hot).png';
+		 	$('.list4')[0].src='/map/전남/1전남-담양(hot).png';
+		}else{
+			$('.list4')[0].src='/map/전남/1전남-담양.png';
+		}
+	 if("${first}"=="나주시"||"${second}"=="나주시"||"${third}"=="나주시"){ 
+		 	mus5off.src='/map/전남/1전남-나주(hot).png';
+		 	$('.list5')[0].src='/map/전남/1전남-나주(hot).png';
+		}else{
+			$('.list5')[0].src='/map/전남/1전남-나주.png';
+		}
+	 if("${first}"=="화순군"||"${second}"=="화순군"||"${third}"=="화순군"){ 
+		 	mus6off.src='/map/전남/1전남-화순(hot).png';
+		 	$('.list6')[0].src='/map/전남/1전남-화순(hot).png';
+		}else{
+			$('.list6')[0].src='/map/전남/1전남-화순.png';
+		}
+	 if("${first}"=="곡성군"||"${second}"=="곡성군"||"${third}"=="곡성군"){ 
+		 	mus7off.src='/map/전남/1전남-곡성(hot).png';
+		 	$('.list7')[0].src='/map/전남/1전남-곡성(hot).png';
+		}else{
+			$('.list7')[0].src='/map/전남/1전남-곡성.png';
+		}
+	 if("${first}"=="구례군"||"${second}"=="구례군"||"${third}"=="구례군"){ 
+		 	mus8off.src='/map/전남/1전남-구례(hot).png';
+		 	$('.list8')[0].src='/map/전남/1전남-구례(hot).png';
+		}else{
+			$('.list8')[0].src='/map/전남/1전남-구례.png';
+		}
+	 if("${first}"=="순천시"||"${second}"=="순천시"||"${third}"=="순천시"){ 
+		 	mus9off.src='/map/전남/1전남-순천(hot).png';
+		 	$('.list9')[0].src='/map/전남/1전남-순천(hot).png';
+		}else{
+			$('.list9')[0].src='/map/전남/1전남-순천.png';
+		}
+	 if("${first}"=="광양시"||"${second}"=="광양시"||"${third}"=="광양시"){ 
+		 	mus10off.src='/map/전남/1전남-광양(hot).png';
+		 	$('.list10')[0].src='/map/전남/1전남-광양(hot).png';
+		}else{
+			$('.list10')[0].src='/map/전남/1전남-광양.png';
+		}
+	 if("${first}"=="여수시"||"${second}"=="여수시"||"${third}"=="여수시"){ 
+		 	mus11off.src='/map/전남/1전남-여수(hot).png';
+		 	$('.list11')[0].src='/map/전남/1전남-여수(hot).png';
+		}else{
+			$('.list11')[0].src='/map/전남/1전남-여수.png';
+		}
+	 if("${first}"=="보성군"||"${second}"=="보성군"||"${third}"=="보성군"){ 
+		 	mus12off.src='/map/전남/1전남-보성(hot).png';
+		 	$('.list12')[0].src='/map/전남/1전남-보성(hot).png';
+		}else{
+			$('.list12')[0].src='/map/전남/1전남-보성.png';
+		}
+	 if("${first}"=="고흥군"||"${second}"=="고흥군"||"${third}"=="고흥군"){ 
+		 	mus13off.src='/map/전남/1전남-고흥(hot).png';
+		 	$('.list13')[0].src='/map/전남/1전남-고흥(hot).png';
+		}else{
+			$('.list13')[0].src='/map/전남/1전남-고흥.png';
+		}
+	 if("${first}"=="장흥군"||"${second}"=="장흥군"||"${third}"=="장흥군"){ 
+		 	mus14off.src='/map/전남/1전남-장흥(hot).png';
+		 	$('.list14')[0].src='/map/전남/1전남-장흥(hot).png';
+		}else{
+			$('.list14')[0].src='/map/전남/1전남-장흥.png';
+		}
+	 if("${first}"=="영암군"||"${second}"=="영암군"||"${third}"=="영암군"){ 
+		 	mus15off.src='/map/전남/1전남-영암(hot).png';
+		 	$('.list15')[0].src='/map/전남/1전남-영암(hot).png';
+		}else{
+			$('.list15')[0].src='/map/전남/1전남-영암.png';
+		}	 
+	 if("${first}"=="무안군"||"${second}"=="무안군"||"${third}"=="무안군"){ 
+		 	mus16off.src='/map/전남/1전남-무안(hot).png';
+		 	$('.list16')[0].src='/map/전남/1전남-무안(hot).png';
+		}else{
+			$('.list16')[0].src='/map/전남/1전남-무안.png';
+		}	 
+	 if("${first}"=="강진군"||"${second}"=="강진군"||"${third}"=="강진군"){ 
+		 	mus17off.src='/map/전남/1전남-강진(hot).png';
+		 	$('.list17')[0].src='/map/전남/1전남-강진(hot).png';
+		}else{
+			$('.list17')[0].src='/map/전남/1전남-강진.png';
+		}	 
+	 if("${first}"=="해남군"||"${second}"=="해남군"||"${third}"=="해남군"){ 
+		 	mus18off.src='/map/전남/1전남-해남(hot).png';
+		 	$('.list18')[0].src='/map/전남/1전남-해남(hot).png';
+		}else{
+			$('.list18')[0].src='/map/전남/1전남-해남.png';
+		}	 	
+	 if("${first}"=="완도군"||"${second}"=="완도군"||"${third}"=="완도군"){ 
+		 	mus19off.src='/map/전남/1전남-완도(hot).png';
+		 	$('.list19')[0].src='/map/전남/1전남-완도(hot).png';
+		}else{
+			$('.list19')[0].src='/map/전남/1전남-완도.png';
+		}	 
+	 if("${first}"=="진도군"||"${second}"=="진도군"||"${third}"=="진도군"){ 
+		 	mus20off.src='/map/전남/1전남-진도(hot).png';
+		 	$('.list20')[0].src='/map/전남/1전남-진도(hot).png';
+		}else{
+			$('.list20')[0].src='/map/전남/1전남-진도.png';
+		}	 
+	 if("${first}"=="신안군"||"${second}"=="신안군"||"${third}"=="신안군"){ 
+		 	mus21off.src='/map/전남/1전남-신안(hot).png';
+		 	$('.list21')[0].src='/map/전남/1전남-신안(hot).png';
+		}else{
+			$('.list21')[0].src='/map/전남/1전남-신안.png';
+		}	 
+	 if("${first}"=="목포시"||"${second}"=="목포시"||"${third}"=="목포시"){ 
+		 	mus22off.src='/map/전남/1전남-목포(hot).png';
+		 	$('.list22')[0].src='/map/전남/1전남-목포(hot).png';
+		}else{
+			$('.list22')[0].src='/map/전남/1전남-목포.png';
+		}	 
+ });
+ 
+ </script>
 
-	function smenu_click(musName) {
-		cMuName = musName;
-		document[musName].src = eval(musName + 'on.src');
-	}
-
-	//-----------------------------------------------------------------------------------------
-</script>
 </head>
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

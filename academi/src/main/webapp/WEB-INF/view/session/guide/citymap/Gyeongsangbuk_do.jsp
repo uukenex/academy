@@ -238,52 +238,6 @@
 	mus22on = new Image();
 	mus22off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/경북/1경북-문경.png';
-	mus2off.src = './map/경북/1경북-예천.png';
-	mus3off.src = './map/경북/1경북-영주.png';
-	mus4off.src = './map/경북/1경북-봉화.png';
-	mus5off.src = './map/경북/1경북-울진.png';
-	mus6off.src = './map/경북/1경북-영양.png';
-	mus7off.src = './map/경북/1경북-안동.png';
-	mus8off.src = './map/경북/1경북-상주.png';
-	mus9off.src = './map/경북/1경북-의성.png';
-	mus10off.src = './map/경북/1경북-청송.png';
-	mus11off.src = './map/경북/1경북-영덕.png';
-	mus12off.src = './map/경북/1경북-포항.png';
-	mus13off.src = './map/경북/1경북-경주.png';
-	mus14off.src = './map/경북/1경북-영천.png';
-	mus15off.src = './map/경북/1경북-경산.png';
-	mus16off.src = './map/경북/1경북-청도.png';
-	mus17off.src = './map/경북/1경북-구미.png';
-	mus18off.src = './map/경북/1경북-군위.png';
-	mus19off.src = './map/경북/1경북-칠곡.png';
-	mus20off.src = './map/경북/1경북-김천.png';
-	mus21off.src = './map/경북/1경북-성주.png';
-	mus22off.src = './map/경북/1경북-고령.png';
-
-	mus1on.src = './map/경북/1경북-문경(변환).png';
-	mus2on.src = './map/경북/1경북-예천(변환).png';
-	mus3on.src = './map/경북/1경북-영주(변환).png';
-	mus4on.src = './map/경북/1경북-봉화(변환).png';
-	mus5on.src = './map/경북/1경북-울진(변환).png';
-	mus6on.src = './map/경북/1경북-영양(변환).png';
-	mus7on.src = './map/경북/1경북-안동(변환).png';
-	mus8on.src = './map/경북/1경북-상주(변환).png';
-	mus9on.src = './map/경북/1경북-의성(변환).png';
-	mus10on.src = './map/경북/1경북-청송(변환).png';
-	mus11on.src = './map/경북/1경북-영덕(변환).png';
-	mus12on.src = './map/경북/1경북-포항(변환).png';
-	mus13on.src = './map/경북/1경북-경주(변환).png';
-	mus14on.src = './map/경북/1경북-영천(변환).png';
-	mus15on.src = './map/경북/1경북-경산(변환).png';
-	mus16on.src = './map/경북/1경북-청도(변환).png';
-	mus17on.src = './map/경북/1경북-구미(변환).png';
-	mus18on.src = './map/경북/1경북-군위(변환).png';
-	mus19on.src = './map/경북/1경북-칠곡(변환).png';
-	mus20on.src = './map/경북/1경북-김천(변환).png';
-	mus21on.src = './map/경북/1경북-성주(변환).png';
-	mus22on.src = './map/경북/1경북-고령(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
@@ -308,6 +262,195 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/경북/1경북-문경.png';
+		mus2off.src = './map/경북/1경북-예천.png';
+		mus3off.src = './map/경북/1경북-영주.png';
+		mus4off.src = './map/경북/1경북-봉화.png';
+		mus5off.src = './map/경북/1경북-울진.png';
+		mus6off.src = './map/경북/1경북-영양.png';
+		mus7off.src = './map/경북/1경북-안동.png';
+		mus8off.src = './map/경북/1경북-상주.png';
+		mus9off.src = './map/경북/1경북-의성.png';
+		mus10off.src = './map/경북/1경북-청송.png';
+		mus11off.src = './map/경북/1경북-영덕.png';
+		mus12off.src = './map/경북/1경북-포항.png';
+		mus13off.src = './map/경북/1경북-경주.png';
+		mus14off.src = './map/경북/1경북-영천.png';
+		mus15off.src = './map/경북/1경북-경산.png';
+		mus16off.src = './map/경북/1경북-청도.png';
+		mus17off.src = './map/경북/1경북-구미.png';
+		mus18off.src = './map/경북/1경북-군위.png';
+		mus19off.src = './map/경북/1경북-칠곡.png';
+		mus20off.src = './map/경북/1경북-김천.png';
+		mus21off.src = './map/경북/1경북-성주.png';
+		mus22off.src = './map/경북/1경북-고령.png';
+
+		mus1on.src = './map/경북/1경북-문경(변환).png';
+		mus2on.src = './map/경북/1경북-예천(변환).png';
+		mus3on.src = './map/경북/1경북-영주(변환).png';
+		mus4on.src = './map/경북/1경북-봉화(변환).png';
+		mus5on.src = './map/경북/1경북-울진(변환).png';
+		mus6on.src = './map/경북/1경북-영양(변환).png';
+		mus7on.src = './map/경북/1경북-안동(변환).png';
+		mus8on.src = './map/경북/1경북-상주(변환).png';
+		mus9on.src = './map/경북/1경북-의성(변환).png';
+		mus10on.src = './map/경북/1경북-청송(변환).png';
+		mus11on.src = './map/경북/1경북-영덕(변환).png';
+		mus12on.src = './map/경북/1경북-포항(변환).png';
+		mus13on.src = './map/경북/1경북-경주(변환).png';
+		mus14on.src = './map/경북/1경북-영천(변환).png';
+		mus15on.src = './map/경북/1경북-경산(변환).png';
+		mus16on.src = './map/경북/1경북-청도(변환).png';
+		mus17on.src = './map/경북/1경북-구미(변환).png';
+		mus18on.src = './map/경북/1경북-군위(변환).png';
+		mus19on.src = './map/경북/1경북-칠곡(변환).png';
+		mus20on.src = './map/경북/1경북-김천(변환).png';
+		mus21on.src = './map/경북/1경북-성주(변환).png';
+		mus22on.src = './map/경북/1경북-고령(변환).png';
+	
+
+	 if("${first}"=="문경시"||"${second}"=="문경시"||"${third}"=="문경시"){ 
+		 	mus1off.src='/map/경북/1경북-문경(hot).png';
+		 	$('.list1')[0].src='/map/경북/1경북-문경(hot).png';
+		}else{
+			$('.list1')[0].src='/map/경북/1경북-문경.png';
+		}
+	 if("${first}"=="예천군"||"${second}"=="예천군"||"${third}"=="예천군"){ 
+		 	mus2off.src='/map/경북/1경북-예천(변환)(hot).png';
+		 	$('.list2')[0].src='/map/경북/1경북-예천(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/경북/1경북-예천.png';
+		}
+	 if("${first}"=="영주시"||"${second}"=="영주시"||"${third}"=="영주시"){ 
+		 	mus3off.src='/map/경북/1경북-영주(hot).png';
+		 	$('.list3')[0].src='/map/경북/1경북-영주(hot).png';
+		}else{
+			$('.list3')[0].src='/map/경북/1경북-영주.png';
+		}
+	 if("${first}"=="봉화군"||"${second}"=="봉화군"||"${third}"=="봉화군"){ 
+		 	mus4off.src='/map/경북/1경북-봉화(hot).png';
+		 	$('.list4')[0].src='/map/경북/1경북-봉화(hot).png';
+		}else{
+			$('.list4')[0].src='/map/경북/1경북-봉화.png';
+		}
+	 if("${first}"=="울진군"||"${second}"=="울진군"||"${third}"=="울진군"){ 
+		 	mus5off.src='/map/경북/1경북-울진(hot).png';
+		 	$('.list5')[0].src='/map/경북/1경북-울진(hot).png';
+		}else{
+			$('.list5')[0].src='/map/경북/1경북-울진.png';
+		}
+	 if("${first}"=="영양군"||"${second}"=="영양군"||"${third}"=="영양군"){ 
+		 	mus6off.src='/map/경북/1경북-영양(hot).png';
+		 	$('.list6')[0].src='/map/경북/1경북-영양(hot).png';
+		}else{
+			$('.list6')[0].src='/map/경북/1경북-영양.png';
+		}
+	 if("${first}"=="안동시"||"${second}"=="안동시"||"${third}"=="안동시"){ 
+		 	mus7off.src='/map/경북/1경북-안동(hot).png';
+		 	$('.list7')[0].src='/map/경북/1경북-안동(hot).png';
+		}else{
+			$('.list7')[0].src='/map/경북/1경북-안동.png';
+		}
+	 if("${first}"=="상주시"||"${second}"=="상주시"||"${third}"=="상주시"){ 
+		 	mus8off.src='/map/경북/1경북-상주(hot).png';
+		 	$('.list8')[0].src='/map/경북/1경북-상주(hot).png';
+		}else{
+			$('.list8')[0].src='/map/경북/1경북-상주.png';
+		}
+	 if("${first}"=="의성군"||"${second}"=="의성군"||"${third}"=="의성군"){ 
+		 	mus9off.src='/map/경북/1경북-의성(hot).png';
+		 	$('.list9')[0].src='/map/경북/1경북-의성(hot).png';
+		}else{
+			$('.list9')[0].src='/map/경북/1경북-의성.png';
+		}
+	 if("${first}"=="청송군"||"${second}"=="청송군"||"${third}"=="청송군"){ 
+		 	mus10off.src='/map/경북/1경북-청송(hot).png';
+		 	$('.list10')[0].src='/map/경북/1경북-청송(hot).png';
+		}else{
+			$('.list10')[0].src='/map/경북/1경북-청송.png';
+		}
+	 if("${first}"=="영덕군"||"${second}"=="영덕군"||"${third}"=="영덕군"){ 
+		 	mus11off.src='/map/경북/1경북-영덕(hot).png';
+		 	$('.list11')[0].src='/map/경북/1경북-영덕(hot).png';
+		}else{
+			$('.list11')[0].src='/map/경북/1경북-영덕.png';
+		}
+	 if("${first}"=="포항시"||"${second}"=="포항시"||"${third}"=="포항시"){ 
+		 	mus12off.src='/map/경북/1경북-포항(hot).png';
+		 	$('.list12')[0].src='/map/경북/1경북-포항(hot).png';
+		}else{
+			$('.list12')[0].src='/map/경북/1경북-포항.png';
+		}
+	 if("${first}"=="경주시"||"${second}"=="경주시"||"${third}"=="경주시"){ 
+		 	mus13off.src='/map/경북/1경북-경주(hot).png';
+		 	$('.list13')[0].src='/map/경북/1경북-경주(hot).png';
+		}else{
+			$('.list13')[0].src='/map/경북/1경북-경주.png';
+		}
+	 if("${first}"=="영천시"||"${second}"=="영천시"||"${third}"=="영천시"){ 
+		 	mus14off.src='/map/경북/1경북-영천(hot).png';
+		 	$('.list14')[0].src='/map/경북/1경북-영천(hot).png';
+		}else{
+			$('.list14')[0].src='/map/경북/1경북-영천.png';
+		}
+	 if("${first}"=="경산시"||"${second}"=="경산시"||"${third}"=="경산시"){ 
+		 	mus15off.src='/map/경북/1경북-경산(hot).png';
+		 	$('.list15')[0].src='/map/경북/1경북-경산(hot).png';
+		}else{
+			$('.list15')[0].src='/map/경북/1경북-경산.png';
+		}	 
+	 if("${first}"=="청도군"||"${second}"=="청도군"||"${third}"=="청도군"){ 
+		 	mus16off.src='/map/경북/1경북-청도(hot).png';
+		 	$('.list16')[0].src='/map/경북/1경북-청도(hot).png';
+		}else{
+			$('.list16')[0].src='/map/경북/1경북-청도.png';
+		}	 
+	 if("${first}"=="구미시"||"${second}"=="구미시"||"${third}"=="구미시"){ 
+		 	mus17off.src='/map/경북/1경북-구미(hot).png';
+		 	$('.list17')[0].src='/map/경북/1경북-구미(hot).png';
+		}else{
+			$('.list17')[0].src='/map/경북/1경북-구미.png';
+		}	 
+	 if("${first}"=="군위군"||"${second}"=="군위군"||"${third}"=="군위군"){ 
+		 	mus18off.src='/map/경북/1경북-군위(hot).png';
+		 	$('.list18')[0].src='/map/경북/1경북-군위(hot).png';
+		}else{
+			$('.list18')[0].src='/map/경북/1경북-군위.png';
+		}	 
+	 if("${first}"=="칠곡군"||"${second}"=="칠곡군"||"${third}"=="칠곡군"){ 
+		 	mus19off.src='/map/경북/1경북-칠곡(hot).png';
+		 	$('.list19')[0].src='/map/경북/1경북-칠곡(hot).png';
+		}else{
+			$('.list19')[0].src='/map/경북/1경북-칠곡.png';
+		}	 
+	 if("${first}"=="김천시"||"${second}"=="김천시"||"${third}"=="김천시"){ 
+		 	mus20off.src='/map/경북/1경북-김천(hot).png';
+		 	$('.list20')[0].src='/map/경북/1경북-김천(hot).png';
+		}else{
+			$('.list20')[0].src='/map/경북/1경북-김천.png';
+		}	 
+	 if("${first}"=="성주군"||"${second}"=="성주군"||"${third}"=="성주군"){ 
+		 	mus21off.src='/map/경북/1경북-성주(hot).png';
+		 	$('.list21')[0].src='/map/경북/1경북-성주(hot).png';
+		}else{
+			$('.list21')[0].src='/map/경북/1경북-성주.png';
+		}	 
+	 if("${first}"=="고령군"||"${second}"=="고령군"||"${third}"=="고령군"){ 
+		 	mus22off.src='/map/경북/1경북-고령(hot).png';
+		 	$('.list22')[0].src='/map/경북/1경북-고령(hot).png';
+		}else{
+			$('.list22')[0].src='/map/경북/1경북-고령.png';
+		}	 
+	
+ });
+ 
+ </script>
 
 </head>
 <body>

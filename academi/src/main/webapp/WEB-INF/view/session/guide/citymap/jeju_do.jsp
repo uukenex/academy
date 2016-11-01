@@ -38,17 +38,11 @@
 	mus2on = new Image();
 	mus2off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/제주도/제주도-제주.png';
-	mus2off.src = './map/제주도/제주도-서귀포.png';
-
-	mus1on.src = './map/제주도/제주도-제주(변환).png';
-	mus2on.src = './map/제주도/제주도-서귀포(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
 	/* ----------------아래내용 순서 변경 불가-------------------------------- */
-	var exx = new Array("", "진천", "음성");
+	var exx = new Array("", "제주", "서귀포");
 	function mus_on(musName) {
 		if (cMuName != musName) {
 			document[musName].src = eval(musName + 'on.src');
@@ -66,6 +60,34 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/제주도/제주도-제주.png';
+		mus2off.src = './map/제주도/제주도-서귀포.png';
+
+		mus1on.src = './map/제주도/제주도-제주(변환).png';
+		mus2on.src = './map/제주도/제주도-서귀포(변환).png';
+	
+
+	 if("${first}"=="제주시"||"${second}"=="제주시"||"${third}"=="제주시"){ 
+		 	mus1off.src='/map/제주도/제주도-제주(hot).png';
+		 	$('.list1')[0].src='/map/제주도/제주도-제주(hot).png';
+		}else{
+			$('.list1')[0].src='/map/제주도/제주도-제주.png';
+		}
+	 if("${first}"=="서귀포시"||"${second}"=="서귀포시"||"${third}"=="서귀포시"){ 
+		 	mus2off.src='/map/제주도/제주도-서귀포(hot).png';
+		 	$('.list2')[0].src='/map/제주도/제주도-서귀포(hot).png';
+		}else{
+			$('.list2')[0].src='/map/제주도/제주도-서귀포.png';
+		}
+
+ })
+ </script>
+
 </head>
 <body>
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

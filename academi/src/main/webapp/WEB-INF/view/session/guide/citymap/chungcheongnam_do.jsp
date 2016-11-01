@@ -168,44 +168,12 @@
 	mus15on = new Image();
 	mus15off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/충남/충남-태안.png';
-	mus2off.src = './map/충남/충남-서산.png';
-	mus3off.src = './map/충남/충남-당진.png';
-	mus4off.src = './map/충남/충남-예산.png';
-	mus5off.src = './map/충남/충남-아산.png';
-	mus6off.src = './map/충남/충남-천안.png';
-	mus7off.src = './map/충남/충남-공주.png';
-	mus8off.src = './map/충남/충남-홍성.png';
-	mus9off.src = './map/충남/충남-보령.png';
-	mus10off.src = './map/충남/충남-청양.png';
-	mus11off.src = './map/충남/충남-부여.png';
-	mus12off.src = './map/충남/충남-서천.png';
-	mus13off.src = './map/충남/충남-논산.png';
-	mus14off.src = './map/충남/충남-계룡.png';
-	mus15off.src = './map/충남/충남-금산.png';
-
-	mus1on.src = './map/충남/충남-태안(변환).png';
-	mus2on.src = './map/충남/충남-서산(변환).png';
-	mus3on.src = './map/충남/충남-당진(변환).png';
-	mus4on.src = './map/충남/충남-예산(변환).png';
-	mus5on.src = './map/충남/충남-아산(변환).png';
-	mus6on.src = './map/충남/충남-천안(변환).png';
-	mus7on.src = './map/충남/충남-공주(변환).png';
-	mus8on.src = './map/충남/충남-홍성(변환).png';
-	mus9on.src = './map/충남/충남-보령(변환).png';
-	mus10on.src = './map/충남/충남-청양(변환).png';
-	mus11on.src = './map/충남/충남-부여(변환).png';
-	mus12on.src = './map/충남/충남-서천(변환).png';
-	mus13on.src = './map/충남/충남-논산(변환).png';
-	mus14on.src = './map/충남/충남-계룡(변환).png';
-	mus15on.src = './map/충남/충남-금산(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
 	/* ----------------아래내용 순서 변경 불가-------------------------------- */
 	var exx = new Array("", "태안", "서산", "당진", "예산", "아산", "천안", "공주", "홍성",
-			"보령", "청양", "부여", "서천", "논산", "계룡", "금산", "양양", "강릉", "동해");
+			"보령", "청양", "부여", "서천", "논산", "계룡", "금산");
 	function mus_on(musName) {
 		if (cMuName != musName) {
 			document[musName].src = eval(musName + 'on.src');
@@ -223,6 +191,136 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/충남/충남-태안.png';
+		mus2off.src = './map/충남/충남-서산.png';
+		mus3off.src = './map/충남/충남-당진.png';
+		mus4off.src = './map/충남/충남-예산.png';
+		mus5off.src = './map/충남/충남-아산.png';
+		mus6off.src = './map/충남/충남-천안.png';
+		mus7off.src = './map/충남/충남-공주.png';
+		mus8off.src = './map/충남/충남-홍성.png';
+		mus9off.src = './map/충남/충남-보령.png';
+		mus10off.src = './map/충남/충남-청양.png';
+		mus11off.src = './map/충남/충남-부여.png';
+		mus12off.src = './map/충남/충남-서천.png';
+		mus13off.src = './map/충남/충남-논산.png';
+		mus14off.src = './map/충남/충남-계룡.png';
+		mus15off.src = './map/충남/충남-금산.png';
+
+		mus1on.src = './map/충남/충남-태안(변환).png';
+		mus2on.src = './map/충남/충남-서산(변환).png';
+		mus3on.src = './map/충남/충남-당진(변환).png';
+		mus4on.src = './map/충남/충남-예산(변환).png';
+		mus5on.src = './map/충남/충남-아산(변환).png';
+		mus6on.src = './map/충남/충남-천안(변환).png';
+		mus7on.src = './map/충남/충남-공주(변환).png';
+		mus8on.src = './map/충남/충남-홍성(변환).png';
+		mus9on.src = './map/충남/충남-보령(변환).png';
+		mus10on.src = './map/충남/충남-청양(변환).png';
+		mus11on.src = './map/충남/충남-부여(변환).png';
+		mus12on.src = './map/충남/충남-서천(변환).png';
+		mus13on.src = './map/충남/충남-논산(변환).png';
+		mus14on.src = './map/충남/충남-계룡(변환).png';
+		mus15on.src = './map/충남/충남-금산(변환).png';
+	 
+	 if("${first}"=="태안군"||"${second}"=="태안군"||"${third}"=="태안군"){ 
+		 	mus1off.src='/map/충남/충남-태안(hot).png';
+		 	$('.list1')[0].src='/map/충남/충남-태안(hot).png';
+		}else{
+			$('.list1')[0].src='/map/충남/충남-태안.png';
+		}
+	 if("${first}"=="서산시"||"${second}"=="서산시"||"${third}"=="서산시"){ 
+		 	mus2off.src='/map/충남/충남-서산(변환)(hot).png';
+		 	$('.list2')[0].src='/map/충남/충남-서산(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/충남/충남-서산.png';
+		}
+	 if("${first}"=="당진시"||"${second}"=="당진시"||"${third}"=="당진시"){ 
+		 	mus3off.src='/map/충남/충남-당진(hot).png';
+		 	$('.list3')[0].src='/map/충남/충남-당진(hot).png';
+		}else{
+			$('.list3')[0].src='/map/충남/충남-당진.png';
+		}
+	 if("${first}"=="금산군"||"${second}"=="금산군"||"${third}"=="금산군"){ 
+		 	mus4off.src='/map/충남/충남-예산(hot).png';
+		 	$('.list4')[0].src='/map/충남/충남-예산(hot).png';
+		}else{
+			$('.list4')[0].src='/map/충남/충남-예산.png';
+		}
+	 if("${first}"=="아산시"||"${second}"=="아산시"||"${third}"=="아산시"){ 
+		 	mus5off.src='/map/충남/충남-아산(hot).png';
+		 	$('.list5')[0].src='/map/충남/충남-아산(hot).png';
+		}else{
+			$('.list5')[0].src='/map/충남/충남-아산.png';
+		}
+	 if("${first}"=="천안시"||"${second}"=="천안시"||"${third}"=="천안시"){ 
+		 	mus6off.src='/map/충남/충남-천안(hot).png';
+		 	$('.list6')[0].src='/map/충남/충남-천안(hot).png';
+		}else{
+			$('.list6')[0].src='/map/충남/충남-천안.png';
+		}
+	 if("${first}"=="공주시"||"${second}"=="공주시"||"${third}"=="공주시"){ 
+		 	mus7off.src='/map/충남/충남-공주(hot).png';
+		 	$('.list7')[0].src='/map/충남/충남-공주(hot).png';
+		}else{
+			$('.list7')[0].src='/map/충남/충남-공주.png';
+		}
+	 if("${first}"=="홍성시"||"${second}"=="홍성시"||"${third}"=="홍성시"){ 
+		 	mus8off.src='/map/충남/충남-홍성(hot).png';
+		 	$('.list8')[0].src='/map/충남/충남-홍성(hot).png';
+		}else{
+			$('.list8')[0].src='/map/충남/충남-홍성.png';
+		}
+	 if("${first}"=="보령시"||"${second}"=="보령시"||"${third}"=="보령시"){ 
+		 	mus9off.src='/map/충남/충남-보령(hot).png';
+		 	$('.list9')[0].src='/map/충남/충남-보령(hot).png';
+		}else{
+			$('.list9')[0].src='/map/충남/충남-보령.png';
+		}
+	 if("${first}"=="청양군"||"${second}"=="청양군"||"${third}"=="청양군"){ 
+		 	mus10off.src='/map/충남/충남-청양(hot).png';
+		 	$('.list10')[0].src='/map/충남/충남-청양(hot).png';
+		}else{
+			$('.list10')[0].src='/map/충남/충남-청양.png';
+		}
+	 if("${first}"=="부여군"||"${second}"=="부여군"||"${third}"=="부여군"){ 
+		 	mus11off.src='/map/충남/충남-부여(hot).png';
+		 	$('.list11')[0].src='/map/충남/충남-부여(hot).png';
+		}else{
+			$('.list11')[0].src='/map/충남/충남-부여.png';
+		}
+	 if("${first}"=="서천군"||"${second}"=="서천군"||"${third}"=="서천군"){ 
+		 	mus12off.src='/map/충남/충남-서천(hot).png';
+		 	$('.list12')[0].src='/map/충남/충남-서천(hot).png';
+		}else{
+			$('.list12')[0].src='/map/충남/충남-서천.png';
+		}
+	 if("${first}"=="논산시"||"${second}"=="논산시"||"${third}"=="논산시"){ 
+		 	mus13off.src='/map/충남/충남-논산(hot).png';
+		 	$('.list13')[0].src='/map/충남/충남-논산(hot).png';
+		}else{
+			$('.list13')[0].src='/map/충남/충남-논산.png';
+		}
+	 if("${first}"=="계룡시"||"${second}"=="계룡시"||"${third}"=="계룡시"){ 
+		 	mus14off.src='/map/충남/충남-계룡(hot).png';
+		 	$('.list14')[0].src='/map/충남/충남-계룡(hot).png';
+		}else{
+			$('.list14')[0].src='/map/충남/충남-계룡.png';
+		}
+	 if("${first}"=="금산군"||"${second}"=="금산군"||"${third}"=="금산군"){ 
+		 	mus15off.src='/map/충남/충남-금산(hot).png';
+		 	$('.list15')[0].src='/map/충남/충남-금산(hot).png';
+		}else{
+			$('.list15')[0].src='/map/충남/충남-금산.png';
+		}	 
+ });
+ 
+ </script>
 </head>
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

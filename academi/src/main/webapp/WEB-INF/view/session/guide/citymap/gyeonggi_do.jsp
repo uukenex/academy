@@ -328,70 +328,6 @@
 	mus31on = new Image();
 	mus31off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/경기도/1경기도-파주.png';
-	mus2off.src = './map/경기도/1경기도-연천.png';
-	mus3off.src = './map/경기도/1경기도-양주.png';
-	mus4off.src = './map/경기도/1경기도-동두천.png';
-	mus5off.src = './map/경기도/1경기도-포천.png';
-	mus6off.src = './map/경기도/1경기도-가평.png';
-	mus7off.src = './map/경기도/1경기도-김포.png';
-	mus8off.src = './map/경기도/1경기도-고양.png';
-	mus9off.src = './map/경기도/1경기도-의정부.png';
-	mus10off.src = './map/경기도/1경기도-남양주.png';
-	mus11off.src = './map/경기도/1경기도-양평.png';
-	mus12off.src = './map/경기도/1경기도-광주.png';
-	mus13off.src = './map/경기도/1경기도-여주.png';
-	mus14off.src = './map/경기도/1경기도-하남.png';
-	mus15off.src = './map/경기도/1경기도-구리.png';
-	mus16off.src = './map/경기도/1경기도-성남.png';
-	mus17off.src = './map/경기도/1경기도-용인.png';
-	mus18off.src = './map/경기도/1경기도-이천.png';
-	mus19off.src = './map/경기도/1경기도-안성.png';
-	mus20off.src = './map/경기도/1경기도-화성.png';
-	mus21off.src = './map/경기도/1경기도-평택.png';
-	mus22off.src = './map/경기도/1경기도-오산.png';
-	mus23off.src = './map/경기도/1경기도-수원.png';
-	mus24off.src = './map/경기도/1경기도-의왕.png';
-	mus25off.src = './map/경기도/1경기도-과천.png';
-	mus26off.src = './map/경기도/1경기도-안양.png';
-	mus27off.src = './map/경기도/1경기도-군포.png';
-	mus28off.src = './map/경기도/1경기도-안산.png';
-	mus29off.src = './map/경기도/1경기도-시흥.png';
-	mus30off.src = './map/경기도/1경기도-광명.png';
-	mus31off.src = './map/경기도/1경기도-부천.png';
-
-	mus1on.src = './map/경기도/1경기도-파주(변환).png';
-	mus2on.src = './map/경기도/1경기도-연천(변환).png';
-	mus3on.src = './map/경기도/1경기도-양주(변환).png';
-	mus4on.src = './map/경기도/1경기도-동두천(변환).png';
-	mus5on.src = './map/경기도/1경기도-포천(변환).png';
-	mus6on.src = './map/경기도/1경기도-가평(변환).png';
-	mus7on.src = './map/경기도/1경기도-김포(변환).png';
-	mus8on.src = './map/경기도/1경기도-고양(변환).png';
-	mus9on.src = './map/경기도/1경기도-의정부(변환).png';
-	mus10on.src = './map/경기도/1경기도-남양주(변환).png';
-	mus11on.src = './map/경기도/1경기도-양평(변환).png';
-	mus12on.src = './map/경기도/1경기도-광주(변환).png';
-	mus13on.src = './map/경기도/1경기도-여주(변환).png';
-	mus14on.src = './map/경기도/1경기도-하남(변환).png';
-	mus15on.src = './map/경기도/1경기도-구리(변환).png';
-	mus16on.src = './map/경기도/1경기도-성남(변환).png';
-	mus17on.src = './map/경기도/1경기도-용인(변환).png';
-	mus18on.src = './map/경기도/1경기도-이천(변환).png';
-	mus19on.src = './map/경기도/1경기도-안성(변환).png';
-	mus20on.src = './map/경기도/1경기도-화성(변환).png';
-	mus21on.src = './map/경기도/1경기도-평택(변환).png';
-	mus22on.src = './map/경기도/1경기도-오산(변환).png';
-	mus23on.src = './map/경기도/1경기도-수원(변환).png';
-	mus24on.src = './map/경기도/1경기도-의왕(변환).png';
-	mus25on.src = './map/경기도/1경기도-과천(변환).png';
-	mus26on.src = './map/경기도/1경기도-안양(변환).png';
-	mus27on.src = './map/경기도/1경기도-군포(변환).png';
-	mus28on.src = './map/경기도/1경기도-안산(변환).png';
-	mus29on.src = './map/경기도/1경기도-시흥(변환).png';
-	mus30on.src = './map/경기도/1경기도-광명(변환).png';
-	mus31on.src = './map/경기도/1경기도-부천(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
@@ -417,6 +353,267 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/경기도/1경기도-파주.png';
+		mus2off.src = './map/경기도/1경기도-연천.png';
+		mus3off.src = './map/경기도/1경기도-양주.png';
+		mus4off.src = './map/경기도/1경기도-동두천.png';
+		mus5off.src = './map/경기도/1경기도-포천.png';
+		mus6off.src = './map/경기도/1경기도-가평.png';
+		mus7off.src = './map/경기도/1경기도-김포.png';
+		mus8off.src = './map/경기도/1경기도-고양.png';
+		mus9off.src = './map/경기도/1경기도-의정부.png';
+		mus10off.src = './map/경기도/1경기도-남양주.png';
+		mus11off.src = './map/경기도/1경기도-양평.png';
+		mus12off.src = './map/경기도/1경기도-광주.png';
+		mus13off.src = './map/경기도/1경기도-여주.png';
+		mus14off.src = './map/경기도/1경기도-하남.png';
+		mus15off.src = './map/경기도/1경기도-구리.png';
+		mus16off.src = './map/경기도/1경기도-성남.png';
+		mus17off.src = './map/경기도/1경기도-용인.png';
+		mus18off.src = './map/경기도/1경기도-이천.png';
+		mus19off.src = './map/경기도/1경기도-안성.png';
+		mus20off.src = './map/경기도/1경기도-화성.png';
+		mus21off.src = './map/경기도/1경기도-평택.png';
+		mus22off.src = './map/경기도/1경기도-오산.png';
+		mus23off.src = './map/경기도/1경기도-수원.png';
+		mus24off.src = './map/경기도/1경기도-의왕.png';
+		mus25off.src = './map/경기도/1경기도-과천.png';
+		mus26off.src = './map/경기도/1경기도-안양.png';
+		mus27off.src = './map/경기도/1경기도-군포.png';
+		mus28off.src = './map/경기도/1경기도-안산.png';
+		mus29off.src = './map/경기도/1경기도-시흥.png';
+		mus30off.src = './map/경기도/1경기도-광명.png';
+		mus31off.src = './map/경기도/1경기도-부천.png';
+
+		mus1on.src = './map/경기도/1경기도-파주(변환).png';
+		mus2on.src = './map/경기도/1경기도-연천(변환).png';
+		mus3on.src = './map/경기도/1경기도-양주(변환).png';
+		mus4on.src = './map/경기도/1경기도-동두천(변환).png';
+		mus5on.src = './map/경기도/1경기도-포천(변환).png';
+		mus6on.src = './map/경기도/1경기도-가평(변환).png';
+		mus7on.src = './map/경기도/1경기도-김포(변환).png';
+		mus8on.src = './map/경기도/1경기도-고양(변환).png';
+		mus9on.src = './map/경기도/1경기도-의정부(변환).png';
+		mus10on.src = './map/경기도/1경기도-남양주(변환).png';
+		mus11on.src = './map/경기도/1경기도-양평(변환).png';
+		mus12on.src = './map/경기도/1경기도-광주(변환).png';
+		mus13on.src = './map/경기도/1경기도-여주(변환).png';
+		mus14on.src = './map/경기도/1경기도-하남(변환).png';
+		mus15on.src = './map/경기도/1경기도-구리(변환).png';
+		mus16on.src = './map/경기도/1경기도-성남(변환).png';
+		mus17on.src = './map/경기도/1경기도-용인(변환).png';
+		mus18on.src = './map/경기도/1경기도-이천(변환).png';
+		mus19on.src = './map/경기도/1경기도-안성(변환).png';
+		mus20on.src = './map/경기도/1경기도-화성(변환).png';
+		mus21on.src = './map/경기도/1경기도-평택(변환).png';
+		mus22on.src = './map/경기도/1경기도-오산(변환).png';
+		mus23on.src = './map/경기도/1경기도-수원(변환).png';
+		mus24on.src = './map/경기도/1경기도-의왕(변환).png';
+		mus25on.src = './map/경기도/1경기도-과천(변환).png';
+		mus26on.src = './map/경기도/1경기도-안양(변환).png';
+		mus27on.src = './map/경기도/1경기도-군포(변환).png';
+		mus28on.src = './map/경기도/1경기도-안산(변환).png';
+		mus29on.src = './map/경기도/1경기도-시흥(변환).png';
+		mus30on.src = './map/경기도/1경기도-광명(변환).png';
+		mus31on.src = './map/경기도/1경기도-부천(변환).png';
+		
+
+	 if("${first}"=="파주시"||"${second}"=="파주시"||"${third}"=="파주시"){ 
+		 	mus1off.src='/map/경기도/1경기도-파주(hot).png';
+		 	$('.list1')[0].src='/map/경기도/1경기도-파주(hot).png';
+		}else{
+			$('.list1')[0].src='/map/경기도/1경기도-파주.png';
+		}
+	 if("${first}"=="연천군"||"${second}"=="연천군"||"${third}"=="연천군"){ 
+		 	mus2off.src='/map/경기도/1경기도-연천(변환)(hot).png';
+		 	$('.list2')[0].src='/map/경기도/1경기도-연천(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/경기도/1경기도-연천.png';
+		}
+	 if("${first}"=="양주시"||"${second}"=="양주시"||"${third}"=="양주시"){ 
+		 	mus3off.src='/map/경기도/1경기도-양주(hot).png';
+		 	$('.list3')[0].src='/map/경기도/1경기도-양주(hot).png';
+		}else{
+			$('.list3')[0].src='/map/경기도/1경기도-양주.png';
+		}
+	 if("${first}"=="동두천시"||"${second}"=="동두천시"||"${third}"=="동두천시"){ 
+		 	mus4off.src='/map/경기도/1경기도-동두천(hot).png';
+		 	$('.list4')[0].src='/map/경기도/1경기도-동두천(hot).png';
+		}else{
+			$('.list4')[0].src='/map/경기도/1경기도-동두천.png';
+		}
+	 if("${first}"=="포천시"||"${second}"=="포천시"||"${third}"=="포천시"){ 
+		 	mus5off.src='/map/경기도/1경기도-포천(hot).png';
+		 	$('.list5')[0].src='/map/경기도/1경기도-포천(hot).png';
+		}else{
+			$('.list5')[0].src='/map/경기도/1경기도-포천.png';
+		}
+	 if("${first}"=="가평군"||"${second}"=="가평군"||"${third}"=="가평군"){ 
+		 	mus6off.src='/map/경기도/1경기도-가평(hot).png';
+		 	$('.list6')[0].src='/map/경기도/1경기도-가평(hot).png';
+		}else{
+			$('.list6')[0].src='/map/경기도/1경기도-가평.png';
+		}
+	 if("${first}"=="김포시"||"${second}"=="김포시"||"${third}"=="김포시"){ 
+		 	mus7off.src='/map/경기도/1경기도-김포(hot).png';
+		 	$('.list7')[0].src='/map/경기도/1경기도-김포(hot).png';
+		}else{
+			$('.list7')[0].src='/map/경기도/1경기도-김포.png';
+		}
+	 if("${first}"=="고양시"||"${second}"=="고양시"||"${third}"=="고양시"){ 
+		 	mus8off.src='/map/경기도/1경기도-고양(hot).png';
+		 	$('.list8')[0].src='/map/경기도/1경기도-고양(hot).png';
+		}else{
+			$('.list8')[0].src='/map/경기도/1경기도-고양.png';
+		}
+	 if("${first}"=="의정부시"||"${second}"=="의정부시"||"${third}"=="의정부시"){ 
+		 	mus9off.src='/map/경기도/1경기도-의정부(hot).png';
+		 	$('.list9')[0].src='/map/경기도/1경기도-의정부(hot).png';
+		}else{
+			$('.list9')[0].src='/map/경기도/1경기도-의정부.png';
+		}
+	 if("${first}"=="남양주시"||"${second}"=="남양주시"||"${third}"=="남양주시"){ 
+		 	mus10off.src='/map/경기도/1경기도-남양주(hot).png';
+		 	$('.list10')[0].src='/map/경기도/1경기도-남양주(hot).png';
+		}else{
+			$('.list10')[0].src='/map/경기도/1경기도-남양주.png';
+		}
+	 if("${first}"=="양평군"||"${second}"=="양평군"||"${third}"=="양평군"){ 
+		 	mus11off.src='/map/경기도/1경기도-양평(hot).png';
+		 	$('.list11')[0].src='/map/경기도/1경기도-양평(hot).png';
+		}else{
+			$('.list11')[0].src='/map/경기도/1경기도-양평.png';
+		}
+	 if("${first}"=="광주시"||"${second}"=="광주시"||"${third}"=="광주시"){ 
+		 	mus12off.src='/map/경기도/1경기도-광주(hot).png';
+		 	$('.list12')[0].src='/map/경기도/1경기도-광주(hot).png';
+		}else{
+			$('.list12')[0].src='/map/경기도/1경기도-광주.png';
+		}
+	 if("${first}"=="여주시"||"${second}"=="여주시"||"${third}"=="여주시"){ 
+		 	mus13off.src='/map/경기도/1경기도-여주(hot).png';
+		 	$('.list13')[0].src='/map/경기도/1경기도-여주(hot).png';
+		}else{
+			$('.list13')[0].src='/map/경기도/1경기도-여주.png';
+		}
+	 if("${first}"=="하남시"||"${second}"=="하남시"||"${third}"=="하남시"){ 
+		 	mus14off.src='/map/경기도/1경기도-하남(hot).png';
+		 	$('.list14')[0].src='/map/경기도/1경기도-하남(hot).png';
+		}else{
+			$('.list14')[0].src='/map/경기도/1경기도-하남.png';
+		}
+	 if("${first}"=="구리시"||"${second}"=="구리시"||"${third}"=="구리시"){ 
+		 	mus15off.src='/map/경기도/1경기도-구리(hot).png';
+		 	$('.list15')[0].src='/map/경기도/1경기도-구리(hot).png';
+		}else{
+			$('.list15')[0].src='/map/경기도/1경기도-구리.png';
+		}	 
+	 if("${first}"=="성남시"||"${second}"=="성남시"||"${third}"=="성남시"){ 
+		 	mus16off.src='/map/경기도/1경기도-성남(hot).png';
+		 	$('.list16')[0].src='/map/경기도/1경기도-성남(hot).png';
+		}else{
+			$('.list16')[0].src='/map/경기도/1경기도-성남.png';
+		}	 
+	 if("${first}"=="용인시"||"${second}"=="용인시"||"${third}"=="용인시"){ 
+		 	mus17off.src='/map/경기도/1경기도-용인(hot).png';
+		 	$('.list17')[0].src='/map/경기도/1경기도-용인(hot).png';
+		}else{
+			$('.list17')[0].src='/map/경기도/1경기도-용인.png';
+		}	 
+	 if("${first}"=="이천시"||"${second}"=="이천시"||"${third}"=="이천시"){ 
+		 	mus18off.src='/map/경기도/1경기도-이천(hot).png';
+		 	$('.list18')[0].src='/map/경기도/1경기도-이천(hot).png';
+		}else{
+			$('.list18')[0].src='/map/경기도/1경기도-이천.png';
+		}	 
+	 if("${first}"=="안성시"||"${second}"=="안성시"||"${third}"=="안성시"){ 
+		 	mus19off.src='/map/경기도/1경기도-안성(hot).png';
+		 	$('.list19')[0].src='/map/경기도/1경기도-안성(hot).png';
+		}else{
+			$('.list19')[0].src='/map/경기도/1경기도-안성.png';
+		}	 
+	 if("${first}"=="화성시"||"${second}"=="화성시"||"${third}"=="화성시"){ 
+		 	mus20off.src='/map/경기도/1경기도-화성(hot).png';
+		 	$('.list20')[0].src='/map/경기도/1경기도-화성(hot).png';
+		}else{
+			$('.list20')[0].src='/map/경기도/1경기도-화성.png';
+		}	 
+	 if("${first}"=="평택시"||"${second}"=="평택시"||"${third}"=="평택시"){ 
+		 	mus21off.src='/map/경기도/1경기도-평택(hot).png';
+		 	$('.list21')[0].src='/map/경기도/1경기도-평택(hot).png';
+		}else{
+			$('.list21')[0].src='/map/경기도/1경기도-평택.png';
+		}	 
+	 if("${first}"=="오산시"||"${second}"=="오산시"||"${third}"=="오산시"){ 
+		 	mus22off.src='/map/경기도/1경기도-오산(hot).png';
+		 	$('.list22')[0].src='/map/경기도/1경기도-오산(hot).png';
+		}else{
+			$('.list22')[0].src='/map/경기도/1경기도-오산.png';
+		}	 
+	 if("${first}"=="수원시"||"${second}"=="수원시"||"${third}"=="수원시"){ 
+		 	mus23off.src='/map/경기도/1경기도-수원(hot).png';
+		 	$('.list23')[0].src='/map/경기도/1경기도-수원(hot).png';
+		}else{
+			$('.list23')[0].src='/map/경기도/1경기도-수원.png';
+		}	 
+	 if("${first}"=="의왕시"||"${second}"=="의왕시"||"${third}"=="의왕시"){ 
+		 	mus24off.src='/map/경기도/1경기도-의왕(hot).png';
+		 	$('.list24')[0].src='/map/경기도/1경기도-의왕(hot).png';
+		}else{
+			$('.list24')[0].src='/map/경기도/1경기도-의왕.png';
+		}	 
+	 if("${first}"=="과천시"||"${second}"=="과천시"||"${third}"=="과천시"){ 
+		 	mus25off.src='/map/경기도/1경기도-과천(hot).png';
+		 	$('.list25')[0].src='/map/경기도/1경기도-과천(hot).png';
+		}else{
+			$('.list25')[0].src='/map/경기도/1경기도-과천.png';
+		}	 
+	 if("${first}"=="안양시"||"${second}"=="안양시"||"${third}"=="안양시"){ 
+		 	mus26off.src='/map/경기도/1경기도-안양(hot).png';
+		 	$('.list26')[0].src='/map/경기도/1경기도-안양(hot).png';
+		}else{
+			$('.list26')[0].src='/map/경기도/1경기도-안양.png';
+		}	 
+	 if("${first}"=="군포시"||"${second}"=="군포시"||"${third}"=="군포시"){ 
+		 	mus27off.src='/map/경기도/1경기도-군포(hot).png';
+		 	$('.list27')[0].src='/map/경기도/1경기도-군포(hot).png';
+		}else{
+			$('.list27')[0].src='/map/경기도/1경기도-군포.png';
+		}	 
+	 if("${first}"=="안산시"||"${second}"=="안산시"||"${third}"=="안산시"){ 
+		 	mus28off.src='/map/경기도/1경기도-안산(hot).png';
+		 	$('.list28')[0].src='/map/경기도/1경기도-안산(hot).png';
+		}else{
+			$('.list28')[0].src='/map/경기도/1경기도-안산.png';
+		}	 
+	 if("${first}"=="시흥시"||"${second}"=="시흥시"||"${third}"=="시흥시"){ 
+		 	mus29off.src='/map/경기도/1경기도-시흥(hot).png';
+		 	$('.list29')[0].src='/map/경기도/1경기도-시흥(hot).png';
+		}else{
+			$('.list29')[0].src='/map/경기도/1경기도-시흥.png';
+		}	 
+	 if("${first}"=="광명시"||"${second}"=="광명시"||"${third}"=="광명시"){ 
+		 	mus30off.src='/map/경기도/1경기도-광명(hot).png';
+		 	$('.list30')[0].src='/map/경기도/1경기도-광명(hot).png';
+		}else{
+			$('.list30')[0].src='/map/경기도/1경기도-광명.png';
+		}	 
+	 if("${first}"=="부천시"||"${second}"=="부천시"||"${third}"=="부천시"){ 
+		 	mus31off.src='/map/경기도/1경기도-부천(hot).png';
+		 	$('.list31')[0].src='/map/경기도/1경기도-부천(hot).png';
+		}else{
+			$('.list31')[0].src='/map/경기도/1경기도-부천.png';
+		}	 
+	
+	 
+ });
+ 
+ </script>
 </head>
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
