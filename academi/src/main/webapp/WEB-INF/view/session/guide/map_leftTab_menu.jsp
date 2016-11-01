@@ -23,12 +23,6 @@
 							<input type="checkbox" id="stored" class="css-checkbox lrg">
 							<label for="stored" name="checkbox69_lbl" class="css-label lrg vlad">선택한 지역만 보기</label>
 						</div>
-						<input type="hidden" id="title" name="title" ><br>
-						<input type="hidden" id="address" name="address" size=40><br>
-						<input type="hidden" id="latitude" name="latitude">
-						<input type="hidden" id="longitude" name="longitude">
-						<input type="hidden" id="category" name="category">
-						<input type="hidden" id="imageUrl" name="imageUrl">
 						
 						<output id="result">
 						</output>
@@ -52,6 +46,7 @@
 							</form>
 							
 				</section>
+				
 				
 				<!-- ----------------- 도, 시 찾기 window.open 띄우기 -------------------------- -->
 <!-- 			
@@ -244,7 +239,14 @@
 				</form>
 			</div>
 		</section>
- --%>		
+ --%>
+ 
+ 		<input type="hidden" id="title" name="title" ><br>
+		<input type="hidden" id="address" name="address" size=40><br>
+		<input type="hidden" id="latitude" name="latitude">
+		<input type="hidden" id="longitude" name="longitude">
+		<input type="hidden" id="category" name="category">
+		<input type="hidden" id="imageUrl" name="imageUrl">
 
 	</div>
 	

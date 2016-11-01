@@ -66,7 +66,7 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>여행 후기 게시판</title>
 <body>
 	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 

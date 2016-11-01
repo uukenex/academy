@@ -197,11 +197,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
-.ui-sortable-handle{
-margin-top: 10px;
-background : black;
-color: white;
-}
+
 </style>
 </head>
 

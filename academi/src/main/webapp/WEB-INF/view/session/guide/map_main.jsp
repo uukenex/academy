@@ -42,21 +42,18 @@
 						<jsp:include page="map_leftTab_menu.jsp" />
 						
 					<!-- Map API body part -->
-						<div class="7u 12u(moblie) important(moblie)">
+						<div class="9u 12u(moblie) important(moblie)">
 							<a href="/domap" class="fancybox" ></a>
+							<!-- Map Right Tab Menu -->
+									<div class="mapMainRightTab">
+										<jsp:include page="map_rightTab_menu.jsp" />
+									</div>
 							<section class="middle-content">
 								<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 								
 								<jsp:include page="map_api.jsp" />
 							</section>
 						</div>
-					<!-- Map Right Tab Menu -->
-						<div class="2u mapMainRightTab">
-							<jsp:include page="map_rightTab_menu.jsp" />
-						</div>
-									
-						
-  					
 				</div>
 				
 				<!-- footer -->
