@@ -60,8 +60,6 @@ public class BasicController {
 		return "session/information/inform_change";
 	}
 	
-	
-	
 	@RequestMapping("/mapRightMenu")
 	public String mapRightMenu(Model model) {
 		return "session/guide/map_rightTab_menu";
