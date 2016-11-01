@@ -198,6 +198,35 @@
 	mus18on = new Image();
 	mus18off = new Image();
 
+
+
+	/* ----------------------------------------------------------------- */
+	var cMuName = "";
+	/* ----------------아래내용 순서 변경 불가-------------------------------- */
+	var exx = new Array("", "철원", "화천", "양구", "인제", "고성", "속초", "춘천", "홍천",
+			"횡성", "평창", "원주", "영월", "태백", "정선", "삼척", "양양", "강릉", "동해");
+	function mus_on(musName) {
+		if (cMuName != musName) {
+			document[musName].src = eval(musName + 'on.src');
+		}
+	}
+	function mus_off(musName) {
+		if (cMuName != musName)
+			document[musName].src = eval(musName + 'off.src');
+	}
+
+	function smenu_click(musName) {
+		cMuName = musName;
+		document[musName].src = eval(musName + 'on.src');
+	}
+
+	//-----------------------------------------------------------------------------------------
+</script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
 	mus1off.src = './map/강원도/1강원도-철원.png';
 	mus2off.src = './map/강원도/1강원도-화천.png';
@@ -236,29 +265,118 @@
 	mus16on.src = './map/강원도/1강원도-양양(변환).png';
 	mus17on.src = './map/강원도/1강원도-강릉(변환).png';
 	mus18on.src = './map/강원도/1강원도-동해(변환).png';
-
-	/* ----------------------------------------------------------------- */
-	var cMuName = "";
-	/* ----------------아래내용 순서 변경 불가-------------------------------- */
-	var exx = new Array("", "철원", "화천", "양구", "인제", "고성", "속초", "춘천", "홍천",
-			"횡성", "평창", "원주", "영월", "태백", "정선", "삼척", "양양", "강릉", "동해");
-	function mus_on(musName) {
-		if (cMuName != musName) {
-			document[musName].src = eval(musName + 'on.src');
+	 
+	 if("${first}"=="철원군"||"${second}"=="철원군"||"${third}"=="철원군"){ 
+		 	mus1off.src='/map/강원도/1강원도-철원(hot).png';
+		 	$('.list1')[0].src='/map/강원도/1강원도-철원(hot).png';
+		}else{
+			$('.list1')[0].src='/map/강원도/1강원도-철원.png';
 		}
-	}
-	function mus_off(musName) {
-		if (cMuName != musName)
-			document[musName].src = eval(musName + 'off.src');
-	}
-
-	function smenu_click(musName) {
-		cMuName = musName;
-		document[musName].src = eval(musName + 'on.src');
-	}
-
-	//-----------------------------------------------------------------------------------------
-</script>
+	 if("${first}"=="화천군"||"${second}"=="화천군"||"${third}"=="화천군"){ 
+		 	mus2off.src='/map/강원도/1강원도-화천(변환)(hot).png';
+		 	$('.list2')[0].src='/map/강원도/1강원도-화천(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/강원도/1강원도-화천.png';
+		}
+	 if("${first}"=="양구군"||"${second}"=="양구군"||"${third}"=="양구군"){ 
+		 	mus3off.src='/map/강원도/1강원도-양구(hot).png';
+		 	$('.list3')[0].src='/map/강원도/1강원도-양구(hot).png';
+		}else{
+			$('.list3')[0].src='/map/강원도/1강원도-양구.png';
+		}
+	 if("${first}"=="인제군"||"${second}"=="인제군"||"${third}"=="인제군"){ 
+		 	mus4off.src='/map/강원도/1강원도-인제(hot).png';
+		 	$('.list4')[0].src='/map/강원도/1강원도-인제(hot).png';
+		}else{
+			$('.list4')[0].src='/map/강원도/1강원도-인제.png';
+		}
+	 if("${first}"=="고성군"||"${second}"=="고성군"||"${third}"=="고성군"){ 
+		 	mus5off.src='/map/강원도/1강원도-고성(hot).png';
+		 	$('.list5')[0].src='/map/강원도/1강원도-고성(hot).png';
+		}else{
+			$('.list5')[0].src='/map/강원도/1강원도-고성.png';
+		}
+	 if("${first}"=="속초시"||"${second}"=="속초시"||"${third}"=="속초시"){ 
+		 	mus6off.src='/map/강원도/1강원도-속초(hot).png';
+		 	$('.list6')[0].src='/map/강원도/1강원도-속초(hot).png';
+		}else{
+			$('.list6')[0].src='/map/강원도/1강원도-속초.png';
+		}
+	 if("${first}"=="춘천시"||"${second}"=="춘천시"||"${third}"=="춘천시"){ 
+		 	mus7off.src='/map/강원도/1강원도-춘천(hot).png';
+		 	$('.list7')[0].src='/map/강원도/1강원도-춘천(hot).png';
+		}else{
+			$('.list7')[0].src='/map/강원도/1강원도-춘천.png';
+		}
+	 if("${first}"=="홍천군"||"${second}"=="홍천군"||"${third}"=="홍천군"){ 
+		 	mus8off.src='/map/강원도/1강원도-홍천(hot).png';
+		 	$('.list8')[0].src='/map/강원도/1강원도-홍천(hot).png';
+		}else{
+			$('.list8')[0].src='/map/강원도/1강원도-홍천.png';
+		}
+	 if("${first}"=="횡성군"||"${second}"=="횡성군"||"${third}"=="횡성군"){ 
+		 	mus9off.src='/map/강원도/1강원도-횡성(hot).png';
+		 	$('.list9')[0].src='/map/강원도/1강원도-횡성(hot).png';
+		}else{
+			$('.list9')[0].src='/map/강원도/1강원도-횡성.png';
+		}
+	 if("${first}"=="평창군"||"${second}"=="평창군"||"${third}"=="평창군"){ 
+		 	mus10off.src='/map/강원도/1강원도-평창(hot).png';
+		 	$('.list10')[0].src='/map/강원도/1강원도-평창(hot).png';
+		}else{
+			$('.list10')[0].src='/map/강원도/1강원도-평창.png';
+		}
+	 if("${first}"=="원주시"||"${second}"=="원주시"||"${third}"=="원주시"){ 
+		 	mus11off.src='/map/강원도/1강원도-원주(hot).png';
+		 	$('.list11')[0].src='/map/강원도/1강원도-원주(hot).png';
+		}else{
+			$('.list11')[0].src='/map/강원도/1강원도-원주.png';
+		}
+	 if("${first}"=="영월군"||"${second}"=="영월군"||"${third}"=="영월군"){ 
+		 	mus12off.src='/map/강원도/1강원도-영월(hot).png';
+		 	$('.list12')[0].src='/map/강원도/1강원도-영월(hot).png';
+		}else{
+			$('.list12')[0].src='/map/강원도/1강원도-영월.png';
+		}
+	 if("${first}"=="태백시"||"${second}"=="태백시"||"${third}"=="태백시"){ 
+		 	mus13off.src='/map/강원도/1강원도-태백(hot).png';
+		 	$('.list13')[0].src='/map/강원도/1강원도-태백(hot).png';
+		}else{
+			$('.list13')[0].src='/map/강원도/1강원도-태백.png';
+		}
+	 if("${first}"=="정선군"||"${second}"=="정선군"||"${third}"=="정선군"){ 
+		 	mus14off.src='/map/강원도/1강원도-정선(hot).png';
+		 	$('.list14')[0].src='/map/강원도/1강원도-정선(hot).png';
+		}else{
+			$('.list14')[0].src='/map/강원도/1강원도-정선.png';
+		}
+	 if("${first}"=="삼척시"||"${second}"=="삼척시"||"${third}"=="삼척시"){ 
+		 	mus15off.src='/map/강원도/1강원도-삼척(hot).png';
+		 	$('.list15')[0].src='/map/강원도/1강원도-삼척(hot).png';
+		}else{
+			$('.list15')[0].src='/map/강원도/1강원도-삼척.png';
+		}	 
+	 if("${first}"=="양양군"||"${second}"=="양양군"||"${third}"=="양양군"){ 
+		 	mus16off.src='/map/강원도/1강원도-양양(hot).png';
+		 	$('.list16')[0].src='/map/강원도/1강원도-양양(hot).png';
+		}else{
+			$('.list16')[0].src='/map/강원도/1강원도-양양.png';
+		}	 
+	 if("${first}"=="강릉시"||"${second}"=="강릉시"||"${third}"=="강릉시"){ 
+		 	mus17off.src='/map/강원도/1강원도-강릉(hot).png';
+		 	$('.list17')[0].src='/map/강원도/1강원도-강릉(hot).png';
+		}else{
+			$('.list17')[0].src='/map/강원도/1강원도-강릉.png';
+		}	 
+	 if("${first}"=="동해시"||"${second}"=="동해시"||"${third}"=="동해시"){ 
+		 	mus18off.src='/map/강원도/1강원도-동해(hot).png';
+		 	$('.list18')[0].src='/map/강원도/1강원도-동해(hot).png';
+		}else{
+			$('.list18')[0].src='/map/강원도/1강원도-동해.png';
+		}	 
+ });
+ 
+ </script>
 </head>
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

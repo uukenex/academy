@@ -198,44 +198,6 @@
 	mus18on = new Image();
 	mus18off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/경남/1경남-함양.png';
-	mus2off.src = './map/경남/1경남-거창.png';
-	mus3off.src = './map/경남/1경남-합천.png';
-	mus4off.src = './map/경남/1경남-창녕.png';
-	mus5off.src = './map/경남/1경남-밀양.png';
-	mus6off.src = './map/경남/1경남-양산.png';
-	mus7off.src = './map/경남/1경남-김해.png';
-	mus8off.src = './map/경남/1경남-창원.png';
-	mus9off.src = './map/경남/1경남-함안.png';
-	mus10off.src = './map/경남/1경남-의령.png';
-	mus11off.src = './map/경남/1경남-진주.png';
-	mus12off.src = './map/경남/1경남-산청.png';
-	mus13off.src = './map/경남/1경남-하동.png';
-	mus14off.src = './map/경남/1경남-사천.png';
-	mus15off.src = './map/경남/1경남-고성.png';
-	mus16off.src = './map/경남/1경남-통영.png';
-	mus17off.src = './map/경남/1경남-남해.png';
-	mus18off.src = './map/경남/1경남-거제.png';
-
-	mus1on.src = './map/경남/1경남-함양(변환).png';
-	mus2on.src = './map/경남/1경남-거창(변환).png';
-	mus3on.src = './map/경남/1경남-합천(변환).png';
-	mus4on.src = './map/경남/1경남-창녕(변환).png';
-	mus5on.src = './map/경남/1경남-밀양(변환).png';
-	mus6on.src = './map/경남/1경남-양산(변환).png';
-	mus7on.src = './map/경남/1경남-김해(변환).png';
-	mus8on.src = './map/경남/1경남-창원(변환).png';
-	mus9on.src = './map/경남/1경남-함안(변환).png';
-	mus10on.src = './map/경남/1경남-의령(변환).png';
-	mus11on.src = './map/경남/1경남-진주(변환).png';
-	mus12on.src = './map/경남/1경남-산청(변환).png';
-	mus13on.src = './map/경남/1경남-하동(변환).png';
-	mus14on.src = './map/경남/1경남-사천(변환).png';
-	mus15on.src = './map/경남/1경남-고성(변환).png';
-	mus16on.src = './map/경남/1경남-통영(변환).png';
-	mus17on.src = './map/경남/1경남-남해(변환).png';
-	mus18on.src = './map/경남/1경남-거제(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
@@ -259,6 +221,162 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/경남/1경남-함양.png';
+		mus2off.src = './map/경남/1경남-거창.png';
+		mus3off.src = './map/경남/1경남-합천.png';
+		mus4off.src = './map/경남/1경남-창녕.png';
+		mus5off.src = './map/경남/1경남-밀양.png';
+		mus6off.src = './map/경남/1경남-양산.png';
+		mus7off.src = './map/경남/1경남-김해.png';
+		mus8off.src = './map/경남/1경남-창원.png';
+		mus9off.src = './map/경남/1경남-함안.png';
+		mus10off.src = './map/경남/1경남-의령.png';
+		mus11off.src = './map/경남/1경남-진주.png';
+		mus12off.src = './map/경남/1경남-산청.png';
+		mus13off.src = './map/경남/1경남-하동.png';
+		mus14off.src = './map/경남/1경남-사천.png';
+		mus15off.src = './map/경남/1경남-고성.png';
+		mus16off.src = './map/경남/1경남-통영.png';
+		mus17off.src = './map/경남/1경남-남해.png';
+		mus18off.src = './map/경남/1경남-거제.png';
+
+		mus1on.src = './map/경남/1경남-함양(변환).png';
+		mus2on.src = './map/경남/1경남-거창(변환).png';
+		mus3on.src = './map/경남/1경남-합천(변환).png';
+		mus4on.src = './map/경남/1경남-창녕(변환).png';
+		mus5on.src = './map/경남/1경남-밀양(변환).png';
+		mus6on.src = './map/경남/1경남-양산(변환).png';
+		mus7on.src = './map/경남/1경남-김해(변환).png';
+		mus8on.src = './map/경남/1경남-창원(변환).png';
+		mus9on.src = './map/경남/1경남-함안(변환).png';
+		mus10on.src = './map/경남/1경남-의령(변환).png';
+		mus11on.src = './map/경남/1경남-진주(변환).png';
+		mus12on.src = './map/경남/1경남-산청(변환).png';
+		mus13on.src = './map/경남/1경남-하동(변환).png';
+		mus14on.src = './map/경남/1경남-사천(변환).png';
+		mus15on.src = './map/경남/1경남-고성(변환).png';
+		mus16on.src = './map/경남/1경남-통영(변환).png';
+		mus17on.src = './map/경남/1경남-남해(변환).png';
+		mus18on.src = './map/경남/1경남-거제(변환).png';
+	
+
+	 if("${first}"=="함양군"||"${second}"=="함양군"||"${third}"=="함양군"){ 
+		 	mus1off.src='/map/경남/1경남-함양(hot).png';
+		 	$('.list1')[0].src='/map/경남/1경남-함양(hot).png';
+		}else{
+			$('.list1')[0].src='/map/경남/1경남-함양.png';
+		}
+	 if("${first}"=="거창군"||"${second}"=="거창군"||"${third}"=="거창군"){ 
+		 	mus2off.src='/map/경남/1경남-거창(변환)(hot).png';
+		 	$('.list2')[0].src='/map/경남/1경남-거창(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/경남/1경남-거창.png';
+		}
+	 if("${first}"=="합천군"||"${second}"=="합천군"||"${third}"=="합천군"){ 
+		 	mus3off.src='/map/경남/1경남-합천(hot).png';
+		 	$('.list3')[0].src='/map/경남/1경남-합천(hot).png';
+		}else{
+			$('.list3')[0].src='/map/경남/1경남-합천.png';
+		}
+	 if("${first}"=="창녕군"||"${second}"=="창녕군"||"${third}"=="창녕군"){ 
+		 	mus4off.src='/map/경남/1경남-창녕(hot).png';
+		 	$('.list4')[0].src='/map/경남/1경남-창녕(hot).png';
+		}else{
+			$('.list4')[0].src='/map/경남/1경남-창녕.png';
+		}
+	 if("${first}"=="밀양시"||"${second}"=="밀양시"||"${third}"=="밀양시"){ 
+		 	mus5off.src='/map/경남/1경남-밀양(hot).png';
+		 	$('.list5')[0].src='/map/경남/1경남-밀양(hot).png';
+		}else{
+			$('.list5')[0].src='/map/경남/1경남-밀양.png';
+		}
+	 if("${first}"=="양산시"||"${second}"=="양산시"||"${third}"=="양산시"){ 
+		 	mus6off.src='/map/경남/1경남-양산(hot).png';
+		 	$('.list6')[0].src='/map/경남/1경남-양산(hot).png';
+		}else{
+			$('.list6')[0].src='/map/경남/1경남-양산.png';
+		}
+	 if("${first}"=="김해시"||"${second}"=="김해시"||"${third}"=="김해시"){ 
+		 	mus7off.src='/map/경남/1경남-김해(hot).png';
+		 	$('.list7')[0].src='/map/경남/1경남-김해(hot).png';
+		}else{
+			$('.list7')[0].src='/map/경남/1경남-김해.png';
+		}
+	 if("${first}"=="창원시"||"${second}"=="창원시"||"${third}"=="창원시"){ 
+		 	mus8off.src='/map/경남/1경남-창원(hot).png';
+		 	$('.list8')[0].src='/map/경남/1경남-창원(hot).png';
+		}else{
+			$('.list8')[0].src='/map/경남/1경남-창원.png';
+		}
+	 if("${first}"=="함안군"||"${second}"=="함안군"||"${third}"=="함안군"){ 
+		 	mus9off.src='/map/경남/1경남-함안(hot).png';
+		 	$('.list9')[0].src='/map/경남/1경남-함안(hot).png';
+		}else{
+			$('.list9')[0].src='/map/경남/1경남-함안.png';
+		}
+	 if("${first}"=="의령군"||"${second}"=="의령군"||"${third}"=="의령군"){ 
+		 	mus10off.src='/map/경남/1경남-의령(hot).png';
+		 	$('.list10')[0].src='/map/경남/1경남-의령(hot).png';
+		}else{
+			$('.list10')[0].src='/map/경남/1경남-의령.png';
+		}
+	 if("${first}"=="진주시"||"${second}"=="진주시"||"${third}"=="진주시"){ 
+		 	mus11off.src='/map/경남/1경남-진주(hot).png';
+		 	$('.list11')[0].src='/map/경남/1경남-진주(hot).png';
+		}else{
+			$('.list11')[0].src='/map/경남/1경남-진주.png';
+		}
+	 if("${first}"=="산청군"||"${second}"=="산청군"||"${third}"=="산청군"){ 
+		 	mus12off.src='/map/경남/1경남-산청(hot).png';
+		 	$('.list12')[0].src='/map/경남/1경남-산청(hot).png';
+		}else{
+			$('.list12')[0].src='/map/경남/1경남-산청.png';
+		}
+	 if("${first}"=="하동군"||"${second}"=="하동군"||"${third}"=="하동군"){ 
+		 	mus13off.src='/map/경남/1경남-하동(hot).png';
+		 	$('.list13')[0].src='/map/경남/1경남-하동(hot).png';
+		}else{
+			$('.list13')[0].src='/map/경남/1경남-하동.png';
+		}
+	 if("${first}"=="사천시"||"${second}"=="사천시"||"${third}"=="사천시"){ 
+		 	mus14off.src='/map/경남/1경남-사천(hot).png';
+		 	$('.list14')[0].src='/map/경남/1경남-사천(hot).png';
+		}else{
+			$('.list14')[0].src='/map/경남/1경남-사천.png';
+		}
+	 if("${first}"=="고성군"||"${second}"=="고성군"||"${third}"=="고성군"){ 
+		 	mus15off.src='/map/경남/1경남-고성(hot).png';
+		 	$('.list15')[0].src='/map/경남/1경남-고성(hot).png';
+		}else{
+			$('.list15')[0].src='/map/경남/1경남-고성.png';
+		}	 
+	 if("${first}"=="통영시"||"${second}"=="통영시"||"${third}"=="통영시"){ 
+		 	mus16off.src='/map/경남/1경남-통영(hot).png';
+		 	$('.list16')[0].src='/map/경남/1경남-통영(hot).png';
+		}else{
+			$('.list16')[0].src='/map/경남/1경남-통영.png';
+		}	 
+	 if("${first}"=="남해군"||"${second}"=="남해군"||"${third}"=="남해군"){ 
+		 	mus17off.src='/map/경남/1경남-남해(hot).png';
+		 	$('.list17')[0].src='/map/경남/1경남-남해(hot).png';
+		}else{
+			$('.list17')[0].src='/map/경남/1경남-남해.png';
+		}	 
+	 if("${first}"=="거제시"||"${second}"=="거제시"||"${third}"=="거제시"){ 
+		 	mus18off.src='/map/경남/1경남-거제(hot).png';
+		 	$('.list18')[0].src='/map/경남/1경남-거제(hot).png';
+		}else{
+			$('.list18')[0].src='/map/경남/1경남-거제.png';
+		}	 	
+ });
+ 
+ </script>
+
 </head>
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

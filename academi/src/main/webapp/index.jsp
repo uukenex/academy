@@ -77,7 +77,7 @@
 		<a href="${m2 }">쓰던메인</a>
 		<br>
 		<br>
-		<c:url value="/session/myPhoto?userId=ㅋㅌㅊ&folderName" var="m2" />
+		<c:url value="/session/myPhoto?userId=${Users.userId }&folderName" var="m2" />
 		<a href="${m2 }">myPhoto</a>
 		<br>
 		

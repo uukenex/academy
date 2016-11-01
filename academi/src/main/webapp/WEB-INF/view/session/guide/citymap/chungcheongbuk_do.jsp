@@ -192,7 +192,7 @@
 		}else{
 			$('.list2')[0].src='/map/충북/1충북-음성.png';
 		}
-	 if("${first}"=="충주군"||"${second}"=="충주군"||"${third}"=="충주군"){ 
+	 if("${first}"=="충주시"||"${second}"=="충주시"||"${third}"=="충주시"){ 
 		 	mus3off.src='/map/충북/1충북-충주(hot).png';
 		 	$('.list3')[0].src='/map/충북/1충북-충주(hot).png';
 		}else{
@@ -222,7 +222,7 @@
 		}else{
 			$('.list7')[0].src='/map/충북/1충북-증평.png';
 		}
-	 if("${first}"=="청주군"||"${second}"=="청주군"||"${third}"=="청주군"){ 
+	 if("${first}"=="청주시"||"${second}"=="청주시"||"${third}"=="청주시"){ 
 		 	mus8off.src='/map/충북/1충북-청주(hot).png';
 		 	$('.list8')[0].src='/map/충북/1충북-청주(hot).png';
 		}else{

@@ -73,7 +73,10 @@ z-index: 1;
 				
 				
 <div style="height: 5em;"></div>
-${users.userNick }의 포토북
+<c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
+<%-- 현재아이디와 들어가려는 아이디가 같은경우에만 수정이가능함 --%>
+<c:if test="${Users.userId==curUserId }"> 
+<h3>${Users.userNick }의 포토북</h3>
 	<c:url value="/photo" var="photo" />
 	<form id="frm">
     <p>
@@ -81,15 +84,25 @@ ${users.userNick }의 포토북
         <input type="file" accept="image/*" id="fileLoader" multiple="multiple" />
         <label for="fileLoader" >사진 올리기</label>
         
-        <input type="text" id="cntFiles" />
+        <input type="text" id="cntFiles" style="display: inline; width: 200px;" readonly="readonly"/>
 		<input type="button" id="fileSubmit" value="Upload"/>
 		<label for="fileSubmit">저장</label>
+		<c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
+		<c:if test="${empty folderName }">
 		<input type="button" id="newFolder" value="새폴더"/>
 		<label for="newFolder">새폴더</label>
+		</c:if>
     </p>
     </form>
     <output id="result"></output>
-
+</c:if>
+<c:if test="${Users.userId!=curUserId }">
+<div style="height: 5em;"></div> 
+	<div style="text-align: center;">
+	<h1>권한이 없습니다. 공유신청을 하세요!</h1>
+	<input type="button" value="사진폴더 공유신청하기">
+	</div>
+</c:if>
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
@@ -102,7 +115,7 @@ ${users.userNick }의 포토북
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
 <script>
-
+<c:if test="${Users.userId==curUserId }"> 
 
 
 
@@ -139,9 +152,31 @@ $(document).on("click","#fileSubmit",function() {
                 });
                 
 //삭제처리
+<c:url value="/delete" var="delete" />
 $(document).on("click",".close",function() {
 	if(confirm('정말 삭제하시겠습니까?')==true)
 		{
+		//여기서 ajax 삭제처리 해주어야함
+		console.log(this.previousSibling.previousSibling);
+		var pathname=this.previousSibling.previousSibling.pathname;
+		$.ajax({
+			type:"post",
+			url:"${delete}",
+			data:{
+				pathname:pathname
+			},
+			success:function(res){
+			
+					console.log(res);
+				
+			}
+			,
+			error:function(xhr,status,error){
+				alert(error);
+			}
+		});
+		
+		
 		//글씨나 div를 넣어주는경우 한번씩 더실행할것
 		this.previousSibling.remove();
 		this.previousSibling.remove();
@@ -177,16 +212,16 @@ function processUpload()
        	  console.log(result);
        	  var html="";
        	  $(result[0]).each(function(idx,item){
-       		  html+='<a class="fancybox" rel="gallery1" href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/';
+       		  html+='<a class="fancybox" rel="gallery1" href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/';
        		  html+=item;
        		  html+=" id='img"+interval+"' ";
        		  html+=">";
-       		  html+='<img src=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/';
+       		  html+='<img src=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/';
        		  html+=item;
        		  html+=" width='200px' height='200px' >";
        		  html+="</a>";
        		  //다운로드 이미지버튼
-       		  html+='<a href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/'+item;
+       		  html+='<a href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/'+item;
        		  html+=" download id='down"+interval+"' ><img id='down"+interval;
        		  html+="' src='/images/down.png'";
        		  html+="height='25px' width='25px' class='down ' >";
@@ -219,7 +254,7 @@ $("#newFolder").on("click",function(){
 		type:"post",
 		url:"${newfolder}",
 		data:{
-			userId:'${users.userId }',
+			userId:'<%=request.getParameter("userId") %>',
 			name:conf
 		},
 		success:function(res){
@@ -250,12 +285,19 @@ $("#newFolder").on("click",function(){
 
 	
 $(document).on("ready",function(){
-	var folderName="";
+	
 	$(document).on("dblclick",".folderInline",function(event) {
 		
-		folderName = event.currentTarget.nextSibling.innerText;
-			location.href="/session/myPhoto?userId=${users.userId }&folderName="+folderName;
-		   });
+		var folderName = event.currentTarget.nextSibling.innerText;
+		
+		if(folderName.trim()=='..'){
+			folderName='.'
+		}
+			
+	 	location.href='/session/myPhoto?userId=<%=request.getParameter("userId") %>&folderName='+folderName;
+		
+		
+	});
 	
 	$.ajax({
 		type:"post",
@@ -282,20 +324,32 @@ $(document).on("ready",function(){
 				
 				
 				});
+			if(res[1].length==0){
+				
+				var html="";
+				html+="<div class='outer'>";
+				html+="<img src=/images/newFolder2.png class='folderInline'";
+				html+=" width='200px' height='200px' >";
+				html+="<div class='bottomleft'><p style='text-align: center'>..</p></div><div>";
+	       		$("#result")[0].innerHTML+=html;
+			}
+			
+			
+			
 			
 				var html="";
 			//파일목록 받아옴
 	       	  $(res[0]).each(function(idx,item){
-	       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/";
+	       		  html+="<a class='fancybox' rel='gallery1' href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/";
 	       		  html+=item;
 	       		  html+=" id='img"+interval+"' ";
 	       		  html+=">";
-	       		  html+="<img src=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/";
+	       		  html+="<img src=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/";
 	       		  html+=item;
 	       		  html+=" width='200px' height='200px' >";
 	       		  html+="</a>";
 	       		  //다운로드 이미지버튼
-	       		  html+="<a href=/photo_upload/${users.userId }/<%=request.getParameter("folderName")%>/"+item;
+	       		  html+="<a href=/photo_upload/<%=request.getParameter("userId")%>/<%=request.getParameter("folderName")%>/"+item;
 	       		  html+=" download id='down"+interval+"' ><img id='down"+interval;
 	       		  html+="' src='/images/down.png'";
 	       		  html+="height='25px' width='25px' class='down ' >";
@@ -311,6 +365,7 @@ $(document).on("ready",function(){
 			
 		},
 		error:function(xhr,status,error){
+			console.log(xhr.responseText);
 			alert(error);
 		}
 	});
@@ -318,7 +373,7 @@ $(document).on("ready",function(){
 
 });
 
-
+</c:if>
 </script>
 
 </html>

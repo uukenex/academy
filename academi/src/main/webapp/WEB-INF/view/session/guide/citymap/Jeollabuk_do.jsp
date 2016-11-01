@@ -158,36 +158,6 @@
 	mus14on = new Image();
 	mus14off = new Image();
 
-	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
-	mus1off.src = './map/전북/1전북-군산.png';
-	mus2off.src = './map/전북/1전북-익산.png';
-	mus3off.src = './map/전북/1전북-완주.png';
-	mus4off.src = './map/전북/1전북-진안.png';
-	mus5off.src = './map/전북/1전북-무주.png';
-	mus6off.src = './map/전북/1전북-김제.png';
-	mus7off.src = './map/전북/1전북-전주.png';
-	mus8off.src = './map/전북/1전북-장수.png';
-	mus9off.src = './map/전북/1전북-임실.png';
-	mus10off.src = './map/전북/1전북-남원.png';
-	mus11off.src = './map/전북/1전북-순창.png';
-	mus12off.src = './map/전북/1전북-정읍.png';
-	mus13off.src = './map/전북/1전북-부안.png';
-	mus14off.src = './map/전북/1전북-고창.png';
-
-	mus1on.src = './map/전북/1전북-군산(변환).png';
-	mus2on.src = './map/전북/1전북-익산(변환).png';
-	mus3on.src = './map/전북/1전북-완주(변환).png';
-	mus4on.src = './map/전북/1전북-진안(변환).png';
-	mus5on.src = './map/전북/1전북-무주(변환).png';
-	mus6on.src = './map/전북/1전북-김제(변환).png';
-	mus7on.src = './map/전북/1전북-전주(변환).png';
-	mus8on.src = './map/전북/1전북-장수(변환).png';
-	mus9on.src = './map/전북/1전북-임실(변환).png';
-	mus10on.src = './map/전북/1전북-남원(변환).png';
-	mus11on.src = './map/전북/1전북-순창(변환).png';
-	mus12on.src = './map/전북/1전북-정읍(변환).png';
-	mus13on.src = './map/전북/1전북-부안(변환).png';
-	mus14on.src = './map/전북/1전북-고창(변환).png';
 
 	/* ----------------------------------------------------------------- */
 	var cMuName = "";
@@ -211,6 +181,129 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+ 
+ $(document).on("ready",function(){
+		/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
+		mus1off.src = './map/전북/1전북-군산.png';
+		mus2off.src = './map/전북/1전북-익산.png';
+		mus3off.src = './map/전북/1전북-완주.png';
+		mus4off.src = './map/전북/1전북-진안.png';
+		mus5off.src = './map/전북/1전북-무주.png';
+		mus6off.src = './map/전북/1전북-김제.png';
+		mus7off.src = './map/전북/1전북-전주.png';
+		mus8off.src = './map/전북/1전북-장수.png';
+		mus9off.src = './map/전북/1전북-임실.png';
+		mus10off.src = './map/전북/1전북-남원.png';
+		mus11off.src = './map/전북/1전북-순창.png';
+		mus12off.src = './map/전북/1전북-정읍.png';
+		mus13off.src = './map/전북/1전북-부안.png';
+		mus14off.src = './map/전북/1전북-고창.png';
+
+		mus1on.src = './map/전북/1전북-군산(변환).png';
+		mus2on.src = './map/전북/1전북-익산(변환).png';
+		mus3on.src = './map/전북/1전북-완주(변환).png';
+		mus4on.src = './map/전북/1전북-진안(변환).png';
+		mus5on.src = './map/전북/1전북-무주(변환).png';
+		mus6on.src = './map/전북/1전북-김제(변환).png';
+		mus7on.src = './map/전북/1전북-전주(변환).png';
+		mus8on.src = './map/전북/1전북-장수(변환).png';
+		mus9on.src = './map/전북/1전북-임실(변환).png';
+		mus10on.src = './map/전북/1전북-남원(변환).png';
+		mus11on.src = './map/전북/1전북-순창(변환).png';
+		mus12on.src = './map/전북/1전북-정읍(변환).png';
+		mus13on.src = './map/전북/1전북-부안(변환).png';
+		mus14on.src = './map/전북/1전북-고창(변환).png';
+	
+
+	 if("${first}"=="군산시"||"${second}"=="군산시"||"${third}"=="군산시"){ 
+		 	mus1off.src='/map/전북/1전북-군산(hot).png';
+		 	$('.list1')[0].src='/map/전북/1전북-군산(hot).png';
+		}else{
+			$('.list1')[0].src='/map/전북/1전북-군산.png';
+		}
+	 if("${first}"=="익산시"||"${second}"=="익산시"||"${third}"=="익산시"){ 
+		 	mus2off.src='/map/전북/1전북-익산(변환)(hot).png';
+		 	$('.list2')[0].src='/map/전북/1전북-익산(변환)(hot).png';
+		}else{
+			$('.list2')[0].src='/map/전북/1전북-익산.png';
+		}
+	 if("${first}"=="완주군"||"${second}"=="완주군"||"${third}"=="완주군"){ 
+		 	mus3off.src='/map/전북/1전북-완주(hot).png';
+		 	$('.list3')[0].src='/map/전북/1전북-완주(hot).png';
+		}else{
+			$('.list3')[0].src='/map/전북/1전북-완주.png';
+		}
+	 if("${first}"=="진안군"||"${second}"=="진안군"||"${third}"=="진안군"){ 
+		 	mus4off.src='/map/전북/1전북-진안(hot).png';
+		 	$('.list4')[0].src='/map/전북/1전북-진안(hot).png';
+		}else{
+			$('.list4')[0].src='/map/전북/1전북-진안.png';
+		}
+	 if("${first}"=="무주군"||"${second}"=="무주군"||"${third}"=="무주군"){ 
+		 	mus5off.src='/map/전북/1전북-무주(hot).png';
+		 	$('.list5')[0].src='/map/전북/1전북-무주(hot).png';
+		}else{
+			$('.list5')[0].src='/map/전북/1전북-무주.png';
+		}
+	 if("${first}"=="김제시"||"${second}"=="김제시"||"${third}"=="김제시"){ 
+		 	mus6off.src='/map/전북/1전북-김제(hot).png';
+		 	$('.list6')[0].src='/map/전북/1전북-김제(hot).png';
+		}else{
+			$('.list6')[0].src='/map/전북/1전북-김제.png';
+		}
+	 if("${first}"=="전주시"||"${second}"=="전주시"||"${third}"=="전주시"){ 
+		 	mus7off.src='/map/전북/1전북-전주(hot).png';
+		 	$('.list7')[0].src='/map/전북/1전북-전주(hot).png';
+		}else{
+			$('.list7')[0].src='/map/전북/1전북-전주.png';
+		}
+	 if("${first}"=="장수군"||"${second}"=="장수군"||"${third}"=="장수군"){ 
+		 	mus8off.src='/map/전북/1전북-장수(hot).png';
+		 	$('.list8')[0].src='/map/전북/1전북-장수(hot).png';
+		}else{
+			$('.list8')[0].src='/map/전북/1전북-장수.png';
+		}
+	 if("${first}"=="임실군"||"${second}"=="임실군"||"${third}"=="임실군"){ 
+		 	mus9off.src='/map/전북/1전북-임실(hot).png';
+		 	$('.list9')[0].src='/map/전북/1전북-임실(hot).png';
+		}else{
+			$('.list9')[0].src='/map/전북/1전북-임실.png';
+		}
+	 if("${first}"=="남원시"||"${second}"=="남원시"||"${third}"=="남원시"){ 
+		 	mus10off.src='/map/전북/1전북-남원(hot).png';
+		 	$('.list10')[0].src='/map/전북/1전북-남원(hot).png';
+		}else{
+			$('.list10')[0].src='/map/전북/1전북-남원.png';
+		}
+	 if("${first}"=="순창군"||"${second}"=="순창군"||"${third}"=="순창군"){ 
+		 	mus11off.src='/map/전북/1전북-순창(hot).png';
+		 	$('.list11')[0].src='/map/전북/1전북-순창(hot).png';
+		}else{
+			$('.list11')[0].src='/map/전북/1전북-순창.png';
+		}
+	 if("${first}"=="정읍시"||"${second}"=="정읍시"||"${third}"=="정읍시"){ 
+		 	mus12off.src='/map/전북/1전북-정읍(hot).png';
+		 	$('.list12')[0].src='/map/전북/1전북-정읍(hot).png';
+		}else{
+			$('.list12')[0].src='/map/전북/1전북-정읍.png';
+		}
+	 if("${first}"=="부안군"||"${second}"=="부안군"||"${third}"=="부안군"){ 
+		 	mus13off.src='/map/전북/1전북-부안(hot).png';
+		 	$('.list13')[0].src='/map/전북/1전북-부안(hot).png';
+		}else{
+			$('.list13')[0].src='/map/전북/1전북-부안.png';
+		}
+	 if("${first}"=="고창군"||"${second}"=="고창군"||"${third}"=="고창군"){ 
+		 	mus14off.src='/map/전북/1전북-고창(hot).png';
+		 	$('.list14')[0].src='/map/전북/1전북-고창(hot).png';
+		}else{
+			$('.list14')[0].src='/map/전북/1전북-고창.png';
+		}
+ })
+ </script>
+
 </head>
 <body>
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">

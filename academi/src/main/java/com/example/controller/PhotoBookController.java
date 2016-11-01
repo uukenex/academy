@@ -2,11 +2,11 @@ package com.example.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -54,9 +54,6 @@ public class PhotoBookController {
 			file.get(i).transferTo(f);
 
 		}
-		for (int i = 0; i < file.size(); i++) {
-			logger.trace("경로 및 파일 : {}", UPLOAD_DIR +userId+"/"+folderName+"/"+ fileName.get(i));
-		}
 
 		fileNumAndName.add(fileName);
 		fileNumAndName.add(fileNum);
@@ -67,14 +64,12 @@ public class PhotoBookController {
 	@RequestMapping(value = "/newfolder", method = RequestMethod.POST)
 	public @ResponseBody boolean newFoler(@RequestParam String userId, @RequestParam String name,
 			HttpServletRequest request) throws IllegalStateException, IOException {
+		name = name.replace(" ", "");
 		File dir = new File(UPLOAD_DIR + userId + "/" + name + "/");
 		boolean result = false;
 		if (!dir.isDirectory()) {
 			// 디렉토리가 없으면 생성
 			result = dir.mkdirs();
-			logger.trace("{} 생성", dir);
-		} else {
-			logger.trace("{}이 이미 존재함", dir);
 		}
 		return result;
 	}
@@ -84,7 +79,6 @@ public class PhotoBookController {
 	public @ResponseBody List<List<String>> loadfolder(@RequestParam String userId,
 			@RequestParam String folderName,
 			HttpServletRequest request) throws IllegalStateException, IOException {
-		logger.trace("경로:{}",userId+folderName);
 		String path;
 		
 		File dir = new File(UPLOAD_DIR + userId + "/");
@@ -92,10 +86,7 @@ public class PhotoBookController {
 		if (!dir.isDirectory()) {
 			// 디렉토리가 없으면 생성
 			result = dir.mkdirs();
-			logger.trace("{} 생성", dir);
-		} else {
-			logger.trace("{}이 이미 존재함", dir);
-		}
+		} 
 		
 		if(folderName!=null && !folderName.equals("")){
 		path = UPLOAD_DIR + userId + "/"+folderName + "/";
@@ -114,7 +105,7 @@ public class PhotoBookController {
 		{
 			int pos = fileList[i].getName().lastIndexOf( "." );
 			String ext = fileList[i].getName().substring( pos + 1 );
-			if(ext.equals("jpg"))
+			if(ext.equals("jpg")||ext.equals("png"))
 			{		
 				files.add(fileList[i].getName());
 			}
@@ -126,5 +117,27 @@ public class PhotoBookController {
 		filesAndFolders.add(files);
 		filesAndFolders.add(folders);
 		return filesAndFolders;
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public @ResponseBody String delete(@RequestParam String pathname,HttpServletRequest request) throws IllegalStateException, IOException {
+		//넘어올때 인코딩 형식을 다르게 받아줘야함..
+		pathname = URLDecoder.decode(pathname,"UTF-8");
+		pathname = pathname.replace("/photo_upload/",UPLOAD_DIR );
+		pathname = pathname.replace("/","\\" );
+		String resultMessage="";
+		
+		File f = new File(pathname);
+		if(f.delete()){
+			resultMessage="삭제성공";
+		}
+		else{
+			resultMessage="삭제실패";
+		}
+		return resultMessage;
 	}
 }
