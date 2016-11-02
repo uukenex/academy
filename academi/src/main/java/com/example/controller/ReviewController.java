@@ -84,6 +84,8 @@ public class ReviewController {
 		return "nonsession/postscript/post_view";
 	}
 
+	
+
 	// 리뷰 댓글 ajax
 	@RequestMapping(value = "/session/replyRegist2", method = RequestMethod.POST)
 	public @ResponseBody Map<String, String> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
@@ -435,7 +437,13 @@ public class ReviewController {
 
 	// 경로 있는것중에 선택하기
 	@RequestMapping(value = "/session/existMap", method = RequestMethod.GET)
-	public String ExistMap(Model model) {
+	public String ExistMap(Model model,HttpSession session) {
+		Users u = (Users) session.getAttribute("Users");
+		String userId = u.getUserId();
+		
+		 List<Route> existMap=routeService.selectRouteById(userId);
+		
+		model.addAttribute("existMap",existMap);
 		return "session/postscript/exist_map";
 	}
 	

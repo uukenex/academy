@@ -78,58 +78,58 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		
-		//point 변수 : 공백 지점을 담아줄 변수
+
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -146,57 +146,57 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -213,43 +213,43 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
 
@@ -265,57 +265,57 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -333,69 +333,67 @@ public class MapAPIController {
 		String second = "";
 		String third = "";
 
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
-	
-		
-		model.addAttribute("first",first);
-		model.addAttribute("second",second);
-		model.addAttribute("third",third);
-		logger.trace("first:{}, second:{}, third:{}",first,second,third);
-		return "session/guide/citymap/Gyeongsangbuk_do";
-		
-	}
 
+		model.addAttribute("first", first);
+		model.addAttribute("second", second);
+		model.addAttribute("third", third);
+		logger.trace("first:{}, second:{}, third:{}", first, second, third);
+		return "session/guide/citymap/Gyeongsangbuk_do";
+
+	}
 
 	@RequestMapping(value = "/gyeonggido", method = RequestMethod.GET)
 	public String gyeonggido(Model model) {
@@ -403,57 +401,57 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -489,57 +487,57 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -556,57 +554,57 @@ public class MapAPIController {
 		String first = "";
 		String second = "";
 		String third = "";
-		//point 변수 : 공백 지점을 담아줄 변수
+		// point 변수 : 공백 지점을 담아줄 변수
 		int point = 0;
-		//공백 지점을 찾아주는 변수
+		// 공백 지점을 찾아주는 변수
 		int cnt = 0;
-		//sigu의 길이만큼 증가
+		// sigu의 길이만큼 증가
 		for (int j = 0; j < hotplace.get(0).getSiGu().length(); j++) {
-			//만약 공백이있으면
+			// 만약 공백이있으면
 			if (hotplace.get(0).getSiGu().charAt(j) == ' ') {
-				//포인트에 담아준다.
+				// 포인트에 담아준다.
 				point = cnt;
 			}
-			//cnt를 한개씩 증가시켜주며 글자를 검색해줌
+			// cnt를 한개씩 증가시켜주며 글자를 검색해줌
 			cnt++;
 		}
-		//만약 point에 값이 0이 아니면(공백이 존재)
-		if(point!=0){
-			//변수에 0번째부터 point번째까지 글자를 넣어줌
+		// 만약 point에 값이 0이 아니면(공백이 존재)
+		if (point != 0) {
+			// 변수에 0번째부터 point번째까지 글자를 넣어줌
 			first = hotplace.get(0).getSiGu().substring(0, point);
-			//그게아니면
-		}else{
-			//sigu그 자체를 변수에 담아줌
+			// 그게아니면
+		} else {
+			// sigu그 자체를 변수에 담아줌
 			first = hotplace.get(0).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(1).getSiGu().length(); j++) {
 			if (hotplace.get(1).getSiGu().charAt(j) == ' ') {
 				point = cnt;
-				logger.trace("Point??:{}",point);
-			}	
+				logger.trace("Point??:{}", point);
+			}
 			cnt++;
-			
+
 		}
-		if(point!=0){
+		if (point != 0) {
 			second = hotplace.get(1).getSiGu().substring(0, point);
-		}else{
+		} else {
 			second = hotplace.get(1).getSiGu();
 		}
-		
-		cnt=0;
-		point=0;
+
+		cnt = 0;
+		point = 0;
 		for (int j = 0; j < hotplace.get(2).getSiGu().length(); j++) {
 			if (hotplace.get(2).getSiGu().charAt(j) == ' ') {
 				point = cnt;
 			}
 			cnt++;
 		}
-		if(point!=0){
+		if (point != 0) {
 			third = hotplace.get(2).getSiGu().substring(0, point);
-		}else{
+		} else {
 			third = hotplace.get(2).getSiGu();
 		}
 
@@ -617,19 +615,18 @@ public class MapAPIController {
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
 
-	//지도만들기 - 맵 메인으로 이동하는 페이지
+	// 지도만들기 - 맵 메인으로 이동하는 페이지
 	@RequestMapping("/mapMain")
-	public String mapMain(Model model,SessionStatus status) {
+	public String mapMain(Model model, SessionStatus status) {
 		status.setComplete();
 		return "redirect:/mapMain2";
 	}
-	
+
 	@RequestMapping("/mapMain2")
-	public String mapMain2(Model model,SessionStatus status) {
+	public String mapMain2(Model model, SessionStatus status) {
 		return "session/guide/map_main";
 	}
-	
-	
+
 	@RequestMapping(value = "/mapapi", method = RequestMethod.GET)
 	public String mapapi(SessionStatus status, Model model, HttpServletRequest request, HttpSession session) {
 		status.setComplete();

@@ -33,7 +33,7 @@
 
  <c:url value="/postWrite" var="postWrite" ></c:url>
 
-		<form id="frm" action="${postWrite }" method="post">
+		<form id="frm" name="frm" action="${postWrite }" method="post">
 			<input type="hidden" id="routeNo" name="routeNo" value="92" />
 				
 					<div><label for="title" >제목</label></div>
@@ -41,14 +41,15 @@
 					<div>
 					<input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
 							'width=550, height=700');" onkeypress="this.onclick()" >
-					<input type="button" value="등록한 경로 가져오기" onclick="window.open('/session/existMap', 'win1',
-							'width=550, height=700');" onkeypress="this.onclick()">
+					<input type="button" value="등록한 경로 가져오기" onclick="mapOpen()">
 					<input type="button" id="addBtn" value="+">
 						<input type="button" id="subBtn" value="-">
 						<input type="button" name="Submit" value="쓰기" id="savebutton"> 
 						<input type="button" name="Submit2" value="취소" 
 						onclick="history.back();"></div>
-					<div> 경로 api가 들어갈부분</div>
+						aaa : <input type="text" id ="aaa" name="aaa" value="">
+						ddd : <input type="text" id ="ddd" name="ddd">
+					
 					
 						<div id="none0">
 						<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
@@ -349,6 +350,17 @@
 	
 	//버튼 클릭시 페이지 열기 함수
 
+
+	function mapOpen(){
+		window.open("/session/existMap", "", 
+		"width=400, height=200, history=no, resizable=no, status=no, scrollbars=no");
+		return true;
+	}
+	
+	function atext(btext){
+		document.frm.aaa.vaule=btext;
+		return true;
+	}
 	</script>
 </body>
 </html>

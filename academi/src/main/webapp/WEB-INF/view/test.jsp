@@ -10,11 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="latLng" items="${latLng }">
-	<%-- 	<c:forEach var="Lng" items="${Lng }" --%>>
-	latLng : ${latLng}<br>
-<%-- 	</c:forEach> --%>
-	</c:forEach>
+
 </body>
 
 </html>

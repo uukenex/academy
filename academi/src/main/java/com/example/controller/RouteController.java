@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.dto.Goods;
 import com.example.dto.Route;
 import com.example.service.RouteService;
+import com.example.service.RouteServiceImpl;
 import com.example.service.UserService;
 
 /**
@@ -30,8 +32,16 @@ import com.example.service.UserService;
 @Controller
 public class RouteController {
 	static Logger logger = LoggerFactory.getLogger(RouteController.class);
-
-
+	
+	@Autowired
+	RouteService rs;
+	//review 테스트
+	@RequestMapping(value ="/test11", method = RequestMethod.GET)
+	public String test11(Model model, HttpServletRequest request) {
+		String RouteNo = request.getParameter("RouteNo");
+		logger.trace("RouteNo :{}" , RouteNo);
+		return "test";
+	}
 
 
 	
