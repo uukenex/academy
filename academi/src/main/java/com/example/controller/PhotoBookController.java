@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +23,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.Users;
+import com.example.service.PhotoBookService;
+
+import ch.qos.logback.classic.spi.LoggerRemoteView;
 
 @Controller
 public class PhotoBookController {
 	static Logger logger = LoggerFactory.getLogger(PhotoBookController.class);
-
+@Autowired
+PhotoBookService ps;
 
 //포토북 페이지로 들어감
 	@RequestMapping(value = "/session/myPhoto" ,method=RequestMethod.GET)
-	public String myPhoto(Model model, HttpSession session,@RequestParam String userId,@RequestParam String folderName) {
+	public String myPhoto(Model model, HttpSession session,
+			@RequestParam String userId,
+			@RequestParam String folderName) {
+		
 		Users users = (Users) session.getAttribute("Users");
-		model.addAttribute("users", users);
+		if(users==null){
+			users=new Users();
+			users.setUserId(".");
+		}
 		model.addAttribute("folderName",folderName);
+		
+		//path와 로그인아이디로 공유폴더리스트를 받아옴
+		List<String> shareFolderList=ps.selectFolderName(userId, users.getUserId());
+		
+		
+		model.addAttribute("shareFolder",shareFolderList);
 		return "session/photobook/photo_sign";
 	}
 
@@ -64,7 +83,7 @@ public class PhotoBookController {
 	@RequestMapping(value = "/newfolder", method = RequestMethod.POST)
 	public @ResponseBody boolean newFoler(@RequestParam String userId, @RequestParam String name,
 			HttpServletRequest request) throws IllegalStateException, IOException {
-		name = name.replace(" ", "");
+		name = name.replace(" ", "").replace(".", "");
 		File dir = new File(UPLOAD_DIR + userId + "/" + name + "/");
 		boolean result = false;
 		if (!dir.isDirectory()) {
@@ -77,15 +96,13 @@ public class PhotoBookController {
 	// 포토북 아이디로  지정된 폴더들 가져오기 ajax
 	@RequestMapping(value = "/loadfolder", method = RequestMethod.POST)
 	public @ResponseBody List<List<String>> loadfolder(@RequestParam String userId,
-			@RequestParam String folderName,
+			@RequestParam String folderName,Model model,HttpSession session,
 			HttpServletRequest request) throws IllegalStateException, IOException {
 		String path;
-		
-		File dir = new File(UPLOAD_DIR + userId + "/");
-		boolean result = false;
+	File dir = new File(UPLOAD_DIR + userId + "/");
 		if (!dir.isDirectory()) {
 			// 디렉토리가 없으면 생성
-			result = dir.mkdirs();
+			dir.mkdirs();
 		} 
 		
 		if(folderName!=null && !folderName.equals("")){
@@ -109,7 +126,10 @@ public class PhotoBookController {
 			{		
 				files.add(fileList[i].getName());
 			}
-			else {
+			else if(ext.equals("zip")){
+				
+			}
+			else{
 				folders.add(fileList[i].getName());
 			}
 		}
@@ -163,7 +183,6 @@ public class PhotoBookController {
 	}
 	
 	
-	// 포토북 새폴더 만들기ajax
 		@RequestMapping(value = "/zipdown", method = RequestMethod.POST)
 		public @ResponseBody boolean zipDown(@RequestParam String pathname,
 				HttpServletRequest request) throws IllegalStateException, IOException {

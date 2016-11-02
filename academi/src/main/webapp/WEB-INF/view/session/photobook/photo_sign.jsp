@@ -77,7 +77,6 @@ z-index: 1;
 
 
 
-
 <c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
 <c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
 
@@ -87,8 +86,8 @@ z-index: 1;
 </c:if>
 
 <%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
-<c:if test="${Users.userId==curUserId }"> 
-<h3>${Users.userNick }의 포토북</h3>
+<c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
+<h3>${curUserId }의 포토북</h3>
 	<c:url value="/photo" var="photo" />
 	<form id="frm">
     <p>
@@ -107,7 +106,7 @@ z-index: 1;
     </form>
     <output id="result"></output>
 </c:if>
-<c:if test="${Users.userId!=curUserId }">
+<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
 <div style="height: 5em;"></div> 
 	<div style="text-align: center;">
 	<h1>권한이 없습니다. 공유신청을 하세요!</h1>
@@ -126,7 +125,7 @@ z-index: 1;
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
 <script>
-<c:if test="${Users.userId==curUserId }"> 
+<c:if test="${Users.userId==curUserId ||!empty shareFolder }"> 
 
 
 
@@ -210,7 +209,7 @@ $(document).on("click",".close",function() {
 $(document).on("click",".fclose",function() {
 	
 var delParent=this.parentNode;
-	if(confirm('폴더안의 내용이 모두삭제됩니다.\n'
+	if(confirm('폴더를 삭제합니다.\n'
 			 +'삭제하시겠습니까?')==true)
 		{
 		//여기서 ajax 삭제처리 해주어야함
@@ -229,6 +228,7 @@ var delParent=this.parentNode;
 				}
 				else{
 					console.log('삭제실패');
+					alert('폴더안의 파일을 먼저 삭제해주세요');
 				}
 			}
 			,
@@ -248,7 +248,7 @@ var delParent=this.parentNode;
 <c:url value="/zipdown" var="zipdown" />
 	$(document).on("click",".fdown",function() {
 		alert('알집으로 다운로드합니다');
-			//여기서 ajax 삭제처리 해주어야함
+		
 		var pathname=this.previousSibling.pathname;
 		$.ajax({
 			type:"post",
@@ -306,7 +306,7 @@ function processUpload()
        		  html+=" width='200px' height='200px' >";
        		  html+="</a>";
        		  //다운로드 이미지버튼
-       		  html+='<a href=/photo_upload/${curUserId}/${folderName}/'+item;
+       		  html+="<a href=/photo_upload/${curUserId}/${folderName}/"+item;
        		  html+=" download id='down"+interval+"' ><img id='down"+interval;
        		  html+="' src='/images/down.png'";
        		  html+="height='25px' width='25px' class='down ' >";
@@ -407,43 +407,76 @@ $(document).on("ready",function(){
 			folderName:'${folderName}'
 		},
 		success:function(res){
-			console.log(res);
-			//폴더목록가져옴
-			
-			$(res[1]).each(function(idx,item){
-				var html="";
-				html+="<div class='outer'>";
-				html+="<img src=/images/newFolder2.png class='folderInline'";
-				html+=" width='200px' height='200px' >";
-				html+="<div class='bottomleft'><p style='text-align: center'>";
-				html+=item;
-				html+="  </p></div>";
-				//다운로드 이미지버튼
-				var fullName="";
-				for(var op=0;op<this.length;op++){
-				fullName +=this[op];
+			//폴더목록 띄워주기 . 여기서 if문으로
+			//주인은 모든 폴더를 볼 수 있고,
+			//주인이 아닌
+			//공유자는 공유폴더만 볼 수 있도록
+			var shareFolderList=[];
+			<c:forEach items='${shareFolder}' var='shareF' >
+			shareFolderList.push('${shareF}');
+			</c:forEach>
+			console.log('공유된 폴더리스트'+shareFolderList);
+			$(res[1]).each(function(idx,item){	
+				if( shareFolderList.indexOf(item)!=-1&&'${curUserId}'!='${Users.userId}'){
+					var html="";
+					html+="<div class='outer'>";
+					html+="<img src=/images/newFolder2.png class='folderInline'";
+					html+=" width='200px' height='200px' >";
+					html+="<div class='bottomleft'><p style='text-align: center'>";
+					html+=item;
+					html+="  </p></div>";
+					//다운로드 이미지버튼
+					var fullName="";
+					for(var op=0;op<this.length;op++){
+					fullName +=this[op];
+					}
+		       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
+		       		html+=" download id='down"+interval+"' ><img id='down"+interval;
+		       		html+="' src='/images/down.png'";
+		       		html+="height='25px' width='25px' class='fdown ' >";
+		       		html+="</a>";
+		       		//삭제 이미지버튼
+		       		html+="<img id='chk"+interval;
+		       		html+="' src='/images/delete.png'";
+		       		html+="height='25px' width='25px' class='fclose '>";
+		       		
+					html+="<div>";
+					$("#result")[0].innerHTML+=html;
 				}
-	       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
-	       		html+=" download id='down"+interval+"' ><img id='down"+interval;
-	       		html+="' src='/images/down.png'";
-	       		html+="height='25px' width='25px' class='fdown ' >";
-	       		html+="</a>";
-	       		//삭제 이미지버튼
-	       		html+="<img id='chk"+interval;
-	       		html+="' src='/images/delete.png'";
-	       		html+="height='25px' width='25px' class='fclose '>";
-	       		
-				html+="<div>";
-				$("#result")[0].innerHTML+=html;
-				
+				else if('${curUserId}'=='${Users.userId}'){
+					var html="";
+					html+="<div class='outer'>";
+					html+="<img src=/images/newFolder2.png class='folderInline'";
+					html+=" width='200px' height='200px' >";
+					html+="<div class='bottomleft'><p style='text-align: center'>";
+					html+=item;
+					html+="  </p></div>";
+					//다운로드 이미지버튼
+					var fullName="";
+					for(var op=0;op<this.length;op++){
+					fullName +=this[op];
+					}
+		       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
+		       		html+=" download id='down"+interval+"' ><img id='down"+interval;
+		       		html+="' src='/images/down.png'";
+		       		html+="height='25px' width='25px' class='fdown ' >";
+		       		html+="</a>";
+		       		//삭제 이미지버튼
+		       		html+="<img id='chk"+interval;
+		       		html+="' src='/images/delete.png'";
+		       		html+="height='25px' width='25px' class='fclose '>";
+		       		
+					html+="<div>";
+					$("#result")[0].innerHTML+=html;
+				}
 				
 				
 				
 				});
 			
+			<c:if test="${!(empty folderName|| folderName=='.')}">
 			//폴더가 없을경우 이전폴더로 가는 폴더이미지띄우기
 			if(res[1].length==0){
-				
 				var html="";
 				html+="<div class='outer'>";
 				html+="<img src=/images/newFolder2.png class='folderInline'";
@@ -451,9 +484,7 @@ $(document).on("ready",function(){
 				html+="<div class='bottomleft'><p style='text-align: center'>..</p></div><div>";
 	       		$("#result")[0].innerHTML+=html;
 			}
-			
-			
-			
+			</c:if>
 			
 				var html="";
 			//파일목록 받아옴
