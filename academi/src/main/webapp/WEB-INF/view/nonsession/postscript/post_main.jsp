@@ -93,53 +93,51 @@
 								<header class="post_major">
 									<h2>다녀온 여행 후기!</h2>
 								</header>
+								
+								<!-- write button -->
+									<div class="post_write_button_div">
+										<div class="best_posts_image">
+											<img alt="" src="/images/BEST.png">
+										</div>
+										<form action="/session/postsign">
+											<input type="submit" value="글쓰기" class="btn post_write_button">
+										</form>
+									</div>
+								
+								<!-- 추천 후기 맨 위 상단에 띄워주는 part -->
+								<hr id="best_posts_hr">
 								<div class="edi_posts">
-									<article>
-										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
-										<h3>여행 추천 후기 1</h3>
-										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
-										<ul>
-											<li><a href="#" class="post_button">More</a></li>
-										</ul>
-									</article>
-									<article>
-										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
-										<h3>여행 추천 후기 1</h3>
-										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
-										<ul>
-											<li><a href="#" class="post_button">More</a></li>
-										</ul>
-									</article>
-									<article>
-										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
-										<h3>여행 추천 후기 1</h3>
-										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
-										<ul>
-											<li><a href="#" class="post_button">More</a></li>
-										</ul>
-									</article>
-									<article>
-										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
-										<h3>여행 추천 후기 1</h3>
-										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
-										<ul>
-											<li><a href="#" class="post_button">More</a></li>
-										</ul>
-									</article>
-									<article>
-										<a href="#" class="post_image"><img alt="" src="/images/cloud.jpg"></a>
-										<h3>여행 추천 후기 1</h3>
-										<p>아아아아아아아아아아아아아아아아아아아아아아아아 아무거나 쓰면 되지요~ 이건 Test!</p>
-										<ul>
-											<li><a href="#" class="post_button">More</a></li>
-										</ul>
-									</article>
+									<c:forEach var="post" items="${posts }" begin="0" end="2">
+										<article>
+											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+											<h3>${post.reviewTitle }</h3>
+											<p>추천수 ${post.reviewStar }</p>
+											<ul>
+												<li><a href="postView?reviewNo=${post.reviewNo} " class="post_button">More</a></li>
+											</ul>
+										</article>
+								</c:forEach>
+								</div>
+								<hr id="best_posts_hr">
+								
+								<!-- 사용자가 등록한 모든 후기 띄워주는 part -->
+								<div class="edi_posts edi_posts_body">
+									<c:forEach var="post" items="${posts }" begin="4">
+										<article>
+											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+											<h3>${post.reviewTitle }</h3>
+											<p>추천수 ${post.reviewStar }</p>
+											<ul>
+												<li><a href="postView?reviewNo=${post.reviewNo} " class="post_button">More</a></li>
+											</ul>
+										</article>
+									</c:forEach>
 								</div>
 							</section>
 					</div>
 				</div>
 		</div>
-
+<%-- 
 	<div class="allDiv">
 		<div class="mainDiv">
 			<c:forEach var="post" items="${posts }" begin="0" end="3">
@@ -162,19 +160,24 @@
 			</c:forEach>
 		</div>
 	</div>
-	<%!int i;%>
-	<%
-		for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
-	%>
-	<a href="/post?page=<%=i%>"><%=i%> </a>
-	<%
-		}
-	%>
-	<div>
-		<form action="/session/postsign">
-			<input type="submit" value="글쓰기" class="btn">
-		</form>
+ --%>	
+	
+	
+	<!-- paging 처리 part -->
+	<div id="posts_paging">
+		<%!int i;%>
+		<%
+			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+		%>
+		<a href="/post?page=<%=i%>"><%=i%> </a>
+		<%
+			}
+		%>
 	</div>
+	
+	<!-- footer -->
+		<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
+	
 	
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>

@@ -47,13 +47,13 @@
 			color: #f56a6a;
 			cursor: pointer;
 			display: inline-block;
-			font-family: "Roboto Slab", serif;
-			font-size: 0.8em;
+			font-family: "Nanum Brush Script";
+			font-size: 1.5em;
 			font-weight: 700;
-			height: 3.5em;
+			height: 1.75em;
 			letter-spacing: 0.075em;
-			line-height: 3.5em;
-			padding: 0 2.25em;
+			line-height: 1.75em;
+			padding: 0 1.25em;
 			text-align: center;
 			text-decoration: none;
 			text-transform: uppercase;
@@ -77,6 +77,45 @@
 			pointer-events: none;
 			opacity: 0.25;
 		}
+		
+		input[type="submit"].post_write_button {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-ms-appearance: none;
+			appearance: none;
+			-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+			-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+			-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+			transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+			background-color: #FFFFFF;
+			border-radius: 0.375em;
+			border: 0;
+			box-shadow: inset 0 0 0 2px #f56a6a;
+			color: #f56a6a;
+			cursor: pointer;
+			display: inline-block;
+			font-family: "Nanum Brush Script";
+			font-size: 1.5em;
+			font-weight: 700;
+			height: 1.75em;
+			letter-spacing: 0.075em;
+			line-height: 1.75em;
+			padding: 0 1.25em;
+			text-align: center;
+			text-decoration: none;
+			text-transform: uppercase;
+			white-space: nowrap;
+			}
+			
+			input[type="submit"].post_write_button:HOVER {
+				background-color: #f56a6a;
+				color: #323232;
+			}
+			
+			.post_write_button_div {
+				text-align: right;
+			}
+		
 		
 
 	/* Section / Article */
@@ -297,6 +336,22 @@
 			display: block;
 			width: 100%;
 		}
+ 
+ 		#best_posts_hr {
+ 			border-top: none;
+ 			border-bottom: 3px solid #f56a6a;
+ 			margin-bottom: 2em;
+ 			top: 0;
+ 		}
+ 		
+ 		#best_posts_hr:BEFORE, #best_posts_hr:AFTER {
+ 			width: 0;
+ 			height: 0;
+ 		}
+ 		
+ 		div.edi_posts_body {
+ 			margin-top: 6em;
+ 		}
 		
 		@media screen and (min-width: 1681px) {
 
@@ -414,4 +469,26 @@
 							display: none;
 						}
 
+		}
+		
+		
+	/* Images */
+		
+		.best_posts_image img {
+			float: left;
+			width: 15em;
+			height: 9em;
+			margin-left: -2em;
+			margin-top: -0.7em;
+		}
+		
+		
+		
+	/* Post footer part */
+	
+		#posts_paging {
+			text-align: center;
+			font-family: 'Nanum Gothic';
+			font-size: 1.2em;
+			margin-top: 2em;
 		}

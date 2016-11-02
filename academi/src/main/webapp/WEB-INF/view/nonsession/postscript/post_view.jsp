@@ -8,9 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>후기 보기</title>
+<title>후기: ${post.reviewTitle}</title>
 </head>
 <body>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+
+	<!-- 기본 작성 Table!! 완성될 때까지 절대 삭제 금지!!!----------------------------------------------------------- -->
 	<form>
 		<table class="board_view" border="1">
 			<colgroup>
