@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.PhotoMapper">
+
+	<insert id="insert" parameterType="Map">
+		insert into photobook
+		(user_Id,PHOTO_FOLDER_NAME,PHOTO_SHARE_ID1)
+		values
+		(#{userId},#{photoFolderName},#{photoShareId1})
+	</insert>
+
+	<select id="select" resultType="String">
+		select photo_folder_name from photobook
+		where user_id=#{userId}
+		and photo_share_id1=#{photoShareId1}
+	</select>
+
+
+	<resultMap type="photoBook" id="photoBase">
+		<!-- <id column="route_no" property="routeNo" /> -->
+		<result column="photo_share_id1" property="photoShareId1" />
+		<result column="photo_share_id2" property="photoShareId2" />
+		<result column="photo_share_id3" property="photoShareId3" />
+		<result column="photo_share_id4" property="photoShareId4" />
+		<result column="photo_folder_name" property="photoFolderName" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+
+	<resultMap type="photoBook" id="photoUsers" extends="photoBase">
+		<association property="users" column="user_id" javaType="users"
+			resultMap="com.example.UserMapper.usersBase"></association>
+	</resultMap>
+
+
+</mapper>

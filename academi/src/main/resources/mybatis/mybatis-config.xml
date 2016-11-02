@@ -16,6 +16,7 @@
 	<typeAlias type="com.example.dto.Qna" alias ="qna"/>
 	<typeAlias type="com.example.dto.Answer" alias ="answer"/>
 	<typeAlias type="com.example.dto.Mro" alias ="mro"/>
+	<typeAlias type="com.example.dto.PhotoBook" alias ="photoBook"/>
 	
 	</typeAliases>
 	
@@ -30,6 +31,7 @@
 	<mapper resource="mybatis/mapper/AnswerMapper.xml" />
 	<mapper resource="mybatis/mapper/RouteMapper.xml" />
 	<mapper resource="mybatis/mapper/MroMapper.xml" />
+	<mapper resource="mybatis/mapper/PhotoMapper.xml" />
 	</mappers>
 
 </configuration>

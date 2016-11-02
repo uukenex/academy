@@ -77,7 +77,6 @@ z-index: 1;
 
 
 
-${shareMap }
 <c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
 <c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
 
@@ -86,12 +85,8 @@ ${shareMap }
  	<c:set var="folderName" value='.'></c:set>
 </c:if>
 
-<br>
-<c:forEach items="${shareMap}" var="sMap" >
-${sMap }<br>
-</c:forEach>
 <%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
-<c:if test="${Users.userId==curUserId ||shareMap.shareId0==Users.userId  }"> 
+<c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
 <h3>${curUserId }의 포토북</h3>
 	<c:url value="/photo" var="photo" />
 	<form id="frm">
@@ -111,7 +106,7 @@ ${sMap }<br>
     </form>
     <output id="result"></output>
 </c:if>
-<c:if test="${Users.userId!=curUserId&&!shareMap.shareId==Users.userId }">
+<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
 <div style="height: 5em;"></div> 
 	<div style="text-align: center;">
 	<h1>권한이 없습니다. 공유신청을 하세요!</h1>
@@ -130,7 +125,7 @@ ${sMap }<br>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
 <script>
-<c:if test="${Users.userId==curUserId ||shareMap.shareId==Users.userId}"> 
+<c:if test="${Users.userId==curUserId ||!empty shareFolder }"> 
 
 
 
@@ -214,7 +209,7 @@ $(document).on("click",".close",function() {
 $(document).on("click",".fclose",function() {
 	
 var delParent=this.parentNode;
-	if(confirm('폴더안의 내용이 모두삭제됩니다.\n'
+	if(confirm('폴더를 삭제합니다.\n'
 			 +'삭제하시겠습니까?')==true)
 		{
 		//여기서 ajax 삭제처리 해주어야함
@@ -233,6 +228,7 @@ var delParent=this.parentNode;
 				}
 				else{
 					console.log('삭제실패');
+					alert('폴더안의 파일을 먼저 삭제해주세요');
 				}
 			}
 			,
@@ -415,9 +411,13 @@ $(document).on("ready",function(){
 			//주인은 모든 폴더를 볼 수 있고,
 			//주인이 아닌
 			//공유자는 공유폴더만 볼 수 있도록
-			
-			$(res[1]).each(function(idx,item){			
-				if( item=="${shareMap.shareFolder}"&&'${curUserId}'!='${Users.userId}'){
+			var shareFolderList=[];
+			<c:forEach items='${shareFolder}' var='shareF' >
+			shareFolderList.push('${shareF}');
+			</c:forEach>
+			console.log('공유된 폴더리스트'+shareFolderList);
+			$(res[1]).each(function(idx,item){	
+				if( shareFolderList.indexOf(item)!=-1&&'${curUserId}'!='${Users.userId}'){
 					var html="";
 					html+="<div class='outer'>";
 					html+="<img src=/images/newFolder2.png class='folderInline'";

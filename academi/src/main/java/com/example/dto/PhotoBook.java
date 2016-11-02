@@ -17,19 +17,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Photobook implements Serializable {
+public class PhotoBook implements Serializable {
 
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** 포토북_공유한폴더. */
-	private String photoShare;
-
-	/** 포토북_공유받은폴더. */
-	private String photoShared;
+	private String photoFolderName;
 
 	/** 사용자. */
-	private Users users;
+	private String userId;
 
 	/** 포토북_공유자1. */
 	private String photoShareId1;
@@ -42,5 +39,19 @@ public class Photobook implements Serializable {
 
 	/** 포토북_공유자4. */
 	private String photoShareId4;
+
+	private Users users;
+	public PhotoBook(String photoFolderName, String userId, String photoShareId1, String photoShareId2,
+			String photoShareId3, String photoShareId4) {
+		super();
+		this.photoFolderName = photoFolderName;
+		this.userId = userId;
+		this.photoShareId1 = photoShareId1;
+		this.photoShareId2 = photoShareId2;
+		this.photoShareId3 = photoShareId3;
+		this.photoShareId4 = photoShareId4;
+	}
+	
+	
 
 }
