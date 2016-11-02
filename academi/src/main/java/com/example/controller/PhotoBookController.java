@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,9 +31,16 @@ public class PhotoBookController {
 //포토북 페이지로 들어감
 	@RequestMapping(value = "/session/myPhoto" ,method=RequestMethod.GET)
 	public String myPhoto(Model model, HttpSession session,@RequestParam String userId,@RequestParam String folderName) {
-		Users users = (Users) session.getAttribute("Users");
-		model.addAttribute("users", users);
 		model.addAttribute("folderName",folderName);
+		
+		Map<String,Object> shareMap =new HashMap<>();
+		shareMap.put("shareId"+"0","ㅋㅌㅊ");
+		shareMap.put("shareFolder"+"0", "히히새폴더");
+		shareMap.put("shareId"+"1","ㅋㅌㅊ");
+		shareMap.put("shareFolder"+"1", "메아아아아");
+		
+		model.addAttribute("shareMap",shareMap);
+		
 		return "session/photobook/photo_sign";
 	}
 
@@ -77,11 +86,10 @@ public class PhotoBookController {
 	// 포토북 아이디로  지정된 폴더들 가져오기 ajax
 	@RequestMapping(value = "/loadfolder", method = RequestMethod.POST)
 	public @ResponseBody List<List<String>> loadfolder(@RequestParam String userId,
-			@RequestParam String folderName,
+			@RequestParam String folderName,Model model,HttpSession session,
 			HttpServletRequest request) throws IllegalStateException, IOException {
 		String path;
-		
-		File dir = new File(UPLOAD_DIR + userId + "/");
+	File dir = new File(UPLOAD_DIR + userId + "/");
 		boolean result = false;
 		if (!dir.isDirectory()) {
 			// 디렉토리가 없으면 생성
