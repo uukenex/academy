@@ -67,11 +67,13 @@
 			$(".fancybox").fancybox({
 			    autoScale: false,
 			    // href : $('.fancybox').attr('id'), // don't need this
-			    'width': '55%',
-            	'height': "50%",
+			    'width': "55%",
+            	'height': 340,
+            	 prevEffect      : 'fade',
 			    type: 'iframe',
 			    padding: 0,
-			    closeClick: false,
+			    closeBtn : false,
+				
 			    // other options
 			    beforeLoad: function () {
 			        var url = $(this.element).attr("href");
