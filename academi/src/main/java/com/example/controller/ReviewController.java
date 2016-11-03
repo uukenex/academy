@@ -110,7 +110,7 @@ public class ReviewController {
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
-
+		int routeNo = Integer.parseInt(request.getParameter("routeNumber"));
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
 		String reviewContent1 = request.getParameter("content1");
@@ -123,7 +123,7 @@ public class ReviewController {
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
 
-		
+
 		List<String> strContent = new ArrayList<>();
 		if (reviewContent0 != null
 				&& !reviewContent0.replaceAll("&nbsp;", "").replaceAll(" ", "").trim().equals("<p></p>")) {
@@ -173,7 +173,7 @@ public class ReviewController {
 		for (int i = strContent.size(); i < 9; i++) {
 			contentArr[i] = null;
 		}
-		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
+	
 		Users u = (Users) session.getAttribute("Users");
 		String userId = u.getUserId();
 
@@ -318,11 +318,14 @@ public class ReviewController {
 /*		System.out.println(city+"\t"+siGu+"\t"+siGu2);*/
 		
 		ms.updateCnt(city, fullSiGu);
+
 		
 		}
 		
-		
+
 		return "redirect:/postView?reviewNo="+rs.currentNo();
+		
+	
 	}
 
 	// 리뷰 수정창으로 넘어가기
@@ -349,6 +352,8 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
+		
+
 
 		List<String> strContent = new ArrayList<>();
 		if (reviewContent0 != null
@@ -401,8 +406,9 @@ public class ReviewController {
 		for (int i = strContent.size(); i < 9; i++) {
 			contentArr[i] = null;
 		}
-
+		
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
+		logger.trace("routeNo :{}",routeNo);
 		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, contentArr[0], contentArr[1], contentArr[2],
 				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],
 				routeNo);

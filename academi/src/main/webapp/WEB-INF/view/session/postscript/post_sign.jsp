@@ -34,22 +34,31 @@
  <c:url value="/postWrite" var="postWrite" ></c:url>
 
 		<form id="frm" name="frm" action="${postWrite }" method="post">
-			<input type="hidden" id="routeNo" name="routeNo" value="92" />
+		
+		
+		
+		
+		
+			
+			
+			
+			
+			
 				
 					<div><label for="title" >제목</label></div>
 					<div><input name="title" type="text" size="50"></div>
 					<div>
 					<input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
 							'width=550, height=700');" onkeypress="this.onclick()" >
+					
 					<input type="button" value="등록한 경로 가져오기" onclick="mapOpen()">
 					<input type="button" id="addBtn" value="+">
 						<input type="button" id="subBtn" value="-">
-						<input type="button" name="Submit" value="쓰기" id="savebutton"> 
+						<input type="submit" name="Submit" value="쓰기" id="savebutton"> 
 						<input type="button" name="Submit2" value="취소" 
 						onclick="history.back();"></div>
-						aaa : <input type="text" id ="aaa" name="aaa" value="">
-						ddd : <input type="text" id ="ddd" name="ddd">
-					
+						<input type="text" id ="routeNumber" name="routeNumber">
+						<input type="text" id ="routeTitle" name="routeTitle" >
 					
 						<div id="none0">
 						<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
@@ -350,17 +359,47 @@
 	
 	//버튼 클릭시 페이지 열기 함수
 
-
 	function mapOpen(){
 		window.open("/session/existMap", "", 
-		"width=400, height=200, history=no, resizable=no, status=no, scrollbars=no");
+				'width=400, height=300, resizable=0, scrollbars=0');
+		console.log("창 열린다");
 		return true;
 	}
 	
 	function atext(btext){
-		document.frm.aaa.vaule=btext;
+		document.frm.routeNumber.value=btext;
+		console.log("b의 값 들어왔음");
 		return true;
 	}
+
+	function ctext(dtext){
+		document.frm.routeTitle.value=dtext;
+		console.log("d의 값 들어왔음");
+		return true;
+	} 
+	
+/* 	
+	
+	$("#commitButton").on("click",function(){
+	
+		var routeNumber = $("#routeNumber").val();
+		var routeTitle = $("#routeTitle").val();
+		var data={"routeNumber":routeNumber,"routeTitle":routeTitle};
+		$.ajax({
+			type:"get",
+			data: data,
+			url: "/insertRoute",
+			success:function(res){
+				alert("성공");
+			},
+			error:function(xhr,status,error){
+				alert("code:"+xhr.status+"에러");
+			}
+		})
+	})
+	 */
+	
+	
 	</script>
 </body>
 </html>

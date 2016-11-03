@@ -16,12 +16,12 @@
 function getSelectValue(frm)
 {
 	frm.textValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].text;
- 	frm.optionValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].value;
+ 	frm.optionValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].value;a
 }
 //-->
 </script>
 </head>
-<body>
+<body onload="bonload()">
  <h1>경로 불러오는 페이지</h1>
  <form name="form">
  <select name="routeNo" onChange="getSelectValue(this.form)">
@@ -32,17 +32,28 @@ function getSelectValue(frm)
  </select>
  	  <input type="text" name="optionValue" >
  	   <input type="text" name="textValue">
-	  <input type="button" value="확인" id="close">
+	  <input type="button" value="확인" onclick="bsubmit()">
  </form>
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
-	
-	$("#close").on("click",function(){
+
+	function bonload(){
+		document.form.optionValue.focus();
+	}	
+
+	function bsubmit(){
+		if  (document.form.optionValue.value != ""){
 		btext = document.form.optionValue.value;
+		dtext = document.form.textValue.value;
 		window.opener.atext(btext);
+		window.opener.ctext(dtext);
 		window.close();
-	})
+		}else
+		document.form.optionValue.focus();
+	}
+	
+	
 
 </script>
 </html>
