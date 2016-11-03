@@ -16,7 +16,7 @@
 function getSelectValue(frm)
 {
 	frm.textValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].text;
- 	frm.optionValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].value;a
+ 	frm.optionValue.value = frm.routeNo.options[frm.routeNo.selectedIndex].value;
 }
 //-->
 </script>
@@ -30,17 +30,29 @@ function getSelectValue(frm)
  	<option value="${existMap.routeNo }">${existMap.routeName}</option>
  	</c:forEach>
  </select>
- 	  <input type="text" name="optionValue" >
- 	   <input type="text" name="textValue">
+ 	  <input type="hidden" name="optionValue" id="optionValue">
+ 	   <input type="hidden" name="textValue" name="textValue">
 	  <input type="button" value="확인" onclick="bsubmit()">
+	  <input type="button" value="취소" id="cancel"onclick="close()">
+	  <input type="button" value="미리보기" id="preview">
  </form>
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
 
+	var routeNo = $("#optionValue").val();
+	console.log(routeNo);
 	function bonload(){
 		document.form.optionValue.focus();
 	}	
+	$("#cancel").on("click",function(){
+		window.close();
+	})
+	
+/* 	$("#preview").on("click",function(){
+		window.open("/route?routeNo="+$("#optionValue").val());
+	})
+	 */
 
 	function bsubmit(){
 		if  (document.form.optionValue.value != ""){
@@ -53,6 +65,25 @@ function getSelectValue(frm)
 		document.form.optionValue.focus();
 	}
 	
+ 	
+	
+	$("#preview").on("click",function(){
+	
+		var routeNumber = $("#optionValue").val();
+		var data={"optionValue":optionValue};
+		$.ajax({
+			type:"get",
+			data: data,
+			url: "/route",
+			success:function(res){
+				alert("성공");
+			},
+			error:function(xhr,status,error){
+				alert("code:"+xhr.status+"에러");
+			}
+		})
+	})
+	 
 	
 
 </script>
