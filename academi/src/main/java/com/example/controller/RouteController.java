@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,11 +37,11 @@ public class RouteController {
 	@Autowired
 	RouteService rs;
 	//review 테스트
-	@RequestMapping(value ="/test11", method = RequestMethod.GET)
-	public String test11(Model model, HttpServletRequest request) {
-		String RouteNo = request.getParameter("RouteNo");
+	@RequestMapping(value ="/previewRoute", method = RequestMethod.GET)
+	public @ResponseBody String test11(Model model, HttpServletRequest request) {
+		String RouteNo = request.getParameter("routeNumber");
 		logger.trace("RouteNo :{}" , RouteNo);
-		return "test";
+		return RouteNo;
 	}
 
 
