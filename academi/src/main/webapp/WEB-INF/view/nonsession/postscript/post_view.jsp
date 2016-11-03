@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 <title>후기: ${post.reviewTitle}</title>
 </head>
 <body>
@@ -16,7 +17,235 @@
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
 	<!-- Menu Bar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Post view body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row">
+					
+						<div class="1u"></div>
+						
+						<div class="10u">
+			
+							<!-- Map image view part -->
+							
+								<table id="post_route_table">
+									<colgroup>
+										<col width="50%">
+										<col width="25%">
+										<col width="*%">
+									</colgroup>
+									<tr>
+										<th rowspan="2" id="post_review_title">${post.reviewTitle}</th>
+										<input type="hidden" name="userId" value="${post.userId }" />
+										<td>작성자: ${post.users.userNick}</td>
+										<td>작성일: <fmt:formatDate value="${post.reviewDate}"
+															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											추천 수: <output id="result" > ${post.reviewStar}</output>
+											<input type="button" id="star" value="추천하기">
+										</td>
+									</tr>
+									<tr><td colspan="3"><hr id="post_divider"></tr>
+									<tr><td colspan="3"><header class="post_major"><h2>여행 경로 보기</h2></header></tr>
+									<tr>
+										<th class="map_image_view">
+											<iframe src="/route?routeNo=${post.routeNo }"
+												height="600px" width="600px"  scrolling="no" frameborder="0">
+											</iframe>
+										</th>
+										<td colspan="2" id="detailAddressView">
+											<p>
+												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+												이곳은 상제 주소를 나타내는 부분!
+												<br>
+												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+												이곳은 상제 주소를 나타내는 부분!
+												<br>
+												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+												이곳은 상제 주소를 나타내는 부분!
+												<br>
+											</p>
+										</td>
+									</tr>
+									<tr><td colspan="3"><hr id="post_divider"></tr>
+									<tr><td colspan="3"><header class="post_major"><h2>여행 계획 보기</h2></header></tr>
+									<tr>
+										<td colspan="3">
+											
+												<ul class="day_tab">
+													<li><a href="javascript:void(0)" class="day_tablinks"
+																onclick="openDays(event, 'day1')" id="defaultDayOpen">
+															Day 01
+															</a>
+													</li>
+													<c:if test="${!empty post.reviewContent1 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day2')">
+																Day 02
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent2 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day3')">
+																Day 03
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent3 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day4')">
+																Day 04
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent4 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day5')">
+																Day 05
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent5 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day6')">
+																Day 06
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent6 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day7')">
+																Day 07
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent7 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day8')">
+																Day 08
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent8 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day9')">
+																Day 09
+																</a>
+														</li>
+													</c:if>
+													<c:if test="${!empty post.reviewContent9 }">
+														<li><a href="javascript:void(0)" class="day_tablinks"
+																	onclick="openDays(event, 'day10')">
+																Day 10
+																</a>
+														</li>
+													</c:if>
+												</ul>
+												
+												<div id="day1" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 01</h3>
+													<p> ${post.reviewContent0}</p>
+												</div>
+												<div id="day2" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 02</h3>
+													<p> ${post.reviewContent1}</p>
+												</div>
+												<div id="day3" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 03</h3>
+													<p> ${post.reviewContent2}</p>
+												</div>
+												<div id="day4" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 04</h3>
+													<p> ${post.reviewContent3}</p>
+												</div>
+												<div id="day5" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 05</h3>
+													<p> ${post.reviewContent4}</p>
+												</div>
+												<div id="day6" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 06</h3>
+													<p> ${post.reviewContent5}</p>
+												</div>
+												<div id="day7" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 07</h3>
+													<p> ${post.reviewContent6}</p>
+												</div>
+												<div id="day8" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 08</h3>
+													<p> ${post.reviewContent7}</p>
+												</div> 
+												<div id="day9" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 09</h3>
+													<p> ${post.reviewContent8}</p>
+												</div>
+												<div id="day10" class="day_tabContent">
+													<span onclick="this.parentElement.style.display='none'"
+																class="topright">x</span>
+													<h3>Day 10</h3>
+													<p> ${post.reviewContent9}</p>
+												</div>
+												
+												<!-- day_tab Menu 이동 Script -->
+												<script>
+													function openDays(evt, dayNumber){
+														var i, day_tabContent, day_tablinks;
+														day_tabContent = document.getElementsByClassName("day_tabContent");
+														for(i=0; i < day_tabContent.length; i++) {
+															day_tabContent[i].style.display = "none";
+														}
+														day_tablinks = document.getElementsByClassName("day_tablinks");
+														for(i=0; i<day_tablinks.length; i++) {
+															day_tablinks[i].className = day_tablinks[i].className.replace("active", "");
+														}
+														document.getElementById(dayNumber).style.display = "block";
+														evt.currentTarget.className += "active";
+													}
+													
+													// Get the element with id="defaultDayOpen" and click on it
+													document.getElementById("defaultDayOpen").click();
+												</script>
+										</td>
+									</tr>
+								</table>
+						</div>
+						
+						<div class="1u"></div>
+					</div>
+				</div>
+				<!-- footer -->
+				<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
+			</div>
+		</div>
+		
 
+<%-- 
+		
 	<!-- 기본 작성 Table!! 완성될 때까지 절대 삭제 금지!!!----------------------------------------------------------- -->
 	<form>
 		<table class="board_view" border="1">
@@ -144,7 +373,7 @@
 
 			</tbody>
 		</table>
-	</form>
+	</form> --%>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$("#listview").on("click", function() {
