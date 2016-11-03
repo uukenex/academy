@@ -202,6 +202,9 @@
 </head>
 
 <body>
+ 	경도 : ${lat }
+	위도 : ${lng }		
+		 
 		 
 									<!-- 지도를 표시할 div 입니다 -->
 										<div class="map_wrap" id="map_wrap">
@@ -345,6 +348,13 @@
 				map.setLevel(map.getLevel()+1);
 				map.setLevel(map.getLevel()-1);
 			})
+			
+			console.log("이게 중심좌표야 ! :"+center.getLat());
+			 /* $("#select").on("change",function(){
+				center.getLat();
+				center.getLng();
+				
+			})  */
 			
 			$("#select").val("AT4");
 			if($("#stored").prop("checked")!=true){
