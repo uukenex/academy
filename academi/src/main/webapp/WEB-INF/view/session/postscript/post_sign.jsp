@@ -57,8 +57,8 @@
 						<input type="submit" name="Submit" value="쓰기" id="savebutton"> 
 						<input type="button" name="Submit2" value="취소" 
 						onclick="history.back();"></div>
-						<input type="text" id ="routeNumber" name="routeNumber">
-						<input type="text" id ="routeTitle" name="routeTitle" >
+						<input type="hidden" id ="routeNumber" name="routeNumber">
+						<input type="text" id ="routeTitle" name="routeTitle"  size="84" disabled="disabled">
 					
 						<div id="none0">
 						<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
@@ -361,7 +361,7 @@
 
 	function mapOpen(){
 		window.open("/session/existMap", "", 
-				'width=400, height=300, resizable=0, scrollbars=0');
+				'width=540px, height=900px, resizable=0, scrollbars=0');
 		console.log("창 열린다");
 		return true;
 	}

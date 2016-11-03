@@ -36,6 +36,9 @@ function getSelectValue(frm)
 	  <input type="button" value="취소" id="cancel"onclick="close()">
 	  <input type="button" value="미리보기" id="preview">
  </form>
+ 	<iframe frameborder="no" width="400px" height="650px" id="frame" name="frame">
+ 	
+ 	</iframe>
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
@@ -54,6 +57,7 @@ function getSelectValue(frm)
 	})
 	 */
 
+	 
 	function bsubmit(){
 		if  (document.form.optionValue.value != ""){
 		btext = document.form.optionValue.value;
@@ -65,18 +69,20 @@ function getSelectValue(frm)
 		document.form.optionValue.focus();
 	}
 	
- 	
+	function open_in_frame(url) {
+		$('#frame').attr('src', url);
+	}
 	
 	$("#preview").on("click",function(){
-	
+		
 		var routeNumber = $("#optionValue").val();
-		var data={"optionValue":optionValue};
+		var data={"routeNumber":routeNumber};
 		$.ajax({
 			type:"get",
 			data: data,
-			url: "/route",
+			url: "/previewRoute",
 			success:function(res){
-				alert("성공");
+				open_in_frame("/route?routeNo="+res);
 			},
 			error:function(xhr,status,error){
 				alert("code:"+xhr.status+"에러");
@@ -84,7 +90,7 @@ function getSelectValue(frm)
 		})
 	})
 	 
-	
+	 
 
 </script>
 </html>
