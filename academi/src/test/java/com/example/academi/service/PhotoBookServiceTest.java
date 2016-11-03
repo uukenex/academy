@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.config.ApplicationConfig;
 import com.example.service.PhotoBookService;
-
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class PhotoBookServiceTest {
@@ -22,12 +22,39 @@ public class PhotoBookServiceTest {
 	SqlSessionTemplate template;
 	@Autowired
 	PhotoBookService ps;
-
+	String pathUserName="zzxx";
+	String shareUserId="ㅋㅌㅊ";
+	String userId = "zzxx";
+	String folderName="asdasd";
+	String userNick="zz";
+	@Test
+	public void test0(){
+		ps.selectOne(userId, folderName);
+		ps.selectMyFolder(userId);
+		ps.selectSharedFolder(shareUserId);
+		ps.searchNick(userNick);
+	}
 	@Test
 	public void test(){
-		String pathUserName="zzxx";
-		String shareUserId="ㅋㅌㅊ";
+		
 		ps.selectFolderName(pathUserName, shareUserId);
 	}
+	
+	@Test
+	
+	public void ttest(){
+		ps.insertFolderName("zzxx","asdf");
+	}
 
+	String shareId="ㅋㅌㅊ";
+	@Test
+	public void updateTest(){
+		ps.share1up(userId, shareId, folderName);
+		ps.share2up(userId, shareId, folderName);
+		ps.share3up(userId, shareId, folderName);
+		ps.share4up(userId, shareId, folderName);
+		
+	}
+	
+	
 }

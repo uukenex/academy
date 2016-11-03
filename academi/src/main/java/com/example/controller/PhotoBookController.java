@@ -86,8 +86,10 @@ PhotoBookService ps;
 		name = name.replace(" ", "").replace(".", "");
 		File dir = new File(UPLOAD_DIR + userId + "/" + name + "/");
 		boolean result = false;
+		int insertResult;
 		if (!dir.isDirectory()) {
-			// 디렉토리가 없으면 생성
+			insertResult = ps.insertFolderName(userId, name);
+			if(insertResult==1)// 디렉토리가 없으면 생성
 			result = dir.mkdirs();
 		}
 		return result;

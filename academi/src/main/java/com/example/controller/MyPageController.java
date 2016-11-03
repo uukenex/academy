@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.dto.PhotoBook;
 import com.example.dto.Review;
 import com.example.dto.ReviewReply;
 import com.example.dto.Route;
 import com.example.dto.Users;
+import com.example.service.PhotoBookService;
 import com.example.service.ReviewReplyService;
 import com.example.service.ReviewService;
 import com.example.service.RouteService;
@@ -25,7 +27,7 @@ import com.example.service.UserService;
 
 @Controller
 public class MyPageController {
-static Logger logger = LoggerFactory.getLogger(MyPageController.class);
+	static Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	@Autowired
 	UserService us;
 	@Autowired
@@ -34,61 +36,88 @@ static Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	ReviewService reviewService;
 	@Autowired
 	ReviewReplyService ReviewReplyService;
-	
-	@RequestMapping(value="/updateUser", method=RequestMethod.POST)	
-	public String updateUser(Model model, HttpServletRequest request, HttpSession session){
+	@Autowired
+	PhotoBookService ps;
+
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	public String updateUser(Model model, HttpServletRequest request, HttpSession session) {
 		String userId = request.getParameter("changeId");
 		String userPass = request.getParameter("changePass");
-		String userPhone =request.getParameter("changePhone");
+		String userPhone = request.getParameter("changePhone");
 		String userEmail = request.getParameter("changeEmail");
 		String userNick = request.getParameter("changeNick");
-		if(userPass == ""){
+		if (userPass == "") {
 			userPass = request.getParameter("currentPass");
 		}
-		if(userPhone == ""){
+		if (userPhone == "") {
 			userPhone = request.getParameter("currentPhone");
 		}
-		if(userEmail == ""){
+		if (userEmail == "") {
 			userEmail = request.getParameter("currentEmail");
 		}
-		if(userNick == ""){
+		if (userNick == "") {
 			userNick = request.getParameter("currentNick");
 		}
-		logger.trace("아이디 : {},비밀번호 : {}, 핸드폰 : {}, 이메일 : {}, 닉네임 : {}",userId,userPass, userPhone, userEmail, userNick);
-		
+		logger.trace("아이디 : {},비밀번호 : {}, 핸드폰 : {}, 이메일 : {}, 닉네임 : {}", userId, userPass, userPhone, userEmail,
+				userNick);
+
 		us.updateUser(userId, userPass, userPhone, userEmail, userNick);
 		Users user = us.login(userId);
 		session.setAttribute("Users", user);
 		return "/session/information/inform_change";
 	}
-	
-	@RequestMapping(value="/session/mypageRoute",method=RequestMethod.GET)
-	public String mypageRoute(Model model,  HttpSession session, HttpServletRequest request){
-		
+
+	@RequestMapping(value = "/session/mypageRoute", method = RequestMethod.GET)
+	public String mypageRoute(Model model, HttpSession session, HttpServletRequest request) {
+
 		Users user = (Users) session.getAttribute("Users");
 		String userId = user.getUserId();
-		
+
 		List<Route> result = rs.selectRouteById(userId);
-	
+
 		model.addAttribute("Route", result);
 		logger.trace("결과 값  {} :", result);
 		return "/session/information/myplan";
 	}
-	
-	
-	@RequestMapping(value="/session/mypageReview",method=RequestMethod.GET)
-	public String mypageReview(Model model,  HttpSession session, HttpServletRequest request){
-		
+
+	@RequestMapping(value = "/session/mypageReview", method = RequestMethod.GET)
+	public String mypageReview(Model model, HttpSession session, HttpServletRequest request) {
+
 		Users user = (Users) session.getAttribute("Users");
 		String userId = user.getUserId();
-		
+
 		List<Review> result = reviewService.myPageReview(userId);
-		
-		
+
 		model.addAttribute("Review", result);
 		logger.trace("결과 값  {} :", result);
 		return "/session/information/mypost";
 	}
-	
-	
+
+	// 내 폴더 공유로 넘어가기
+	@RequestMapping(value = "/session/myShare", method = RequestMethod.GET)
+	public String myShare(Model model, HttpSession session) {
+		Users users = (Users) session.getAttribute("Users");
+		if (users == null) {
+			return "/session/information/myshare";
+		}
+		String userId = users.getUserId();
+
+		List<PhotoBook> myFolderList = ps.selectMyFolder(userId);
+		List<PhotoBook> sharedFolderList = ps.selectSharedFolder(userId);
+		model.addAttribute("myFolderList", myFolderList);
+		model.addAttribute("sharedFolderList", sharedFolderList);
+		return "/session/information/myshare";
+	}
+
+	@RequestMapping(value = "/session/shareList", method = RequestMethod.GET)
+	public String myShareList(Model model,HttpSession session,@RequestParam String folderName) {
+		Users users = (Users) session.getAttribute("Users");
+		if (users == null) {
+			return "/session/information/myshare";
+		}
+		String userId = users.getUserId();
+		List<PhotoBook> sharePersonList =ps.selectOne(userId, folderName);
+		model.addAttribute("sharePersonList",sharePersonList);
+		return "/session/information/sharepersonlist";
+	}
 }

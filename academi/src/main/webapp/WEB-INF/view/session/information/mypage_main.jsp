@@ -53,7 +53,7 @@
 
 					<article class="phanStyle2">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic02.jpg" alt="" />
-						</span> <a href="generic.html">
+						</span> <a href="/session/myShare">
 							<h2>공유 폴더 설정</h2>
 							<div class="phanContent">
 								<p>계획과 사진을 공유할 수 있는 회원을 설정할 수 있습니다.</p>

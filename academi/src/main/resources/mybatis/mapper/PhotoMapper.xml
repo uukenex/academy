@@ -5,18 +5,90 @@
 
 <mapper namespace="com.example.PhotoMapper">
 
+	<!-- 단일폴더 셀렉트 공유자목록을 보여줌 -->
+	<select id="selectOne" parameterType="Map" resultMap="photoBase">
+	select * from photobook 
+	 where user_id=#{userId} 
+	 and photo_folder_name=#{photoFolderName}
+	 </select>
+
+	<!-- 새폴더 만들시 DB에 추가를 해줌 -->
 	<insert id="insert" parameterType="Map">
 		insert into photobook
-		(user_Id,PHOTO_FOLDER_NAME,PHOTO_SHARE_ID1)
+		(user_Id,PHOTO_FOLDER_NAME)
 		values
-		(#{userId},#{photoFolderName},#{photoShareId1})
+		(#{userId},#{photoFolderName})
 	</insert>
 
+	<!-- 다른사람의 포토북에 들어갔을때 내게 공유된 폴더가 있는지 검색 -->
 	<select id="select" resultType="String">
-		select photo_folder_name from photobook
+		select photo_folder_name from
+		photobook
 		where user_id=#{userId}
 		and photo_share_id1=#{photoShareId1}
+		or photo_share_id2=#{photoShareId1}
+		or photo_share_id3=#{photoShareId1}
+		or photo_share_id4=#{photoShareId1}
 	</select>
+
+
+	<!--자신의 폴더를 가져오는 셀렉트문 -->
+	<select id="selectMyFolder" resultMap="photoBase" parameterType="String">
+		select * from PHOTOBOOK
+		where user_id=#{userId}
+	</select>
+
+	<!-- 자신이 공유받은 폴더의 목록을 가져옴 "'userNick' 의 'photoFolderName'" -->
+	<select id="selectShared" resultMap="photoUsers" parameterType="String">
+		select * from photobook p
+		join users u on p.user_id=u.user_id
+		where
+		PHOTO_SHARE_ID1=#{userId}
+		or photo_share_id2=#{userId}
+		or
+		photo_share_id3=#{userId}
+		or photo_share_id4=#{userId}
+	</select>
+
+	<!-- 닉네임으로 검색하기 -->
+	<select id="searchNick" resultMap="photoUsers" parameterType="String">
+		select user_nick
+		,rpad(substr(USER_ID,1,3),length(user_id),'*')
+		from
+		users where USER_NICK like #{userNick}
+	</select>
+
+	<!--공유에 유저추가. 1번 공유자추가 버튼 클릭시 , 자기자신은 처리안되도록 할것 -->
+	<update id="update1" parameterType="Map">
+		update photobook set
+		PHOTO_SHARE_ID1 = #{photoShareId1}
+		where PHOTO_FOLDER_NAME = #{photoFolderName}
+		and user_id=#{userId}
+	</update>
+
+	<!--공유에 유저추가. 2번 공유자추가 버튼 클릭시 , 자기자신은 처리안되도록 할것 -->
+	<update id="update2" parameterType="Map">
+		update photobook set
+		PHOTO_SHARE_ID2 = #{photoShareId2}
+		where PHOTO_FOLDER_NAME = #{photoFolderName}
+		and user_id=#{userId}
+	</update>
+
+	<!--공유에 유저추가. 3번 공유자추가 버튼 클릭시 , 자기자신은 처리안되도록 할것 -->
+	<update id="update3" parameterType="Map">
+		update photobook set
+		PHOTO_SHARE_ID3 = #{photoShareId3}
+		where PHOTO_FOLDER_NAME = #{photoFolderName}
+		and user_id=#{userId}
+	</update>
+
+	<!--공유에 유저추가. 4번 공유자추가 버튼 클릭시 , 자기자신은 처리안되도록 할것 -->
+	<update id="update4" parameterType="Map">
+		update photobook set
+		PHOTO_SHARE_ID4 = #{photoShareId4}
+		where PHOTO_FOLDER_NAME = #{photoFolderName}
+		and user_id=#{userId}
+	</update>
 
 
 	<resultMap type="photoBook" id="photoBase">
