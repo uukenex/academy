@@ -252,9 +252,6 @@
 </script>
 </head>
 <body>
-<div>
-<input type="button" value="뒤로가기">
-</div>
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
 	<a href='/latlng?lat=36.8553798&lng=127.4361117' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>

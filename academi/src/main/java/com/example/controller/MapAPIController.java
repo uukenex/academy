@@ -40,7 +40,8 @@ public class MapAPIController {
 	RouteService rs;
 	@Autowired
 	MroService ms;
-
+	
+	//지도 좌표 받아오고 해당지역 불러오기
 	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
 	public String latlng(Model model, HttpServletRequest request) {
 		String lat = request.getParameter("lat");
@@ -49,6 +50,9 @@ public class MapAPIController {
 		logger.trace("lng : {}", lng);
 		request.setAttribute("lat", lat);
 		request.setAttribute("lng", lng);
+		
+		model.addAttribute("lat",lat);
+		model.addAttribute("lng",lng);
 		return "session/guide/map_api";
 	}
 

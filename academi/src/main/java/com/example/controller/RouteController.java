@@ -38,12 +38,16 @@ public class RouteController {
 	RouteService rs;
 	//review 테스트
 	@RequestMapping(value ="/previewRoute", method = RequestMethod.GET)
-	public @ResponseBody String test11(Model model, HttpServletRequest request) {
+	public @ResponseBody String previewRoute(Model model, HttpServletRequest request) {
 		String RouteNo = request.getParameter("routeNumber");
 		logger.trace("RouteNo :{}" , RouteNo);
 		return RouteNo;
 	}
 
+	@RequestMapping(value ="/test11", method = RequestMethod.GET)
+	public  String test11(Model model, HttpServletRequest request) {
+		return "test";
+	}
 
 	
 }

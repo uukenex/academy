@@ -73,7 +73,7 @@
 			    type: 'iframe',
 			    padding: 0,
 			    closeBtn : false,
-				
+
 			    // other options
 			    beforeLoad: function () {
 			        var url = $(this.element).attr("href");
