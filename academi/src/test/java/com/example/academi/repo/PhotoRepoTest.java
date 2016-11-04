@@ -1,5 +1,8 @@
 package com.example.academi.repo;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -60,7 +63,11 @@ public class PhotoRepoTest {
 		String pathUserId = "zzxx";
 		String userId = "ㅋㅌㅊ";
 		String userNick = "zz";
-		prepo.searchNick(userNick);
+		List<Map<String,String>> list = prepo.searchNick(userNick);
+		System.out.println(list);
+		System.out.println(list.get(0));
+		System.out.println(list.get(0).get("USER_NICK"));
+		System.out.println(list.get(0).get("IDSTAR"));
 	}
 
 	// 1업데이트

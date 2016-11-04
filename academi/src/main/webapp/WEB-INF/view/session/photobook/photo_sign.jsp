@@ -334,7 +334,7 @@ function processUpload()
 $("#newFolder").on("click",function(){
 	
 	var conf = prompt("새폴더 이름을 만들어주세요");
-	
+	conf=conf.replace(/ /gi,'');
 	$.ajax({
 		type:"post",
 		url:"${newfolder}",
@@ -398,7 +398,6 @@ $(document).on("ready",function(){
 		
 		
 	});
-	
 	$.ajax({
 		type:"post",
 		url:"${loadfolder}",

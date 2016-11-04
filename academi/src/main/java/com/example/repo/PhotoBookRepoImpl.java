@@ -51,7 +51,7 @@ public class PhotoBookRepoImpl implements PhotoBookRepo{
 		return template.selectList(statement, userId);
 	}
 	@Override
-	public List<String> searchNick(String userNick) {
+	public List<Map<String,String>> searchNick(String userNick) {
 		String statement = NAME_SPACE + "searchNick";
 		userNick = "%"+userNick+"%";
 		return template.selectList(statement, userNick);

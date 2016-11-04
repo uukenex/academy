@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.dto.PhotoBook;
 
@@ -25,7 +26,7 @@ public interface PhotoBookService {
 	public List<PhotoBook> selectSharedFolder(String userId);
 
 	// select 닉네임 검색
-	public List<String> searchNick(String userNick);
+	public List<Map<String,String>> searchNick(String userNick);
 
 	// 1번창에 공유자추가 update
 	public int share1up(String userId, String shareId, String folderName);

@@ -51,9 +51,9 @@
 	</select>
 
 	<!-- 닉네임으로 검색하기 -->
-	<select id="searchNick" resultMap="photoUsers" parameterType="String">
+	<select id="searchNick" resultType="Map" parameterType="String">
 		select user_nick
-		,rpad(substr(USER_ID,1,3),length(user_id),'*')
+		,rpad(substr(USER_ID,1,3),length(user_id),'*') idstar,user_id
 		from
 		users where USER_NICK like #{userNick}
 	</select>

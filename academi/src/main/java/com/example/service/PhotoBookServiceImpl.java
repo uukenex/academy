@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class PhotoBookServiceImpl implements PhotoBookService {
 	}
 
 	@Override
-	public List<String> searchNick(String userNick) {
+	public List<Map<String,String>> searchNick(String userNick) {
 		return prepo.searchNick(userNick);
 	}
 

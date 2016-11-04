@@ -17,10 +17,11 @@
 		내 폴더 리스트
 		<c:forEach var="myFolder" items="${myFolderList }">
 			<br>
-		<a href="#" onclick="window.open('/session/shareList?folderName=${myFolder.photoFolderName }', 'win1',
-		'width=0, height=0');" onkeypress="this.onclick()">
-		${myFolder.photoFolderName }</a>
-		<br>
+			<a href="#"
+		onclick="window.open('/session/shareList?folderName=${myFolder.photoFolderName }',
+		'${myFolder.photoFolderName }','width=0, height=0');"
+		onkeypress="this.onclick()"> ${myFolder.photoFolderName }</a>
+			<br>
 			<br>
 		</c:forEach>
 	</div>
@@ -28,8 +29,11 @@
 		공유받은 폴더
 		<c:forEach var="shareFolder" items="${sharedFolderList }">
 			<br>
-	  ${shareFolder.users.userNick }의 포토북 -${shareFolder.photoFolderName } 
-	 <br>
+			<a href="http://210.125.213.63:9999/session/myPhoto?userId=${shareFolder.users.userNick }&folderName">
+				${shareFolder.users.userNick }의 포토북</a> -
+	  <a href="http://210.125.213.63:9999/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
+				${shareFolder.photoFolderName }</a>
+			<br>
 			<br>
 		</c:forEach>
 	</div>

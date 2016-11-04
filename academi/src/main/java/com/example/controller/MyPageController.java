@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -109,28 +110,51 @@ public class MyPageController {
 		return "/session/information/myshare";
 	}
 
-	//내폴더 눌렀을때 사람리스트 띄우기
+	// 내폴더 눌렀을때 사람리스트 띄우기
 	@RequestMapping(value = "/session/shareList", method = RequestMethod.GET)
-	public String myShareList(Model model,HttpSession session,@RequestParam String folderName) {
+	public String myShareList(Model model, HttpSession session, @RequestParam String folderName) {
 		Users users = (Users) session.getAttribute("Users");
 		if (users == null) {
 			return "/session/information/myshare";
 		}
 		String userId = users.getUserId();
-		List<PhotoBook> sharePersonList =ps.selectOne(userId, folderName);
-		model.addAttribute("sharePersonList",sharePersonList);
+		List<PhotoBook> sharePersonList = ps.selectOne(userId, folderName);
+		model.addAttribute("sharePersonList", sharePersonList);
 		return "/session/information/sharepersonlist";
 	}
-	
-	//내폴더 눌렀을때 사람리스트 띄우기
+
+	// 내폴더 눌렀을때 사람리스트 띄우기
 	@RequestMapping(value = "/searchNick", method = RequestMethod.GET)
-	public String searchNick(Model model,HttpSession session) {
+	public String searchNick(Model model, HttpSession session) {
 		return "/session/information/searchUser";
-	}	
-	
-	@RequestMapping(value = "/searchNickAjax", method = RequestMethod.GET)
-		public @ResponseBody List<String> searchNickAjax(Model model,HttpSession session,@RequestParam String nickName) {
-			List<String> searchList = ps.searchNick(nickName);
-			return searchList;
+	}
+
+	// 닉네임검색 ajax
+	@RequestMapping(value = "/searchNickAjax", method = RequestMethod.POST)
+	public @ResponseBody List<Map<String, String>> searchNickAjax(Model model, HttpSession session,
+			@RequestParam String nickName) {
+		List<Map<String, String>> searchList = ps.searchNick(nickName);
+		return searchList;
+	}
+
+	// 닉네임검색 ajax
+	@RequestMapping(value = "/selectedAjax", method = RequestMethod.POST)
+	public @ResponseBody int dataAjax(Model model, HttpSession session, @RequestParam String shareId,
+			@RequestParam String folderName, @RequestParam String winName) {
+		Users users = (Users) session.getAttribute("Users");
+		if (users == null) {
+			return 0;
 		}
+		String userId = users.getUserId();
+		int result = 0;
+		if (winName.equals("shareId1"))
+			result = ps.share1up(userId, shareId, folderName);
+		else if (winName.equals("shareId2"))
+			result = ps.share2up(userId, shareId, folderName);
+		else if (winName.equals("shareId3"))
+			result = ps.share3up(userId, shareId, folderName);
+		else if (winName.equals("shareId4"))
+			result = ps.share4up(userId, shareId, folderName);
+		return result;
+	}
 }
