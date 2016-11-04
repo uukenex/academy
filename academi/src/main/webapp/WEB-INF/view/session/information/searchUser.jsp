@@ -11,16 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="sharePerson" items="${sharePersonList }">
 <div>
-<label for="shareId1" >공유자1</label>
-<input type="text" name="shareId1" id="shareId1" 
-readonly="readonly" value="${sharePerson.photoShareId1}"
-onclick="window.open('/searchNick', 'win2',
-'width=0, height=0');" >
-<input type="button" value="선택하기">
-</div>
 
-</c:forEach>
+<label for="searchNick" >닉네임 검색</label>
+<input type="text" id="searchNick" name="searchNick">
+<input type="button" id="search" value="검색" > 
+</div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+$("#search").on("click",function(){
+	$.ajax({
+		
+	});
+});
+</script>
+
 </body>
 </html>

@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dto.PhotoBook;
 import com.example.dto.Review;
-import com.example.dto.ReviewReply;
 import com.example.dto.Route;
 import com.example.dto.Users;
 import com.example.service.PhotoBookService;
@@ -109,6 +109,7 @@ public class MyPageController {
 		return "/session/information/myshare";
 	}
 
+	//내폴더 눌렀을때 사람리스트 띄우기
 	@RequestMapping(value = "/session/shareList", method = RequestMethod.GET)
 	public String myShareList(Model model,HttpSession session,@RequestParam String folderName) {
 		Users users = (Users) session.getAttribute("Users");
@@ -120,4 +121,16 @@ public class MyPageController {
 		model.addAttribute("sharePersonList",sharePersonList);
 		return "/session/information/sharepersonlist";
 	}
+	
+	//내폴더 눌렀을때 사람리스트 띄우기
+	@RequestMapping(value = "/searchNick", method = RequestMethod.GET)
+	public String searchNick(Model model,HttpSession session) {
+		return "/session/information/searchUser";
+	}	
+	
+	@RequestMapping(value = "/searchNickAjax", method = RequestMethod.GET)
+		public @ResponseBody List<String> searchNickAjax(Model model,HttpSession session,@RequestParam String nickName) {
+			List<String> searchList = ps.searchNick(nickName);
+			return searchList;
+		}
 }
