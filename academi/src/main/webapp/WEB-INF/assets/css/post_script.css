@@ -730,7 +730,7 @@
 				border-color: #F5696A;
 			}
 			
-			table.post_reply_view #replyRegist {
+			table.post_reply_view #replyRegist, table.post_reply_view #postButtonStyle1 {
 				-moz-appearance: none;
 				-webkit-appearance: none;
 				-ms-appearance: none;
@@ -764,12 +764,19 @@
 				vertical-align: top;
 				padding-top: 0em;
 				padding-bottom: 0.7em;
-				padding-left: 1em;
+				padding-left: 0.5em;
+				font-size: 1.3em;
+				color: #000000;
 			}
 			
-			table.post_reply_view #replyRegist:HOVER {
+			table.post_reply_view #replyRegist:HOVER, table.post_reply_view #postButtonStyle1:HOVER {
 				background-color: #f56a6a;
 				color: #323232;
+			}
+			
+			table.post_reply_view #postButtonStyle1 {
+				padding: 0 0.5em;
+				margin-left: 0;
 			}
 			
 			table.post_reply_view tr >:LAST-CHILD {
