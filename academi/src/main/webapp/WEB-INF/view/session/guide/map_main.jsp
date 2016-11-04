@@ -26,7 +26,8 @@
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
 		
 		
-		
+		<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+								<script src="/js/jquery-ui.min.js"></script>
 		
   			
   			
@@ -43,13 +44,14 @@
 						
 					<!-- Map API body part -->
 						<div class="9u 12u(moblie) important(moblie)">
-							<a href="/domap" class="fancybox" ></a>
+							
+							<a href="/domap"></a>
 							<!-- Map Right Tab Menu -->
 									<div class="mapMainRightTab">
 										<jsp:include page="map_rightTab_menu.jsp" />
 									</div>
 							<section class="middle-content">
-								<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 								
 								<jsp:include page="map_api.jsp" />
 							</section>
@@ -67,7 +69,7 @@
 			$(".fancybox").fancybox({
 			    autoScale: false,
 			    // href : $('.fancybox').attr('id'), // don't need this
-			    'width': "55%",
+			    'width': "70%",
             	'height': 340,
             	 prevEffect      : 'fade',
 			    type: 'iframe',
@@ -80,8 +82,10 @@
 			        this.href = url
 			    }
 			}).trigger('click'); // fancybox
-			
-			
+		
+			if(<%=request.getParameter("lat")%>!=null  ){
+				parent.jQuery.fancybox.close();
+				}
 		});
 		
 		</script>

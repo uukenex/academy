@@ -627,7 +627,13 @@ public class MapAPIController {
 	}
 
 	@RequestMapping("/mapMain2")
-	public String mapMain2(Model model, SessionStatus status) {
+	public String mapMain2(HttpServletRequest request, Model model, SessionStatus status) {
+		Object lat = request.getParameter("lat");
+		String lng = request.getParameter("lng");
+		logger.trace("lat : {}", lat);
+		logger.trace("lng : {}", lng);
+		model.addAttribute("lat",lat);
+		model.addAttribute("lng",lng);
 		return "session/guide/map_main";
 	}
 
