@@ -126,6 +126,116 @@
 	left: 45px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//군산
+	$(".list1").on("click",function(){
+		var lat = "35.9676772";
+		var lng = "126.7366293";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//익산
+	$(".list2").on("click",function(){
+		var lat = "35.9482858";
+		var lng = "126.9575991";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//완주
+	$(".list3").on("click",function(){
+		var lat = "35.8912490";
+		var lng = "127.2544065";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//진안
+	$(".list4").on("click",function(){
+		var lat = "35.7917297";
+		var lng = "127.4248356";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//무주
+	$(".list5").on("click",function(){
+		var lat = "36.0068191";
+		var lng = "127.6607805";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//김제
+	$(".list6").on("click",function(){
+		var lat = "35.8036079";
+		var lng = "126.8808872";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//전주
+	$(".list7").on("click",function(){
+		var lat = "35.6472767";
+		var lng = "127.5211363";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//장수
+	$(".list8").on("click",function(){
+		var lat = "35.6472767";
+		var lng = "127.5211363";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//임실
+	$(".list9").on("click",function(){
+		var lat = "35.6110549";
+		var lng = "127.2826599";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//남원
+	$(".list10").on("click",function(){
+		var lat = "35.4163570";
+		var lng = "127.3904877";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//순창
+	$(".list11").on("click",function(){
+		var lat = "35.3744136";
+		var lng = "127.1375968";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//정읍
+	$(".list12").on("click",function(){
+		var lat = "35.5698855";
+		var lng = "126.8558955";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//부안
+	$(".list13").on("click",function(){
+		var lat = "35.7315661";
+		var lng = "126.7334651";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고창
+	$(".list14").on("click",function(){
+		var lat = "35.4358216";
+		var lng = "126.7020806";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+
+});
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -181,7 +291,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

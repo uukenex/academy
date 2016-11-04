@@ -190,6 +190,173 @@
 	left: 140px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//문경
+	$(".list1").on("click",function(){
+		var lat = "36.5861480";
+		var lng = "128.1867972";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//예천
+	$(".list2").on("click",function(){
+		var lat = "36.6577004";
+		var lng = "128.4528808";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영주
+	$(".list3").on("click",function(){
+		var lat = "36.8056858";
+		var lng = "128.6240551";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//봉화
+	$(".list4").on("click",function(){
+		var lat = "36.8930933";
+		var lng = "128.7323752";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//울진
+	$(".list5").on("click",function(){
+		var lat = "36.9930661";
+		var lng = "129.4004195";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영양
+	$(".list6").on("click",function(){
+		var lat = "36.6666558";
+		var lng = "129.1124007";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//안동
+	$(".list7").on("click",function(){
+		var lat = "36.5683543";
+		var lng = "128.7293570";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//상주
+	$(".list8").on("click",function(){
+		var lat = "36.4109466";
+		var lng = "128.1590828";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//의성
+	$(".list9").on("click",function(){
+		var lat = "36.3526576";
+		var lng = "128.6970053";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//청송
+	$(".list10").on("click",function(){
+		var lat = "36.4359045";
+		var lng = "129.0571077";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영덕
+	$(".list11").on("click",function(){
+		var lat = "36.4150799";
+		var lng = "129.3659681";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//포항
+	$(".list12").on("click",function(){
+		var lat = "35.8561719";
+		var lng = "129.2247477";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//경주
+	$(".list13").on("click",function(){
+		var lat = "35.8561719";
+		var lng = "129.2247477";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영천
+	$(".list14").on("click",function(){
+		var lat = "35.9732915";
+		var lng = "128.9385493";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//경산
+	$(".list15").on("click",function(){
+		var lat = "35.8250555";
+		var lng = "128.7415441";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//청도
+	$(".list16").on("click",function(){
+		var lat = "35.6472706";
+		var lng = "128.7339107";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//구미
+	$(".list17").on("click",function(){
+		var lat = "36.1194850";
+		var lng = "128.3445734";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//군위
+	$(".list18").on("click",function(){
+		var lat = "36.2428355";
+		var lng = "128.5727702";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//칠곡
+	$(".list19").on("click",function(){
+		var lat = "35.9953059";
+		var lng = "128.4015434";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//김천
+	$(".list20").on("click",function(){
+		var lat = "36.1398393";
+		var lng = "128.1135947";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//성주
+	$(".list21").on("click",function(){
+		var lat = "35.9190079";
+		var lng = "128.2829738";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고령
+	$(".list22").on("click",function(){
+		var lat = "35.7261415";
+		var lng = "128.2629530";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -262,7 +429,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

@@ -102,6 +102,87 @@
 	left: 150px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	
+	$(".list1").on("click",function(){
+		var lat = "36.8553798";
+		var lng = "127.4361117";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list2").on("click",function(){
+		var lat = "36.9396792";
+		var lng = "127.6905018";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list3").on("click",function(){
+		var lat = "36.9910113";
+		var lng = "127.9259497";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list4").on("click",function(){
+		var lat = "37.1325821";
+		var lng = "128.1909481";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list5").on("click",function(){
+		var lat = "36.9845473";
+		var lng = "128.3655186";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list6").on("click",function(){
+		var lat = "36.8156690";
+		var lng = "127.7865791";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list7").on("click",function(){
+		var lat = "36.7855019";
+		var lng = "127.5816556";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list8").on("click",function(){
+		var lat = "36.6391449";
+		var lng = "127.4346806";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list9").on("click",function(){
+		var lat = "36.4894573";
+		var lng = "127.7294827";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list10").on("click",function(){
+		var lat = "36.3063646";
+		var lng = "127.5712809";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list11").on("click",function(){
+		var lat = "36.1750231";
+		var lng = "127.7834302";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -151,7 +232,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){
@@ -255,7 +335,7 @@
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
 	<a href='/latlng?lat=36.8553798&lng=127.4361117' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
-	<img src='./map/충북/1충북-진천.png' alt='' border='0' name='mus1' class='list1' ></a>
+	<img src='./map/충북/1충북-진천.png' alt='' border='0' name='mus1' class='list1'  ></a>
 	<a href='/latlng?lat=36.9396792&lng=127.6905018' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
 	<img src='./map/충북/1충북-음성.png' alt='' border='0' name='mus2' class='list2' ></a>
 	<a href='/latlng?lat=36.9910113&lng=127.9259497' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>
