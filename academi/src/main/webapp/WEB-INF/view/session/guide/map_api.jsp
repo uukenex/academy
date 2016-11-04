@@ -285,7 +285,7 @@
 
  --%>
 	
-	<script src="/js/jquery-ui.min.js"></script>
+
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	<script>

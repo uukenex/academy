@@ -10,12 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+lat : ${lat }, lng: ${lng }
 </body>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
-		$(document).on("ready", function() {
-		window.opener.location.reload();
-		self.close();
-		})
 	</script>
 </html>
