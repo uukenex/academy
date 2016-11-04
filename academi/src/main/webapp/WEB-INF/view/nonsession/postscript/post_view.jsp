@@ -39,6 +39,11 @@
 										<col width="*%">
 									</colgroup>
 									<tr>
+										<td colspan="3">
+											<input type="button" value="목록으로" id="listview">
+										</td>
+									</tr>
+									<tr>
 										<th rowspan="2" id="post_review_title">${post.reviewTitle}</th>
 										<input type="hidden" name="userId" value="${post.userId }" />
 										<td>작성자: ${post.users.userNick}</td>
@@ -47,9 +52,15 @@
 										</td>
 									</tr>
 									<tr>
-										<td colspan="2">
+										<td>
 											추천 수: <output id="result" > ${post.reviewStar}</output>
 											<input type="button" id="star" value="추천하기">
+										</td>
+										<td>
+											<c:if test="${post.userId==Users.userId }">
+												<input type="submit" value="수정하기"
+													formaction="/session/postUpdate" formmethod="post">
+											</c:if>
 										</td>
 									</tr>
 									<tr><td colspan="3"><hr id="post_divider"></tr>
@@ -233,6 +244,38 @@
 										</td>
 									</tr>
 								</table>
+								
+								<hr id="post_divider">
+								
+								<!-- Post Reply part -->
+									<table class="post_reply_view">
+										<colgroup>
+											<col width="12%">
+											<col width="*%">
+											<col width="15%">
+										</colgroup>
+										<tr>
+											<th><i class="fa fa-commenting fa-flip-horizontal"></i></th>
+											<td><input type="text" id="replyContent"></td>
+											<td><input type="button" value="등록" id="replyRegist"></td>
+										</tr>
+										<c:forEach var="reply" items="${replys }">
+											<tr>
+												<th>${reply.users.userNick}</th>
+												<td id="post_reply_date">
+													<fmt:formatDate value="${post.reviewDate}"
+															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+												</td>
+												<td>
+													<!--  댓글 수정 및 삭제 기능 코드가 들어가는 부분!-->
+												</td>
+											</tr>
+											<tr>
+												<td> </td>
+												<td colspan="2" id="post_reply_content">${reply.replyContent }</td>
+											</tr>
+										</c:forEach>
+									</table>
 						</div>
 						
 						<div class="1u"></div>

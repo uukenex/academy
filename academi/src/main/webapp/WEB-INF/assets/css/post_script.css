@@ -562,7 +562,7 @@
 			
 		/* Button Style */
 		
-			input[type="button"]#star {
+			input[type="button"]#star, td input[type="submit"] {
 				-moz-appearance: none;
 				-webkit-appearance: none;
 				-ms-appearance: none;
@@ -592,7 +592,43 @@
 				margin-left: 1em;
 			}
 			
-			input[type="button"]#star:HOVER {
+			input[type="button"]#star:HOVER, td input[type="submit"]:HOVER {
+				background-color: #f56a6a;
+				color: #323232;
+			}
+			
+			input[type="button"]#listview {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: transparent;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1em;
+				font-weight: 700;
+				float: right;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 1.75em;
+				padding: 0.2 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-right: 1.5em;
+			}
+			
+			input[type="button"]#listview:HOVER {
 				background-color: #f56a6a;
 				color: #323232;
 			}
@@ -648,7 +684,7 @@
 				}
 				
 				.day_tabContent h3{
-					width: 4em;
+					width: 3.5em;
 					font-size: 2em;
 					font-weight: bold;
 					border-bottom: 1px solid #F5696A;
@@ -669,6 +705,90 @@
 				.topright:HOVER {
 					color: #FF0000;
 				}
+				
+				
+		/* Post Reply Style CSS */
+		
+			table.post_reply_view, table.post_reply_view th, table.post_reply_view td {
+				padding: 0 0 0 0;
+			}
+			
+			table.post_reply_view th i {
+				font-size: 2em;
+				color: #F5696A;
+			}
+			
+			table.post_reply_view #replyContent {
+				width: 97%;
+				border-radius: 5%;
+				font-family: "Nanum Gothic";
+				font-size: 0.9em;
+				margin-bottom: 1em;
+			}
+			
+			table.post_reply_view #replyContent:FOCUS {
+				border-color: #F5696A;
+			}
+			
+			table.post_reply_view #replyRegist {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: transparent;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Brush Script";
+				font-size: 1.2em;
+				font-weight: 700;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 1.75em;
+				padding: 0 0.7em;
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-left: 1em;
+			}
+			
+			table.post_reply_view #post_reply_content {
+				vertical-align: top;
+				padding-top: 0em;
+				padding-bottom: 0.7em;
+				padding-left: 1em;
+			}
+			
+			table.post_reply_view #replyRegist:HOVER {
+				background-color: #f56a6a;
+				color: #323232;
+			}
+			
+			table.post_reply_view tr >:LAST-CHILD {
+				text-align: left;
+			}
+			
+			table.post_reply_view tr th {
+				font-family: "Nanum Gothic";
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+			
+			table.post_reply_view #post_reply_date {
+				font-family: "Nanum Gothic";
+				font-size: 0.8em;
+				color: #888;
+				text-align: left;
+				padding-left: 1em;
+			}
 			
 			
 		/* Post footer part */
