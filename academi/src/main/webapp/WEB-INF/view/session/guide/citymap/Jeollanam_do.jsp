@@ -190,6 +190,173 @@
 	left: 120px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//영광
+	$(".list1").on("click",function(){
+		var lat = "35.2771719";
+		var lng = "126.5119874";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//장성
+	$(".list2").on("click",function(){
+		var lat = "35.3018333";
+		var lng = "126.7848541";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//함평
+	$(".list3").on("click",function(){
+		var lat = "35.0659399";
+		var lng = "126.5165524";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//담양
+	$(".list4").on("click",function(){
+		var lat = "35.3211394";
+		var lng = "126.9881673";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//나주
+	$(".list5").on("click",function(){
+		var lat = "35.0160601";
+		var lng = "126.7107572";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//화순
+	$(".list6").on("click",function(){
+		var lat = "35.0645029";
+		var lng = "126.9864799";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//곡성
+	$(".list7").on("click",function(){
+		var lat = "35.2819553";
+		var lng = "127.2919175";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//구례
+	$(".list8").on("click",function(){
+		var lat = "35.2024947";
+		var lng = "127.4626534";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//순천
+	$(".list9").on("click",function(){
+		var lat = "34.9506370";
+		var lng = "127.4872135";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//광양
+	$(".list10").on("click",function(){
+		var lat = "34.9406968";
+		var lng = "127.6958882";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//여수
+	$(".list11").on("click",function(){
+		var lat = "34.7603737";
+		var lng = "127.6622221";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//보성
+	$(".list12").on("click",function(){
+		var lat = "34.7714563";
+		var lng = "127.0798944";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고흥
+	$(".list13").on("click",function(){
+		var lat = "34.6112219";
+		var lng = "127.2849780";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//장흥
+	$(".list14").on("click",function(){
+		var lat = "34.6816856";
+		var lng = "126.9069278";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영암
+	$(".list15").on("click",function(){
+		var lat = "34.8001685";
+		var lng = "126.6967918";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//무안
+	$(".list16").on("click",function(){
+		var lat = "34.9904542";
+		var lng = "126.4816856";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//강진
+	$(".list17").on("click",function(){
+		var lat = "34.6420774";
+		var lng = "126.7672610";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//해남
+	$(".list18").on("click",function(){
+		var lat = "34.5732516";
+		var lng = "126.5989274";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//완도
+	$(".list19").on("click",function(){
+		var lat = "34.3110596";
+		var lng = "126.7550541";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//진도
+	$(".list20").on("click",function(){
+		var lat = "34.4868712";
+		var lng = "126.2634853";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//신안
+	$(".list21").on("click",function(){
+		var lat = "34.8273320";
+		var lng = "126.1010740";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//목포
+	$(".list22").on("click",function(){
+		var lat = "34.8118351";
+		var lng = "126.3921664";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -261,7 +428,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

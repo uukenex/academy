@@ -7,22 +7,22 @@
 <title>Insert title here</title>
 <style>
 .list0 { clear:both; position: relative; z-index: 1; top: -35px; left: -5px; } 
-.list1 { clear:both; position: absolute; z-index: 2; top: 200px; left: 120px;;}
-.list2 { clear:both; position: absolute; z-index: 1; top: 127px; left: 140px; } 
-.list3 { clear:both; position: absolute; z-index: 4; top: 220px; left: 171px; } 
-.list4 { clear:both; position: absolute; z-index: 3; top: 73px; left: 214px; } 
-.list5 { clear:both; position: absolute; z-index: 5; top: 318px; left: 87px; } 
-.list6 { clear:both; position: absolute; z-index: 6; top: 288px; left: 238px; } 
-.list7 { clear:both; position: absolute; z-index: 8; top: 400px; left: 228px; } 
-.list8 { clear:both; position: absolute; z-index: 7; top: 302px; left: 302px; } 
-.list9 { clear:both; position: absolute; z-index: 9; top: 480px; left:375px; } 
-.list10 { clear:both; position: absolute; z-index: 10; top: 463px; left: 127px; } 
-.list11 { clear:both; position: absolute; z-index: 11; top: 568px; left: 103px; } 
-.list12 { clear:both; position: absolute; z-index: 12; top: 605px; left: 155px; } 
-.list13 { clear:both; position: absolute; z-index: 15; top: 500px; left: 275px; } 
-.list14 { clear:both; position: absolute; z-index: 14; top: 525px; left: 455px; } 
-.list15 { clear:both; position: absolute; z-index: 13; top: 582px; left: 435px; } 
-.list16 { clear:both; position: absolute; z-index: 16; top: 700px; left: 400px; }
+.list1 { clear:both; position: absolute; z-index: 2; top: 200px; left: 180px;;}
+.list2 { clear:both; position: absolute; z-index: 1; top: 127px; left: 200px; } 
+.list3 { clear:both; position: absolute; z-index: 4; top: 220px; left: 231px; } 
+.list4 { clear:both; position: absolute; z-index: 3; top: 73px; left: 274px; } 
+.list5 { clear:both; position: absolute; z-index: 5; top: 318px; left: 147px; } 
+.list6 { clear:both; position: absolute; z-index: 6; top: 288px; left: 298px; } 
+.list7 { clear:both; position: absolute; z-index: 8; top: 400px; left: 288px; } 
+.list8 { clear:both; position: absolute; z-index: 7; top: 302px; left: 362px; } 
+.list9 { clear:both; position: absolute; z-index: 9; top: 480px; left:435px; } 
+.list10 { clear:both; position: absolute; z-index: 10; top: 463px; left: 187px; } 
+.list11 { clear:both; position: absolute; z-index: 11; top: 568px; left: 163px; } 
+.list12 { clear:both; position: absolute; z-index: 12; top: 605px; left: 215px; } 
+.list13 { clear:both; position: absolute; z-index: 15; top: 500px; left: 335px; } 
+.list14 { clear:both; position: absolute; z-index: 14; top: 525px; left: 515px; } 
+.list15 { clear:both; position: absolute; z-index: 13; top: 582px; left: 495px; } 
+.list16 { clear:both; position: absolute; z-index: 16; top: 700px; left: 460px; }
 
 
 </style>
@@ -40,6 +40,43 @@ $(document).ready(function(){
 		parent.jQuery.fancybox.close();
 		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
 	});
+	$("#list3").on("click",function(){
+		var lat = "37.5665350";
+		var lng = "126.9779692";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$("#list7").on("click",function(){
+		var lat = "36.3504119";
+		var lng = "127.3845475";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$("#list9").on("click",function(){
+		var lat = "35.8714354";
+		var lng = "128.6014450";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$("#list12").on("click",function(){
+		var lat = "35.1595454";
+		var lng = "126.8526012";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$("#list14").on("click",function(){
+		var lat = "35.5383773";
+		var lng = "129.3113596";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$("#list15").on("click",function(){
+		var lat = "35.1795543";
+		var lng = "129.0756416";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
 });
 
 	
@@ -268,38 +305,38 @@ function smenu_click(musName){
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
-<a href='#<!-- /latlng?lat=37.4562557&lng=126.7052062 -->' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
 <img src='./map/domap/인천.png' alt='' border='0' name='mus1' class='list1' id="list1"></a>
 <a href='./gyeonggido' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
-<img src='./map/domap/경기도.png' alt='' border='0' name='mus2' class='list2' ></a>
-<a href='/latlng?lat=37.5665350&lng=126.9779692' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>
-<img src='./map/domap/서울.png' alt='' border='0' name='mus3' class='list3' ></a>
+<img src='./map/domap/경기도.png' alt='' border='0' name='mus2' class='list2' id="list2"></a>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>
+<img src='./map/domap/서울.png' alt='' border='0' name='mus3' class='list3' id="list3"></a>
 <a href='./Gangwondo' onfocus='this.blur()' onmouseover=mus_on('mus4') onmouseout=mus_off('mus4') onclick=smenu_click('mus4')>
-<img src='./map/domap/강원도.png' alt='' border='0' name='mus4' class='list4' ></a>
+<img src='./map/domap/강원도.png' alt='' border='0' name='mus4' class='list4' id="list4"></a>
 <a href='./chungcheongnamdo' onfocus='this.blur()' onmouseover=mus_on('mus5') onmouseout=mus_off('mus5') onclick=smenu_click('mus5')>
-<img src='./map/domap/충청남도.png' alt='' border='0' name='mus5' class='list5' ></a>
+<img src='./map/domap/충청남도.png' alt='' border='0' name='mus5' class='list5' id="list5"></a>
 <a href='./chungcheongbukdo' onfocus='this.blur()' onmouseover=mus_on('mus6') onmouseout=mus_off('mus6') onclick=smenu_click('mus6')>
-<img src='./map/domap/충청북도.png' alt='' border='0' name='mus6' class='list6' ></a>
-<a href='/latlng?lat=36.3504119&lng=127.3845475' onfocus='this.blur()' onmouseover=mus_on('mus7') onmouseout=mus_off('mus7') onclick=smenu_click('mus7')>
-<img src='./map/domap/대전.png' alt='' border='0' name='mus7' class='list7' ></a>
+<img src='./map/domap/충청북도.png' alt='' border='0' name='mus6' class='list6' id="list6"></a>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus7') onmouseout=mus_off('mus7') onclick=smenu_click('mus7')>
+<img src='./map/domap/대전.png' alt='' border='0' name='mus7' class='list7' id="list7"></a>
 <a href='./Gyeongsangbukdo' onfocus='this.blur()' onmouseover=mus_on('mus8') onmouseout=mus_off('mus8') onclick=smenu_click('mus8')>
-<img src='./map/domap/경상북도.png' alt='' border='0' name='mus8' class='list8' ></a>
-<a href='/latlng?lat=35.8714354&lng=128.6014450' onfocus='this.blur()' onmouseover=mus_on('mus9') onmouseout=mus_off('mus9') onclick=smenu_click('mus9')>
-<img src='./map/domap/대구.png' alt='' border='0' name='mus9' class='list9' ></a>
+<img src='./map/domap/경상북도.png' alt='' border='0' name='mus8' class='list8' id="list8"></a>
+<a href='/#' onfocus='this.blur()' onmouseover=mus_on('mus9') onmouseout=mus_off('mus9') onclick=smenu_click('mus9')>
+<img src='./map/domap/대구.png' alt='' border='0' name='mus9' class='list9' id="list9"></a>
 <a href='./Jeollabukdo' onfocus='this.blur()' onmouseover=mus_on('mus10') onmouseout=mus_off('mus10') onclick=smenu_click('mus10')>
-<img src='./map/domap/전라북도.png' alt='' border='0' name='mus10' class='list10' ></a>
+<img src='./map/domap/전라북도.png' alt='' border='0' name='mus10' class='list10' id="list10"></a>
 <a href='./Jeollanamdo' onfocus='this.blur()' onmouseover=mus_on('mus11') onmouseout=mus_off('mus11') onclick=smenu_click('mus11')>
-<img src='./map/domap/전라남도.png' alt='' border='0' name='mus11' class='list11' ></a>
-<a href='/latlng?lat=35.1595454&lng=126.8526012' onfocus='this.blur()' onmouseover=mus_on('mus12') onmouseout=mus_off('mus12') onclick=smenu_click('mus12')>
-<img src='./map/domap/광주.png' alt='' border='0' name='mus12' class='list12' ></a>
+<img src='./map/domap/전라남도.png' alt='' border='0' name='mus11' class='list11' id="list11"></a>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus12') onmouseout=mus_off('mus12') onclick=smenu_click('mus12')>
+<img src='./map/domap/광주.png' alt='' border='0' name='mus12' class='list12' id="list12"></a>
 <a href='./Gyeongsangnamdo' onfocus='this.blur()' onmouseover=mus_on('mus13') onmouseout=mus_off('mus13') onclick=smenu_click('mus13')>
-<img src='./map/domap/경상남도.png' alt='' border='0' name='mus13' class='list13' ></a>
-<a href='/latlng?lat=35.5383773&lng=129.3113596' onfocus='this.blur()' onmouseover=mus_on('mus14') onmouseout=mus_off('mus14') onclick=smenu_click('mus14')>
-<img src='./map/domap/울산.png' alt='' border='0' name='mus14' class='list14' ></a>
-<a href='/latlng?lat=35.1795543&lng=129.0756416' onfocus='this.blur()' onmouseover=mus_on('mus15') onmouseout=mus_off('mus15') onclick=smenu_click('mus15')>
-<img src='./map/domap/부산.png' alt='' border='0' name='mus15' class='list15' ></a>
+<img src='./map/domap/경상남도.png' alt='' border='0' name='mus13' class='list13' id="list13"></a>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus14') onmouseout=mus_off('mus14') onclick=smenu_click('mus14')>
+<img src='./map/domap/울산.png' alt='' border='0' name='mus14' class='list14' id="list14"></a>
+<a href='#' onfocus='this.blur()' onmouseover=mus_on('mus15') onmouseout=mus_off('mus15') onclick=smenu_click('mus15')>
+<img src='./map/domap/부산.png' alt='' border='0' name='mus15' class='list15' id="list15"></a>
 <a href='./jejudo' onfocus='this.blur()' onmouseover=mus_on('mus16') onmouseout=mus_off('mus16') onclick=smenu_click('mus16')>
-<img src='./map/domap/제주도.png' alt='' border='0' name='mus16' class='list16' ></a>
+<img src='./map/domap/제주도.png' alt='' border='0' name='mus16' class='list16' id="list16"></a>
 
 </div>
 </body>

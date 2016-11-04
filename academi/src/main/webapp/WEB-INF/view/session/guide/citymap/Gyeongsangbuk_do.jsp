@@ -18,178 +18,345 @@
 	clear: both;
 	position: absolute;
 	z-index: 1;
-	top: 200px;
-	left: 60px;;
+	top: 250px;
+	left: 140px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 208px;
-	left: 165px;
+	top: 258px;
+	left: 245px;
 }
 
 .list3 {
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 130px;
-	left: 210px;
+	top: 180px;
+	left: 290px;
 }
 
 .list4 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 113px;
-	left: 273px;
+	top: 163px;
+	left: 353px;
 }
 
 .list5 {
 	clear: both;
 	position: absolute;
 	z-index: 5;
-	top: 97px;
-	left: 395px;
+	top: 147px;
+	left: 475px;
 }
 
 .list6 {
 	clear: both;
 	position: absolute;
 	z-index: 6;
-	top: 188px;
-	left: 370px;
+	top: 238px;
+	left: 450px;
 }
 
 .list7 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 214px;
-	left: 215px;
+	top: 264px;
+	left: 295px;
 }
 
 .list8 {
 	clear: both;
 	position: absolute;
 	z-index: 7;
-	top: 278px;
-	left: 37px;
+	top: 328px;
+	left: 117px;
 }
 
 .list9 {
 	clear: both;
 	position: absolute;
 	z-index: 9;
-	top: 319px;
-	left: 178px;
+	top: 369px;
+	left: 258px;
 }
 
 .list10 {
 	clear: both;
 	position: absolute;
 	z-index: 10;
-	top: 292px;
-	left: 337px;
+	top: 342px;
+	left: 417px;
 }
 
 .list11 {
 	clear: both;
 	position: absolute;
 	z-index: 11;
-	top: 261px;
-	left: 420px;
+	top: 311px;
+	left: 500px;
 }
 
 .list12 {
 	clear: both;
 	position: absolute;
 	z-index: 12;
-	top: 380px;
-	left: 378px;
+	top: 430px;
+	left: 458px;
 }
 
 .list13 {
 	clear: both;
 	position: absolute;
 	z-index: 13;
-	top: 470px;
-	left: 375px;
+	top: 520px;
+	left: 455px;
 }
 
 .list14 {
 	clear: both;
 	position: absolute;
 	z-index: 14;
-	top: 435px;
-	left: 295px;
+	top: 485px;
+	left: 375px;
 }
 
 .list15 {
 	clear: both;
 	position: absolute;
 	z-index: 16;
-	top: 505px;
-	left: 290px;
+	top: 555px;
+	left: 370px;
 }
 
 .list16 {
 	clear: both;
 	position: absolute;
 	z-index: 15;
-	top: 555px;
-	left: 248px;
+	top: 605px;
+	left: 328px;
 }
 
 .list17 {
 	clear: both;
 	position: absolute;
 	z-index: 17;
-	top: 380px;
-	left: 132px;
+	top: 430px;
+	left: 212px;
 }
 
 .list18 {
 	clear: both;
 	position: absolute;
 	z-index: 18;
-	top: 390px;
-	left: 208px;
+	top: 440px;
+	left: 288px;
 }
 
 .list19 {
 	clear: both;
 	position: absolute;
 	z-index: 19;
-	top: 463px;
-	left: 174px;
+	top: 513px;
+	left: 254px;
 }
 
 .list20 {
 	clear: both;
 	position: absolute;
 	z-index: 20;
-	top: 415px;
-	left: 57px;
+	top: 465px;
+	left: 137px;
 }
 
 .list21 {
 	clear: both;
 	position: absolute;
 	z-index: 21;
-	top: 487px;
-	left: 107px;
+	top: 537px;
+	left: 187px;
 }
 
 .list22 {
 	clear: both;
 	position: absolute;
 	z-index: 22;
-	top: 558px;
-	left: 140px;
+	top: 608px;
+	left: 220px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//문경
+	$(".list1").on("click",function(){
+		var lat = "36.5861480";
+		var lng = "128.1867972";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//예천
+	$(".list2").on("click",function(){
+		var lat = "36.6577004";
+		var lng = "128.4528808";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영주
+	$(".list3").on("click",function(){
+		var lat = "36.8056858";
+		var lng = "128.6240551";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//봉화
+	$(".list4").on("click",function(){
+		var lat = "36.8930933";
+		var lng = "128.7323752";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//울진
+	$(".list5").on("click",function(){
+		var lat = "36.9930661";
+		var lng = "129.4004195";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영양
+	$(".list6").on("click",function(){
+		var lat = "36.6666558";
+		var lng = "129.1124007";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//안동
+	$(".list7").on("click",function(){
+		var lat = "36.5683543";
+		var lng = "128.7293570";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//상주
+	$(".list8").on("click",function(){
+		var lat = "36.4109466";
+		var lng = "128.1590828";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//의성
+	$(".list9").on("click",function(){
+		var lat = "36.3526576";
+		var lng = "128.6970053";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//청송
+	$(".list10").on("click",function(){
+		var lat = "36.4359045";
+		var lng = "129.0571077";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영덕
+	$(".list11").on("click",function(){
+		var lat = "36.4150799";
+		var lng = "129.3659681";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//포항
+	$(".list12").on("click",function(){
+		var lat = "35.8561719";
+		var lng = "129.2247477";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//경주
+	$(".list13").on("click",function(){
+		var lat = "35.8561719";
+		var lng = "129.2247477";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영천
+	$(".list14").on("click",function(){
+		var lat = "35.9732915";
+		var lng = "128.9385493";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//경산
+	$(".list15").on("click",function(){
+		var lat = "35.8250555";
+		var lng = "128.7415441";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//청도
+	$(".list16").on("click",function(){
+		var lat = "35.6472706";
+		var lng = "128.7339107";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//구미
+	$(".list17").on("click",function(){
+		var lat = "36.1194850";
+		var lng = "128.3445734";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//군위
+	$(".list18").on("click",function(){
+		var lat = "36.2428355";
+		var lng = "128.5727702";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//칠곡
+	$(".list19").on("click",function(){
+		var lat = "35.9953059";
+		var lng = "128.4015434";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//김천
+	$(".list20").on("click",function(){
+		var lat = "36.1398393";
+		var lng = "128.1135947";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//성주
+	$(".list21").on("click",function(){
+		var lat = "35.9190079";
+		var lng = "128.2829738";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고령
+	$(".list22").on("click",function(){
+		var lat = "35.7261415";
+		var lng = "128.2629530";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -262,7 +429,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

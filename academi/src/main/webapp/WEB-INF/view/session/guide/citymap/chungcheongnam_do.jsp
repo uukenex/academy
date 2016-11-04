@@ -134,6 +134,111 @@
 	left: 485px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	
+	$(".list1").on("click",function(){
+		var lat = "36.7456421";
+		var lng = "126.2980528";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list2").on("click",function(){
+		var lat = "36.7844993";
+		var lng = "126.4503169";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list3").on("click",function(){
+		var lat = "36.8936109";
+		var lng = "126.6283278";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list4").on("click",function(){
+		var lat = "36.6826123";
+		var lng = "126.8483951";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list5").on("click",function(){
+		var lat = "36.7897960";
+		var lng = "127.0018494";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list6").on("click",function(){
+		var lat = "36.7968771";
+		var lng = "127.075037";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list7").on("click",function(){
+		var lat = "36.4465346";
+		var lng = "127.1191534";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list8").on("click",function(){
+		var lat = "36.6012300";
+		var lng = "126.6607764";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list9").on("click",function(){
+		var lat = "36.3331629";
+		var lng = "126.6129441";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list10").on("click",function(){
+		var lat = "36.4588326";
+		var lng = "126.8022116";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list11").on("click",function(){
+		var lat = "36.2754406";
+		var lng = "126.9101780";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list12").on("click",function(){
+		var lat = "36.0803312";
+		var lng = "126.6913277";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list13").on("click",function(){
+		var lat = "36.1870656";
+		var lng = "127.0987453";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list14").on("click",function(){
+		var lat = "36.2745577";
+		var lng = "127.2485896";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list15").on("click",function(){
+		var lat = "36.1086928";
+		var lng = "127.4880712";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -191,7 +296,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

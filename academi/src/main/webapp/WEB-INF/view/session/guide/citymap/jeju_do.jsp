@@ -18,18 +18,45 @@
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 100px;
-	left: 50px;;
+	top: 250px;
+	left: 30px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 180px;
-	left: 60px;
+	top: 330px;
+	left: 40px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	//제주
+	$(".list1").on("click",function(){
+		var lat = "33.4996213";
+		var lng = "126.5311884";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//서귀포
+	$(".list2").on("click",function(){
+		var lat = "33.2541205";
+		var lng = "126.5600760";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -60,7 +87,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

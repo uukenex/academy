@@ -18,90 +18,171 @@
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 195px;
-	left: 35px;;
+	top: 295px;
+	left: 135px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 130px;
-	left: 90px;
+	top: 230px;
+	left: 190px;
 }
 
 .list3 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 105px;
-	left: 165px;
+	top: 205px;
+	left: 265px;
 }
 
 .list4 {
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 85px;
-	left: 260px;
+	top: 185px;
+	left: 360px;
 }
 
 .list5 {
 	clear: both;
 	position: absolute;
 	z-index: 5;
-	top: 130px;
-	left: 365px;
+	top: 230px;
+	left: 465px;
 }
 
 .list6 {
 	clear: both;
 	position: absolute;
 	z-index: 6;
-	top: 225px;
-	left: 155px;
+	top: 325px;
+	left: 255px;
 }
 
 .list7 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 260px;
-	left: 125px;
+	top: 360px;
+	left: 225px;
 }
 
 .list8 {
 	clear: both;
 	position: absolute;
 	z-index: 7;
-	top: 300px;
-	left: 30px;
+	top: 400px;
+	left: 130px;
 }
 
 .list9 {
 	clear: both;
 	position: absolute;
 	z-index: 9;
-	top: 380px;
-	left: 115px;
+	top: 480px;
+	left: 215px;
 }
 
 .list10 {
 	clear: both;
 	position: absolute;
 	z-index: 10;
-	top: 455px;
-	left: 105px;
+	top: 555px;
+	left: 205px;
 }
 
 .list11 {
 	clear: both;
 	position: absolute;
 	z-index: 11;
-	top: 510px;
-	left: 150px;
+	top: 610px;
+	left: 250px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	
+	$(".list1").on("click",function(){
+		var lat = "36.8553798";
+		var lng = "127.4361117";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list2").on("click",function(){
+		var lat = "36.9396792";
+		var lng = "127.6905018";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list3").on("click",function(){
+		var lat = "36.9910113";
+		var lng = "127.9259497";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list4").on("click",function(){
+		var lat = "37.1325821";
+		var lng = "128.1909481";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list5").on("click",function(){
+		var lat = "36.9845473";
+		var lng = "128.3655186";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list6").on("click",function(){
+		var lat = "36.8156690";
+		var lng = "127.7865791";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list7").on("click",function(){
+		var lat = "36.7855019";
+		var lng = "127.5816556";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list8").on("click",function(){
+		var lat = "36.6391449";
+		var lng = "127.4346806";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list9").on("click",function(){
+		var lat = "36.4894573";
+		var lng = "127.7294827";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list10").on("click",function(){
+		var lat = "36.3063646";
+		var lng = "127.5712809";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	$(".list11").on("click",function(){
+		var lat = "36.1750231";
+		var lng = "127.7834302";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -151,7 +232,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){
@@ -255,7 +335,7 @@
 	<div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
 	<a href='/latlng?lat=36.8553798&lng=127.4361117' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
-	<img src='./map/충북/1충북-진천.png' alt='' border='0' name='mus1' class='list1' ></a>
+	<img src='./map/충북/1충북-진천.png' alt='' border='0' name='mus1' class='list1'  ></a>
 	<a href='/latlng?lat=36.9396792&lng=127.6905018' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
 	<img src='./map/충북/1충북-음성.png' alt='' border='0' name='mus2' class='list2' ></a>
 	<a href='/latlng?lat=36.9910113&lng=127.9259497' onfocus='this.blur()' onmouseover=mus_on('mus3') onmouseout=mus_off('mus3') onclick=smenu_click('mus3')>

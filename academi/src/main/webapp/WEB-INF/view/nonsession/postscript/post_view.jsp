@@ -39,6 +39,11 @@
 										<col width="*%">
 									</colgroup>
 									<tr>
+										<td colspan="3">
+											<input type="button" value="목록으로" id="listview">
+										</td>
+									</tr>
+									<tr>
 										<th rowspan="2" id="post_review_title">${post.reviewTitle}</th>
 										<input type="hidden" name="userId" value="${post.userId }" />
 										<td>작성자: ${post.users.userNick}</td>
@@ -47,9 +52,15 @@
 										</td>
 									</tr>
 									<tr>
-										<td colspan="2">
+										<td>
 											추천 수: <output id="result" > ${post.reviewStar}</output>
 											<input type="button" id="star" value="추천하기">
+										</td>
+										<td>
+											<c:if test="${post.userId==Users.userId }">
+												<input type="submit" value="수정하기"
+													formaction="/session/postUpdate" formmethod="post">
+											</c:if>
 										</td>
 									</tr>
 									<tr><td colspan="3"><hr id="post_divider"></tr>
@@ -233,6 +244,48 @@
 										</td>
 									</tr>
 								</table>
+								
+								<hr id="post_divider">
+								
+								<!-- Post Reply part -->
+									<table class="post_reply_view">
+										<colgroup>
+											<col width="12%">
+											<col width="*%">
+											<col width="15%">
+										</colgroup>
+										<tr>
+											<th><i class="fa fa-commenting fa-flip-horizontal"></i></th>
+											<td><input type="text" id="replyContent"></td>
+											<td><input type="button" value="등록" id="replyRegist"></td>
+										</tr>
+										<tbody id="postReplyContentViewTableBody">
+										<c:forEach var="reply" items="${replys }">
+											<tr>
+												<th>${reply.users.userNick}</th>
+												<td id="post_reply_date">
+													<fmt:formatDate value="${post.reviewDate}"
+															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+												</td>
+												<td>
+													<c:if test="${reply.userId==Users.userId }">
+														<input type="submit" value="수정" formaction="/session/replyUpdate"
+																	formmethod="post" id="postButtonStyle1">
+													</c:if>
+													<c:if test="${reply.userId==Users.userId }">
+														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+														<input type="submit" value="삭제" formaction="/replyDelete"
+																	formmethod="post" id="postButtonStyle1">
+													</c:if>
+												</td>
+											</tr>
+											<tr>
+												<td> </td>
+												<td colspan="2" id="post_reply_content">${reply.replyContent }</td>
+											</tr>
+										</c:forEach>
+										</tbody>
+									</table>
 						</div>
 						
 						<div class="1u"></div>
@@ -393,12 +446,50 @@
 							reviewNo : "${post.reviewNo}"
 						},
 						success : function(res) {
-							alert("등록완료");
-							$("#tbody").append(
-									$("<tr><td>" + res.id
-											+ "</td><td colspan='3'>"
-											+ res.content + "</td></tr>"));
+							console.log(res);
+							$("#postReplyContentViewTableBody").empty();
 							$("#replyContent").val("");
+							alert("등록완료");
+							$(res).each(function(idx, item){
+								console.log(item);
+								var replyId = item.userId;
+								var date = new Date(item.replyDate);
+								var year = date.getFullYear().toString();
+								var month = (date.getMonth()+1).toString();
+								var date = date.getDate().toString();
+								if(date<10){
+									date="0"+date;
+								}
+								year = year.substr(2,2);
+								var newDate = year+"-"+month+"-"+date;
+								
+								if(replyId=='${Users.userId}') {
+									$("#postReplyContentViewTableBody")[0].innerHTML +=
+										"<tr> <th>"+item.users.userNick +"</th>"
+										+ "<td id='post_reply_date'>" + newDate +"</td>"
+										+"<td></td></tr>"
+										+"<tr> <td>"
+										+"<input type='submit' value='수정' formaction='/session/replyUpdate'"
+										+"formmethod='post' id='postButtonStyle1'>"
+										+"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>"
+										+"<input type='submit' value='삭제' formaction='/replyDelete'"
+										+"formmethod='post' id='postButtonStyle1'>"
+										+"</td> <td colspan='2' id='post_reply_content'>"
+										+ item.replyContent
+										+"</td> </tr>";
+								}
+								
+								else {
+									$("#postReplyContentViewTableBody")[0].innerHTML +=
+										"<tr> <th>"+item.users.userNick +"</th>"
+										+ "<td id='post_reply_date'>" + newDate +"</td>"
+										+"<td></td></tr>"
+										+"<tr> <td> </td>"
+										+"<td colspan='2' id='post_reply_content'>"
+										+ item.replyContent
+										+"</td> </tr>";
+								}
+							});
 						},
 						error : function(xhr, status, error) {
 							alert("로그인이 필요합니다");

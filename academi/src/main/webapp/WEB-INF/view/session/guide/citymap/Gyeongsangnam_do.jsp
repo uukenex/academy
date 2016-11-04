@@ -158,6 +158,146 @@
 	left: 380px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//함양
+	$(".list1").on("click",function(){
+		var lat = "35.5204614";
+		var lng = "127.7251763";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//거창
+	$(".list2").on("click",function(){
+		var lat = "35.6867229";
+		var lng = "127.9095155";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//합천
+	$(".list3").on("click",function(){
+		var lat = "35.5665758";
+		var lng = "128.1657995";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//창녕
+	$(".list4").on("click",function(){
+		var lat = "35.5445563";
+		var lng = "128.4922143";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//밀양
+	$(".list5").on("click",function(){
+		var lat = "35.5037598";
+		var lng = "128.7464415";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//양산
+	$(".list6").on("click",function(){
+		var lat = "35.3350072";
+		var lng = "129.0371689";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//김해
+	$(".list7").on("click",function(){
+		var lat = "35.2285451";
+		var lng = "128.8893517";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//창원 
+	$(".list8").on("click",function(){
+		var lat = "35.2176696";
+		var lng = "128.5650009";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//함안
+	$(".list9").on("click",function(){
+		var lat = "35.2725591";
+		var lng = "128.4064797";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//의령
+	$(".list10").on("click",function(){
+		var lat = "35.3221896";
+		var lng = "128.2616580";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//진주
+	$(".list11").on("click",function(){
+		var lat = "35.1799817";
+		var lng = "128.1076213";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//산청
+	$(".list12").on("click",function(){
+		var lat = "35.4155885";
+		var lng = "127.8734981";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//하동
+	$(".list13").on("click",function(){
+		var lat = "35.0672108";
+		var lng = "127.7512687";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//사천
+	$(".list14").on("click",function(){
+		var lat = "35.0037788";
+		var lng = "128.0641850";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고성
+	$(".list15").on("click",function(){
+		var lat = "34.9731490";
+		var lng = "128.3222456";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//통영
+	$(".list16").on("click",function(){
+		var lat = "34.8544227";
+		var lng = "128.4331820";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//남해
+	$(".list17").on("click",function(){
+		var lat = "34.8376721";
+		var lng = "127.8924234";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//거제
+	$(".list18").on("click",function(){
+		var lat = "34.8806427";
+		var lng = "128.6210824";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -221,7 +361,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

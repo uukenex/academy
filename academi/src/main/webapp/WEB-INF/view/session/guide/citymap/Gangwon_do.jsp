@@ -158,6 +158,146 @@
 	left: 750px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//철원
+	$(".list1").on("click",function(){
+		var lat = "38.1466090";
+		var lng = "127.3132256";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//화천
+	$(".list2").on("click",function(){
+		var lat = "38.1056484";
+		var lng = "127.7080492";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//양구
+	$(".list3").on("click",function(){
+		var lat = "38.1100701";
+		var lng = "127.9898825";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//인제
+	$(".list4").on("click",function(){
+		var lat = "38.0694675";
+		var lng = "128.1706991";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고성
+	$(".list5").on("click",function(){
+		var lat = "38.3801292";
+		var lng = "128.4674385";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//속초
+	$(".list6").on("click",function(){
+		var lat = "38.2070148";
+		var lng = "128.5918488";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//춘천
+	$(".list7").on("click",function(){
+		var lat = "37.8813153";
+		var lng = "127.7299707";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//홍천
+	$(".list8").on("click",function(){
+		var lat = "37.6969518";
+		var lng = "127.8886827";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//횡성
+	$(".list9").on("click",function(){
+		var lat = "37.4917566";
+		var lng = "127.9849295";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//평창
+	$(".list10").on("click",function(){
+		var lat = "37.3704740";
+		var lng = "128.3899769";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//원주
+	$(".list11").on("click",function(){
+		var lat = "37.3422186";
+		var lng = "127.9201621";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//영월
+	$(".list12").on("click",function(){
+		var lat = "37.1836370";
+		var lng = "128.4617535";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//태백
+	$(".list13").on("click",function(){
+		var lat = "37.1640654";
+		var lng = "128.9855649";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//정선
+	$(".list14").on("click",function(){
+		var lat = "37.3807549";
+		var lng = "128.6609505";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//삼척
+	$(".list15").on("click",function(){
+		var lat = "37.4498683";
+		var lng = "129.1652059";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//양양
+	$(".list16").on("click",function(){
+		var lat = "38.0753925";
+		var lng = "128.6188503";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//강릉
+	$(".list17").on("click",function(){
+		var lat = "37.7518530";
+		var lng = "128.8760574";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//동해
+	$(".list18").on("click",function(){
+		var lat = "37.5247192";
+		var lng = "129.1142915";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	
+});
+
+	
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -222,7 +362,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){

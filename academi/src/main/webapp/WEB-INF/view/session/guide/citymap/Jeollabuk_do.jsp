@@ -18,114 +18,224 @@
 	clear: both;
 	position: absolute;
 	z-index: 1;
-	top: 160px;
-	left: 80px;;
+	top: 260px;
+	left: 110px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 110px;
-	left: 220px;
+	top: 210px;
+	left: 250px;
 }
 
 .list3 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 122px;
-	left: 295px;
+	top: 222px;
+	left: 325px;
 }
 
 .list4 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 175px;
-	left: 395px;
+	top: 275px;
+	left: 425px;
 }
 
 .list5 {
 	clear: both;
 	position: absolute;
 	z-index: 5;
-	top: 153px;
-	left: 502px;
+	top: 253px;
+	left: 532px;
 }
 
 .list6 {
 	clear: both;
 	position: absolute;
 	z-index: 6;
-	top: 230px;
-	left: 155px;
+	top: 330px;
+	left: 185px;
 }
 
 .list7 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 239px;
-	left: 280px;
+	top: 339px;
+	left: 310px;
 }
 
 .list8 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 275px;
-	left: 437px;
+	top: 375px;
+	left: 467px;
 }
 
 .list9 {
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 308px;
-	left: 319px;
+	top: 408px;
+	left: 349px;
 }
 
 .list10 {
 	clear: both;
 	position: absolute;
 	z-index: 10;
-	top: 417px;
-	left: 363px;
+	top: 517px;
+	left: 393px;
 }
 
 .list11 {
 	clear: both;
 	position: absolute;
 	z-index: 11;
-	top: 423px;
-	left: 224px;
+	top: 523px;
+	left: 254px;
 }
 
 .list12 {
 	clear: both;
 	position: absolute;
 	z-index: 12;
-	top: 317px;
-	left: 162px;
+	top: 417px;
+	left: 192px;
 }
 
 .list13 {
 	clear: both;
 	position: absolute;
 	z-index: 15;
-	top: 295px;
-	left: 55px;
+	top: 395px;
+	left: 85px;
 }
 
 .list14 {
 	clear: both;
 	position: absolute;
 	z-index: 14;
-	top: 410px;
-	left: 45px;
+	top: 510px;
+	left: 75px;
 }
 </style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	//군산
+	$(".list1").on("click",function(){
+		var lat = "35.9676772";
+		var lng = "126.7366293";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//익산
+	$(".list2").on("click",function(){
+		var lat = "35.9482858";
+		var lng = "126.9575991";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//완주
+	$(".list3").on("click",function(){
+		var lat = "35.8912490";
+		var lng = "127.2544065";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//진안
+	$(".list4").on("click",function(){
+		var lat = "35.7917297";
+		var lng = "127.4248356";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//무주
+	$(".list5").on("click",function(){
+		var lat = "36.0068191";
+		var lng = "127.6607805";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//김제
+	$(".list6").on("click",function(){
+		var lat = "35.8036079";
+		var lng = "126.8808872";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//전주
+	$(".list7").on("click",function(){
+		var lat = "35.6472767";
+		var lng = "127.5211363";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//장수
+	$(".list8").on("click",function(){
+		var lat = "35.6472767";
+		var lng = "127.5211363";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//임실
+	$(".list9").on("click",function(){
+		var lat = "35.6110549";
+		var lng = "127.2826599";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//남원
+	$(".list10").on("click",function(){
+		var lat = "35.4163570";
+		var lng = "127.3904877";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//순창
+	$(".list11").on("click",function(){
+		var lat = "35.3744136";
+		var lng = "127.1375968";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//정읍
+	$(".list12").on("click",function(){
+		var lat = "35.5698855";
+		var lng = "126.8558955";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//부안
+	$(".list13").on("click",function(){
+		var lat = "35.7315661";
+		var lng = "126.7334651";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+	//고창
+	$(".list14").on("click",function(){
+		var lat = "35.4358216";
+		var lng = "126.7020806";
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
+	});
+
+});
+
+
+</script>
 <script>
 	//-----------------------------------------------------------------------------------------
 	/* 메뉴를 늘이거나 줄일때 추가~삭제하세요. 쌍으로 구성되어있습니다. */
@@ -181,7 +291,6 @@
 
 	//-----------------------------------------------------------------------------------------
 </script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
  
  $(document).on("ready",function(){
