@@ -18,144 +18,144 @@
 	clear: both;
 	position: absolute;
 	z-index: 1;
-	top: 160px;
-	left: 30px;;
+	top: 230px;
+	left: 80px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 95px;
-	left: 70px;
+	top: 165px;
+	left: 120px;
 }
 
 .list3 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 127px;
-	left: 170px;
+	top: 197px;
+	left: 220px;
 }
 
 .list4 {
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 190px;
-	left: 313px;
+	top: 260px;
+	left: 363px;
 }
 
 .list5 {
 	clear: both;
 	position: absolute;
 	z-index: 5;
-	top: 204px;
-	left: 395px;
+	top: 274px;
+	left: 445px;
 }
 
 .list6 {
 	clear: both;
 	position: absolute;
 	z-index: 6;
-	top: 252px;
-	left: 505px;
+	top: 322px;
+	left: 555px;
 }
 
 .list7 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 315px;
-	left: 440px;
+	top: 385px;
+	left: 490px;
 }
 
 .list8 {
 	clear: both;
 	position: absolute;
 	z-index: 7;
-	top: 315px;
-	left: 315px;
+	top: 385px;
+	left: 365px;
 }
 
 .list9 {
 	clear: both;
 	position: absolute;
 	z-index: 9;
-	top: 312px;
-	left: 283px;
+	top: 382px;
+	left: 333px;
 }
 
 .list10 {
 	clear: both;
 	position: absolute;
 	z-index: 10;
-	top: 266px;
-	left: 219px;
+	top: 336px;
+	left: 269px;
 }
 
 .list11 {
 	clear: both;
 	position: absolute;
 	z-index: 11;
-	top: 345px;
-	left: 145px;
+	top: 415px;
+	left: 195px;
 }
 
 .list12 {
 	clear: both;
 	position: absolute;
 	z-index: 12;
-	top: 245px;
-	left: 72px;
+	top: 315px;
+	left: 122px;
 }
 
 .list13 {
 	clear: both;
 	position: absolute;
 	z-index: 15;
-	top: 355px;
-	left: 30px;
+	top: 425px;
+	left: 80px;
 }
 
 .list14 {
 	clear: both;
 	position: absolute;
 	z-index: 14;
-	top: 430px;
-	left: 140px;
+	top: 500px;
+	left: 190px;
 }
 
 .list15 {
 	clear: both;
 	position: absolute;
 	z-index: 13;
-	top: 440px;
-	left: 225px;
+	top: 510px;
+	left: 275px;
 }
 
 .list16 {
 	clear: both;
 	position: absolute;
 	z-index: 16;
-	top: 510px;
-	left: 300px;
+	top: 580px;
+	left: 350px;
 }
 
 .list17 {
 	clear: both;
 	position: absolute;
 	z-index: 16;
-	top: 520px;
-	left: 100px;
+	top: 590px;
+	left: 150px;
 }
 
 .list18 {
 	clear: both;
 	position: absolute;
 	z-index: 16;
-	top: 500px;
-	left: 380px;
+	top: 570px;
+	left: 430px;
 }
 </style>
 <script src="http://code.jquery.com/jquery.js"></script>
