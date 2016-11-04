@@ -250,20 +250,21 @@ var delParent=this.parentNode;
 	$(document).on("click",".fdown",function() {
 		alert('알집으로 다운로드합니다');
 		
-		var pathname=this.previousSibling.pathname;
+		var pathname=this.previousSibling.innerText.trim();
 		$.ajax({
 			type:"post",
 			url:"${zipdown}",
 			data:{
+				curUserId:'${curUserId}',
 				pathname:pathname
 			},
 			success:function(res){
-				if(res==1){
-					console.log('다운성공');
-				}
-				else{
-					console.log('다운실패');
-				}
+				
+					console.log(res);
+					var save = document.createElement("a");
+					save.href = "/photo_upload/"+res;
+			        save.download = res;
+			        save.click();
 			}
 			,
 			error:function(xhr,status,error){
@@ -359,7 +360,7 @@ $("#newFolder").on("click",function(){
 				}
 		     	
 		     	html+="<img id='down"+interval;
-		     	html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
+		     	html+="' src='/images/zipdown.png' ";
 		     	html+="height='25px' width='25px' class='fdown ' >";
 		      	
 		      	//삭제 이미지버튼
@@ -431,7 +432,7 @@ $(document).on("ready",function(){
 					fullName +=this[op];
 					}
 		       		html+=" <img id='down"+interval;
-		       		html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
+		       		html+="' src='/images/zipdown.png'";
 		       		html+="height='25px' width='25px' class='fdown ' >";
 		       		//삭제 이미지버튼
 		       		html+="<img id='chk"+interval;
@@ -455,7 +456,7 @@ $(document).on("ready",function(){
 					fullName +=this[op];
 					}
 		       		html+="<img id='down"+interval;
-		       		html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
+		       		html+="' src='/images/zipdown.png'";
 		       		html+="height='25px' width='25px' class='fdown ' >";
 		       		//삭제 이미지버튼
 		       		html+="<img id='chk"+interval;
