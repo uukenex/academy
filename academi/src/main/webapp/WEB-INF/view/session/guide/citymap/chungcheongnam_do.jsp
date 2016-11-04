@@ -18,120 +18,120 @@
 	clear: both;
 	position: absolute;
 	z-index: 1;
-	top: 160px;
-	left: 30px;;
+	top: 210px;
+	left: 90px;;
 }
 
 .list2 {
 	clear: both;
 	position: absolute;
 	z-index: 2;
-	top: 110px;
-	left: 110px;
+	top: 160px;
+	left: 170px;
 }
 
 .list3 {
 	clear: both;
 	position: absolute;
 	z-index: 4;
-	top: 80px;
-	left: 160px;
+	top: 130px;
+	left: 230px;
 }
 
 .list4 {
 	clear: both;
 	position: absolute;
 	z-index: 3;
-	top: 230px;
-	left: 200px;
+	top: 280px;
+	left: 260px;
 }
 
 .list5 {
 	clear: both;
 	position: absolute;
 	z-index: 5;
-	top: 150px;
-	left: 295px;
+	top: 200px;
+	left: 355px;
 }
 
 .list6 {
 	clear: both;
 	position: absolute;
 	z-index: 6;
-	top: 130px;
-	left: 370px;
+	top: 180px;
+	left: 430px;
 }
 
 .list7 {
 	clear: both;
 	position: absolute;
 	z-index: 7;
-	top: 310px;
-	left: 320px;
+	top: 360px;
+	left: 380px;
 }
 
 .list8 {
 	clear: both;
 	position: absolute;
 	z-index: 8;
-	top: 315px;
-	left: 150px;
+	top: 365px;
+	left: 210px;
 }
 
 .list9 {
 	clear: both;
 	position: absolute;
 	z-index: 9;
-	top: 420px;
-	left: 160px;
+	top: 470px;
+	left: 220px;
 }
 
 .list10 {
 	clear: both;
 	position: absolute;
 	z-index: 10;
-	top: 370px;
-	left: 235px;
+	top: 420px;
+	left: 295px;
 }
 
 .list11 {
 	clear: both;
 	position: absolute;
 	z-index: 11;
-	top: 480px;
-	left: 238px;
+	top: 530px;
+	left: 298px;
 }
 
 .list12 {
 	clear: both;
 	position: absolute;
 	z-index: 12;
-	top: 595px;
-	left: 180px;
+	top: 645px;
+	left: 240px;
 }
 
 .list13 {
 	clear: both;
 	position: absolute;
 	z-index: 13;
-	top: 505px;
-	left: 360px;
+	top: 555px;
+	left: 420px;
 }
 
 .list14 {
 	clear: both;
 	position: absolute;
 	z-index: 14;
-	top: 495px;
-	left: 435px;
+	top: 545px;
+	left: 495px;
 }
 
 .list15 {
 	clear: both;
 	position: absolute;
 	z-index: 15;
-	top: 535px;
-	left: 485px;
+	top: 585px;
+	left: 545px;
 }
 </style>
 <script src="http://code.jquery.com/jquery.js"></script>

@@ -7,22 +7,22 @@
 <title>Insert title here</title>
 <style>
 .list0 { clear:both; position: relative; z-index: 1; top: -35px; left: -5px; } 
-.list1 { clear:both; position: absolute; z-index: 2; top: 200px; left: 180px;;}
-.list2 { clear:both; position: absolute; z-index: 1; top: 127px; left: 200px; } 
-.list3 { clear:both; position: absolute; z-index: 4; top: 220px; left: 231px; } 
-.list4 { clear:both; position: absolute; z-index: 3; top: 73px; left: 274px; } 
-.list5 { clear:both; position: absolute; z-index: 5; top: 318px; left: 147px; } 
-.list6 { clear:both; position: absolute; z-index: 6; top: 288px; left: 298px; } 
-.list7 { clear:both; position: absolute; z-index: 8; top: 400px; left: 288px; } 
-.list8 { clear:both; position: absolute; z-index: 7; top: 302px; left: 362px; } 
-.list9 { clear:both; position: absolute; z-index: 9; top: 480px; left:435px; } 
-.list10 { clear:both; position: absolute; z-index: 10; top: 463px; left: 187px; } 
-.list11 { clear:both; position: absolute; z-index: 11; top: 568px; left: 163px; } 
-.list12 { clear:both; position: absolute; z-index: 12; top: 605px; left: 215px; } 
-.list13 { clear:both; position: absolute; z-index: 15; top: 500px; left: 335px; } 
-.list14 { clear:both; position: absolute; z-index: 14; top: 525px; left: 515px; } 
-.list15 { clear:both; position: absolute; z-index: 13; top: 582px; left: 495px; } 
-.list16 { clear:both; position: absolute; z-index: 16; top: 700px; left: 460px; }
+.list1 { clear:both; position: absolute; z-index: 3; top: 270px; left: 180px;;}
+.list2 { clear:both; position: absolute; z-index: 2; top: 197px; left: 200px; } 
+.list3 { clear:both; position: absolute; z-index: 4; top: 290px; left: 231px; } 
+.list4 { clear:both; position: absolute; z-index: 1; top: 143px; left: 274px; } 
+.list5 { clear:both; position: absolute; z-index: 5; top: 388px; left: 147px; } 
+.list6 { clear:both; position: absolute; z-index: 6; top: 358px; left: 298px; } 
+.list7 { clear:both; position: absolute; z-index: 8; top: 470px; left: 288px; } 
+.list8 { clear:both; position: absolute; z-index: 7; top: 372px; left: 362px; } 
+.list9 { clear:both; position: absolute; z-index: 15; top: 550px; left:435px; } 
+.list10 { clear:both; position: absolute; z-index: 10; top: 533px; left: 187px; } 
+.list11 { clear:both; position: absolute; z-index: 11; top: 638px; left: 163px; } 
+.list12 { clear:both; position: absolute; z-index: 12; top: 675px; left: 215px; } 
+.list13 { clear:both; position: absolute; z-index: 9; top: 570px; left: 335px; } 
+.list14 { clear:both; position: absolute; z-index: 14; top: 595px; left: 515px; } 
+.list15 { clear:both; position: absolute; z-index: 13; top: 652px; left: 495px; } 
+.list16 { clear:both; position: absolute; z-index: 16; top: 770px; left: 460px; }
 
 
 </style>

@@ -19,7 +19,7 @@
 	position: absolute;
 	z-index: 3;
 	top: 250px;
-	left: 30px;;
+	left: 100px;;
 }
 
 .list2 {
@@ -27,7 +27,7 @@
 	position: absolute;
 	z-index: 2;
 	top: 330px;
-	left: 40px;
+	left: 110px;
 }
 </style>
 <script src="http://code.jquery.com/jquery.js"></script>
