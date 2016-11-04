@@ -29,6 +29,10 @@ public class UserController {
 	@Autowired
 	UserService uService;
 	
+	@RequestMapping(value="/loginCheck", method = RequestMethod.GET)
+	public String loginCheck(HttpServletRequest request,HttpSession session){
+		return "nonsession/login/loginCheck"; 
+	}
 	
 	@RequestMapping(value="/loginUser", method=RequestMethod.POST)
 	public String loginUser(Model model, HttpServletRequest request, HttpSession session){
@@ -36,15 +40,14 @@ public class UserController {
 		String userId=request.getParameter("id");
 		String userPass=request.getParameter("password");
 		Users user = uService.login(userId);
-		
-		
+		String forPage = (String) session.getAttribute("forPage");
 		if(user!=null&&user.getUserPass().equals(userPass)){
 			if(user.getUserId().equals(userId)){
 				session.setAttribute("Users", user);
 				model.addAttribute("message","어서오세요 동물의숲 ");
 				model.addAttribute("userId", userId);
-				returnURL ="logintest";
-				
+				returnURL = "logintest";
+				logger.trace("forpage:{}",forPage);
 			}
 			}else{
 				model.addAttribute("message","아이디 혹은 비밀번호를 확인해주세요.");

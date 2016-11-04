@@ -15,7 +15,7 @@
 		$(document).on("ready", function() {
 			alert("${userId}님 ${message }");
 			<% session.removeAttribute("message");%>
-			window.opener.location.reload();
+			 window.opener.location.reload(); 
 			self.close();
 		})
 	</script>

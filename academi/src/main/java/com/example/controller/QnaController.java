@@ -67,7 +67,12 @@ public class QnaController {
 	}
 	// 질문 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/qnaQuestion", method = RequestMethod.GET)
-	public String noticeWrtie(Model model) {
+	public String noticeWrtie(Model model,HttpSession session) {
+		//user가 세션에 존재하지 않으면
+		if(session.getAttribute("Users")==null){
+			//세션 forpage에 값을 넣어줌
+			session.setAttribute("forPage", "/session/qnaQuestion");
+		}
 		return "session/qna/question";
 	}
 
