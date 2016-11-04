@@ -81,8 +81,11 @@
 			        var url = $(this.element).attr("href");
 			        this.href = url
 			    }
-			}); // fancybox
+			}).trigger('click'); // fancybox
 		
+			if(<%=request.getParameter("lat")%>!=null  ){
+				parent.jQuery.fancybox.close();
+				}
 		});
 		
 		</script>

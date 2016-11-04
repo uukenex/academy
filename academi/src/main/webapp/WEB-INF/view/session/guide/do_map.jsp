@@ -32,13 +32,13 @@
 <script>
 
 $(document).ready(function(){
+	
+	
 	$("#list1").on("click",function(){
 		var lat = "37.4562557";
 		var lng = "126.7052062";
-			window.open("/latlng?lat="+lat+"&lng="+lng);
-			parent.jQuery.fancybox.close();	 
-				
-			
+		parent.jQuery.fancybox.close();
+		parent.location.href="/mapMain2?lat="+lat+"&lng="+lng;
 	});
 });
 
@@ -268,7 +268,7 @@ function smenu_click(musName){
 <body>
 <div style="clear:both; position: relative; z-index: 1; top: -35px; left: 25; ">
 
-<a href='/latlng?lat=37.4562557&lng=126.7052062' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
+<a href='#<!-- /latlng?lat=37.4562557&lng=126.7052062 -->' onfocus='this.blur()' onmouseover=mus_on('mus1') onmouseout=mus_off('mus1') onclick=smenu_click('mus1')>
 <img src='./map/domap/인천.png' alt='' border='0' name='mus1' class='list1' id="list1"></a>
 <a href='./gyeonggido' onfocus='this.blur()' onmouseover=mus_on('mus2') onmouseout=mus_off('mus2') onclick=smenu_click('mus2')>
 <img src='./map/domap/경기도.png' alt='' border='0' name='mus2' class='list2' ></a>
