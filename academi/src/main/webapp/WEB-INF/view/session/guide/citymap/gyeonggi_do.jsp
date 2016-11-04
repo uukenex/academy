@@ -19,7 +19,7 @@
 	position: absolute;
 	z-index: 1;
 	top: 200px;
-	left: 110px;;
+	left: 60px;;
 }
 
 .list2 {
@@ -27,7 +27,7 @@
 	position: absolute;
 	z-index: 2;
 	top: 90px;
-	left: 160px;
+	left: 120px;
 }
 
 .list3 {
@@ -35,7 +35,7 @@
 	position: absolute;
 	z-index: 3;
 	top: 243px;
-	left: 245px;
+	left: 195px;
 }
 
 .list4 {
@@ -43,7 +43,7 @@
 	position: absolute;
 	z-index: 4;
 	top: 220px;
-	left: 300px;
+	left: 250px;
 }
 
 .list5 {
@@ -51,7 +51,7 @@
 	position: absolute;
 	z-index: 5;
 	top: 130px;
-	left: 360px;
+	left: 310px;
 }
 
 .list6 {
@@ -59,7 +59,7 @@
 	position: absolute;
 	z-index: 6;
 	top: 195px;
-	left: 470px;
+	left: 420px;
 }
 
 .list7 {
@@ -67,7 +67,7 @@
 	position: absolute;
 	z-index: 8;
 	top: 315px;
-	left: 30px;
+	left: -20px;
 }
 
 .list8 {
@@ -75,7 +75,7 @@
 	position: absolute;
 	z-index: 7;
 	top: 330px;
-	left: 110;
+	left: 60px;
 }
 
 .list9 {
@@ -83,7 +83,7 @@
 	position: absolute;
 	z-index: 9;
 	top: 320px;
-	left: 300px;
+	left: 250px;
 }
 
 .list10 {
@@ -91,7 +91,7 @@
 	position: absolute;
 	z-index: 10;
 	top: 320px;
-	left: 345px;
+	left: 295px;
 }
 
 .list11 {
@@ -99,7 +99,7 @@
 	position: absolute;
 	z-index: 11;
 	top: 375px;
-	left: 500px;
+	left: 450px;
 }
 
 .list12 {
@@ -107,7 +107,7 @@
 	position: absolute;
 	z-index: 12;
 	top: 435px;
-	left: 375px;
+	left: 325px;
 }
 
 .list13 {
@@ -115,7 +115,7 @@
 	position: absolute;
 	z-index: 13;
 	top: 480px;
-	left: 545px;
+	left: 495px;
 }
 
 .list14 {
@@ -123,7 +123,7 @@
 	position: absolute;
 	z-index: 14;
 	top: 410px;
-	left: 390px;
+	left: 340px;
 }
 
 .list15 {
@@ -131,7 +131,7 @@
 	position: absolute;
 	z-index: 15;
 	top: 390px;
-	left: 370px;
+	left: 320px;
 }
 
 .list16 {
@@ -139,7 +139,7 @@
 	position: absolute;
 	z-index: 16;
 	top: 460px;
-	left: 310px;
+	left: 260px;
 }
 
 .list17 {
@@ -147,7 +147,7 @@
 	position: absolute;
 	z-index: 17;
 	top: 510px;
-	left: 300px;
+	left: 250px;
 }
 
 .list18 {
@@ -155,7 +155,7 @@
 	position: absolute;
 	z-index: 18;
 	top: 520px;
-	left: 510px;
+	left: 460px;
 }
 
 .list19 {
@@ -163,7 +163,7 @@
 	position: absolute;
 	z-index: 19;
 	top: 610px;
-	left: 360px;
+	left: 310px;
 }
 
 .list20 {
@@ -171,7 +171,7 @@
 	position: absolute;
 	z-index: 20;
 	top: 540px;
-	left: 65px;
+	left: 15px;
 }
 
 .list21 {
@@ -179,7 +179,7 @@
 	position: absolute;
 	z-index: 21;
 	top: 610px;
-	left: 160px;
+	left: 110px;
 }
 
 .list22 {
@@ -187,7 +187,7 @@
 	position: absolute;
 	z-index: 22;
 	top: 580px;
-	left: 295px;
+	left: 245px;
 }
 
 .list23 {
@@ -195,7 +195,7 @@
 	position: absolute;
 	z-index: 23;
 	top: 515px;
-	left: 245px;
+	left: 195px;
 }
 
 .list24 {
@@ -203,7 +203,7 @@
 	position: absolute;
 	z-index: 24;
 	top: 485px;
-	left: 255px;
+	left: 205px;
 }
 
 .list25 {
@@ -211,7 +211,7 @@
 	position: absolute;
 	z-index: 25;
 	top: 465px;
-	left: 270px;
+	left: 220px;
 }
 
 .list26 {
@@ -219,7 +219,7 @@
 	position: absolute;
 	z-index: 26;
 	top: 475px;
-	left: 225px;
+	left: 175px;
 }
 
 .list27 {
@@ -227,7 +227,7 @@
 	position: absolute;
 	z-index: 28;
 	top: 510px;
-	left: 230px;
+	left: 180px;
 }
 
 .list28 {
@@ -235,7 +235,7 @@
 	position: absolute;
 	z-index: 27;
 	top: 505px;
-	left: 130px;
+	left: 80px;
 }
 
 .list29 {
@@ -243,7 +243,7 @@
 	position: absolute;
 	z-index: 29;
 	top: 465px;
-	left: 115px;
+	left: 65px;
 }
 
 .list30 {
@@ -251,15 +251,15 @@
 	position: absolute;
 	z-index: 30;
 	top: 460px;
-	left: 200px;
+	left: 150px;
 }
 
 .list31 {
 	clear: both;
 	position: absolute;
 	z-index: 31;
-	top: 430px;
-	left: 150px;
+	top: 425px;
+	left: 100px;
 }
 </style>
 <script src="http://code.jquery.com/jquery.js"></script>
