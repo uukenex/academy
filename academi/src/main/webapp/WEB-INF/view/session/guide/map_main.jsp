@@ -69,7 +69,7 @@
 			$(".fancybox").fancybox({
 			    autoScale: false,
 			    // href : $('.fancybox').attr('id'), // don't need this
-			    'width': "65%",
+			    'width': 800,
             	'height': 340,
             	 prevEffect      : 'fade',
 			    type: 'iframe',
