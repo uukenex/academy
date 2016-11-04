@@ -66,7 +66,7 @@
 		review_star desc)
 		sub)
 		where rnum
-		between 1 and 4
+		between 1 and 3
 	</select>
 
 
@@ -78,7 +78,7 @@
 		join users u on u.user_id=r.user_id
 		order by
 		review_no desc) sub)
-		where rnum between #{page}*12-11 and #{page}*12
+		where rnum between #{page}*9-8 and #{page}*9
 	</select>
 
 
@@ -92,7 +92,7 @@
 		review_title like #{reviewTitle}
 		order by review_no desc) sub)
 		where
-		rnum between #{page}*12-11 and #{page}*12
+		rnum between #{page}*9-8 and #{page}*9
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
@@ -113,7 +113,7 @@
 		review_content8 like #{reviewContent} or
 		review_content9 like #{reviewContent}
 		order by review_no desc) sub)
-		where rnum between #{page}*12-11 and #{page}*12
+		where rnum between #{page}*9-8 and #{page}*9
 
 	</select>
 
@@ -127,7 +127,7 @@
 		where user_nick like #{userNick}
 		order
 		by review_no desc) sub)
-		where rnum between #{page}*12-11 and #{page}*12
+		where rnum between #{page}*9-8 and #{page}*9
 	</select>
 	
 	

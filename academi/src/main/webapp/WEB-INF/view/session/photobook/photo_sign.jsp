@@ -37,7 +37,7 @@ position: relative;
 	left: -50px; /* -이미지의 크기 x 갯수 */
 	top:-175px; /* -(버튼의크기-이미지의크기) */
 }
-a[id^=down]{
+img[id^=down]{
 position: relative;
 	left: -50px; /* -이미지의 크기 x 갯수  */
 	top:-175px; /* -(버튼의크기-이미지의크기) */
@@ -121,6 +121,7 @@ z-index: 1;
 <script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-buttons.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-thumbs.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jszip.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-buttons.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/assets/css/jquery.fancybox-thumbs.css" />
@@ -356,11 +357,11 @@ $("#newFolder").on("click",function(){
 				for(var op=0;op<this.length;op++){
 				fullName +=this[op];
 				}
-		     	html+="<a href=/photo_upload/${curUserId}/"+fullName;
-		     	html+=" download id='down"+interval+"' ><img id='down"+interval;
-		     	html+="' src='/images/down.png'";
+		     	
+		     	html+="<img id='down"+interval;
+		     	html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
 		     	html+="height='25px' width='25px' class='fdown ' >";
-		      	html+="</a>";
+		      	
 		      	//삭제 이미지버튼
 		      	html+="<img id='chk"+interval;
 		      	html+="' src='/images/delete.png'";
@@ -429,14 +430,12 @@ $(document).on("ready",function(){
 					for(var op=0;op<this.length;op++){
 					fullName +=this[op];
 					}
-		       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
-		       		html+=" download id='down"+interval+"' ><img id='down"+interval;
-		       		html+="' src='/images/down.png'";
+		       		html+=" <img id='down"+interval;
+		       		html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
 		       		html+="height='25px' width='25px' class='fdown ' >";
-		       		html+="</a>";
 		       		//삭제 이미지버튼
 		       		html+="<img id='chk"+interval;
-		       		html+="' src='/images/delete.png'";
+		       		html+="' src='/images/delete.png' ";
 		       		html+="height='25px' width='25px' class='fclose '>";
 		       		
 					html+="<div>";
@@ -455,11 +454,9 @@ $(document).on("ready",function(){
 					for(var op=0;op<this.length;op++){
 					fullName +=this[op];
 					}
-		       		html+="<a href=/photo_upload/${curUserId}/"+fullName+".zip";
-		       		html+=" download id='down"+interval+"' ><img id='down"+interval;
-		       		html+="' src='/images/down.png'";
+		       		html+="<img id='down"+interval;
+		       		html+="' src='/images/down.png' onclick='DownloadZipFile(arFileArray, sZipFileName)'";
 		       		html+="height='25px' width='25px' class='fdown ' >";
-		       		html+="</a>";
 		       		//삭제 이미지버튼
 		       		html+="<img id='chk"+interval;
 		       		html+="' src='/images/delete.png'";

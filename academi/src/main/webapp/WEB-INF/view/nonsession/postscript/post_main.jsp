@@ -122,7 +122,7 @@
 								
 								<!-- 사용자가 등록한 모든 후기 띄워주는 part -->
 								<div class="edi_posts edi_posts_body">
-									<c:forEach var="post" items="${posts }" begin="4">
+									<c:forEach var="post" items="${posts }" begin="3">
 										<article>
 											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
 											<h3>${post.reviewTitle }</h3>

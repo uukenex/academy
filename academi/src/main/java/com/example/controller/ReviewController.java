@@ -62,8 +62,8 @@ public class ReviewController {
 		model.addAttribute("posts", r);
 
 		int pageCount = rs.pageCount();
-		int totalPage = pageCount / 16 + 1;
-		if (pageCount % 16 == 0) {
+		int totalPage = pageCount / 12 + 1;
+		if (pageCount % 12 == 0) {
 			totalPage -= 1;
 		}
 		if (pageCount == 0) {

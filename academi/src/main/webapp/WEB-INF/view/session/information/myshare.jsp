@@ -29,9 +29,9 @@
 		공유받은 폴더
 		<c:forEach var="shareFolder" items="${sharedFolderList }">
 			<br>
-			<a href="http://210.125.213.63:9999/session/myPhoto?userId=${shareFolder.users.userNick }&folderName">
+			<a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName">
 				${shareFolder.users.userNick }의 포토북</a> -
-	  <a href="http://210.125.213.63:9999/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
+	  <a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
 				${shareFolder.photoFolderName }</a>
 			<br>
 			<br>
