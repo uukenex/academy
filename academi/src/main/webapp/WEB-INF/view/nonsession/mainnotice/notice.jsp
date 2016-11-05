@@ -26,7 +26,6 @@
 </head>
 
 <body>
-
 	<!-- Drop Menu Header -->
 		<jsp:include page="../layout/dropMenu_header.jsp" />
 	<!-- Menu Bar Header -->
@@ -45,9 +44,9 @@
 						<section class="middle-content">
 							<h2>공 지 사 항</h2>
 							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
-							
 							<ul id="writeNsearchBar">
 								<li>
+									
 									<a href="/session/noticeWrite">
 										<input type="button" value="글쓰기" class="writeBoard" >
 									</a>
@@ -120,6 +119,7 @@
 	</div>
 
 	<script>
+	
 		$(document).on("ready", function() {
 			if ("${message}" != null && "${message}" != ("")) {
 				alert("${message}");

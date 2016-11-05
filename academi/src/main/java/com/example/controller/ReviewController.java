@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +103,12 @@ public class ReviewController {
 
 	// 리뷰 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/postsign", method = RequestMethod.GET)
-	public String noticeWrtie(Model model) {
+	public String noticeWrtie(Model model,HttpSession session) {
+		//user가 세션에 존재하지 않으면
+		if(session.getAttribute("Users")==null){
+			//세션 forpage에 값을 넣어줌
+			session.setAttribute("forPage", "/session/postsign");
+		}
 		return "session/postscript/post_sign";
 	}
 

@@ -41,10 +41,9 @@ public class NoticeController {
 	 */
 	// 단일게시물 보기
 	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
-	public String noticeView(Model model, @RequestParam int commentNo) {
+	public String noticeView(Model model, @RequestParam int commentNo,HttpServletRequest request) {
 		cs.count(commentNo);
 		Comments c = cs.selectComment(commentNo);
-		
 		model.addAttribute("comment", c);
 		
 		return "nonsession/mainnotice/notice_view";
@@ -110,8 +109,12 @@ public class NoticeController {
 
 	// 공지 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/noticeWrite", method = RequestMethod.GET)
-	public String noticeWrtie(Model model) {
+	public String noticeWrtie(Model model, HttpSession session) {
 		logger.trace("notice write");
+		session.removeAttribute("forPage");
+		if(session.getAttribute("Users")==null){
+			session.setAttribute("forPage", "/session/noticeWrite");
+		}
 		return "session/mainnotice/notice_sign";
 	}
 

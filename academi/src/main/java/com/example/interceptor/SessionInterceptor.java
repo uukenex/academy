@@ -21,7 +21,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		logger.trace("세션필터를 거칩니다");
 		if (session.getAttribute("Users") == null) {
 			logger.trace("현재 User의 값 : {}", session.getAttribute("Users"));
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/loginCheck");
 		}
 
 		return true;

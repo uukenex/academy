@@ -42,11 +42,12 @@ public class PhotoBookController {
 	@RequestMapping(value = "/session/myPhoto", method = RequestMethod.GET)
 	public String myPhoto(Model model, HttpSession session, @RequestParam String userId,
 			@RequestParam String folderName) {
-
+				
 		Users users = (Users) session.getAttribute("Users");
 		if (users == null) {
 			users = new Users();
 			users.setUserId(".");
+			session.setAttribute("forPage", "/session/myPhoto?userId="+userId+"&folderName="+folderName);
 		}
 		model.addAttribute("folderName", folderName);
 

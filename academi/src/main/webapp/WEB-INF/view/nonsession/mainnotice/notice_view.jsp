@@ -22,7 +22,6 @@
 <title>공지사항: ${comment.commentName}</title>
 </head>
 <body>
-
 	<!-- Drop Menu Header -->
 		<jsp:include page="../layout/dropMenu_header.jsp" />
 	<!-- Menu Bar Header -->

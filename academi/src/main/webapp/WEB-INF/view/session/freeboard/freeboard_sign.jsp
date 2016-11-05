@@ -20,6 +20,7 @@
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 </head>
 
 <body>
@@ -62,6 +63,7 @@
 											<td colspan="2" class="editorButtonTd">
 												<input type="button" id="savebutton" class="editorButtonStyle1" value="완료" />
      											<input type="button" name="Submit2" class="editorButtonStyle1" value="취소" onclick="history.back();">
+     											<input type="button" id="check">
 											</td>
 										</tr>
 									</table>
