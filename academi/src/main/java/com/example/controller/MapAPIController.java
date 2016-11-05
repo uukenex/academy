@@ -834,7 +834,8 @@ public class MapAPIController {
 		for (int cnt = 0; cnt < i; cnt++) {
 			dbcart.add(goodss[cnt]);
 		}
-
+		
+		
 		model.addAttribute("routeNo", routeNo);
 		model.addAttribute("routeName", result.getRouteName());
 		model.addAttribute("routeContent", result.getRouteContent());

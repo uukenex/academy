@@ -32,7 +32,7 @@
 							
 							<!--일반 지도api로 들어갔을경우 : -->
 							<c:if test="${empty routeNo }">
-								<input type="submit" id="" value="MyPage에 저장" formaction="/mapSave" class="routeForDB">
+								<input type="submit" value="MyPage에 저장" formaction="/mapSave" class="routeForDB">
 							</c:if> 
 							
 							<!--번호검색으로 api로 들어갔을경우 : -->
@@ -283,4 +283,14 @@
 		    });
 		}
 
+				$(".routeForDB").on("click",function(){
+					if($("#result").val()==''){
+						alert("여행경로를 설정해주세요!!");
+						return false;
+					}					
+				})
+				
+				
+				
+	
 	</script>

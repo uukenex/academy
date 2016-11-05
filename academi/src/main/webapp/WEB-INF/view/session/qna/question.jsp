@@ -101,9 +101,13 @@ $(function(){
         editor_object.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
-         
-        //폼 submit
-        $("#frm").submit();
+        // 이부분에 에디터 validation 검증
+        if($("#title").val()==""){
+       	 alert("제목을 입력해주세요.");
+        }else{
+     	  //폼 submit
+    	   $("#frm").submit();
+      	 }
     })
 })
 </script>

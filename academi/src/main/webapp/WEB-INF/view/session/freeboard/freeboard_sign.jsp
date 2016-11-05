@@ -63,7 +63,6 @@
 											<td colspan="2" class="editorButtonTd">
 												<input type="button" id="savebutton" class="editorButtonStyle1" value="완료" />
      											<input type="button" name="Submit2" class="editorButtonStyle1" value="취소" onclick="history.back();">
-     											<input type="button" id="check">
 											</td>
 										</tr>
 									</table>
@@ -104,9 +103,12 @@ $(function(){
         editor_object.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
-         
-        //폼 submit
-        $("#frm").submit();
+         if($("#editorTitleWritter").val()==""){
+        	 alert("제목을 입력해주세요.");
+         }else{
+      	  //폼 submit
+     	   $("#frm").submit();
+       	 }
     })
 })
 </script>
