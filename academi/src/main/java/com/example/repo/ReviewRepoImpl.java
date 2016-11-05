@@ -178,6 +178,15 @@ public class ReviewRepoImpl implements ReviewRepo{
 		map.put("page", page);
 		return template.selectList(statement,map);
 	}
+	//경로검색
+	@Override
+	public List<Review> searchReviewByRoute(String routeName, int page) {
+		String statement = NAME_SPACE + "searchListByRoute";
+		Map <String,Object> map = new HashMap<>();
+		map.put("route", "%"+routeName+"%");
+		map.put("page", page);
+		return template.selectList(statement,map);
+	}
 	@Override
 	public int updateReviewCount(int reviewNo) {
 		String statement = NAME_SPACE + "countUpdate";
@@ -207,5 +216,6 @@ public class ReviewRepoImpl implements ReviewRepo{
 		String statement = NAME_SPACE+"selectNo";
 		return template.selectOne(statement);
 	}
+
 
 }

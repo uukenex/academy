@@ -39,7 +39,7 @@ public class ReviewRepoTest {
 		Review result = rrepo.selectReview(2);
 		logger.trace("객체:{}", result);
 		assertThat(result, is(notNullValue()));
-		logger.trace("원하는 정보 : {}",rrepo.selectReview(2).getUsers().getUserNick());
+		logger.trace("원하는 정보 : {}", rrepo.selectReview(2).getUsers().getUserNick());
 	}
 
 	// 후기글 쓰기 테스트
@@ -47,26 +47,21 @@ public class ReviewRepoTest {
 	public void InsertTest() {
 		String reviewTitle = "리뷰제목";
 		String reviewContent = "리뷰내용";
-		String reviewContent1=null;
-		String reviewContent2=null;
-		String reviewContent3=null;
-		String reviewContent4=null;
-		String reviewContent5=null;
-		String reviewContent6=null;
-		String reviewContent7=null;
-		String reviewContent8=null;
-		String reviewContent9=null;
+		String reviewContent1 = null;
+		String reviewContent2 = null;
+		String reviewContent3 = null;
+		String reviewContent4 = null;
+		String reviewContent5 = null;
+		String reviewContent6 = null;
+		String reviewContent7 = null;
+		String reviewContent8 = null;
+		String reviewContent9 = null;
 		int routeNo = 2;
 		String userId = "ㅋㅌㅊ";
-		rrepo.insertReview(reviewTitle, reviewContent,
-				 reviewContent1,
-				 reviewContent2,reviewContent3,
-				 reviewContent4, reviewContent5,
-				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,
-				routeNo, userId);
+		rrepo.insertReview(reviewTitle, reviewContent, reviewContent1, reviewContent2, reviewContent3, reviewContent4,
+				reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9, routeNo, userId);
 		int dirty = rrepo.selectNo();
-		logger.trace("더러웡~:{}",dirty);
+		logger.trace("더러웡~:{}", dirty);
 	}
 
 	// 후기글 수정 테스트
@@ -74,24 +69,19 @@ public class ReviewRepoTest {
 	public void UpdateTest() {
 		String reviewTitle = "리뷰제목";
 		String reviewContent = "리뷰내용";
-		String reviewContent1=null;
-		String reviewContent2=null;
-		String reviewContent3=null;
-		String reviewContent4=null;
-		String reviewContent5=null;
-		String reviewContent6=null;
-		String reviewContent7=null;
-		String reviewContent8=null;
-		String reviewContent9=null;
+		String reviewContent1 = null;
+		String reviewContent2 = null;
+		String reviewContent3 = null;
+		String reviewContent4 = null;
+		String reviewContent5 = null;
+		String reviewContent6 = null;
+		String reviewContent7 = null;
+		String reviewContent8 = null;
+		String reviewContent9 = null;
 		int routeNo = 2;
 		int reviewNo = 10;
-		rrepo.updateReview(reviewNo, reviewTitle,
-				reviewContent,
-				 reviewContent1,
-				 reviewContent2,reviewContent3,
-				 reviewContent4, reviewContent5,
-				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,
+		rrepo.updateReview(reviewNo, reviewTitle, reviewContent, reviewContent1, reviewContent2, reviewContent3,
+				reviewContent4, reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9,
 				routeNo);
 	}
 
@@ -123,7 +113,7 @@ public class ReviewRepoTest {
 	// 내용검색 테스트
 	@Test
 	public void searchContentTest() {
-		String reviewContent="리";
+		String reviewContent = "리";
 		rrepo.searchReviewByContent(reviewContent, page);
 	}
 
@@ -133,29 +123,37 @@ public class ReviewRepoTest {
 		rrepo.searchReviewByNick("네", page);
 	}
 
-	//조회수 늘리기 테스트
-	@Test 
-	public void countTest(){
+	// 루트 검색 테스트
+	@Test
+	public void searchRouteTest() {
+		List<Review> result = rrepo.searchReviewByRoute("천안", page);
+		System.out.println(result.get(0).getRoute().getRouteFull());
+	}
+
+	// 조회수 늘리기 테스트
+	@Test
+	public void countTest() {
 		rrepo.updateReviewCount(2);
 	}
-	
-	//추천수 업데이트 테스트
+
+	// 추천수 업데이트 테스트
 	@Test
-	public void starTest2(){
+	public void starTest2() {
 		rrepo.updateStar(2);
 	}
+
 	@Test
-	public void countingTest(){
+	public void countingTest() {
 		rrepo.pageCount();
 	}
-	
+
 	// 내 후기보기 테스트
 	@Test
 	public void selectReviewTest() {
 		String userId = "dd";
 		List<Review> review = rrepo.selectReviewById(userId);
 		assertThat(review, is(notNullValue()));
-		logger.trace("review : {}",review);
-		
+		logger.trace("review : {}", review);
+
 	}
 }

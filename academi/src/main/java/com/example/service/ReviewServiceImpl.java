@@ -67,7 +67,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 
-	// 4x4 페이지 로딩 추천먼저 띄우고 나머지12개를띄움
+	// 4x4 페이지 로딩 추천먼저 띄우고 나머지9개를띄움
 	public List<Review> reviewListByPage(int page) {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
@@ -81,7 +81,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 
-	// 이름검색 추천먼저 띄우고 나머지12개를띄움
+	// 이름검색 추천먼저 띄우고 나머지9개를띄움
 	public List<Review> searchReviewByName(String reviewTitle, int page) {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
@@ -95,7 +95,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 
-	// 내용검색 추천먼저 띄우고 나머지12개를띄움
+	// 내용검색 추천먼저 띄우고 나머지9개를띄움
 	public List<Review> searchReviewByContent(String reviewContent, int page) {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
@@ -109,7 +109,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 
-	// 닉네임검색 추천먼저 띄우고 나머지12개를띄움
+	// 닉네임검색 추천먼저 띄우고 나머지9개를띄움
 	public List<Review> searchReviewByNick(String userNick, int page) {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
@@ -123,7 +123,20 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return result;
 	}
-
+	// 닉네임검색 추천먼저 띄우고 나머지9개를띄움
+		public List<Review> searchReviewByRoute(String routeName, int page) {
+			List<Review> result = new ArrayList<>();
+			List<Review> r1 = rrepo.starReview();
+			List<Review> r2 = rrepo.searchReviewByRoute(routeName, page);
+			for(int i=0;i<r1.size();i++){
+				result.add(r1.get(i));
+			}
+			for(int i=0;i<r2.size();i++){
+				result.add(r2.get(i));
+			}
+			
+			return result;
+		}
 	@Override
 	public int updateStar(int reviewNo) {
 		return rrepo.updateStar(reviewNo);

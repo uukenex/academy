@@ -725,6 +725,37 @@ public class MapAPIController {
 
 		Object obj = session.getAttribute("cart");
 		logger.trace("세션 cart:{}", obj);
+		///////////여기하는중
+		for(int i =0;i<cart.size();i++)
+		logger.trace("{}",cart.get(i).getAddress());
+		
+		
+		
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		for (int z = 0; z < cart.size(); z++) {
+			String route = cart.get(z).getAddress();
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}
+				cnt++;
+			}
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
+		}
+
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+		
+		
+		
+		
+		
+		
 		return obj;
 	}
 
