@@ -111,9 +111,8 @@ public class NoticeController {
 	@RequestMapping(value = "/session/noticeWrite", method = RequestMethod.GET)
 	public String noticeWrtie(Model model, HttpSession session) {
 		logger.trace("notice write");
-		session.removeAttribute("forPage");
 		if(session.getAttribute("Users")==null){
-			session.setAttribute("forPage", "/session/noticeWrite");
+			session.setAttribute("forPage", "session/mainnotice/notice_sign");
 		}
 		return "session/mainnotice/notice_sign";
 	}

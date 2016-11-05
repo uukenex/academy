@@ -168,7 +168,7 @@ public class ReviewController {
 		//user가 세션에 존재하지 않으면
 		if(session.getAttribute("Users")==null){
 			//세션 forpage에 값을 넣어줌
-			session.setAttribute("forPage", "/session/postsign");
+			session.setAttribute("forPage", "session/postscript/post_sign");
 		}
 		return "session/postscript/post_sign";
 	}

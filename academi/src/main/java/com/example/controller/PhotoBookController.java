@@ -47,7 +47,7 @@ public class PhotoBookController {
 		if (users == null) {
 			users = new Users();
 			users.setUserId(".");
-			session.setAttribute("forPage", "/session/myPhoto?userId="+userId+"&folderName="+folderName);
+			session.setAttribute("forPage", "session/photobook/photo_sign");
 		}
 		model.addAttribute("folderName", folderName);
 

@@ -44,7 +44,7 @@ public class UserController {
 		if(user!=null&&user.getUserPass().equals(userPass)){
 			if(user.getUserId().equals(userId)){
 				session.setAttribute("Users", user);
-				model.addAttribute("message","어서오세요 동물의숲 ");
+				model.addAttribute("message","환영합니다. ");
 				model.addAttribute("userId", userId);
 				returnURL = "logintest";
 				logger.trace("forpage:{}",forPage);
@@ -55,6 +55,30 @@ public class UserController {
 			}
 		return returnURL;
 	}
+	
+	
+	@RequestMapping(value="/directloginUser", method=RequestMethod.POST)
+	public String directloginUser(Model model, HttpServletRequest request, HttpSession session){
+		String returnURL="nonsession/login/login";
+		String userId=request.getParameter("id");
+		String userPass=request.getParameter("password");
+		Users user = uService.login(userId);
+		String forPage = (String) session.getAttribute("forPage");
+		if(user!=null&&user.getUserPass().equals(userPass)){
+			if(user.getUserId().equals(userId)){
+				session.setAttribute("Users", user);
+				model.addAttribute("message","환영합니다. ");
+				model.addAttribute("userId", userId);
+				returnURL = forPage;
+				logger.trace("forpage:{}",forPage);
+			}
+			}else{
+				model.addAttribute("message","아이디 혹은 비밀번호를 확인해주세요.");
+				returnURL ="nonsession/login/login";
+			}
+		return returnURL;
+	}
+	
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpServletRequest request,HttpSession session){

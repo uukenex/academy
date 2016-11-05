@@ -71,7 +71,7 @@ public class QnaController {
 		//user가 세션에 존재하지 않으면
 		if(session.getAttribute("Users")==null){
 			//세션 forpage에 값을 넣어줌
-			session.setAttribute("forPage", "/session/qnaQuestion");
+			session.setAttribute("forPage", "ession/qna/question");
 		}
 		return "session/qna/question";
 	}
