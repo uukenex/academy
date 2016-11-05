@@ -124,7 +124,10 @@ public class ReviewController {
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
-		int routeNo = Integer.parseInt(request.getParameter("routeNumber"));
+		String routeNo = request.getParameter("routeNumber");
+		if(routeNo == ""){
+			routeNo ="0";
+		}
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
 		String reviewContent1 = request.getParameter("content1");
@@ -193,10 +196,10 @@ public class ReviewController {
 
 		// 이미지의 경로가 저장되도록
 		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
-				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], routeNo, userId);
+				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], Integer.parseInt(routeNo), userId);
 
 		//루트 no를 통해 루트의 정보를 가져온다
-		Route result = routeService.selectRouteByNo(routeNo);
+		Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));
 		logger.trace("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
 		

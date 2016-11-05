@@ -77,7 +77,27 @@
 												<td colspan="4">
 													<ul class="boardButtonList">
 														<li>
-													 		<c:if test="${comment.userId==Users.userId }">
+																												<c:choose>
+													 		<c:when test="${comment.userId==Users.userId }">
+													 		<input type="submit" value="수정" formaction="/session/freeUpdate"
+																			formmethod="post" class="boardButtonStyle1">
+																<input type="submit" value="삭제" formaction="/freeDelete"
+																			formmethod="post" class="boardButtonStyle1">
+																
+															</c:when>
+																<c:when test="${'admin'==Users.userId }">
+																<input type="submit" value="수정" formaction="/session/freeUpdate"
+																			formmethod="post" class="boardButtonStyle1">
+																<input type="submit" value="삭제" formaction="/freeDelete"
+																			formmethod="post" class="boardButtonStyle1">
+																
+															</c:when>
+															</c:choose>
+													 <%-- 		<c:if test="${comment.userId==Users.userId }">
+																<input type="submit" value="삭제" formaction="/freeDelete"
+																			formmethod="post" class="boardButtonStyle1">
+															</c:if>
+															<c:if test="${'admin'==Users.userId }">
 																<input type="submit" value="삭제" formaction="/freeDelete"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
@@ -87,6 +107,10 @@
 																<input type="submit" value="수정" formaction="/session/freeUpdate"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
+															<c:if test="${'admin'==Users.userId }">
+																<input type="submit" value="수정" formaction="/session/freeUpdate"
+																			formmethod="post" class="boardButtonStyle1">
+															</c:if> --%>
 													 	</li>
 													 </ul>
 												</td>
@@ -117,18 +141,24 @@
 								            			<fmt:formatDate value="${reply.replyDate }"
 														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 													</td>
-													<td>
-														<c:if test="${reply.userId==Users.userId }">
-															<input type="submit" value="수정" formaction="/session/replyUpdate"
+													<td colspan="2">
+														<c:choose>
+													 		<c:when test="${reply.userId==Users.userId }">
+													 		<input type="submit" value="수정" formaction="/session/replyUpdate"
 																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
-													</td>
-													<td>
-														<c:if test="${reply.userId==Users.userId }">
-														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
-															<input type="submit" value="삭제" formaction="/replyDelete"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
+																														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+																<input type="submit" value="삭제" formaction="/replyDelete"
+																		formmethod="post" class="boardButtonStyle1">					
+															</c:when>
+																<c:when test="${'admin'==Users.userId }">
+																<input type="submit" value="수정" formaction="/session/replyUpdate"
+																	formmethod="post" class="boardButtonStyle1">
+																														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+																<input type="submit" value="삭제" formaction="/replyDelete"
+																		formmethod="post" class="boardButtonStyle1">	
+																
+															</c:when>
+															</c:choose>
 													</td>
 								            	</tr>
 												<tr>
@@ -152,12 +182,20 @@
 											</colgroup>
 											<tr>
 												<td><label for="replyContent"><i class="fa fa-key fa-2x"></i></label></td>
+												<c:if test="${!empty Users.userId }">
 												<td>
 													<textarea cols="75" rows="2" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
 												</td>
 												<td>
 													<input type="button" value="등록" id="replyRegist" class="boardButtonStyle3">
 												</td>
+												</c:if>
+												<c:if test="${empty Users.userId }">
+												<td>
+													<textarea cols="75" rows="2" id="replyContent" placeholder="로그인 해주세요" readonly="readonly"></textarea>
+												</td>
+				
+												</c:if>
 											</tr>
 										</table>
 									</div>
