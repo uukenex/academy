@@ -98,15 +98,14 @@ public class ReviewController {
 	
 	// 댓글 삭제
 		@RequestMapping(value="/reviewReplyDelete", method=RequestMethod.POST)
-		public String reviewReplyDelete(Model model, HttpServletRequest request, HttpSession session) {
-			String replyNo = request.getParameter("replyNo");
-			String reviewNo = request.getParameter("reviewNo");
+		public String reviewReplyDelete(Model model, HttpServletRequest request, HttpSession session, 
+				@RequestParam int replyReviewNo, @RequestParam int replyNo) {
 			logger.trace("{}", replyNo);
-			int result = rrs.deleteReply(Integer.parseInt(replyNo));
+			int result = rrs.deleteReply(replyNo);
 			if(result == 1){
 				session.setAttribute("message", "댓글 삭제 완료");
 			}
-			return "redirect:/postView?reviewNo="+reviewNo;
+			return "redirect:/postView?reviewNo="+replyReviewNo;
 		}
 
 	// 리뷰 쓰기 페이지로 넘어감

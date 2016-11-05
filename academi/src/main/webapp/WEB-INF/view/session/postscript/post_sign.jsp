@@ -19,8 +19,9 @@
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css"> --%>
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 	
-<title>Insert title here</title>
+<title>후기 글쓰기</title>
 <style>
 
 </style>
@@ -29,88 +30,124 @@
 </head>
 <body>
 
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
 
 
- <c:url value="/postWrite" var="postWrite" ></c:url>
-
-		<form id="frm" name="frm" action="${postWrite }" method="post">
-		
-		
-		
-		
-		
-			
-			
-			
-			
-			
-				
-					<div><label for="title" >제목</label></div>
-					<div><input name="title" type="text" size="50"></div>
-					<div>
-					<input type="button" value="경로 새로만들기" onclick="window.open('/session/newMap', 'win1',
-							'width=550, height=700');" onkeypress="this.onclick()" >
-					
-					<input type="button" value="등록한 경로 가져오기" onclick="mapOpen()">
-					<input type="button" id="addBtn" value="+">
-						<input type="button" id="subBtn" value="-">
-						<input type="submit" name="Submit" value="쓰기" id="savebutton"> 
-						<input type="button" name="Submit2" value="취소" 
-						onclick="history.back();"></div>
-						<input type="hidden" id ="routeNumber" name="routeNumber">
-						<input type="text" id ="routeTitle" name="routeTitle"  size="84" disabled="disabled">
-					
-						<div id="none0">
-						<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
+	<!-- Post Write Body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row">
+						
+						<div class="2u"></div>
+						
+						<div class="8u 12u(moblie) important(moblie)">
+							<h3>여행 후기 작성</h3>
+							<c:url value="/postWrite" var="postWrite" ></c:url>
+	
+								<form id="frm" name="frm" action="${postWrite }" method="post">
+									
+									<table>
+										<tr>
+											<th><label for="title">제목</label></th>
+											<td><input name="title" type="text" id="post_write_title"></td>
+										</tr>
+										<tr>
+											<td><input type="button" value="등록한 경로 가져오기" onclick="mapOpen()"></td>
+											<td><input type="text" id ="routeTitle" name="routeTitle"  size="84" disabled="disabled"></td>
+										</tr>
+										<tr>
+											<div id="none0">
+												<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
+											</div>
+											
+											<div id="none1">
+												<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
+												</div>
+											<div id="none2">
+												<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
+											</div>
+											<div id="none3">
+												<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
+											</div>
+											<div id="none4"> 
+												<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
+											</div>
+											<div id="none5">					
+												<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
+											</div>
+											<div id="none6">
+												<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
+											</div>
+											<div id="none7">
+												<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
+											</div>
+											<div id="none8">
+												<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
+											</div>
+											<div id="none9">
+												<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
+											</div>
+										</tr>
+									</table>
+										
+											<div>
+											
+											<input type="button" value="등록한 경로 가져오기" onclick="mapOpen()">
+											<input type="button" id="addBtn" value="+">
+												<input type="button" id="subBtn" value="-">
+												<input type="submit" name="Submit" value="쓰기" id="savebutton"> 
+												<input type="button" name="Submit2" value="취소" 
+															onclick="history.back();"></div>
+												<input type="hidden" id ="routeNumber" name="routeNumber">
+												<input type="text" id ="routeTitle" name="routeTitle"  size="84" disabled="disabled">
+											
+												<div id="none0">
+												<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
+												</div>
+											
+												<div id="none1">
+												<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
+												</div>
+												<div id="none2">
+												<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
+												</div>
+												<div id="none3">
+												<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
+												</div>
+												<div id="none4"> 
+												<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
+												</div>
+												<div id="none5">					
+												<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
+												</div>
+												<div id="none6">
+												<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
+												</div>
+												<div id="none7">
+												<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
+												</div>
+												<div id="none8">
+												<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
+												</div>
+												<div id="none9">
+												<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
+												</div>
+							</form>
 						</div>
-					
-						<div id="none1">
-						<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
-						</div>
-						<div id="none2">
-						<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
-						</div>
-						<div id="none3">
-						<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
-						</div>
-						<div id="none4"> 
-						<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
-						</div>
-						<div id="none5">					
-						<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
-						</div>
-						<div id="none6">
-						<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
-						</div>
-						<div id="none7">
-						<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
-						</div>
-						<div id="none8">
-						<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
-						</div>
-						<div id="none9">
-						<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
-						</div>
-	</form>
+						<div class="2u"></div>
+					</div>
+						
+						<!-- footer -->
+							<jsp:include page="../../nonsession/layout/footer.jsp" />
+				</div>
+			</div>
+		</div>
 	
-	
-	
-	
-	
-	
-	
-	
-	<jsp:include page="../../nonsession/layout/footer.jsp" />
-		
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 
 	
