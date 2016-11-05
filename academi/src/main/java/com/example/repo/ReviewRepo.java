@@ -47,6 +47,8 @@ public interface ReviewRepo {
 	// 닉네임검색
 	public List<Review> searchReviewByNick(String userNick, int page);
 
+	// 경로검색
+	public List<Review> searchReviewByRoute(String routeName,int page);
 	// 조회수 늘리기
 	public int updateReviewCount(int reviewNo);
 	// 추천하기 기능

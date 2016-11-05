@@ -116,7 +116,10 @@ public class ReviewServiceTest {
 		rs.searchReviewByNick("임", page);
 	}
 	// 루트에따른 검색도 추가해야함
-
+	@Test
+	public void search4Test() {
+		rs.searchReviewByRoute("임", page);
+	}
 	//추천수 업데이트 
 	@Test
 	public void star2Test(){
