@@ -330,9 +330,10 @@ public class ReviewController {
 
 	// 리뷰 수정창으로 넘어가기
 	@RequestMapping(value = "/session/postUpdate", method = RequestMethod.POST)
-	public String noticeUpdate(Model model, HttpServletRequest request) {
-		String reviewNo = request.getParameter("reviewNo");
-		Review r = rs.selectReview(Integer.parseInt(reviewNo));
+	public String noticeUpdate(Model model, HttpServletRequest request
+			,@RequestParam int reviewNo) {
+		logger.trace("review no : {}",reviewNo);
+		Review r = rs.selectReview(reviewNo);
 		model.addAttribute("review", r);
 		return "session/postscript/change_post";
 	}
