@@ -830,7 +830,7 @@ public class MapAPIController {
 			center.add(y, xyroute);
 
 		}
-
+	
 		List<Integer> pos = new ArrayList<>();
 		List<String> cityList = new ArrayList<>();
 		String city = "";
@@ -838,7 +838,9 @@ public class MapAPIController {
 		for (int z = 0; z < i; z++) {
 			String route = routeAddr[z];
 			logger.trace("경로 불러오기!:{}", route);
-
+			
+		
+			
 			int cnt = 0;
 			for (int c = 0; c < route.length(); c++) {
 				if (route.charAt(c) == ' ') {
@@ -849,7 +851,9 @@ public class MapAPIController {
 			city = route.substring(0, pos.get(0)).trim();
 			cityList.add(city);
 		}
-
+		
+		
+		
 		// 중복값 제거
 		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
 		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
@@ -865,7 +869,6 @@ public class MapAPIController {
 		for (int cnt = 0; cnt < i; cnt++) {
 			dbcart.add(goodss[cnt]);
 		}
-		
 		
 		model.addAttribute("routeNo", routeNo);
 		model.addAttribute("routeName", result.getRouteName());

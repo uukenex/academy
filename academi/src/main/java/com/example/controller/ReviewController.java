@@ -76,10 +76,61 @@ public class ReviewController {
 
 	// 후기 -단일게시물 보기
 	@RequestMapping(value = "/postView", method = RequestMethod.GET)
-	public String noticeView(Model model, @RequestParam int reviewNo) {
+	
+	public String noticeView(Model model, @RequestParam int reviewNo, HttpServletRequest request) {
 		rs.count(reviewNo);
 		Review r = rs.selectReview(reviewNo);
 		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
+		String routeNo = request.getParameter("inputRouteNo");
+		/*Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));*/
+		logger.trace("여기로 들어오니 ?");
+		//루트 전체를  str3에 담아주고 
+		/*
+		String str3 = result.getRouteFull();
+		
+		int count4 = 0;
+		//str3의 길이만큼 반복되는데
+		System.out.println("str3 : " + str3);
+		for (int c = 0; c < str3.length(); c++) {
+			//♬가 나올때마다 카운트를 해준다
+			if (str3.charAt(c) == '♬') {
+				count4++;
+			}
+		}
+		
+		//♬가 5개가 경로 1개이므로 5로 나누어준다.
+		int i = count4 / 5;
+
+		//addr에 경로 갯수만큼 배열의 크기를 넣어주고
+		String routeName[] = new String[i];
+		String Addr[] = new String[i];
+
+		
+		i=0;
+		
+		//토큰을 생성해서 넘겨준다
+		StringTokenizer tokens = new StringTokenizer(str3, "♬");
+		while (tokens.hasMoreTokens()) {
+			routeName[i] = tokens.nextToken();
+			tokens.nextToken();
+			tokens.nextToken();
+			//주소 값이 들어가있는 곳에서 주소배열에 값을 넣어준다
+			Addr[i] = tokens.nextToken();
+			tokens.nextToken();
+			i++;
+
+		}
+		String fullRoute="";
+		String InputRouteName="";
+		String InputAddr=""; 
+		for(int j=0; j<i; j++){
+		InputRouteName=routeName[j];
+		InputAddr= Addr[j];
+		}
+		 fullRoute = InputRouteName + "(" + InputAddr + ")";
+		 
+		 model.addAttribute("addRoute",fullRoute);*/
+		logger.trace("routeNo??:{}",routeNo);
 		model.addAttribute("post", r);
 		model.addAttribute("replys", rr);
 		return "nonsession/postscript/post_view";
