@@ -49,16 +49,22 @@
 												<th colspan="2">
 													<ul class="boardButtonList">
 														<li>
-													 		<c:if test="${qna.userId==Users.userId }">
+															<c:choose>
+													 		<c:when test="${qna.userId==Users.userId }">
+													 		<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																			formmethod="post" class="boardButtonStyle1">
 																<input type="submit" value="삭제" formaction="/qnaDelete"
 																			formmethod="post" class="boardButtonStyle1">
-															</c:if>
-													 	</li>
-													 	<li>
-													 		<c:if test="${qna.userId==Users.userId }">
+																
+															</c:when>
+																<c:when test="${'admin'==Users.userId }">
 																<input type="submit" value="수정" formaction="/session/qnaUpdate"
 																			formmethod="post" class="boardButtonStyle1">
-															</c:if>
+																<input type="submit" value="삭제" formaction="/qnaDelete"
+																			formmethod="post" class="boardButtonStyle1">
+																
+															</c:when>
+															</c:choose>
 													 	</li>
 													 </ul>
 												</th>
@@ -117,7 +123,28 @@
 														</ul>
 													</td>
 													<td class="qnaSubmitButtonStyle">
-														<c:if test="${answer.userId==Users.userId }">
+														<c:choose>
+														 	<c:when test="${answer.userId==Users.userId }">
+														 	<input type="submit" value="삭제" formaction="/qnaDelete"
+																		formmethod="post" class="boardButtonStyle1">
+														 	<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																		formmethod="post" class="boardButtonStyle1">
+														 	
+														</c:when>
+														<c:when test="${'admin'==Users.userId }">
+														 	<input type="submit" value="삭제" formaction="/qnaDelete"
+																		formmethod="post" class="boardButtonStyle1">
+															<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																	formmethod="post" class="boardButtonStyle1">
+														</c:when>
+														<c:otherwise></c:otherwise>
+														</c:choose>
+														
+														<%-- <c:if test="${answer.userId==Users.userId }">
+															<input type="submit" value="삭제" formaction="/qnaDelete"
+																		formmethod="post" class="boardButtonStyle1">
+														</c:if>
+														<c:if test="${'admin'==Users.userId }">
 															<input type="submit" value="삭제" formaction="/qnaDelete"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
@@ -125,6 +152,10 @@
 															<input type="submit" value="수정" formaction="/session/qnaUpdate"
 																		formmethod="post" class="boardButtonStyle1">
 														</c:if>
+															<c:if test="${'admin'==Users.userId }">
+															<input type="submit" value="수정" formaction="/session/qnaUpdate"
+																		formmethod="post" class="boardButtonStyle1">
+														</c:if> --%>
 													</td>
 												</tr>
 												<tr>
@@ -146,12 +177,19 @@
 											</colgroup>
 											<tr>
 												<td><label for="replyContent"><i class="fa fa-key fa-2x"></i></label></td>
+												<c:if test="${!empty Users.userId }">	
 												<td>
 													<textarea cols="75" rows="4" id="answerContent" placeholder="댓글을 입력하세요."></textarea>
 												</td>
 												<td id="qnaWritterButton">
 													<input type="button" value="등록" id="answerRegist" class="boardButtonStyle3">
 												</td>
+												</c:if>
+												<c:if test="${empty Users.userId }">	
+												<td>
+													<textarea cols="75" rows="4" id="answerContent" placeholder="로그인 해주세요" readonly="readonly"></textarea>
+												</td>
+												</c:if>
 											</tr>
 										</table>
 									</div>

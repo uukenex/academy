@@ -139,6 +139,7 @@ public class QnaController {
 
 	
 		
+		
 		// 리뷰 댓글 ajax
 		@RequestMapping(value = "/session/replyRegist3", method = RequestMethod.POST)
 		public @ResponseBody List<Answer> ajaxanswer(

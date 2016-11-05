@@ -807,3 +807,14 @@
 				margin-top: 2em;
 			}
 			
+			
+			
+		/* Post Write CSS Style */
+		
+			input[type='text']#post_write_title {
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				line-height: 0.7em;
+				width: 70%;
+			}
+			

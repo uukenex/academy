@@ -63,8 +63,12 @@
 										</td>
 										<td>
 											<c:if test="${post.userId==Users.userId }">
-												<input type="submit" value="수정하기"
+												<input type="submit" value="글 수정"
 													formaction="/session/postUpdate" formmethod="post">
+											</c:if>
+											<c:if test="${post.userId==Users.userId }">
+												<input type="submit" value="글 삭제"
+													formaction="/reviewDelete" formmethod="post">
 											</c:if>
 										</td>
 									</tr>
@@ -252,6 +256,7 @@
 							</form>
 								<hr id="post_divider">
 								
+								
 								<!-- Post Reply part -->
 									<table class="post_reply_view">
 										<colgroup>
@@ -267,6 +272,7 @@
 											</c:if>
 										</tr>
 										<tbody id="postReplyContentViewTableBody">
+										<form>
 										<c:forEach var="reply" items="${replys }">
 											<tr>
 												<th>${reply.users.userNick}</th>
@@ -276,11 +282,8 @@
 												</td>
 												<td>
 													<c:if test="${reply.userId==Users.userId }">
-														<input type="submit" value="수정" formaction="/session/replyUpdate"
-																	formmethod="post" id="postButtonStyle1">
-													</c:if>
-													<c:if test="${reply.userId==Users.userId }">
 														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+														<input type="hidden" name="replyReviewNo" value="${reply.replyReviewNo }">
 														<input type="submit" value="삭제" formaction="/reviewReplyDelete"
 																	formmethod="post" id="postButtonStyle1">
 													</c:if>
@@ -291,8 +294,11 @@
 												<td colspan="2" id="post_reply_content">${reply.replyContent }</td>
 											</tr>
 										</c:forEach>
+										</form>
 										</tbody>
+										
 									</table>
+									
 						</div>
 						
 						<div class="1u"></div>
