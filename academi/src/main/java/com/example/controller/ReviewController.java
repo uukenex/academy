@@ -89,17 +89,25 @@ public class ReviewController {
 
 	// 리뷰 댓글 ajax
 	@RequestMapping(value = "/session/replyRegist2", method = RequestMethod.POST)
-	public @ResponseBody Map<String, String> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
+	public @ResponseBody List<ReviewReply> ajaxreply(@RequestParam String userId, @RequestParam String replyContent,
 			@RequestParam int reviewNo, HttpSession session) {
-		Map<String, String> resultMap = null;
 		int result = rrs.insertReply(replyContent, reviewNo, userId);
-		if (result == 1) {
-			resultMap = new HashMap<>();
-			resultMap.put("id", userId);
-			resultMap.put("content", replyContent);
-		}
-		return resultMap;
+		List<ReviewReply> list = rrs.selectReplyList(reviewNo);
+		return list;
 	}
+	
+	// 댓글 삭제
+		@RequestMapping(value="/reviewReplyDelete", method=RequestMethod.POST)
+		public String reviewReplyDelete(Model model, HttpServletRequest request, HttpSession session) {
+			String replyNo = request.getParameter("replyNo");
+			String reviewNo = request.getParameter("reviewNo");
+			logger.trace("{}", replyNo);
+			int result = rrs.deleteReply(Integer.parseInt(replyNo));
+			if(result == 1){
+				session.setAttribute("message", "댓글 삭제 완료");
+			}
+			return "redirect:/postView?reviewNo="+reviewNo;
+		}
 
 	// 리뷰 쓰기 페이지로 넘어감
 	@RequestMapping(value = "/session/postsign", method = RequestMethod.GET)

@@ -279,7 +279,7 @@
 													</c:if>
 													<c:if test="${reply.userId==Users.userId }">
 														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
-														<input type="submit" value="삭제" formaction="/replyDelete"
+														<input type="submit" value="삭제" formaction="/reviewReplyDelete"
 																	formmethod="post" id="postButtonStyle1">
 													</c:if>
 												</td>
@@ -472,14 +472,13 @@
 									$("#postReplyContentViewTableBody")[0].innerHTML +=
 										"<tr> <th>"+item.users.userNick +"</th>"
 										+ "<td id='post_reply_date'>" + newDate +"</td>"
-										+"<td></td></tr>"
-										+"<tr> <td>"
+										+"<td>"
 										+"<input type='submit' value='수정' formaction='/session/replyUpdate'"
 										+"formmethod='post' id='postButtonStyle1'>"
 										+"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>"
 										+"<input type='submit' value='삭제' formaction='/replyDelete'"
 										+"formmethod='post' id='postButtonStyle1'>"
-										+"</td> <td colspan='2' id='post_reply_content'>"
+										+"</td></tr> <tr> <td> </td> <td colspan='2' id='post_reply_content'>"
 										+ item.replyContent
 										+"</td> </tr>";
 								}
