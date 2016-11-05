@@ -91,15 +91,11 @@
 										</th>
 										<td colspan="2" id="detailAddressView">
 											<p>
+												
 												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
 												이곳은 상제 주소를 나타내는 부분!
 												<br>
-												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												이곳은 상제 주소를 나타내는 부분!
-												<br>
-												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												이곳은 상제 주소를 나타내는 부분!
-												<br>
+												
 											</p>
 										</td>
 									</tr>
