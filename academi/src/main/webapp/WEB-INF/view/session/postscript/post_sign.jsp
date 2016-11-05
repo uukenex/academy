@@ -22,9 +22,6 @@
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 	
 <title>후기 글쓰기</title>
-<style>
-
-</style>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
@@ -43,58 +40,84 @@
 				<div class="container">
 					<div class="row main-row">
 						
-						<div class="2u"></div>
+						<div class="1u"></div>
 						
 						<div class="8u 12u(moblie) important(moblie)">
-							<h3>여행 후기 작성</h3>
+							<h3 id="post_write_mainH3">여행 후기 작성</h3>
 							<c:url value="/postWrite" var="postWrite" ></c:url>
 	
 								<form id="frm" name="frm" action="${postWrite }" method="post">
 									
-									<table>
+									<table class="post_write_table">
+										<colgroup>
+											<col width="20%">
+											<col width="*%">
+										</colgroup>
 										<tr>
 											<th><label for="title">제목</label></th>
 											<td><input name="title" type="text" id="post_write_title"></td>
 										</tr>
-										<tr>
-											<td><input type="button" value="등록한 경로 가져오기" onclick="mapOpen()"></td>
-											<td><input type="text" id ="routeTitle" name="routeTitle"  size="84" disabled="disabled"></td>
+										<tr class="routeTitleTr">
+											<input type="hidden" id ="routeNumber" name="routeNumber">
+											<td colspan="2">
+												<input type="text" id ="routeTitle" name="routeTitle" disabled="disabled">
+												<input type="button" class="postButtonStyle2" value="내 경로 가져오기" onclick="mapOpen()">
+											</td>
+										</tr>
+										<tr class="write_days_editor">
+											<td colspan="2">
+												<div id="none0">
+													<h4>Day 01</h4>
+													<textarea class="editorContentWritter" name="content0" id="txtcontent0"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												
+												<div id="none1">
+													<h4>Day 02</h4>
+													<textarea class="editorContentWritter" name="content1" id="txtcontent1"  style="width: 80%; height: 50%"></textarea>
+													</div>
+												<div id="none2">
+													<h4>Day 03</h4>
+													<textarea class="editorContentWritter" name="content2" id="txtcontent2"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none3">
+													<h4>Day 04</h4>
+													<textarea class="editorContentWritter" name="content3" id="txtcontent3"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none4">
+													<h4>Day 05</h4> 
+													<textarea class="editorContentWritter" name="content4" id="txtcontent4" style="width: 80%; height: 50%" ></textarea>
+												</div>
+												<div id="none5">
+													<h4>Day 06</h4>					
+													<textarea class="editorContentWritter" name="content5" id="txtcontent5"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none6">
+													<h4>Day 07</h4>
+													<textarea class="editorContentWritter" name="content6" id="txtcontent6"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none7">
+													<h4>Day 08</h4>
+													<textarea class="editorContentWritter" name="content7" id="txtcontent7"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none8">
+													<h4>Day 09</h4>
+													<textarea class="editorContentWritter" name="content8" id="txtcontent8"  style="width: 80%; height: 50%"></textarea>
+												</div>
+												<div id="none9">
+													<h4>Day 10</h4>
+													<textarea class="editorContentWritter" name="content9" id="txtcontent9"  style="width: 80%; height: 50%"></textarea>
+												</div>
+											</td>
 										</tr>
 										<tr>
-											<div id="none0">
-												<textarea class="editorContentWritter" name="content0" id="txtcontent0"  ></textarea>
-											</div>
-											
-											<div id="none1">
-												<textarea class="editorContentWritter" name="content1" id="txtcontent1"  ></textarea>
-												</div>
-											<div id="none2">
-												<textarea class="editorContentWritter" name="content2" id="txtcontent2"  ></textarea>
-											</div>
-											<div id="none3">
-												<textarea class="editorContentWritter" name="content3" id="txtcontent3"  ></textarea>
-											</div>
-											<div id="none4"> 
-												<textarea class="editorContentWritter" name="content4" id="txtcontent4"  ></textarea>
-											</div>
-											<div id="none5">					
-												<textarea class="editorContentWritter" name="content5" id="txtcontent5"  ></textarea>
-											</div>
-											<div id="none6">
-												<textarea class="editorContentWritter" name="content6" id="txtcontent6"  ></textarea>
-											</div>
-											<div id="none7">
-												<textarea class="editorContentWritter" name="content7" id="txtcontent7"  ></textarea>
-											</div>
-											<div id="none8">
-												<textarea class="editorContentWritter" name="content8" id="txtcontent8"  ></textarea>
-											</div>
-											<div id="none9">
-												<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
-											</div>
+											<td colspan="2">
+												<input type="button" name="Submit2" value="취소" 
+															onclick="history.back();" class="postButtonStyle2">
+												<input type="submit" name="Submit" value="등록" id="savebutton" class="postButtonStyle2"> 
+											</td>
 										</tr>
 									</table>
-										
+<!-- 										
 											<div>
 											
 											<input type="button" value="등록한 경로 가져오기" onclick="mapOpen()">
@@ -136,10 +159,14 @@
 												</div>
 												<div id="none9">
 												<textarea class="editorContentWritter" name="content9" id="txtcontent9"  ></textarea>
-												</div>
+												</div> -->
 							</form>
 						</div>
-						<div class="2u"></div>
+						<div class="2u" id="rightFixedTab">
+							<i class="fa fa-paw"></i>
+							<input type="button" id="addBtn" value="계획 일자 추가">
+							<input type="button" id="subBtn" value="계획 일자 삭제">
+						</div>
 					</div>
 						
 						<!-- footer -->
@@ -160,7 +187,7 @@
 		$("#none"+i).css("display","block");
 		console.log(i+"번째 행 추가");
 		i++;
-		if(i==9){
+		if(i==10){
 				alert('최대 10개까지 칸 확장이 가능합니다');
 				$("#addBtn").attr("onclick","").unbind("click");
 				}
@@ -383,7 +410,7 @@
 	
 		
 	$(document).on("ready",function(){
-		
+		$("#none1").css("display","block");
 		$("#none1").css("display","none");
 		$("#none2").css("display","none");
 		$("#none3").css("display","none");
@@ -470,7 +497,7 @@
 	        //로딩중 이미지 표시
 	        $('#loadingImg').show();
 	        
-	        setTimeout("closeWindowByMask()", 3000);
+	        setTimeout("closeWindowByMask()", 1500);
 	    }
 	 
 	 function closeWindowByMask() {

@@ -10,9 +10,142 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 
 </head>
 <body>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Post Write Update Body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row">
+						<div class="1u"></div>
+						
+						<div class="8u 12u(moblie) important(moblie)">
+							<h3 id="post_write_mainH3">${review.reviewTitle} 수정</h3>
+							
+							<c:url value="/reviewUpdate" var="update"></c:url>
+							<form id="frm" method="post" action="${update }">
+								
+								<table class="post_write_table">
+									<colgroup>
+										<col width="20%">
+										<col width="*%">
+									</colgroup>
+									
+									<tr>
+										<input type="hidden" name="reviewNo" value="${review.reviewNo }" />
+                 						<input type="hidden" name="routeNo" value="${review.routeNo }" />
+										<th><label for="title" >제목</label></th>
+										<td>
+											<input type="text" id="TITLE" name="title" class="wdp_90 post_write_title" value="${review.reviewTitle}"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										</td>
+										<input type="hidden" id="IDX" name="IDX" value="">
+										<td id="postWriteUpdateInfo">
+											<label for="IDX" >작성자: ${review.users.userNick}</label>
+											<label >작성일: <fmt:formatDate value="${review.reviewDate}"
+												pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</label>
+										</td>
+									</tr>
+									<tr class="write_days_editor">
+										<td colspan="2">
+												<div id="none0">
+													<h4>Day 01</h4>
+													<textarea class="editorContentWritter" name="content0" id="txtcontent0"  style="width: 80%; height: 50%">
+														${review.reviewContent0 }
+													</textarea>
+												</div>
+												
+												<div id="none1">
+													<h4>Day 02</h4>
+													<textarea class="editorContentWritter" name="content1" id="txtcontent1"  style="width: 80%; height: 50%">
+														${review.reviewContent1 }
+													</textarea>
+													</div>
+												<div id="none2">
+													<h4>Day 03</h4>
+													<textarea class="editorContentWritter" name="content2" id="txtcontent2"  style="width: 80%; height: 50%">
+														${review.reviewContent2 }
+													</textarea>
+												</div>
+												<div id="none3">
+													<h4>Day 04</h4>
+													<textarea class="editorContentWritter" name="content3" id="txtcontent3"  style="width: 80%; height: 50%">
+														${review.reviewContent3 }
+													</textarea>
+												</div>
+												<div id="none4">
+													<h4>Day 05</h4> 
+													<textarea class="editorContentWritter" name="content4" id="txtcontent4" style="width: 80%; height: 50%" >
+														${review.reviewContent4 }
+													</textarea>
+												</div>
+												<div id="none5">
+													<h4>Day 06</h4>					
+													<textarea class="editorContentWritter" name="content5" id="txtcontent5"  style="width: 80%; height: 50%">
+														${review.reviewContent5 }
+													</textarea>
+												</div>
+												<div id="none6">
+													<h4>Day 07</h4>
+													<textarea class="editorContentWritter" name="content6" id="txtcontent6"  style="width: 80%; height: 50%">
+														${review.reviewContent6 }
+													</textarea>
+												</div>
+												<div id="none7">
+													<h4>Day 08</h4>
+													<textarea class="editorContentWritter" name="content7" id="txtcontent7"  style="width: 80%; height: 50%">
+														${review.reviewContent7 }
+													</textarea>
+												</div>
+												<div id="none8">
+													<h4>Day 09</h4>
+													<textarea class="editorContentWritter" name="content8" id="txtcontent8"  style="width: 80%; height: 50%">
+														${review.reviewContent8 }
+													</textarea>
+												</div>
+												<div id="none9">
+													<h4>Day 10</h4>
+													<textarea class="editorContentWritter" name="content9" id="txtcontent9"  style="width: 80%; height: 50%">
+														${review.reviewContent9 }
+													</textarea>
+												</div>
+											</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<input type="button" value="취소" onclick="history.back()" class="postButtonStyle2">
+    			 							<input type="button" id="savebutton"  value="저장" class="postButtonStyle2">
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+						<div class="2u" id="rightFixedTab">
+							<i class="fa fa-paw"></i>
+							<input type="button" id="addBtn" value="계획 일자 추가">
+							<input type="button" id="subBtn" value="계획 일자 삭제">
+						</div>
+					</div>
+					
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp" />
+				</div>
+			</div>
+		</div>
+<%-- 
 <c:url value="/reviewUpdate" var="update"></c:url>
 <form id="frm" method="post" action="${update }">
         
@@ -79,7 +212,7 @@
 					</div>
 				
 				
-    </form>
+    </form> --%>
     <script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 	wrapWindowByMask();
@@ -392,7 +525,7 @@
 		        //로딩중 이미지 표시
 		        $('#loadingImg').show();
 		        
-		        setTimeout("closeWindowByMask()", 3000);
+		        setTimeout("closeWindowByMask()", 1500);
 		    }
 		 
 		 function closeWindowByMask() {
