@@ -81,11 +81,12 @@ public class ReviewController {
 		rs.count(reviewNo);
 		Review r = rs.selectReview(reviewNo);
 		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
-		String routeNo = request.getParameter("inputRouteNo");
-		/*Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));*/
+		
+		Integer routeNo = Integer.parseInt(request.getParameter("routeNo"));
+		Route result = routeService.selectRouteByNo(routeNo);
 		logger.trace("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
-		/*
+		
 		String str3 = result.getRouteFull();
 		
 		int count4 = 0;
@@ -120,17 +121,19 @@ public class ReviewController {
 			i++;
 
 		}
-		String fullRoute="";
+		List<String> list = new ArrayList<>();
 		String InputRouteName="";
 		String InputAddr=""; 
 		for(int j=0; j<i; j++){
 		InputRouteName=routeName[j];
 		InputAddr= Addr[j];
+		list.add(InputRouteName+"("+InputAddr+")");
+		logger.trace("list.get??:{}",list.get(j));
 		}
-		 fullRoute = InputRouteName + "(" + InputAddr + ")";
 		 
-		 model.addAttribute("addRoute",fullRoute);*/
+		 
 		logger.trace("routeNo??:{}",routeNo);
+		model.addAttribute("addRoute",list);
 		model.addAttribute("post", r);
 		model.addAttribute("replys", rr);
 		return "nonsession/postscript/post_view";
@@ -390,7 +393,7 @@ public class ReviewController {
 		}
 		
 
-		return "redirect:/postView?reviewNo="+rs.currentNo();
+		return "redirect:/postView?reviewNo="+rs.currentNo()+"&routeNo="+routeNo;
 		
 	
 	}

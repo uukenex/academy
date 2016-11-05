@@ -109,11 +109,11 @@
 								<div class="edi_posts">
 									<c:forEach var="post" items="${posts }" begin="0" end="2">
 										<article>
-											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+											<a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
 											<h3>${post.reviewTitle }</h3>
-											<p>추천수 ${post.reviewStar }</p>
+											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
-												<li><a href="postView?reviewNo=${post.reviewNo} " class="post_button">More</a></li>
+												<li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li>
 											</ul>
 										</article>
 								</c:forEach>
@@ -124,12 +124,12 @@
 								<div class="edi_posts edi_posts_body">
 									<c:forEach var="post" items="${posts }" begin="3">
 										<article>
-											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
+											<a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
 												
-												<li><a href="postView?reviewNo=${post.reviewNo} " class="post_button">More</a></li>
+												<li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li>
 											</ul>
 										</article>
 									</c:forEach>

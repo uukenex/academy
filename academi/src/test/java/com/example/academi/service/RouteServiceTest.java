@@ -33,7 +33,7 @@ public class RouteServiceTest {
 	}
 	@Test
 	public void selectTest() {
-		rs.selectRouteByNo(63);
+		rs.selectRouteByNo(123);
 	}
 	
 	@Transactional

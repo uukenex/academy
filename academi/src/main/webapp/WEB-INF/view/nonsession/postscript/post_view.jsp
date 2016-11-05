@@ -34,6 +34,7 @@
 							<form>
 							<input type="hidden" name="userId" value="${post.userId }" />
 							<input type="hidden" name="reviewNo" value="${post.reviewNo }" />
+							
 								<table id="post_route_table">
 									<colgroup>
 										<col width="50%">
@@ -90,14 +91,13 @@
 											</iframe>
 										</th>
 										<td colspan="2" id="detailAddressView">
+												<c:forEach var="addRoute" items="${addRoute }">
 											<p>
-												<%-- <c:forEach var="addRoute" items="${addRoute }"> --%>
 												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												<%-- ${addRoute }
-												</c:forEach> --%>
+												 ${addRoute }
 												<br>
-												
 											</p>
+											</c:forEach>
 										</td>
 									</tr>
 									</c:if>
