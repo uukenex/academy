@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -137,6 +138,13 @@ public class ReviewServiceImpl implements ReviewService {
 			
 			return result;
 		}
+		
+	
+	@Override
+	public List<Review> mapAPISearchRoute(Map<String, String> keyword) {
+		return rrepo.mapApiSearchRoute(keyword);
+	}
+		
 	@Override
 	public int updateStar(int reviewNo) {
 		return rrepo.updateStar(reviewNo);
@@ -164,4 +172,6 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return rrepo.selectNo();
 	}
+
+	
 }

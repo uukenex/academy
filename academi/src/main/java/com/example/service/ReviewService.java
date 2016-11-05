@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.dto.Review;
 
@@ -44,6 +45,13 @@ public interface ReviewService {
 	public List<Review> searchReviewByNick(String userNick, int page);
 	// 루트에 따른 검색도 추가해야함
 	public List<Review> searchReviewByRoute(String routeName, int page);
+	
+	/**
+	 * keyword1 , keyword2 ...으로 map에 담아야함 6까지있음 
+	 */
+	public List<Review> mapAPISearchRoute(Map<String,String> keyword);
+		
+		
 	// 추천하기 기능
 	public int updateStar(int reviewNo);
 	

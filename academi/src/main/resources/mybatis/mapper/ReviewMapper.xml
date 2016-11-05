@@ -15,7 +15,8 @@
 	<select id="select" parameterType="int" resultMap="reviewUsers">
 		select * from
 		review r
-		join users u on u.user_id=r.user_id where review_no= #{reviewNo}
+		join users u on u.user_id=r.user_id where review_no=
+		#{reviewNo}
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
@@ -63,12 +64,14 @@
 		sub.*,rownum
 		rnum from
 		(select * from review r
-		join users u on u.user_id=r.user_id
+		join users u on
+		u.user_id=r.user_id
 		order by
 		review_star desc)
 		sub)
 		where rnum
-		between 1 and 3
+		between 1
+		and 3
 	</select>
 
 
@@ -77,11 +80,13 @@
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review r
-		join users u on u.user_id=r.user_id
+		join users u
+		on u.user_id=r.user_id
 		order by
 		review_no desc) sub)
 		where rnum
-		between #{page}*9-8 and #{page}*9
+		between
+		#{page}*9-8 and #{page}*9
 	</select>
 
 
@@ -90,7 +95,8 @@
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review r
-		join users u on u.user_id=r.user_id
+		join
+		users u on u.user_id=r.user_id
 		where
 		review_title like #{reviewTitle}
 		order by review_no desc) sub)
@@ -104,7 +110,8 @@
 		select *
 		from(select sub.*,rownum rnum from
 		(select * from review r
-		join users u on u.user_id=r.user_id
+		join
+		users u on u.user_id=r.user_id
 		where
 		review_content0 like
 		#{reviewContent} or
@@ -139,19 +146,53 @@
 		where rnum between #{page}*9-8 and #{page}*9
 	</select>
 
-	<!-- 페이지당 리스트를 보여주(경로검색) -->
+	<!-- 페이지당 리스트를 보여줌(경로검색) -->
 	<select id="searchListByRoute" parameterType="Map" resultMap="reviewRouteUsers">
 		select * from
 		(select sub.*,rownum rnum from (select * from route ro
 		join REVIEW re on ro.ROUTE_NO=re.ROUTE_NO
-		join users u on u.USER_ID=ro.user_id
+		join users u on
+		u.USER_ID=ro.user_id
 		where route_full like #{route}
-		order by review_no desc ) sub)
+		order by review_no
+		desc ) sub)
 		where rnum between #{page}*9-8 and #{page}*9
 
 
 	</select>
 
+
+	<!-- 지도에서 쓸 경로 리스트를 보여줌(경로검색) -->
+	<select id="mapAPIsearchRoute" parameterType="Map" resultMap="reviewRouteUsers">
+		select * from
+		(select sub.*,rownum rnum from (select * from route ro
+		join REVIEW re on ro.ROUTE_NO=re.ROUTE_NO
+		join users u on u.USER_ID=ro.user_id
+		where
+		route_full like #{keyword0} 
+		<if test="keyword1 !=null">
+		and route_full like #{keyword1}
+		</if>
+		<if test="keyword2 !=null">
+		and route_full like #{keyword2}
+		</if>
+		<if test="keyword3 !=null">
+		and route_full like #{keyword3}
+		</if>
+		<if test="keyword4 !=null">
+		and route_full like #{keyword4}
+		</if>
+		<if test="keyword5 !=null">
+		and route_full like #{keyword5}
+		</if>
+		<if test="keyword6 !=null">
+		and route_full like #{keyword6}
+		</if>
+		order by review_star desc ) sub)
+		where rnum between 1 and 3
+
+
+	</select>
 
 
 	<!-- 조회수 1을 증가시킴 -->

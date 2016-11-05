@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -129,7 +131,15 @@ public class ReviewRepoTest {
 		List<Review> result = rrepo.searchReviewByRoute("천안", page);
 		System.out.println(result.get(0).getRoute().getRouteFull());
 	}
-
+	// 루트 검색 테스트
+	@Test
+		public void mapsearch() {
+		Map<String,String> keyword = new HashMap<>();
+		keyword.put("keyword1", "%충남%");
+		keyword.put("keyword2", "%충남%");
+			List<Review> result = rrepo.mapApiSearchRoute(keyword);
+			
+		}
 	// 조회수 늘리기 테스트
 	@Test
 	public void countTest() {

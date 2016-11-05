@@ -1,6 +1,7 @@
 package com.example.repo;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.dto.Review;
 
@@ -32,10 +33,10 @@ public interface ReviewRepo {
 	// 후기글 삭제
 	public int deleteReview(int reviewNo);
 
-	// 4x1 추천 글띄워주기
+	// 3x1 추천 글띄워주기
 	public List<Review> starReview();
 
-	// 4x3 페이지 로딩
+	// 3x3 페이지 로딩
 	public List<Review> reviewListByPage(int page);
 
 	// 이름검색
@@ -49,6 +50,9 @@ public interface ReviewRepo {
 
 	// 경로검색
 	public List<Review> searchReviewByRoute(String routeName,int page);
+	
+	// 지도에서 쓸 경로검색
+	public List<Review> mapApiSearchRoute(Map<String,String> keyword);
 	// 조회수 늘리기
 	public int updateReviewCount(int reviewNo);
 	// 추천하기 기능
