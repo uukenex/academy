@@ -54,7 +54,10 @@
 									<tr>
 										<td>
 											추천 수: <output id="result" > ${post.reviewStar}</output>
+											<c:if test="${!empty Users.userId }">
 											<input type="button" id="star" value="추천하기">
+											</c:if>
+			
 										</td>
 										<td>
 											<c:if test="${post.userId==Users.userId }">
@@ -257,7 +260,9 @@
 										<tr>
 											<th><i class="fa fa-commenting fa-flip-horizontal"></i></th>
 											<td><input type="text" id="replyContent"></td>
+											<c:if test="${!empty Users.userId }">
 											<td><input type="button" value="등록" id="replyRegist"></td>
+											</c:if>
 										</tr>
 										<tbody id="postReplyContentViewTableBody">
 										<c:forEach var="reply" items="${replys }">
