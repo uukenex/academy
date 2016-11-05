@@ -1,8 +1,10 @@
 package com.example.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +25,11 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dto.Goods;
 import com.example.dto.Mro;
+import com.example.dto.Review;
 import com.example.dto.Route;
 import com.example.dto.Users;
 import com.example.service.MroService;
+import com.example.service.ReviewService;
 import com.example.service.RouteService;
 import com.example.service.UserService;
 
@@ -40,6 +44,8 @@ public class MapAPIController {
 	RouteService rs;
 	@Autowired
 	MroService ms;
+	@Autowired
+	ReviewService res;
 	
 	//지도 좌표 받아오고 해당지역 불러오기
 	@RequestMapping(value = "/latlng", method = RequestMethod.GET)
@@ -696,7 +702,40 @@ public class MapAPIController {
 		logger.trace("카트사이즈 {}", dbcart.size());
 
 		Object obj = session.getAttribute("dbcart");
-		return obj;
+		
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		for (int z = 0; z < dbcart.size(); z++) {
+			String route = dbcart.get(z).getAddress();
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}
+				cnt++;
+			}
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
+		}
+
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+		Map<String,String> keyword = new HashMap<>();
+		
+		for(int z=0;z<uniqueItems.size();z++)
+		{
+			keyword.put("keyword"+z, "%"+uniqueItems.get(z)+"%");
+		}
+		List<Review> goodRoute=res.mapAPISearchRoute(keyword);
+		
+		
+		List<List<Review>> objList = new ArrayList<>();
+		objList.add((List<Review>) obj);
+		objList.add(goodRoute);
+		
+		return objList;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -725,13 +764,52 @@ public class MapAPIController {
 
 		Object obj = session.getAttribute("cart");
 		logger.trace("세션 cart:{}", obj);
-		return obj;
+		///////////여기하는중
+		for(int i =0;i<cart.size();i++)
+		logger.trace("{}",cart.get(i).getAddress());
+		
+		
+		
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		for (int z = 0; z < cart.size(); z++) {
+			String route = cart.get(z).getAddress();
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}
+				cnt++;
+			}
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
+		}
+
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+		Map<String,String> keyword = new HashMap<>();
+		
+		for(int z=0;z<uniqueItems.size();z++)
+		{
+			keyword.put("keyword"+z, "%"+uniqueItems.get(z)+"%");
+		}
+		List<Review> goodRoute=res.mapAPISearchRoute(keyword);
+		
+		
+		List<List<Review>> objList = new ArrayList<>();
+		objList.add((List<Review>) obj);
+		objList.add(goodRoute);
+		
+		
+		return objList;
 	}
 
 	@RequestMapping(value = "/getSession", method = RequestMethod.POST)
 	public @ResponseBody Object getSession(HttpSession session, @ModelAttribute("cart") List<Goods> cart,
 			@ModelAttribute("dbcart") List<Goods> dbcart) {
-		Object cartObj = null;
+		List<Goods> cartObj = new ArrayList<>();
 		if (dbcart.isEmpty()) {
 			logger.trace("dbcart가 null입니다.");
 			cartObj = cart;
@@ -741,7 +819,43 @@ public class MapAPIController {
 		logger.trace("dbcart: {}", session.getAttribute("dbcart"));
 		logger.trace("cart : {}", session.getAttribute("cart"));
 		logger.trace("Object cart : {}", cartObj);
-		return cartObj;
+		
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		for (int z = 0; z < cartObj.size(); z++) {
+			String route = cartObj.get(z).getAddress();
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}
+				cnt++;
+			}
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
+		}
+
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+		Map<String,String> keyword = new HashMap<>();
+		
+		keyword.put("keyword0", "%");
+		for(int z=1;z<uniqueItems.size();z++)
+		{
+			keyword.put("keyword"+z, "%"+uniqueItems.get(z)+"%");
+		}
+		List<Review> goodRoute=res.mapAPISearchRoute(keyword);
+		
+		
+		List<List<Review>> objList = new ArrayList<>();
+		objList.add((List<Review>)(Object) cartObj);
+		objList.add(goodRoute);
+		
+		logger.trace("여기서에러?");
+		
+		return objList;
 	}
 
 	// 루트 불러오기(번호로)
@@ -799,7 +913,7 @@ public class MapAPIController {
 			center.add(y, xyroute);
 
 		}
-
+	
 		List<Integer> pos = new ArrayList<>();
 		List<String> cityList = new ArrayList<>();
 		String city = "";
@@ -807,7 +921,9 @@ public class MapAPIController {
 		for (int z = 0; z < i; z++) {
 			String route = routeAddr[z];
 			logger.trace("경로 불러오기!:{}", route);
-
+			
+		
+			
 			int cnt = 0;
 			for (int c = 0; c < route.length(); c++) {
 				if (route.charAt(c) == ' ') {
@@ -818,7 +934,9 @@ public class MapAPIController {
 			city = route.substring(0, pos.get(0)).trim();
 			cityList.add(city);
 		}
-
+		
+		
+		
 		// 중복값 제거
 		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
 		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
@@ -834,7 +952,7 @@ public class MapAPIController {
 		for (int cnt = 0; cnt < i; cnt++) {
 			dbcart.add(goodss[cnt]);
 		}
-
+		
 		model.addAttribute("routeNo", routeNo);
 		model.addAttribute("routeName", result.getRouteName());
 		model.addAttribute("routeContent", result.getRouteContent());
@@ -844,6 +962,106 @@ public class MapAPIController {
 		return "session/guide/map_api_image";
 	}
 
+	
+	
+	// 루트 이미지(번호로)
+		@RequestMapping(value = "/routeImage", method = RequestMethod.GET)
+		public String routeImage(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
+				@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
+logger.trace("추천경로 표시를 위해서 DB조회");
+			dbcart.clear();
+			Route result = rs.selectRouteByNo(routeNo);
+			String str = result.getRouteFull();
+			int count = 0;
+			for (int c = 0; c < str.length(); c++) {
+				if (str.charAt(c) == '♬') {
+					count++;
+				}
+			}
+			logger.trace("카운트 : {}", count);
+			int i = count / 5;
+			Goods goodss[] = new Goods[i];
+			for (int cnt = 0; cnt < i; cnt++) {
+				goodss[cnt] = new Goods();
+			}
+
+			String routeName[] = new String[i];
+			String routeX[] = new String[i];
+			String routeY[] = new String[i];
+			String routeAddr[] = new String[i];
+			String routeImg[] = new String[i];
+
+			i = 0;
+			StringTokenizer tokens = new StringTokenizer(str, "♬");
+			while (tokens.hasMoreTokens()) {
+				routeName[i] = tokens.nextToken();
+				goodss[i].setTitle(routeName[i]);
+				routeX[i] = tokens.nextToken();
+				goodss[i].setLatitude(Double.parseDouble(routeX[i]));
+				routeY[i] = tokens.nextToken();
+				goodss[i].setLongitude(Double.parseDouble(routeY[i]));
+				routeAddr[i] = tokens.nextToken();
+				goodss[i].setAddress(routeAddr[i]);
+				routeImg[i] = tokens.nextToken();
+				goodss[i].setImageUrl(routeImg[i]);
+				goodss[i].setCategory("여행");
+				i++;
+
+			}
+			List<String> latLng = new ArrayList<>();
+			List<String> center = new ArrayList<>();
+			String xyroute;
+			for (int y = 0; y < i; y++) {
+				String lat = routeX[y];
+				String lng = routeY[y];
+				xyroute = lat + "," + lng;
+				latLng.add(y, xyroute);
+				center.add(y, xyroute);
+
+			}
+		
+			List<Integer> pos = new ArrayList<>();
+			List<String> cityList = new ArrayList<>();
+			String city = "";
+			Integer mapSize = null;
+			for (int z = 0; z < i; z++) {
+				String route = routeAddr[z];
+				logger.trace("경로 불러오기!:{}", route);
+				
+			
+				
+				int cnt = 0;
+				for (int c = 0; c < route.length(); c++) {
+					if (route.charAt(c) == ' ') {
+						pos.add(cnt);
+					}
+					cnt++;
+				}
+				city = route.substring(0, pos.get(0)).trim();
+				cityList.add(city);
+			}
+			
+			
+			
+			// 중복값 제거
+			List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+			logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+
+			if (uniqueItems.size() != 1) {
+				xyroute = "35.865415, 128.085319";
+				center.add(0, xyroute);
+				mapSize = 13;
+			} else {
+				mapSize = 10;
+			}
+
+			model.addAttribute("latLng2", latLng);
+			model.addAttribute("center", center);
+			model.addAttribute("mapSize", mapSize);
+			return "session/guide/map_api_image2";
+		}
+	
+	
 	@RequestMapping(value = "/mapSave", method = RequestMethod.POST)
 	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session,
 			Model model) {

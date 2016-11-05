@@ -62,16 +62,25 @@
 			
 										</td>
 										<td>
-											<c:if test="${post.userId==Users.userId }">
+										<c:choose>
+											<c:when test="${post.userId==Users.userId }">
 												<input type="submit" value="글 수정"
 													formaction="/session/postUpdate" formmethod="post">
-											</c:if>
-											<c:if test="${post.userId==Users.userId }">
-												<input type="submit" value="글 삭제"
+													<input type="submit" value="글 삭제"
 													formaction="/reviewDelete" formmethod="post">
-											</c:if>
+											</c:when>
+											<c:when test="${'admin'==Users.userId }">
+												<input type="submit" value="글 수정"
+													formaction="/session/postUpdate" formmethod="post">
+													<input type="submit" value="글 삭제"
+													formaction="/reviewDelete" formmethod="post">
+											</c:when>
+										</c:choose>
 										</td>
 									</tr>
+									
+									
+									<c:if test="${'0' != post.routeNo }">
 									<tr><td colspan="3"><hr id="post_divider"></tr>
 									<tr><td colspan="3"><header class="post_major"><h2>여행 경로 보기</h2></header></tr>
 									<tr>
@@ -82,18 +91,16 @@
 										</th>
 										<td colspan="2" id="detailAddressView">
 											<p>
+												<%-- <c:forEach var="addRoute" items="${addRoute }"> --%>
 												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												이곳은 상제 주소를 나타내는 부분!
+												<%-- ${addRoute }
+												</c:forEach> --%>
 												<br>
-												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												이곳은 상제 주소를 나타내는 부분!
-												<br>
-												<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-												이곳은 상제 주소를 나타내는 부분!
-												<br>
+												
 											</p>
 										</td>
 									</tr>
+									</c:if>
 									<tr><td colspan="3"><hr id="post_divider"></tr>
 									<tr><td colspan="3"><header class="post_major"><h2>여행 계획 보기</h2></header></tr>
 									<tr>

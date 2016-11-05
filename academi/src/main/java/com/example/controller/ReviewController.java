@@ -63,8 +63,8 @@ public class ReviewController {
 		model.addAttribute("posts", r);
 
 		int pageCount = rs.pageCount();
-		int totalPage = pageCount / 12 + 1;
-		if (pageCount % 12 == 0) {
+		int totalPage = pageCount / 9 + 1;
+		if (pageCount % 9 == 0) {
 			totalPage -= 1;
 		}
 		if (pageCount == 0) {
@@ -76,10 +76,61 @@ public class ReviewController {
 
 	// 후기 -단일게시물 보기
 	@RequestMapping(value = "/postView", method = RequestMethod.GET)
-	public String noticeView(Model model, @RequestParam int reviewNo) {
+	
+	public String noticeView(Model model, @RequestParam int reviewNo, HttpServletRequest request) {
 		rs.count(reviewNo);
 		Review r = rs.selectReview(reviewNo);
 		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
+		String routeNo = request.getParameter("inputRouteNo");
+		/*Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));*/
+		logger.trace("여기로 들어오니 ?");
+		//루트 전체를  str3에 담아주고 
+		/*
+		String str3 = result.getRouteFull();
+		
+		int count4 = 0;
+		//str3의 길이만큼 반복되는데
+		System.out.println("str3 : " + str3);
+		for (int c = 0; c < str3.length(); c++) {
+			//♬가 나올때마다 카운트를 해준다
+			if (str3.charAt(c) == '♬') {
+				count4++;
+			}
+		}
+		
+		//♬가 5개가 경로 1개이므로 5로 나누어준다.
+		int i = count4 / 5;
+
+		//addr에 경로 갯수만큼 배열의 크기를 넣어주고
+		String routeName[] = new String[i];
+		String Addr[] = new String[i];
+
+		
+		i=0;
+		
+		//토큰을 생성해서 넘겨준다
+		StringTokenizer tokens = new StringTokenizer(str3, "♬");
+		while (tokens.hasMoreTokens()) {
+			routeName[i] = tokens.nextToken();
+			tokens.nextToken();
+			tokens.nextToken();
+			//주소 값이 들어가있는 곳에서 주소배열에 값을 넣어준다
+			Addr[i] = tokens.nextToken();
+			tokens.nextToken();
+			i++;
+
+		}
+		String fullRoute="";
+		String InputRouteName="";
+		String InputAddr=""; 
+		for(int j=0; j<i; j++){
+		InputRouteName=routeName[j];
+		InputAddr= Addr[j];
+		}
+		 fullRoute = InputRouteName + "(" + InputAddr + ")";
+		 
+		 model.addAttribute("addRoute",fullRoute);*/
+		logger.trace("routeNo??:{}",routeNo);
 		model.addAttribute("post", r);
 		model.addAttribute("replys", rr);
 		return "nonsession/postscript/post_view";
@@ -123,7 +174,10 @@ public class ReviewController {
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
 	public String commentWrite(Model model, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
-		int routeNo = Integer.parseInt(request.getParameter("routeNumber"));
+		String routeNo = request.getParameter("routeNumber");
+		if(routeNo == ""){
+			routeNo ="0";
+		}
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
 		String reviewContent1 = request.getParameter("content1");
@@ -192,10 +246,10 @@ public class ReviewController {
 
 		// 이미지의 경로가 저장되도록
 		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
-				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], routeNo, userId);
+				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], Integer.parseInt(routeNo), userId);
 
 		//루트 no를 통해 루트의 정보를 가져온다
-		Route result = routeService.selectRouteByNo(routeNo);
+		Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));
 		logger.trace("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
 		

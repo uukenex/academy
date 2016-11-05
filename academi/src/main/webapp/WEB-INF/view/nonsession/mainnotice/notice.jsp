@@ -48,7 +48,9 @@
 								<li>
 									
 									<a href="/session/noticeWrite">
+										<c:if test="${'admin' == Users.userId}">
 										<input type="button" value="글쓰기" class="writeBoard" >
+										</c:if>
 									</a>
 								</li>
 								<li>

@@ -75,8 +75,9 @@
 			</div>
 		</div>
 	</div>
-
 <script>
+
+
 $(function(){
     //전역변수선언
     var editor_object = [];
@@ -99,15 +100,20 @@ $(function(){
     $("#savebutton").click(function(){
         //id가 content인 textarea에 에디터에서 대입
         console.log(editor_object);
-       console.log(editor_object.getById["content"]);
+       	console.log(editor_object.getById["content"]);
         editor_object.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          
         // 이부분에 에디터 validation 검증
-         
+        if($("#editorTitleWritter").val() == ""){
+        	alert("제목을 입력해주세요");
+        }else{
         //폼 submit
         $("#frm").submit();
+        }
     })
 })
+
+	
 </script>
 </body>
 </html>

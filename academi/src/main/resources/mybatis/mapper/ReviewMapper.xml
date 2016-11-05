@@ -4,21 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.ReviewMapper">
-	<!-- 가장 최신 글의 번호를 가져옴   -->
-	
+	<!-- 가장 최신 글의 번호를 가져옴 -->
+
 	<select id="selectNo" resultType="int">
-		select max(review_no) from review
+		select max(review_no) from
+		review
 	</select>
 
 	<!-- 단일 후기글 보기 -->
 	<select id="select" parameterType="int" resultMap="reviewUsers">
 		select * from
-		review r 
-		join users u on u.user_id=r.user_id where review_no= #{reviewNo}
+		review r
+		join users u on u.user_id=r.user_id where review_no=
+		#{reviewNo}
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
-		insert into review (review_title,review_content0,
+		insert into review
+		(review_title,review_content0,
 		review_content1,review_content2,review_content3,
 		review_content4,review_content5,review_content6,
 		review_content7,review_content8,review_content9,
@@ -60,13 +63,15 @@
 		from(select
 		sub.*,rownum
 		rnum from
-		(select * from review r 
-		join users u on u.user_id=r.user_id
+		(select * from review r
+		join users u on
+		u.user_id=r.user_id
 		order by
 		review_star desc)
 		sub)
 		where rnum
-		between 1 and 3
+		between 1
+		and 3
 	</select>
 
 
@@ -74,11 +79,14 @@
 	<select id="selectList" parameterType="int" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review r 
-		join users u on u.user_id=r.user_id
+		(select * from review r
+		join users u
+		on u.user_id=r.user_id
 		order by
 		review_no desc) sub)
-		where rnum between #{page}*9-8 and #{page}*9
+		where rnum
+		between
+		#{page}*9-8 and #{page}*9
 	</select>
 
 
@@ -86,34 +94,42 @@
 	<select id="searchListByName" parameterType="Map" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review r 
-		join users u on u.user_id=r.user_id
+		(select * from review r
+		join
+		users u on u.user_id=r.user_id
 		where
 		review_title like #{reviewTitle}
 		order by review_no desc) sub)
 		where
-		rnum between #{page}*9-8 and #{page}*9
+		rnum between #{page}*9-8 and
+		#{page}*9
 	</select>
 
 	<!-- 페이지당 리스트를 보여줌(분류별/내용/검색 ) -->
 	<select id="searchListByContent" parameterType="Map" resultMap="reviewUsers">
 		select *
 		from(select sub.*,rownum rnum from
-		(select * from review r 
-		join users u on u.user_id=r.user_id
+		(select * from review r
+		join
+		users u on u.user_id=r.user_id
 		where
-		review_content0 like #{reviewContent} or
+		review_content0 like
+		#{reviewContent} or
 		review_content1 like #{reviewContent} or
 		review_content2 like #{reviewContent} or
-		review_content3 like #{reviewContent} or
+		review_content3 like
+		#{reviewContent} or
 		review_content4 like #{reviewContent} or
 		review_content5 like #{reviewContent} or
-		review_content6 like #{reviewContent} or
+		review_content6 like
+		#{reviewContent} or
 		review_content7 like #{reviewContent} or
 		review_content8 like #{reviewContent} or
-		review_content9 like #{reviewContent}
+		review_content9 like
+		#{reviewContent}
 		order by review_no desc) sub)
-		where rnum between #{page}*9-8 and #{page}*9
+		where rnum between
+		#{page}*9-8 and #{page}*9
 
 	</select>
 
@@ -129,8 +145,56 @@
 		by review_no desc) sub)
 		where rnum between #{page}*9-8 and #{page}*9
 	</select>
-	
-	
+
+	<!-- 페이지당 리스트를 보여줌(경로검색) -->
+	<select id="searchListByRoute" parameterType="Map" resultMap="reviewRouteUsers">
+		select * from
+		(select sub.*,rownum rnum from (select * from route ro
+		join REVIEW re on ro.ROUTE_NO=re.ROUTE_NO
+		join users u on
+		u.USER_ID=ro.user_id
+		where route_full like #{route}
+		order by review_no
+		desc ) sub)
+		where rnum between #{page}*9-8 and #{page}*9
+
+
+	</select>
+
+
+	<!-- 지도에서 쓸 경로 리스트를 보여줌(경로검색) -->
+	<select id="mapAPIsearchRoute" parameterType="Map" resultMap="reviewRouteUsers">
+		select * from
+		(select sub.*,rownum rnum from (select * from route ro
+		join REVIEW re on ro.ROUTE_NO=re.ROUTE_NO
+		join users u on u.USER_ID=ro.user_id
+		where
+		route_full like #{keyword0} 
+		<if test="keyword1 !=null">
+		and route_full like #{keyword1}
+		</if>
+		<if test="keyword2 !=null">
+		and route_full like #{keyword2}
+		</if>
+		<if test="keyword3 !=null">
+		and route_full like #{keyword3}
+		</if>
+		<if test="keyword4 !=null">
+		and route_full like #{keyword4}
+		</if>
+		<if test="keyword5 !=null">
+		and route_full like #{keyword5}
+		</if>
+		<if test="keyword6 !=null">
+		and route_full like #{keyword6}
+		</if>
+		order by review_star desc ) sub)
+		where rnum between 1 and 3
+
+
+	</select>
+
+
 	<!-- 조회수 1을 증가시킴 -->
 	<update id="countUpdate" parameterType="int">
 		update review set
@@ -146,9 +210,10 @@
 		review_no=#{reviewNo})+1
 		where review_no=#{reviewNo}
 	</update>
-<!-- 페이지 카운팅 -->
-<select id="pageCount" resultType="int" >
-select count(*) from review</select>
+	<!-- 페이지 카운팅 -->
+	<select id="pageCount" resultType="int">
+		select count(*) from review
+	</select>
 
 	<!--후기테이블에서 내아이디로 조회 -->
 	<select id="selectReviewById" parameterType="String" resultMap="reviewUsers">
@@ -157,7 +222,7 @@ select count(*) from review</select>
 		where
 		r.user_id = #{userId}
 		order by review_no desc
-	</select> 
+	</select>
 
 
 
@@ -181,10 +246,14 @@ select count(*) from review</select>
 		<result column="route_no" property="routeNo" />
 		<result column="user_id" property="userId" />
 	</resultMap>
-	
+
 	<resultMap type="review" id="reviewUsers" extends="reviewBase">
 		<association property="users" column="user_id" javaType="users"
 			resultMap="com.example.UserMapper.usersBase"></association>
 	</resultMap>
-	
+
+	<resultMap type="review" id="reviewRouteUsers" extends="reviewUsers">
+		<association property="route" column="route_no" javaType="route"
+			resultMap="com.example.RouteMapper.routeBase"></association>
+	</resultMap>
 </mapper>

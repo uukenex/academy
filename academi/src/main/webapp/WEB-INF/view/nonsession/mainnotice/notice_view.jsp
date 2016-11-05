@@ -74,13 +74,13 @@
 												<td colspan="4">
 													<ul class="boardButtonList">
 														<li>
-													 		<c:if test="${comment.userId==Users.userId }">
+													 		<c:if test="${'admin'==Users.userId }">
 																<input type="submit" value="삭제" formaction="/commentDelete"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>
 													 	</li>
 													 	<li>
-													 		<c:if test="${comment.userId==Users.userId }">
+													 		<c:if test="${'admin'==Users.userId }">
 																<input type="submit" value="수정" formaction="/session/noticeUpdate"
 																			formmethod="post" class="boardButtonStyle1">
 															</c:if>

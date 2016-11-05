@@ -126,8 +126,9 @@
 										<article>
 											<a href="postView?reviewNo=${post.reviewNo} " class="post_image"><img alt="" src="/images/cloud.jpg"></a>
 											<h3>${post.reviewTitle }</h3>
-											<p>추천수 ${post.reviewStar }</p>
+											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
+												
 												<li><a href="postView?reviewNo=${post.reviewNo} " class="post_button">More</a></li>
 											</ul>
 										</article>

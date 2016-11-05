@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -116,7 +118,18 @@ public class ReviewServiceTest {
 		rs.searchReviewByNick("임", page);
 	}
 	// 루트에따른 검색도 추가해야함
-
+	@Test
+	public void search4Test() {
+		rs.searchReviewByRoute("임", page);
+	}
+	// 
+		@Test
+		public void search5Test() {
+			Map<String,String> keyword = new HashMap<>();
+			keyword.put("keyword1", "%충남%");
+			keyword.put("keyword2", "%충남%");
+			rs.mapAPISearchRoute(keyword);
+		}
 	//추천수 업데이트 
 	@Test
 	public void star2Test(){
