@@ -31,7 +31,9 @@
 						<div class="10u">
 			
 							<!-- Map image view part -->
-							
+							<form>
+							<input type="hidden" name="userId" value="${post.userId }" />
+							<input type="hidden" name="reviewNo" value="${post.reviewNo }" />
 								<table id="post_route_table">
 									<colgroup>
 										<col width="50%">
@@ -45,7 +47,7 @@
 									</tr>
 									<tr>
 										<th rowspan="2" id="post_review_title">${post.reviewTitle}</th>
-										<input type="hidden" name="userId" value="${post.userId }" />
+										
 										<td>작성자: ${post.users.userNick}</td>
 										<td>작성일: <fmt:formatDate value="${post.reviewDate}"
 															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
@@ -247,7 +249,7 @@
 										</td>
 									</tr>
 								</table>
-								
+							</form>
 								<hr id="post_divider">
 								
 								<!-- Post Reply part -->
