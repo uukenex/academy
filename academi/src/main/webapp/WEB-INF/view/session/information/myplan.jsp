@@ -33,5 +33,15 @@
 	</table>
 	</c:forEach>
 	</form>
+			<div id="posts_paging">
+		<%!int i;%>
+		<%
+			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+		%>
+		<a href="/session/mypageReview?page=<%=i%>"><%=i%> </a>
+		<%
+			}
+		%>
+	</div>
 </body>
 </html>

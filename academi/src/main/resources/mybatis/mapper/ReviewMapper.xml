@@ -214,14 +214,25 @@
 	<select id="pageCount" resultType="int">
 		select count(*) from review
 	</select>
+	
+	<!-- 아이디별 페이지 카운팅 -->
+	<select id="pageCountbyId" parameterType="String" resultType="int">
+		select count(*) from review where user_id=#{userId}
+	</select>
 
 	<!--후기테이블에서 내아이디로 조회 -->
-	<select id="selectReviewById" parameterType="String" resultMap="reviewUsers">
-		select * from review r
-		join users u on r.user_id=u.user_id
-		where
-		r.user_id = #{userId}
-		order by review_no desc
+	<select id="selectReviewById" parameterType="Map" resultMap="reviewUsers">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from review r
+		join users u
+		on u.user_id=r.user_id
+		where r.user_id = #{userId}
+		order by
+		review_no desc) sub)
+		where rnum
+		between
+		#{page}*3-2 and #{page}*3
 	</select>
 
 

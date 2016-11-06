@@ -39,6 +39,18 @@ public class RouteServiceImpl implements RouteService {
 	public List<Route> selectRouteById(String userId) {
 		return rrepo.selectRouteById(userId);
 	}
+
+	@Override
+	public List<Route> selectRouteByIdForMypage(String userId, int page) {
+		// TODO Auto-generated method stub
+		return rrepo.selectRouteByIdForMypage(userId, page);
+	}
+	
+	@Override
+	public int pageCountbyId(String userId) {
+		// TODO Auto-generated method stub
+		return rrepo.pageCountbyId(userId);
+	}
 	
 	
 }

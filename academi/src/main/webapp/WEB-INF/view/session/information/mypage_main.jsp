@@ -62,7 +62,7 @@
 					</article>
 					<article class="phanStyle6">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic06.jpg" alt="" />
-						</span> <a href="/session/mypageRoute">
+						</span> <a href="/session/mypageRoute?page=1">
 							<h2>여행 계획 보기</h2>
 							<div class="phanContent">
 								<p>회원이 설정한 여행 계획들을 볼 수 있습니다.</p>
@@ -72,7 +72,7 @@
 					
 					<article class="phanStyle4">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic04.jpg" alt="" />
-						</span> <a href="/session/mypageReview">
+						</span> <a href="/session/mypageReview?page=1">
 							<h2>여행 후기 보기</h2>
 							<div class="phanContent">
 								<p>회원이 작성한 여행 후기들을 볼 수 있습니다.</p>

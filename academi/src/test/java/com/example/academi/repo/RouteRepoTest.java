@@ -40,11 +40,18 @@ public class RouteRepoTest {
 		@Test
 		public void selectRouteTest() {
 			String userId = "dd";
-			List<Route> review = rrepo.selectRouteById(userId);
+			List<Route> review = rrepo.selectRouteById("ㅋㅌㅊ");
 			assertThat(review, is(notNullValue()));
 			logger.trace("review size: {}",review.size());
 		}
-	
+	// 마이페이지 내경로 받아오기
+		@Test
+		public void selectRouteTest2() {
+			String userId = "dd";
+			List<Route> review = rrepo.selectRouteByIdForMypage("ㅋㅌㅊ",1);
+			assertThat(review, is(notNullValue()));
+			logger.trace("review size: {}",review.size());
+		}
 	
 	// 회원가입 테스트
 	@Transactional
@@ -70,7 +77,10 @@ public class RouteRepoTest {
 		logger.trace("{}", result.getUsers().getUserNick());
 		assertThat(result, is(notNullValue()));
 	}
-
+	@Test
+	public void countingTestbyId() {
+		rrepo.pageCountbyId("ㅋㅌㅊ");
+	}
 	@Test
 	public void Testss() {
 		int routeNo = 63;

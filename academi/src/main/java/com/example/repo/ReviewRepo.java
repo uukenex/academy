@@ -28,7 +28,7 @@ public interface ReviewRepo {
 			String reviewContent8,String reviewContent9,
 			int routeNo);
 
-	public List<Review> selectReviewById(String userId);
+	public List<Review> selectReviewById(String userId, int page);
 	
 	// 후기글 삭제
 	public int deleteReview(int reviewNo);
@@ -58,6 +58,7 @@ public interface ReviewRepo {
 	// 추천하기 기능
 	public int updateStar(int reviewNo);
 	public int pageCount();
+	public int pageCountbyId(String userId);
 	
 	//가장 최근에 쓴 글의 페이지 번호를 가져온다.
 	public int selectNo();

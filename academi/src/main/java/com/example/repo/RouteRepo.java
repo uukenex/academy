@@ -18,6 +18,8 @@ public interface RouteRepo {
 	
 	// 계획 보기 by id
 		public List<Route> selectRouteById(String userId);
-
+		
+		public List<Route> selectRouteByIdForMypage(String userId,int page);
 	
+		public int pageCountbyId(String userId);
 }

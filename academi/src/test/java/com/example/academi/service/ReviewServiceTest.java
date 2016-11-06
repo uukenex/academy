@@ -139,8 +139,7 @@ public class ReviewServiceTest {
 	// 마이페이지 내후기보기 서비스 테스트
 	@Test
 	public void myPageReviewTest() {
-		String userId = "ㅋㅌㅊ";
-		List<Review> result = rs.myPageReview(userId);
+		List<Review> result = rs.myPageReview("ㅋㅌㅊ",1);
 		assertThat(result, is(notNullValue()));
 		logger.trace("그 결과는 ~?? : {}",result);
 	}

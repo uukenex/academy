@@ -34,10 +34,34 @@
 	route_no=#{routeNo}
 	</delete>
 
+	<!-- 아이디별 페이지 카운팅 -->
+	<select id="pageCountbyId" parameterType="String" resultType="int">
+		select count(*) from route where user_id=#{userId}
+	</select>
+	
 <!-- 마이페이지 내가 작성한 경로보기 기능 -->
-	<!--경로테이블에서 내아이디로 조회 -->
+
+<!--경로테이블에서 내아이디로 조회 -->
+
 	<select id="selectRouteById" parameterType="String" resultMap="routeUsers">
 		select * from route r join users u on u.user_id=r.user_id where r.user_id = #{userId}
+	</select>
+	 
+	
+	
+	<!-- 마이페이지에서 아이디로 조회 -->
+	<select id="selectRouteByIdForMypage" parameterType="Map" resultMap="routeUsers">
+		select *
+		from(select sub.*,rownum rnum from
+		(select * from route r
+		join users u
+		on u.user_id=r.user_id
+		where r.user_id = #{userId}
+		order by
+		route_no desc) sub)
+		where rnum
+		between
+		#{page}*3-2 and #{page}*3
 	</select>
 
 

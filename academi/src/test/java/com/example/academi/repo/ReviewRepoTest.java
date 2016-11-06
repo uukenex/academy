@@ -156,12 +156,16 @@ public class ReviewRepoTest {
 	public void countingTest() {
 		rrepo.pageCount();
 	}
+	@Test
+	public void countingTestbyId() {
+		rrepo.pageCountbyId("ㅋㅌㅊ");
+	}
+	
 
 	// 내 후기보기 테스트
 	@Test
 	public void selectReviewTest() {
-		String userId = "dd";
-		List<Review> review = rrepo.selectReviewById(userId);
+		List<Review> review = rrepo.selectReviewById("ㅋㅌㅊ", 1);
 		assertThat(review, is(notNullValue()));
 		logger.trace("review : {}", review);
 

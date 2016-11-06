@@ -215,9 +215,12 @@ public class ReviewRepoImpl implements ReviewRepo{
 	}
 	
 	@Override
-	public List<Review> selectReviewById(String userId) {
+	public List<Review> selectReviewById(String userId, int page) {
 		String statement = NAME_SPACE+"selectReviewById";
-		return template.selectList(statement,userId);
+		Map <String,Object> map = new HashMap<>();
+		map.put("userId", userId);
+		map.put("page", page);
+		return template.selectList(statement,map);
 		
 	}
 	@Override
@@ -225,6 +228,12 @@ public class ReviewRepoImpl implements ReviewRepo{
 		// TODO Auto-generated method stub
 		String statement = NAME_SPACE+"selectNo";
 		return template.selectOne(statement);
+	}
+	@Override
+	public int pageCountbyId(String userId) {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE+"pageCountbyId";
+		return template.selectOne(statement,userId);
 	}
 	
 

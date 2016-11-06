@@ -74,26 +74,46 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/session/mypageRoute", method = RequestMethod.GET)
-	public String mypageRoute(Model model, HttpSession session, HttpServletRequest request) {
+	public String mypageRoute(Model model, HttpSession session, @RequestParam int page) {
 
 		Users user = (Users) session.getAttribute("Users");
 		String userId = user.getUserId();
+		
+		int pageCount = rs.pageCountbyId(userId);
+		int totalPage = pageCount / 3 + 1;
+		if(pageCount % 3 == 0){
+			totalPage -=1;
+		}
+		if(pageCount == 0){
+			totalPage = 0;
+		}
+		
+		List<Route> result = rs.selectRouteByIdForMypage(userId, totalPage);
 
-		List<Route> result = rs.selectRouteById(userId);
-
+		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("Route", result);
 		logger.trace("결과 값  {} :", result);
 		return "/session/information/myplan";
 	}
-
+	//selectRouteByIdForMypage
 	@RequestMapping(value = "/session/mypageReview", method = RequestMethod.GET)
-	public String mypageReview(Model model, HttpSession session, HttpServletRequest request) {
-
+	public String mypageReview(Model model, HttpSession session,
+			@RequestParam int page) {
 		Users user = (Users) session.getAttribute("Users");
 		String userId = user.getUserId();
+		
+		int pageCount = rs.pageCountbyId(userId);
+		int totalPage = pageCount / 3 + 1;
+		if(pageCount % 3 == 0){
+			totalPage -=1;
+		}
+		if(pageCount == 0){
+			totalPage = 0;
+		}
+		
+		List<Review> result = reviewService.myPageReview(userId,page);
 
-		List<Review> result = reviewService.myPageReview(userId);
-
+		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("Review", result);
 		logger.trace("결과 값  {} :", result);
 		return "/session/information/mypost";

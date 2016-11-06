@@ -11,5 +11,8 @@ public int updateRoute(String routeName,String routeContent,String routeFull,int
 public int deleteRoute(int routeNo);
 //계획 보기 by id
 		public List<Route> selectRouteById(String userId);
+		
+		public List<Route> selectRouteByIdForMypage(String userId,int page);
 
+		public int pageCountbyId(String userId);
 }

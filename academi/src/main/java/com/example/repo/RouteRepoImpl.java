@@ -54,6 +54,20 @@ public class RouteRepoImpl implements RouteRepo {
 		return template.selectList(statement,userId);
 	}
 
-	
+	@Override
+	public List<Route> selectRouteByIdForMypage(String userId, int page) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("userId", userId);
+		map.put("page", page);
+		String statement = NAME_SPACE+"selectRouteByIdForMypage";
+		return template.selectList(statement,map);
+	}
+
+	@Override
+	public int pageCountbyId(String userId) {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE+"pageCountbyId";
+		return template.selectOne(statement,userId);
+	}
 
 }
