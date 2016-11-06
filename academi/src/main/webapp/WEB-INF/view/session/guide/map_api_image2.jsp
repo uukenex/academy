@@ -13,12 +13,12 @@
 </head>
 <body>
 	<!-- 이미지 지도를 표시할 div 입니다 -->
-	<div id="staticMap" style="width: 200px; height: 200px;"></div>
+	<div id="staticMap" style="width: 300px; height: 300px;"></div>
 
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a"></script>
 	<script>
-		
+	
 		// 이미지 지도에 표시할 마커입니다
 		// 이미지 지도에 표시할 마커를 아래와 같이 배열로 넣어주면 여러개의 마커를 표시할 수 있습니다 
 	
@@ -42,6 +42,7 @@
 		// 이미지 지도를 생성합니다
 		var staticMap = new daum.maps.StaticMap(staticMapContainer,
 				staticMapOption);
+		
 		</script>
 </body>
 </html>
