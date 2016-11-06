@@ -3513,7 +3513,9 @@
     	}
 
     	.sliderContainer {
-      		margin: 0 auto
+      		margin: 0 auto;
+      		margin-left: 2em;
+      		float: left;
     	}
     	
     	#slides img {
@@ -3549,7 +3551,8 @@
     	/* For larger displays */
     		@media (min-width: 1200px) {
       			.sliderContainer {
-        			width: 1170px
+        			/* width: 1170px; */
+        			width: 40%;
       			}
    			 }
    			 
