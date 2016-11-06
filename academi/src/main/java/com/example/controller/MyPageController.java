@@ -65,7 +65,12 @@ public class MyPageController {
 		us.updateUser(userId, userPass, userPhone, userEmail, userNick);
 		Users user = us.login(userId);
 		session.setAttribute("Users", user);
-		return "/session/information/inform_change";
+		
+		if(userId.length()>13){
+			return "/session/information/facebook_inform_change";
+		}else{
+			return "/session/information/inform_change";
+		}	
 	}
 
 	@RequestMapping(value = "/session/mypageRoute", method = RequestMethod.GET)

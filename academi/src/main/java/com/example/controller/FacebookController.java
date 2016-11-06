@@ -36,6 +36,14 @@ public class FacebookController {
 		model.addAttribute("fName", fName);
 		return "nonsession/login/facebook_login";
 	}
+	
+	@RequestMapping(value = "/directFacebooklogin", method = RequestMethod.GET)
+	public String facebookLogin2(Model model, @RequestParam String fId, @RequestParam String fName) {
+		model.addAttribute("fId", fId);
+		model.addAttribute("fName", fName);
+		return "nonsession/login/directfacebook_login";
+	}
+
 
 	@RequestMapping("/checkfId")
 	public @ResponseBody int checkId(@RequestParam String fId) {
@@ -56,6 +64,21 @@ public class FacebookController {
 		}
 		return "logintest";
 	}
+	
+	@RequestMapping(value = "/directFloginUser", method = RequestMethod.POST)
+	public String loginUser2(Model model, HttpServletRequest request, HttpSession session) {
+		String userId = request.getParameter("facebookId");
+		Users user = us.login(userId);
+		String forPage = (String) session.getAttribute("forPage");
+		if (user.getUserId().equals(userId)) {
+			session.setAttribute("Users", user);
+			model.addAttribute("message", "어서오세요");
+			model.addAttribute("userId", userId);
+			
+		}
+		return forPage;
+	}
+
 
 	@RequestMapping(value = "/fjoinOk", method = RequestMethod.POST)
 	public String join(Model model, @RequestParam String id, @RequestParam String password, @RequestParam String name,

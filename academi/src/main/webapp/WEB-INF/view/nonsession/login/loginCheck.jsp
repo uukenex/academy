@@ -151,7 +151,7 @@ fieldset {
 								}else{
 									
 									
-									window.location.replace('/facebooklogin?fId='+fId+'&fName='+fName);
+									window.location.replace('/directFacebooklogin?fId='+fId+'&fName='+fName);
 									console.log(fId);
 								}
 							},
@@ -198,6 +198,10 @@ fieldset {
 			document.getElementById('fb-root').appendChild(e);
 		}());
 		
-		
+		$("#id").on("keyup", function() {
+			 if($("#id").val().length>12){ 
+				$(this).val($(this).val().substring(0,12));
+			 } 
+		})
 	</SCRIPT>
 </html>

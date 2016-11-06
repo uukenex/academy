@@ -23,7 +23,7 @@
 				<c:url value="/mainpage" var="mainpage" />
 				<li><a href="${mainpage }">Home</a></li>
 				<c:url value="/login" var="login" />
-				<%if(session.getAttribute("Users") != null){ %>
+				<c:if test="${!empty Users.userId }">
 				<li><a href="#"
 							onclick="window.open('/logout', 'win1',
 									'width=0, height=0');"
@@ -31,15 +31,14 @@
 				<c:url value="/mypageMain" var="mypageMain" />
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
-				
-				<%}else{%>
+				</c:if>
+				<c:if test="${empty Users.userId}">
 				<li><a href="#"
 							onclick="window.open('/login', 'win1',
 									'width=550, height=480');"
 									onkeypress="this.onclick()">Log In</a></li>
 								<c:url value="/mypageMain" var="mypageMain" />
 				
-				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
 				<c:url value="/join" var="join" />
 				<li>
@@ -49,7 +48,7 @@
 						회원 가입
 					</a>
 				</li>
-				<%} %>			
+				</c:if>	
 
 			</ul>
 			<a href="#" class="close">Close</a>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dto.Users;
 import com.example.service.UserService;
 
 @Controller
@@ -61,8 +62,13 @@ public class BasicController {
 	}
 	
 	@RequestMapping("/informChange")
-	public String inform_change(Model model) {
+	public String inform_change(Model model, HttpSession session) {
+		Users user = (Users) session.getAttribute("Users");
+		if(user.getUserId().length()>12){
+			return "session/information/facebook_inform_change";
+		}else{
 		return "session/information/inform_change";
+		}
 	}
 	
 	@RequestMapping("/mapRightMenu")

@@ -198,6 +198,11 @@ fieldset {
 			document.getElementById('fb-root').appendChild(e);
 		}());
 		
-		
-	</SCRIPT>
+		//글자수 길이 최대 12글자
+		$("#id").on("keyup", function() {
+			 if($("#id").val().length>12){ 
+				$(this).val($(this).val().substring(0,12));
+			 } 
+		})
+</script>
 </html>

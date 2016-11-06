@@ -13,7 +13,7 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$(document).on("ready", function() {
-			alert("${userId}님 ${message }");
+			alert("${Users.userNick}님 ${message }");
 			<% session.removeAttribute("message");%>
 			 window.opener.location.reload(); 
 			self.close();

@@ -36,20 +36,12 @@
 								<table>
 								
 									<tr>
-										<td><input type="text"  value="${Users.userId }" name="changeId" readonly></td>
+										<td><input type="hidden"  value="${Users.userId }" name="changeId" readonly>
+										 <input type="hidden" value="${Users.userPass }" id="currentPass" name="currentPass">
+										 <input type="hidden" name=changePass id=changePass></td>
 									</tr>
 									<tr>
-										<th rowspan="3">비밀번호 변경</th>
-										<td>현재 비밀번호 : <input type="password" placeholder="현재 비밀번호 입력" id="currentPass" name="currentPass"><b> ※변경시 필수 입력사항</b></td>
-									</tr>
-									<tr>
-										<td>신규 비밀번호 : <input type="password" placeholder="변경 할 비밀번호 입력" name=changePass id=changePass></td>
-									</tr>
-									<tr>
-										<td>비밀번호 확인 : <input type="password" placeholder="비밀번호 확인" id=changePassCk></td>
-									</tr>
-									<tr>
-										<th>이  름</th>
+										<th>이름 : </th>
 										<td><input type="text" value="${Users.userName }" readonly></td>
 									</tr>
 									<tr>
@@ -97,19 +89,11 @@
 		$("#myform").on({
 			"submit" : function(e){
 				e.preventDefault();
-				if($("#changePassCk").val() == $("#changePass").val()){
-					if($("#currentPass").val()== "${Users.userPass }"){
 						if($("#changeNick").val()!='' && checkVal==false){
 							alert("중복확인을 해주세요");
 							}else{
 								this.submit();
 							}
-					}else{
-						alert("현재 비밀번호를 확인하세요.")
-					}
-				}else{
-					alert("비밀번호와 비밀번호 확인의 값이 다릅니다.");
-				}
 			}
 				
 		});
