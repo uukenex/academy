@@ -128,19 +128,6 @@ public class NoticeController {
 		return "redirect:/noticeView?commentNo="+cs.currentNo();
 	}
 
-	// 쓰던 메인
-	@RequestMapping("/mainpage2")
-	public String mainpage(Model model) {
-		return "nonsession/mainpage/mainPage";
-	}
-
-	
-	
-	
-	
-	
-	
-
 	
 	//검색기능(자유게시판) ajax 카테고리와 검색키워드를 받아옴
 	@RequestMapping(value="/search2",method=RequestMethod.POST)

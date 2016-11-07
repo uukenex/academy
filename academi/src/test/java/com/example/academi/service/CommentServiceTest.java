@@ -134,4 +134,13 @@ public class CommentServiceTest {
 	public void paging() {
 		cService.noticePageCount();
 	}
+	
+	@Test
+	public void top5test1() {
+		cService.selectNoticeTop5();
+	}
+	@Test
+	public void top5test2() {
+		cService.selectFreeTop5();
+	}
 }

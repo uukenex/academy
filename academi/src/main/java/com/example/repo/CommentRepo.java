@@ -42,5 +42,10 @@ public interface CommentRepo {
 	public int pageCount(String commentCategory);
 	
 	public int selectNo();
+	
+	public List<Comments> selectNoticeTop5();
+	
+	public List<Comments> selectFreeTop5();
+	
 
 }

@@ -117,5 +117,15 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		return crepo.selectNo();
 	}
+	@Override
+	public List<Comments> selectNoticeTop5() {
+		// TODO Auto-generated method stub
+		return crepo.selectNoticeTop5();
+	}
+	@Override
+	public List<Comments> selectFreeTop5() {
+		// TODO Auto-generated method stub
+		return crepo.selectFreeTop5();
+	}
 
 }

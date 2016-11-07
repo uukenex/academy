@@ -122,4 +122,14 @@ public class CommentRepoTest {
 		crepo.updateCommentCount(1);
 	}
 	
+	@Test
+	public void top5test1(){
+		crepo.selectNoticeTop5();	
+	}
+	@Test
+	public void top5test2(){
+		crepo.selectFreeTop5();
+	}
+	
+	
 }
