@@ -614,13 +614,13 @@
 				cursor: pointer;
 				display: inline-block;
 				font-family: "Nanum Gothic";
-				font-size: 1em;
+				font-size: 1.1em;
 				font-weight: 700;
 				float: right;
 				height: 1.75em;
 				letter-spacing: 0.075em;
-				line-height: 1.75em;
-				padding: 0.2 0.7em;
+				line-height: 0.9em;
+				padding: 0.2em 0.7em;
 				text-align: right;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -671,6 +671,8 @@
 				background-color: #F5696A;
 				color: #FFFFFF;
 			}
+			
+			
 				
 			/* Style the tab content */
 				.day_tabContent {

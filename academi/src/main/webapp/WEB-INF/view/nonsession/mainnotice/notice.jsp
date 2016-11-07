@@ -42,8 +42,8 @@
 					<!-- Board Body part -->
 					<div class="8u 12u(mobile) important(mobile)">
 						<section class="middle-content">
-							<h2>공 지 사 항</h2>
-							<h3>현재 접속 Nick : "${Users.userNick }"</h3>
+							<h2 class="board_part_title">공 지 사 항</h2>
+							<%-- <h3>현재 접속 Nick : "${Users.userNick }"</h3> --%>
 							<ul id="writeNsearchBar">
 								<li>
 									
@@ -75,7 +75,7 @@
 										<col width="20%" />
 										<col width="10%" />
 									</colgroup>
-									<thead>
+									<thead id="board_table_thead">
 									<tr>
 										<th scope="col">글번호</th>
 										<th scope="col">제목</th>

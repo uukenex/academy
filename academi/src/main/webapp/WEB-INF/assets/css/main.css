@@ -2583,6 +2583,11 @@
 				#nav > ul > li.active {
 					border-color: rgba(192, 192, 192, 0.35);
 				}
+				
+				#nav > ul > li:HOVER {
+					background-color: #F5696A;
+					color: #FFFFFF;
+				}
 
 				#nav > ul > li > a, #nav > ul > li > span {
 					display: block;
@@ -3562,21 +3567,26 @@
 
 	/* font-family, font-size */
 	
-		.middle-content h2{
-			font-family: 'Jeju Gothic';
+		.middle-content h2.board_part_title{
+			display: inline-block;
+			font-family: 'Nanum Pen Script';
 			font-weight: bold;
-			color: #17375E;
+			color: #3d4449;
 			margin-top: 1em;
+			border-bottom: 2px solid #f56a6a;
 		}
 		
 		.boardSection h2 {
-			font-size: 3em;
+			display: inline-block;
+			font-size: 2em;
 			font-weight: bold;
-			font-family: 'Jeju Hallasan';
-			color: #17375E;
+			font-family: 'Nanum Gothic';
+			color: #3d4449;
 			margin-top: 0.5em;
 			margin-bottom: 1em;
 			text-align: center;
+			border-bottom: 2px solid #f56a6a;
+			padding-bottom: 0.2em;
 		}
 	
 	/* .boardPage-Wrapper */
@@ -3598,13 +3608,21 @@
 		ul.link-list li a {
 			font-family: 'Jeju Gothic';
 			font-size: 1em;
-			color: #17375E;
+			color: #3d4449;
 		}
 		
 		ul.link-list li a:hover {
 			font-family: 'Jeju Gothic';
 			font-size: 1em;
-			color: red;
+			color: #F5696A;
+		}
+		
+		ul.link-list li a#current {
+			font-family: 'Jeju Gothic';
+			font-size: 1em;
+			color: #F5696A;
+			border-bottom: 1px solid #F5696A;
+			padding-bottom: 0.5em;
 		}
 		
 		ul.link-list li:first-child {
@@ -3629,17 +3647,75 @@
 
 /* Button Style */
 		#searchBtn {
-			font-size: 0.75em;
-			float: right;
-			margin-right: 2em;
-			margin-bottom: 3em;
+			-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: transparent;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1em;
+				font-weight: 700;
+				float: right;
+				height: 1.8em;
+				letter-spacing: 0.075em;
+				/* line-height: 1.8em; */
+				padding: 0.2em 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-left: 0.5em;
 		}
 		
-		.writeBoard {
-			font-size: 0.75em;
-			float: left;
-			margin-right: 2em;
-			margin-bottom: 3em;
+		#searchBtn:HOVER {
+			background-color: #f56a6a;
+				color: #323232;
+		}
+		
+		input[type='button'].writeBoard, input[type='submit'].writeBoard {
+			-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: #FFFFFF;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1em;
+				font-weight: 700;
+				float: left;
+				height: 1.8em;
+				letter-spacing: 0.075em;
+				/* line-height: 1.75em; */
+				padding: 0.2em 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-left: 0.5em;
+		}
+		
+		.writeBoard:HOVER, input[type='submit'].writeBoard:HOVER {
+			background-color: #f56a6a;
+				color: #323232;
 		}
 		
 	/* Board Table Style */
@@ -3659,6 +3735,12 @@
 		
 		.link-list i {
 			margin-right: 0.5em;
+		}
+		
+		table thead#board_table_thead {
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			background-color: #eee;
 		}
 		
 	/* Desktop + Tablet */
@@ -3743,22 +3825,39 @@
 		}
 		
 		input.boardButtonStyle3 {
-			margin: 0 0.5em 0 0;
-			padding: 0.3em 0.5em 0.3em 0.5em;
-			font-family: 'Nanum Gothic';
-			font-size: 1.2em;
-			background: #353849;
-			color: #FFFFFF;
+			-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: transparent;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1.1em;
+				font-weight: 700;
+				float: right;
+				height: 2.5em;
+				letter-spacing: 0.075em;
+				line-height: 0.9em;
+				padding: 0.2em 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-right: 1.5em;
 		}
 		
 		input.boardButtonStyle3:hover {
-			margin: 0 0.5em 0 0;
-			padding: 0.3em 0.5em 0.3em 0.5em;
-			font-family: 'Nanum Gothic';
-			font-size: 1.2em;
-			font-weight: bold;
-			background: #265A9A;
-			color: #FFFFFF;
+			background-color: #f56a6a;
+				color: #323232;
 		}
 		
 		.boardButtonList li {

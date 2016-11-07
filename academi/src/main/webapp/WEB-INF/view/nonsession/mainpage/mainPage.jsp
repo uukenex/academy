@@ -188,10 +188,10 @@
 								    
 								    
 								    <!-- Main board view part -->
-								    	<hr id="best_posts_hr">
+								    	<hr id="mainpage_divide_hr">
 								    	<div id="mainpage_board_view">
 								    		<h3 class="part_title_h3">게시판</h3>
-								    		<section class="mainpage_board_features">
+								    		<section class="mainpage_board_features" style="padding-top: 0px">
 								    			<article>
 								    				<h4>공지사항</h4>
 								    				<ul>
@@ -200,7 +200,7 @@
 								    					<li>공지사항 3</li>
 								    					<li>공지사항 4</li>
 								    					<li>
-								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>
 								    				</ul>
 								    			</article>
@@ -212,7 +212,7 @@
 									    				<li>Q & A 3</li>
 									    				<li>Q & A 4</li>
 									    				<li>
-								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>
 								    				</ul>
 								    			</article>
@@ -224,13 +224,63 @@
 								    					<li>자유 게시판 3</li>
 								    					<li>자유 게시판 4</li>
 								    					<li>
-								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>
 								    				</ul>
 								    			</article>
 								    		</section>
 								    	</div>
-								    	<hr id="best_posts_hr">
+								    	
+								    	<hr id="mainpage_divide_hr">
+								    	<div id="mainpage_route_view">
+								    		<h3 class="part_title_h3">방금 등록된 일정</h3>
+								    		<section class="mainpage_route_features" style="padding-top: 0px">
+								    			<article>
+								    				<h4>최근 경로 1</h4>
+								    				<ul>
+								    					<li>
+								    						<a href="#"><img src="/images/cloud.jpg"></a>
+								    					</li>
+								    					<li>
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    			<article>
+								    				<h4>최근 경로 2</h4>
+								    				<ul>
+								    					<li>
+								    						<a href="#"><img src="/images/cloud.jpg"></a>
+								    					</li>
+								    					<li>
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    			<article>
+								    				<h4>최근 경로 3</h4>
+								    				<ul>
+								    					<li>
+								    						<a href="#"><img src="/images/cloud.jpg"></a>
+								    					</li>
+								    					<li>
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    			<article>
+								    				<h4>최근 경로 4</h4>
+								    				<ul>
+								    					<li>
+								    						<a href="#"><img src="/images/cloud.jpg"></a>
+								    					</li>
+								    					<li>
+								    						<input type="button" value="More" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    		</section>
+								    	</div>
 								</div>
 								
 							</div>

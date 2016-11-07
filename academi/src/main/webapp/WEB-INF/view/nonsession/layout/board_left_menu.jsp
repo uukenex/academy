@@ -14,27 +14,27 @@
 			<ul class="link-list">
 				<c:url value="/notice?page=1" var="notice"></c:url>
 				<li>
-					<a href="${notice }">
+					<a href="${notice }" class="noticeBoard" id="current">
 						<i class="fa fa-bullhorn"></i>
 						공 지 사 항
 					</a>
 				</li>
 				<c:url value="/qna?page=1" var="qna" />
 				<li>
-					<a href="${qna }">
+					<a href="${qna }" class="qnaBoard">
 						<i class="fa fa-hand-paper-o"></i>
 						Q & A
 					</a>
 				</li>
 				<c:url value="/free?page=1" var="free"/>
 				<li>
-					<a href="${free }">
+					<a href="${free }" class="freeBoard">
 						<i class="fa fa-comments-o"></i>
 						자 유 게 시 판
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="#" class="howuseBoard">
 						<i class="fa fa-child"></i>
 						사이트 이용방법
 					</a>

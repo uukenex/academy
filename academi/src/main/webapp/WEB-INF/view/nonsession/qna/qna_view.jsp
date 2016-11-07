@@ -91,7 +91,7 @@
 											</tr>
 											<tr>
 												<th colspan="2">
-													<input type="button" value="답변하기" class="qnaAnswerButton">
+													<input type="button" value="답변하기" class="boardButtonStyle3">
 												</th>
 											</tr>
 										</table>
