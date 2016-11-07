@@ -22,6 +22,7 @@
   					<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
@@ -52,16 +53,16 @@
 <nav id="nav">
 	<ul class="list">
 		<c:url value="/mainpage" var="mainpage"/>
-		<li><a href="${mainpage }">Home</a></li>
+		<li><a href="${mainpage }">홈</a></li>
 		
-		<li><a href='/mapMain'>지도 만들기</a></li>
+		<li><a href='/mapMain'>일정 만들기</a></li>
 		
-		<li><a href="/post?page=1">후기 등록</a></li>
+		<li><a href="/post?page=1">여행 후기</a></li>
 		
-		<li><a href="/session/myPhoto?userId=${Users.userId }&folderName">Photo Book</a>
+		<li><a href="/session/myPhoto?userId=${Users.userId }&folderName">포토북</a>
 		</li>
 		<c:url value="/notice?page=1" var="notice" />
-		<li class="dropMenuLi"><a href="${notice }">Board</a>
+		<li class="dropMenuLi"><a href="${notice }">게시판</a>
 			<ul>
 				<li><a href="${notice }">공지사항</a></li>
 				<c:url value="/qna?page=1" var="qna" />
