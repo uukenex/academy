@@ -849,9 +849,17 @@
 		
 		
 		
+		if('${!empty dbcart}' =='true')
+		{
+			console.log("/addDB  접속");
+			var delurl='/deleteCart';
+		}
+		else{
+			console.log("/add  접속");
+			var delurl='/deleteDBCart';
+		}
 		
 		
-		<c:url value="/deleteCart" var="deleteCart" />
 			$(document).on("click",".close",function() {
 				//글씨나 div를 넣어주는경우 한번씩 더실행할것
 				
@@ -865,11 +873,32 @@
 					//여기서 ajax 삭제처리 해주어야함
 					$.ajax({
 						type:"post",
-						url:"${deleteCart}",
+						url:delurl,
 						data:{
 							number:number
 						},
 						success:function(res){
+							var html="<div id='sortWrap'>" ;
+							for(var i=0;i<res[0].length;i++){
+							html+="<div id=data"+i+" data-order="+i+">♬";
+							html+=res[0][i].title+"♬";
+							html+=res[0][i].address;
+							html+="<img src='/images/delete.png' style='width:25px; height:25px;' class='close'>";
+							html+="</div>";
+							}
+							html+="</div>";
+							$("#result").html(html);
+							
+							$("#sortWrap").sortable({
+								axis: "y",
+								containment: "parent",
+								update: function (event, ui) {
+									var order = $(this).sortable('toArray', {
+										attribute: 'data-order'
+									});
+									console.log(order);
+								}
+							});
 								target.remove();
 								var routeHTML="";
 								
