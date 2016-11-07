@@ -602,12 +602,6 @@
 						type:"post",
 						url:"/getSession",
 						success:function(res){
-							
-							
-							
-							console.log(res[1]);
-							console.log('res[2]');
-							console.log(res[2]);
 							var routeHTML="";
 							
 							$("#bestRouteSection")[0].innerHTML="";
@@ -851,12 +845,12 @@
 		
 		if('${!empty dbcart}' =='true')
 		{
-			console.log("/addDB  접속");
-			var delurl='/deleteCart';
+			console.log("/deleteDB  접속");
+			var delurl='/deleteDBCart';
 		}
 		else{
-			console.log("/add  접속");
-			var delurl='/deleteDBCart';
+			console.log("/delete  접속");
+			var delurl='/deleteCart';
 		}
 		
 		

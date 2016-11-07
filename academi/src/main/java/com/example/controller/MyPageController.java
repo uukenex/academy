@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.controller.UserController.MyHash;
 import com.example.dto.PhotoBook;
 import com.example.dto.Review;
 import com.example.dto.Route;
@@ -44,11 +47,14 @@ public class MyPageController {
 	public String updateUser(Model model, HttpServletRequest request, HttpSession session) {
 		String userId = request.getParameter("changeId");
 		String userPass = request.getParameter("changePass");
+		MyHash ht = new MyHash();
+		userPass = ht.testMD5(userPass);
 		String userPhone = request.getParameter("changePhone");
 		String userEmail = request.getParameter("changeEmail");
 		String userNick = request.getParameter("changeNick");
 		if (userPass == "") {
 			userPass = request.getParameter("currentPass");
+			userPass = ht.testMD5(userPass);
 		}
 		if (userPhone == "") {
 			userPhone = request.getParameter("currentPhone");
@@ -181,5 +187,27 @@ public class MyPageController {
 		else if (winName.equals("shareId4"))
 			result = ps.share4up(userId, shareId, folderName);
 		return result;
+	}
+	
+	class MyHash {
+		public String testMD5(String str) {
+			String md5Str = "";
+			try {
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				md.update(str.getBytes());
+				byte byteData[] = md.digest();
+				StringBuffer sb = new StringBuffer();
+				// byte code를 hex format으로 변경
+				for (int i = 0; i < byteData.length; i++) {
+					sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+				}
+				md5Str = sb.toString();
+
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+				md5Str = null;
+			}
+			return md5Str;
+		}
 	}
 }

@@ -22,7 +22,7 @@ import com.example.config.ApplicationConfig;
 import com.example.dto.CommentReply;
 import com.example.dto.Review;
 import com.example.service.ReviewService;
-@Transactional
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class ReviewServiceTest {
@@ -50,13 +50,13 @@ public class ReviewServiceTest {
 		String reviewContent8=null;
 		String reviewContent9=null;
 		String reviewImage=null;
-		int routeNo = 2;
+		int routeNo = 92;
 		String userId = "dd";
 		rs.insertReview(reviewTitle, reviewContent0,reviewContent1,
 				 reviewContent2,reviewContent3,
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,routeNo, userId);
+				reviewContent8, reviewContent9,routeNo,reviewImage, userId);
 	}
 
 	// 리스트
@@ -86,11 +86,11 @@ public class ReviewServiceTest {
 		String reviewContent8=null;
 		String reviewContent9=null;
 		String reviewImage=null;
-		rs.updateReview(41, "바뀜?",reviewContent0,reviewContent1,
+		rs.updateReview(325, "바뀜?",reviewContent0,reviewContent1,
 				 reviewContent2,reviewContent3,
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,  2);
+				reviewContent8, reviewContent9,reviewImage,  92);
 	}
 
 	// 삭제 -댓글까지 지워지도록 해야함
