@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td><input type="hidden" value="${Route.routeNo }">
-			<a href="/route?routeNo=${Route.routeNo }">여행 계획 보기</a>
+			<a href="/routeupdate?routeNo=${Route.routeNo }">여행 계획 보기</a>
 			<input type="button" value="여행 계획 삭제"></td>
 		</tr>
 	</table>
