@@ -1406,7 +1406,7 @@ public class MapAPIController {
 	/// deleteCart
 
 		@RequestMapping(value = "/deleteDBCart", method = RequestMethod.POST)
-		public @ResponseBody Object deleteDBcart(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> cart,
+		public @ResponseBody Object deleteDBcart(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart,
 				HttpSession session, Model model, @RequestParam String number) {
 
 			logger.trace("deleteCart");
@@ -1414,18 +1414,20 @@ public class MapAPIController {
 			boolean ok = true;
 			// 카트에들어있는것을 비교해서 없으면 true를 반환함
 			number = number.replace("data", "");
-			cart.remove(Integer.parseInt(number));
-			Object obj = session.getAttribute("cart");
+			
+			dbcart.remove(Integer.parseInt(number));
+			
+			Object obj = session.getAttribute("dbcart");
 			logger.trace("세션 cart:{}", obj);
 			/////////// 여기하는중
-			for (int i = 0; i < cart.size(); i++)
-				logger.trace("{}", cart.get(i).getAddress());
+			for (int i = 0; i < dbcart.size(); i++)
+				logger.trace("{}", dbcart.get(i).getAddress());
 
 			List<Integer> pos = new ArrayList<>();
 			List<String> cityList = new ArrayList<>();
 			String city = "";
-			for (int z = 0; z < cart.size(); z++) {
-				String route = cart.get(z).getAddress();
+			for (int z = 0; z < dbcart.size(); z++) {
+				String route = dbcart.get(z).getAddress();
 				int cnt = 0;
 				for (int c = 0; c < route.length(); c++) {
 					if (route.charAt(c) == ' ') {
@@ -1527,7 +1529,7 @@ public class MapAPIController {
 		public String routeupdate(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
 				@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
 
-			status.setComplete();
+			
 			Route result = rs.selectRouteByNo(routeNo);
 			String str = result.getRouteFull();
 			int count = 0;
