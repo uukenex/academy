@@ -64,6 +64,12 @@
 												<input type="button" class="postButtonStyle2" value="내 경로 가져오기" onclick="mapOpen()">
 											</td>
 										</tr>
+										<tr class="routeTitleTr">
+											<td colspan="2">
+												<input type="text" id="routeTitleImage" name="routeTitleImage" disabled="disabled">
+												<input type="button" class="postButtonStyle2" value="메인사진 등록하기" onclick="postMainImageOpen()">
+											</td>
+										</tr>
 										<tr class="write_days_editor">
 											<td colspan="2">
 												<div id="none0">
