@@ -21,6 +21,9 @@
 		<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
     				base="c:/Temp/" 
  				   	webAppMount="/photo_upload"></PreResources> 				   	
+ 		<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
+    				base="c:/Temp/" 
+ 				   	webAppMount="/post_main"></PreResources>
     </Resources>
     
 </Context>

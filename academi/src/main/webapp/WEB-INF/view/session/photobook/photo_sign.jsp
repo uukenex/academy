@@ -158,7 +158,7 @@ z-index: 1;
     </form>
     <output id="result"></output>
 </c:if>
-<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
+<c:if test="${Users.userId!=curUserId && empty shareFolder  }">
 <div style="height: 5em;"></div> 
 	<div style="text-align: center;">
 	<h1>권한이 없습니다. 공유신청을 하세요!</h1>

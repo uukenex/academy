@@ -1406,7 +1406,7 @@ public class MapAPIController {
 	/// deleteCart
 
 		@RequestMapping(value = "/deleteDBCart", method = RequestMethod.POST)
-		public @ResponseBody Object deleteDBcart(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> cart,
+		public @ResponseBody Object deleteDBcart(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart,
 				HttpSession session, Model model, @RequestParam String number) {
 
 			logger.trace("deleteCart");
@@ -1414,18 +1414,20 @@ public class MapAPIController {
 			boolean ok = true;
 			// 카트에들어있는것을 비교해서 없으면 true를 반환함
 			number = number.replace("data", "");
-			cart.remove(Integer.parseInt(number));
-			Object obj = session.getAttribute("cart");
+			
+			dbcart.remove(Integer.parseInt(number));
+			
+			Object obj = session.getAttribute("dbcart");
 			logger.trace("세션 cart:{}", obj);
 			/////////// 여기하는중
-			for (int i = 0; i < cart.size(); i++)
-				logger.trace("{}", cart.get(i).getAddress());
+			for (int i = 0; i < dbcart.size(); i++)
+				logger.trace("{}", dbcart.get(i).getAddress());
 
 			List<Integer> pos = new ArrayList<>();
 			List<String> cityList = new ArrayList<>();
 			String city = "";
-			for (int z = 0; z < cart.size(); z++) {
-				String route = cart.get(z).getAddress();
+			for (int z = 0; z < dbcart.size(); z++) {
+				String route = dbcart.get(z).getAddress();
 				int cnt = 0;
 				for (int c = 0; c < route.length(); c++) {
 					if (route.charAt(c) == ' ') {
@@ -1517,5 +1519,107 @@ public class MapAPIController {
 			objList.add(goodRoute);
 			objList.add(goodRouteFullListWrapReview);
 			return objList;
+		}
+		
+		
+		
+		
+		// 루트 불러오기(번호로)
+		@RequestMapping(value = "/routeupdate", method = RequestMethod.GET)
+		public String routeupdate(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
+				@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
+
+			
+			Route result = rs.selectRouteByNo(routeNo);
+			String str = result.getRouteFull();
+			int count = 0;
+			for (int c = 0; c < str.length(); c++) {
+				if (str.charAt(c) == '♬') {
+					count++;
+				}
+			}
+			int i = count / 5;
+			Goods goodss[] = new Goods[i];
+			for (int cnt = 0; cnt < i; cnt++) {
+				goodss[cnt] = new Goods();
+			}
+
+			String routeName[] = new String[i];
+			String routeX[] = new String[i];
+			String routeY[] = new String[i];
+			String routeAddr[] = new String[i];
+			String routeImg[] = new String[i];
+
+			i = 0;
+			StringTokenizer tokens = new StringTokenizer(str, "♬");
+			while (tokens.hasMoreTokens()) {
+				routeName[i] = tokens.nextToken();
+				goodss[i].setTitle(routeName[i]);
+				routeX[i] = tokens.nextToken();
+				goodss[i].setLatitude(Double.parseDouble(routeX[i]));
+				routeY[i] = tokens.nextToken();
+				goodss[i].setLongitude(Double.parseDouble(routeY[i]));
+				routeAddr[i] = tokens.nextToken();
+				goodss[i].setAddress(routeAddr[i]);
+				routeImg[i] = tokens.nextToken();
+				goodss[i].setImageUrl(routeImg[i]);
+				goodss[i].setCategory("여행");
+				i++;
+
+			}
+			List<String> latLng = new ArrayList<>();
+			List<String> center = new ArrayList<>();
+			String xyroute;
+			for (int y = 0; y < i; y++) {
+				String lat = routeX[y];
+				String lng = routeY[y];
+				xyroute = lat + "," + lng;
+				latLng.add(y, xyroute);
+				center.add(y, xyroute);
+
+			}
+
+			List<Integer> pos = new ArrayList<>();
+			List<String> cityList = new ArrayList<>();
+			String city = "";
+			Integer mapSize = null;
+			for (int z = 0; z < i; z++) {
+				String route = routeAddr[z];
+				// logger.trace("경로 불러오기!:{}", route);
+
+				int cnt = 0;
+				for (int c = 0; c < route.length(); c++) {
+					if (route.charAt(c) == ' ') {
+						pos.add(cnt);
+					}
+					cnt++;
+				}
+				city = route.substring(0, pos.get(0)).trim();
+				cityList.add(city);
+			}
+
+			// 중복값 제거
+			List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+			logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
+
+			if (uniqueItems.size() != 1) {
+				xyroute = "35.865415, 128.085319";
+				center.add(0, xyroute);
+				mapSize = 17;
+			} else {
+				mapSize = 13;
+			}
+
+			for (int cnt = 0; cnt < i; cnt++) {
+				dbcart.add(goodss[cnt]);
+			}
+
+			model.addAttribute("routeNo", routeNo);
+			model.addAttribute("routeName", result.getRouteName());
+			model.addAttribute("routeContent", result.getRouteContent());
+			model.addAttribute("latLng", latLng);
+			model.addAttribute("center", center);
+			model.addAttribute("mapSize", mapSize);
+			return "session/guide/map_main2";
 		}
 }

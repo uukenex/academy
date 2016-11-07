@@ -335,9 +335,6 @@
 			
 			if('${!empty dbcart}' =='true'){
 				$("#stored").attr("checked",true);
-				console.log('데이터가있음');
-				console.log('${cart}');
-				console.log('${dbcart}');
 
 			}
 			
@@ -602,12 +599,6 @@
 						type:"post",
 						url:"/getSession",
 						success:function(res){
-							
-							
-							
-							console.log(res[1]);
-							console.log('res[2]');
-							console.log(res[2]);
 							var routeHTML="";
 							
 							$("#bestRouteSection")[0].innerHTML="";
@@ -761,19 +752,8 @@
 				for (var i = 0; i < infowindows.length; i++) {
 					infowindows[i].close();
 				}
-				/////////
-				//DB처리//
-				/////////
-				if('${!empty dbcart}' =='true')
-				{
-					console.log("/addDB  접속");
-					var addurl='/addDB';
-				}
-				else{
-					console.log("/add  접속");
+				
 					var addurl='/add';
-				}
-					
 				$.ajax({
 						type:"post",
 						url:addurl,
@@ -849,15 +829,8 @@
 		
 		
 		
-		if('${!empty dbcart}' =='true')
-		{
-			console.log("/addDB  접속");
+		
 			var delurl='/deleteCart';
-		}
-		else{
-			console.log("/add  접속");
-			var delurl='/deleteDBCart';
-		}
 		
 		
 			$(document).on("click",".close",function() {

@@ -43,7 +43,7 @@ import com.example.service.UserService;
 @Controller
 public class ReviewController {
 	static Logger logger = LoggerFactory.getLogger(ReviewController.class);
-
+	private final String UPLOAD_DIR = "c:/Temp/";
 	@Autowired
 	UserService us;
 	@Autowired
@@ -175,8 +175,15 @@ public class ReviewController {
 
 	// 리뷰 글 쓰기
 	@RequestMapping(value = "/postWrite", method = RequestMethod.POST)
-	public String commentWrite(Model model, HttpServletRequest request, HttpSession session)
+	public String commentWrite(Model model, HttpServletRequest request, HttpSession session,MultipartFile file)
 			throws IllegalStateException, IOException {
+		
+		String fileName= System.currentTimeMillis() + file.getOriginalFilename();
+		File f = new File(UPLOAD_DIR + fileName);
+		file.transferTo(f);
+		
+		
+		
 		String routeNo = request.getParameter("routeNumber");
 		if(routeNo == ""){
 			routeNo ="0";
@@ -192,7 +199,7 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
-
+		String reviewImage = fileName;
 
 		List<String> strContent = new ArrayList<>();
 		if (reviewContent0 != null
@@ -249,7 +256,7 @@ public class ReviewController {
 
 		// 이미지의 경로가 저장되도록
 		rs.insertReview(reviewTitle, contentArr[0], contentArr[1], contentArr[2], contentArr[3], contentArr[4],
-				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], Integer.parseInt(routeNo), userId);
+				contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9], Integer.parseInt(routeNo),reviewImage, userId);
 
 		//루트 no를 통해 루트의 정보를 가져온다
 		Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));
@@ -410,7 +417,16 @@ public class ReviewController {
 
 	// 리뷰 수정하기
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
-	public String commentUpdate(Model model, HttpServletRequest request) {
+	public String commentUpdate(Model model, HttpServletRequest request,MultipartFile file) throws IllegalStateException, IOException {
+		String fileName="";
+		if(file.isEmpty()){
+			fileName = "";
+		}
+		else{
+		fileName= System.currentTimeMillis() + file.getOriginalFilename();
+		File f = new File(UPLOAD_DIR + fileName);
+		file.transferTo(f);
+		}
 		String reviewNo = request.getParameter("reviewNo");
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
@@ -423,7 +439,7 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
-		
+		String reviewImage = fileName;
 
 
 		List<String> strContent = new ArrayList<>();
@@ -481,7 +497,7 @@ public class ReviewController {
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		logger.trace("routeNo :{}",routeNo);
 		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, contentArr[0], contentArr[1], contentArr[2],
-				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],
+				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],reviewImage,
 				routeNo);
 		return "redirect:/postView?reviewNo=" + reviewNo;
 	}

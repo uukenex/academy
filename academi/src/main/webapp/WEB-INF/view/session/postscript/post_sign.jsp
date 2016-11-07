@@ -46,7 +46,7 @@
 							<h3 id="post_write_mainH3">여행 후기 작성</h3>
 							<c:url value="/postWrite" var="postWrite" ></c:url>
 	
-								<form id="frm" name="frm" action="${postWrite }" method="post">
+								<form id="frm" name="frm" action="${postWrite }" method="post" enctype="multipart/form-data">
 									
 									<table class="post_write_table">
 										<colgroup>
@@ -66,8 +66,9 @@
 										</tr>
 										<tr class="routeTitleTr">
 											<td colspan="2">
-												<input type="text" id="routeTitleImage" name="routeTitleImage" disabled="disabled">
-												<input type="button" class="postButtonStyle2" value="메인사진 등록하기" onclick="postMainImageOpen()">
+												<input type="file" accept="image/*" name="file" />
+												<!-- <input type="text" id="routeTitleImage" name="routeTitleImage" disabled="disabled">
+												<input type="button" class="postButtonStyle2" value="메인사진 등록하기" onclick="postMainImageOpen()"> -->
 											</td>
 										</tr>
 										<tr class="write_days_editor">

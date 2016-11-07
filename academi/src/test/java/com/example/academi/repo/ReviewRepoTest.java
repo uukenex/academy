@@ -22,7 +22,7 @@ import com.example.config.ApplicationConfig;
 import com.example.dto.Review;
 import com.example.repo.ReviewRepo;
 
-@Transactional
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 public class ReviewRepoTest {
@@ -58,10 +58,11 @@ public class ReviewRepoTest {
 		String reviewContent7 = null;
 		String reviewContent8 = null;
 		String reviewContent9 = null;
-		int routeNo = 2;
+		String reviewImage="";
+		int routeNo = 92;
 		String userId = "ㅋㅌㅊ";
 		rrepo.insertReview(reviewTitle, reviewContent, reviewContent1, reviewContent2, reviewContent3, reviewContent4,
-				reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9, routeNo, userId);
+				reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9, routeNo,reviewImage, userId);
 		int dirty = rrepo.selectNo();
 		logger.trace("더러웡~:{}", dirty);
 	}
@@ -80,11 +81,12 @@ public class ReviewRepoTest {
 		String reviewContent7 = null;
 		String reviewContent8 = null;
 		String reviewContent9 = null;
-		int routeNo = 2;
+		String reviewImage=null;
+		int routeNo = 324;
 		int reviewNo = 10;
 		rrepo.updateReview(reviewNo, reviewTitle, reviewContent, reviewContent1, reviewContent2, reviewContent3,
 				reviewContent4, reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9,
-				routeNo);
+				reviewImage,routeNo);
 	}
 
 	// 후기글 삭제 테스트 -서비스에서는 댓글도 함께지워야함

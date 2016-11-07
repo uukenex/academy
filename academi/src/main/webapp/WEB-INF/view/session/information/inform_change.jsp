@@ -40,7 +40,7 @@
 									</tr>
 									<tr>
 										<th rowspan="3">비밀번호 변경</th>
-										<td>현재 비밀번호 : <input type="password" placeholder="현재 비밀번호 입력" id="currentPass" name="currentPass"><b> ※변경시 필수 입력사항</b></td>
+									
 									</tr>
 									<tr>
 										<td>신규 비밀번호 : <input type="password" placeholder="변경 할 비밀번호 입력" name=changePass id=changePass></td>
@@ -98,15 +98,14 @@
 			"submit" : function(e){
 				e.preventDefault();
 				if($("#changePassCk").val() == $("#changePass").val()){
-					if($("#currentPass").val()== "${Users.userPass }"){
+					
+						console.log('${Users.userPass}');
 						if($("#changeNick").val()!='' && checkVal==false){
 							alert("중복확인을 해주세요");
 							}else{
 								this.submit();
 							}
-					}else{
-						alert("현재 비밀번호를 확인하세요.")
-					}
+					
 				}else{
 					alert("비밀번호와 비밀번호 확인의 값이 다릅니다.");
 				}
