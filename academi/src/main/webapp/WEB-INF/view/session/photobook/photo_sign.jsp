@@ -66,12 +66,64 @@ z-index: 1;
 </head>
 <body>
 
-<!-- Drop Menu Header -->
+	<!-- Drop Menu Header -->
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
 	<!-- Menu Bar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Photo Book Body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row" id="photoBook-wrapper">
+						
+						<c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
+						<c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
+						
+						<%-- 루트폴더 처리 --%>
+						<c:if test="${folderName=='..' }" >
+						 	<c:set var="folderName" value='.'></c:set>
+						</c:if>
+						
+						<%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
+						<c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
+						<h3>${curUserId }의 포토북</h3>
+							<c:url value="/photo" var="photo" />
+							<form id="frm">
+						    <p>
+						        <br />
+						        <input type="file" accept="image/*" id="fileLoader" multiple="multiple" />
+						        <label for="fileLoader" >사진 올리기</label>
+						        
+						        <input type="text" id="cntFiles" style="display: inline; width: 200px;" readonly="readonly"/>
+								<input type="button" id="fileSubmit" value="Upload"/>
+								<label for="fileSubmit">저장</label>
+								<c:if test="${empty folderName || folderName=='.' }">
+								<input type="button" id="newFolder" value="새폴더"/>
+								<label for="newFolder">새폴더</label>
+								</c:if>
+						    </p>
+						    </form>
+						    <output id="result"></output>
+						</c:if>
+						<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
+						<div style="height: 5em;"></div> 
+							<div style="text-align: center;">
+							<h1>권한이 없습니다. 공유신청을 하세요!</h1>
+							<input type="button" value="사진폴더 공유신청하기">
+							</div>
+						</c:if>
+					</div>
+					
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp" />
+				</div>
+			</div>
+		</div>
 				
-				
+<%-- 				
 <div style="height: 5em;"></div>
 
 
@@ -80,12 +132,12 @@ z-index: 1;
 <c:set value='<%=request.getParameter("userId") %>' var="curUserId"></c:set>
 <c:set var="folderName" value='<%=request.getParameter("folderName") %>'></c:set>
 
-<%-- 루트폴더 처리 --%>
+루트폴더 처리
 <c:if test="${folderName=='..' }" >
  	<c:set var="folderName" value='.'></c:set>
 </c:if>
 
-<%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
+현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함
 <c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
 <h3>${curUserId }의 포토북</h3>
 	<c:url value="/photo" var="photo" />
@@ -112,7 +164,7 @@ z-index: 1;
 	<h1>권한이 없습니다. 공유신청을 하세요!</h1>
 	<input type="button" value="사진폴더 공유신청하기">
 	</div>
-</c:if>
+</c:if> --%>
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>

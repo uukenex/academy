@@ -51,7 +51,7 @@
 										</colgroup>
 										<tr>
 											<th>제목</th>
-											<td><input type="text"  name="title" id="editorTitleWritter" 
+											<td class="inputTitle"><input type="text"  name="title" id="editorTitleWritter" 
 															placeholder="제목을 입력해주세요"></td>
 										</tr>
 										<tr>
@@ -112,6 +112,13 @@ $(function(){
     })
 })
 </script>
+
+<script>
+		var beforeBoard, nowBoard;
+		beforeBoard = document.getElementById("current");
+		beforeBoard.id = beforeBoard.id.replace("");
+		$(".freeBoard").attr('id', 'current');
+	</script>
 
 </body>
 </html>

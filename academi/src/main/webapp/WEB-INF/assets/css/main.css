@@ -3668,7 +3668,7 @@
 				float: right;
 				height: 1.8em;
 				letter-spacing: 0.075em;
-				/* line-height: 1.8em; */
+				line-height: 0.9em;
 				padding: 0.2em 0.7em;
 				text-align: right;
 				text-decoration: none;
@@ -3704,7 +3704,7 @@
 				float: left;
 				height: 1.8em;
 				letter-spacing: 0.075em;
-				/* line-height: 1.75em; */
+				line-height: 0.9em;
 				padding: 0.2em 0.7em;
 				text-align: right;
 				text-decoration: none;
@@ -3788,7 +3788,7 @@
     		margin-bottom: 0.2em;
     		margin-top: 0.2em;
     		height: 1px;
-    		border-top: dotted 0.7px #A5A5A5;
+    		border-top: dotted 0.7px #F5696A;
 		}
 		
 		#boardTitleHrStyle1:before, #boardTitleHrStyle1:after,
@@ -3852,7 +3852,7 @@
 				text-decoration: none;
 				text-transform: uppercase;
 				white-space: nowrap;
-				margin-right: 1.5em;
+				margin-left: 1em;
 		}
 		
 		input.boardButtonStyle3:hover {
@@ -3860,26 +3860,45 @@
 				color: #323232;
 		}
 		
-		.boardButtonList li {
+		ul.boardButtonList li {
 			display: inline;
 			float: right;
 			margin-left: 1em;
+			text-align: right;
 		}
 		
-		input[class='boardButtonStyle1'] {
-			position: relative;
-			display: inline-block;
-			border-radius: 20%;
-			padding: 0.5em 0.5em 0.5em 0.5em;
-			font-size: 0.75em;
-			color: #6F6F6F;
-			background-color: #f0f4f4;
-			cursor: pointer;
+		input[type='submit'].boardButtonStyle1 {
+			-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: transparent;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1.1em;
+				font-weight: 700;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 0.9em;
+				padding: 0.2em 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
 		}
 		
-		input[class='boardButtonStyle1']:hover {
-			background-color: #FFA7A7;
-			color: #474747;
+		input[type='submit'].boardButtonStyle1:hover {
+			background-color: #f56a6a;
+				color: #323232;
 		}
 		
 		.boardTitleSort {
@@ -3900,6 +3919,14 @@
 		
 		#boardReplyWritter {
 			margin-top: 3em;
+		}
+		
+		#boardReplyWritter table th, #boardReplyWritter table td {
+			vertical-align: middle;
+		}
+		
+		tbody#replyContentViewTableBody tr td.board_reply_button_view {
+			text-align: right;
 		}
 		
 		
@@ -3990,7 +4017,6 @@
 		
 		td.qnaSubmitButtonStyle input[type="submit"]{
 			float: right;
-			margin-right: 1em;
 		}
 		
 		.answerViewTable td#qnaWritterButton {
@@ -4013,11 +4039,11 @@
 		}
 	
 	/* Table */
-		.boardEditorTable {
+		table.boardEditorTable {
 			margin: 1em 1em;
 			margin-top: 3em;
 			background-color: #FFFFFF;
-			border: dotted 2px #A0A0A0;
+			border: dotted 1.5px #F5696A;
 		}
 		
 		
@@ -4039,7 +4065,7 @@
 			margin: 1em 1em;
 			margin-top: 3em;
 			background-color: #FFFFFF;
-			border: dotted 2px #A0A0A0;
+			border: dotted 1.5px #F5696A;
 		}
 		
 		.boardUpdateTable th {
@@ -4071,7 +4097,7 @@
 		
 	/* text & textarea */
 	
-		.editorTitleWritter {
+		form input[type='text'].editorTitleWritter {
 			width: 95%;
 		}
 		
@@ -4087,9 +4113,41 @@
 			text-align: right;
 		}
 		
-		.editorButtonStyle1 {
+		input[type='button'].editorButtonStyle1 {
+			-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: #FFFFFF;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Gothic";
+				font-size: 1.1em;
+				font-weight: 700;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 0.9em;
+				padding: 0.2em 0.7em;
+				text-align: right;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+		
 			margin-right: 1.5em;
 			margin-top: 1.5em;
+		}
+		
+		input[type='button'].editorButtonStyle1:HOVER {
+			background-color: #f56a6a;
+				color: #323232;
 		}
 		
 		.boardUpdateTable input[type='button'] {
@@ -4451,4 +4509,17 @@
 			padding: 0.3em 0.5em;
 			font-family: "Nanum Gothic";
 			font-weight: bold;
+		}
+		
+		
+		
+/* Photo Book CSS Style */
+
+	/* photoBook-wrapper */
+	
+		div#photoBook-wrapper {
+			padding-bottom: 2em;
+			border: 1px solid #F5696A;
+			border-radius: 3%;
+			margin-top: 2em;
 		}

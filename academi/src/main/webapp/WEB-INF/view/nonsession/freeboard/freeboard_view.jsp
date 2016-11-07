@@ -141,7 +141,7 @@
 								            			<fmt:formatDate value="${reply.replyDate }"
 														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 													</td>
-													<td colspan="2">
+													<td colspan="2" class="board_reply_button_view">
 														<c:choose>
 													 		<c:when test="${reply.userId==Users.userId }">
 													 		<input type="submit" value="수정" formaction="/session/replyUpdate"
@@ -293,6 +293,13 @@
 	<%session.removeAttribute("message");%>
 		}
 		});
+	</script>
+	
+	<script>
+		var beforeBoard, nowBoard;
+		beforeBoard = document.getElementById("current");
+		beforeBoard.id = beforeBoard.id.replace("");
+		$(".freeBoard").attr('id', 'current');
 	</script>
 	
 	

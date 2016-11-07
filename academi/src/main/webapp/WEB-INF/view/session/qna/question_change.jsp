@@ -132,5 +132,12 @@
 		    })
 		})
 		</script>
+		
+		<script>
+		var beforeBoard, nowBoard;
+		beforeBoard = document.getElementById("current");
+		beforeBoard.id = beforeBoard.id.replace("");
+		$(".qnaBoard").attr('id', 'current');
+	</script>
 </body>
 </html>
