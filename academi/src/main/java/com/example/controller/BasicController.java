@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,16 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dto.Comments;
 import com.example.dto.Users;
-import com.example.service.UserService;
+import com.example.service.CommentService;
 
 @Controller
 public class BasicController {
 	static Logger logger = LoggerFactory.getLogger(BasicController.class);
 
+	@Autowired
+	CommentService cs;
+	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String sayHello(Model model) {
 		return "showMessage";
@@ -75,6 +79,20 @@ public class BasicController {
 	public String mapRightMenu(Model model) {
 		return "session/guide/map_rightTab_menu";
 	}
+	
+	// 쓰던 메인
+	@RequestMapping("/mainpage2")
+	public String mainpage2(Model model) {
+		List<Comments> noticeTop5 = cs.selectNoticeTop5();
+		List<Comments> freeTop5 = cs.selectFreeTop5();
+		logger.trace("noticeTop5 : {}",noticeTop5);
+		logger.trace("FreeTop5 : {}",freeTop5);
+		
+		model.addAttribute("noticeTop5",noticeTop5);
+		model.addAttribute("free",freeTop5);
+		return "nonsession/mainpage/mainPage";
+	}
+
 	
 
 }

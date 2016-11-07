@@ -55,4 +55,8 @@ public interface CommentService {
 	
 	//가장 최신의 글번호를 가져옴
 	public int currentNo();
+	
+	public List<Comments> selectNoticeTop5();
+	
+	public List<Comments> selectFreeTop5();
 }

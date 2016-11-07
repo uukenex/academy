@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -175,6 +179,8 @@
 								
 								                    </div>
 								                </div>
+								                
+								                
 								            </div>
 								        </div>
 								        <!-- Bullet Navigator -->
@@ -195,10 +201,9 @@
 								    			<article>
 								    				<h4>공지사항</h4>
 								    				<ul>
-								    					<li>공지사항 1</li>
-								    					<li>공지사항 2</li>
-								    					<li>공지사항 3</li>
-								    					<li>공지사항 4</li>
+								    				<c:forEach var="notice" items="${noticeTop5 }">
+								    					<li><a href="#">- ${notice.commentName }</a></li>
+								    				</c:forEach>
 								    					<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>
@@ -219,10 +224,9 @@
 								    			<article>
 								    				<h4>자유 게시판</h4>
 								    				<ul>
-								    					<li>자유 게시판 1</li>
-								    					<li>자유 게시판 2</li>
-								    					<li>자유 게시판 3</li>
-								    					<li>자유 게시판 4</li>
+								    				<c:forEach var="free" items="${free }">
+								    					<li><a href="#">- ${free.commentName }</a></li>
+								    				</c:forEach>
 								    					<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>

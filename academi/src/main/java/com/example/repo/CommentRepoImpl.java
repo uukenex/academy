@@ -115,5 +115,19 @@ public class CommentRepoImpl implements CommentRepo {
 		return template.selectOne(statement);
 	}
 
+	@Override
+	public List<Comments> selectNoticeTop5() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "selectNoticeTop5";
+		return template.selectList(statement);
+	}
+
+	@Override
+	public List<Comments> selectFreeTop5() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "selectFreeTop5";
+		return template.selectList(statement);
+	}
+
 
 }

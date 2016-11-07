@@ -110,6 +110,32 @@
 		comment_no=#{commentNo})+1
 		where comment_no = #{commentNo}
 	</update>
+	
+	<!--  공지사항 상위 5개의 글을 뽑아옴  -->
+	<select id="selectNoticeTop5" resultMap="commentsBase">
+		select * from(select
+		sub.*,rownum
+		rnum from
+		(select (substr(comment_name,1,9)||'...') as comment_name from comments where comment_category ='공지사항'
+		order by
+		comment_no desc)
+		sub)
+		where rnum
+		between 1 and 5
+		</select>
+		
+		<!--  자유게시판 상위 5개의 글을 뽑아옴  -->
+	<select id="selectFreeTop5" resultMap="commentsBase">
+		select * from(select
+		sub.*,rownum
+		rnum from
+		(select (substr(comment_name,1,9)||'...') as comment_name from comments where comment_category ='자유게시판'
+		order by
+		comment_no desc)
+		sub)
+		where rnum
+		between 1 and 5
+		</select>
 
 <select id="pageCount" resultType="int" parameterType="String">
 select count(*) from comments where comment_category=#{commentCategory}</select>
