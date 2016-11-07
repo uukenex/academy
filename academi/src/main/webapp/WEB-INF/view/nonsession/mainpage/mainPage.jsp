@@ -117,19 +117,19 @@
 								        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
 								        
 								            <div data-p="112.50">
-								                <img data-u="image" src="img/002.jpg" />
-								                <div data-u="caption" data-t="0" style="position: absolute; top: 320px; left: 30px; width: 350px; height: 30px; background-color: rgba(235,81,0,0.5); font-size: 20px; color: #ffffff; line-height: 30px; text-align: center;">mobile ready, touch swipe</div>
+								                <img data-u="image" src="img/mainpic01.jpg" />
+								                <div data-u="caption" data-t="0" style="position: absolute; top: 320px; left: 30px; width: 350px; height: 30px; background-color: rgba(235,81,0,0.5); font-size: 20px; color: #ffffff; line-height: 30px; text-align: center;">친구와 함께갔던 광안대교</div>
 								            </div>
 								            <div data-p="112.50" style="display: none;">
-								                <img data-u="image" src="img/007.jpg" />
+								                <img data-u="image" src="img/mainpic02.jpg" />
 								                <div data-u="caption" data-t="1" data-3d="1" style="position: absolute; top: -50px; left: 125px; width: 350px; height: 30px; background-color: rgba(235,81,0,0.5); font-size: 20px; color: #ffffff; line-height: 30px; text-align: center;">time lined layer animation</div>
 								            </div>
 								            <div data-p="112.50" style="display: none;">
-								                <img data-u="image" src="img/003.jpg" />
+								                <img data-u="image" src="img/mainpic03.jpg" />
 								                <div data-u="caption" data-t="2" style="position: absolute; top: 30px; left: -380px; width: 350px; height: 30px; background-color: rgba(235,81,0,0.5); font-size: 20px; color: #ffffff; line-height: 30px; text-align: center;">finger catchable right to left</div>
 								            </div>
 								            <div data-p="112.50" style="display: none;">
-								                <img data-u="image" src="img/004.jpg" />
+								                <img data-u="image" src="img/mainpic04.jpg" />
 								                <div data-u="caption" data-t="3" style="position: absolute; top: 30px; left: 30px; width: 350px; height: 30px; background-color: rgba(235,81,0,0.5); font-size: 20px; color: #ffffff; line-height: 30px; text-align: center;">responsive, scale smoothly</div>
 								            </div>
 								            <div data-p="112.50" style="display: none;">

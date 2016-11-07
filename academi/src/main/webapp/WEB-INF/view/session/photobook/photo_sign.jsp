@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
 #frm label {
   display: inline-block;
   padding: .5em .75em;
@@ -42,6 +43,7 @@ position: relative;
 	left: -50px; /* -이미지의 크기 x 갯수  */
 	top:-175px; /* -(버튼의크기-이미지의크기) */
 }
+
 .outer {
 position: relative;
 width: 250px; /* 너비 설정*/
@@ -89,20 +91,22 @@ z-index: 1;
 						
 						<%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
 						<c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
-						<h3>${curUserId }의 포토북</h3>
+						<h3 class="photobookUser">${curUserId }의 포토북</h3>
 							<c:url value="/photo" var="photo" />
 							<form id="frm">
 						    <p>
 						        <br />
 						        <input type="file" accept="image/*" id="fileLoader" multiple="multiple" />
-						        <label for="fileLoader" >사진 올리기</label>
+						        <br />
+						        <label for="fileLoader" class="labeling1">사진 올리기</label>
 						        
-						        <input type="text" id="cntFiles" style="display: inline; width: 200px;" readonly="readonly"/>
+						        <input type="text" id="cntFiles" style="display: inline; width: 20em;" readonly="readonly"/>
+						        <br/>
 								<input type="button" id="fileSubmit" value="Upload"/>
-								<label for="fileSubmit">저장</label>
+								<label for="fileSubmit" class="labeling1">저장</label>
 								<c:if test="${empty folderName || folderName=='.' }">
 								<input type="button" id="newFolder" value="새폴더"/>
-								<label for="newFolder">새폴더</label>
+								<label for="newFolder" class="labeling2">새폴더</label>
 								</c:if>
 						    </p>
 						    </form>

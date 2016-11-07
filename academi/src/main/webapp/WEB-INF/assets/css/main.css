@@ -4523,3 +4523,28 @@
 			border-radius: 3%;
 			margin-top: 2em;
 		}
+		
+		div#photoBook-wrapper h3.photobookUser {
+			display: inline-block;
+			font-family: "Nanum Gothic";
+			font-size: 1.5em;
+			font-weight: bold;
+			border-bottom: 2px solid #F5696A;
+			padding-bottom: 0.5em;
+			padding-left: 0;
+			margin-left: 5em;
+		}
+		
+		div#photoBook-wrapper form#frm label {
+			font-family: "Nanum Gothic";
+			font-size: 1em;
+			font-weight: bold;
+			color: #F5696A;
+			border: 1px solid #F56A6A;
+			background-color: #FFFFFF;
+			margin-top: 1em;
+		}
+		
+		div#photoBook-wrapper form#frm label.labeling1 {
+			margin-left: -13em;
+		}
