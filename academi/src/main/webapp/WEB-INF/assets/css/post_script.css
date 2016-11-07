@@ -848,6 +848,16 @@
 					border: 1px solid #ddd;
 				}
 				
+				table.post_write_table input[type='text']#routeTitleImage {
+					width: 55.5%;
+					font-family: "Nanum Gothic";
+					font-size: 1em;
+					padding: 0.2em 0.5em;
+					display: inline-block;
+					background: none;
+					border: 1px solid #ddd;
+				}
+				
 				table.post_write_table tr.routeTitleTr td{
 					text-align: right;
 				}

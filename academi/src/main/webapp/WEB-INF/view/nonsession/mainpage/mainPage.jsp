@@ -15,6 +15,7 @@
 			<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
 			<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
 			<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mainpage.css" />
+			<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- jQuery Fancy Box Style Sheet -->
@@ -187,25 +188,49 @@
 								    
 								    
 								    <!-- Main board view part -->
-								    	
+								    	<hr id="best_posts_hr">
 								    	<div id="mainpage_board_view">
 								    		<h3 class="part_title_h3">게시판</h3>
-								    		<div class="4u board_divide_view">
-								    			<p>
-								    				HIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHI
-								    			</p>
-								    		</div>
-								    		<div class="4u board_divide_view">
-								    			<p>
-								    				HIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHI
-								    			</p>
-								    		</div>
-								    		<div class="4u board_divide_view">
-								    			<p>
-								    				HIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHI
-								    			</p>
-								    		</div>
+								    		<section class="mainpage_board_features">
+								    			<article>
+								    				<h4>공지사항</h4>
+								    				<ul>
+								    					<li>공지사항 1</li>
+								    					<li>공지사항 2</li>
+								    					<li>공지사항 3</li>
+								    					<li>공지사항 4</li>
+								    					<li>
+								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    			<article>
+								    				<h4>Q & A</h4>
+								    				<ul>
+									    				<li>Q & A 1</li>
+									    				<li>Q & A 2</li>
+									    				<li>Q & A 3</li>
+									    				<li>Q & A 4</li>
+									    				<li>
+								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    			<article>
+								    				<h4>자유 게시판</h4>
+								    				<ul>
+								    					<li>자유 게시판 1</li>
+								    					<li>자유 게시판 2</li>
+								    					<li>자유 게시판 3</li>
+								    					<li>자유 게시판 4</li>
+								    					<li>
+								    						<input type="button" value="MORE" class="mainpageButtonStyle1">
+								    					</li>
+								    				</ul>
+								    			</article>
+								    		</section>
 								    	</div>
+								    	<hr id="best_posts_hr">
 								</div>
 								
 							</div>
