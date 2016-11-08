@@ -140,6 +140,8 @@
 			.post_image img {
 				border-radius: 0.375em;
 				display: block;
+				width: 100%;
+				height: 15em;
 			}
 			
 			.post_image.left, .post_image.right {
