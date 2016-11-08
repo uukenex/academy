@@ -19,7 +19,7 @@
 		,route_full,route_date,user_id)
 		values
 		(TO_CHAR(SYSDATE, 'YYYY"년"MM"월"DD"일에 저장한 경로"' )
-		,'내용을 입력해주세요',#{routeFull},sysdate,#{userId})
+		,'메모작성을 할 수 있습니다',#{routeFull},sysdate,#{userId})
 	</insert>
 
 	<update id="update" parameterType="Map">

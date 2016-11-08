@@ -38,9 +38,9 @@
 							<!--번호검색으로 api로 들어갔을경우 : -->
 							<c:if test="${!empty routeNo }">
 								<input type="text" name ="routeName" value="${routeName }">
-								<textarea name="routeContent" rows="30" cols="30" >${routeContent }</textarea>
-								<input type="submit" id="" value="수정" formaction="/mapUpdate">
-								<input type="submit" id="" value="삭제" formaction="/mapDelete">
+								<textarea name="routeContent" rows="4" cols="10" >${routeContent }</textarea>
+								<input type="submit" id="" value="수정" formaction="/mapUpdate" class="routeForDB">
+								<input type="submit" id="" value="삭제" formaction="/mapDelete" class="routeForDB">
 							</c:if>
 							<label id="informMapForDB">저장하지않으면 데이터가 소실됩니다.</label>
 							</form>

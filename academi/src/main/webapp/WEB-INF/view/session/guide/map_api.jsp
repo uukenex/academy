@@ -333,7 +333,7 @@
 			////여기서 저장된것만 표시 를 해주어야함////
 			////////////////////////////////
 			
-			if('${!empty dbcart}' =='true'){
+			if('${!empty cart}' =='true'){
 				$("#stored").attr("checked",true);
 
 			}

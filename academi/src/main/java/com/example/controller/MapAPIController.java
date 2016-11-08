@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,7 +35,7 @@ import com.example.service.ReviewService;
 import com.example.service.RouteService;
 import com.example.service.UserService;
 
-@SessionAttributes({ "cart", "dbcart" })
+@SessionAttributes({ "cart"})
 @Controller
 public class MapAPIController {
 	static Logger logger = LoggerFactory.getLogger(MapAPIController.class);
@@ -78,7 +80,6 @@ public class MapAPIController {
 		model.addAttribute("firstDo", firstDo);
 		model.addAttribute("secondDo", secondDo);
 		model.addAttribute("thirdDo", thirdDo);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/do_map";
 	}
 
@@ -146,7 +147,6 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Jeollanam_do";
 	}
 
@@ -213,7 +213,7 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
+		
 		return "session/guide/citymap/Jeollabuk_do";
 	}
 
@@ -265,7 +265,7 @@ public class MapAPIController {
 
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
-		System.out.println("여기 들어왔어요!!");
+		
 		return "session/guide/citymap/jeju_do";
 	}
 
@@ -332,7 +332,7 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
+		
 		return "session/guide/citymap/Gyeongsangnam_do";
 	}
 
@@ -468,7 +468,6 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/gyeonggi_do";
 	}
 
@@ -487,7 +486,6 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/Gangwon_do";
 	}
 
@@ -554,7 +552,6 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongnam_do";
 	}
 
@@ -621,7 +618,6 @@ public class MapAPIController {
 		model.addAttribute("first", first);
 		model.addAttribute("second", second);
 		model.addAttribute("third", third);
-		System.out.println("여기 들어왔어요!!");
 		return "session/guide/citymap/chungcheongbuk_do";
 	}
 
@@ -658,10 +654,6 @@ public class MapAPIController {
 		return new ArrayList<Goods>(); // or however you create a default
 	}
 
-	@ModelAttribute("dbcart")
-	List<Goods> dbcart() {
-		return new ArrayList<Goods>(); // or however you create a default
-	}
 
 	@RequestMapping(value = "/session/apiview", method = RequestMethod.GET)
 	public String apiview(SessionStatus status, Model model, HttpServletRequest request, HttpSession session,
@@ -670,271 +662,14 @@ public class MapAPIController {
 		return "session/guide/map_api";
 	}
 
-	/**
-	 * 세션에 저장되 있는 cart에 상품을 추가
-	 * 
-	 * @param goods
-	 * @param cart
-	 * @return
-	 */
-
-	@RequestMapping(value = "/addDB", method = RequestMethod.POST)
-	public @ResponseBody Object addDB(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart,
-			HttpSession session, Model model) {
-		// 이미 같은정보가 저장되있다면 팅겨내야함
-		logger.trace("addDB,dbsize:{}", dbcart.size());
-		boolean ok = true;
-		// 카트에들어있는것을 비교해서 없으면 true를 반환함
-		if (dbcart.size() == 0) {
-			dbcart.add(goods);
-		} else {
-			for (int i = 0; i <= dbcart.size() - 1; i++) {
-				if (dbcart.get(i).equals(goods)) {
-					ok = false;
-					break;
-				}
-			}
-			if (ok) {
-				dbcart.add(goods);
-			}
-		}
-
-		logger.trace("카트사이즈 {}", dbcart.size());
-
-		Object obj = session.getAttribute("dbcart");
-
-		List<Integer> pos = new ArrayList<>();
-		List<String> cityList = new ArrayList<>();
-		String city = "";
-		for (int z = 0; z < dbcart.size(); z++) {
-			String route = dbcart.get(z).getAddress();
-			int cnt = 0;
-			for (int c = 0; c < route.length(); c++) {
-				if (route.charAt(c) == ' ') {
-					pos.add(cnt);
-				}
-				cnt++;
-			}
-			city = route.substring(0, pos.get(0)).trim();
-			cityList.add(city);
-		}
-
-		// 중복값 제거
-		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
-		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
-		Map<String, String> keyword = new HashMap<>();
-
-		for (int z = 0; z < uniqueItems.size(); z++) {
-			keyword.put("keyword" + z, "%" + uniqueItems.get(z) + "%");
-		}
-		List<Review> goodRoute = res.mapAPISearchRoute(keyword);
-
-		List<List<String>> goodRouteFullList = new ArrayList<>();
-		// 반복문처리
-		for (int x = 0; x < goodRoute.size(); x++) {
-			String goodRouteFull0 = goodRoute.get(0).getRoute().getRouteFull();
-			int count = 0;
-			for (int c = 0; c < goodRouteFull0.length(); c++) {
-				if (goodRouteFull0.charAt(c) == '♬') {
-					count++;
-				}
-			}
-			int i = count / 5;
-			Goods goodss[] = new Goods[i];
-			for (int cnt = 0; cnt < i; cnt++) {
-				goodss[cnt] = new Goods();
-			}
-			String routeAddr[] = new String[i];
-			i = 0;
-			StringTokenizer tokens = new StringTokenizer(goodRouteFull0, "♬");
-			while (tokens.hasMoreTokens()) {
-				tokens.nextToken();
-				tokens.nextToken();
-				tokens.nextToken();
-				routeAddr[i] = tokens.nextToken();
-				goodss[i].setAddress(routeAddr[i]);
-				tokens.nextToken();
-				i++;
-
-			}
-			List<Integer> pos2 = new ArrayList<>();
-			List<String> cityList2 = new ArrayList<>();
-			String city2 = "";
-			Integer mapSize = null;
-			for (int z = 0; z < i; z++) {
-				String route2 = routeAddr[z];
-				int cnt2 = 0;
-				for (int c = 0; c < route2.length(); c++) {
-					if (route2.charAt(c) == ' ') {
-						pos2.add(cnt2);
-					}
-					cnt2++;
-				}
-				city2 = route2.substring(0, pos2.get(0)).trim();
-				cityList2.add(city2);
-			}
-
-			// 중복값 제거
-			List<String> uniqueItems0 = new ArrayList<String>(new HashSet<String>(cityList2));
-			goodRouteFullList.add(uniqueItems0);
-		}
-		List<Review> goodRouteFullListWrapReview = new ArrayList<>();
-		// reviewTitle에 넣어줌
-
-		for (int j = 0; j < goodRoute.size(); j++) {
-			String goodRouteFullListName = "";
-			for (int i = 0; i < goodRouteFullList.get(j).size(); i++) {
-				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
-			}
-			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-					"", "", "", "", null, 0, 0, 0, ""));
-		}
-
-		List<List<Review>> objList = new ArrayList<>();
-		objList.add((List<Review>) obj);
-		objList.add(goodRoute);
-		objList.add(goodRouteFullListWrapReview);
-		return objList;
-	}
-
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public @ResponseBody Object add(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
-			HttpSession session, Model model) {
-
-		logger.trace("add");
-		// 이미 같은정보가 저장되있다면 팅겨내야함
-		boolean ok = true;
-		// 카트에들어있는것을 비교해서 없으면 true를 반환함
-		if (cart.size() == 0) {
-			cart.add(goods);
-		} else {
-			for (int i = 0; i <= cart.size() - 1; i++) {
-				if (cart.get(i).equals(goods)) {
-					ok = false;
-					break;
-				}
-			}
-			if (ok) {
-				cart.add(goods);
-			}
-		}
-
-		logger.trace("카트사이즈 {}", cart.size());
-
-		Object obj = session.getAttribute("cart");
-		logger.trace("modelattribute cart:{}", cart);
-		logger.trace("세션 cart:{}", obj);
-		/////////// 여기하는중
-		for (int i = 0; i < cart.size(); i++)
-			logger.trace("{}", cart.get(i).getAddress());
-
-		List<Integer> pos = new ArrayList<>();
-		List<String> cityList = new ArrayList<>();
-		String city = "";
-		for (int z = 0; z < cart.size(); z++) {
-			String route = cart.get(z).getAddress();
-			int cnt = 0;
-			for (int c = 0; c < route.length(); c++) {
-				if (route.charAt(c) == ' ') {
-					pos.add(cnt);
-				}
-				cnt++;
-			}
-			city = route.substring(0, pos.get(0)).trim();
-			cityList.add(city);
-		}
-
-		// 중복값 제거
-		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
-		logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
-		Map<String, String> keyword = new HashMap<>();
-
-		for (int z = 0; z < uniqueItems.size(); z++) {
-			keyword.put("keyword" + z, "%" + uniqueItems.get(z) + "%");
-		}
-		List<Review> goodRoute = res.mapAPISearchRoute(keyword);
-
-		List<List<String>> goodRouteFullList = new ArrayList<>();
-		// 반복문처리
-		for (int x = 0; x < goodRoute.size(); x++) {
-			// logger.trace("추천경로가 없나??"+x);
-			String goodRouteFull0 = goodRoute.get(0).getRoute().getRouteFull();
-			int count = 0;
-			for (int c = 0; c < goodRouteFull0.length(); c++) {
-				if (goodRouteFull0.charAt(c) == '♬') {
-					count++;
-				}
-			}
-			int i = count / 5;
-			Goods goodss[] = new Goods[i];
-			for (int cnt = 0; cnt < i; cnt++) {
-				goodss[cnt] = new Goods();
-			}
-			String routeAddr[] = new String[i];
-			i = 0;
-			StringTokenizer tokens = new StringTokenizer(goodRouteFull0, "♬");
-			while (tokens.hasMoreTokens()) {
-				tokens.nextToken();
-				tokens.nextToken();
-				tokens.nextToken();
-				routeAddr[i] = tokens.nextToken();
-				goodss[i].setAddress(routeAddr[i]);
-				tokens.nextToken();
-				i++;
-
-			}
-			List<Integer> pos2 = new ArrayList<>();
-			List<String> cityList2 = new ArrayList<>();
-			String city2 = "";
-			Integer mapSize = null;
-			for (int z = 0; z < i; z++) {
-				String route2 = routeAddr[z];
-				int cnt2 = 0;
-				for (int c = 0; c < route2.length(); c++) {
-					if (route2.charAt(c) == ' ') {
-						pos2.add(cnt2);
-					}
-					cnt2++;
-				}
-				city2 = route2.substring(0, pos2.get(0)).trim();
-				cityList2.add(city2);
-			}
-
-			// 중복값 제거
-			List<String> uniqueItems0 = new ArrayList<String>(new HashSet<String>(cityList2));
-			goodRouteFullList.add(uniqueItems0);
-		}
-		List<Review> goodRouteFullListWrapReview = new ArrayList<>();
-		// reviewTitle에 넣어줌
-
-		for (int j = 0; j < goodRoute.size(); j++) {
-			String goodRouteFullListName = "";
-			for (int i = 0; i < goodRouteFullList.get(j).size(); i++) {
-				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
-			}
-			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-					"", "", "", "", null, 0, 0, 0, ""));
-		}
-
-		List<List<Review>> objList = new ArrayList<>();
-		objList.add((List<Review>) obj);
-		objList.add(goodRoute);
-		objList.add(goodRouteFullListWrapReview);
-		return objList;
-	}
+	
 
 	@RequestMapping(value = "/getSession", method = RequestMethod.POST)
-	public @ResponseBody Object getSession(HttpSession session, @ModelAttribute("cart") List<Goods> cart,
-			@ModelAttribute("dbcart") List<Goods> dbcart) {
+	public @ResponseBody Object getSession(HttpSession session, @ModelAttribute("cart") List<Goods> cart) {
 		List<Goods> cartObj = new ArrayList<>();
-		if (dbcart.isEmpty()) {
 			cartObj = cart;
-		} else {
-			cartObj = dbcart;
-		}
-		logger.trace("dbcart: {}", session.getAttribute("dbcart"));
+		
 		logger.trace("cart : {}", session.getAttribute("cart"));
-		logger.trace("Object cart : {}", cartObj);
 
 		List<Integer> pos = new ArrayList<>();
 		List<String> cityList = new ArrayList<>();
@@ -1035,7 +770,7 @@ public class MapAPIController {
 	// 루트 불러오기(번호로)
 	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public String free(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
-			@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
+			@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> dbcart) {
 
 		dbcart.clear();
 		Route result = rs.selectRouteByNo(routeNo);
@@ -1134,9 +869,8 @@ public class MapAPIController {
 	// 루트 이미지(번호로)
 	@RequestMapping(value = "/routeImage", method = RequestMethod.GET)
 	public String routeImage(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
-			@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
+			@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> dbcart) {
 		// logger.trace("추천경로 표시를 위해서 DB조회");
-		dbcart.clear();
 		Route result = rs.selectRouteByNo(routeNo);
 		String str = result.getRouteFull();
 		int count = 0;
@@ -1227,7 +961,6 @@ public class MapAPIController {
 	@RequestMapping(value = "/mapSave", method = RequestMethod.POST)
 	public String DBCall(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session,
 			Model model) {
-		logger.trace("cart가 풀경로: db로 insert쿼리문장 작성해야함 {}", cart);
 		String content = "";
 		for (int i = 0; i < cart.size(); i++) {
 			content += "♬";
@@ -1247,32 +980,35 @@ public class MapAPIController {
 		rs.insertRoute(content, userId);
 		status.setComplete();
 		model.addAttribute("message", "경로 저장완료");
-		return "redirect:/mypageMain";
+		return "session/information/mypage_main";
 	}
 
 	@RequestMapping(value = "/mapUpdate", method = RequestMethod.POST)
-	public String mapUpdate(@ModelAttribute("dbcart") List<Goods> dbcart, SessionStatus status, HttpSession session,
+	public String mapUpdate(@ModelAttribute("cart") List<Goods> cart, SessionStatus status, HttpSession session,
 			@RequestParam String routeName, @RequestParam String routeContent, @RequestParam int routeNo, Model model) {
-		logger.trace("{}", dbcart);
+		logger.trace("업데이트할 카트 불러오기{}", cart);
+		logger.trace("업데이트할 카트 사이즈{}", cart.size());
+		logger.trace("세션:{}",session.getAttribute("cart"));
+		logger.trace("세션:{}",session.getAttribute("Users"));
+		logger.trace("값:{}.{}.{}",routeName,routeContent,routeNo);
 		String content = "";
-		for (int i = 0; i < dbcart.size(); i++) {
-			content = "♬";
-			content += dbcart.get(i).getTitle();
+		for (int i = 0; i < cart.size(); i++) {
 			content += "♬";
-			content += dbcart.get(i).getLatitude();
+			content += cart.get(i).getTitle();
 			content += "♬";
-			content += dbcart.get(i).getLongitude();
+			content += cart.get(i).getLatitude();
 			content += "♬";
-			content += dbcart.get(i).getAddress();
+			content += cart.get(i).getLongitude();
 			content += "♬";
-			content += dbcart.get(i).getImageUrl();
+			content += cart.get(i).getAddress();
+			content += "♬";
+			content += cart.get(i).getImageUrl();
 			logger.trace("{}", content);
 		}
-		String userId = (String) session.getAttribute("Users.userId");
 		rs.updateRoute(routeName, routeContent, content, routeNo);
 		status.setComplete();
 		model.addAttribute("message", "경로 수정완료");
-		return "redirect:/mypageMain";
+		return "session/information/mypage_main";
 	}
 
 	@RequestMapping(value = "/mapDelete", method = RequestMethod.POST)
@@ -1281,24 +1017,46 @@ public class MapAPIController {
 		status.setComplete();
 		model.addAttribute("message", "경로 삭제완료");
 
-		return "redirect:/mypageMain";
+		return "session/information/mypage_main";
 	}
 
-	/// deleteCart
+	
+	
+	/**
+	 * 세션에 저장되 있는 cart에 상품을 추가
+	 * 
+	 * @param goods
+	 * @param cart
+	 * @return
+	 */
 
-	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
-	public @ResponseBody Object deletecart(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
-			HttpSession session, Model model, @RequestParam String number) {
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody Object add(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
+			HttpSession session, Model model) {
 
-		logger.trace("deleteCart");
+		logger.trace("add");
 		// 이미 같은정보가 저장되있다면 팅겨내야함
 		boolean ok = true;
 		// 카트에들어있는것을 비교해서 없으면 true를 반환함
-		number = number.replace("data", "");
-		cart.remove(Integer.parseInt(number));
+		if (cart.size() == 0) {
+			cart.add(goods);
+		} else {
+			for (int i = 0; i <= cart.size() - 1; i++) {
+				if (cart.get(i).equals(goods)) {
+					ok = false;
+					break;
+				}
+			}
+			if (ok) {
+				cart.add(goods);
+			}
+		}
+
+		logger.trace("카트사이즈 {}", cart.size());
+
 		Object obj = session.getAttribute("cart");
+		logger.trace("modelattribute cart:{}", cart);
 		logger.trace("세션 cart:{}", obj);
-		/////////// 여기하는중
 		for (int i = 0; i < cart.size(); i++)
 			logger.trace("{}", cart.get(i).getAddress());
 
@@ -1325,9 +1083,6 @@ public class MapAPIController {
 
 		for (int z = 0; z < uniqueItems.size(); z++) {
 			keyword.put("keyword" + z, "%" + uniqueItems.get(z) + "%");
-		}
-		if (uniqueItems.size() == 0) {
-			keyword.put("keyword" + 0, "%");
 		}
 		List<Review> goodRoute = res.mapAPISearchRoute(keyword);
 
@@ -1400,141 +1155,57 @@ public class MapAPIController {
 		return objList;
 	}
 	
-	
-	
-	
 	/// deleteCart
 
-		@RequestMapping(value = "/deleteDBCart", method = RequestMethod.POST)
-		public @ResponseBody Object deleteDBcart(@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart,
-				HttpSession session, Model model, @RequestParam String number) {
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public @ResponseBody Object deletecart(@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> cart,
+			HttpSession session, Model model, @RequestParam String number) {
 
-			logger.trace("deleteCart");
-			// 이미 같은정보가 저장되있다면 팅겨내야함
-			boolean ok = true;
-			// 카트에들어있는것을 비교해서 없으면 true를 반환함
-			number = number.replace("data", "");
-			
-			dbcart.remove(Integer.parseInt(number));
-			
-			Object obj = session.getAttribute("dbcart");
-			logger.trace("세션 cart:{}", obj);
-			/////////// 여기하는중
-			for (int i = 0; i < dbcart.size(); i++)
-				logger.trace("{}", dbcart.get(i).getAddress());
+		logger.trace("deleteCart");
+		// 이미 같은정보가 저장되있다면 팅겨내야함
+		boolean ok = true;
+		// 카트에들어있는것을 비교해서 없으면 true를 반환함
+		number = number.replace("data", "");
+		cart.remove(Integer.parseInt(number));
+		Object obj = session.getAttribute("cart");
+		logger.trace("세션 cart:{}", obj);
+		for (int i = 0; i < cart.size(); i++)
+			logger.trace("{}", cart.get(i).getAddress());
 
-			List<Integer> pos = new ArrayList<>();
-			List<String> cityList = new ArrayList<>();
-			String city = "";
-			for (int z = 0; z < dbcart.size(); z++) {
-				String route = dbcart.get(z).getAddress();
-				int cnt = 0;
-				for (int c = 0; c < route.length(); c++) {
-					if (route.charAt(c) == ' ') {
-						pos.add(cnt);
-					}
-					cnt++;
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		for (int z = 0; z < cart.size(); z++) {
+			String route = cart.get(z).getAddress();
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
 				}
-				city = route.substring(0, pos.get(0)).trim();
-				cityList.add(city);
+				cnt++;
 			}
-
-			// 중복값 제거
-			List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
-			logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
-			Map<String, String> keyword = new HashMap<>();
-
-			for (int z = 0; z < uniqueItems.size(); z++) {
-				keyword.put("keyword" + z, "%" + uniqueItems.get(z) + "%");
-			}
-			if (uniqueItems.size() == 0) {
-				keyword.put("keyword" + 0, "%");
-			}
-			List<Review> goodRoute = res.mapAPISearchRoute(keyword);
-
-			List<List<String>> goodRouteFullList = new ArrayList<>();
-			// 반복문처리
-			for (int x = 0; x < goodRoute.size(); x++) {
-				// logger.trace("추천경로가 없나??"+x);
-				String goodRouteFull0 = goodRoute.get(0).getRoute().getRouteFull();
-				int count = 0;
-				for (int c = 0; c < goodRouteFull0.length(); c++) {
-					if (goodRouteFull0.charAt(c) == '♬') {
-						count++;
-					}
-				}
-				int i = count / 5;
-				Goods goodss[] = new Goods[i];
-				for (int cnt = 0; cnt < i; cnt++) {
-					goodss[cnt] = new Goods();
-				}
-				String routeAddr[] = new String[i];
-				i = 0;
-				StringTokenizer tokens = new StringTokenizer(goodRouteFull0, "♬");
-				while (tokens.hasMoreTokens()) {
-					tokens.nextToken();
-					tokens.nextToken();
-					tokens.nextToken();
-					routeAddr[i] = tokens.nextToken();
-					goodss[i].setAddress(routeAddr[i]);
-					tokens.nextToken();
-					i++;
-
-				}
-				List<Integer> pos2 = new ArrayList<>();
-				List<String> cityList2 = new ArrayList<>();
-				String city2 = "";
-				Integer mapSize = null;
-				for (int z = 0; z < i; z++) {
-					String route2 = routeAddr[z];
-					int cnt2 = 0;
-					for (int c = 0; c < route2.length(); c++) {
-						if (route2.charAt(c) == ' ') {
-							pos2.add(cnt2);
-						}
-						cnt2++;
-					}
-					city2 = route2.substring(0, pos2.get(0)).trim();
-					cityList2.add(city2);
-				}
-
-				// 중복값 제거
-				List<String> uniqueItems0 = new ArrayList<String>(new HashSet<String>(cityList2));
-				goodRouteFullList.add(uniqueItems0);
-			}
-			List<Review> goodRouteFullListWrapReview = new ArrayList<>();
-			// reviewTitle에 넣어줌
-
-			for (int j = 0; j < goodRoute.size(); j++) {
-				String goodRouteFullListName = "";
-				for (int i = 0; i < goodRouteFullList.get(j).size(); i++) {
-					goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
-				}
-				goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-						"", "", "", "", null, 0, 0, 0, ""));
-			}
-
-			List<List<Review>> objList = new ArrayList<>();
-			objList.add((List<Review>) obj);
-			objList.add(goodRoute);
-			objList.add(goodRouteFullListWrapReview);
-			return objList;
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
 		}
-		
-		
-		
-		
-		// 루트 불러오기(번호로)
-		@RequestMapping(value = "/routeupdate", method = RequestMethod.GET)
-		public String routeupdate(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
-				@ModelAttribute Goods goods, @ModelAttribute("dbcart") List<Goods> dbcart) {
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		Map<String, String> keyword = new HashMap<>();
 
-			
-			Route result = rs.selectRouteByNo(routeNo);
-			String str = result.getRouteFull();
+		for (int z = 0; z < uniqueItems.size(); z++) {
+			keyword.put("keyword" + z, "%" + uniqueItems.get(z) + "%");
+		}
+		if (uniqueItems.size() == 0) {
+			keyword.put("keyword" + 0, "%");
+		}
+		List<Review> goodRoute = res.mapAPISearchRoute(keyword);
+
+		List<List<String>> goodRouteFullList = new ArrayList<>();
+		// 반복문처리
+		for (int x = 0; x < goodRoute.size(); x++) {
+			// logger.trace("추천경로가 없나??"+x);
+			String goodRouteFull0 = goodRoute.get(0).getRoute().getRouteFull();
 			int count = 0;
-			for (int c = 0; c < str.length(); c++) {
-				if (str.charAt(c) == '♬') {
+			for (int c = 0; c < goodRouteFull0.length(); c++) {
+				if (goodRouteFull0.charAt(c) == '♬') {
 					count++;
 				}
 			}
@@ -1543,83 +1214,174 @@ public class MapAPIController {
 			for (int cnt = 0; cnt < i; cnt++) {
 				goodss[cnt] = new Goods();
 			}
-
-			String routeName[] = new String[i];
-			String routeX[] = new String[i];
-			String routeY[] = new String[i];
 			String routeAddr[] = new String[i];
-			String routeImg[] = new String[i];
-
 			i = 0;
-			StringTokenizer tokens = new StringTokenizer(str, "♬");
+			StringTokenizer tokens = new StringTokenizer(goodRouteFull0, "♬");
 			while (tokens.hasMoreTokens()) {
-				routeName[i] = tokens.nextToken();
-				goodss[i].setTitle(routeName[i]);
-				routeX[i] = tokens.nextToken();
-				goodss[i].setLatitude(Double.parseDouble(routeX[i]));
-				routeY[i] = tokens.nextToken();
-				goodss[i].setLongitude(Double.parseDouble(routeY[i]));
+				tokens.nextToken();
+				tokens.nextToken();
+				tokens.nextToken();
 				routeAddr[i] = tokens.nextToken();
 				goodss[i].setAddress(routeAddr[i]);
-				routeImg[i] = tokens.nextToken();
-				goodss[i].setImageUrl(routeImg[i]);
-				goodss[i].setCategory("여행");
+				tokens.nextToken();
 				i++;
 
 			}
-			List<String> latLng = new ArrayList<>();
-			List<String> center = new ArrayList<>();
-			String xyroute;
-			for (int y = 0; y < i; y++) {
-				String lat = routeX[y];
-				String lng = routeY[y];
-				xyroute = lat + "," + lng;
-				latLng.add(y, xyroute);
-				center.add(y, xyroute);
-
-			}
-
-			List<Integer> pos = new ArrayList<>();
-			List<String> cityList = new ArrayList<>();
-			String city = "";
+			List<Integer> pos2 = new ArrayList<>();
+			List<String> cityList2 = new ArrayList<>();
+			String city2 = "";
 			Integer mapSize = null;
 			for (int z = 0; z < i; z++) {
-				String route = routeAddr[z];
-				// logger.trace("경로 불러오기!:{}", route);
-
-				int cnt = 0;
-				for (int c = 0; c < route.length(); c++) {
-					if (route.charAt(c) == ' ') {
-						pos.add(cnt);
+				String route2 = routeAddr[z];
+				int cnt2 = 0;
+				for (int c = 0; c < route2.length(); c++) {
+					if (route2.charAt(c) == ' ') {
+						pos2.add(cnt2);
 					}
-					cnt++;
+					cnt2++;
 				}
-				city = route.substring(0, pos.get(0)).trim();
-				cityList.add(city);
+				city2 = route2.substring(0, pos2.get(0)).trim();
+				cityList2.add(city2);
 			}
 
 			// 중복값 제거
-			List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
-			logger.trace("중복값 제거 후 크기 : {}", uniqueItems.size());
-
-			if (uniqueItems.size() != 1) {
-				xyroute = "35.865415, 128.085319";
-				center.add(0, xyroute);
-				mapSize = 17;
-			} else {
-				mapSize = 13;
-			}
-
-			for (int cnt = 0; cnt < i; cnt++) {
-				dbcart.add(goodss[cnt]);
-			}
-
-			model.addAttribute("routeNo", routeNo);
-			model.addAttribute("routeName", result.getRouteName());
-			model.addAttribute("routeContent", result.getRouteContent());
-			model.addAttribute("latLng", latLng);
-			model.addAttribute("center", center);
-			model.addAttribute("mapSize", mapSize);
-			return "session/guide/map_main2";
+			List<String> uniqueItems0 = new ArrayList<String>(new HashSet<String>(cityList2));
+			goodRouteFullList.add(uniqueItems0);
 		}
+		List<Review> goodRouteFullListWrapReview = new ArrayList<>();
+		for (int j = 0; j < goodRoute.size(); j++) {
+			String goodRouteFullListName = "";
+			for (int i = 0; i < goodRouteFullList.get(j).size(); i++) {
+				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
+			}
+			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
+					"", "", "", "", null, 0, 0, 0, ""));
+		}
+
+		List<List<Review>> objList = new ArrayList<>();
+		
+		
+		objList.add((List<Review>) obj);
+		objList.add(goodRoute);
+		objList.add(goodRouteFullListWrapReview);
+		
+		for (int i = 0; i < cart.size(); i++)
+			logger.trace("삭제리턴전 {}", cart.get(i).getAddress());
+		logger.trace("세션:{}",session.getAttribute("cart"));
+		
+		return objList;
+	}
+
+	
+	@RequestMapping(value = "/routeupdate", method = RequestMethod.GET)
+	public String routeupdate(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
+			@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> dbcart) {
+		status.setComplete();
+		return "redirect:/routeupdate1?routeNo="+routeNo;
+	}
+	
+	@RequestMapping(value = "/routeupdate1", method = RequestMethod.GET)
+	public String routeupdate1(HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
+			@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> dbcart) {
+		Route result = rs.selectRouteByNo(routeNo);
+		String str = result.getRouteFull();
+		int count = 0;
+		for (int c = 0; c < str.length(); c++) {
+			if (str.charAt(c) == '♬') {
+				count++;
+			}
+		}
+		int i = count / 5;
+		Goods goodss[] = new Goods[i];
+		for (int cnt = 0; cnt < i; cnt++) {
+			goodss[cnt] = new Goods();
+		}
+
+		String routeName[] = new String[i];
+		String routeX[] = new String[i];
+		String routeY[] = new String[i];
+		String routeAddr[] = new String[i];
+		String routeImg[] = new String[i];
+
+		i = 0;
+		StringTokenizer tokens = new StringTokenizer(str, "♬");
+		while (tokens.hasMoreTokens()) {
+			routeName[i] = tokens.nextToken();
+			goodss[i].setTitle(routeName[i]);
+			routeX[i] = tokens.nextToken();
+			goodss[i].setLatitude(Double.parseDouble(routeX[i]));
+			routeY[i] = tokens.nextToken();
+			goodss[i].setLongitude(Double.parseDouble(routeY[i]));
+			routeAddr[i] = tokens.nextToken();
+			goodss[i].setAddress(routeAddr[i]);
+			routeImg[i] = tokens.nextToken();
+			goodss[i].setImageUrl(routeImg[i]);
+			goodss[i].setCategory("여행");
+			i++;
+
+		}
+		List<String> latLng = new ArrayList<>();
+		List<String> center = new ArrayList<>();
+		String xyroute;
+		for (int y = 0; y < i; y++) {
+			String lat = routeX[y];
+			String lng = routeY[y];
+			xyroute = lat + "," + lng;
+			latLng.add(y, xyroute);
+			center.add(y, xyroute);
+
+		}
+
+		List<Integer> pos = new ArrayList<>();
+		List<String> cityList = new ArrayList<>();
+		String city = "";
+		Integer mapSize = null;
+		for (int z = 0; z < i; z++) {
+			String route = routeAddr[z];
+			int cnt = 0;
+			for (int c = 0; c < route.length(); c++) {
+				if (route.charAt(c) == ' ') {
+					pos.add(cnt);
+				}
+				cnt++;
+			}
+			city = route.substring(0, pos.get(0)).trim();
+			cityList.add(city);
+		}
+
+		// 중복값 제거
+		List<String> uniqueItems = new ArrayList<String>(new HashSet<String>(cityList));
+		if (uniqueItems.size() != 1) {
+			xyroute = "35.865415, 128.085319";
+			center.add(0, xyroute);
+			mapSize = 17;
+		} else {
+			mapSize = 13;
+		}
+
+		for (int cnt = 0; cnt < i; cnt++) {
+			dbcart.add(goodss[cnt]);
+		}
+
+		model.addAttribute("routeNo", routeNo);
+		model.addAttribute("routeName", result.getRouteName());
+		model.addAttribute("routeContent", result.getRouteContent());
+		model.addAttribute("latLng", latLng);
+		model.addAttribute("center", center);
+		model.addAttribute("mapSize", mapSize);
+		model.addAttribute("content",result.getRouteFull());
+		return "redirect:/routeupdate2?routeNo=" + routeNo;
+	}
+
+	// 루트 불러오기(번호로)
+	@RequestMapping(value = "/routeupdate2", method = RequestMethod.GET)
+	public String routeupdate2(HttpServletRequest request,HttpSession session, Model model, @RequestParam int routeNo, SessionStatus status,
+			@ModelAttribute Goods goods, @ModelAttribute("cart") List<Goods> dbcart) {
+		
+		model.addAttribute("routeNo", routeNo);
+		model.addAttribute("routeName", request.getParameter("routeName"));
+		model.addAttribute("routeContent", request.getParameter("routeContent"));
+		model.addAttribute("content",request.getParameter("getRouteFull"));
+		return "session/guide/map_main2";
+	}
 }

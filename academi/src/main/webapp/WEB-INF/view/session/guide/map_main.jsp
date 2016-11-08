@@ -83,7 +83,7 @@
 			    }
 			}).trigger('click'); // fancybox
 		
-			if(<%=request.getParameter("lat")%>!=null  ){
+			if(<%=request.getParameter("lat")%>!=null || <%=request.getParameter("routeNo")%>!=null){
 				parent.jQuery.fancybox.close();
 				}
 		});

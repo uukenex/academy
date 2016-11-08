@@ -110,7 +110,8 @@ z-index: 1;
 								</c:if>
 						    </p>
 						    </form>
-						    <output id="result"></output>
+						   
+						    <output class="12u" id="result"></output>
 						</c:if>
 						<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
 						<div style="height: 5em;"></div> 
