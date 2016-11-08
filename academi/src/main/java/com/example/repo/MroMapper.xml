@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.MroMapper">
+	<update id="regionCntDong" parameterType="Map">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu=#{siGu} and dong=#{dong})+1
+		where city=#{city} and si_gu=#{siGu} and dong=#{dong}
+	</update>
+	
+	<update id="regionCntSiGu" parameterType="Map">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu=#{siGu} and dong is null)+1
+		where city=#{city} and si_gu=#{siGu} and dong is null
+	</update>
+	
+	<update id="regionCntCity" parameterType="String">
+		update mro set
+		cnt=(select cnt from mro where
+		city=#{city} and si_gu is null and dong is null)+1
+		where city=#{city} and si_gu is null and dong is null
+	</update>
+	
+	
+	<!--  핫플레이스 도지도 -->
+	<select id="hotplaceDo" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where si_gu is null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+	</select>
+	
+	<select id="do" resultMap="mroBase">
+	select * from mro where si_gu is null
+	</select>
+	
+	<!--  핫플레이스 경기도  -->
+	<select id="gunggi" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '경기' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+	</select>
+	
+	
+	<!--  핫플레이스 강원도  -->
+	<select id="gangwon" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '강원' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 충청북도  -->
+	<select id="chungbuk" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '충북' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 충남  -->
+	<select id="chungnam" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '충남' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 경북  -->
+	<select id="kungbuk" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '경북' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 경남  -->
+	<select id="kungnam" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '경남' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 전북  -->
+	<select id="junbuk" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '전북' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+
+	</select>
+	
+	<!--  핫플레이스 전남  -->
+	<select id="junnam" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '전남' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 3
+	</select>
+	
+		<!--  핫플레이스 제주  -->
+	<select id="jeju" resultMap="mroBase">
+	select * from(select
+		sub.*,rownum
+		rnum from
+		(select * from mro where city = '제주특별자치도' and dong is null and si_gu is not null
+		order by
+		cnt desc)
+		sub)
+		where rnum
+		between 1 and 2
+	</select>
+	
+
+	<resultMap type="mro" id="mroBase">
+		<id column="region_id" property="regionId" />
+		<result column="city" property="city" />
+		<result column="si_gu" property="siGu" />
+		<result column="dong" property="dong" />
+		<result column="rage_x" property="rageX" />
+		<result column="rage_y" property="rageY" />
+		<result column="reg_tm" property="regTm" />
+		<result column="cnt" property="cnt" />
+	</resultMap>
+
+</mapper>

@@ -88,6 +88,12 @@ public class QnaRepoImpl implements QnaRepo{
 		String statement = NAME_SPACE + "selectNo";
 		return template.selectOne(statement);
 	}
+	@Override
+	public List<Qna> selectQnATop5() {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE + "selectQnATop5";
+		return template.selectList(statement);
+	}
 
 	
 

@@ -116,7 +116,7 @@
 		select * from(select
 		sub.*,rownum
 		rnum from
-		(select (substr(comment_name,1,9)||'...') as comment_name from comments where comment_category ='공지사항'
+		(select (substr(comment_name,1,9)||'...') as comment_name, comment_no from comments where comment_category ='공지사항'
 		order by
 		comment_no desc)
 		sub)
@@ -129,7 +129,7 @@
 		select * from(select
 		sub.*,rownum
 		rnum from
-		(select (substr(comment_name,1,9)||'...') as comment_name from comments where comment_category ='자유게시판'
+		(select (substr(comment_name,1,9)||'...') as comment_name, (comment_no) as comment_no from comments where comment_category ='자유게시판'
 		order by
 		comment_no desc)
 		sub)

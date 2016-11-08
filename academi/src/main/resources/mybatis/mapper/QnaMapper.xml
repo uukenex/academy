@@ -109,6 +109,21 @@
 	<select id="pageCount" resultType="int">
 		select count(*) from qna
 	</select>
+	
+	
+	<select id="selectQnATop5" resultMap="qnaBase">
+		select * from(select
+		sub.*,rownum
+		rnum from
+		(select (substr(qna_title,1,9)||'...') as qna_title,qna_no from qna
+		order by
+		qna_no desc)
+		sub)
+		where rnum
+		between 1 and 5
+		</select>
+		
+		
 
 	<resultMap type="qna" id="qnaBase">
 		<id column="qna_no" property="qnaNo" />

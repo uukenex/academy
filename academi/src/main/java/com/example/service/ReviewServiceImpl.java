@@ -84,6 +84,12 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 
+	// 배경에 사진을 띄워줌
+	public List<Review> reviewTop3(){
+		
+		return rrepo.starReview(); 
+	}
+
 	// 이름검색 추천먼저 띄우고 나머지9개를띄움
 	public List<Review> searchReviewByName(String reviewTitle, int page) {
 		List<Review> result = new ArrayList<>();

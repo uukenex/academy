@@ -112,4 +112,9 @@ public class QnaRepoTest {
 	public void updateCountTest(){
 		qrepo.updateQnaCount(2);
 	}
+	
+	@Test
+	public void top5Test1(){
+		qrepo.selectQnATop5();
+	}
 }

@@ -202,7 +202,7 @@
 								    				<h4>공지사항</h4>
 								    				<ul>
 								    				<c:forEach var="notice" items="${noticeTop5 }">
-								    					<li><a href="#">- ${notice.commentName }</a></li>
+								    					<li><a href="/noticeView?commentNo=${notice.commentNo }">- ${notice.commentName }</a></li>
 								    				</c:forEach>
 								    					<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">
@@ -212,10 +212,9 @@
 								    			<article>
 								    				<h4>Q & A</h4>
 								    				<ul>
-									    				<li>Q & A 1</li>
-									    				<li>Q & A 2</li>
-									    				<li>Q & A 3</li>
-									    				<li>Q & A 4</li>
+								    				<c:forEach var="qna" items="${qnaTop5 }">
+									    				<li><a href="/qnaView?qnaNo=${qna.qnaNo }">${qna.qnaTitle }</a></li>
+									    			</c:forEach>
 									    				<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">
 								    					</li>
@@ -225,7 +224,7 @@
 								    				<h4>자유 게시판</h4>
 								    				<ul>
 								    				<c:forEach var="free" items="${free }">
-								    					<li><a href="#">- ${free.commentName }</a></li>
+								    					<li><a href="/freeView?commentNo=${free.commentNo }">- ${free.commentName }</a></li>
 								    				</c:forEach>
 								    					<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">
@@ -243,7 +242,7 @@
 								    				<h4>최근 경로 1</h4>
 								    				<ul>
 								    					<li>
-								    						<a href="#"><img src="/images/cloud.jpg"></a>
+								    						<a href="/noticeView?commentNo=${notice.comment_no }"><img src="/images/cloud.jpg"></a>
 								    					</li>
 								    					<li>
 								    						<input type="button" value="More" class="mainpageButtonStyle1">

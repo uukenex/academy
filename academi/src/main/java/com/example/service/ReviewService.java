@@ -64,6 +64,8 @@ public interface ReviewService {
 	// 마이페이지 - 내후기보기 서비스
 	 public List<Review> myPageReview(String userId, int page);
 		
+	 public List<Review> reviewTop3();
+	 
 	 // 가장 최근에 쓴 글의 번호를 받아옴
 	 public int currentNo();
 }

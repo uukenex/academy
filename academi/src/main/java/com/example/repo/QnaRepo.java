@@ -35,4 +35,6 @@ public interface QnaRepo {
 	
 	//가장 최신의 글의 번호를 받아옴
 	public int selectNo();
+	
+	public List<Qna> selectQnATop5();
 }

@@ -80,4 +80,9 @@ public class QnaServiceImpl implements QnaService {
 		return qrepo.selectNo();
 	}
 
+	@Override
+	public List<Qna> selectQnaTop5() {
+		return qrepo.selectQnATop5();
+	}
+
 }

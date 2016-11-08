@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.dto.Comments;
+import com.example.dto.Qna;
+import com.example.dto.Review;
 import com.example.dto.Users;
 import com.example.service.CommentService;
+import com.example.service.QnaService;
+import com.example.service.ReviewService;
 
 @Controller
 public class BasicController {
@@ -23,6 +27,10 @@ public class BasicController {
 
 	@Autowired
 	CommentService cs;
+	@Autowired
+	QnaService qs;
+	@Autowired
+	ReviewService rs;
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String sayHello(Model model) {
@@ -85,11 +93,20 @@ public class BasicController {
 	public String mainpage2(Model model) {
 		List<Comments> noticeTop5 = cs.selectNoticeTop5();
 		List<Comments> freeTop5 = cs.selectFreeTop5();
+		List<Qna> qnaTop5 = qs.selectQnaTop5();
+		List<Review> reviewTop3 = rs.reviewTop3();
+		
+		
 		logger.trace("noticeTop5 : {}",noticeTop5);
 		logger.trace("FreeTop5 : {}",freeTop5);
+		logger.trace("qnaTop5 : {}",qnaTop5);
+		logger.trace("reviewTop3 : {}",reviewTop3);
 		
 		model.addAttribute("noticeTop5",noticeTop5);
+		model.addAttribute("reviewTop3",reviewTop3);
 		model.addAttribute("free",freeTop5);
+		model.addAttribute("qnaTop5",qnaTop5);
+		model.addAttribute("reviewTop3",reviewTop3);
 		return "nonsession/mainpage/mainPage";
 	}
 
