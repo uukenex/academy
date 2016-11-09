@@ -61,7 +61,7 @@
 												<input type="hidden" value="${Review.reviewNo }" name="reviewNo" >
 												<a href="/postView?reviewNo=${Review.reviewNo }" class="mypage_mypost_buttonStyle1">여행 후기 보기</a>
 												<input type="submit" formmethod="post" formaction="/session/postUpdate" value="여행 후기 수정"class="mypage_mypost_buttonStyle1">
-												<input type="button" value="여행 후기 삭제" class="mypage_mypost_buttonStyle1">
+												<input type="submit" formmethod="post" formaction="/mypageReviewDelete"value="여행 후기 삭제" class="mypage_mypost_buttonStyle1">
 											</td>
 										</tr>
 									</table>
@@ -116,5 +116,6 @@
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
+
 </script>
 </html>

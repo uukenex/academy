@@ -186,8 +186,9 @@ public class ReviewController {
 		
 		String routeNo = request.getParameter("routeNumber");
 		if(routeNo == ""){
-			routeNo ="0";
+			routeNo = "0";
 		}
+		
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
 		String reviewContent1 = request.getParameter("content1");
@@ -262,7 +263,7 @@ public class ReviewController {
 		Route result = routeService.selectRouteByNo(Integer.parseInt(routeNo));
 		logger.trace("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
-		
+		 
 		String str3 = result.getRouteFull();
 		
 		int count4 = 0;
@@ -503,6 +504,14 @@ public class ReviewController {
 			session.setAttribute("message", "정상 삭제 완료");
 		}
 		return "redirect:/post?page=1";
+	}
+	
+	// 마이페이지 리뷰 삭제
+	@RequestMapping(value = "/mypageReviewDelete", method = RequestMethod.POST)
+	public String mypageCommentDelete(Model model, HttpServletRequest request, HttpSession session) {
+		String reviewNo = request.getParameter("reviewNo");
+		int result = rs.deleteReview(Integer.parseInt(reviewNo));
+		return "redirect:/session/mypageReview?page=1"; 
 	}
 
 	// 리뷰 추천하기 기능 ajax

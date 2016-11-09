@@ -35,7 +35,7 @@
 							onclick="window.open('/login', 'win1',
 									'width=550, height=480');"
 									onkeypress="this.onclick()">Log In</a></li>
-								<c:url value="/mypageMain" var="mypageMain" />
+								<c:url value="/session/mypageMain" var="mypageMain" />
 				
 				<li><a href="#">Photo Book</a></li>
 				<c:url value="/join" var="join" />
