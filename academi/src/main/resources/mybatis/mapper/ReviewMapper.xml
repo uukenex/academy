@@ -12,11 +12,12 @@
 	</select>
 
 	<!-- 단일 후기글 보기 -->
-	<select id="select" parameterType="int" resultMap="reviewUsers">
-		select * from
-		review r
-		join users u on u.user_id=r.user_id where review_no=
-		#{reviewNo}
+	<select id="select" parameterType="int" resultMap="reviewRouteUsers">
+		 select * from
+		review r, users u, route rr 
+    	where u.user_id=r.user_id 
+    	and rr.route_no=r.route_no 
+    	and review_no=#{reviewNo}
 	</select>
 	<!-- 후기 쓰기 -->
 	<insert id="insert" parameterType="Map">
@@ -47,8 +48,7 @@
 		review_content7=#{reviewContent7},
 		review_content8=#{reviewContent8},
 		review_content9=#{reviewContent9},
-		route_no=#{routeNo},
-		review_image=#{reviewImage}
+		route_no=#{routeNo}
 		where
 		review_no=#{reviewNo}
 	</update>
@@ -268,4 +268,5 @@
 		<association property="route" column="route_no" javaType="route"
 			resultMap="com.example.RouteMapper.routeBase"></association>
 	</resultMap>
+	
 </mapper>

@@ -81,13 +81,14 @@ public class ReviewController {
 		rs.count(reviewNo);
 		Review r = rs.selectReview(reviewNo);
 		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
+	
+		String str3 = r.getRoute().getRouteFull();
 		
-		Integer routeNo = Integer.parseInt(request.getParameter("routeNo"));
-		Route result = routeService.selectRouteByNo(routeNo);
+		/*Route result = routeService.selectRouteByNo(routeNo);*/
 		logger.trace("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
 		
-		String str3 = result.getRouteFull();
+	
 		
 		int count4 = 0;
 		//str3의 길이만큼 반복되는데
@@ -132,7 +133,6 @@ public class ReviewController {
 		}
 		 
 		 
-		logger.trace("routeNo??:{}",routeNo);
 		model.addAttribute("addRoute",list);
 		model.addAttribute("post", r);
 		model.addAttribute("replys", rr);
@@ -400,7 +400,7 @@ public class ReviewController {
 		}
 		
 
-		return "redirect:/postView?reviewNo="+rs.currentNo()+"&routeNo="+routeNo;
+		return "redirect:/postView?reviewNo="+rs.currentNo();
 		
 	
 	}
@@ -417,16 +417,8 @@ public class ReviewController {
 
 	// 리뷰 수정하기
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
-	public String commentUpdate(Model model, HttpServletRequest request,MultipartFile file) throws IllegalStateException, IOException {
-		String fileName="";
-		if(file.isEmpty()){
-			fileName = "";
-		}
-		else{
-		fileName= System.currentTimeMillis() + file.getOriginalFilename();
-		File f = new File(UPLOAD_DIR + fileName);
-		file.transferTo(f);
-		}
+	public String commentUpdate(Model model, HttpServletRequest request) throws IllegalStateException, IOException {
+		
 		String reviewNo = request.getParameter("reviewNo");
 		String reviewTitle = request.getParameter("title");
 		String reviewContent0 = request.getParameter("content0");
@@ -439,7 +431,7 @@ public class ReviewController {
 		String reviewContent7 = request.getParameter("content7");
 		String reviewContent8 = request.getParameter("content8");
 		String reviewContent9 = request.getParameter("content9");
-		String reviewImage = fileName;
+		
 
 
 		List<String> strContent = new ArrayList<>();
@@ -497,7 +489,7 @@ public class ReviewController {
 		int routeNo = Integer.parseInt(request.getParameter("routeNo"));
 		logger.trace("routeNo :{}",routeNo);
 		rs.updateReview(Integer.parseInt(reviewNo), reviewTitle, contentArr[0], contentArr[1], contentArr[2],
-				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],reviewImage,
+				contentArr[3], contentArr[4], contentArr[5], contentArr[6], contentArr[7], contentArr[8], contentArr[9],
 				routeNo);
 		return "redirect:/postView?reviewNo=" + reviewNo;
 	}

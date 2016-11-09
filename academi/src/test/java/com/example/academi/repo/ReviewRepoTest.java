@@ -38,10 +38,10 @@ public class ReviewRepoTest {
 	// 후기글 하나 조회 테스트
 	@Test
 	public void SelectTest() {
-		Review result = rrepo.selectReview(2);
+		Review result = rrepo.selectReview(337);
 		logger.trace("객체:{}", result);
 		assertThat(result, is(notNullValue()));
-		logger.trace("원하는 정보 : {}", rrepo.selectReview(2).getUsers().getUserNick());
+		logger.trace("원하는 정보 : {}", result.getRoute());
 	}
 
 	// 후기글 쓰기 테스트
@@ -81,12 +81,11 @@ public class ReviewRepoTest {
 		String reviewContent7 = null;
 		String reviewContent8 = null;
 		String reviewContent9 = null;
-		String reviewImage=null;
+
 		int routeNo = 324;
 		int reviewNo = 10;
 		rrepo.updateReview(reviewNo, reviewTitle, reviewContent, reviewContent1, reviewContent2, reviewContent3,
-				reviewContent4, reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9,
-				reviewImage,routeNo);
+				reviewContent4, reviewContent5, reviewContent6, reviewContent7, reviewContent8, reviewContent9,routeNo);
 	}
 
 	// 후기글 삭제 테스트 -서비스에서는 댓글도 함께지워야함

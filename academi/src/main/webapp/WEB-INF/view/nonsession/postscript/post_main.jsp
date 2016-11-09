@@ -109,31 +109,40 @@
 								<div class="edi_posts">
 									<c:forEach var="post" items="${posts }" begin="0" end="2">
 										<article>
-											<a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
+										<form method="GET" action="/postView">
+											<a href="#" onclick="" class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
-												<li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li>
+												<input type="hidden" value="${post.reviewNo }" name="reviewNo">
+												<input type="hidden" value="${post.routeNo }" name="routeNo">
+												<li><input type="submit" value="MORE"></li>
 											</ul>
+										</form>
 										</article>
 								</c:forEach>
 								</div>
 								<hr id="best_posts_hr">
 								
 								<!-- 사용자가 등록한 모든 후기 띄워주는 part -->
+								
 								<div class="edi_posts edi_posts_body">
 									<c:forEach var="post" items="${posts }" begin="3">
+										
 										<article>
-											<a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
+											<a href="/postView?reviewNo=${post.reviewNo }" class="post_image">
+											<img alt="" src="/photo_upload/${post.reviewImage }"></a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
-												
-												<li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li>
+												<li><input type="submit" value="MORE"></li>
 											</ul>
+										</form>
 										</article>
+										
 									</c:forEach>
 								</div>
+								
 							</section>
 					</div>
 				</div>
@@ -182,12 +191,13 @@
 	
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
-		$(document).on("ready", function() {
+	$(document).on("ready", function() {
 			if ("${message}" != null && "${message}" != ("")) {
 				alert("${message}");
 	<%session.removeAttribute("message");%>
 		}
 		});
+	
 	</script>
 </body>
 </html>

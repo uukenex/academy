@@ -26,7 +26,6 @@ public interface ReviewRepo {
 			String reviewContent4,String reviewContent5,
 			String reviewContent6,String reviewContent7,
 			String reviewContent8,String reviewContent9,
-			String reviewImage,
 			int routeNo);
 
 	public List<Review> selectReviewById(String userId, int page);
