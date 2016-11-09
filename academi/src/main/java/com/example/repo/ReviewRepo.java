@@ -62,4 +62,9 @@ public interface ReviewRepo {
 	
 	//가장 최근에 쓴 글의 페이지 번호를 가져온다.
 	public int selectNo();
+	//루트 번호로 등록된 후기를 삭제한다
+	public int deleteByRouteNo(int routeNo);
+	//루트번호로 등록된 글을 검색한다(리스트)
+	public List<Review> selectByRouteNo(int routeNo);
+		
 }

@@ -58,7 +58,7 @@
 											<td><input name="title" type="text" id="post_write_title"></td>
 										</tr>
 										<tr class="routeTitleTr">
-											<input type="hidden" id ="routeNumber" name="routeNumber">
+											<input type="hidden" id ="routeNumber" name="routeNumber" value="0">
 											<td colspan="2">
 												<input type="text" id ="routeTitle" name="routeTitle" disabled="disabled">
 												<input type="button" class="postButtonStyle2" value="내 경로 가져오기" onclick="mapOpen()">

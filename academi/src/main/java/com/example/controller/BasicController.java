@@ -63,8 +63,12 @@ public class BasicController {
 		return "session/mainnotice/notice_sign";
 	}
 	
-	@RequestMapping("/mypageMain")
-	public String mypageMain(Model model) {
+	@RequestMapping("/session/mypageMain")
+	public String mypageMain(Model model,HttpSession session) {
+		if(session.getAttribute("Users")==null){
+			//세션 forpage에 값을 넣어줌
+			session.setAttribute("forPage", "session/information/mypage_main");
+		}
 		return "session/information/mypage_main";
 	}
 	

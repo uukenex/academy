@@ -25,6 +25,12 @@ public class RouteServiceTest {
 
 	int page = 1;
 
+	//
+	@Transactional
+	@Test
+	public void deleteRouteTest() {
+		rs.deleteRoute(93);
+	}
 	// 추가
 	@Transactional
 	@Test

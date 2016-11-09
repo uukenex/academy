@@ -236,7 +236,15 @@
 		#{page}*3-2 and #{page}*3
 	</select>
 
+<!-- 루트번호로 후기글을 삭제한다. -->
+<delete id="deleteByRouteNo" parameterType="int">
+delete from review where route_no=#{routeNo}
+</delete>
 
+<!--  루트번호로 등록 된 글 검색 -->
+<select id="selectListByRouteNo" parameterType="int" resultMap="reviewBase">
+select * from review where route_no=#{routeNo}
+</select>
 
 	<resultMap type="review" id="reviewBase">
 		<id column="review_no" property="reviewNo" />

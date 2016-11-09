@@ -21,6 +21,7 @@
 		
 	<!-- My Page Plan view -->
 	
+<<<<<<< HEAD
 		<div id="page-wrapper" class="boardPage-Wrapper">
 			<div id="main">
 				<div class="container">
@@ -58,7 +59,7 @@
 													<input type="hidden" value="${Route.routeNo }">
 													<a href="/routeupdate?routeNo=${Route.routeNo }"  class="mypage_mypost_buttonStyle1">여행 계획 보기</a>
 													<input type="submit" value="여행 계획 수정"  class="mypage_mypost_buttonStyle1">
-													<input type="submit" value="여행 계획 삭제" class="mypage_mypost_buttonStyle1">
+													<input type="submit" value="여행 계획 삭제" class="mypage_mypost_buttonStyle1"  formaction="/deleteRoute" formmethod="post">
 												</td>
 											</tr>
 										</table>
@@ -84,27 +85,9 @@
 				</div>
 			</div>
 		</div>
-<%-- 	
-	<form>
-	
-	<c:forEach var="Route" items="${Route }">
-	<input type="hidden" value="${Route.routeNo }" name="routeNo">
-	<table>
-		<tr>
-			<td>${Users.userNick}님의 ${Route.routeName }</td>
-		</tr>
-		<tr>
-			<td>
-			<input type="text" value="${Route.routeNo }">
-			<a href="/routeupdate?routeNo=${Route.routeNo }">여행 계획 보기</a>
+
 			
-			<input type="button" value="여행 계획 삭제">
-			</td>
-		</tr>
-	</table>
-	</c:forEach>
-	</form> --%>
-			
+
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>

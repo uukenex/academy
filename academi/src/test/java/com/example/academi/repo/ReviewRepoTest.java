@@ -34,7 +34,11 @@ public class ReviewRepoTest {
 	ReviewRepo rrepo;
 
 	int page = 1;
-
+	@Test
+	public void SelectListTest() {
+		List<Review> result = rrepo.selectByRouteNo(93);
+		result.size();
+	}
 	// 후기글 하나 조회 테스트
 	@Test
 	public void SelectTest() {
@@ -171,4 +175,10 @@ public class ReviewRepoTest {
 		logger.trace("review : {}", review);
 
 	}
+	@Test
+	@Transactional
+	public void deleteByRouteNo() {
+		rrepo.deleteByRouteNo(93);
+	}
+	
 }

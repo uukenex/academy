@@ -115,10 +115,11 @@ z-index: 1;
 						</c:if>
 						<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
 						<div style="height: 5em;"></div> 
-							<div style="text-align: center;">
+							<div class="12u"  style="text-align: center;">
 							<h1>권한이 없습니다. 공유신청을 하세요!</h1>
-							<input type="button" value="사진폴더 공유신청하기">
+							<input type="button" value="사진폴더 공유신청하기" class="labeling1">
 							</div>
+							<div style="height: 5em;"></div> 
 						</c:if>
 					</div>
 					

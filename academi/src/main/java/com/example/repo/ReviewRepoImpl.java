@@ -241,6 +241,16 @@ public class ReviewRepoImpl implements ReviewRepo{
 		String statement = NAME_SPACE+"pageCountbyId";
 		return template.selectOne(statement,userId);
 	}
+	@Override
+	public int deleteByRouteNo(int routeNo) {
+		String statement = NAME_SPACE+"deleteByRouteNo";
+		return template.delete(statement,routeNo);
+	}
+	@Override
+	public List<Review> selectByRouteNo(int routeNo) {
+		String statement = NAME_SPACE+"selectListByRouteNo";
+		return template.selectList(statement,routeNo);
+	}
 	
 
 
