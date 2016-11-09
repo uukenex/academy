@@ -2153,14 +2153,15 @@
 
 		#header .button {
 			display: inline-block;
-			border-radius: 100%;
+			border-radius: 50%;
 			width: 4.5em;
 			height: 4.5em;
-			line-height: 4.5em;
+			line-height: 4.7em;
 			text-align: center;
 			font-size: 1.3em;
 			padding: 0;
-			font-family: 'Jeju Hallasan';
+			font-family: 'Jeju Gothic';
+			font-weight: bold;
 		}
 
 		#header hr {
@@ -2176,6 +2177,10 @@
 
 		#header footer {
 			margin: 1em 0 0 0;
+		}
+		
+		div#header div.inner footer a {
+			margin-right: 1em;
 		}
 
 	body.homepage #header {

@@ -53,7 +53,8 @@
 		/* Button Style */
 		
 			table.mypage_mypost_viewTable a.mypage_mypost_buttonStyle1,
-			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1 {
+			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1,
+			table.mypage_mypost_viewTable input[type='submit'].mypage_mypost_buttonStyle1 {
 				-moz-appearance: none;
 				-webkit-appearance: none;
 				-ms-appearance: none;
@@ -84,7 +85,8 @@
 			}
 			
 			table.mypage_mypost_viewTable a.mypage_mypost_buttonStyle1:HOVER,
-			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1:HOVER {
+			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1:HOVER,
+			table.mypage_mypost_viewTable input[type='submit'].mypage_mypost_buttonStyle1:HOVER {
 				background-color: #f56a6a;
 					color: #323232;
 			}
