@@ -206,19 +206,19 @@ function smenu_click(musName){
 		}else{
 			$('.list3')[0].src='/map/domap/서울.png';
 		}
-	 if("${firstDo}"=="강원도" ||"${secondDo}"=="강원도"||"${thirdDo}"=="강원도"){ 
+	 if("${firstDo}"=="강원" ||"${secondDo}"=="강원"||"${thirdDo}"=="강원"){ 
 		 	mus4off.src='/map/domap/강원도(hot).png';
 		 	$('.list4')[0].src='/map/domap/강원도(hot).png';
 		}else{
 			$('.list4')[0].src='/map/domap/강원도.png';
 		}
-	 if("${firstDo}"=="충청남도" ||"${secondDo}"=="충청남도"||"${thirdDo}"=="충청남도"){ 
+	 if("${firstDo}"=="충남" ||"${secondDo}"=="충남"||"${thirdDo}"=="충남"){ 
 		 	mus5off.src='/map/domap/충청남도(hot).png';
 		 	$('.list5')[0].src='/map/domap/충청남도(hot).png';
 		}else{
 			$('.list5')[0].src='/map/domap/충청남도.png';
 		}
-	 if("${firstDo}"=="충청북도" ||"${secondDo}"=="충청북도"||"${thirdDo}"=="충청북도"){ 
+	 if("${firstDo}"=="충북" ||"${secondDo}"=="충북"||"${thirdDo}"=="충북"){ 
 		 	mus6off.src='/map/domap/충청북도(hot).png';
 		 	$('.list6')[0].src='/map/domap/충청북도(hot).png';
 		}else{
@@ -230,7 +230,7 @@ function smenu_click(musName){
 		}else{
 			$('.list7')[0].src='/map/domap/대전.png';
 		}
-	 if("${firstDo}"=="경상북도" ||"${secondDo}"=="경상북도"||"${thirdDo}"=="경상북도"){ 
+	 if("${firstDo}"=="경북" ||"${secondDo}"=="경북"||"${thirdDo}"=="경북"){ 
 		 	mus8off.src='/map/domap/경상북도(hot).png';
 		 	$('.list8')[0].src='/map/domap/경상북도(hot).png';
 		}else{
@@ -242,13 +242,13 @@ function smenu_click(musName){
 		}else{
 			$('.list9')[0].src='/map/domap/대구.png';
 		}
-	 if("${firstDo}"=="전라북도" ||"${secondDo}"=="전라북도"||"${thirdDo}"=="전라북도"){ 
+	 if("${firstDo}"=="전북" ||"${secondDo}"=="전북"||"${thirdDo}"=="전북"){ 
 		 	mus10off.src='/map/domap/전라북도(hot).png';
 		 	$('.list10')[0].src='/map/domap/전라북도(hot).png';
 		}else{
 			$('.list10')[0].src='/map/domap/전라북도.png';
 		}
-	 if("${firstDo}"=="전라남도" ||"${secondDo}"=="전라남도"||"${thirdDo}"=="전라남도"){ 
+	 if("${firstDo}"=="전남" ||"${secondDo}"=="전남"||"${thirdDo}"=="전남"){ 
 		 	mus11off.src='/map/domap/전라남도(hot).png';
 		 	$('.list11')[0].src='/map/domap/전라남도(hot).png';
 		}else{
@@ -260,7 +260,7 @@ function smenu_click(musName){
 		}else{
 			$('.list12')[0].src='/map/domap/광주.png';
 		}
-	 if("${firstDo}"=="경상남도" ||"${secondDo}"=="경상남도"||"${thirdDo}"=="경상남도"){ 
+	 if("${firstDo}"=="경남" ||"${secondDo}"=="경남"||"${thirdDo}"=="경남"){ 
 		 	mus13off.src='/map/domap/경상남도(hot).png';
 		 	$('.list13')[0].src='/map/domap/경상남도(hot).png';
 		}else{
@@ -284,18 +284,7 @@ function smenu_click(musName){
 		}else{
 			$('.list16')[0].src='/map/domap/제주도.png';
 		}
-	 if("${firstDo}"=="인천" ||"${secondDo}"=="인천"||"${thirdDo}"=="인천"){ 
-		 	mus1off.src='/map/domap/인천(hot).png';
-		 	$('.list1')[0].src='/map/domap/인천(hot).png';
-		}else{
-			$('.list1')[0].src='/map/domap/인천.png';
-		}
-	 if("${firstDo}"=="인천" ||"${secondDo}"=="인천"||"${thirdDo}"=="인천"){ 
-		 	mus1off.src='/map/domap/인천(hot).png';
-		 	$('.list1')[0].src='/map/domap/인천(hot).png';
-		}else{
-			$('.list1')[0].src='/map/domap/인천.png';
-		}
+
 	 
  });
  

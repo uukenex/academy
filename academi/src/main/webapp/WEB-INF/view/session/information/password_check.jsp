@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form method="post" action="/informChange">
+	
+	<input type="password" name="passwordCheck" id="passwordCheck">
+	<input type="submit" value="확인">
+	<input type="button" value="뒤로가기" onclick="history.back()">
+	</form>
 </body>
 </html>

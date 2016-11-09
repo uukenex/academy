@@ -77,6 +77,11 @@ public class MapAPIController {
 			thirdDo = hotplace.get(2).getCity();
 		}
 
+		logger.trace("firstDo : {} ",firstDo);
+		logger.trace("secondDo : {} ",secondDo);
+		logger.trace("thirdDo : {} ",thirdDo);
+		
+		
 		model.addAttribute("firstDo", firstDo);
 		model.addAttribute("secondDo", secondDo);
 		model.addAttribute("thirdDo", thirdDo);

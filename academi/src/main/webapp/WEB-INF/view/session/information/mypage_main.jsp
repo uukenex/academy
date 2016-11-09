@@ -49,19 +49,28 @@ $(document).on("ready", function() {
 					<h1 class="mypageHeader">My Page</h1>
 					<hr>
 				</header>
-
+				
 				<section class="tiles">
 					<article class="phanStyle1">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic01.jpg" alt="" />
 						</span>
-						<a href="/informChange">
+						<c:if test="${'facebook'!= Users.userPass }">
+						<a href="/passwordChk">
+						</c:if>
+						<c:if test="${'facebook' == Users.userPass }">
+						<a href="/fInformChange">
+						</c:if>
 							<h2>회원 정보 수정</h2>
 							<div class="phanContent">
 								<p>회원의 정보를 수정 할 수 있습니다.</p>
 							</div>
 						</a>
+					
 					</article>
-
+				
+				
+			
+				
 					<article class="phanStyle2">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic02.jpg" alt="" />
 						</span> <a href="/session/myShare">

@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.controller.UserController.MyHash;
 import com.example.dto.Comments;
 import com.example.dto.Qna;
 import com.example.dto.Review;
@@ -72,15 +75,36 @@ public class BasicController {
 		return "session/information/mypage_main";
 	}
 	
-	@RequestMapping("/informChange")
-	public String inform_change(Model model, HttpSession session) {
-		Users user = (Users) session.getAttribute("Users");
-		if(user.getUserId().length()>12){
-			return "session/information/facebook_inform_change";
-		}else{
-		return "session/information/inform_change";
+	@RequestMapping("/passwordChk")
+	public String passwordChk(Model model) {
+		return "session/information/password_check";
 		}
+	@RequestMapping("/fInformChange")
+	public String fInformChange(Model model) {
+		return "session/information/facebook_inform_change";
 	}
+	
+	
+	@RequestMapping("/informChange")
+	public String inform_change(Model model, HttpServletRequest request,HttpSession session) {
+		
+		Users user = (Users) session.getAttribute("Users");
+		String userPass = request.getParameter("passwordCheck");
+		MyHash ht = new MyHash();
+		userPass = ht.testMD5(userPass);
+		
+		if(userPass.equals(user.getUserPass()))
+		{
+				return "session/information/inform_change";
+			
+		}else{
+			model.addAttribute("message","비밀번호가 일치하지 않습니다.");
+			return "redirect:/session/mypageMain";
+		}
+	
+	}
+		
+		
 	
 	@RequestMapping("/mapRightMenu")
 	public String mapRightMenu(Model model) {
@@ -113,5 +137,28 @@ public class BasicController {
 	public String mainpage(Model model){
 		return "nonsession/mainpage/mainpage2";
 	}
+	
+	class MyHash {
+		public String testMD5(String str) {
+			String md5Str = "";
+			try {
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				md.update(str.getBytes());
+				byte byteData[] = md.digest();
+				StringBuffer sb = new StringBuffer();
+				// byte code를 hex format으로 변경
+				for (int i = 0; i < byteData.length; i++) {
+					sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+				}
+				md5Str = sb.toString();
+
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+				md5Str = null;
+			}
+			return md5Str;
+		}
+	}
+
 
 }
