@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
+<title>${curUserId }님의 포토북</title>
 <style type="text/css">
 
 #frm label {
@@ -113,14 +114,16 @@ z-index: 1;
 						   
 						    <output class="12u" id="result"></output>
 						</c:if>
+						
 						<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
-						<div style="height: 5em;"></div> 
-							<div class="12u"  style="text-align: center;">
-							<h1>권한이 없습니다. 공유신청을 하세요!</h1>
-							<input type="button" value="사진폴더 공유신청하기" class="labeling1">
+							<div class="12u shareGrantInfo">
+								<h1><i class="fa fa-times-circle-o"></i></h1>
+								<h2> 권한이 없습니다. </h2>
+								<h2><i class="fa fa-share-alt"></i> 공유신청을 하세요!</h2>
+								<input type="button" value="사진폴더 공유신청하기" class="labeling1">
 							</div>
-							<div style="height: 5em;"></div> 
 						</c:if>
+						
 					</div>
 					
 					<!-- footer -->

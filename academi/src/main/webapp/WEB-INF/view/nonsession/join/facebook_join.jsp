@@ -8,35 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style>
-img {
-	width: 45px;
-	height: 50px;
-}
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/joinstyle.css" />
+<title>여행을 부탁해 회원 가입</title>
 
-.inputTextStyle {
-	height: 40px;
-	width: 300px;
-}
-
-fieldset {
-	width: 300px;
-}
-
-#logo {
-	width: 100px;
-	height: 100px;
-}
-
-#joinButton {
-	width: 300px;
-	height: 30px;
-	background-color: #95B3D7;
-	font-weight: bold;
-	font-size: 12pt;
-}
-</style>
 </head>
 <body>
 

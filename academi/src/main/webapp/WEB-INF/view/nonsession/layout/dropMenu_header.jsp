@@ -33,7 +33,7 @@
 				<c:if test="${empty Users.userId}">
 				<li><a href="#"
 							onclick="window.open('/login', 'win1',
-									'width=550, height=480');"
+									'width=532, height=475');"
 									onkeypress="this.onclick()">Log In</a></li>
 								<c:url value="/session/mypageMain" var="mypageMain" />
 				
@@ -41,9 +41,17 @@
 				<c:url value="/join" var="join" />
 				<li>
 					<a href="#" onclick="window.open('/join', 'win1',
-							'width=550, height=700');"
+							'width=560, height=680');"
 							onkeypress="this.onclick()">
-						회원 가입
+						사이트 회원 가입
+					</a>
+				</li>
+				<c:url value="/facebookjoin" var="facebookjoin" />
+				<li>
+					<a href="#" onclick="window.open('${facebookjoin}', 'win1',
+							'width=560, height=680');"
+							onkeypress="this.onclick()">
+						페이스북으로 가입
 					</a>
 				</li>
 				</c:if>	
