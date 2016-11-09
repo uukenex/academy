@@ -17,7 +17,7 @@
 </style>
 <body>
 	
-	<form>
+
 	
 	<c:forEach var="Route" items="${Route }">
 	<input type="hidden" value="${Route.routeNo }" name="routeNo">
@@ -27,15 +27,17 @@
 		</tr>
 		<tr>
 			<td>
-			<input type="text" value="${Route.routeNo }">
+			<form>
+			<input type="text" value="${Route.routeNo }" name="routeNo2">
 			<a href="/routeupdate?routeNo=${Route.routeNo }">여행 계획 보기</a>
 			
-			<input type="button" value="여행 계획 삭제">
+			<input type="submit" value="여행 계획 삭제" formaction="/deleteRoute" formmethod="post">
+			</form>
 			</td>
 		</tr>
 	</table>
 	</c:forEach>
-	</form>
+	
 			<div id="posts_paging">
 		<%!int i;%>
 		<%

@@ -41,9 +41,16 @@ public class RouteController {
 	public @ResponseBody String previewRoute(Model model, HttpServletRequest request) {
 		String RouteNo = request.getParameter("routeNumber");
 		logger.trace("RouteNo :{}" , RouteNo);
+		
 		return RouteNo;
 	}
-
+	@RequestMapping(value ="/deleteRoute", method = RequestMethod.POST)
+	public String deleteRoute(Model model, HttpServletRequest request) {
+		String routeNo = request.getParameter("routeNo2");
+		logger.trace("{}",routeNo);
+		rs.deleteRoute(Integer.parseInt(routeNo));
+		return "redirect:/session/mypageRoute?page=1";
+	}
 
 	
 }
