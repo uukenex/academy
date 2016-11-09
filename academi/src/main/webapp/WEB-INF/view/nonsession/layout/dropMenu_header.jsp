@@ -24,10 +24,8 @@
 				<li><a href="${mainpage }">Home</a></li>
 				<c:url value="/login" var="login" />
 				<c:if test="${!empty Users.userId }">
-				<li><a href="#"
-							onclick="window.open('/logout', 'win1',
-									'width=0, height=0');"
-									onkeypress="this.onclick()">Log OUT</a></li>
+				<li><a href="/logout"
+							>Log OUT</a></li>
 				<c:url value="/mypageMain" var="mypageMain" />
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>

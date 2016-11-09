@@ -124,6 +124,12 @@ public class RouteRepoTest {
 		assertThat(result, is(notNullValue()));
 	}
 	
+	@Test
+	public void selectTest() {
+		rrepo.selectRouteByIdForMypage("ㅋㅌㅊ", 1);
+	}
+	
+	
 	@Transactional
 	@Test
 	public void updateTest() {

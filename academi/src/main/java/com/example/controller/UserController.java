@@ -89,7 +89,7 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpServletRequest request, HttpSession session) {
 		session.invalidate();
-		return "redirect:/autoLogout";
+		return "redirect:/mainpage2";
 	}
 
 	@RequestMapping(value = "/autoLogout", method = RequestMethod.GET)

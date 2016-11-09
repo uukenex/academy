@@ -18,17 +18,20 @@
 <body>
 	
 	<form>
+	
 	<c:forEach var="Route" items="${Route }">
 	<input type="hidden" value="${Route.routeNo }" name="routeNo">
 	<table>
-		
 		<tr>
 			<td>${Users.userNick}님의 ${Route.routeName }</td>
 		</tr>
 		<tr>
-			<td><input type="hidden" value="${Route.routeNo }">
+			<td>
+			<input type="text" value="${Route.routeNo }">
 			<a href="/routeupdate?routeNo=${Route.routeNo }">여행 계획 보기</a>
-			<input type="button" value="여행 계획 삭제"></td>
+			
+			<input type="button" value="여행 계획 삭제">
+			</td>
 		</tr>
 	</table>
 	</c:forEach>
@@ -38,10 +41,14 @@
 		<%
 			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
 		%>
-		<a href="/session/mypageReview?page=<%=i%>"><%=i%> </a>
+		<a href="/session/mypageRoute?page=<%=i%>"><%=i%> </a>
 		<%
 			}
 		%>
 	</div>
 </body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+ 
+</script>
 </html>

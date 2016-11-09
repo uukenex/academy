@@ -47,7 +47,7 @@ public class BasicController {
 		return "nonsession/join/id_check";
 	}
 
-	@RequestMapping("/mainpage")
+	@RequestMapping("session/mainpage")
 	public String mainpage(Model model) {
 		return "nonsession/mainpage/mainpage2";
 	}

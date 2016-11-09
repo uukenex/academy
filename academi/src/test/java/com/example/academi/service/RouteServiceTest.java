@@ -35,12 +35,18 @@ public class RouteServiceTest {
 	public void selectTest() {
 		rs.selectRouteByNo(123);
 	}
+	@Test
+	public void selectTest2() {
+		rs.selectRouteByIdForMypage("ㅋㅌㅊ",1);
+	}
 	
 	@Transactional
 	@Test
 	public void updateTest() {
 		rs.updateRoute("경로이름","경로내용","풒ㄹ루트",22);
 	}
+	
+	
 	
 	@Transactional
 	@Test

@@ -94,11 +94,11 @@ public class MyPageController {
 			totalPage = 0;
 		}
 		
-		List<Route> result = rs.selectRouteByIdForMypage(userId, totalPage);
+		List<Route> route = rs.selectRouteByIdForMypage(userId, page);
 
 		model.addAttribute("totalPage",totalPage);
-		model.addAttribute("Route", result);
-		logger.trace("결과 값  {} :", result);
+		model.addAttribute("Route", route);
+		logger.trace("결과 값  {} :", route);
 		return "/session/information/myplan";
 	}
 	//selectRouteByIdForMypage
@@ -108,7 +108,7 @@ public class MyPageController {
 		Users user = (Users) session.getAttribute("Users");
 		String userId = user.getUserId();
 		
-		int pageCount = rs.pageCountbyId(userId);
+		int pageCount = reviewService.pageCountbyId(userId);
 		int totalPage = pageCount / 3 + 1;
 		if(pageCount % 3 == 0){
 			totalPage -=1;

@@ -41,8 +41,8 @@
 	
 <!-- 마이페이지 내가 작성한 경로보기 기능 -->
 
-<!--경로테이블에서 내아이디로 조회 -->
 
+<!--경로테이블에서 내아이디로 조회 -->
 	<select id="selectRouteById" parameterType="String" resultMap="routeUsers">
 		select * from route r join users u on u.user_id=r.user_id where r.user_id = #{userId}
 	</select>
@@ -78,4 +78,6 @@
 		<association property="users" column="user_id" javaType="users"
 			resultMap="com.example.UserMapper.usersBase"></association>
 	</resultMap>
+	
+	
 </mapper>

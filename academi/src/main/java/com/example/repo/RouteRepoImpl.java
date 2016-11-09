@@ -56,10 +56,10 @@ public class RouteRepoImpl implements RouteRepo {
 
 	@Override
 	public List<Route> selectRouteByIdForMypage(String userId, int page) {
-		Map<String,Object> map = new HashMap<>();
+		String statement = NAME_SPACE+"selectRouteByIdForMypage";
+		Map <String,Object> map = new HashMap<>();
 		map.put("userId", userId);
 		map.put("page", page);
-		String statement = NAME_SPACE+"selectRouteByIdForMypage";
 		return template.selectList(statement,map);
 	}
 
