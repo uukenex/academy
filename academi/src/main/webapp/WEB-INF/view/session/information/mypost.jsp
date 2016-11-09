@@ -10,12 +10,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
 <title>${Users.userNick}님의 후기</title>
 </head>
-<style>
-	td{
-		border : solid 2px;
-	}
 
-</style>
 <body>
 
 	<!-- Drop Menu Header -->
@@ -33,7 +28,7 @@
 					<div class="row main-row">
 						
 						<div class="1u"></div>
-						<div class="10u 12(moblie) important(moblie)">
+						<div class="10u 12u(moblie) important(moblie)">
 						
 							
 							<c:forEach var="Review" items="${Review }">
