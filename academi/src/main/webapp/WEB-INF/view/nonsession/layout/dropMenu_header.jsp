@@ -26,7 +26,7 @@
 				<c:if test="${!empty Users.userId }">
 				<li><a href="/logout"
 							>Log OUT</a></li>
-				<c:url value="/mypageMain" var="mypageMain" />
+				<c:url value="/session/mypageMain" var="mypageMain" />
 				<li><a href="${mypageMain }">My Page</a></li>
 				<li><a href="#">Photo Book</a></li>
 				</c:if>
