@@ -757,7 +757,7 @@ public class MapAPIController {
 				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
 			}
 			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-					"", "", "", "", null, 0, 0, 0, ""));
+					"", "", "", "", null, 0, 0, 0, "",null));
 		}
 		List<List<Review>> objList = new ArrayList<>();
 		objList.add((List<Review>) (Object) cartObj);
@@ -1145,7 +1145,7 @@ public class MapAPIController {
 				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
 			}
 			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-					"", "", "", "", null, 0, 0, 0, ""));
+					"", "", "", "", null, 0, 0, 0, "",null));
 		}
 
 		List<List<Review>> objList = new ArrayList<>();
@@ -1255,7 +1255,7 @@ public class MapAPIController {
 				goodRouteFullListName += goodRouteFullList.get(j).get(i) + " ";
 			}
 			goodRouteFullListWrapReview.add(new Review(0, goodRouteFullListName + "을 경유한 추천 경로", "", "", "", "", "", "",
-					"", "", "", "", null, 0, 0, 0, ""));
+					"", "", "", "", null, 0, 0, 0, "",null));
 		}
 
 		List<List<Review>> objList = new ArrayList<>();

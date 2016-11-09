@@ -60,7 +60,7 @@ public class Review implements Serializable {
 	public Review(Integer reviewNo, String reviewTitle, String reviewContent0, String reviewContent1,
 			String reviewContent2, String reviewContent3, String reviewContent4, String reviewContent5,
 			String reviewContent6, String reviewContent7, String reviewContent8, String reviewContent9,
-			Date reviewDate,Integer reviewStar, Integer reviewCount, Integer routeNo, String userId) {
+			Date reviewDate,Integer reviewStar, Integer reviewCount, Integer routeNo, String userId,Route route) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
@@ -79,6 +79,7 @@ public class Review implements Serializable {
 		this.reviewCount = reviewCount;
 		this.routeNo = routeNo;
 		this.userId = userId;
+		this.route = route;
 	}
 	
 	

@@ -52,8 +52,7 @@
 
 <nav id="nav">
 	<ul class="list">
-		<c:url value="/mainpage" var="mainpage"/>
-		<li><a href="${mainpage }">홈</a></li>
+		<li><a href="/mainpage2">홈</a></li>
 		
 		<li><a href='/mapMain'>일정 만들기</a></li>
 		

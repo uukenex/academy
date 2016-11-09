@@ -47,11 +47,6 @@ public class BasicController {
 		return "nonsession/join/id_check";
 	}
 
-	@RequestMapping("session/mainpage")
-	public String mainpage(Model model) {
-		return "nonsession/mainpage/mainpage2";
-	}
-
 	@RequestMapping("/login")
 	public String login(Model model,HttpSession session,HttpServletRequest request) {
 		return "nonsession/login/login";
@@ -110,6 +105,9 @@ public class BasicController {
 		return "nonsession/mainpage/mainPage";
 	}
 
-	
+	@RequestMapping("/mainpage")
+	public String mainpage(Model model){
+		return "nonsession/mainpage/mainpage2";
+	}
 
 }

@@ -35,8 +35,9 @@
 						<div class="1u"></div>
 						<div class="10u 12(moblie) important(moblie)">
 						
-							<form>
+							
 							<c:forEach var="Review" items="${Review }">
+							<form>
 								<div id="mypage_mypost_viewDiv">
 									<table class="mypage_mypost_viewTable">
 										<colgroup>
@@ -57,16 +58,17 @@
 										</tr>
 										<tr>
 											<td>
-												<input type="hidden" value="${Review.reviewNo }">
+												<input type="hidden" value="${Review.reviewNo }" name="reviewNo" >
 												<a href="/postView?reviewNo=${Review.reviewNo }" class="mypage_mypost_buttonStyle1">여행 후기 보기</a>
-												<input type="button" value="여행 후기 수정" class="mypage_mypost_buttonStyle1">
+												<input type="submit" formmethod="post" formaction="/session/postUpdate" value="여행 후기 수정"class="mypage_mypost_buttonStyle1">
 												<input type="button" value="여행 후기 삭제" class="mypage_mypost_buttonStyle1">
 											</td>
 										</tr>
 									</table>
 									</div>
+									</form>
 								</c:forEach>
-							</form>
+							
 							<div id="posts_paging">
 								<%!int i;%>
 								<%
@@ -114,6 +116,5 @@
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
-
 </script>
 </html>

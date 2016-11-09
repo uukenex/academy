@@ -90,7 +90,7 @@ public class ReviewServiceTest {
 				 reviewContent2,reviewContent3,
 				 reviewContent4, reviewContent5,
 				 reviewContent6, reviewContent7,
-				reviewContent8, reviewContent9,reviewImage,  92);
+				reviewContent8, reviewContent9,  92);
 	}
 
 	// 삭제 -댓글까지 지워지도록 해야함
