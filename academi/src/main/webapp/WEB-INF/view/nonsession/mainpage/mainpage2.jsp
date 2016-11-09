@@ -42,7 +42,8 @@
 								<p>국내 여행자들을 위한 Travel Solution</p>
 							</header>
 							<footer>
-								<a href="#banner" class="button circled scrolly">시작하기</a>
+								<a href="#features" class="button circled scrolly">이용방법</a>
+								<a href="/mainpage2" class="button circled scrolly">시작</a>
 							</footer>
 						</div>
 
@@ -50,85 +51,15 @@
 						<jsp:include page="../layout/menubar_header.jsp"></jsp:include>
 
 				</div>
- 
-			<!-- Banner -->
-				<section id="banner">
-					<header>
-						<!-- <h2>여기서부터는 !!!<strong>사진 슬라이드!</strong>.</h2>
-						<p>
-							각 사진마다 자세히 보기 가능!
-						</p> -->
-						
-						<!-- Image Slider -->
-					
-						<div class="sliderContainer">
-    						<div id="slides">
-      							<img src="<%=request.getContextPath() %>/images/cloud.jpg" alt="">
-     							<img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="">
-     							<img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="">
-      							<img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="">
-      							<a href="#" class="slidesjs-previous slidesjs-navigation">
-      								<i class="icon-chevron-left icon-large"></i>
-      							</a>
-      							<a href="#" class="slidesjs-next slidesjs-navigation">
-      								<i class="icon-chevron-right icon-large"></i>
-      							</a>
-    						</div>
-  						</div>
-					</header>
-				</section>
   				
-			<!-- Main -->
-				<div class="wrapper style2">
-				</div>
-
 			<!-- Features -->
 				<div class="wrapper style1">
 
 					<section id="features" class="container special">
 						<header>
-							<h2>여기서 부터는 추천 후기 순으로 띄워주는 Part</h2>
-							<p>우아아아앙 이거 구현하고 나면 header, footer 나누면 된다아아</p>
+							<h2>여기서 부터는 사이트 이용 방법을 넣어주면 됩니다.</h2>
+							<p>사이트 이용 방법은 언제 만들지이이이이이이이이...ㅠㅠ</p>
 						</header>
-
-				<!-- 추천 후기 4개 띄워주는 Code -->
-					<section id="four" class="fancyWrapper alt fancyStyle1">
-						<div class="fancyInner">
-							<section class="fancyFeatures">
-								<article>
-									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics06.jpg" alt="" /></a>
-									<h3 class="major">여행을 부탁해 경로 예시 1</h3>
-									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
-										vehicula id nulla dignissim dapibus ultrices.</p>
-									<a href="#" class="fancySpecial">Learn more</a>
-								</article>
-								<article>
-									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics01.jpg" alt="" /></a>
-									<h3 class="major">여행을 부탁해 경로 예시 2</h3>
-									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
-										vehicula id nulla dignissim dapibus ultrices.</p>
-									<a href="#" class="fancySpecial">Learn more</a>
-								</article>
-								<article>
-									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics02.jpg" alt="" /></a>
-									<h3 class="major">여행을 부탁해 경로 예시 3</h3>
-									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
-										vehicula id nulla dignissim dapibus ultrices.</p>
-									<a href="#" class="fancySpecial">Learn more</a>
-								</article>
-								<article>
-									<a href="#" class="fancyImage"><img src="<%=request.getContextPath() %>/images/pics03.jpg" alt="" /></a>
-									<h3 class="major">여행을 부탁해 경로 예시 4</h3>
-									<p id="fancyPFont">Lorem ipsum dolor sit amet, consectetur adipiscing
-										vehicula id nulla dignissim dapibus ultrices.</p>
-									<a href="#" class="fancySpecial">Learn more</a>
-								</article>
-							</section>
-							<ul class="fancyActions">
-								<li><a href="#" class="fancyButton">Browse All</a></li>
-							</ul>
-						</div>
-					</section>
 				</section>
 
 			</div>
