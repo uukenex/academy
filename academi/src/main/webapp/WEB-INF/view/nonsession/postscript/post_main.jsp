@@ -110,13 +110,11 @@
 									<c:forEach var="post" items="${posts }" begin="0" end="2">
 										<article>
 										<form method="GET" action="/postView">
-											<a href="#" onclick="" class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
+											<a href="/postView?reviewNo=${post.reviewNo }" class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
-												<input type="hidden" value="${post.reviewNo }" name="reviewNo">
-												<input type="hidden" value="${post.routeNo }" name="routeNo">
-												<li><input type="submit" value="MORE"></li>
+												<li><li><a href="postView?reviewNo=${post.reviewNo}" class="post_button">More</a></li></li>
 											</ul>
 										</form>
 										</article>
@@ -135,7 +133,7 @@
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
-												<li><input type="submit" value="MORE"></li>
+												<li><li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li></li>
 											</ul>
 										</form>
 										</article>
