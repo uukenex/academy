@@ -21,7 +21,7 @@
 		
 	<!-- My Page Plan view -->
 	
-<<<<<<< HEAD
+
 		<div id="page-wrapper" class="boardPage-Wrapper">
 			<div id="main">
 				<div class="container">
