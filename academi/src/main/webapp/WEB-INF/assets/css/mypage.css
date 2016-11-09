@@ -11,20 +11,121 @@
 			font-weight: bold;
 			color: #3d4449;
 			border-bottom: 2px dashed #F5696A;
-			padding-bottom: 0.5em;
+			padding-bottom: 1em;
 			padding-left: 1em;
 		}
 		
 		/* Table */
 		
-			table.mypage_mypost_viewTable th, table.mypage_mypost_viewTable td{
-				border: 1px solid black;
+			div#mypage_mypost_viewDiv {
+				display: block;
+				width: 90%;
+				border: 1.5px dashed #F5696A;
+				border-radius: 3%;
+				padding-top: 0;
+				margin-top: 3em;
+				margin-left: 2em;
 			}
-			
+		
 			table.mypage_mypost_viewTable th {
 				vertical-align: middle;
 			}
 			
 			table.mypage_mypost_viewTable td {
 				padding-bottom: 0.5em;
+				text-align: left;
+				padding-left: 1.5em;
+			}
+
+			
+			
+		/* Font */
+		
+			b.mypage_mypost_postTitle {
+				font-family: "Nanum Gothic";
+				font-size: 1.5em;
+				font-weight: bold;
+				color: #3d4449;
+				text-align: left;
+			}
+			
+			
+		/* Button Style */
+		
+			table.mypage_mypost_viewTable a.mypage_mypost_buttonStyle1,
+			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1 {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: #FFFFFF;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Brush Script";
+				font-size: 1.5em;
+				font-weight: 700;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 1.75em;
+				padding: 0 1.25em;
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-right: 1.7em;
+			}
+			
+			table.mypage_mypost_viewTable a.mypage_mypost_buttonStyle1:HOVER,
+			table.mypage_mypost_viewTable input[type='button'].mypage_mypost_buttonStyle1:HOVER {
+				background-color: #f56a6a;
+					color: #323232;
+			}
+			
+			
+			
+		/* Check Box Style */
+		
+			input[type="checkbox"] {
+				display: none;
+			}
+			
+			input[type='checkbox'] + label {
+				display: inline-block;
+				cursor: pointer;
+				position: relative;
+				padding-left: 25px;
+				margin-right: 15px;
+				margin-top: 1.8em;
+				font-size: 2em;
+			}
+			
+			input[type='checkbox'] + label:BEFORE {
+				content: "";
+				display: inline-block;
+				
+				width: 1.2em;
+				height: 1.2em;
+				
+				margin-right: 10px;
+				background-color: #FFFFFF;
+				border: 1px solid #F5696A;
+				border-radius: 5px;
+			}
+			
+			input[type='checkbox']:CHECKED + label:BEFORE {
+				content: "\2713";
+				font-size: 1em;
+				font-weight: 800;
+				color: #fff;
+				background-color: #F56A6A;
+				text-align: center;
+				line-height: 1.2em;
 			}

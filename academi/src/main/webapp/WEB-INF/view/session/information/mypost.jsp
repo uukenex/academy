@@ -29,7 +29,7 @@
 		<div id="page-wrapper" class="boardPage-Wrapper">
 			<div id="main">
 				<div class="container">
-				<h2 class="mypage_mypost_title">My Page_${Users.userNick }님의 여행 후기</h2>
+				<h2 class="mypage_mypost_title">My Page _ ${Users.userNick }님의 여행 후기</h2>
 					<div class="row main-row">
 						
 						<div class="1u"></div>
@@ -37,6 +37,7 @@
 						
 							<form>
 							<c:forEach var="Review" items="${Review }">
+								<div id="mypage_mypost_viewDiv">
 									<table class="mypage_mypost_viewTable">
 										<colgroup>
 											<col width="10%">
@@ -44,27 +45,44 @@
 										</colgroup>
 										<tr>
 											<th rowspan="2">
-												<input type="checkbox" name="mypage_mypost_chk">
+												<input type="checkbox" name="mypage_mypost_chk" id="${Review.reviewNo }">
+												<label for="${Review.reviewNo }"></label>
 											</th>
 											<td>
-												${Users.userNick}님의 ${Review.reviewTitle }
+												<b class="mypage_mypost_postTitle">${Users.userNick}님의 ${Review.reviewTitle }</b>
+												&emsp;
 												<fmt:formatDate value="${Review.reviewDate}"
-													pattern="yy-MM-dd" var="fmtDate" /> ${fmtDate}
+													pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
 											</td>
 										</tr>
 										<tr>
 											<td>
 												<input type="hidden" value="${Review.reviewNo }">
-												<a href="/postView?reviewNo=${Review.reviewNo }">여행 후기 보기</a>
-												<input type="button" value="여행 후기 삭제">
+												<a href="/postView?reviewNo=${Review.reviewNo }" class="mypage_mypost_buttonStyle1">여행 후기 보기</a>
+												<input type="button" value="여행 후기 수정" class="mypage_mypost_buttonStyle1">
+												<input type="button" value="여행 후기 삭제" class="mypage_mypost_buttonStyle1">
 											</td>
 										</tr>
 									</table>
+									</div>
 								</c:forEach>
 							</form>
+							<div id="posts_paging">
+								<%!int i;%>
+								<%
+									for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
+								%>
+								<a href="/session/mypageReview?page=<%=i%>"><%=i%> </a>
+								<%
+									}
+								%>
+							</div>
 						</div>
 						<div class="1u"></div>
 					</div>
+					
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp" />
 				</div>
 			</div>
 		</div>
@@ -92,16 +110,7 @@
 	</c:forEach>
 	</form>
 --%>
-			<div id="posts_paging">
-		<%!int i;%>
-		<%
-			for (int i = 1; i <= Integer.parseInt(request.getAttribute(("totalPage")).toString()); i++) {
-		%>
-		<a href="/session/mypageReview?page=<%=i%>"><%=i%> </a>
-		<%
-			}
-		%>
-	</div>
+			
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
