@@ -15,14 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.controller.UserController.MyHash;
 import com.example.dto.Comments;
 import com.example.dto.Qna;
 import com.example.dto.Review;
+import com.example.dto.Route;
 import com.example.dto.Users;
 import com.example.service.CommentService;
 import com.example.service.QnaService;
 import com.example.service.ReviewService;
+import com.example.service.RouteService;
 
 @Controller
 public class BasicController {
@@ -34,6 +35,8 @@ public class BasicController {
 	QnaService qs;
 	@Autowired
 	ReviewService rs;
+	@Autowired
+	RouteService routeService;
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String sayHello(Model model) {
@@ -119,18 +122,20 @@ public class BasicController {
 		List<Comments> freeTop5 = cs.selectFreeTop5();
 		List<Qna> qnaTop5 = qs.selectQnaTop5();
 		List<Review> reviewTop3 = rs.reviewTop3();
-		
+		List<Route> routeTop4 = routeService.selectMainList();
 		
 		logger.trace("noticeTop5 : {}",noticeTop5);
 		logger.trace("FreeTop5 : {}",freeTop5);
 		logger.trace("qnaTop5 : {}",qnaTop5);
 		logger.trace("reviewTop3 : {}",reviewTop3);
+		logger.trace("routeTop4 : {}",routeTop4);
 		
 		model.addAttribute("noticeTop5",noticeTop5);
 		model.addAttribute("reviewTop3",reviewTop3);
 		model.addAttribute("free",freeTop5);
 		model.addAttribute("qnaTop5",qnaTop5);
 		model.addAttribute("reviewTop3",reviewTop3);
+		model.addAttribute("routeTop4",routeTop4);
 		return "nonsession/mainpage/mainPage";
 	}
 

@@ -15,4 +15,6 @@ public int deleteRoute(int routeNo);
 		public List<Route> selectRouteByIdForMypage(String userId,int page);
 
 		public int pageCountbyId(String userId);
+		//메인에 띄워주는 4개 리스트
+		public List<Route> selectMainList();
 }
