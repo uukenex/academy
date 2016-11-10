@@ -22,4 +22,6 @@ public interface RouteRepo {
 		public List<Route> selectRouteByIdForMypage(String userId,int page);
 	
 		public int pageCountbyId(String userId);
+		
+		public List<Route> selectMainList();
 }

@@ -65,6 +65,13 @@
 	</select>
 
 
+<!-- 메인에 띄워줄 최근경로 4개 -->
+<select id="selectMainList" resultMap="routeBase" >
+select * from route 
+where rownum between 1 and 4 
+order by route_no desc
+</select>
+
 	<resultMap type="route" id="routeBase">
 		<id column="route_no" property="routeNo" />
 		<result column="route_name" property="routeName" />
