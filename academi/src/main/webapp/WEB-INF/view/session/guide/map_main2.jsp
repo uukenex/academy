@@ -43,7 +43,7 @@
 						<jsp:include page="map_leftTab_menu.jsp" />
 						
 					<!-- Map API body part -->
-						<div class="9u 12u(moblie) important(moblie)">
+						<div class="8u 12u(moblie) important(moblie)">
 							
 							<a href="/domap"></a>
 							<!-- Map Right Tab Menu -->

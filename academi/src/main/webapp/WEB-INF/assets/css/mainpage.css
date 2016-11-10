@@ -71,11 +71,11 @@
         
         
         div.board_divide_view	{
-        	display: inline-block
+        	display: inline-block;
         	width: 33.33%;
         }
         
-        hr#mainpage_divide_hr {
+        hr#mainpage_divide_hr1 {
         	border-top: none;
 	 		border-bottom: 2px dashed #f56a6a;
 	 		margin-top: 5em;
@@ -83,7 +83,20 @@
 	 		top: 0;
         }
         
-        hr#mainpage_divide_hr:BEFORE, hr#mainpage_divide_hr:AFTER{
+        hr#mainpage_divide_hr2 {
+        	border-top: none;
+	 		border-bottom: 2px dashed #f56a6a;
+	 		margin-top: 1em;
+	 		margin-bottom: 0;
+	 		top: 0;
+        }
+        
+        hr#mainpage_divide_hr1:BEFORE, hr#mainpage_divide_hr1:AFTER{
+        	width: 0;
+	 		height: 0;
+        }
+        
+         hr#mainpage_divide_hr2:BEFORE, hr#mainpage_divide_hr2:AFTER{
         	width: 0;
 	 		height: 0;
         }
@@ -95,13 +108,13 @@
 			h3.part_title_h3 {
 				display: inline-block;
 				font-family: "Nanum Brush Script";
-				font-size: 2em;
+				font-size: 2.5em;
 				font-weight: bold;
 				padding-bottom: 0.2em;
 				border-bottom: 3px solid #f56a6a;
 				margin-top: 1.2em;
 				margin-bottom: 1em;
-				margin-left: 1.2em;
+				margin-left: 1em;
 			}
 			
 			div#mainpage_board_view {

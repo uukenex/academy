@@ -298,3 +298,154 @@
 				background-color: #f56a6a;
 					color: #323232;
 			}
+			
+			
+			
+	/* Change Information Users CSS Style */
+	
+		/*First Password Check Form */
+		
+			div.info_input_pass {
+				border: 1px solid #F5696A;
+				border-radius: 10px;
+				margin-top: 12em;
+				margin-bottom: 3em;
+				padding-bottom: 3em;
+				padding-left: 3.5em;
+			}
+			
+			div.info_input_pass form h4 {
+				font-family: "Nanum Gothic";
+				font-size: 1.2em;
+				color: #454545;
+				margin-left: 0.4em;
+			}
+		
+			input[type='password']#passwordCheck {
+				width: 20em;
+				border: 1.2px solid #999;
+			}
+			
+			input[type='submit'].mypage_info_buttonStyle3, input[type='button'].mypage_info_buttonStyle3 {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+				background-color: #FFFFFF;
+				border-radius: 0.375em;
+				border: 0;
+				box-shadow: inset 0 0 0 2px #f56a6a;
+				color: #f56a6a;
+				cursor: pointer;
+				display: inline-block;
+				font-family: "Nanum Brush Script";
+				font-size: 1.5em;
+				font-weight: 700;
+				height: 1.75em;
+				letter-spacing: 0.075em;
+				line-height: 1.75em;
+				padding: 0 1.25em;
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
+				margin-top: 1em;
+				margin-left: 1.3em;
+			}
+			
+			input[type='submit'].mypage_info_buttonStyle3:HOVER, input[type='button'].mypage_info_buttonStyle3:HOVER {
+				background-color: #f56a6a;
+					color: #323232;
+			}
+			
+			
+			
+	/* User Information Change CSS Style */
+	
+		/* Table */
+		
+			div.info_change_body {
+				border: 1px solid #F5696A;
+				border-radius: 10px;
+				margin-top: 5em;
+				padding-right: 2em;
+				padding-bottom: 1em;
+			}
+			
+			table#info_change_table {
+				border: 2px solid #F5696A;
+			}
+			
+			table#info_change_table th {
+				background-color: rgba(250, 180, 180, 0.5);
+				border-right: 1px dashed #F5696A;
+				border-bottom: 1px dashed #F5696A;
+				font-family: "Nanum Gothic";
+				font-size: 1.3em;
+				font-weight: bold;
+				vertical-align: middle;
+				padding-top: 0.4em;
+			}
+			
+			table#info_change_table td {
+				padding-left: 1em;
+				padding-bottom: 0.5em;
+				padding-right: 1em;
+				font-family: "Nanum Gothic";
+				font-size: 1em;
+			}
+			
+			table#info_change_table td.table_use_underline {
+				border-bottom: 1px dashed #F5696A;
+			}
+			
+			
+		/* Button */
+		
+			input[type='button']#checkNick {
+				-moz-appearance: none;
+					-webkit-appearance: none;
+					-ms-appearance: none;
+					appearance: none;
+					-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					background-color: #FFFFFF;
+					border-radius: 0.375em;
+					border: 0;
+					box-shadow: inset 0 0 0 2px #f56a6a;
+					color: #f56a6a;
+					cursor: pointer;
+					display: inline-block;
+					font-family: "Nanum Brush Script";
+					font-size: 1.1em;
+					font-weight: bold;
+					height: 1.75em;
+					letter-spacing: 0.075em;
+					line-height: 1.75em;
+					padding: 0 1.1em;
+					text-align: center;
+					text-decoration: none;
+					text-transform: uppercase;
+					white-space: nowrap;
+					margin-top: 1em;
+					margin-left: 1.3em;
+			}
+			
+			input[type='button']#checkNick:HOVER {
+				background-color: #f56a6a;
+						color: #323232;
+			}
+		
+		
+		/* text & textarea */
+		
+			input[type='text']#changeNick {
+				display: inline-block;
+				width: 79%;
+			}
