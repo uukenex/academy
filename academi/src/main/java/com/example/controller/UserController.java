@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.security.MessageDigest;
+import com.example.util.SendMailUtil;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -165,10 +166,13 @@ public class UserController {
 			@RequestParam String email) {
 		String msg = null;
 		String result = uService.SearchPass(id, name, email);
+		
 		if (result == null) {
 			msg = "검색 결과가 없습니다.";
 		} else {
-			msg = "검색결과는 다음과 같습니다." + result + "";
+			SendMailUtil sendpass = new SendMailUtil();
+			sendpass.email_Password(email, result);
+			msg="메일로 비밀번호가 전송되었습니다.";
 		}
 		model.addAttribute("message", msg);
 		return "nonsession/join/joinok";
