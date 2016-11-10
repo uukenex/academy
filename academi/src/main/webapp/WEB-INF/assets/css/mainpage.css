@@ -141,6 +141,11 @@
 				padding-bottom: 0.5em;
 			}
 			
+			section.mainpage_route_features article ul li img {
+				width: 10em;
+				height: 5em;
+			}
+			
 			
 		/* part divide CSS Style */
 		

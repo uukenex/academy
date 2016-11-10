@@ -20,7 +20,7 @@
 		<fieldset>
 			<legend align="center">
 				<img id="logo" alt="Logo"
-					src="<%=request.getContextPath()%>/join_icons/jackpot.jpg">
+					src="/images/logo.png">
 			</legend>
 			<table cellspacing="15" class="joinFormTable">
 				<tr>
