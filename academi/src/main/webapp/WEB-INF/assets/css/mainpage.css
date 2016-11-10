@@ -355,21 +355,17 @@
 				-webkit-flex-shrink: 1;
 				-ms-flex-shrink: 1;
 				flex-shrink: 1;
-				margin: 1em 0 3em 4em;
+				margin: 1em 0 3em 1em;
 				position: relative;
-				width: calc(25% - 4.5em);
+				width: 23%;
 				padding: 1em 1em;
 				border: 1px solid #f56a6a;
 				border-radius: 5%;
 			}
 			
-			section.mainpage_route_features article img {
+			section.mainpage_route_features article ul li iframe{
 				width: 100%;
-				height: auto;
-			}
-			
-			section.mainpage_route_features article ul {
-			
+				height: 15em;
 			}
 			
 			
