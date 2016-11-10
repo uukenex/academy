@@ -8,30 +8,93 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
- <meta name="author" content="Nathan Searles">
-  		
-	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
-	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
 	
 <title>회원 정보 수정 페이지</title>
 </head>
-<body class="astralBody">
+<body>
 
 	<!-- Menubar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>
 		
 	<!-- dropMenu Header -->
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp"></jsp:include>
+		
+		
+	<!-- Change Information body part -->
 	
-
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<h2 class="mypage_mypost_title">My Page _ ${Users.userNick }님의 회원 정보 수정</h2>
+					<div class="row main-row">
+						<div class="2u"></div>
+						<div class="8u 12u(moblie) important(moblie) info_change_body">
+							
+							<form method="post" id="myform" action="/updateUser">
+								<table id="info_change_table">
+									<colgroup>
+										<col width="20%">
+										<col width="20%">
+										<col width="*%">
+									</colgroup>
+									
+									<tr>
+										<th>이름</th>
+										<td colspan="2" class="table_use_underline">
+											<input type="text" value="${Users.userName }" readonly>
+										</td>
+									</tr>
+									<tr>
+										<th rowspan="2">비밀번호 변경</th>
+										<td>신규 비밀번호:</td>
+										<td><input type="password" placeholder="변경 할 비밀번호 입력" name=changePass id=changePass></td>
+									</tr>
+									<tr>
+										<td class="table_use_underline">비밀번호 확인:</td>
+										<td class="table_use_underline"><input type="password" placeholder="비밀번호 확인" id=changePassCk></td>
+									</tr>
+									<tr>
+										<th rowspan="2">E-Mail 변경</th>
+										<td colspan="2"><input type="email" value="${Users.userEmail }" name="currentEmail" readonly></td>
+									</tr>
+									<tr>
+										<td colspan="2" class="table_use_underline"><input type="email" placeholder="변경 이메일 입력" name="changeEmail" id="changeEmail"></td>
+									</tr>
+									<tr>
+										<th rowspan="2">전화번호 변경</th>
+										<td colspan="2"><input type="text" value="${Users.userPhone }" name="currentPhone" readonly></td>
+									</tr>
+									<tr>
+										<td colspan="2" class="table_use_underline"><input type="text" placeholder="변경할 전화번호 입력" name="changePhone" id="changePhone"></td>
+									</tr>
+									<tr>
+										<th rowspan="2">별명 변경</th>
+										<td colspan="2"><input type="text" value="${Users.userNick }" name="currentNick"  readonly></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<input type="text" placeholder="별명 입력" name="changeNick" id="changeNick">
+											<input type="button" value="중복확인" id="checkNick">
+										</td>
+									</tr>
+								</table>
+								<input type="button" value="취소" class="mypage_info_buttonStyle3" onclick="location.href='/session/mypageMain'" style="float: right;">
+								<input type="submit" value="저장" class="mypage_info_buttonStyle3" style="float: right;">
+							</form>
+						</div>
+					</div>
 					
-								<br><br><br><br><br><br>
-								<h1>My Page - 회원 정보 수정</h1>
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
+				</div>
+			</div>
+		</div>
+
+
+<%-- 
 								<form method="post" id="myform" action="/updateUser">
 								<table>
 								
@@ -79,16 +142,15 @@
 									</tr>
 								</table>
 								</form>
+								
+ --%>								
 
+	
 		
-		<!-- footer -->
-			<jsp:include page="../../nonsession/layout/footer.jsp"></jsp:include>
-		
-		<!-- Scripts -->
-			<script src="<%=request.getContextPath() %>/assets/js/astralMain.js"></script>
-			<script src="<%=request.getContextPath() %>/assets/js/skel-viewport.min.js"></script>
-			
+					
 </body>
+
+	<!-- Scripts -->
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="validation/dist/jquery.validate.min.js"></script>
 	<script>

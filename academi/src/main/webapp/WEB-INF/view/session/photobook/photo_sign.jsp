@@ -118,9 +118,8 @@ z-index: 1;
 						<c:if test="${Users.userId!=curUserId&&empty shareFolder  }">
 							<div class="12u shareGrantInfo">
 								<h1><i class="fa fa-times-circle-o"></i></h1>
-								<h2> 권한이 없습니다. </h2>
-								<h2><i class="fa fa-share-alt"></i> 공유신청을 하세요!</h2>
-								<input type="button" value="사진폴더 공유신청하기" class="labeling1">
+								<h2><i class="fa fa-share-alt"></i> 권한이 없습니다. <i class="fa fa-share-alt"></i></h2>
+								<input type="button" value="뒤로가기" class="labeling1" onclick="location.href='/mainpage2'">
 							</div>
 						</c:if>
 						

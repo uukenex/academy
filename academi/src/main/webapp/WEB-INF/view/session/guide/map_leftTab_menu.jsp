@@ -7,7 +7,7 @@
 
 
 <!-- Make a map Left Tap Menu -->
-	<div class="2u 12u(moblie) map_left_tab" style="margin-bottom: 40em;">
+	<div class="3u 12u(moblie) map_left_tab" style="margin-bottom: 40em;">
 		<!-- Tab 설정 -->
 			<ul class="mapLeftTab" id="mapLeftTab">
 				<li>선택한 지역</li>
@@ -18,11 +18,17 @@
 				<!-- ---------------------- 선택한 지역 보기 Section ---------------------------------- -->
 				
 				<section id="selectRegionForm">
+				
+						<c:if test="${!empty routeNo }">
+								<input type="text" name ="routeName" value="${routeName }" class="make_route_title">
+						</c:if>
 						
 						<div id="storedCheckDiv">
 							<input type="checkbox" id="stored" class="css-checkbox lrg">
 							<label for="stored" name="checkbox69_lbl" class="css-label lrg vlad">선택한 지역만 보기</label>
 						</div>
+						
+						
 						
 						<output id="result">
 						</output>
@@ -37,8 +43,8 @@
 							
 							<!--번호검색으로 api로 들어갔을경우 : -->
 							<c:if test="${!empty routeNo }">
-								<input type="text" name ="routeName" value="${routeName }">
-								<textarea name="routeContent" rows="4" cols="10" >${routeContent }</textarea>
+								
+								<textarea name="routeContent" rows="4" cols="10" id="make_route_content">${routeContent }</textarea>
 								<input type="submit" id="" value="수정" formaction="/mapUpdate" class="routeForDB">
 								<input type="submit" id="" value="삭제" formaction="/mapDelete" class="routeForDB">
 							</c:if>

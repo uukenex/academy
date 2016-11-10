@@ -530,8 +530,8 @@
 					var html="<div id='sortWrap'>" ;
 					for(var i=0;i<res[0].length;i++){
 					html+="<div id=data"+i+" data-order="+i+">♬";
-					html+=res[0][i].title+"♬";
-					html+=res[0][i].address;
+					html+=res[0][i].title+"<br>♬";
+					html+=res[0][i].address+"&nbsp;";
 					html+="<img src='/images/delete.png' style='width:25px; height:25px;' class='close'>";
 					html+="</div>";
 					}

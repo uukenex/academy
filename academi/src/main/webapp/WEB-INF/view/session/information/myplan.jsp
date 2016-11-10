@@ -57,8 +57,7 @@
 											<tr>
 												<td>
 													<input type="hidden" value="${Route.routeNo }">
-													<a href="/routeupdate?routeNo=${Route.routeNo }"  class="mypage_mypost_buttonStyle1">여행 계획 보기</a>
-													<input type="submit" value="여행 계획 수정"  class="mypage_mypost_buttonStyle1">
+													<a href="/routeupdate?routeNo=${Route.routeNo }"  class="mypage_mypost_buttonStyle1">여행 계획 수정</a>
 													<input type="submit" value="여행 계획 삭제" class="mypage_mypost_buttonStyle1"  formaction="/deleteRoute" formmethod="post">
 												</td>
 											</tr>
