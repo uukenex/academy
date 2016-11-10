@@ -128,6 +128,7 @@ public class BasicController {
 		logger.trace("FreeTop5 : {}",freeTop5);
 		logger.trace("qnaTop5 : {}",qnaTop5);
 		logger.trace("reviewTop3 : {}",reviewTop3);
+		logger.trace("routeTop4 : {}",routeTop4);
 		
 		model.addAttribute("noticeTop5",noticeTop5);
 		model.addAttribute("reviewTop3",reviewTop3);

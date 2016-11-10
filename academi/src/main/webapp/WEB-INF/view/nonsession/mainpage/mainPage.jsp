@@ -180,13 +180,16 @@
 								    	<div id="mainpage_route_view">
 								    		<h3 class="part_title_h3">방금 등록된 일정</h3>
 								    		<section class="mainpage_route_features" style="padding-top: 0px">
-								    		<c:forEach items="routeTop4" var="route">
+								    		<c:forEach items="${routeTop4}" var="route">
 								    			<article>
-								    				<h4>${route}</h4>
+								    				
 								    				<ul>
 								    					<li>
-								    						<img src="/images/cloud.jpg">
+								    						<iframe src='/routeImage?routeNo=${ route.routeNo}'  
+								    						height="300px" width="300px"  scrolling="no" frameborder="0">
+								    						</iframe>
 								    					</li>
+								    					<li><h4>${route.routeName}-${route.users.userNick}</h4></li>
 								    				</ul>
 								    			</article>
 								    		</c:forEach>
