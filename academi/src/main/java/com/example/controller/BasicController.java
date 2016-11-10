@@ -79,6 +79,7 @@ public class BasicController {
 	public String passwordChk(Model model) {
 		return "session/information/password_check";
 		}
+	
 	@RequestMapping("/fInformChange")
 	public String fInformChange(Model model) {
 		return "session/information/facebook_inform_change";

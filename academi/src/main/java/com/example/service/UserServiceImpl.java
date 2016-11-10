@@ -81,4 +81,10 @@ public class UserServiceImpl implements UserService {
 		return urepo.searchNickById(userId);
 	}
 
+	@Override
+	public int updatePass(String userId, String userPass) {
+		// TODO Auto-generated method stub
+		return urepo.updatePass(userId, userPass);
+	}
+
 }
