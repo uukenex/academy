@@ -449,3 +449,40 @@
 				display: inline-block;
 				width: 79%;
 			}
+			
+			
+	/* Shared Folder View CSS Style */
+	
+		/* Section */
+		
+			section article.shared_folders_view {
+				display: inline-block;
+				width: 45%;
+				border: 1px solid #F5696A;
+				border-radius: 10px;
+				padding: 0.7em 1.5em 1.1em 1.5em;
+				margin-left: 2.5em;
+				vertical-align: top;
+			}
+			
+			article.shared_folders_view h3.folder_name_title {
+				display: inline-block;
+				font-family: "Nanum Brush Script";
+				font-size: 2.3em;
+				font-weight: bold;
+				color: #565656;
+				border-bottom: 2px solid #F5696A;
+				padding-bottom: 0.3em;
+				margin-bottom: 1em;
+			}
+			
+			article.shared_folders_view a {
+				font-family: "Nanum Gothic";
+				font-size: 1.3em;
+				line-height: 1.8;
+			}
+			
+			article.shared_folders_view a:HOVER {
+				color: #F5696A;
+				text-decoration: underline;
+			}

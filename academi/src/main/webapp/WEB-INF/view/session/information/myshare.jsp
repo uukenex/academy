@@ -7,12 +7,64 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
+<title>${Users.userNick }님의 공유 설정</title>
 </head>
 <body>
-	내공유페이지
-	<br>
-	<a href="/session/shareList">벤자민버튼</a>
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+		
+	<!-- Shared Folder body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+				<h2 class="mypage_mypost_title">My Page _ ${Users.userNick }님의 공유 설정</h2>
+					<div class="row main-row">
+					
+						<div class="12u">
+						
+							<!-- My Shared Folders -->
+							<section>
+								<article class="shared_folders_view">
+									<h3 class="folder_name_title">내 폴더</h3>
+									<br>
+										<c:forEach var="myFolder" items="${myFolderList }">
+											<a href="#"
+										onclick="window.open('/session/shareList?folderName=${myFolder.photoFolderName }',
+										'${myFolder.photoFolderName }','width=0, height=0');"
+										onkeypress="this.onclick()"><i class="fa fa-check-square-o" aria-hidden="true"></i> ${myFolder.photoFolderName }</a>
+										<br>
+										</c:forEach>
+								</article>
+							
+							<!-- Other Shared Folders -->
+								<article class="shared_folders_view">
+									<h3 class="folder_name_title">공유받은 폴더</h3>
+									<br>
+									<c:forEach var="shareFolder" items="${sharedFolderList }">
+										<a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName">
+											<i class="fa fa-check-square-o" aria-hidden="true"></i> ${shareFolder.users.userNick }의 포토북</a> -
+										 <a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
+												${shareFolder.photoFolderName }</a>
+									</c:forEach>
+								</article>
+							</section>
+						</div>
+					</div>
+					
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp" />
+				</div>
+			</div>
+		</div>
+		
+		
+<%-- 		
 	<div>
 		내 폴더 리스트
 		<c:forEach var="myFolder" items="${myFolderList }">
@@ -37,6 +89,6 @@
 			<br>
 		</c:forEach>
 	</div>
-
+ --%>
 </body>
 </html>

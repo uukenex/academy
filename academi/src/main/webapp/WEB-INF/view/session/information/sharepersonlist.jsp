@@ -8,29 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
-<title> ${Users.userNick }님의 공유 설정</title>
+<title>${Users.userNick }님의 공유 설정</title>
 </head>
 <body>
-
-	<!-- Menubar Header -->
-		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>
-		
-	<!-- dropMenu Header -->
-		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp"></jsp:include>
-		
-		
-	<!-- Shared Folder body part -->
-	
-		<div id="page-wrapper" class="boardPage-Wrapper">
-			<div id="main">
-				<div class="container">
-					<h2 class="mypage_mypost_title">My Page _ ${Users.userNick }님의 회원 정보 수정</h2>
-					<div class="row main-row">
-					</div>
-				</div>
-			</div>
-		</div>
 
 
 <c:forEach var="sharePerson" items="${sharePersonList }">
