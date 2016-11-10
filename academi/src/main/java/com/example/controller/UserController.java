@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import com.example.controller.UserController.MyHash;
 
 import com.example.dto.Goods;
 import com.example.dto.Users;
@@ -181,6 +181,14 @@ public class UserController {
 		} else {
 			SendMailUtil sendpass = new SendMailUtil();
 			sendpass.email_Password(email, buffer.toString());
+			
+			//패스워드를 업데이트 시켜줌
+			MyHash ht = new MyHash();
+			result = ht.testMD5(buffer.toString());
+			
+			int passwordUpdate = uService.updatePass(id, result);
+			logger.trace("passwordUpdate:{}",passwordUpdate);
+			
 			msg="메일로 비밀번호가 전송되었습니다.";
 		}
 		model.addAttribute("message", msg);

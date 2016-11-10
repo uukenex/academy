@@ -30,7 +30,7 @@ public class SendMailUtil extends javax.mail.Authenticator {
       logger.trace("보낼 메일 주소 : {}", email);
       
       
-      sb.append("문의하신 아이디의 비밀번호는 <br/>")
+      sb.append("문의하신 아이디의  임시 비밀번호는 <br/>")
       .append(pass +" 입니다.<br/>")
       .append("비밀번호를 꼭 변경 해 주시길 바랍니다.");
 
