@@ -189,7 +189,7 @@
 								    						height="300px" width="300px"  scrolling="no" frameborder="0">
 								    						</iframe>
 								    					</li>
-								    					<li><h4>${route.routeName}-${route.users.userNick}</h4></li>
+								    					<li><h4>${route.routeName}<br>-${route.users.userNick}</h4></li>
 								    				</ul>
 								    			</article>
 								    		</c:forEach>
