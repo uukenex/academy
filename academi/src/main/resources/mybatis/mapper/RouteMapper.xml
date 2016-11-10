@@ -65,6 +65,14 @@
 	</select>
 
 
+<!-- 메인에 띄워줄 최근경로 4개 -->
+<select id="selectMainList" resultMap="routeUsers" >
+select * from route r
+join users u on u.user_id=r.user_id
+where rownum between 1 and 4 
+order by route_no desc
+</select>
+
 	<resultMap type="route" id="routeBase">
 		<id column="route_no" property="routeNo" />
 		<result column="route_name" property="routeName" />

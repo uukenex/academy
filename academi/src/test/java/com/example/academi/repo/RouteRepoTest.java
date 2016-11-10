@@ -35,7 +35,11 @@ public class RouteRepoTest {
 	@Autowired
 	RouteRepo rrepo;
 
-	
+	@Test
+	public void selectMainTest() {
+		List<Route> route=rrepo.selectMainList();
+		logger.trace("route {}",route);
+	}
 	// 내 경로보기 테스트
 		@Test
 		public void selectRouteTest() {

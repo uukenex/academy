@@ -76,4 +76,10 @@ public class RouteServiceImpl implements RouteService {
 		return rrepo.pageCountbyId(userId);
 	}
 
+	@Override
+	public List<Route> selectMainList() {
+		// TODO Auto-generated method stub
+		return rrepo.selectMainList();
+	}
+
 }

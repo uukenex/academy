@@ -70,4 +70,10 @@ public class RouteRepoImpl implements RouteRepo {
 		return template.selectOne(statement,userId);
 	}
 
+	@Override
+	public List<Route> selectMainList() {
+		String statement = NAME_SPACE+"selectMainList";
+		return template.selectList(statement);
+	}
+
 }
