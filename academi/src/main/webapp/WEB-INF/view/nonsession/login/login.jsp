@@ -30,7 +30,7 @@
 				<c:url value="/join" var="join" />
 				<input type="submit" class="button1" id="submit" value="LOGIN"
 					formaction="${loginUser}" formmethod="post"> 
-					<input type="submit" class="button1" value="회원가입" formaction="${join }">
+					<input type="submit" class="button1" name="joinus" value="회원가입" formaction="${join }">
 				<br />
 			</div>
 			<div id="fb-root"></div>
@@ -160,5 +160,16 @@
 				$(this).val($(this).val().substring(0,12));
 			 } 
 		})
+	
+		$(document).on("ready",function(){
+   	 	window.resizeTo(560,550);
+    	window.focus();
+    
+})	
 </script>
+		
+		
+		
+</script>
+
 </html>

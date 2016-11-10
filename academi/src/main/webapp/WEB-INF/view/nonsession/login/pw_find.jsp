@@ -71,4 +71,12 @@ label {
 	</form>
 	<img alt="" src="<%=request.getContextPath()%>/images/div_bar_pink.png">
 </body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+	$(document).on("ready",function(){
+    window.resizeTo(650,470);
+    window.focus();
+    
+})	
+</script>
 </html>

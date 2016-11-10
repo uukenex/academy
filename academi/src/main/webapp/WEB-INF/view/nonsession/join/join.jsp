@@ -277,6 +277,12 @@
 				$(this).css("background", "rgb(255,150,150)");
 			}
 		})
+		
+		$(document).on("ready",function(){
+			    window.resizeTo(580,750);
+			    window.focus();
+			    
+		})
 	</script>
 
 </body>
