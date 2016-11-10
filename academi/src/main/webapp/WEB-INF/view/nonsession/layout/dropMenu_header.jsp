@@ -46,14 +46,6 @@
 						사이트 회원 가입
 					</a>
 				</li>
-				<c:url value="/facebookjoin" var="facebookjoin" />
-				<li>
-					<a href="#" onclick="window.open('${facebookjoin}', 'win1',
-							'width=560, height=680');"
-							onkeypress="this.onclick()">
-						페이스북으로 가입
-					</a>
-				</li>
 				</c:if>	
 
 			</ul>

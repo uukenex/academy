@@ -136,7 +136,7 @@
 								    
 								    
 								    <!-- Main board view part -->
-								    	<hr id="mainpage_divide_hr">
+								    	<hr id="mainpage_divide_hr1">
 								    	<div id="mainpage_board_view">
 								    		<h3 class="part_title_h3">게시판</h3>
 								    		<section class="mainpage_board_features" style="padding-top: 0px">
@@ -176,19 +176,16 @@
 								    		</section>
 								    	</div>
 								    	
-								    	<hr id="mainpage_divide_hr">
+								    	<hr id="mainpage_divide_hr2">
 								    	<div id="mainpage_route_view">
 								    		<h3 class="part_title_h3">방금 등록된 일정</h3>
 								    		<section class="mainpage_route_features" style="padding-top: 0px">
-								    		<c:forEach items="routeTop4" var="routeTop4">
+								    		<c:forEach items="routeTop4" var="route">
 								    			<article>
-								    				<h4>${routeTop4}</h4>
+								    				<h4>${route}</h4>
 								    				<ul>
 								    					<li>
-								    						<a href="/noticeView?commentNo=${notice.comment_no }"><img src="/images/cloud.jpg"></a>
-								    					</li>
-								    					<li>
-								    						<input type="button" value="More" class="mainpageButtonStyle1">
+								    						<img src="/images/cloud.jpg">
 								    					</li>
 								    				</ul>
 								    			</article>

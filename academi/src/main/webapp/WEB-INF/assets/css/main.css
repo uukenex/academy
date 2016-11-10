@@ -4332,7 +4332,20 @@
 				cursor: pointer;
 			}
 			
-				
+			input[type='text'].make_route_title {
+				width: 100%;
+				padding: 0.5em 1em;
+				border-radius: 5%;
+				border: 2px solid #F5696A;
+				margin-top: -1em;
+			}
+			
+			textarea#make_route_content {
+				margin-top: 1em;
+				border: 2px dashed #F56A6A;
+			}
+			
+			
 	/* Map Left Menu Button Style */
 		
 		input[type="button"].mapRegionSearchButton {
@@ -4383,8 +4396,8 @@
 				width: 100%;
 				border-radius: 5%;
 				text-align: center;
-				margin-top: -1em;
-				margin-bottom: 2em;
+				margin-top: 1.5em;
+				/* margin-bottom: 2em; */
 			}
 			
 			

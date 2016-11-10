@@ -40,6 +40,13 @@
 		,user_email=#{userEmail}
 		,user_nick=#{userNick} where user_id=#{userId}
 	</update>
+	
+	<!-- 임시비밀번호로 비밀번호 바꿔주기 -->
+	<update id="updatePass" parameterType="Map">
+		update users set
+		user_pass=#{userPass}
+		where user_id=#{userId}
+	</update>
 
 	<!-- 마이페이지 내가 작성한 후기보기 기능 -->
 	<!--후기테이블에서 내아이디로 조회 -->

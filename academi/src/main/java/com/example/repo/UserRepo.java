@@ -37,4 +37,6 @@ public interface UserRepo {
 
 	// id로 닉네임을 찾음
 	public String searchNickById(String userId);
+	
+	public int updatePass(String userId, String userPass);
 }

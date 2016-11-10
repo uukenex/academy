@@ -41,4 +41,6 @@ public interface UserService {
 	public int checkNick(String userNick);
 	//id로 닉네임을 찾음
 	public String searchNickById(String userId);
+	
+	public int updatePass(String userId, String userPass);
 }

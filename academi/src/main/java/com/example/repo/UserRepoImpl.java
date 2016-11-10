@@ -97,4 +97,14 @@ public class UserRepoImpl implements UserRepo {
 		return template.selectOne(statement,userId);
 	}
 
+	@Override
+	public int updatePass(String userId, String userPass) {
+		// TODO Auto-generated method stub
+		String statement = NAME_SPACE+"updatePass";
+		Map<String,String> map = new HashMap();
+		map.put("userId", userId);
+		map.put("userPass", userPass);
+		return template.update(statement,map);
+	}
+
 }

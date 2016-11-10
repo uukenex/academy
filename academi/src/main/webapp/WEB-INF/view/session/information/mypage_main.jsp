@@ -54,10 +54,10 @@ $(document).on("ready", function() {
 					<article class="phanStyle1">
 						<span class="phanImage"> <img src="<%=request.getContextPath() %>/images/pic01.jpg" alt="" />
 						</span>
-						<c:if test="${'facebook'!= Users.userPass }">
+						<c:if test="${'26cae7718c32180a7a0f8e19d6d40a59'!= Users.userPass }">
 						<a href="/passwordChk">
 						</c:if>
-						<c:if test="${'facebook' == Users.userPass }">
+						<c:if test="${'26cae7718c32180a7a0f8e19d6d40a59' == Users.userPass }">
 						<a href="/fInformChange">
 						</c:if>
 							<h2>회원 정보 수정</h2>

@@ -116,6 +116,12 @@ public class UserRepoTest {
 		assertThat(urepo.checkNick("wer"),is(0));
 	}
 	
+	@Test
+	public void updatePass(){
+		int result = urepo.updatePass("dd", "123456");
+		assertThat(result, is(notNullValue()));
+	}
+	
 
 	@Test
 	public void searchNickById(){
