@@ -119,8 +119,8 @@
 										<tr>
 											<td colspan="2">
 												<input type="button" name="Submit2" value="취소" 
-															onclick="history.back();" class="postButtonStyle2">
-												<input type="submit" name="Submit" value="등록" id="savebutton" class="postButtonStyle2"> 
+															onclick="location.href='/post?page=1'" class="postButtonStyle2">
+												<input type="button" name="Submit" value="등록" id="savebutton" class="postButtonStyle2"> 
 											</td>
 										</tr>
 									</table>
@@ -406,9 +406,16 @@
 		        editor_object7.getById["txtcontent7"].exec("UPDATE_CONTENTS_FIELD", [""]);
 		        editor_object8.getById["txtcontent8"].exec("UPDATE_CONTENTS_FIELD", [""]);
 		        editor_object9.getById["txtcontent9"].exec("UPDATE_CONTENTS_FIELD", [""]);
-		        
-		        //폼 submit
-		        $("#frm").submit();
+		        // 이부분에 에디터 validation 검증
+		         if($("#post_write_title").val()==""){
+		        	 alert("제목을 입력해주세요.");
+		         }
+		         else if($("textarea#txtcontent0").val()=="<p>&nbsp;</p>"){
+		        	alert("내용을 입력해주세요");
+	 	         }else{
+	 	        	  //폼 submit
+	 	      	   $("#frm").submit();
+	 	      	}
 		    })
 		    
 		    
@@ -429,6 +436,7 @@
 		$("#none9").css("display","none");
 		
 	});
+		
 
 	
 	//버튼 클릭시 페이지 열기 함수

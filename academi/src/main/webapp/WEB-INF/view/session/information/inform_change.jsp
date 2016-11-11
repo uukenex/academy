@@ -15,6 +15,7 @@
 <title>회원 정보 수정 페이지</title>
 </head>
 <body>
+<script>
 
 	<!-- Menubar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>
@@ -82,7 +83,7 @@
 									</tr>
 								</table>
 								<input type="button" value="취소" class="mypage_info_buttonStyle3" onclick="location.href='/session/mypageMain'" style="float: right;">
-								<input type="submit" value="저장" class="mypage_info_buttonStyle3" style="float: right;">
+								<input type="submit" value="저장" class="mypage_info_buttonStyle3" id="submit" style="float: right;">
 							</form>
 						</div>
 					</div>
@@ -230,8 +231,6 @@
 				}
 			});
 		});
-	
-		
 	</script>
 
 </html>

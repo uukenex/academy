@@ -59,7 +59,8 @@
 	
 </body>
 	<script language=javascript>
-		window.fbAsyncInit = function() {
+	
+	window.fbAsyncInit = function() {
 			FB.init({
 				appId : '142101846257535',
 				status : true,
@@ -70,7 +71,7 @@
 		}
 		
 			
-			
+	$(document).ready(function(){
 		function updateButton(response) {
 			var button = document.getElementById('fb-auth');
 
@@ -165,11 +166,12 @@
    	 	window.resizeTo(560,550);
     	window.focus();
     
-})	
+})
+	})
+
 </script>
 		
 		
-		
-</script>
+	
 
 </html>

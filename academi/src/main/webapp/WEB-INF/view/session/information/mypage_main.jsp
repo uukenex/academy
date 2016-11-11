@@ -33,6 +33,7 @@
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>
 		
 <script>
+
 $(document).on("ready", function() {
 	if ("${message}" != null && "${message}" != ("")) {
 		alert("${message}");
