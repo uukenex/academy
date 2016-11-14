@@ -15,7 +15,7 @@
 <title>회원 정보 수정 페이지</title>
 </head>
 <body>
-<script>
+
 
 	<!-- Menubar Header -->
 		<jsp:include page="../../nonsession/layout/menubar_header.jsp"></jsp:include>

@@ -28,7 +28,7 @@
 							>Log OUT</a></li>
 				<c:url value="/session/mypageMain" var="mypageMain" />
 				<li><a href="${mypageMain }">My Page</a></li>
-				<li><a href="#">Photo Book</a></li>
+				<li><a href="/session/myPhoto?userId=${Users.userId }&folderName">Photo Book</a></li>
 				</c:if>
 				<c:if test="${empty Users.userId}">
 				<li><a href="#"

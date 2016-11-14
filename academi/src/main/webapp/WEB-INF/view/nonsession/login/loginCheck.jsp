@@ -7,89 +7,73 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/joinstyle.css" />
+<title>여행을 부탁해 로그인</title>
 </head>
-<style>
-#logo {
-	width: 100px;
-	height: 100px;
-}
 
-fieldset {
-	width: 500px;
-}
-
-.inputTextStyle {
-	height: 40px;
-	width: 450px;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	margin-left: .75em;
-	font-size: 12pt;
-}
-
-.button1 {
-	width: 200px;
-	height: 50px;
-	background-color: #95B3D7;
-	font-weight: blod;
-	font-size: 12pt;
-	margin-right: 30px;
-	margin-left: 13px;
-	margin-bottom: 30px;
-	font-family: 나눔고딕 Georgia;
-}
-
-#banner {
-	overflow: hidden;
-	margin-top: 0em;
-	margin-bottom: 1em;
-	background: url(images/div_bar_copy.png) repeat-x bottom;
-}
-
-#findLink a {
-	margin-left: 68px;
-	margin-right: 70px;
-	font-size: 13pt;
-	font-family: 나눔고딕 Georgia;
-}
-</style>
 <body>
-	<sform:form modelAttribute="Users">
-		<fieldset>
-			<legend align="center">
-				<img id="logo"
-					src="<%=request.getContextPath()%>/join_icons/jackpot.jpg">
-			</legend>
-			<div>
-				<input type="text" id="id" name="id" placeholder="아이디 입력"
-					class="inputTextStyle"> <br /> <input type="password"
-					id="password" name="password" placeholder="비밀번호 입력"
-					class="inputTextStyle"> <br />
+
+	<!-- Drop Menu Header -->
+		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
+	<!-- Menu Bar Header -->
+		<jsp:include page="../../nonsession/layout/menubar_header.jsp" />
+		
+	<!-- Login Check Body part -->
+	
+		<div id="page-wrapper" class="boardPage-Wrapper">
+			<div id="main">
+				<div class="container">
+					<div class="row main-row">
+					
+						<div class="4u"></div>
+						<div class="login_check_div">
+						
+							<sform:form modelAttribute="Users">
+								<fieldset id="login_fieldset">
+									<legend align="center">
+										<img id="logo" src="/images/logo.png">
+									</legend>
+									<div>
+										<input type="text" id="id" name="id" placeholder="아이디 입력"
+											class="inputTextStyle2"> <br />
+										<input type="password"
+											id="password" name="password" placeholder="비밀번호 입력"
+											class="inputTextStyle2"> <br />
+									</div>
+									<div id="banner">
+										<c:url value="/directloginUser" var="directloginUser" />
+										<c:url value="/join" var="join" />
+										<input type="submit" class="button1" id="submit" value="LOGIN"
+											formaction="${directloginUser}" formmethod="post"> 
+											<input type="submit" class="button1" value="회원가입" formaction="${join }">
+										<br />
+									</div>
+									
+									<div id="fb-root"></div>
+									<a title="페이스북 아이디로 로그인" id="fb-auth" href="javascript:;">
+										<img alt="facebookLogin" src="/images/facebookLogin.png">
+									</a>
+									
+									<div id="findLink">
+										<c:url value="/findId" var="findId" />
+										<c:url value="/findPassword" var="findpw" />
+										<a href="${findId }" class="login_finder">아이디 찾기</a>
+										<a href="${findpw }" class="login_finder">비밀번호 찾기</a>
+									</div>
+									
+									
+								</fieldset>
+							</sform:form>
+						</div>
+					</div>
+					
+					<!-- footer -->
+						<jsp:include page="../../nonsession/layout/footer.jsp" />
+				</div>
 			</div>
-			<div id="banner">
-				<c:url value="/directloginUser" var="directloginUser" />
-				<c:url value="/join" var="join" />
-				<input type="submit" class="button1" id="submit" value="LOGIN"
-					formaction="${directloginUser}" formmethod="post"> 
-					<input type="submit" class="button1" value="회원가입" formaction="${join }">
-				<br />
-			</div>
-			<div id="findLink">
-				<c:url value="/findId" var="findId" />
-				<c:url value="/findPassword" var="findpw" />
-				<a href="${findId }">아이디 찾기</a> <img alt=""
-					src="<%=request.getContextPath()%>/images/div_smallbar_vertical.png">
-				<a href="${findpw }">비밀번호 찾기</a>
-			</div>
-			
-			<div id="fb-root"></div>
-			<a title="페이스북 아이디로 로그인" id="fb-auth" href="javascript:;">
-				<img alt="facebookLogin" src="/images/facebookLogin.png"
-						style="width: 20em; height: 5em;">
-			</a>
-		</fieldset>
-	</sform:form>
+		</div>
+
+	
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		$(document).on("ready", function() {

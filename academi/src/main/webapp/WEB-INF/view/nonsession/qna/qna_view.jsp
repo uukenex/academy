@@ -91,7 +91,7 @@
 											</tr>
 											<tr>
 												<th colspan="2">
-													<input type="button" value="답변하기" class="boardButtonStyle3">
+													<input type="button" value="답변하기" class="boardButtonStyle3" id="qna_answer_goButton">
 												</th>
 											</tr>
 										</table>
@@ -286,6 +286,12 @@
 		beforeBoard = document.getElementById("current");
 		beforeBoard.id = beforeBoard.id.replace("");
 		$(".qnaBoard").attr('id', 'current');
+	</script>
+	
+	<script>
+		$('#qna_answer_goButton').click(function(){
+			$('#answerContent').focus();
+		});
 	</script>
 	
 </body>

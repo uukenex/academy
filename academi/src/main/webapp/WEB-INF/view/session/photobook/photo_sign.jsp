@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
-<title>${curUserId }님의 포토북</title>
+<title>${Users.userId }님의 포토북</title>
 <style type="text/css">
 
 #frm label {
@@ -92,7 +92,7 @@ z-index: 1;
 						
 						<%-- 현재접속아이디(*Users.userId) 와 들어가려는 아이디(*curUserId)가 같은경우에만 수정이가능함 --%>
 						<c:if test='${Users.userId==curUserId || !empty shareFolder }'> 
-						<h3 class="photobookUser">${curUserId }의 포토북</h3>
+						<h3 class="photobookUser">${curUserId }님의 포토북</h3>
 							<c:url value="/photo" var="photo" />
 							<form id="frm">
 						    <p>

@@ -3718,7 +3718,7 @@
 				margin-left: 0.5em;
 		}
 		
-		.writeBoard:HOVER, input[type='submit'].writeBoard:HOVER {
+		input[type='button'].writeBoard:HOVER, input[type='submit'].writeBoard:HOVER {
 			background-color: #f56a6a;
 				color: #323232;
 		}
