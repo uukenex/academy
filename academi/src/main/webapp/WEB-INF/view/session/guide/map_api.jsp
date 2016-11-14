@@ -293,9 +293,12 @@
 		/////////////////////
 		//임시 방편입니다///////
 		///////////////////
-		center = new daum.maps.LatLng(35.5299667020832,129.27704558939251);
+		center = new daum.maps.LatLng(36.799337, 127.937485);
+		var mapLevel = 13;
+		}else{
+			 var mapLevel = 8; 	
 		}
-		var mapLevel = 8;
+		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : center, // 지도의 중심좌표

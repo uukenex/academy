@@ -644,15 +644,6 @@ public class MapAPIController {
 		return "session/guide/map_main";
 	}
 
-	@RequestMapping(value = "/mapapi", method = RequestMethod.GET)
-	public String mapapi(SessionStatus status, Model model, HttpServletRequest request, HttpSession session) {
-		status.setComplete();
-
-		String local = request.getParameter("incheon");
-		model.addAttribute("local", local);
-
-		return "redirect:/session/apiview";
-	}
 
 	@ModelAttribute("cart")
 	List<Goods> cart() {

@@ -288,8 +288,14 @@
 		        con.eq(i).show();
 		    });
 		}
-
-				$(".routeForDB").on("click",function(){
+				
+		
+				 $(".routeForDB").on("click",function(){
+					if (${empty Users.userId}){
+						alert("로그인 후 이용해주세요!");
+						return false;
+					} 
+					
 					if($("#result").val()==''){
 						alert("여행경로를 설정해주세요!!");
 						return false;

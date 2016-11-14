@@ -45,6 +45,7 @@ public class MyPageController {
 
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public String updateUser(Model model, HttpServletRequest request, HttpSession session) {
+		
 		String userId = request.getParameter("changeId");
 		String userPass = request.getParameter("changePass");
 		MyHash ht = new MyHash();
@@ -73,6 +74,7 @@ public class MyPageController {
 		session.setAttribute("Users", user);
 		
 		if(userId.length()>13){
+			
 			return "/session/information/facebook_inform_change";
 		}else{
 			return "/session/information/inform_change";
