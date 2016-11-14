@@ -18,7 +18,7 @@
 				<!-- ---------------------- 선택한 지역 보기 Section ---------------------------------- -->
 				
 				<section id="selectRegionForm">
-				
+				<form method="post">
 						<c:if test="${!empty routeNo }">
 								<input type="text" name ="routeName" value="${routeName }" class="make_route_title">
 						</c:if>
@@ -33,7 +33,7 @@
 						<output id="result">
 						</output>
 						
-							<form method="post">
+							
 							<input type="hidden" value="${routeNo }" name="routeNo">
 							
 							<!--일반 지도api로 들어갔을경우 : -->
