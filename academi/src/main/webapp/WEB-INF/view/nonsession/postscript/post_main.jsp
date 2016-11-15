@@ -100,7 +100,20 @@
 											<img alt="" src="/images/BEST.png">
 										</div>
 										<form action="/session/postsign">
+										
 											<input type="submit" value="글쓰기" class="btn post_write_button">
+											<br><br>
+													<div class="postSearchBar">
+														<select id="searchCategory">
+															<option value="제목">제목</option>
+															<option value="내용">내용</option>
+															<option value="경로">경로</option>
+															<option value="닉네임">닉네임</option>
+														</select>
+														<input type="search" id="search" />
+														<input type="button" id="searchBtn" value="검색" />
+													</div>
+												
 										</form>
 									</div>
 								
