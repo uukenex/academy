@@ -30,9 +30,11 @@
 						
 						<div class="1u"></div>
 						<div class="10u 12u(moblie) important(moblie)">
+						<c:if test="${!empty Route }">
 						<div id="choiceButtonDiv">
 							<input type="button" value="선택 계획 삭제"  class="mypage_myplan_buttonStyle2">
 						</div>
+						</c:if>
 							<c:forEach var="Route" items="${Route }">
 								<input type="hidden" value="${Route.routeNo }" name="routeNo">
 								<form>
@@ -65,7 +67,12 @@
 									</div>
 								</form>
 							</c:forEach>
-							
+							<c:if test="${empty Route }">
+							<div style="height: 5em;" ></div>
+							<div>
+							<h3>등록한 여행 계획이 없습니다!!</h3>
+							</div>
+							</c:if>
 							<div id="posts_paging">
 								<%!int i;%>
 								<%

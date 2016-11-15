@@ -63,7 +63,10 @@
 									</div>
 									</form>
 								</c:forEach>
-							
+							<c:if test="${empty Review}">
+							<div style="height: 5em;"></div>
+							<h3>등록한 후기가 없습니다!!</h3>
+							</c:if>
 							<div id="posts_paging">
 								<%!int i;%>
 								<%
