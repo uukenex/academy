@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	500에러입니다 !!
+	데이터가 잘못 넘어왔습니다!! 빈칸확인을 다시해주세요!!
+	
 </body>
 </html>
