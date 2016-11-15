@@ -136,7 +136,7 @@
 								<hr id="best_posts_hr">
 								
 								<!-- 사용자가 등록한 모든 후기 띄워주는 part -->
-								
+								<output id="result">
 								<div class="edi_posts edi_posts_body">
 									<c:forEach var="post" items="${posts }" begin="3">
 										
@@ -148,11 +148,11 @@
 											<ul>
 												<li><li><a href="postView?reviewNo=${post.reviewNo}&routeNo=${post.routeNo } " class="post_button">More</a></li></li>
 											</ul>
-										</form>
 										</article>
 										
 									</c:forEach>
 								</div>
+								</output>
 								
 							</section>
 					</div>
@@ -208,6 +208,55 @@
 	<%session.removeAttribute("message");%>
 		}
 		});
+	
+	
+	
+	
+	
+	
+	<c:url value="/searchpost" var="search" />
+		$("#searchBtn").on("click",function(){
+			$.ajax({
+			type:"post",
+			url:"${search}",
+			data:{
+				category:$("#searchCategory").val(),
+				keyword:$("#search").val()
+			},
+			success:function(res){
+				$("#result")[0].innerHTML="";
+				var html="";
+				html+='<div class="edi_posts edi_posts_body">';
+				$(res).each(function(idx,item){ 
+					console.log(item);
+				
+				html+='<article>';
+				html+='<a href="/postView?reviewNo='+item.reviewNo +'" class="post_image">';
+				html+='<img alt="" src="/photo_upload/'+item.reviewImage+'"></a>';
+				html+='<h3>'+item.reviewTitle+'</h3>';
+				html+='<p>추천수 '+item.reviewStar +' <input type="hidden" value="'+item.routeNo +'" name="inputRouteNo"></p>';
+				html+='<ul>';
+				html+='<li><li><a href="postView?reviewNo='+item.reviewNo+'&routeNo='+item.routeNo +'" class="post_button">More</a></li></li>';
+				html+='</ul>';
+				html+='</form>';
+				html+='</article>';
+				
+				});
+				html+='</div>';
+				$("#result")[0].innerHTML=html;
+			},
+			error:function(xhr,status,error){
+				alert(error);
+			}
+			}); 
+		});
+	
+	
+	
+	
+	
+	
+	
 	
 	</script>
 </body>

@@ -51,7 +51,7 @@
 										
 										<td>작성자: ${post.users.userNick}</td>
 										<td>작성일: <fmt:formatDate value="${post.reviewDate}"
-															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+															pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
 										</td>
 									</tr>
 									<tr>
@@ -285,7 +285,7 @@
 												<th>${reply.users.userNick}</th>
 												<td id="post_reply_date">
 													<fmt:formatDate value="${post.reviewDate}"
-															pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+															pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 												<td>
 													<c:if test="${reply.userId==Users.userId }">
@@ -476,12 +476,16 @@
 								var date = new Date(item.replyDate);
 								var year = date.getFullYear().toString();
 								var month = (date.getMonth()+1).toString();
-								var date = date.getDate().toString();
-								if(date<10){
-									date="0"+date;
+								var day = date.getDate().toString();
+								var hour = date.getHours();
+								var minute= date.getMinutes();
+								var second= date.getSeconds();
+								if(day<10){
+									day="0"+day;
 								}
-								year = year.substr(2,2);
-								var newDate = year+"-"+month+"-"+date;
+								year=year.substr(2,2);
+								var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+								
 								
 								if(replyId=='${Users.userId}') {
 									$("#postReplyContentViewTableBody")[0].innerHTML +=

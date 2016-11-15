@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.dto.Comments;
 import com.example.dto.Goods;
 import com.example.dto.Review;
 import com.example.dto.ReviewReply;
@@ -575,5 +576,32 @@ public class ReviewController {
 	
 	return "";
 	}
+	
+	
+	
+	
+	
+	//검색기능(후기) ajax 카테고리와 검색키워드를 받아옴
+			@RequestMapping(value="/searchpost",method=RequestMethod.POST)
+			public @ResponseBody List<Review> ajaxsearch(
+					@RequestParam String category,
+					@RequestParam String keyword,Model model){
+				List<Review> result = new ArrayList<>();
+				logger.trace("여기오다");
+				if(category.equals("제목")){
+					result = rs.searchReviewByName(keyword, 1);
+					model.addAttribute("comments",result);
+				}
+				else if(category.equals("내용")){
+					result = rs.searchReviewByContent(keyword, 1);
+				}
+				else if(category.equals("닉네임")){
+					result = rs.searchReviewByNick(keyword, 1);
+				}
+				else if(category.equals("경로")){
+					result = rs.searchReviewByRoute(keyword, 1);
+				}
+				return result;
+			}
 
 }

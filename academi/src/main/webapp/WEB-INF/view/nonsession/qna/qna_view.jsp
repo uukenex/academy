@@ -79,7 +79,7 @@
 														<input type="hidden" name="userId" value="${qna.userId }" />
 														<li>${qna.users.userNick }</li>
 														<li><fmt:formatDate value="${qna.qnaDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</li>
+														pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}</li>
 														<li>${qna.qnaCount }</li>
 													</ul>
 												</td>
@@ -119,43 +119,15 @@
 														<ul class="questionViewUl">
 															<li>${answer.users.userNick }</li>
 															<li><fmt:formatDate value="${answer.answerDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}</li>
+														pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}</li>
 														</ul>
 													</td>
 													<td class="qnaSubmitButtonStyle">
-														<c:choose>
-														 	<c:when test="${answer.userId==Users.userId }">
-														 	<input type="submit" value="삭제" formaction="/qnaDelete"
-																		formmethod="post" class="boardButtonStyle1">
-														 	<input type="submit" value="수정" formaction="/session/qnaUpdate"
-																		formmethod="post" class="boardButtonStyle1">
-														 	
-														</c:when>
-														<c:when test="${'admin'==Users.userId }">
-														 	<input type="submit" value="삭제" formaction="/qnaDelete"
-																		formmethod="post" class="boardButtonStyle1">
-															<input type="submit" value="수정" formaction="/session/qnaUpdate"
-																	formmethod="post" class="boardButtonStyle1">
-														</c:when>
-														<c:otherwise></c:otherwise>
-														</c:choose>
-														
-														<%-- <c:if test="${answer.userId==Users.userId }">
-															<input type="submit" value="삭제" formaction="/qnaDelete"
-																		formmethod="post" class="boardButtonStyle1">
+														<c:if test="${answer.userId==Users.userId || 'admin'==Users.userId }">
+														<input type="hidden" id="answerNo" name="answerNo" value="${answer.answerNo }">
+														<input type="button" value="삭제" id="answerdelete" class="boardButtonStyle1">
+														<input type="button" value="수정" id="answerupdate" class="boardButtonStyle1">
 														</c:if>
-														<c:if test="${'admin'==Users.userId }">
-															<input type="submit" value="삭제" formaction="/qnaDelete"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
-														<c:if test="${answer.userId==Users.userId }">
-															<input type="submit" value="수정" formaction="/session/qnaUpdate"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if>
-															<c:if test="${'admin'==Users.userId }">
-															<input type="submit" value="수정" formaction="/session/qnaUpdate"
-																		formmethod="post" class="boardButtonStyle1">
-														</c:if> --%>
 													</td>
 												</tr>
 												<tr>
@@ -225,53 +197,47 @@
 								$("#replyContentViewTableBody").empty();
 								$("#answerContent").val("");
 								alert("등록완료");
+								var html="";
 								$(res).each(function(idx,item){
 									var answerId = item.userId;
 									var date=new Date(item.answerDate);
 									var year = date.getFullYear().toString();
 									var month = (date.getMonth()+1).toString();
-									var date = date.getDate().toString();
-									if(date<10){
-										date="0"+date;
+									var day = date.getDate().toString();
+									var hour = date.getHours();
+									var minute= date.getMinutes();
+									var second= date.getSeconds();
+									if(day<10){
+										day="0"+day;
 									}
 									year=year.substr(2,2);
-									var newDate = year+"-"+month+"-"+date;
+									var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
 									/* 여기는 수정부분 */
-									if(answerId=='${Users.userId}'){
-										$("#replyContentViewTableBody")[0].innerHTML +=
-											"<tr> <td rowspan='2' style='padding-left: 1.5em'>"
-											+ "<i class='fa fa-font fa-2x'></i> </td>"
-											+ "<th colspan='2' class='questionContentStyle'>"
-											+ item.answerContent
-											+ "</th> </tr> <tr> <td>"
-											+ "<ul class='questionViewUl'> <li>"
-											+ item.users.userNick
-											+ "</li> <li>"
-											+ newDate + "</li> </ul> </td>"
-											+ "<td class='qnaSubmitButtonStyle'>"
-											+ "<input type='submit' value='삭제' formaction='/qnaDelete'"
-											+ "formmethod='post' class='boardButtonStyle1'>"
-											+ "<input type='submit' value='수정' formaction='/session/qnaUpdate'"
-											+ "formmethod='post' class='boardButtonStyle1'>"
-											+ "</td> </tr> <tr> </tr>";
-									}
-									else {
-										$("#replyContentViewTableBody")[0].innerHTML +=
-											"<tr> <td rowspan='2' style='padding-left: 1.5em'>"
-											+ "<i class='fa fa-font fa-2x'></i> </td>"
-											+ "<th colspan='2' class='questionContentStyle'>"
-											+ item.answerContent
-											+ "</th> </tr> <tr> <td>"
-											+ "<ul class='questionViewUl'> <li>"
-											+ item.users.userNick
-											+ "</li> <li>"
-											+ newDate + "</li> </ul> </td>"
-											+ "<td class='qnaSubmitButtonStyle'>"
-											+ "</td> </tr> <tr> </tr>";
-									}
+									
+										
+											
+											html+="<tr> <td rowspan='2' style='padding-left: 1.5em'>";
+											html+= "<i class='fa fa-font fa-2x'></i> </td>";
+											html+= "<th colspan='2' class='questionContentStyle'>";
+											html+= item.answerContent;
+											html+= "</th> </tr> <tr> <td>";
+											html+= "<ul class='questionViewUl'> <li>";
+											html+= item.users.userNick;
+											html+= "</li> <li>";
+											html+= newDate + "</li> </ul> </td>";
+											html+="<td class='qnaSubmitButtonStyle'>";
+											html+="<input type='hidden' id='answerNo' name='answerNo' value='"+item.answerNo+"'>";
+											if(item.userId==('${Users.userId}'|| 'admin'=='${Users.userId }')){
+												html+="<input type='button' value='삭제' id='answerdelete' class='boardButtonStyle1'>";
+											 	html+="	<input type='button' value='수정' id='answerupdate' class='boardButtonStyle1'>";
+											}
+											html+= "</td>";
+											html+= "</td> </tr> <tr> </tr>";
+									
+									
 								});
 								
-								
+								$("#replyContentViewTableBody")[0].innerHTML +=html;
 								
 							},
 							error : function(xhr, status, error) {
@@ -279,6 +245,158 @@
 							}
 						});
 					});
+			
+			
+			//댓글삭제
+			<c:url value="/deletereplyajax" var="deleteanswer" />
+				$(document).on("click","#answerdelete",function() {
+					var answerNo = $(this.previousElementSibling)[0].value;
+					console.log(answerNo);
+				
+					$.ajax({
+						type : "post",
+						url : "${deleteanswer}",
+						data : {
+							answerNo : answerNo,
+							qnaNo : "${qna.qnaNo}"
+						},
+						success : function(res) {
+							$("#replyContentViewTableBody").empty();
+							$("#answerContent").val("");
+							alert("삭제 완료");
+							var html="";
+							$(res).each(function(idx,item){
+								var answerId = item.userId;
+								var date=new Date(item.answerDate);
+								var year = date.getFullYear().toString();
+								var month = (date.getMonth()+1).toString();
+								var day = date.getDate().toString();
+								var hour = date.getHours();
+								var minute= date.getMinutes();
+								var second= date.getSeconds();
+								if(day<10){
+									day="0"+day;
+								}
+								year=year.substr(2,2);
+								var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+								/* 여기는 수정부분 */
+								html+="<tr> <td rowspan='2' style='padding-left: 1.5em'>";
+								html+= "<i class='fa fa-font fa-2x'></i> </td>";
+								html+= "<th colspan='2' class='questionContentStyle'>";
+								html+= item.answerContent;
+								html+= "</th> </tr> <tr> <td>";
+								html+= "<ul class='questionViewUl'> <li>";
+								html+= item.users.userNick;
+								html+= "</li> <li>";
+								html+= newDate + "</li> </ul> </td>";
+								html+="<td class='qnaSubmitButtonStyle'>";
+								html+="<input type='hidden' id='answerNo' name='answerNo' value='"+item.answerNo+"'>";
+								if(item.userId==('${Users.userId}'|| 'admin'=='${Users.userId }')){
+									html+="<input type='button' value='삭제' id='answerdelete' class='boardButtonStyle1'>";
+								 	html+="<input type='button' value='수정' id='answerupdate' class='boardButtonStyle1'>";
+								}
+								html+= "</td>";
+								html+= "</td> </tr> <tr> </tr>";
+							});
+							
+							$("#replyContentViewTableBody")[0].innerHTML +=html;
+							
+						},
+						error : function(xhr, status, error) {
+							alert(error);
+						}
+					});
+				});
+			
+				
+				
+				
+				
+				
+				
+				//댓글 수정
+				$(document).on("click","#answerupdate",function() {
+					var innertext = $(this.parentNode.parentNode.previousElementSibling)[0].outerText;
+					console.log($(this.parentNode.parentNode.previousElementSibling)[0].lastElementChild);
+					var target = $(this.parentNode.parentNode.previousElementSibling)[0].lastElementChild;
+					target.innerHTML="";
+					$("#answerupdate").css("display","none");
+					var html="";
+					html+="<textarea id='textareaByAnswerContent'>";
+					html+=innertext;
+					html+="</textarea>";
+					html+="<input type='button' value='수정완료' id='answerupdateSave' class='boardButtonStyle1'>";
+					target.innerHTML=html;
+					
+				}); 
+				
+				<c:url value="/answerupdateSave" var="answerupdateSave" />
+				$(document).on("click","#answerupdateSave",function() {
+					var answerNo = $(this.parentNode.parentNode.nextElementSibling.lastElementChild.firstElementChild)[0].value;
+					//var contentValue = $(this.previousSibling)[0].innerHTML;
+					var contentValue=$("#textareaByAnswerContent").val();
+					console.log("콘텐츠"+contentValue);
+					$.ajax({
+						type : "post",
+						url : "${answerupdateSave}",
+						data : {
+							 answerNo : answerNo,
+							answerContent : contentValue,
+							qnaNo : "${qna.qnaNo}"
+						},
+						success : function(res) {
+							$("#replyContentViewTableBody").empty();
+							$("#answerContent").val("");
+							alert("수정 완료");
+							var html="";
+							$(res).each(function(idx,item){
+								var answerId = item.userId;
+								var date=new Date(item.answerDate);
+								var year = date.getFullYear().toString();
+								var month = (date.getMonth()+1).toString();
+								var day = date.getDate().toString();
+								var hour = date.getHours();
+								var minute= date.getMinutes();
+								var second= date.getSeconds();
+								if(day<10){
+									day="0"+day;
+								}
+								year=year.substr(2,2);
+								var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+								/* 여기는 수정부분 */
+								
+									
+										
+										html+="<tr> <td rowspan='2' style='padding-left: 1.5em'>";
+										html+= "<i class='fa fa-font fa-2x'></i> </td>";
+										html+= "<th colspan='2' class='questionContentStyle'>";
+										html+= item.answerContent;
+										html+= "</th> </tr> <tr> <td>";
+										html+= "<ul class='questionViewUl'> <li>";
+										html+= item.users.userNick;
+										html+= "</li> <li>";
+										html+= newDate + "</li> </ul> </td>";
+										html+="<td class='qnaSubmitButtonStyle'>";
+										html+="<input type='hidden' id='answerNo' name='answerNo' value='"+item.answerNo+"'>";
+										if(item.userId==('${Users.userId}'|| 'admin'=='${Users.userId }')){
+											html+="<input type='button' value='삭제' id='answerdelete' class='boardButtonStyle1'>";
+										 	html+="	<input type='button' value='수정' id='answerupdate' class='boardButtonStyle1'>";
+										}
+										html+= "</td>";
+										html+= "</td> </tr> <tr> </tr>";
+								
+								
+							});
+							
+							$("#replyContentViewTableBody")[0].innerHTML +=html;
+							$("#answerupdate").css("display","inline-block");
+						},
+						error : function(xhr, status, error) {
+							alert(error);
+						}
+					});
+				}); 
+				
 	</script>
 	
 	<script>

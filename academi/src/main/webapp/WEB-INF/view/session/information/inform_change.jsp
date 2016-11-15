@@ -42,10 +42,12 @@
 										<col width="*%">
 									</colgroup>
 									
+									<input type="hidden"  value="${Users.userId }" name="changeId" readonly>
 									<tr>
 										<th>이름</th>
 										<td colspan="2" class="table_use_underline">
 											<input type="text" value="${Users.userName }" readonly>
+											
 										</td>
 									</tr>
 									<tr>
@@ -83,7 +85,7 @@
 									</tr>
 								</table>
 								<input type="button" value="취소" class="mypage_info_buttonStyle3" onclick="location.href='/session/mypageMain'" style="float: right;">
-								<input type="submit" value="저장" class="mypage_info_buttonStyle3" id="submit" style="float: right;">
+								<input type="submit" value="저장" class="mypage_info_buttonStyle3" style="float: right;">
 							</form>
 						</div>
 					</div>
@@ -161,11 +163,10 @@
 			"submit" : function(e){
 				e.preventDefault();
 				if($("#changePassCk").val() == $("#changePass").val()){
-					
-						console.log('${Users.userPass}');
 						if($("#changeNick").val()!='' && checkVal==false){
 							alert("중복확인을 해주세요");
 							}else{
+								console.log(this);
 								this.submit();
 							}
 					

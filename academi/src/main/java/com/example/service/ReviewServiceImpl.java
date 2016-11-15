@@ -93,9 +93,6 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
 		List<Review> r2 = rrepo.searchReviewByName(reviewTitle, page);
-		for(int i=0;i<r1.size();i++){
-			result.add(r1.get(i));
-		}
 		for(int i=0;i<r2.size();i++){
 			result.add(r2.get(i));
 		}
@@ -107,9 +104,6 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
 		List<Review> r2 = rrepo.searchReviewByContent(reviewContent, page);
-		for(int i=0;i<r1.size();i++){
-			result.add(r1.get(i));
-		}
 		for(int i=0;i<r2.size();i++){
 			result.add(r2.get(i));
 		}
@@ -121,9 +115,6 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Review> result = new ArrayList<>();
 		List<Review> r1 = rrepo.starReview();
 		List<Review> r2 = rrepo.searchReviewByNick(userNick, page);
-		for(int i=0;i<r1.size();i++){
-			result.add(r1.get(i));
-		}
 		for(int i=0;i<r2.size();i++){
 			result.add(r2.get(i));
 		}
@@ -135,9 +126,6 @@ public class ReviewServiceImpl implements ReviewService {
 			List<Review> result = new ArrayList<>();
 			List<Review> r1 = rrepo.starReview();
 			List<Review> r2 = rrepo.searchReviewByRoute(routeName, page);
-			for(int i=0;i<r1.size();i++){
-				result.add(r1.get(i));
-			}
 			for(int i=0;i<r2.size();i++){
 				result.add(r2.get(i));
 			}

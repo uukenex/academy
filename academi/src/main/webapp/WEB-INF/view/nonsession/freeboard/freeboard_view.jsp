@@ -54,7 +54,7 @@
 										<hr id="boardTitleHrStyle1">
 										<table>
 											<colgroup>
-												<col width="10%" />
+												<col width="15%" />
 												<col width="*%" />
 												<col width="10%" />
 												<col width="20%" />
@@ -66,7 +66,7 @@
 												<th>작성일</th>
 												<td class="boardTitleSort boardFontBold">
 													<fmt:formatDate value="${comment.commentDate}"
-																			pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+																			pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 											</tr>
 												<tr>
@@ -139,20 +139,16 @@
 								            		</td>
 								            		<td class="boardTitleSort">
 								            			<fmt:formatDate value="${reply.replyDate }"
-														pattern="yy-MM-dd hh:mm:ss" var="fmtDate" /> ${fmtDate}
+														pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
 													</td>
 													<td colspan="2" class="board_reply_button_view">
 														<c:choose>
 													 		<c:when test="${reply.userId==Users.userId }">
-													 		<input type="submit" value="수정" formaction="/session/replyUpdate"
-																		formmethod="post" class="boardButtonStyle1">
 																														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
 																<input type="submit" value="삭제" formaction="/replyDelete"
 																		formmethod="post" class="boardButtonStyle1">					
 															</c:when>
 																<c:when test="${'admin'==Users.userId }">
-																<input type="submit" value="수정" formaction="/session/replyUpdate"
-																	formmethod="post" class="boardButtonStyle1">
 																														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
 																<input type="submit" value="삭제" formaction="/replyDelete"
 																		formmethod="post" class="boardButtonStyle1">	
@@ -240,12 +236,15 @@
 					var date=new Date(item.replyDate);
 					var year = date.getFullYear().toString();
 					var month = (date.getMonth()+1).toString();
-					var date = date.getDate().toString();
-					if(date<10){
-						date="0"+date;
+					var day = date.getDate().toString();
+					var hour = date.getHours();
+					var minute= date.getMinutes();
+					var second= date.getSeconds();
+					if(day<10){
+						day="0"+day;
 					}
 					year=year.substr(2,2);
-					var newDate = year+"-"+month+"-"+date;
+					var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
 					if(replyId=='${Users.userId }'){
 						$("#replyContentViewTableBody")[0].innerHTML+=
 							"<tr> <th class='boardFontBold'>" + item.users.userNick 

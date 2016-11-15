@@ -13,7 +13,7 @@ public interface AnswerService {
 	// 답변 추가-답변내용/ 외래키 질문글 번호/외래키 id 필요
 	public int insertAnswer(String answerContent, int qnaNo, String userId);
 
-	// 답변 수정-
+	// 답변 수정
 	public int updateAnswer(String answerContent, int answerNo);
 
 	// 답변 삭제

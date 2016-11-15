@@ -3,6 +3,8 @@ package com.example.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import com.example.service.UserService;
 
 @Controller
 public class FacebookController {
+	static Logger logger = LoggerFactory.getLogger(FacebookController.class);
 	@Autowired
 	UserService us;
 
@@ -86,6 +89,7 @@ public class FacebookController {
 			HttpSession session) {
 
 		String msg = null;
+		logger.trace("ps : {}",password);
 		Users user = new Users(id.trim(), password, name, email.trim(), phone.trim(), nickname);
 		int result = us.joinUser(user);
 		if (result == 1) {

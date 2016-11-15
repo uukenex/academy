@@ -152,5 +152,22 @@ public class QnaController {
 			return list;
 		}
 		
+		@RequestMapping(value = "/deletereplyajax", method = RequestMethod.POST)
+		public @ResponseBody List<Answer> ajaxdelete(
+			@RequestParam int answerNo,
+			@RequestParam int qnaNo, HttpSession session) {
+			int result = as.deleteAnswer(answerNo);
+			List<Answer> list=as.selectListByQnaNo(qnaNo);
+			return list;
+		}
+		@RequestMapping(value = "/answerupdateSave", method = RequestMethod.POST)
+		public @ResponseBody List<Answer> ajaxupdate(
+			@RequestParam int answerNo,
+			@RequestParam int qnaNo,
+			@RequestParam String answerContent, HttpSession session) {
+			int result = as.updateAnswer(answerContent, answerNo);
+			List<Answer> list=as.selectListByQnaNo(qnaNo);
+			return list;
+		}
 		
 }

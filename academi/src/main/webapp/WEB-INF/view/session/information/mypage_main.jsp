@@ -48,6 +48,7 @@ $(document).on("ready", function() {
 			<div class="phanInner">
 				<header>
 					<h1 class="mypageHeader">My Page</h1>
+					
 					<hr>
 				</header>
 				

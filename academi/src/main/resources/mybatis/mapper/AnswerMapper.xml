@@ -7,8 +7,8 @@
 	<!--특정 질문글번호로 되어있는 답변목록 조회 list -->
 	<select id="select" parameterType="int" resultMap="answerUsers">
 		select * from answer a
-		join users u on u.user_id = a.user_id 
-		 where qna_no=#{qnaNo}
+		join users u on u.user_id = a.user_id  
+		 where qna_no=#{qnaNo} order by answer_no asc 
 	</select>
 	
 	<!-- 답변 달기 기능 -->

@@ -72,13 +72,10 @@ public class MyPageController {
 		us.updateUser(userId, userPass, userPhone, userEmail, userNick);
 		Users user = us.login(userId);
 		session.setAttribute("Users", user);
+		session.setAttribute("message", "정보가 변경되었습니다");
 		
-		if(userId.length()>13){
-			
-			return "/session/information/facebook_inform_change";
-		}else{
-			return "/session/information/inform_change";
-		}	
+		return "redirect:/session/mypageMain";
+		
 	}
 
 	@RequestMapping(value = "/session/mypageRoute", method = RequestMethod.GET)

@@ -26,6 +26,7 @@
 			<div id="main">
 				<div class="container">
 					<h2 class="mypage_mypost_title">My Page _ ${Users.userNick }님의 여행 계획</h2>
+					<h4>caution :: 경로글 삭제시 해당 경로로 등록된 후기글이 삭제됩니다</h4>
 					<div class="row main-row">
 						
 						<div class="1u"></div>
@@ -58,7 +59,7 @@
 											</tr>
 											<tr>
 												<td>
-													<input type="hidden" value="${Route.routeNo }">
+													<input type="hidden" value="${Route.routeNo }" name="routeNo">
 													<a href="/routeupdate?routeNo=${Route.routeNo }"  class="mypage_mypost_buttonStyle1">여행 계획 수정</a>
 													<input type="submit" value="여행 계획 삭제" class="mypage_mypost_buttonStyle1"  formaction="/deleteRoute" formmethod="post">
 												</td>

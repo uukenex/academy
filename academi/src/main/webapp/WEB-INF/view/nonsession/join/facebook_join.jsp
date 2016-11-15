@@ -275,7 +275,7 @@
 		
 		$(document).on("ready",function(){
 			
-		}
+		
 			    window.resizeTo(580,520);
 			    window.focus();
 		})
