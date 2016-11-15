@@ -40,6 +40,9 @@
 										onkeypress="this.onclick()"><i class="fa fa-check-square-o" aria-hidden="true"></i> ${myFolder.photoFolderName }</a>
 										<br>
 										</c:forEach>
+										<c:if test="${empty myFolderList }">
+										<h3>내 폴더가 없습니다!!</h3>
+										</c:if>
 								</article>
 							
 							<!-- Other Shared Folders -->
@@ -52,6 +55,9 @@
 										 <a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
 												${shareFolder.photoFolderName }</a>
 									</c:forEach>
+									<c:if test="${empty sharedFolderList }">
+										<h3>공유받은 폴더가 없습니다!!</h3>
+									</c:if>
 								</article>
 							</section>
 						</div>
