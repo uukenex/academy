@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	400에러얌
+	페이지 주소를 잘못 입력 하셨습니다.
 </body>
 </html>
