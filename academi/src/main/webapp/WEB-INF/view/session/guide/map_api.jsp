@@ -561,21 +561,27 @@
 						routeHTML +="<p>비슷한 경로로 간사람이 없습니다!</p>";
 					}
 					else{
-						routeHTML +="<p>Best Route 1<br>"+res[2][0].reviewTitle+"<br>";
+						routeHTML +="<p>Best Route 1<br><a href='/postView?reviewNo="+res[1][0].reviewNo+"'>"+res[2][0].reviewTitle+"</a><br>";
 						routeHTML +="<iframe src='/routeImage?routeNo="+res[1][0].routeNo+"'";
 						routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 						routeHTML +="</iframe>";
 						routeHTML +="</p>";
-						routeHTML +="<p>Best Route 2<br>"+res[2][1].reviewTitle+"<br>";
+						if(res[2][1]==null){}
+						else{
+						routeHTML +="<p>Best Route 2<br><a href='/postView?reviewNo="+res[1][1].reviewNo+"'>"+res[2][1].reviewTitle+"</a><br>";
 						routeHTML +="<iframe src='/routeImage?routeNo="+res[1][1].routeNo+"'";
 						routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 						routeHTML +="</iframe>";
 						routeHTML +="</p>";
-						routeHTML +="<p>Best Route 3<br>"+res[2][2].reviewTitle+"<br>";
+						}
+						if(res[2][2]==null){}
+						else{
+						routeHTML +="<p>Best Route 3<br><a href='/postView?reviewNo="+res[1][2].reviewNo+"'>"+res[2][2].reviewTitle+"</a><br>";
 						routeHTML +="<iframe src='/routeImage?routeNo="+res[1][2].routeNo+"'";
 						routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 						routeHTML +="</iframe>";
 						routeHTML +="</p>";
+						}
 					}
 					$("#bestRouteSection")[0].innerHTML=routeHTML;
 					
@@ -609,22 +615,29 @@
 								routeHTML +="<p>비슷한 경로로 간사람이 없습니다!</p>";
 							}
 							else{
-								console.log($(res[1][0]));
-								routeHTML +="<p>Best Route 1<br>"+res[2][0].reviewTitle+"<br>";
+								routeHTML +="<p>Best Route 1<br><a href='/postView?reviewNo="+res[1][0].reviewNo+"'>"+res[2][0].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][0].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
 								routeHTML +="</p>";
-								routeHTML +="<p>Best Route 2<br>"+res[2][1].reviewTitle+"<br>";
+								if(res[2][1]==null){
+									console.log(null);
+								}else{
+								routeHTML +="<p>Best Route 2<br><a href='/postView?reviewNo="+res[1][1].reviewNo+"'>"+res[2][1].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][1].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
 								routeHTML +="</p>";
-								routeHTML +="<p>Best Route 3<br>"+res[2][2].reviewTitle+"<br>";
+								}
+								if(res[2][2]==null){
+									console.log(null);
+								}else{
+								routeHTML +="<p>Best Route 3<br><a href='/postView?reviewNo="+res[1][2].reviewNo+"'>"+res[2][2].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][2].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
 								routeHTML +="</p>";
+								}
 							}
 							$("#bestRouteSection")[0].innerHTML=routeHTML;
 							
@@ -800,21 +813,31 @@
 								routeHTML +="<p>비슷한 경로로 간사람이 없습니다!</p>";
 							}
 							else{
-								routeHTML +="<p>Best Route 1<br>"+res[2][0].reviewTitle+"<br>";
+								routeHTML +="<p>Best Route 1<br><a href='/postView?reviewNo="+res[1][0].reviewNo+"'>"+res[2][0].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][0].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
 								routeHTML +="</p>";
-								routeHTML +="<p>Best Route 2<br>"+res[2][1].reviewTitle+"<br>";
+								if(res[2][1]==null){
+									console.log('null');
+								}
+								else{
+								routeHTML +="<p>Best Route 2<br><a href='/postView?reviewNo="+res[1][1].reviewNo+"'>"+res[2][1].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][1].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
 								routeHTML +="</p>";
-								routeHTML +="<p>Best Route 3<br>"+res[2][2].reviewTitle+"<br>";
+								}
+								if(res[2][2]==null){
+									console.log('null');
+								}
+								else{
+								routeHTML +="<p>Best Route 3<br><a href='/postView?reviewNo="+res[1][2].reviewNo+"'>"+res[2][2].reviewTitle+"</a><br>";
 								routeHTML +="<iframe src='/routeImage?routeNo="+res[1][2].routeNo+"'";
 								routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 								routeHTML +="</iframe>";
-								routeHTML +="</p>";
+								routeHTML +="</p>"; 
+								}
 							}
 							$("#bestRouteSection")[0].innerHTML=routeHTML;
 						},
@@ -884,21 +907,27 @@
 									routeHTML +="<p>비슷한 경로로 간사람이 없습니다!</p>";
 								}
 								else{
-									routeHTML +="<p>Best Route 1<br>"+res[2][0].reviewTitle+"<br>";
+									routeHTML +="<p>Best Route 1<br><a href='/postView?reviewNo="+res[1][0].reviewNo+"'>"+res[2][0].reviewTitle+"</a><br>";
 									routeHTML +="<iframe src='/routeImage?routeNo="+res[1][0].routeNo+"'";
 									routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 									routeHTML +="</iframe>";
 									routeHTML +="</p>";
-									routeHTML +="<p>Best Route 2<br>"+res[2][1].reviewTitle+"<br>";
+									if(res[2][1]==null){
+									}else{
+									routeHTML +="<p>Best Route 2<br><a href='/postView?reviewNo="+res[1][1].reviewNo+"'>"+res[2][1].reviewTitle+"</a><br>";
 									routeHTML +="<iframe src='/routeImage?routeNo="+res[1][1].routeNo+"'";
 									routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 									routeHTML +="</iframe>";
 									routeHTML +="</p>";
-									routeHTML +="<p>Best Route 3<br>"+res[2][2].reviewTitle+"<br>";
+									}
+									if(res[2][2]==null){
+									}else{
+									routeHTML +="<p>Best Route 3<br><a href='/postView?reviewNo="+res[1][2].reviewNo+"'>"+res[2][2].reviewTitle+"</a><br>";
 									routeHTML +="<iframe src='/routeImage?routeNo="+res[1][2].routeNo+"'";
 									routeHTML +="height='300px' width='300px' scrolling='no' frameborder='0'>";
 									routeHTML +="</iframe>";
 									routeHTML +="</p>";
+									}
 								}
 								$("#bestRouteSection")[0].innerHTML=routeHTML;
 						}
