@@ -846,7 +846,7 @@ public class MapAPIController {
 			center.add(0, xyroute);
 			mapSize = 17;
 		} else {
-			mapSize = 13;
+			mapSize = 9;
 		}
 
 		for (int cnt = 0; cnt < i; cnt++) {
@@ -945,7 +945,7 @@ public class MapAPIController {
 			center.add(0, xyroute);
 			mapSize = 17;
 		} else {
-			mapSize = 13;
+			mapSize = 9;
 		}
 
 		model.addAttribute("latLng2", latLng);
@@ -1352,7 +1352,7 @@ public class MapAPIController {
 			center.add(0, xyroute);
 			mapSize = 17;
 		} else {
-			mapSize = 13;
+			mapSize = 9;
 		}
 
 		for (int cnt = 0; cnt < i; cnt++) {

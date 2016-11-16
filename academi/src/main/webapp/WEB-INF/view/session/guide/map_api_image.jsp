@@ -13,7 +13,7 @@
 </head>
 <body>
 	<!-- 이미지 지도를 표시할 div 입니다 -->
-	<div id="staticMap" style="width: 380px; height: 400px;"></div>
+	<div id="staticMap" style="width: 380px; height: 700px;"></div>
 
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a"></script>

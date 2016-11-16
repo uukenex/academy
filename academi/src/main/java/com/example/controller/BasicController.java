@@ -35,8 +35,12 @@ public class BasicController {
 	QnaService qs;
 	@Autowired
 	ReviewService rs;
-	@Autowired
+	@Autowired 
 	RouteService routeService;
+	@RequestMapping(value = "/help", method = RequestMethod.GET)
+	public String help(Model model) {
+		return "help/help";
+	}
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String sayHello(Model model) {
