@@ -90,7 +90,7 @@
 	<script language=javascript>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '142101846257535',
+				appId : '1808644559350607',
 				status : true,
 				cookie : true,
 				xfbml : true,
@@ -129,7 +129,8 @@
 							success : function(res){
 								if(res == 0){
 									alert("등록되지 않은 아이디입니다. 정보를 등록합니다");
-									window.location.replace('/facebookjoin?fId='+fId+'&fName='+fName);  
+									window.open('/facebookjoin?fId='+fId+'&fName='+fName, 'win1',
+											'width=532, height=475');  
 									console.log(fId);
 									
 								
