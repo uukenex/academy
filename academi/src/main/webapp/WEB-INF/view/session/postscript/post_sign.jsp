@@ -66,7 +66,8 @@
 										</tr>
 										<tr class="routeTitleTr">
 											<td colspan="2">
-												<input type="file" accept="image/*" name="file" />
+												<label for="main_photo_file">메인 사진 등록</label>
+												<input type="file" accept="image/*" name="file" id="main_photo_file"/>
 												<!-- <input type="text" id="routeTitleImage" name="routeTitleImage" disabled="disabled">
 												<input type="button" class="postButtonStyle2" value="메인사진 등록하기" onclick="postMainImageOpen()"> -->
 											</td>
@@ -443,7 +444,7 @@
 
 	function mapOpen(){
 		window.open("/session/existMap", "", 
-				'width=540px, height=900px, resizable=0, scrollbars=0');
+				'width=540px, height=710px, resizable=0, scrollbars=0');
 		console.log("창 열린다");
 		return true;
 	}

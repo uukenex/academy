@@ -1019,8 +1019,74 @@
 					padding-top: 2em;
 					margin-bottom: 2em;
 				}
+
+			/* My Route import page CSS Style */
+			
+				div#myroute_import_title {
+					font-family: "Nanum Gothic";
+					font-size: 1em;
+					font-weight: bold;
+					text-align: center;
+				}
 				
+				div#myroute_import_title h1 {
+					display: inline-block;
+					border-bottom: 2px solid #F5696A;
+					padding-bottom: 0.3em;
+					margin-bottom: 1em;
+				}
 				
+				div#myroute_import_title select {
+					height: 3em;
+					border: 1px solid #F5696A;
+					border-radius: 10px;
+					padding: 0.5em 1em;
+				}
+				
+				div#myroute_import_title select option {
+					font-family: "Nanum Gothic";
+					font-size: 1em;
+					text-align: center;
+				}
+				
+				div#myroute_import_title input[type='button'] {
+					-moz-appearance: none;
+					-webkit-appearance: none;
+					-ms-appearance: none;
+					appearance: none;
+					-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+					background-color: transparent;
+					border-radius: 0.375em;
+					border: 0;
+					box-shadow: inset 0 0 0 2px #f56a6a;
+					color: #f56a6a;
+					cursor: pointer;
+					display: inline-block;
+					font-family: "Nanum Gothic";
+					font-size: 1em;
+					font-weight: 700;
+					height: 1.75em;
+					letter-spacing: 0.075em;
+					line-height: 1.75em;
+					padding: 0em 0.3em;
+					text-align: right;
+					text-decoration: none;
+					text-transform: uppercase;
+					white-space: nowrap;
+					margin-left: 0.5em;
+				}
+				
+				div#myroute_import_title input[type='button']:HOVER {
+					background-color: #f56a6a;
+					color: #323232;
+				}
+				
+				div#myrout_import_title input[type='button']#preview {
+					text-align: right;
+				}
 				
 		/* Post Write Update CSS Style */
 		
