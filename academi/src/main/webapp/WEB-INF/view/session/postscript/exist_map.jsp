@@ -25,12 +25,13 @@ function getSelectValue(frm)
 
 <body onload="bonload()">
 	<div id="myroute_import_title">
-	
+	 
 		 <h1>경로 불러오는 페이지</h1>
 		 
 		 <form name="form">
 			 <select name="routeNo" onChange="getSelectValue(this.form)">
 			 	<option value="#">============선택하세요=============</option>
+			 	<option value="0">없음</option>
 			 	<c:forEach var="existMap" items="${existMap }">
 			 	<option value="${existMap.routeNo }">${existMap.routeName}</option>
 			 	</c:forEach>
