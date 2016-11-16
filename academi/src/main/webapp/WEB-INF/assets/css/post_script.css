@@ -1105,3 +1105,111 @@
 					text-align: left;
 					padding-left: 0.8em;
 				}
+				
+				
+				
+		/* Post Map Route plan style CSS */
+		
+			ul.using_tab {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color: #FFFFFF;
+				border: 1px solid #F5696A;
+				display: inline-block;
+			}
+			
+			ul.using_tab li {
+				float: left;
+			}
+			
+			ul.using_tab li a {
+				display: inline-block;
+				color: #000000;
+				text-align: center;
+				padding: 0.5em 1em;
+				text-decoration: none;
+				transition: 0.3s;
+				font-size: 1.5em;
+				font-family: "Nanum Gothic";
+				font-weight: bold;
+				border-right: 1px solid #F5696A;
+			}
+			
+			ul.using_tab li a:HOVER {
+				background-color: #FF9C9C;
+			}
+			
+			ul.using_tab li a:FOCUS, .active {
+				background-color: #F5696A;
+				color: #FFFFFF;
+			}
+			
+			
+				
+			/* Style the tab content */
+				.using_tabContent {
+					display: none;
+					padding: 1.5em 1.5em;
+					border: 1px solid #F5696A;
+					border-radius: 1.5%;
+					font-family: "Nunum Gothic";
+					margin-top: 1em;
+				}
+				
+				.using_tabContent h3{
+					width: 3.5em;
+					font-size: 2em;
+					font-weight: bold;
+					border-bottom: 1px solid #F5696A;
+					padding-bottom: 0.5em;
+				}
+				
+				.using_tabContent p{
+					font-size: 2em;
+					color: #000000;
+				}
+				
+				.topright {
+					float: right;
+					cursor: pointer;
+					font-size: 2em;
+				}
+				
+				.topright:HOVER {
+					color: #FF0000;
+				}
+				
+				div.how_using_div img {
+					width: 80%;
+					height: auto;
+					margin-left: 1em;
+					margin-top: 1em;
+				}
+				
+				
+			/* Font Style */
+			
+				div.how_using_div h3 {
+					display: inline-block;
+					font-family: "Nanum Gothic";
+					font-size: 2em;
+					font-weight: bold;
+					border-bottom: 2px solid #F5696A;
+					padding-bottom: 0.5em;
+					margin-bottom: 1em;
+				}
+				
+				div.how_using_div h4 {
+					display: inline-block;
+					font-family: "Nanum Gothic";
+					font-size: 1.3em;
+					font-weight: bold;
+					border-top: 1.5px dashed #F5696A;
+					border-bottom: 1.5px dashed #F5696A;
+					padding-top: 0.5em;
+					padding-bottom: 0.5em;
+					margin-top: 1em;
+					margin-bottom: 1em;
+				}

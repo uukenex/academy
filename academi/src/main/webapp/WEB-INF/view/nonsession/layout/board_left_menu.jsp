@@ -34,7 +34,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" class="howuseBoard">
+					<a href="/help" class="howuseBoard">
 						<i class="fa fa-child"></i>
 						사이트 이용방법
 					</a>

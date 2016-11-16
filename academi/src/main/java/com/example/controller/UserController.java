@@ -83,7 +83,7 @@ public class UserController {
 			}
 		} else {
 			model.addAttribute("message", "아이디 혹은 비밀번호를 확인해주세요.");
-			returnURL = "nonsession/login/login";
+			returnURL = "nonsession/login/loginCheck";
 		}
 		return returnURL;
 	}

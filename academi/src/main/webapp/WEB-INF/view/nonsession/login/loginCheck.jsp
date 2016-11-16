@@ -45,7 +45,8 @@
 										<c:url value="/join" var="join" />
 										<input type="submit" class="button1" id="submit" value="LOGIN"
 											formaction="${directloginUser}" formmethod="post"> 
-											<input type="submit" class="button1" value="회원가입" formaction="${join }">
+											<input type="button" onclick="window.open('${join}', 'win1',
+									'width=532, height=475');" class="button1" value="회원가입">
 										<br />
 									</div>
 									

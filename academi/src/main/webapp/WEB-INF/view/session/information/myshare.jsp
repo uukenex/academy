@@ -50,10 +50,11 @@
 									<h3 class="folder_name_title">공유받은 폴더</h3>
 									<br>
 									<c:forEach var="shareFolder" items="${sharedFolderList }">
-										<a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName">
+										<a href="/session/myPhoto?userId=${shareFolder.users.userId }&folderName">
 											<i class="fa fa-check-square-o" aria-hidden="true"></i> ${shareFolder.users.userNick }의 포토북</a> -
-										 <a href="/session/myPhoto?userId=${shareFolder.users.userNick }&folderName=${shareFolder.photoFolderName }">
+										 <a href="/session/myPhoto?userId=${shareFolder.users.userId }&folderName=${shareFolder.photoFolderName }">
 												${shareFolder.photoFolderName }</a>
+												<br>
 									</c:forEach>
 									<c:if test="${empty sharedFolderList }">
 										<h3>공유받은 폴더가 없습니다!!</h3>
