@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
+<title>내 경로 선택하기</title>
 
 <script language="javascript">
 <!--
@@ -21,25 +22,33 @@ function getSelectValue(frm)
 //-->
 </script>
 </head>
+
 <body onload="bonload()">
- <h1>경로 불러오는 페이지</h1>
- <form name="form">
- <select name="routeNo" onChange="getSelectValue(this.form)">
- 	<option value="#">============선택하세요=============</option>
- 	<c:forEach var="existMap" items="${existMap }">
- 	<option value="${existMap.routeNo }">${existMap.routeName}</option>
- 	</c:forEach>
- </select>
- 	  <input type="hidden" name="optionValue" id="optionValue">
- 	   <input type="hidden" name="textValue" name="textValue">
-	  <input type="button" value="확인" onclick="bsubmit()">
-	  <input type="button" value="취소" id="cancel"onclick="close()">
-	  <input type="button" value="미리보기" id="preview">
- </form>
- 	<iframe frameborder="no" width="400px" height="650px" id="frame" name="frame">
- 	
- 	</iframe>
+	<div id="myroute_import_title">
+	
+		 <h1>경로 불러오는 페이지</h1>
+		 
+		 <form name="form">
+			 <select name="routeNo" onChange="getSelectValue(this.form)">
+			 	<option value="#">============선택하세요=============</option>
+			 	<c:forEach var="existMap" items="${existMap }">
+			 	<option value="${existMap.routeNo }">${existMap.routeName}</option>
+			 	</c:forEach>
+			 </select>
+			 	  <input type="hidden" name="optionValue" id="optionValue">
+			 	  <input type="hidden" name="textValue" name="textValue">
+				  
+				  <input type="button" value="미리보기" id="preview">
+		 </form>
+		 
+		 <iframe frameborder="no" width="400px" height="485px" id="frame" name="frame"></iframe>
+		 <input type="button" value="확인" onclick="bsubmit()">
+		 <input type="button" value="취소" id="cancel"onclick="close()">
+		 
+	 </div>
 </body>
+
+
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
 

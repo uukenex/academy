@@ -123,7 +123,8 @@ public class PhotoBookController {
 		for (int i = 0; i < fileList.length; i++) {
 			int pos = fileList[i].getName().lastIndexOf(".");
 			String ext = fileList[i].getName().substring(pos + 1);
-			if (ext.equals("jpg") || ext.equals("png") || ext.equals("gif") || ext.equals("bmp")) {
+			if (ext.equals("jpg") || ext.equals("png") || ext.equals("gif") || ext.equals("bmp")
+					||ext.equals("JPG") || ext.equals("PNG") || ext.equals("GIF") || ext.equals("BMP")) {
 				files.add(fileList[i].getName());
 			} else if (ext.equals("zip")) {
 

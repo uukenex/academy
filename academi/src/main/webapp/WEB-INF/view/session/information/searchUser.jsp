@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/mypage.css" />
+<title>공유자 찾기</title>
 
 <style>
 p{
@@ -18,14 +19,15 @@ display:inline;
 
 </head>
 <body>
-<div>
-
-<label for="searchNick" >닉네임 검색</label>
-<input type="text" id="searchNick" name="searchNick">
-<input type="button" id="search" value="검색" > 
-</div>
+	<div class="search_for_users">
+	
+		<label for="searchNick" >닉네임 검색</label>
+		<input type="text" id="searchNick" name="searchNick">
+		<input type="button" id="search" value="검색" > 
+	</div>
 <hr>
-<div>닉네임 / ID</div>
+
+<div id="search_for_result">닉네임 / ID</div>
 <output id="result"></output>
 
 <script src="http://code.jquery.com/jquery.js"></script>
