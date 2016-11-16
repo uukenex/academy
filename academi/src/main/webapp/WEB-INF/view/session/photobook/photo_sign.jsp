@@ -96,15 +96,18 @@ z-index: 1;
 							<c:url value="/photo" var="photo" />
 							<form id="frm">
 						    <p>
-						        <br />
+						    <br />
+						     <c:if test="${!(empty folderName|| folderName=='.')}">
 						        <input type="file" accept="image/*" id="fileLoader" multiple="multiple" />
 						        <br />
 						        <label for="fileLoader" class="labeling1">사진 올리기</label>
 						        
 						        <input type="text" id="cntFiles" style="display: inline; width: 20em;" readonly="readonly"/>
 						        <br/>
+						   
 								<input type="button" id="fileSubmit" value="Upload"/>
 								<label for="fileSubmit" class="labeling1">저장</label>
+							 </c:if>
 								<c:if test="${empty folderName || folderName=='.' }">
 								<input type="button" id="newFolder" value="새폴더"/>
 								<label for="newFolder" class="labeling2">새폴더</label>
