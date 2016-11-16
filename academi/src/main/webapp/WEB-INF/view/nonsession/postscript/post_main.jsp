@@ -122,7 +122,14 @@
 									<c:forEach var="post" items="${posts }" begin="0" end="2">
 										<article>
 										<form method="GET" action="/postView">
-											<a href="/postView?reviewNo=${post.reviewNo }" class="post_image"><img alt="" src="/photo_upload/${post.reviewImage }"></a>
+											<a href="/postView?reviewNo=${post.reviewNo }" class="post_image">
+											<c:if test="${post.reviewImage.length()==13 }">
+											<img alt="" src="/images/noimgbig.jpg">
+											</c:if>
+											<c:if test="${post.reviewImage.length()!=13 }">
+											<img alt="" src="/photo_upload/${post.reviewImage }">
+											</c:if>
+											</a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
@@ -141,7 +148,13 @@
 										
 										<article>
 											<a href="/postView?reviewNo=${post.reviewNo }" class="post_image">
-											<img alt="" src="/photo_upload/${post.reviewImage }"></a>
+											<c:if test="${post.reviewImage.length()==13 }">
+											<img alt="" src="/images/noimgbig.jpg">
+											</c:if>
+											<c:if test="${post.reviewImage.length()!=13 }">
+											<img alt="" src="/photo_upload/${post.reviewImage }">
+											</c:if>
+											</a>
 											<h3>${post.reviewTitle }</h3>
 											<p>추천수 ${post.reviewStar } <input type="hidden" value="${post.routeNo }" name="inputRouteNo"></p>
 											<ul>
@@ -228,7 +241,9 @@
 				html+='<div class="edi_posts edi_posts_body">';
 				$(res).each(function(idx,item){ 
 					console.log(item);
-				
+				if(item.reviewImage.length==13){
+					item.reviewImage='noimgbig.jpg';
+				}
 				html+='<article>';
 				html+='<a href="/postView?reviewNo='+item.reviewNo +'" class="post_image">';
 				html+='<img alt="" src="/photo_upload/'+item.reviewImage+'"></a>';

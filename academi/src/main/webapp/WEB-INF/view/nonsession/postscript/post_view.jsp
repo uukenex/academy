@@ -284,12 +284,12 @@
 											<tr>
 												<th>${reply.users.userNick}</th>
 												<td id="post_reply_date">
-													<fmt:formatDate value="${post.reviewDate}"
+													<fmt:formatDate value="${reply.replyDate}"
 															pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
 												</td>
 												<td>
 													<c:if test="${reply.userId==Users.userId }">
-														<input type="hidden" name="replyNo" value="${ reply.replyNo}">
+														<input type="hidden" name="replyNo" value="${reply.replyNo}">
 														<input type="hidden" name="replyReviewNo" value="${reply.replyReviewNo }">
 														<input type="submit" value="삭제" formaction="/reviewReplyDelete"
 																	formmethod="post" id="postButtonStyle1">
@@ -492,8 +492,6 @@
 										"<tr> <th>"+item.users.userNick +"</th>"
 										+ "<td id='post_reply_date'>" + newDate +"</td>"
 										+"<td>"
-										+"<input type='submit' value='수정' formaction='/session/replyUpdate'"
-										+"formmethod='post' id='postButtonStyle1'>"
 										+"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>"
 										+"<input type='submit' value='삭제' formaction='/replyDelete'"
 										+"formmethod='post' id='postButtonStyle1'>"
