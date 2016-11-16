@@ -36,7 +36,7 @@
 										<c:forEach var="myFolder" items="${myFolderList }">
 											<a href="#"
 										onclick="window.open('/session/shareList?folderName=${myFolder.photoFolderName }',
-										'${myFolder.photoFolderName }','width=0, height=0');"
+										'${myFolder.photoFolderName }','width=370px, height=150px');"
 										onkeypress="this.onclick()"><i class="fa fa-check-square-o" aria-hidden="true"></i> ${myFolder.photoFolderName }</a>
 										<br>
 										</c:forEach>
