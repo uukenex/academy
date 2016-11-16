@@ -46,13 +46,15 @@ public class PhotoBookServiceTest {
 		ps.insertFolderName("zzxx","asdf");
 	}
 
-	String shareId="ㅋㅌㅊ";
+	
 	@Test
 	public void updateTest(){
-		ps.share1up(userId, shareId, folderName);
-		ps.share2up(userId, shareId, folderName);
-		ps.share3up(userId, shareId, folderName);
-		ps.share4up(userId, shareId, folderName);
+		String shareId="zzxx4949";
+		String folderName = "2015여수오동도";
+		ps.share1up(userId, "", folderName);
+		ps.share2up(userId, "", folderName);
+		ps.share3up(userId, "", folderName);
+		ps.share4up(userId, "", folderName);
 		
 	}
 	

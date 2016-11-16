@@ -167,7 +167,7 @@ public class MyPageController {
 		return searchList;
 	}
 
-	// 닉네임검색 ajax
+	// 닉네임검색완료후 선택 update ajax
 	@RequestMapping(value = "/selectedAjax", method = RequestMethod.POST)
 	public @ResponseBody int dataAjax(Model model, HttpSession session, @RequestParam String shareId,
 			@RequestParam String folderName, @RequestParam String winName) {
@@ -187,6 +187,32 @@ public class MyPageController {
 			result = ps.share4up(userId, shareId, folderName);
 		return result;
 	}
+	
+	
+	// 삭제 update ajax
+		@RequestMapping(value = "/noshare", method = RequestMethod.POST)
+		public @ResponseBody int deleteshareAjax(Model model, HttpSession session, 
+				@RequestParam String shareId,
+				@RequestParam String folderName) {
+			Users users = (Users) session.getAttribute("Users");
+			if (users == null) {
+				return 0;
+			}
+			String userId = users.getUserId();
+			logger.trace("userId:{}",userId);
+			logger.trace("shareId:{}",shareId);
+			logger.trace("folderName:{}",folderName);
+			int result = 0;
+			if (shareId.equals("shareId1"))
+				result = ps.share1up(userId, "", folderName);
+			else if (shareId.equals("shareId2"))
+				result = ps.share2up(userId, "", folderName);
+			else if (shareId.equals("shareId3"))
+				result = ps.share3up(userId, "", folderName);
+			else if (shareId.equals("shareId4"))
+				result = ps.share4up(userId, "", folderName);
+			return result;
+		}
 	
 	class MyHash {
 		public String testMD5(String str) {

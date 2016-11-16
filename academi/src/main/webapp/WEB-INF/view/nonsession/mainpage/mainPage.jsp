@@ -180,7 +180,7 @@
 								    	<div id="mainpage_route_view">
 								    		<h3 class="part_title_h3">방금 등록된 일정</h3>
 								    		<section class="mainpage_route_features" style="padding-top: 0px">
-								    		<c:forEach items="${routeTop4}" var="route">
+								    		<c:forEach items="${routeTop4}" var="route" end="3">
 								    			<article>
 								    				
 								    				<ul>

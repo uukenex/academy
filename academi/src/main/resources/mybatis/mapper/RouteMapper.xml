@@ -69,7 +69,7 @@
 <select id="selectMainList" resultMap="routeUsers" >
 select * from route r
 join users u on u.user_id=r.user_id
-where rownum between 1 and 4 
+where rownum between 1 and 5 
 order by route_no desc
 </select>
 
