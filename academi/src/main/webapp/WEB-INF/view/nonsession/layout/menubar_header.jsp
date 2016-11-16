@@ -50,7 +50,7 @@
   			
 <!-- Nav -->
 
-<nav id="nav">
+<nav id="nav" class="drop_menu_visiable">
 	<ul class="list">
 		<li><a href="/mainpage2">홈</a></li>
 		

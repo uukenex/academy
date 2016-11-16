@@ -8,6 +8,8 @@
 <!-- Fancy Header -->
 
 	<header id="fancyHeader" class="fancyAlt">
+		 
+		<h1>현재 접속 :  &emsp;<a href="/session/mypageMain">${Users.userNick }</a></h1>
 		<nav>
 			<a href="#fancyMenu">Menu</a>
 		</nav>

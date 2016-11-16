@@ -71,7 +71,6 @@
 
 <title>여행 후기 게시판</title>
 <body>
-	<h3>현재 접속 Nick : "${Users.userNick }"</h3>
 	
 	<!-- Drop Menu Header -->
 		<jsp:include page="../../nonsession/layout/dropMenu_header.jsp" />
