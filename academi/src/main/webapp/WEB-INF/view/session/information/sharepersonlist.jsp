@@ -21,7 +21,7 @@
 readonly="readonly" value="${sharePerson.photoShareId1}"
 onclick="window.open('/searchNick', 'shareId1',
 'width=400, height=350');" >
-<input type="button" value="삭제하기" class="share_person_button">
+<input type="button" id="shareId1" value="삭제하기" class="share_person_button delete">
 </div>
 
 <div class="share_choice_person">
@@ -30,7 +30,7 @@ onclick="window.open('/searchNick', 'shareId1',
 readonly="readonly" value="${sharePerson.photoShareId2}"
 onclick="window.open('/searchNick', 'shareId2',
 'width=400, height=350');" >
-<input type="button" value="삭제하기" class="share_person_button">
+<input type="button" id="shareId2" value="삭제하기" class="share_person_button delete">
 </div>
 
 <div class="share_choice_person">
@@ -39,7 +39,7 @@ onclick="window.open('/searchNick', 'shareId2',
 readonly="readonly" value="${sharePerson.photoShareId3}"
 onclick="window.open('/searchNick', 'shareId3',
 'width=400, height=350');" >
-<input type="button" value="삭제하기" class="share_person_button">
+<input type="button" id="shareId3" value="삭제하기" class="share_person_button delete">
 </div>
 
 <div class="share_choice_person">
@@ -48,9 +48,39 @@ onclick="window.open('/searchNick', 'shareId3',
 readonly="readonly" value="${sharePerson.photoShareId4}"
 onclick="window.open('/searchNick', 'shareId4',
 'width=400, height=350');" >
-<input type="button" value="삭제하기" class="share_person_button">
+<input type="button" id="shareId4" value="삭제하기" class="share_person_button delete">
 </div>
 
 </c:forEach>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+
+<c:url value="/noshare" var="noshare" />
+	$(".delete").on("click",function(){
+		var shareId = $(this)[0].id;
+		$.ajax({
+			type:"post",
+			url:"${noshare}",
+			data:{
+				userId:'${Users.userId}',
+				shareId:shareId,
+				folderName:'<%=request.getParameter("folderName")%>'
+			},
+			success:function(res){
+				console.log(res);
+				if(res==1){
+					console.log(window);
+					location.reload();
+				}
+			}
+			,
+			error:function(xhr,status,error){
+				alert(error);
+			}
+		});
+			
+	});
+</script>
 </body>
 </html>
