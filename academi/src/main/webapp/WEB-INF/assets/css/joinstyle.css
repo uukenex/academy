@@ -212,7 +212,7 @@
 			border: 2px dashed #F5696A;
 		}
 	
-		div.login_check_div input[type='submit'].button1 {
+		div.login_check_div input[type='submit'].button1, div.login_check_div input[type='button'].button1 {
 			-moz-appearance: none;
 			-webkit-appearance: none;
 			-ms-appearance: none;
@@ -242,7 +242,7 @@
 			margin: -10em 1em 0 1em;
 		}
 		
-		div.login_check_div .button1:HOVER {
+		div.login_check_div .button1:HOVER, div.login_check_div input[type='button1'].button1:HOVER {
 			background-color: #f56a6a;
 					color: #323232;
 		}

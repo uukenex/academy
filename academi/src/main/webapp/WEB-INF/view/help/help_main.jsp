@@ -36,7 +36,10 @@ border:2px solid #f56a6a;
 			<div id="main">
 				<div class="container">
 					<div class="row main-row">
-						<div class="2u"></div>
+					
+						<!-- Board Left Menu -->
+						<jsp:include page="../nonsession/layout/board_left_menu.jsp"></jsp:include>
+						
 						<div class="8u how_using_div">
 							<h3>사이트 이용방법</h3>
 							<ul class="using_tab">

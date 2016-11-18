@@ -57,8 +57,7 @@
 
 					<section id="features" class="container special">
 						<header>
-							<h2>여기서 부터는 사이트 이용 방법을 넣어주면 됩니다.</h2>
-							<p>사이트 이용 방법은 언제 만들지이이이이이이이이...ㅠㅠ</p>
+							<jsp:include page="../../help/help.jsp"></jsp:include>
 						</header>
 				</section>
 

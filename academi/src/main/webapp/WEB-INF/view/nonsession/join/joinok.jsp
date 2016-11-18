@@ -18,7 +18,7 @@
 		$(document).on("ready", function() {
 			alert("${message }");
 			<% session.removeAttribute("message");%>
-			window.opener.location.reload();
+			window.opener.location.href="/mainpage2";
 			self.close();
 		})
 		

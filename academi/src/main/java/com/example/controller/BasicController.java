@@ -61,6 +61,11 @@ public class BasicController {
 	public String login(Model model,HttpSession session,HttpServletRequest request) {
 		return "nonsession/login/login";
 	}
+	
+	@RequestMapping("/help_main")
+	public String helpMain(Model model,HttpSession session,HttpServletRequest request) {
+		return "help/help_main";
+	}
 
 	
 

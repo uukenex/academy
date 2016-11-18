@@ -68,7 +68,7 @@
 				<li><a href="${qna }">Q & A</a></li>
 				<c:url value="/free?page=1" var="free" />
 				<li><a href="${free }">자유 게시판</a></li>
-				<li><a href="#">사이트 이용방법</a></li>
+				<li><a href="/help_main" class="howuseBoard">사이트 이용방법</a></li>
 			</ul></li>
 	</ul>
 </nav>

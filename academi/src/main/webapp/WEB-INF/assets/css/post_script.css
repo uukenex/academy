@@ -1118,6 +1118,7 @@
 				background-color: #FFFFFF;
 				border: 1px solid #F5696A;
 				display: inline-block;
+				margin-top: 2em;
 			}
 			
 			ul.using_tab li {
@@ -1128,7 +1129,7 @@
 				display: inline-block;
 				color: #000000;
 				text-align: center;
-				padding: 0.5em 1em;
+				padding: 0.5em 0.5em;
 				text-decoration: none;
 				transition: 0.3s;
 				font-size: 1.5em;

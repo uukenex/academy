@@ -497,10 +497,7 @@ $(document).on("ready",function(){
 		       		html+=" <img id='down"+interval;
 		       		html+="' src='/images/zipdown.png'";
 		       		html+="height='25px' width='25px' class='fdown ' >";
-		       		//삭제 이미지버튼
-		       		html+="<img id='chk"+interval;
-		       		html+="' src='/images/delete.png' ";
-		       		html+="height='25px' width='25px' class='fclose '>";
+		       		
 		       		
 					html+="<div>";
 					$("#result")[0].innerHTML+=html;
