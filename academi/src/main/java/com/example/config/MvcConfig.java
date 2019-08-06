@@ -10,8 +10,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.example.interceptor.SessionInterceptor;
@@ -51,7 +49,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/photo_upload/**").addResourceLocations("/photo_upload/");
 		registry.addResourceHandler("/validation/**").addResourceLocations("/WEB-INF/validation/");
 		registry.addResourceHandler("/map/**").addResourceLocations("/WEB-INF/images/map/");
-		registry.addResourceHandler("/temp/**").addResourceLocations("c:/Temp");
+		registry.addResourceHandler("/temp/**").addResourceLocations("/image/dev2/Temp");
 		//사진저장실험
 		registry.addResourceHandler("/review/**").addResourceLocations("/review/");
 		}
@@ -67,8 +65,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		public void addInterceptors(InterceptorRegistry registry){
 			registry.addInterceptor(new SessionInterceptor())
 			.addPathPatterns("/session/**");
+			
 		}
 		
-
 		
 }

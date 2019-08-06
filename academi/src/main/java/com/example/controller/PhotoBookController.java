@@ -59,7 +59,8 @@ public class PhotoBookController {
 	}
 
 	// 포토북 업로드 ajax
-	private final String UPLOAD_DIR = "c:/Temp/";
+	//private final String UPLOAD_DIR = "c:/Temp/";
+	private final String UPLOAD_DIR = "/img/dev2/";
 
 	@RequestMapping(value = "/photo", method = RequestMethod.POST)
 	public @ResponseBody List<List<String>> upload(@RequestParam List<MultipartFile> file, @RequestParam String userId,

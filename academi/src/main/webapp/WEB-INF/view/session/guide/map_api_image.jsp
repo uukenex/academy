@@ -15,8 +15,7 @@
 	<!-- 이미지 지도를 표시할 div 입니다 -->
 	<div id="staticMap" style="width: 380px; height: 700px;"></div>
 
-	<script type="text/javascript"
-		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e402734f62a71135a860f7ab8b2ae507"></script>
 	<script>
 		
 		// 이미지 지도에 표시할 마커입니다
@@ -25,7 +24,7 @@
 		var markers = [ 
 	<c:forEach var="latLng" items="${latLng}">   
 		 {
-			position : new daum.maps.LatLng(${latLng})
+			position : new kakao.maps.LatLng(${latLng})
 		}, 
 		</c:forEach>
 		
@@ -33,14 +32,14 @@
 
 		var staticMapContainer = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
 		staticMapOption = {
-			center : new daum.maps.LatLng(${center.get(0)}), // 이미지 지도의 중심좌표
+			center : new kakao.maps.LatLng(${center.get(0)}), // 이미지 지도의 중심좌표
 			level : "${mapSize}", // 이미지 지도의 확대 레벨
 			marker : markers
 		// 이미지 지도에 표시할 마커 
 		};
 
 		// 이미지 지도를 생성합니다
-		var staticMap = new daum.maps.StaticMap(staticMapContainer,
+		var staticMap = new kakao.maps.StaticMap(staticMapContainer,
 				staticMapOption);
 		</script>
 </body>

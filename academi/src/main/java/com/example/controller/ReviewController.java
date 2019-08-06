@@ -84,9 +84,8 @@ public class ReviewController {
 		List<ReviewReply> rr = rrs.selectReplyList(reviewNo);
 	
 		String str3 = r.getRoute().getRouteFull();
-		
 		/*Route result = routeService.selectRouteByNo(routeNo);*/
-		logger.trace("여기로 들어오니 ?");
+		logger.info("여기로 들어오니 ?");
 		//루트 전체를  str3에 담아주고 
 		
 	

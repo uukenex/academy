@@ -14,13 +14,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureException;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 //Spring core에 대한 설정
 @Configuration
-@PropertySource("classpath:/config/dbconfig.properties")
+//@PropertySource("classpath:/config/app.properties")
 @ComponentScan({"com.example.repo","com.example.service","com.example.model"})
 @EnableTransactionManagement
 public class ApplicationConfig {
@@ -32,6 +33,16 @@ public class ApplicationConfig {
 		return tm;
 	}
 	
+	
+	@Bean
+	public DataSource dataSource() throws DataSourceLookupFailureException {
+		  JndiDataSourceLookup jdsl = new JndiDataSourceLookup();
+		  jdsl.setResourceRef(true);
+		  DataSource dataSource = jdsl.getDataSource("jdbc/dev2");
+		  return dataSource;
+	}
+	
+	/*
 	@Bean
 	public DataSource dataSource(@Value("${db.driverClassName}") String driverClassName, @Value("${db.url}") String url,
 			@Value("${db.username:hr}") String userName, @Value("${db.password:tiger}") String password,
@@ -47,7 +58,7 @@ public class ApplicationConfig {
 		ds.setInitialSize(initialSize);
 		ds.setMaxIdle(maxIdle);
 		return ds;
-	}
+	}*/
 	@Bean
 	public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource ds) {
 		SqlSessionFactoryBean bean = new SqlSessionFactoryBean();

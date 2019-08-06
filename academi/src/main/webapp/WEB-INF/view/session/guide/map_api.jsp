@@ -283,17 +283,24 @@
 
  --%>
 	
-
+	<!-- 2019.08.05 daum->kakao javascript key::::  e402734f62a71135a860f7ab8b2ae507 -->
+	<!-- 
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
+	 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e402734f62a71135a860f7ab8b2ae507"></script>	
+		
+		
 	<script>
-	var center = new daum.maps.LatLng(<%=request.getAttribute("lat")%>, <%=request.getAttribute("lng")%>);
+	
+	
+	var center = new kakao.maps.LatLng(<%=request.getAttribute("lat")%>, <%=request.getAttribute("lng")%>);
 	if(<%=request.getAttribute("lat")%>==null)
 		{
 		/////////////////////
 		//임시 방편입니다///////
 		///////////////////
-		center = new daum.maps.LatLng(36.799337, 127.937485);
+		center = new kakao.maps.LatLng(36.799337, 127.937485);
 		var mapLevel = 13;
 		}else{
 			 var mapLevel = 8; 	
@@ -307,8 +314,8 @@
 		};
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-		var map = new daum.maps.Map(mapContainer, mapOption);
-		var places = new daum.maps.services.Places();
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+		var places = new kakao.maps.services.Places();
 		var callback;
 		var positions;
 
@@ -318,13 +325,13 @@
 		// 마커 이미지의 이미지 주소입니다
 		var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 		// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-		var zoomControl = new daum.maps.ZoomControl();
-		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+		var zoomControl = new kakao.maps.ZoomControl();
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 		//처음 지도 로드시 한번만 실행됨
-		daum.maps.load(function(){
+		kakao.maps.load(function(){
 			callback = function(status, result, pagination) {
-				if (status === daum.maps.services.Status.OK) {
+				if (status === kakao.maps.services.Status.OK) {
 					positions = result.places;
 					callMarker(positions);
 					
@@ -373,24 +380,24 @@
 			// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
 			
 			function placesSearchCB(status, data, pagination) {
-						if (status === daum.maps.services.Status.OK) {
+						if (status === kakao.maps.services.Status.OK) {
 							positions = data.places;
 
-							var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
+							var moveLatLon = new kakao.maps.LatLng(positions[0].latitude,
 									positions[0].longitude);
 							map.panTo(moveLatLon);
-						} else if (status === daum.maps.services.Status.ZERO_RESULT) {
+						} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 							alert('검색 결과가 존재하지 않습니다.');
 							return;
-						} else if (status === daum.maps.services.Status.ERROR) {
+						} else if (status === kakao.maps.services.Status.ERROR) {
 							alert('검색 결과 중 오류가 발생했습니다.');
 							return;
 						}
 					};
 			
 			
-			daum.maps.event.addListener(map, 'idle', function() {
-				center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
+			kakao.maps.event.addListener(map, 'idle', function() {
+				center = new kakao.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
 				/*
 				MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
 				BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국*/
@@ -405,7 +412,7 @@
 		
 		//주변 정보 중심좌표는 location에 따름
 		callback = function(status, result, pagination) {
-			if (status === daum.maps.services.Status.OK) {
+			if (status === kakao.maps.services.Status.OK) {
 				if($("#stored").prop("checked")!=true){
 				positions = result.places;
 				callMarker(positions);
@@ -421,7 +428,7 @@
 			removeMarker();
 			removeInfoWindow();
 			// 마커 이미지의 이미지 크기 입니다
-			var imageSize = new daum.maps.Size(24, 35);
+			var imageSize = new kakao.maps.Size(24, 35);
 			var markerImage;
 			var posx;
 			var posy;
@@ -441,17 +448,17 @@
 					//계곡이면서 골 이라는 글자가 포함되있다면 , 다음걸로 넘어감 , 저수지여도 넘어감
 				} else {
 					// 마커 이미지를 생성합니다    
-					markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+					markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 					
 					// 마커를 생성합니다
 					posx = positions[i].latitude;
 					posy = positions[i].longitude;
 
 					
-					marker = new daum.maps.Marker({
+					marker = new kakao.maps.Marker({
 						map : map, // 마커를 표시할 지도
 						clickable : true,
-						position : new daum.maps.LatLng(posx, posy), // 마커를 표시할 위치
+						position : new kakao.maps.LatLng(posx, posy), // 마커를 표시할 위치
 						title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					// 마커 이미지 
 					});
@@ -462,7 +469,7 @@
 					if (positions[i].imageUrl == "") {
 						positions[i].imageUrl = '/images/noimg.jpg';
 					}
-					infowindow = new daum.maps.InfoWindow(
+					infowindow = new kakao.maps.InfoWindow(
 							{
 								removable : iwRemoveable,
 								content : '<div id='+i+' class>'
@@ -488,7 +495,7 @@
 							});
 					
 					
-					daum.maps.event.addListener(marker, 'click',
+					kakao.maps.event.addListener(marker, 'click',
 							makeOverListener(map, marker, infowindow));
 					markers.push(marker);
 					infowindows.push(infowindow);
@@ -656,8 +663,8 @@
 					
 					
 					// 지도 이동시 마커찍는 이벤트 제거
-					daum.maps.event.removeListener(map, 'idle', function() {
-						center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
+					kakao.maps.event.removeListener(map, 'idle', function() {
+						center = new kakao.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
 						/*
 						MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
 						BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국*/
@@ -687,8 +694,8 @@
 					map.setLevel(map.getLevel()+1);
 					// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
 					
-					daum.maps.event.addListener(map, 'idle', function() {
-						center = new daum.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
+					kakao.maps.event.addListener(map, 'idle', function() {
+						center = new kakao.maps.LatLng(map.getCenter().getLat(), map.getCenter().getLng());
 						/*
 						MT1대형마트CS2편의점PS3어린이집유치원SC4학교AC5학원PK6주차장OL7주유소충전소SW8지하철역
 						BK9은행CT1문화시설AG2중개업소PO3공공기관AT4관광명소AD5숙박FD6음식점CE7카페HP8병원PM9약국*/
@@ -716,16 +723,16 @@
 					});
 
 					function placesSearchCB(status, data, pagination) {
-						if (status === daum.maps.services.Status.OK) {
+						if (status === kakao.maps.services.Status.OK) {
 							positions = data.places;
 
-							var moveLatLon = new daum.maps.LatLng(positions[0].latitude,
+							var moveLatLon = new kakao.maps.LatLng(positions[0].latitude,
 									positions[0].longitude);
 							map.panTo(moveLatLon);
-						} else if (status === daum.maps.services.Status.ZERO_RESULT) {
+						} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 							alert('검색 결과가 존재하지 않습니다.');
 							return;
-						} else if (status === daum.maps.services.Status.ERROR) {
+						} else if (status === kakao.maps.services.Status.ERROR) {
 							alert('검색 결과 중 오류가 발생했습니다.');
 							return;
 						}
