@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -29,8 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.Users;
 import com.example.service.PhotoBookService;
-
-import ch.qos.logback.classic.spi.LoggerRemoteView;
 
 @Controller
 public class PhotoBookController {

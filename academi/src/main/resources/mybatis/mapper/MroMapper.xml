@@ -62,7 +62,7 @@
 	select * from(select
 		sub.*,rownum
 		rnum from
-		(select * from mro where city = '강원' and dong is null and si_gu is not null
+		(select * from mro where city like '강원%' and dong is null and si_gu is not null
 		order by
 		cnt desc)
 		sub)
@@ -76,7 +76,7 @@
 	select * from(select
 		sub.*,rownum
 		rnum from
-		(select * from mro where city = '충북' and dong is null and si_gu is not null
+		(select * from mro where city like '충북%' and dong is null and si_gu is not null
 		order by
 		cnt desc)
 		sub)
@@ -90,7 +90,7 @@
 	select * from(select
 		sub.*,rownum
 		rnum from
-		(select * from mro where city = '충남' and dong is null and si_gu is not null
+		(select * from mro where city like '충남%' and dong is null and si_gu is not null
 		order by
 		cnt desc)
 		sub)

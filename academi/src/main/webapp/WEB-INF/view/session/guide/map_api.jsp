@@ -288,7 +288,7 @@
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=f111b7c126aadaadc9e48d615f426d3a&libraries=services"></script>
 	 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e402734f62a71135a860f7ab8b2ae507"></script>	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e402734f62a71135a860f7ab8b2ae507&libraries=services"></script>	
 		
 		
 	<script>
@@ -315,7 +315,8 @@
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-		var places = new kakao.maps.services.Places();
+		/* var places = new kakao.maps.services.Places(); */
+		var places = new kakao.maps.services.Places(map); 
 		var callback;
 		var positions;
 
@@ -330,14 +331,26 @@
 
 		//처음 지도 로드시 한번만 실행됨
 		kakao.maps.load(function(){
+			//https://devtalk.kakao.com/t/api-api/42380/2 
+			// 기존에는 status가 첫 번째였습니다
+			/* 
 			callback = function(status, result, pagination) {
 				if (status === kakao.maps.services.Status.OK) {
 					positions = result.places;
 					callMarker(positions);
 					
 				}
+			}; */
+
+			callback = function(result, status) {
+				if (status === kakao.maps.services.Status.OK) {
+					console.log(result);
+					//positions = result.places;
+					positions = result;
+					callMarker(positions);
+					
+				}
 			};
-			
 			
 			////////////////////////////////
 			////여기서 저장된것만 표시 를 해주어야함////
@@ -411,10 +424,21 @@
 		
 		
 		//주변 정보 중심좌표는 location에 따름
+		/* 
 		callback = function(status, result, pagination) {
 			if (status === kakao.maps.services.Status.OK) {
 				if($("#stored").prop("checked")!=true){
 				positions = result.places;
+				callMarker(positions);
+					
+				}
+			}
+		}; */
+		
+		callback = function(result, status) {
+			if (status === kakao.maps.services.Status.OK) {
+				if($("#stored").prop("checked")!=true){
+				positions = result;
 				callMarker(positions);
 					
 				}
@@ -442,9 +466,9 @@
 					
 					
 				
-				if ((positions[i].category.indexOf('계곡') != -1 
-					&& positions[i].title.indexOf('골') != -1)
-					|| positions[i].category.indexOf('저수지') != -1) {
+				if ((positions[i].category_name.indexOf('계곡') != -1 
+					&& positions[i].place_name.indexOf('골') != -1)
+					|| positions[i].category_name.indexOf('저수지') != -1) {
 					//계곡이면서 골 이라는 글자가 포함되있다면 , 다음걸로 넘어감 , 저수지여도 넘어감
 				} else {
 					// 마커 이미지를 생성합니다    
@@ -459,7 +483,7 @@
 						map : map, // 마커를 표시할 지도
 						clickable : true,
 						position : new kakao.maps.LatLng(posx, posy), // 마커를 표시할 위치
-						title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						title : positions[i].place_name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					// 마커 이미지 
 					});
 					
@@ -474,16 +498,16 @@
 								removable : iwRemoveable,
 								content : '<div id='+i+' class>'
 										+ '    <div class="info">'
-										+ '        <div class="title" name='+positions[i].title+'>'
-										+ positions[i].title
+										+ '        <div class="title" name='+positions[i].place_name+'>'
+										+ positions[i].place_name
 										+ '        </div>'
 										+ '        <div class="body">'
 										+ '            <div class="img">'
-										+ '                <img src="'+positions[i].imageUrl+'" width="73" height="70">'
+										+ '                <img src="'+positions[i].place_url+'" width="73" height="70">'
 										+ '           </div>'
 										+ '            <div class="desc">'
 										+ '                <div class="jibun ellipsis">'
-										+ positions[i].address
+										+ positions[i].place_name
 										+ '</div>'
 										+ '                <div><input type="button" id="'
 										+ i

@@ -7,13 +7,13 @@
 	<!-- 회원가입을 위한 insert -->
 	<insert id="insert" parameterType="users">
 		insert into users
-		values(#{userId},#{userPass},#{userName},
+		values(UPPER(#{userId}),#{userPass},#{userName},
 		#{userEmail},#{userPhone},#{userNick})
 	</insert>
 
 	<!-- 로그인 기능 -->
 	<select id="selectById" resultMap="usersBase" parameterType="String">
-		select * from users where user_id = #{userId}
+		select * from users where user_id = UPPER(#{userId})
 	</select>
 
 	<!-- id찾기 기능 이름&Email로 id만 찾음 -->
@@ -45,7 +45,7 @@
 	<update id="updatePass" parameterType="Map">
 		update users set
 		user_pass=#{userPass}
-		where user_id=#{userId}
+		where user_id=UPPER(#{userId})
 	</update>
 
 	<!-- 마이페이지 내가 작성한 후기보기 기능 -->
@@ -60,24 +60,24 @@
 	<!-- 마이페이지 내가 작성한 질문보기 기능 -->
 	<!--질문테이블에서 내아이디로 조회 -->
 	<select id="selectQnaById" parameterType="String" resultMap="usersQna">
-		select * from qna where user_id = #{userId}
+		select * from qna where user_id = UPPER(#{userId})
 	</select>
 	<!-- 마이페이지 내가 작성한 답변보기 기능 -->
 	<!--답변테이블에서 내아이디로 조회 -->
 	<select id="selectAnswerById" parameterType="String" resultMap="usersAnswer">
-		select * from answer where user_id = #{userId}
+		select * from answer where user_id = UPPER(#{userId})
 	</select>
 
 	<select id="checkId" parameterType="String" resultType="int">
 		select
-		count(user_id) from users where user_id=#{userId}
+		count(user_id) from users where user_id=UPPER(#{userId})
 	</select>
 	<select id="checkNick" parameterType="String" resultType="int">
 		select
 		count(user_nick) from users where user_nick=#{userNick}
 	</select>
 	<select id="searchNickById" parameterType="String" resultType="String">
-		select user_nick from users where user_id=#{userId}
+		select user_nick from users where user_id=UPPER(#{userId})
 	</select>
 	
 

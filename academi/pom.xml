@@ -143,7 +143,7 @@
 	  </dependency>
        -->
        <dependency> 
-	        <groupId>custom</groupId> 
+	        <groupId>my</groupId> 
 	        <artifactId>ojdbc6</artifactId> 
 	        <version>1.0</version> 
 	        <scope>system</scope> 

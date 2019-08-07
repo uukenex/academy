@@ -1,9 +1,7 @@
 package com.example.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dto.Comments;
 import com.example.dto.Users;
-import com.example.model.UserNick;
 import com.example.service.CommentService;
 import com.example.service.UserService;
 /**

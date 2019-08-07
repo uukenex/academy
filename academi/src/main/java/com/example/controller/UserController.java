@@ -1,9 +1,7 @@
 package com.example.controller;
 
 import java.security.MessageDigest;
-import com.example.util.SendMailUtil;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,17 +13,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import com.example.controller.UserController.MyHash;
 
-import com.example.dto.Goods;
 import com.example.dto.Users;
 import com.example.service.UserService;
+import com.example.util.SendMailUtil;
 
 @Controller
 @SessionAttributes({ "cart" })
@@ -43,7 +39,7 @@ public class UserController {
 	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
 	public String loginUser(Model model, HttpServletRequest request, HttpSession session) {
 		String returnURL = "nonsession/login/login";
-		String userId = request.getParameter("id");
+		String userId = request.getParameter("id").toUpperCase();
 		String userPass = request.getParameter("password");
 		MyHash ht = new MyHash();
 		userPass = ht.testMD5(userPass);
@@ -67,7 +63,7 @@ public class UserController {
 	@RequestMapping(value = "/directloginUser", method = RequestMethod.POST)
 	public String directloginUser(Model model, HttpServletRequest request, HttpSession session) {
 		String returnURL = "nonsession/login/login";
-		String userId = request.getParameter("id");
+		String userId = request.getParameter("id").toUpperCase();
 		String userPass = request.getParameter("password");
 		MyHash ht = new MyHash();
 		userPass = ht.testMD5(userPass);

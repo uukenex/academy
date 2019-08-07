@@ -22,7 +22,7 @@ public class SendMailUtil extends javax.mail.Authenticator {
    public void email_Password(String email, String pass) {
       String host = "smtp.gmail.com";
       String subject = "여행을 부탁해 비밀번호 입니다.";
-      String from = "ljs921205@gmail.com"; //보내는 메일
+      String from = "zzxx4949@gmail.com"; //보내는 메일
       String fromName = "여행을 부탁해";
       String to = "" + email;
       StringBuffer sb = new StringBuffer();

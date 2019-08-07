@@ -22,7 +22,7 @@
 		// 이미지 지도에 표시할 마커를 아래와 같이 배열로 넣어주면 여러개의 마커를 표시할 수 있습니다 
 	
 		var markers = [ 
-	<c:forEach var="latLng" items="${latLng}">   
+		<c:forEach var="latLng" items="${latLng}">   
 		 {
 			position : new kakao.maps.LatLng(${latLng})
 		}, 
@@ -39,8 +39,7 @@
 		};
 
 		// 이미지 지도를 생성합니다
-		var staticMap = new kakao.maps.StaticMap(staticMapContainer,
-				staticMapOption);
+		var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 		</script>
 </body>
 </html>
