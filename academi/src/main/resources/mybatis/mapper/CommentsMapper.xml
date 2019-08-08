@@ -25,7 +25,7 @@
 		insert into comments (comment_category,comment_name,
 		comment_content,comment_date,comment_count,user_id) values
 		(#{commentCategory}
-		,#{commentName},#{commentContent},sysdate,0,#{userId})
+		,#{commentName},#{commentContent},sysdate,0,UPPER(#{userId}))
 	</insert>
 	
 	<!-- 게시글 수정 -->

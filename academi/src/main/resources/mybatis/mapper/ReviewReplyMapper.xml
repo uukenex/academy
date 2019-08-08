@@ -16,7 +16,7 @@
 		reply_review_no,user_id)
 		values(
 		#{replyContent},sysdate,
-		#{replyReviewNo},#{userId})
+		#{replyReviewNo},UPPER(#{userId}))
 	</insert>
 	<!-- 댓글 삭제 기능 -->
 	<delete id="delete" parameterType="int">

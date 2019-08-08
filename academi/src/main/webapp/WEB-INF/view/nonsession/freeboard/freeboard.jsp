@@ -14,7 +14,7 @@
  	<meta name="author" content="Nathan Searles">
   		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css?v=20190808_01" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
@@ -44,7 +44,6 @@
 							<%-- <h3>현재 접속 Nick : "${Users.userNick }"</h3> --%>
 							
 							<ul id="writeNsearchBar">
-								<li><a href="/session/boardsign" ><input type="submit" value="글쓰기" class="writeBoard"></a></li>
 								<li>
 									<div class="boardSearchBar">
 										<select id="searchCategory">
@@ -53,19 +52,23 @@
 											<option value="닉네임">닉네임</option>
 										</select>
 										<input type="search" id="search" />
-										<input type="button" id="searchBtn" value="검색" />
+										
 									</div>
+								</li>
+								<li>
+									<a href="/session/boardsign" ><input type="submit" value="글쓰기" class="writeBoard"></a>
+									<input type="button" id="searchBtn" value="검색" />
 								</li>
 							</ul>
 							
 							<form>
 								<table>
 									<colgroup>
-										<col width="10%" />
+										<col width="20%" />
 										<col width="*" />
 										<col width="15%" />
 										<col width="20%" />
-										<col width="10%" />
+										<col width="15%" />
 									</colgroup>
 									<thead id="board_table_thead">
 									<tr>

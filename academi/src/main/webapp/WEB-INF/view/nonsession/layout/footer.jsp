@@ -3,21 +3,23 @@
     
 <!-- footer -->
 	
+	
+	<!-- 
 	<div id="footer">
 		<hr id="footerHr"/>
 		<div class="container">
 			<div class="row">
 	
-					<!-- Contact -->
+					Contact
 					<div class="4u">
 						<section class="contact">
 							<header>
-								<h3>우리의 여행을 부탁해~</h3>
+								<h6>우리의 여행을 부탁해~</h6>
 							</header>
 						</section>
 					</div>
 					
-					<!-- Body -->
+					Body
 						<div class="4u" id="footerBodyPart">
 							<ul>
 								<li>(주)공주대학교</li>
@@ -27,8 +29,8 @@
 							</ul>
 						</div>
 	
-					<!-- Copyright -->
-					<div class="copyright 4u">
+					Copyright
+					<div class="copyright 4u" id="footerBodyPart">
 						<ul>
 							<li>문의 사항 : </li>
 							<li>010-1234-0000</li>
@@ -45,5 +47,5 @@
 			</div>
 		</div>
 	</div>
-		
+		 -->
 

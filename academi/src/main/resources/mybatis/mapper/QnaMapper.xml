@@ -22,7 +22,7 @@
 		(qna_title,qna_question,
 		qna_date,qna_count,user_id) values
 		(#{qnaTitle},#{qnaQuestion},
-		sysdate,0,#{userId})
+		sysdate,0,UPPER(#{userId}))
 	</insert>
 	<!-- qna 수정 -->
 	<update id="update" parameterType="Map">

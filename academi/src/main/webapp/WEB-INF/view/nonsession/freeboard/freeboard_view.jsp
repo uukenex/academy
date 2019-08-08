@@ -14,7 +14,7 @@
  	<meta name="author" content="Nathan Searles">
   		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css?v=20190808_01" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
@@ -55,15 +55,15 @@
 										<table>
 											<colgroup>
 												<col width="15%" />
+												<col width="25%" />
+												<col width="15%" />
 												<col width="*%" />
-												<col width="10%" />
-												<col width="20%" />
 											</colgroup>
 											<tr>
-												<th>작성자</th>
+												<td>작성자</td>
 												<input type="hidden" name="userId" value="${comment.userId }" />
 												<td class="boardTitleSort boardFontBold">${comment.users.userNick}</td>
-												<th>작성일</th>
+												<td>작성일</td>
 												<td class="boardTitleSort boardFontBold">
 													<fmt:formatDate value="${comment.commentDate}"
 																			pattern="yy-MM-dd HH:mm:ss" var="fmtDate" /> ${fmtDate}
@@ -124,16 +124,17 @@
 									<div>
 										<table class="board_view" border="1">
 												<colgroup>
-													<col width="10%">
-													<col width="2%">
+													<col width="20%">
+													<col width="5%">
+													<col width="20%">
 													<col width="*%">
-													<col width="8%">
-													<col width="8%">
+													<col width="10%">
 												</colgroup>
 												<tbody id="replyContentViewTableBody">
+												
 												<c:forEach var="reply" items="${replys }">
 								            	<tr>
-								            		<th class=boardFontBold>${reply.users.userNick}</th>
+								            		<td class=boardFontBold>${reply.users.userNick}</td>
 								            		<td>
 								            			<i class="fa fa-ellipsis-v"></i>
 								            		</td>
@@ -158,8 +159,9 @@
 													</td>
 								            	</tr>
 												<tr>
-													<th scope="row"> </th>
-													<td colspan="4" class="boardTitleSort">${reply.replyContent }</td>
+													<td colspan="4" class="boardTitleSort">
+													<pre> ${reply.replyContent }</pre> 
+													</td>
 												</tr>
 										</c:forEach>
 										</tbody>
@@ -237,7 +239,7 @@
 					var year = date.getFullYear().toString();
 					var month = (date.getMonth()+1).toString();
 					var day = date.getDate().toString();
-					var hour = date.getHours();
+					var hour = date.getUTCHours();
 					var minute= date.getMinutes();
 					var second= date.getSeconds();
 					if(day<10){
@@ -247,32 +249,33 @@
 					var newDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
 					if(replyId=='${Users.userId }'){
 						$("#replyContentViewTableBody")[0].innerHTML+=
-							"<tr> <th class='boardFontBold'>" + item.users.userNick 
-							+"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
+							"<tr> <td class='boardFontBold'>" + item.users.userNick 
+							+"</td> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
 							+"<td class='boardTitleSort'>"
 							+newDate + "</td> <td>" 
-							
+							/* 
+							알고보니없음...
 							+"<input type='submit' value='수정' formaction='/session/replyUpdate'"
 							+"formmethod='post' class='boardButtonStyle1'>" 
 							+"</td> <td>" 
-					
+							*/
 							+"<input type='hidden' name='replyNo' value='${ reply.replyNo}'>"
 							+"<input type='submit' value='삭제' formaction='/replyDelete'"
 							+"formmethod='post' class='boardButtonStyle1'>" 
 					
 							+"</td> </tr>" 
-							+"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" 
-							+item.replyContent + "</td> </tr>";
+							+"<tr> <td colspan='4' class='boardTitleSort'>" 
+							+"<pre>"+item.replyContent + "</pre>"+"</td> </tr>";
 					}
 					else{
 						$("#replyContentViewTableBody")[0].innerHTML+=
-							"<tr> <th class='boardFontBold'>" + item.users.userNick 
-							+"</th> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
+							"<tr> <td class='boardFontBold'>" + item.users.userNick 
+							+"</td> <td> <i class='fa fa-ellipsis-v'> </i> </td>"
 							+"<td class='boardTitleSort'>"
 							+newDate + "</td> <td>" 
 							+"</td> </tr>" 
-							+"<tr> <th scope='row'> </th> <td colspan='4' class='boardTitleSort'>" 
-							+item.replyContent + "</td> </tr>";
+							+"<tr> <td colspan='4' class='boardTitleSort'>" 
+							+"<pre>"+item.replyContent + "</pre>"+ "</td> </tr>";
 					}
 					
 				});

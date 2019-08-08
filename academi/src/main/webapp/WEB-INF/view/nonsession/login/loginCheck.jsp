@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/joinstyle.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/joinstyle.css?v=20190808_01" />
 <title>여행을 부탁해 로그인</title>
 </head>
 

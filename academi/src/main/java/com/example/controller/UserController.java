@@ -62,20 +62,20 @@ public class UserController {
 
 	@RequestMapping(value = "/directloginUser", method = RequestMethod.POST)
 	public String directloginUser(Model model, HttpServletRequest request, HttpSession session) {
-		String returnURL = "nonsession/login/login";
+		String returnURL = "redirect:/free";
 		String userId = request.getParameter("id").toUpperCase();
 		String userPass = request.getParameter("password");
 		MyHash ht = new MyHash();
 		userPass = ht.testMD5(userPass);
 		Users user = uService.login(userId);
-		String forPage = (String) session.getAttribute("forPage");
+		//String forPage = (String) session.getAttribute("forPage");
 		if (user != null && user.getUserPass().equals(userPass)) {
 			if (user.getUserId().equals(userId)) {
 				session.setAttribute("Users", user);
-				model.addAttribute("message", "환영합니다. ");
-				model.addAttribute("userId", userId);
-				returnURL = forPage;
-				logger.trace("forpage:{}", forPage);
+				//model.addAttribute("message", "환영합니다. ");
+				//model.addAttribute("userId", userId);
+				//returnURL = forPage;
+				//logger.trace("forpage:{}", forPage);
 			}
 		} else {
 			model.addAttribute("message", "아이디 혹은 비밀번호를 확인해주세요.");

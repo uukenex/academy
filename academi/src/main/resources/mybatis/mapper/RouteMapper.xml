@@ -19,7 +19,7 @@
 		,route_full,route_date,user_id)
 		values
 		(TO_CHAR(SYSDATE, 'YYYY"년"MM"월"DD"일에 저장한 경로"' )
-		,'메모작성을 할 수 있습니다',#{routeFull},sysdate,#{userId})
+		,'메모작성을 할 수 있습니다',#{routeFull},sysdate,UPPER(#{userId}))
 	</insert>
 
 	<update id="update" parameterType="Map">
@@ -36,7 +36,7 @@
 
 	<!-- 아이디별 페이지 카운팅 -->
 	<select id="pageCountbyId" parameterType="String" resultType="int">
-		select count(*) from route where user_id=#{userId}
+		select count(*) from route where user_id=UPPER(#{userId})
 	</select>
 	
 <!-- 마이페이지 내가 작성한 경로보기 기능 -->
@@ -44,7 +44,7 @@
 
 <!--경로테이블에서 내아이디로 조회 -->
 	<select id="selectRouteById" parameterType="String" resultMap="routeUsers">
-		select * from route r join users u on u.user_id=r.user_id where r.user_id = #{userId}
+		select * from route r join users u on u.user_id=r.user_id where r.user_id = UPPER(#{userId})
 	</select>
 	 
 	
@@ -56,7 +56,7 @@
 		(select * from route r
 		join users u
 		on u.user_id=r.user_id
-		where r.user_id = #{userId}
+		where r.user_id = UPPER(#{userId})
 		order by
 		route_no desc) sub)
 		where rnum

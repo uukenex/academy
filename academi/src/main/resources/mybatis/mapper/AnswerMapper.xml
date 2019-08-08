@@ -17,7 +17,7 @@
 		,qna_no,user_id)
 		values(
 		#{answerContent},sysdate,
-		#{qnaNo},#{userId})
+		#{qnaNo},UPPER(#{userId}))
 	</insert>
 	
 	<!-- 답변 수정 기능 -->

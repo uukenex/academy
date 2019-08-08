@@ -20,7 +20,7 @@
   			<script src="<%=request.getContextPath() %>/assets/js/jquery.slides.min.js"></script>
   			<!-- End SlidesJS Required -->
   					<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/main.css?v=20190808_01" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/fancy.css" />
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/post_script.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -52,23 +52,31 @@
 
 <nav id="nav" class="drop_menu_visiable">
 	<ul class="list">
-		<li><a href="/mainpage2">홈</a></li>
+		<li><a href="<%=request.getContextPath() %>/mainpage2">홈</a></li>
 		
-		<li><a href='/mapMain'>일정 만들기</a></li>
+		<c:if test="${empty Users.userId }">
+			<li><a href="<%=request.getContextPath() %>/loginCheck">로그인</a></li>
+		</c:if>
+		<c:if test="${!empty Users.userId }">
+			<li><a href="<%=request.getContextPath() %>/logout">로그아웃</a></li>
+		</c:if>
 		
-		<li><a href="/post?page=1">여행 후기</a></li>
 		
-		<li><a href="/session/myPhoto?userId=${Users.userId }&folderName">포토북</a>
+		<li><a href="<%=request.getContextPath() %>/mapMain">일정 만들기</a></li>
+		
+		<li><a href="<%=request.getContextPath() %>/post?page=1">여행 후기</a></li>
+		
+		<li><a href="<%=request.getContextPath() %>/session/myPhoto?userId=${Users.userId }&folderName">포토북</a>
 		</li>
 		<c:url value="/notice?page=1" var="notice" />
+		<c:url value="/qna?page=1" var="qna" />
+		<c:url value="/free?page=1" var="free" />
 		<li class="dropMenuLi"><a href="${notice }">게시판</a>
 			<ul>
-				<li><a href="${notice }">공지사항</a></li>
-				<c:url value="/qna?page=1" var="qna" />
-				<li><a href="${qna }">Q & A</a></li>
-				<c:url value="/free?page=1" var="free" />
-				<li><a href="${free }">자유 게시판</a></li>
-				<li><a href="/help_main" class="howuseBoard">사이트 이용방법</a></li>
+				<li><a href="<%=request.getContextPath() %>${notice }">공지사항</a></li>
+				<li><a href="<%=request.getContextPath() %>${qna }">Q & A</a></li>
+				<li><a href="<%=request.getContextPath() %>${free }">자유 게시판</a></li>
+				<li><a href="<%=request.getContextPath() %>/help_main" class="howuseBoard">사이트 이용방법</a></li>
 			</ul></li>
 	</ul>
 </nav>
